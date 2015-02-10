@@ -1,27 +1,27 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
-
-	<head>
-		<meta charset="utf-8">
-
-		<title>reveal.js - The HTML Presentation Framework</title>
-
-		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
-		<meta name="author" content="Hakim El Hattab">
-
-		<meta name="apple-mobile-web-app-capable" content="yes" />
-		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
-		<link rel="stylesheet" href="css/reveal.min.css">
-		<link rel="stylesheet" href="css/theme/default.css" id="theme">
-
-		<!-- For syntax highlighting -->
-		<link rel="stylesheet" href="lib/css/zenburn.css">
-
-		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
-		<script>
+<head>
+    <meta charset="utf-8">
+    <title>ASP.NET 5 (vNext)</title>
+    <meta name="description" content="Introduction to FsReveal">
+    <meta name="author" content="Karlkim Suwanmongkol">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <script src="//code.jquery.com/jquery-1.8.0.js"></script>
+    <script src="//code.jquery.com/ui/1.8.23/jquery-ui.js"></script>
+    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/css/bootstrap-combined.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/reveal.min.css">
+    <link rel="stylesheet" href="css/theme/default.css" id="theme">
+    <link type="text/css" rel="stylesheet" href="fsharp.formatting/styles/style.css" />
+    <link type="text/css" rel="stylesheet" href="fsharp.formatting/styles/deedle.css" />
+    <script src="fsharp.formatting/styles/tips.js" type="text/javascript"></script>
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+    <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+    <script>
 			if( window.location.search.match( /print-pdf/gi ) ) {
 				var link = document.createElement( 'link' );
 				link.rel = 'stylesheet';
@@ -29,366 +29,972 @@
 				link.href = 'css/print/pdf.css';
 				document.getElementsByTagName( 'head' )[0].appendChild( link );
 			}
-		</script>
+    </script>
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <div class="reveal">
+        <div class="tip" id="fs1">namespace System</div>
+<div class="tip" id="fs2">namespace System.Web</div>
+<div class="tip" id="fs3">val id : x:&#39;T -&gt; &#39;T<br /><br />Full name: Microsoft.FSharp.Core.Operators.id</div>
+<div class="tip" id="fs4">Multiple items<br />type HttpApplication =<br />&#160;&#160;new : unit -&gt; HttpApplication<br />&#160;&#160;member AddOnAcquireRequestStateAsync : bh:BeginEventHandler * eh:EndEventHandler -&gt; unit + 1 overload<br />&#160;&#160;member AddOnAuthenticateRequestAsync : bh:BeginEventHandler * eh:EndEventHandler -&gt; unit + 1 overload<br />&#160;&#160;member AddOnAuthorizeRequestAsync : bh:BeginEventHandler * eh:EndEventHandler -&gt; unit + 1 overload<br />&#160;&#160;member AddOnBeginRequestAsync : bh:BeginEventHandler * eh:EndEventHandler -&gt; unit + 1 overload<br />&#160;&#160;member AddOnEndRequestAsync : bh:BeginEventHandler * eh:EndEventHandler -&gt; unit + 1 overload<br />&#160;&#160;member AddOnLogRequestAsync : bh:BeginEventHandler * eh:EndEventHandler -&gt; unit + 1 overload<br />&#160;&#160;member AddOnMapRequestHandlerAsync : bh:BeginEventHandler * eh:EndEventHandler -&gt; unit + 1 overload<br />&#160;&#160;member AddOnPostAcquireRequestStateAsync : bh:BeginEventHandler * eh:EndEventHandler -&gt; unit + 1 overload<br />&#160;&#160;member AddOnPostAuthenticateRequestAsync : bh:BeginEventHandler * eh:EndEventHandler -&gt; unit + 1 overload<br />&#160;&#160;...<br /><br />Full name: System.Web.HttpApplication<br /><br />--------------------<br />System.Web.HttpApplication() : unit</div>
+<div class="tip" id="fs5">val set : elements:seq&lt;&#39;T&gt; -&gt; Set&lt;&#39;T&gt; (requires comparison)<br /><br />Full name: Microsoft.FSharp.Core.ExtraTopLevelOperators.set</div>
+<div class="tip" id="fs6">type bool = System.Boolean<br /><br />Full name: Microsoft.FSharp.Core.bool</div>
+<div class="tip" id="fs7">val async : AsyncBuilder<br /><br />Full name: Microsoft.FSharp.Core.ExtraTopLevelOperators.async</div>
 
-		<!--[if lt IE 9]>
-		<script src="lib/js/html5shiv.js"></script>
-		<![endif]-->
-	</head>
+        <!-- Any section element inside of this container is displayed as a slide -->
+        <div class="slides">
+            <section>
 
-	<body>
+<h1>ASP.NET 5</h1>
 
-		<div class="reveal">
+</section>
 
-			<!-- Any section element inside of this container is displayed as a slide -->
-			<div class="slides">
-				<section>
-					<h1>Reveal.js</h1>
-					<h3>HTML Presentations Made Easy</h3>
-					<p>
-						<small>Created by <a href="http://hakim.se">Hakim El Hattab</a> / <a href="http://twitter.com/hakimel">@hakimel</a></small>
-					</p>
-				</section>
+<section>
 
-				<section>
-					<h2>Heads Up</h2>
-					<p>
-						reveal.js is a framework for easily creating beautiful presentations using HTML. You'll need a browser with
-						support for CSS 3D transforms to see it in its full glory.
-					</p>
+<p><em>Filip W</em></p>
 
-					<aside class="notes">
-						Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
-					</aside>
-				</section>
+<p><a href="www.strathweb.com">www.strathweb.com</a></p>
 
-				<!-- Example of nested vertical slides -->
-				<section>
-					<section>
-						<h2>Vertical Slides</h2>
-						<p>
-							Slides can be nested inside of other slides,
-							try pressing <a href="#" class="navigate-down">down</a>.
-						</p>
-						<a href="#" class="image navigate-down">
-							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-						</a>
-					</section>
-					<section>
-						<h2>Basement Level 1</h2>
-						<p>Press down or up to navigate.</p>
-					</section>
-					<section>
-						<h2>Basement Level 2</h2>
-						<p>Cornify</p>
-						<a class="test" href="http://cornify.com">
-							<img width="280" height="326" src="https://s3.amazonaws.com/hakim-static/reveal-js/cornify.gif" alt="Unicorn">
-						</a>
-					</section>
-					<section>
-						<h2>Basement Level 3</h2>
-						<p>That's it, time to go back up.</p>
-						<a href="#/2" class="image">
-							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Up arrow" style="-webkit-transform: rotate(180deg);">
-						</a>
-					</section>
-				</section>
+<p><a href="consulting.strathweb.com">consulting.strathweb.com</a></p>
 
-				<section>
-					<h2>Slides</h2>
-					<p>
-						Not a coder? No problem. There's a fully-featured visual editor for authoring these, try it out at <a href="http://slid.es" target="_blank">http://slid.es</a>.
-					</p>
-				</section>
+<p><a href="www.twitter.com/filip_woj">@filip_woj</a></p>
 
-				<section>
-					<h2>Point of View</h2>
-					<p>
-						Press <strong>ESC</strong> to enter the slide overview.
-					</p>
-					<p>
-						Hold down alt and click on any element to zoom in on it using <a href="http://lab.hakim.se/zoom-js">zoom.js</a>. Alt + click anywhere to zoom back out.
-					</p>
-				</section>
+<p><a href="github.com/filipw">github.com/filipw</a></p>
 
-				<section>
-					<h2>Works in Mobile Safari</h2>
-					<p>
-						Try it out! You can swipe through the slides and pinch your way to the overview.
-					</p>
-				</section>
+<p><img src="images/mvp.png" alt="Recipes" /></p>
 
-				<section>
-					<h2>Marvelous Unordered List</h2>
-					<ul>
-						<li>No order here</li>
-						<li>Or here</li>
-						<li>Or here</li>
-						<li>Or here</li>
-					</ul>
-				</section>
+</section>
 
-				<section>
-					<h2>Fantastic Ordered List</h2>
-					<ol>
-						<li>One is smaller than...</li>
-						<li>Two is smaller than...</li>
-						<li>Three!</li>
-					</ol>
-				</section>
+<section>
 
-				<section data-markdown>
-					<script type="text/template">
-						## Markdown support
+<h2>ASP.NET Web API 2 Recipes</h2>
 
-						For those of you who like that sort of thing. Instructions and a bit more info available [here](https://github.com/hakimel/reveal.js#markdown).
+<p><img src="images/recipes.jpg" alt="Recipes" /></p>
 
-						```
-						<section data-markdown>
-						  ## Markdown support
+</section>
 
-						  For those of you who like that sort of thing.
-						  Instructions and a bit more info available [here](https://github.com/hakimel/reveal.js#markdown).
-						</section>
-						```
-					</script>
-				</section>
+<section>
 
-				<section id="transitions">
-					<h2>Transition Styles</h2>
-					<p>
-						You can select from different transitions, like: <br>
-						<a href="?transition=cube#/transitions">Cube</a> -
-						<a href="?transition=page#/transitions">Page</a> -
-						<a href="?transition=concave#/transitions">Concave</a> -
-						<a href="?transition=zoom#/transitions">Zoom</a> -
-						<a href="?transition=linear#/transitions">Linear</a> -
-						<a href="?transition=fade#/transitions">Fade</a> -
-						<a href="?transition=none#/transitions">None</a> -
-						<a href="?#/transitions">Default</a>
-					</p>
-				</section>
+<h2>ASP.NET 2002</h2>
 
-				<section id="themes">
-					<h2>Themes</h2>
-					<p>
-						Reveal.js comes with a few themes built in: <br>
-						<a href="?#/themes">Default</a> -
-						<a href="?theme=sky#/themes">Sky</a> -
-						<a href="?theme=beige#/themes">Beige</a> -
-						<a href="?theme=simple#/themes">Simple</a> -
-						<a href="?theme=serif#/themes">Serif</a> -
-						<a href="?theme=night#/themes">Night</a> <br>
-						<a href="?theme=moon#/themes">Moon</a> -
-						<a href="?theme=solarized#/themes">Solarized</a>
-					</p>
-					<p>
-						<small>
-							* Theme demos are loaded after the presentation which leads to flicker. In production you should load your theme in the <code>&lt;head&gt;</code> using a <code>&lt;link&gt;</code>.
-						</small>
-					</p>
-				</section>
+<p><img src="images/aspnet2001.jpg" alt="2001" /></p>
 
-				<section>
-					<h2>Global State</h2>
-					<p>
-						Set <code>data-state="something"</code> on a slide and <code>"something"</code>
-						will be added as a class to the document element when the slide is open. This lets you
-						apply broader style changes, like switching the background.
-					</p>
-				</section>
+</section>
 
-				<section data-state="customevent">
-					<h2>Custom Events</h2>
-					<p>
-						Additionally custom events can be triggered on a per slide basis by binding to the <code>data-state</code> name.
-					</p>
-					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
-Reveal.addEventListener( 'customevent', function() {
-	console.log( '"customevent" has fired' );
-} );
-					</code></pre>
-				</section>
+<section>
 
-				<section>
-					<section data-background="#007777">
-						<h2>Slide Backgrounds</h2>
-						<p>
-							Set <code>data-background="#007777"</code> on a slide to change the full page background to the given color. All CSS color formats are supported.
-						</p>
-						<a href="#" class="image navigate-down">
-							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-						</a>
-					</section>
-					<section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png">
-						<h2>Image Backgrounds</h2>
-						<pre><code>&lt;section data-background="image.png"&gt;</code></pre>
-					</section>
-					<section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" data-background-repeat="repeat" data-background-size="100px">
-						<h2>Repeated Image Backgrounds</h2>
-						<pre><code style="word-wrap: break-word;">&lt;section data-background="image.png" data-background-repeat="repeat" data-background-size="100px"&gt;</code></pre>
-					</section>
-				</section>
+<h2>ASP.NET 2002</h2>
 
-				<section data-transition="linear" data-background="#4d7e65" data-background-transition="slide">
-					<h2>Background Transitions</h2>
-					<p>
-						Pass reveal.js the <code>backgroundTransition: 'slide'</code> config argument to make backgrounds slide rather than fade.
-					</p>
-				</section>
+<table class="pre"><tr><td><pre lang="cs"><span class="k">private</span> <span class="k">void</span> Button1_Click
+(<span class="k">object</span> sender, System.EventArgs e)
+{
+    <span class="c">//textbox1 and textbox2 are webform</span>
+    <span class="c">//controls</span>
+    Session[<span class="s">"name"</span>]=TextBox1.Text;
+    Session[<span class="s">"email"</span>]=TextBox2.Text;
+    Server.Transfer(<span class="s">"anotherwebform.aspx"</span>);
+}</pre></td></tr></table>
 
-				<section data-transition="linear" data-background="#8c4738" data-background-transition="slide">
-					<h2>Background Transition Override</h2>
-					<p>
-						You can override background transitions per slide by using <code>data-background-transition="slide"</code>.
-					</p>
-				</section>
+</section>
 
-				<section>
-					<h2>Clever Quotes</h2>
-					<p>
-						These guys come in two forms, inline: <q cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-						&ldquo;The nice thing about standards is that there are so many to choose from&rdquo;</q> and block:
-					</p>
-					<blockquote cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-						&ldquo;For years there has been a theory that millions of monkeys typing at random on millions of typewriters would
-						reproduce the entire works of Shakespeare. The Internet has proven this theory to be untrue.&rdquo;
-					</blockquote>
-				</section>
+<section>
 
-				<section>
-					<h2>Pretty Code</h2>
-					<pre><code data-trim contenteditable>
-function linkify( selector ) {
-  if( supports3DTransforms ) {
+<h2>Nokia 6340</h2>
 
-    var nodes = document.querySelectorAll( selector );
+<p><img src="images/Nokia-6340.jpg" alt="Nokia" /></p>
 
-    for( var i = 0, len = nodes.length; i &lt; len; i++ ) {
-      var node = nodes[i];
+</section>
 
-      if( !node.className ) {
-        node.className += ' roll';
-      }
+<section>
+
+<h2>ASP.NET 2015</h2>
+
+<p><img src="images/aspnet2014.jpg" alt="2014" /></p>
+
+</section>
+
+<section>
+
+<h2>ASP.NET 2015</h2>
+
+<table class="pre"><tr><td><pre lang="cs"><span class="k">public</span> ActionResult Details(<span class="k">int</span>? id)
+{
+    <span class="k">if</span> (id <span class="o">=</span><span class="o">=</span> <span class="k">null</span>)
+    {
+        <span class="k">return</span> <span class="k">new</span> HttpStatusCodeResult(HttpStatusCode.BadRequest);
     }
-  }
-}
-					</code></pre>
-					<p>Courtesy of <a href="http://softwaremaniacs.org/soft/highlight/en/description/">highlight.js</a>.</p>
-				</section>
+    Student student <span class="o">=</span> db.Students.Find(id);
+    <span class="k">if</span> (student <span class="o">=</span><span class="o">=</span> <span class="k">null</span>)
+    {
+        <span class="k">return</span> HttpNotFound();
+    }
+    <span class="k">return</span> View(student);
+}</pre></td></tr></table>
 
-				<section>
-					<h2>Intergalactic Interconnections</h2>
-					<p>
-						You can link between slides internally,
-						<a href="#/2/3">like this</a>.
-					</p>
-				</section>
+</section>
 
-				<section>
-					<section id="fragments">
-						<h2>Fragmented Views</h2>
-						<p>Hit the next arrow...</p>
-						<p class="fragment">... to step through ...</p>
-						<ol>
-							<li class="fragment"><code>any type</code></li>
-							<li class="fragment"><em>of view</em></li>
-							<li class="fragment"><strong>fragments</strong></li>
-						</ol>
+<section>
 
-						<aside class="notes">
-							This slide has fragments which are also stepped through in the notes window.
-						</aside>
-					</section>
-					<section>
-						<h2>Fragment Styles</h2>
-						<p>There's a few styles of fragments, like:</p>
-						<p class="fragment grow">grow</p>
-						<p class="fragment shrink">shrink</p>
-						<p class="fragment roll-in">roll-in</p>
-						<p class="fragment fade-out">fade-out</p>
-						<p class="fragment highlight-red">highlight-red</p>
-						<p class="fragment highlight-green">highlight-green</p>
-						<p class="fragment highlight-blue">highlight-blue</p>
-						<p class="fragment current-visible">current-visible</p>
-						<p class="fragment highlight-current-blue">highlight-current-blue</p>
-					</section>
-				</section>
+<h2>Runtime</h2>
 
-				<section>
-					<h2>Spectacular image!</h2>
-					<a class="image" href="http://lab.hakim.se/meny/" target="_blank">
-						<img width="320" height="299" src="http://s3.amazonaws.com/hakim-static/portfolio/images/meny.png" alt="Meny">
-					</a>
-				</section>
+<ul>
+<li>pretty much unchanged</li>
+<li><em>Http Handlers</em>, <em>Http Modules</em>, <em>HttpContext</em>, <em>SessionState</em>, <em>Request pipeline</em></li>
+<li>MVC (2009) and Web API (2012) are, at their hearts, handlers too</li>
+</ul>
 
-				<section>
-					<h2>Export to PDF</h2>
-					<p>Presentations can be <a href="https://github.com/hakimel/reveal.js#pdf-export">exported to PDF</a>, below is an example that's been uploaded to SlideShare.</p>
-					<iframe id="slideshare" src="http://www.slideshare.net/slideshow/embed_code/13872948" width="455" height="356" style="margin:0;overflow:hidden;border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:5px" allowfullscreen> </iframe>
-					<script>
-						document.getElementById('slideshare').attributeName = 'allowfullscreen';
-					</script>
-				</section>
+</section>
 
-				<section>
-					<h2>Take a Moment</h2>
-					<p>
-						Press b or period on your keyboard to enter the 'paused' mode. This mode is helpful when you want to take distracting slides off the screen
-						during a presentation.
-					</p>
-				</section>
+<section>
 
-				<section>
-					<h2>Stellar Links</h2>
-					<ul>
-						<li><a href="http://slid.es">Try the online editor</a></li>
-						<li><a href="https://github.com/hakimel/reveal.js">Source code on GitHub</a></li>
-						<li><a href="http://twitter.com/hakimel">Follow me on Twitter</a></li>
-					</ul>
-				</section>
+<h2>MVC &amp; Web API are built on HTTP handlers</h2>
 
-				<section>
-					<h1>THE END</h1>
-					<h3>BY Hakim El Hattab / hakim.se</h3>
-				</section>
+<p><img src="images/Halloween-Unicorn.jpg" alt="unicorn" /></p>
 
-			</div>
+</section>
 
-		</div>
+<section>
 
-		<script src="lib/js/head.min.js"></script>
-		<script src="js/reveal.min.js"></script>
+<h2>Plenty of problems</h2>
 
-		<script>
+<ul>
+<li>bloated</li>
+<li>no side by side deployments, GAC</li>
+<li>tied to IIS</li>
+<li>tied to Visual Studio</li>
+<li>tied to Windows</li>
+<li>based on old compiler</li>
+</ul>
 
-			// Full list of configuration options available here:
-			// https://github.com/hakimel/reveal.js#configuration
-			Reveal.initialize({
-				controls: true,
-				progress: true,
-				history: true,
-				center: true,
+</section>
 
-				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+<section>
 
-				// Parallax scrolling
-				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
-				// parallaxBackgroundSize: '2100px 900px',
+<p><img src="images/fine.gif" alt="" /></p>
 
-				// Optional libraries used to extend on reveal.js
-				dependencies: [
-					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
-				]
-			});
+</section>
 
-		</script>
+<section>
 
-	</body>
+<section>
+
+<h2>ASP.NET 5</h2>
+
+<p><img src="images/aspnet5.png" alt="" /></p>
+
+<p><strong>Entire managed runtime rewritten from scratch</strong></p>
+
+<ul>
+<li>you can target desktop CLR but to get most benefits, target Core CLR (lightweight)</li>
+<li>Web API + MVC + WebPages = MVC 6, no WebForms</li>
+<li>based on <a href="http://owin.org">Open Web Interface for .NET</a></li>
+<li>cross platform</li>
+</ul>
+
+</section>
+
+<section>
+
+<h2>Ok I want to use the Core CLR!</h2>
+
+<p><img src="images/excited.gif" alt="" /></p>
+
+<p><strong>What does it mean for me?</strong></p>
+
+</section>
+
+<section>
+
+<h2>Everything as you know it, broken</h2>
+
+<ul>
+<li>all referenced libraries need to target Core CLR too</li>
+<li>new ASPNETCORE50 profile - a subset of desktop .NET</li>
+</ul>
+
+<p><img src="images/corclr.png" alt="" /></p>
+
+</section>
+
+<section>
+
+<h2>Lightweight</h2>
+
+<ul>
+<li>Runtime deployable with application (true side-by-side)</li>
+<li>Small memory footprint</li>
+<li>Pick pieces you need</li>
+<li>Highly optimized</li>
+<li>x-plat</li>
+</ul>
+
+</section>
+
+<section>
+
+<p><img src="images/ripgac.jpg" alt="" /></p>
+
+</section>
+
+<section>
+
+<h2>Excellent command line experience</h2>
+
+<table class="pre"><tr><td class="lines"><pre class="fssnip">
+<span class="l">1: </span>
+<span class="l">2: </span>
+<span class="l">3: </span>
+<span class="l">4: </span>
+<span class="l">5: </span>
+<span class="l">6: </span>
+<span class="l">7: </span>
+<span class="l">8: </span>
+<span class="l">9: </span>
+</pre>
+</td>
+<td class="snippet"><pre class="fssnip">
+<span class="o">@</span><span class="i">powershell</span> <span class="o">-</span><span class="i">NoProfile</span> <span class="o">-</span><span class="i">ExecutionPolicy</span> <span class="i">unrestricted</span> 
+    <span class="o">-</span><span class="i">Command</span> <span class="s">&quot;</span><span class="s">iex</span><span class="s"> </span><span class="s">(</span><span class="s">(</span><span class="s">new</span><span class="s">-</span><span class="s">object</span><span class="s"> </span><span class="s">net</span><span class="s">.</span><span class="s">webclient</span><span class="s">)</span><span class="s">.</span>
+<span class="s">    </span><span class="s">DownloadString</span><span class="s">(</span><span class="s">&#39;</span><span class="s">https</span><span class="s">:</span><span class="s">/</span><span class="s">/</span><span class="s">raw</span><span class="s">.</span><span class="s">githubusercontent</span><span class="s">.</span><span class="s">com</span><span class="s">/</span>
+<span class="s">    </span><span class="s">aspnet</span><span class="s">/</span><span class="s">Home</span><span class="s">/</span><span class="s">master</span><span class="s">/</span><span class="s">kvminstall</span><span class="s">.</span><span class="s">ps1&#39;</span><span class="s">)</span><span class="s">)</span><span class="s">&quot;</span>
+
+<span class="i">kvm</span> <span class="i">upgrade</span>
+<span class="i">git</span> <span class="i">clone</span> <span class="o">&lt;</span><span class="i">my</span> <span class="i">ASP</span><span class="o">.</span><span class="i">NET</span> <span class="i">repo</span><span class="o">&gt;</span>
+<span class="i">kpm</span> <span class="i">restore</span>
+<span class="i">k</span> <span class="i">web</span></pre>
+</td>
+</tr>
+</table>
+
+</section>
+
+<section>
+
+<h2>Reminds you of something?</h2>
+
+<p><img src="images/node.png" alt="" /></p>
+
+</section>
+
+</section>
+
+<section>
+
+<h1>ASP.NET vs ASP.NET 5</h1>
+
+</section>
+
+<section>
+
+<h2>F5 - Compile &amp; Run</h2>
+
+<div class="fragment">
+
+<p><strong>ASP.NET</strong></p>
+
+<p><img src="images\vs1.png" alt="" /></p>
+
+</div>
+
+<div class="fragment">
+
+<p><strong>ASP.NET 5</strong></p>
+
+<p><img src="images\browsers.jpg" alt="" /></p>
+
+<p><em>Roslyn based compilation on the fly</em></p>
+
+</div>
+
+</section>
+
+<section>
+
+<h2>No more <em>csproj</em> file</h2>
+
+<table class="pre"><tr><td class="lines"><pre class="fssnip">
+<span class="l"> 1: </span>
+<span class="l"> 2: </span>
+<span class="l"> 3: </span>
+<span class="l"> 4: </span>
+<span class="l"> 5: </span>
+<span class="l"> 6: </span>
+<span class="l"> 7: </span>
+<span class="l"> 8: </span>
+<span class="l"> 9: </span>
+<span class="l">10: </span>
+<span class="l">11: </span>
+<span class="l">12: </span>
+<span class="l">13: </span>
+<span class="l">14: </span>
+<span class="l">15: </span>
+<span class="l">16: </span>
+<span class="l">17: </span>
+<span class="l">18: </span>
+</pre>
+</td>
+<td class="snippet"><pre class="fssnip">
+    <span class="o">&lt;</span><span class="i">Reference</span> <span class="i">Include</span><span class="o">=</span><span class="s">&quot;</span><span class="s">System</span><span class="s">.</span><span class="s">Web</span><span class="s">.</span><span class="s">WebPages</span><span class="s">.</span><span class="s">Razor</span><span class="s">,</span><span class="s"> </span><span class="s">Version</span><span class="s">=</span><span class="s">3</span><span class="s">.</span><span class="s">0</span><span class="s">.</span><span class="s">0</span><span class="s">.</span><span class="s">0</span><span class="s">,</span><span class="s"> </span><span class="s">Culture</span><span class="s">=</span><span class="s">neutral</span><span class="s">,</span>
+<span class="s">        </span><span class="s">PublicKeyToken</span><span class="s">=</span><span class="s">31</span><span class="s">bf3856ad364e35</span><span class="s">,</span><span class="s"> </span><span class="s">processorArchitecture</span><span class="s">=</span><span class="s">MSIL</span><span class="s">&quot;</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="i">SpecificVersion</span><span class="o">&gt;</span><span class="i">False</span><span class="o">&lt;/</span><span class="i">SpecificVersion</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="i">HintPath</span><span class="o">&gt;</span><span onmouseout="hideTip(event, 'fs1', 1)" onmouseover="showTip(event, 'fs1', 1)" class="i">System</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs2', 2)" onmouseover="showTip(event, 'fs2', 2)" class="i">Web</span><span class="o">.</span><span class="i">WebPages</span><span class="o">.</span><span class="i">Razor</span><span class="o">.</span><span class="i">dll</span><span class="o">&lt;/</span><span class="i">HintPath</span><span class="o">&gt;</span>
+    <span class="o">&lt;/</span><span class="i">Reference</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="i">Reference</span> <span class="i">Include</span><span class="o">=</span><span class="s">&quot;</span><span class="s">System</span><span class="s">.</span><span class="s">Xml</span><span class="s">.</span><span class="s">Linq</span><span class="s">&quot;</span> <span class="o">/&gt;</span>
+    <span class="o">&lt;</span><span class="i">Reference</span> <span class="i">Include</span><span class="o">=</span><span class="s">&quot;</span><span class="s">System</span><span class="s">.</span><span class="s">Web</span><span class="s">&quot;</span> <span class="o">/&gt;</span>
+    <span class="o">&lt;</span><span class="i">Reference</span> <span class="i">Include</span><span class="o">=</span><span class="s">&quot;</span><span class="s">System</span><span class="s">.</span><span class="s">Web</span><span class="s">.</span><span class="s">Extensions</span><span class="s">&quot;</span> <span class="o">/&gt;</span>
+    <span class="o">&lt;</span><span class="i">Reference</span> <span class="i">Include</span><span class="o">=</span><span class="s">&quot;</span><span class="s">System</span><span class="s">.</span><span class="s">Web</span><span class="s">.</span><span class="s">Routing</span><span class="s">&quot;</span> <span class="o">/&gt;</span>
+    <span class="o">&lt;</span><span class="i">Reference</span> <span class="i">Include</span><span class="o">=</span><span class="s">&quot;</span><span class="s">System</span><span class="s">.</span><span class="s">Net</span><span class="s">.</span><span class="s">Http</span><span class="s">&quot;</span> <span class="o">/&gt;</span>
+    <span class="o">&lt;</span><span class="i">Reference</span> <span class="i">Include</span><span class="o">=</span><span class="s">&quot;</span><span class="s">WebGrease</span><span class="s">&quot;</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="i">HintPath</span><span class="o">&gt;</span><span class="i">packages</span>
+    <span class="o">&lt;/</span><span class="i">Reference</span><span class="o">&gt;</span>
+  <span class="o">&lt;/</span><span class="i">ItemGroup</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="i">ItemGroup</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="i">Compile</span> <span class="i">Include</span><span class="o">=</span><span class="s">&quot;</span><span class="s">App_Start</span><span class="s">\</span><span class="s">BundleConfig</span><span class="s">.</span><span class="s">cs</span><span class="s">&quot;</span> <span class="o">/&gt;</span>
+    <span class="o">&lt;</span><span class="i">Compile</span> <span class="i">Include</span><span class="o">=</span><span class="s">&quot;</span><span class="s">App_Start</span><span class="s">\</span><span class="s">FilterConfig</span><span class="s">.</span><span class="s">cs</span><span class="s">&quot;</span> <span class="o">/&gt;</span>
+    <span class="o">&lt;</span><span class="i">Compile</span> <span class="i">Include</span><span class="o">=</span><span class="s">&quot;</span><span class="s">App_Start</span><span class="s">\</span><span class="s">RouteConfig</span><span class="s">.</span><span class="s">cs</span><span class="s">&quot;</span> <span class="o">/&gt;</span></pre>
+</td>
+</tr>
+</table>
+
+</section>
+
+<section>
+
+<h2>No more NuGet <em>packages.config</em></h2>
+
+<table class="pre"><tr><td class="lines"><pre class="fssnip">
+<span class="l"> 1: </span>
+<span class="l"> 2: </span>
+<span class="l"> 3: </span>
+<span class="l"> 4: </span>
+<span class="l"> 5: </span>
+<span class="l"> 6: </span>
+<span class="l"> 7: </span>
+<span class="l"> 8: </span>
+<span class="l"> 9: </span>
+<span class="l">10: </span>
+<span class="l">11: </span>
+<span class="l">12: </span>
+<span class="l">13: </span>
+<span class="l">14: </span>
+<span class="l">15: </span>
+<span class="l">16: </span>
+<span class="l">17: </span>
+<span class="l">18: </span>
+<span class="l">19: </span>
+</pre>
+</td>
+<td class="snippet"><pre class="fssnip">
+<span class="o">&lt;</span><span class="i">packages</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="i">package</span> <span onmouseout="hideTip(event, 'fs3', 3)" onmouseover="showTip(event, 'fs3', 3)" class="i">id</span><span class="o">=</span><span class="s">&quot;</span><span class="s">Antlr</span><span class="s">&quot;</span> <span class="i">version</span><span class="o">=</span><span class="s">&quot;</span><span class="s">3</span><span class="s">.</span><span class="s">4</span><span class="s">.</span><span class="s">1</span><span class="s">.</span><span class="s">9004</span><span class="s">&quot;</span> <span class="i">targetFramework</span><span class="o">=</span><span class="s">&quot;</span><span class="s">net45</span><span class="s">&quot;</span> <span class="o">/&gt;</span>
+  <span class="o">&lt;</span><span class="i">package</span> <span onmouseout="hideTip(event, 'fs3', 4)" onmouseover="showTip(event, 'fs3', 4)" class="i">id</span><span class="o">=</span><span class="s">&quot;</span><span class="s">bootstrap</span><span class="s">&quot;</span> <span class="i">version</span><span class="o">=</span><span class="s">&quot;</span><span class="s">3</span><span class="s">.</span><span class="s">0</span><span class="s">.</span><span class="s">0</span><span class="s">&quot;</span> <span class="i">targetFramework</span><span class="o">=</span><span class="s">&quot;</span><span class="s">net45</span><span class="s">&quot;</span> <span class="o">/&gt;</span>
+  <span class="o">&lt;</span><span class="i">package</span> <span onmouseout="hideTip(event, 'fs3', 5)" onmouseover="showTip(event, 'fs3', 5)" class="i">id</span><span class="o">=</span><span class="s">&quot;</span><span class="s">EntityFramework</span><span class="s">&quot;</span> <span class="i">version</span><span class="o">=</span><span class="s">&quot;</span><span class="s">6</span><span class="s">.</span><span class="s">1</span><span class="s">.</span><span class="s">1</span><span class="s">&quot;</span> 
+    <span class="i">targetFramework</span><span class="o">=</span><span class="s">&quot;</span><span class="s">net45</span><span class="s">&quot;</span> <span class="o">/&gt;</span>
+  <span class="o">&lt;</span><span class="i">package</span> <span onmouseout="hideTip(event, 'fs3', 6)" onmouseover="showTip(event, 'fs3', 6)" class="i">id</span><span class="o">=</span><span class="s">&quot;</span><span class="s">jQuery</span><span class="s">&quot;</span> <span class="i">version</span><span class="o">=</span><span class="s">&quot;</span><span class="s">1</span><span class="s">.</span><span class="s">10</span><span class="s">.</span><span class="s">2</span><span class="s">&quot;</span> <span class="i">targetFramework</span><span class="o">=</span><span class="s">&quot;</span><span class="s">net45</span><span class="s">&quot;</span> <span class="o">/&gt;</span>
+  <span class="o">&lt;</span><span class="i">package</span> <span onmouseout="hideTip(event, 'fs3', 7)" onmouseover="showTip(event, 'fs3', 7)" class="i">id</span><span class="o">=</span><span class="s">&quot;</span><span class="s">Microsoft</span><span class="s">.</span><span class="s">AspNet</span><span class="s">.</span><span class="s">Mvc</span><span class="s">&quot;</span> <span class="i">version</span><span class="o">=</span><span class="s">&quot;</span><span class="s">5</span><span class="s">.</span><span class="s">2</span><span class="s">.</span><span class="s">2</span><span class="s">&quot;</span> 
+    <span class="i">targetFramework</span><span class="o">=</span><span class="s">&quot;</span><span class="s">net45</span><span class="s">&quot;</span> <span class="o">/&gt;</span>
+  <span class="o">&lt;</span><span class="i">package</span> <span onmouseout="hideTip(event, 'fs3', 8)" onmouseover="showTip(event, 'fs3', 8)" class="i">id</span><span class="o">=</span><span class="s">&quot;</span><span class="s">Microsoft</span><span class="s">.</span><span class="s">AspNet</span><span class="s">.</span><span class="s">Razor</span><span class="s">&quot;</span> <span class="i">version</span><span class="o">=</span><span class="s">&quot;</span><span class="s">3</span><span class="s">.</span><span class="s">2</span><span class="s">.</span><span class="s">2</span><span class="s">&quot;</span> 
+    <span class="i">targetFramework</span><span class="o">=</span><span class="s">&quot;</span><span class="s">net45</span><span class="s">&quot;</span> <span class="o">/&gt;</span>
+  <span class="o">&lt;</span><span class="i">package</span> <span onmouseout="hideTip(event, 'fs3', 9)" onmouseover="showTip(event, 'fs3', 9)" class="i">id</span><span class="o">=</span><span class="s">&quot;</span><span class="s">Microsoft</span><span class="s">.</span><span class="s">AspNet</span><span class="s">.</span><span class="s">Web</span><span class="s">.</span><span class="s">Optimization</span><span class="s">&quot;</span> <span class="i">version</span><span class="o">=</span><span class="s">&quot;</span><span class="s">1</span><span class="s">.</span><span class="s">1</span><span class="s">.</span><span class="s">3</span><span class="s">&quot;</span> 
+    <span class="i">targetFramework</span><span class="o">=</span><span class="s">&quot;</span><span class="s">net45</span><span class="s">&quot;</span> <span class="o">/&gt;</span>
+  <span class="o">&lt;</span><span class="i">package</span> <span onmouseout="hideTip(event, 'fs3', 10)" onmouseover="showTip(event, 'fs3', 10)" class="i">id</span><span class="o">=</span><span class="s">&quot;</span><span class="s">Microsoft</span><span class="s">.</span><span class="s">AspNet</span><span class="s">.</span><span class="s">WebPages</span><span class="s">&quot;</span> <span class="i">version</span><span class="o">=</span><span class="s">&quot;</span><span class="s">3</span><span class="s">.</span><span class="s">2</span><span class="s">.</span><span class="s">2</span><span class="s">&quot;</span> 
+    <span class="i">targetFramework</span><span class="o">=</span><span class="s">&quot;</span><span class="s">net45</span><span class="s">&quot;</span> <span class="o">/&gt;</span>
+  <span class="o">&lt;</span><span class="i">package</span> <span onmouseout="hideTip(event, 'fs3', 11)" onmouseover="showTip(event, 'fs3', 11)" class="i">id</span><span class="o">=</span><span class="s">&quot;</span><span class="s">Microsoft</span><span class="s">.</span><span class="s">Owin</span><span class="s">&quot;</span> <span class="i">version</span><span class="o">=</span><span class="s">&quot;</span><span class="s">3</span><span class="s">.</span><span class="s">0</span><span class="s">.</span><span class="s">0</span><span class="s">&quot;</span> <span class="i">targetFramework</span><span class="o">=</span><span class="s">&quot;</span><span class="s">net45</span><span class="s">&quot;</span> <span class="o">/&gt;</span>
+  <span class="o">&lt;</span><span class="i">package</span> <span onmouseout="hideTip(event, 'fs3', 12)" onmouseover="showTip(event, 'fs3', 12)" class="i">id</span><span class="o">=</span><span class="s">&quot;</span><span class="s">Modernizr</span><span class="s">&quot;</span> <span class="i">version</span><span class="o">=</span><span class="s">&quot;</span><span class="s">2</span><span class="s">.</span><span class="s">6</span><span class="s">.</span><span class="s">2</span><span class="s">&quot;</span> <span class="i">targetFramework</span><span class="o">=</span><span class="s">&quot;</span><span class="s">net45</span><span class="s">&quot;</span> <span class="o">/&gt;</span>
+  <span class="o">&lt;</span><span class="i">package</span> <span onmouseout="hideTip(event, 'fs3', 13)" onmouseover="showTip(event, 'fs3', 13)" class="i">id</span><span class="o">=</span><span class="s">&quot;</span><span class="s">Newtonsoft</span><span class="s">.</span><span class="s">Json</span><span class="s">&quot;</span> <span class="i">version</span><span class="o">=</span><span class="s">&quot;</span><span class="s">6</span><span class="s">.</span><span class="s">0</span><span class="s">.</span><span class="s">4</span><span class="s">&quot;</span> <span class="i">targetFramework</span><span class="o">=</span><span class="s">&quot;</span><span class="s">net45</span><span class="s">&quot;</span> <span class="o">/&gt;</span>
+  <span class="o">&lt;</span><span class="i">package</span> <span onmouseout="hideTip(event, 'fs3', 14)" onmouseover="showTip(event, 'fs3', 14)" class="i">id</span><span class="o">=</span><span class="s">&quot;</span><span class="s">Owin</span><span class="s">&quot;</span> <span class="i">version</span><span class="o">=</span><span class="s">&quot;</span><span class="s">1</span><span class="s">.</span><span class="s">0</span><span class="s">&quot;</span> <span class="i">targetFramework</span><span class="o">=</span><span class="s">&quot;</span><span class="s">net45</span><span class="s">&quot;</span> <span class="o">/&gt;</span>
+<span class="o">&lt;/</span><span class="i">packages</span><span class="o">&gt;</span></pre>
+</td>
+</tr>
+</table>
+
+</section>
+
+<section>
+
+<h2>Project.json</h2>
+
+<table class="pre"><tr><td><pre lang="js">{
+    <span class="s">"dependencies"</span>: {
+        <span class="s">"EntityFramework.SqlServer"</span>: <span class="s">"7.0.0-beta1"</span>,
+        <span class="s">"Microsoft.AspNet.Mvc"</span>: <span class="s">"6.0.0-beta1"</span>,
+        <span class="s">"Microsoft.AspNet.Identity.EntityFramework"</span>: <span class="s">"3.0.0-beta1"</span>,
+        <span class="s">"Microsoft.AspNet.Security.Cookies"</span>: <span class="s">"1.0.0-beta1"</span>,
+        <span class="s">"Microsoft.AspNet.Server.IIS"</span>: <span class="s">"1.0.0-beta1"</span>,
+        <span class="s">"Microsoft.AspNet.Server.WebListener"</span>: <span class="s">"1.0.0-beta1"</span>,
+        <span class="s">"Microsoft.AspNet.StaticFiles"</span>: <span class="s">"1.0.0-beta1"</span>,
+        <span class="s">"Microsoft.Framework.ConfigurationModel.Json"</span>: <span class="s">"1.0.0-beta1"</span>,
+        <span class="s">"Microsoft.Framework.CodeGenerators.Mvc"</span>: <span class="s">"1.0.0-beta1"</span>
+    },
+    <span class="s">"commands"</span>: {
+        <span class="s">"web"</span>: <span class="s">"Microsoft.AspNet.Hosting --server Microsoft.AspNet.Server.WebListener 
+            --server.urls http://localhost:5000"</span>,
+        <span class="s">"ef"</span>:  <span class="s">"EntityFramework.Commands"</span>
+    },
+    <span class="s">"frameworks"</span>: {
+        <span class="s">"aspnet50"</span>: { },
+        <span class="s">"aspnetcore50"</span>: { }
+    }
+}</pre></td></tr></table>
+
+</section>
+
+<section>
+
+<h1>Did you notice???</h1>
+
+</section>
+
+<section>
+
+<p><strong>No more list of files!</strong></p>
+
+<p><img src="images/files.jpg" alt="" /></p>
+
+</section>
+
+<section>
+
+<h2>No more web.config to define pipeline</h2>
+
+<table class="pre"><tr><td class="lines"><pre class="fssnip">
+<span class="l"> 1: </span>
+<span class="l"> 2: </span>
+<span class="l"> 3: </span>
+<span class="l"> 4: </span>
+<span class="l"> 5: </span>
+<span class="l"> 6: </span>
+<span class="l"> 7: </span>
+<span class="l"> 8: </span>
+<span class="l"> 9: </span>
+<span class="l">10: </span>
+<span class="l">11: </span>
+<span class="l">12: </span>
+<span class="l">13: </span>
+<span class="l">14: </span>
+<span class="l">15: </span>
+<span class="l">16: </span>
+<span class="l">17: </span>
+<span class="l">18: </span>
+</pre>
+</td>
+<td class="snippet"><pre class="fssnip">
+<span class="o">&lt;</span><span class="i">httpModules</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="i">add</span> <span class="i">name</span><span class="o">=</span><span class="s">&quot;</span><span class="s">ErrorModule</span><span class="s">&quot;</span> <span class="k">type</span><span class="o">=</span><span class="s">&quot;</span><span class="s">MyAssembly</span><span class="s">.</span><span class="s">ErrorLogModule</span><span class="s">,</span><span class="s"> </span>
+<span class="s">    </span><span class="s">MyAssembly</span><span class="s">,</span><span class="s"> </span><span class="s">Version</span><span class="s">=</span><span class="s">1</span><span class="s">.</span><span class="s">0</span><span class="s">.</span><span class="s">47</span><span class="s">.</span><span class="s">0</span><span class="s">,</span><span class="s"> </span><span class="s">Culture</span><span class="s">=</span><span class="s">neutral</span><span class="s">,</span><span class="s"> </span>
+<span class="s">    </span><span class="s">PublicKeyToken</span><span class="s">=</span><span class="s">978</span><span class="s">d5e1bd64b33e5</span><span class="s">&quot;</span> <span class="o">/&gt;</span>
+<span class="o">&lt;/</span><span class="i">httpModules</span><span class="o">&gt;</span>
+
+<span class="o">&lt;</span><span class="i">httpHandlers</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="i">add</span> 
+        <span class="i">verb</span><span class="o">=</span><span class="s">&quot;</span><span class="s">POST</span><span class="s">,</span><span class="s">GET</span><span class="s">&quot;</span> 
+        <span class="i">path</span><span class="o">=</span><span class="s">&quot;</span><span class="s">foo</span><span class="s">/</span><span class="s">bar</span><span class="s">.</span><span class="s">aspx</span><span class="s">&quot;</span> 
+        <span class="k">type</span><span class="o">=</span><span class="s">&quot;</span><span class="s">MyAssembly</span><span class="s">.</span><span class="s">Handler</span><span class="s">,</span><span class="s"> </span>
+<span class="s">          </span><span class="s">MyAssembly</span><span class="s">,</span><span class="s"> </span><span class="s">Version</span><span class="s">=</span><span class="s">1</span><span class="s">.</span><span class="s">0</span><span class="s">.</span><span class="s">47</span><span class="s">.</span><span class="s">0</span><span class="s">,</span><span class="s"> </span><span class="s">Culture</span><span class="s">=</span><span class="s">neutral</span><span class="s">,</span><span class="s"> </span>
+<span class="s">          </span><span class="s">PublicKeyToken</span><span class="s">=</span><span class="s">978</span><span class="s">d5e1bd64b33e5</span><span class="s">&quot;</span> <span class="o">/&gt;</span>
+<span class="o">&lt;/</span><span class="i">httpHandlers</span><span class="o">&gt;</span>
+
+<span class="o">&lt;</span><span class="i">authentication</span> <span class="i">mode</span><span class="o">=</span><span class="s">&quot;</span><span class="s">Forms</span><span class="s">&quot;</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="i">forms</span> <span class="i">name</span><span class="o">=</span><span class="s">&quot;</span><span class="s">MyAuthCookie</span><span class="s">&quot;</span> <span class="i">loginUrl</span><span class="o">=</span><span class="s">&quot;</span><span class="s">login</span><span class="s">.</span><span class="s">aspx</span><span class="s">&quot;</span> <span class="i">timeout</span><span class="o">=</span><span class="s">&quot;</span><span class="s">30</span><span class="s">&quot;</span> <span class="o">/&gt;</span>
+<span class="o">&lt;/</span><span class="i">authentication</span><span class="o">&gt;</span></pre>
+</td>
+</tr>
+</table>
+
+</section>
+
+<section>
+
+<h2>No more <em>Global.asax</em></h2>
+
+<table class="pre"><tr><td class="lines"><pre class="fssnip">
+<span class="l"> 1: </span>
+<span class="l"> 2: </span>
+<span class="l"> 3: </span>
+<span class="l"> 4: </span>
+<span class="l"> 5: </span>
+<span class="l"> 6: </span>
+<span class="l"> 7: </span>
+<span class="l"> 8: </span>
+<span class="l"> 9: </span>
+<span class="l">10: </span>
+<span class="l">11: </span>
+<span class="l">12: </span>
+<span class="l">13: </span>
+<span class="l">14: </span>
+<span class="l">15: </span>
+<span class="l">16: </span>
+<span class="l">17: </span>
+<span class="l">18: </span>
+<span class="l">19: </span>
+<span class="l">20: </span>
+</pre>
+</td>
+<td class="snippet"><pre class="fssnip">
+<span class="k">public</span> <span class="k">class</span> <span class="i">MvcApplication</span> <span class="o">:</span> <span onmouseout="hideTip(event, 'fs1', 15)" onmouseover="showTip(event, 'fs1', 15)" class="i">System</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs2', 16)" onmouseover="showTip(event, 'fs2', 16)" class="i">Web</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs4', 17)" onmouseover="showTip(event, 'fs4', 17)" class="i">HttpApplication</span>
+{
+    <span class="i">protected</span> <span class="k">void</span> <span class="i">Application_Start</span>()
+    {
+        <span class="i">AreaRegistration</span><span class="o">.</span><span class="i">RegisterAllAreas</span>();
+        <span class="i">FilterConfig</span><span class="o">.</span><span class="i">RegisterGlobalFilters</span>(<span class="i">GlobalFilters</span><span class="o">.</span><span class="i">Filters</span>);
+        <span class="i">RouteConfig</span><span class="o">.</span><span class="i">RegisterRoutes</span>(<span class="i">RouteTable</span><span class="o">.</span><span class="i">Routes</span>);
+        <span class="i">BundleConfig</span><span class="o">.</span><span class="i">RegisterBundles</span>(<span class="i">BundleTable</span><span class="o">.</span><span class="i">Bundles</span>);
+    }
+
+    <span class="i">protected</span> <span class="k">void</span> <span class="i">Application_End</span>(<span class="i">object</span> <span class="i">sender</span>, <span class="i">EventArgs</span> <span class="i">e</span>)
+    {
+        <span class="c">//  Code that runs on app shutdown</span>
+    }
+
+    <span class="i">protected</span> <span class="k">void</span> <span class="i">Application_Error</span>(<span class="i">object</span> <span class="i">sender</span>, <span class="i">EventArgs</span> <span class="i">e</span>)
+    {
+        <span class="c">// Code that deals with an unhandled error</span>
+    }
+}</pre>
+</td>
+</tr>
+</table>
+
+</section>
+
+<section>
+
+<h2>Code based pipeline definition, OWIN everything</h2>
+
+<table class="pre"><tr><td class="lines"><pre class="fssnip">
+<span class="l"> 1: </span>
+<span class="l"> 2: </span>
+<span class="l"> 3: </span>
+<span class="l"> 4: </span>
+<span class="l"> 5: </span>
+<span class="l"> 6: </span>
+<span class="l"> 7: </span>
+<span class="l"> 8: </span>
+<span class="l"> 9: </span>
+<span class="l">10: </span>
+<span class="l">11: </span>
+<span class="l">12: </span>
+<span class="l">13: </span>
+<span class="l">14: </span>
+<span class="l">15: </span>
+<span class="l">16: </span>
+<span class="l">17: </span>
+</pre>
+</td>
+<td class="snippet"><pre class="fssnip">
+<span class="k">public</span> <span class="k">class</span> <span class="i">Startup</span>
+{
+    <span class="k">public</span> <span class="k">void</span> <span class="i">Configure</span>(<span class="i">IApplicationBuilder</span> <span class="i">app</span>)
+    {
+        <span class="c">//Configure SignalR</span>
+        <span class="i">app</span><span class="o">.</span><span class="i">UseSignalR</span>();
+
+        <span class="c">// Add static files to the request pipeline</span>
+        <span class="i">app</span><span class="o">.</span><span class="i">UseStaticFiles</span>();
+
+        <span class="c">// Add cookie-based authentication to the request pipeline</span>
+        <span class="i">app</span><span class="o">.</span><span class="i">UseIdentity</span>();
+
+        <span class="c">//Add MVC</span>
+        <span class="i">app</span><span class="o">.</span><span class="i">UseMvc</span>();
+    }
+}</pre>
+</td>
+</tr>
+</table>
+
+</section>
+
+<section>
+
+<h2>No more appSettings / custom config</h2>
+
+<table class="pre"><tr><td class="lines"><pre class="fssnip">
+<span class="l"> 1: </span>
+<span class="l"> 2: </span>
+<span class="l"> 3: </span>
+<span class="l"> 4: </span>
+<span class="l"> 5: </span>
+<span class="l"> 6: </span>
+<span class="l"> 7: </span>
+<span class="l"> 8: </span>
+<span class="l"> 9: </span>
+<span class="l">10: </span>
+<span class="l">11: </span>
+<span class="l">12: </span>
+<span class="l">13: </span>
+<span class="l">14: </span>
+<span class="l">15: </span>
+</pre>
+</td>
+<td class="snippet"><pre class="fssnip">
+<span class="o">&lt;</span><span class="i">configSections</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="i">sectionGroup</span> <span class="i">name</span><span class="o">=</span><span class="s">&quot;</span><span class="s">myGroup</span><span class="s">&quot;</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="i">section</span> 
+      <span class="i">name</span><span class="o">=</span><span class="s">&quot;</span><span class="s">mySection</span><span class="s">&quot;</span> 
+      <span class="k">type</span><span class="o">=</span><span class="s">&quot;</span><span class="s">MyOrg</span><span class="s">.</span><span class="s">Common</span><span class="s">.</span><span class="s">Config</span><span class="s">&quot;</span> 
+      <span class="i">allowLocation</span><span class="o">=</span><span class="s">&quot;</span><span class="s">true</span><span class="s">&quot;</span> 
+      <span class="i">allowDefinition</span><span class="o">=</span><span class="s">&quot;</span><span class="s">Everywhere</span><span class="s">&quot;</span>
+    <span class="o">/&gt;</span>
+  <span class="o">&lt;/</span><span class="i">sectionGroup</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="i">configSections</span><span class="o">&gt;</span>
+
+ <span class="o">&lt;</span><span class="i">appSettings</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="i">add</span> <span class="i">key</span><span class="o">=</span><span class="s">&quot;</span><span class="s">credentials</span><span class="s">&quot;</span> <span class="i">value</span><span class="o">=</span><span class="s">&quot;</span><span class="s">localhost</span><span class="s">;</span><span class="s">uid</span><span class="s">=</span><span class="s">foo</span><span class="s">;</span><span class="s">pwd</span><span class="s">=</span><span class="s">bar</span><span class="s">;</span><span class="s">&quot;</span><span class="o">/&gt;</span>
+    <span class="o">&lt;</span><span class="i">add</span> <span class="i">key</span><span class="o">=</span><span class="s">&quot;</span><span class="s">server</span><span class="s">&quot;</span> <span class="i">value</span><span class="o">=</span><span class="s">&quot;</span><span class="s">192</span><span class="s">.</span><span class="s">168</span><span class="s">.</span><span class="s">0</span><span class="s">.</span><span class="s">115</span><span class="s">&quot;</span><span class="o">/&gt;</span>
+ <span class="o">&lt;/</span><span class="i">appSettings</span><span class="o">&gt;</span></pre>
+</td>
+</tr>
+</table>
+
+</section>
+
+<section>
+
+<h2>New config providers for any source</h2>
+
+<table class="pre"><tr><td class="lines"><pre class="fssnip">
+<span class="l"> 1: </span>
+<span class="l"> 2: </span>
+<span class="l"> 3: </span>
+<span class="l"> 4: </span>
+<span class="l"> 5: </span>
+<span class="l"> 6: </span>
+<span class="l"> 7: </span>
+<span class="l"> 8: </span>
+<span class="l"> 9: </span>
+<span class="l">10: </span>
+<span class="l">11: </span>
+<span class="l">12: </span>
+<span class="l">13: </span>
+<span class="l">14: </span>
+<span class="l">15: </span>
+<span class="l">16: </span>
+<span class="l">17: </span>
+</pre>
+</td>
+<td class="snippet"><pre class="fssnip">
+<span class="k">public</span> <span class="k">class</span> <span class="i">Startup</span>
+{
+    <span class="k">public</span> <span class="i">Startup</span>()
+    {
+        <span class="i">Configuration</span> <span class="o">=</span> <span class="k">new</span> <span class="i">Configuration</span>()
+                    <span class="o">.</span><span class="i">AddJsonFile</span>(<span class="s">&quot;</span><span class="s">config</span><span class="s">.</span><span class="s">json</span><span class="s">&quot;</span>)
+                    <span class="o">.</span><span class="i">AddEnvironmentVariables</span>();
+    }
+
+    <span class="k">public</span> <span class="i">IConfiguration</span> <span class="i">Configuration</span> { <span class="i">get</span>; <span class="k">private</span> <span onmouseout="hideTip(event, 'fs5', 18)" onmouseover="showTip(event, 'fs5', 18)" class="i">set</span>; }
+
+    <span class="k">public</span> <span class="k">void</span> <span class="i">Configure</span>(<span class="i">IApplicationBuilder</span> <span class="i">app</span>)
+    {
+        <span class="c">//omitted for brevity</span>
+    }
+
+}</pre>
+</td>
+</tr>
+</table>
+
+</section>
+
+<section>
+
+<h2>No more HTTP handlers</h2>
+
+<table class="pre"><tr><td class="lines"><pre class="fssnip">
+<span class="l"> 1: </span>
+<span class="l"> 2: </span>
+<span class="l"> 3: </span>
+<span class="l"> 4: </span>
+<span class="l"> 5: </span>
+<span class="l"> 6: </span>
+<span class="l"> 7: </span>
+<span class="l"> 8: </span>
+<span class="l"> 9: </span>
+<span class="l">10: </span>
+<span class="l">11: </span>
+<span class="l">12: </span>
+<span class="l">13: </span>
+</pre>
+</td>
+<td class="snippet"><pre class="fssnip">
+<span class="k">public</span> <span class="k">class</span> <span class="i">HelloWorldHandler</span> <span class="o">:</span> <span class="i">IHttpHandler</span>
+{
+    <span class="k">public</span> <span class="k">void</span> <span class="i">ProcessRequest</span>(<span class="i">HttpContext</span> <span class="i">context</span>)
+    {
+        <span class="i">context</span><span class="o">.</span><span class="i">Response</span><span class="o">.</span><span class="i">ContentType</span> <span class="o">=</span> <span class="s">&quot;</span><span class="s">text</span><span class="s">/</span><span class="s">plain</span><span class="s">&quot;</span>;
+        <span class="i">context</span><span class="o">.</span><span class="i">Response</span><span class="o">.</span><span class="i">Write</span>(<span class="s">&quot;</span><span class="s">Hello</span><span class="s"> </span><span class="s">World</span><span class="s">&quot;</span>);
+    }
+
+    <span class="k">public</span> <span onmouseout="hideTip(event, 'fs6', 19)" onmouseover="showTip(event, 'fs6', 19)" class="i">bool</span> <span class="i">IsReusable</span>
+    {
+        <span class="i">get</span> { <span class="k">return</span> <span class="k">false</span>; }
+    }
+}</pre>
+</td>
+</tr>
+</table>
+
+</section>
+
+<section>
+
+<h2>Middleware</h2>
+
+<table class="pre"><tr><td class="lines"><pre class="fssnip">
+<span class="l"> 1: </span>
+<span class="l"> 2: </span>
+<span class="l"> 3: </span>
+<span class="l"> 4: </span>
+<span class="l"> 5: </span>
+<span class="l"> 6: </span>
+<span class="l"> 7: </span>
+<span class="l"> 8: </span>
+<span class="l"> 9: </span>
+<span class="l">10: </span>
+<span class="l">11: </span>
+</pre>
+</td>
+<td class="snippet"><pre class="fssnip">
+<span class="k">public</span> <span class="k">class</span> <span class="i">Startup</span>  
+{
+    <span class="k">public</span> <span class="k">void</span> <span class="i">Configure</span>(<span class="i">IApplicationBuilder</span> <span class="i">app</span>)
+    {
+        <span class="i">app</span><span class="o">.</span><span class="i">Run</span>(<span onmouseout="hideTip(event, 'fs7', 20)" onmouseover="showTip(event, 'fs7', 20)" class="i">async</span> <span class="i">context</span> <span class="o">=&gt;</span>
+        {
+            <span class="i">context</span><span class="o">.</span><span class="i">Response</span><span class="o">.</span><span class="i">ContentType</span> <span class="o">=</span> <span class="s">&quot;</span><span class="s">text</span><span class="s">/</span><span class="s">plain</span><span class="s">&quot;</span>;
+            <span class="i">await</span> <span class="i">context</span><span class="o">.</span><span class="i">Response</span><span class="o">.</span><span class="i">WriteAsync</span>(<span class="s">&quot;</span><span class="s">Hello</span><span class="s"> </span><span class="s">World</span><span class="s">!</span><span class="s">&quot;</span>);        
+        });
+    }
+}</pre>
+</td>
+</tr>
+</table>
+
+</section>
+
+<section>
+
+<h2>No more HTTP modules</h2>
+
+<table class="pre"><tr><td><pre lang="cs"><span class="k">public</span> <span class="k">class</span> RequestTimeIntervalModule <span class="o">:</span> IHttpModule
+{
+    <span class="k">public</span> <span class="k">void</span> Dispose() {}
+
+    <span class="k">public</span> <span class="k">void</span> Init(HttpApplication httpApp)
+    {
+        httpApp.BeginRequest <span class="o">+</span><span class="o">=</span> <span class="k">new</span> EventHandler(OnBeginRequest);
+        httpApp.EndRequest <span class="o">+</span><span class="o">=</span> <span class="k">new</span> EventHandler(OnEndRequest);
+    }
+
+    <span class="k">public</span> <span class="k">void</span> OnBeginRequest(Object s, EventArgs e)
+    {
+        ((HttpApplication)s).Context.Items[<span class="s">"start"</span>] <span class="o">=</span> DateTime.Now;
+    }
+
+    <span class="k">public</span> <span class="k">void</span> OnEndRequest(Object s, EventArgs e)
+    {
+        <span class="k">var</span> beginRequestTime <span class="o">=</span>
+            (DateTime)((HttpApplication)sender).Context.Items[<span class="s">"start"</span>];
+        <span class="k">var</span> ts <span class="o">=</span> DateTime.Now <span class="o">-</span> beginRequestTime;
+        ((HttpApplication)s).Context.Response.AppendHeader(<span class="s">"Execution"</span>, ts);
+    }
+}</pre></td></tr></table>
+
+</section>
+
+<section>
+
+<h2>Middleware</h2>
+
+<table class="pre"><tr><td class="lines"><pre class="fssnip">
+<span class="l"> 1: </span>
+<span class="l"> 2: </span>
+<span class="l"> 3: </span>
+<span class="l"> 4: </span>
+<span class="l"> 5: </span>
+<span class="l"> 6: </span>
+<span class="l"> 7: </span>
+<span class="l"> 8: </span>
+<span class="l"> 9: </span>
+<span class="l">10: </span>
+<span class="l">11: </span>
+<span class="l">12: </span>
+<span class="l">13: </span>
+<span class="l">14: </span>
+<span class="l">15: </span>
+<span class="l">16: </span>
+<span class="l">17: </span>
+</pre>
+</td>
+<td class="snippet"><pre class="fssnip">
+<span class="k">public</span> <span class="k">class</span> <span class="i">TimerMiddleware</span>
+{
+    <span class="k">private</span> <span class="i">readonly</span> <span class="i">RequestDelegate</span> <span class="i">_next</span>;
+
+    <span class="k">public</span> <span class="i">TimerMiddleware</span>(<span class="i">RequestDelegate</span> <span class="i">next</span>)
+    {
+        <span class="i">_next</span> <span class="o">=</span> <span class="i">next</span>;
+    }
+
+    <span class="k">public</span> <span onmouseout="hideTip(event, 'fs7', 21)" onmouseover="showTip(event, 'fs7', 21)" class="i">async</span> <span class="i">Task</span> <span class="i">Invoke</span>(<span class="i">HttpContext</span> <span class="i">context</span>)
+    {
+        <span class="i">var</span> <span class="i">beginRequestTime</span> <span class="o">=</span> <span class="i">DateTime</span><span class="o">.</span><span class="i">Now</span>;
+        <span class="i">await</span> <span class="i">_next</span>(<span class="i">context</span>);
+        <span class="i">var</span> <span class="i">ts</span> <span class="o">=</span> <span class="i">DateTime</span><span class="o">.</span><span class="i">Now</span> <span class="o">-</span> <span class="i">beginRequestTime</span>;
+        <span class="i">context</span><span class="o">.</span><span class="i">Response</span><span class="o">.</span><span class="i">Headers</span>[<span class="s">&quot;</span><span class="s">ExecutionTime</span><span class="s">&quot;</span>] <span class="o">=</span> <span class="i">ts</span>;
+    }
+}</pre>
+</td>
+</tr>
+</table>
+
+</section>
+
+<section>
+
+<h2>No more script zoo</h2>
+
+<p><img src="images/script.png" alt="" /></p>
+
+</section>
+
+<section>
+
+<h2>First class support for bower, grunt, gulp</h2>
+
+<p><img src="images/script2.png" alt="" /></p>
+
+</section>
+
+<section>
+
+<h2>No more traditional DLL references</h2>
+
+<p><img src="images/classic2.png" alt="" /></p>
+
+</section>
+
+<section>
+
+<h2>NuGet first</h2>
+
+<p><img src="images/classic.png" alt="" /></p>
+
+</section>
+
+<section>
+
+<p><img src="images/clap-friends.gif" alt="" /></p>
+
+</section>
+
+<section>
+
+<h1>What else?</h1>
+
+</section>
+
+<section>
+
+<h2>Built-in Dependency Injection</h2>
+
+<table class="pre"><tr><td class="lines"><pre class="fssnip">
+<span class="l"> 1: </span>
+<span class="l"> 2: </span>
+<span class="l"> 3: </span>
+<span class="l"> 4: </span>
+<span class="l"> 5: </span>
+<span class="l"> 6: </span>
+<span class="l"> 7: </span>
+<span class="l"> 8: </span>
+<span class="l"> 9: </span>
+<span class="l">10: </span>
+<span class="l">11: </span>
+<span class="l">12: </span>
+</pre>
+</td>
+<td class="snippet"><pre class="fssnip">
+<span class="k">public</span> <span class="k">class</span> <span class="i">Startup</span>
+{
+    <span class="k">public</span> <span class="k">void</span> <span class="i">Configure</span>(<span class="i">IApplicationBuilder</span> <span class="i">app</span>)
+    {
+        <span class="i">app</span><span class="o">.</span><span class="i">UseServices</span>(<span class="i">services</span> <span class="o">=&gt;</span>
+        {
+            <span class="c">// Set up the dependencies</span>
+            <span class="i">services</span><span class="o">.</span><span class="i">AddTransient</span><span class="o">&lt;</span><span class="i">IFooService</span>, <span class="i">FooService</span><span class="o">&gt;</span>();
+            <span class="i">services</span><span class="o">.</span><span class="i">AddSingleton</span><span class="o">&lt;</span><span class="i">IFooRepository</span>, <span class="i">FooRepository</span><span class="o">&gt;</span>();
+        });
+    }
+}</pre>
+</td>
+</tr>
+</table>
+
+</section>
+
+<section>
+
+<h2>Assembly Neutral Interfaces</h2>
+
+<ul>
+<li>contracts between components without a binary dependency</li>
+<li>an interface identity is not be tied to its assembly</li>
+<li><a href="http://davidfowl.com/assembly-neutral-interfaces-implementation/">based on Roslyn</a> (meta programming)</li>
+<li>"faux" structural typing</li>
+<li><code>[AssemblyNeutral]</code></li>
+</ul>
+
+</section>
+
+<section>
+
+<p><em>Credits:</em></p>
+
+<ul>
+<li>One architecture diagrams from <a href="http://blogs.msdn.com/b/cesardelatorre/archive/2014/11/18/what-is-net-core-5-and-asp-net-5-within-net-2015-preview.aspx">Cesar de la Torre</a></li>
+</ul>
+
+</section>
+
+
+
+        </div>
+    </div>
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.min.js"></script>
+    <script>
+
+        // Full list of configuration options available here:
+        // https://github.com/hakimel/reveal.js#configuration
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            history: true,
+            center: true,
+
+            theme: 'simple', // available themes are in /css/theme
+            transition: 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+            // Parallax scrolling
+            // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+            // parallaxBackgroundSize: '2100px 900px',
+
+            // Optional libraries used to extend on reveal.js
+            dependencies: [
+                { src: 'lib/js/classList.js', condition: function () { return !document.body.classList; } },
+                { src: 'plugin/markdown/marked.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+                { src: 'plugin/markdown/markdown.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+                { src: 'plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } },
+                { src: 'plugin/zoom-js/zoom.js', async: true, condition: function () { return !!document.body.classList; } },
+                { src: 'plugin/notes/notes.js', async: true, condition: function () { return !!document.body.classList; } }
+            ]
+        });
+
+    </script>
+</body>
 </html>
+
