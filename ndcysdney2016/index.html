@@ -1,0 +1,456 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Building Code Analyzers with the new C# compiler platform (Roslyn)</title>
+    <meta name="description" content="">
+    <meta name="author" content="Filip W">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <script src="//code.jquery.com/jquery-1.8.0.js"></script>
+    <script src="//code.jquery.com/ui/1.8.23/jquery-ui.js"></script>
+    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/css/bootstrap-combined.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/simple.css" id="theme">
+    <link type="text/css" rel="stylesheet" href="fsharp.formatting/styles/style.css" />
+    <link type="text/css" rel="stylesheet" href="fsharp.formatting/styles/deedle.css" />
+    <link type="text/css" rel="stylesheet" href="css/custom.css" />
+    <script src="fsharp.formatting/styles/tips.js" type="text/javascript"></script>
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+    <link rel="stylesheet" href="css/fsreveal.css">
+    <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+    <script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = 'css/print/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+    </script>
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+    <script language="javascript" type="text/javascript">
+        function init()
+        {
+            websocket = new WebSocket("ws://localhost:8083/websocket");
+            websocket.onmessage = function(evt) { location.reload(); };
+        }
+        window.addEventListener("load", init, false);
+    </script>
+</head>
+<body>
+    <div class="reveal">
+        
+        <!-- Any section element inside of this container is displayed as a slide -->
+        <div class="slides">
+            <section data-background="images/roslyn.png">
+
+</section>
+
+<section >
+
+<h1>Building Code Analyzers with Roslyn</h1>
+
+</section>
+
+<section >
+
+<h2>Filip W</h2>
+
+<p><a href="www.strathweb.com">strathweb.com</a></p>
+
+<p><a href="www.twitter.com/filip_woj">@filip_woj</a></p>
+
+<p><a href="github.com/filipw">github.com/filipw</a></p>
+
+<img class="normal" src="images/mvp.png" />
+
+</section>
+
+<section >
+
+<section >
+
+<p><img src="images/roslynlogo.png" alt="" /></p>
+
+</section>
+
+<section author="Filip W" description="" theme="simple" title="Building Code Analyzers with the new C# compiler platform (Roslyn)" transition="default">
+
+<p><img src="images/unicorn.png" alt="" /></p>
+
+</section>
+
+<section author="Filip W" description="" theme="simple" title="Building Code Analyzers with the new C# compiler platform (Roslyn)" transition="default">
+
+<h2>Roslyn</h2>
+
+<ul>
+<li>new .NET compiler platform</li>
+<li>compiler as a service (access to compiler APIs)</li>
+<li>code analysis (AST, semantic model)</li>
+<li>facilitates building C# tooling</li>
+<li>Apache 2.0</li>
+</ul>
+
+</section>
+
+<section author="Filip W" description="" theme="simple" title="Building Code Analyzers with the new C# compiler platform (Roslyn)" transition="default">
+
+<p><img src="images/roslynapis.png" alt="" /></p>
+
+</section>
+
+<section author="Filip W" description="" theme="simple" title="Building Code Analyzers with the new C# compiler platform (Roslyn)" transition="default">
+
+<p><img src="images/sponge.gif" alt="" /></p>
+
+</section>
+
+</section>
+
+<section >
+
+<section >
+
+<h1>Code Analysis</h1>
+
+</section>
+
+<section author="Filip W" description="" theme="simple" title="Building Code Analyzers with the new C# compiler platform (Roslyn)" transition="default">
+
+<h2>C# Program</h2>
+
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+<span class="l">2: </span>
+<span class="l">3: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">class</span> <span class="i">Program</span>
+{
+}
+</code></pre></td>
+</tr>
+</table>
+
+</section>
+
+<section author="Filip W" description="" theme="simple" title="Building Code Analyzers with the new C# compiler platform (Roslyn)" transition="default">
+
+<h2>Syntax Trees</h2>
+
+<ul>
+<li>contain every bit of <strong>structural</strong> information about the code</li>
+<li>know nothing of the outside world</li>
+<li>round-trippable</li>
+<li>immutable</li>
+<li>built up of:
+<ul>
+<li><em>SyntaxNodes</em></li>
+<li><em>SyntaxTokens</em></li>
+<li><em>SyntaxTrivia</em></li>
+</ul></li>
+</ul>
+
+</section>
+
+<section author="Filip W" description="" theme="simple" title="Building Code Analyzers with the new C# compiler platform (Roslyn)" transition="default">
+
+<h2>Syntax Tree</h2>
+
+<img class="normal" src="images/ast-small.png" />
+
+</section>
+
+<section author="Filip W" description="" theme="simple" title="Building Code Analyzers with the new C# compiler platform (Roslyn)" transition="default">
+
+<h2>Rewrite a Syntax Tree</h2>
+
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l"> 1: </span>
+<span class="l"> 2: </span>
+<span class="l"> 3: </span>
+<span class="l"> 4: </span>
+<span class="l"> 5: </span>
+<span class="l"> 6: </span>
+<span class="l"> 7: </span>
+<span class="l"> 8: </span>
+<span class="l"> 9: </span>
+<span class="l">10: </span>
+<span class="l">11: </span>
+<span class="l">12: </span>
+<span class="l">13: </span>
+<span class="l">14: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="i">var</span> <span class="i">tree</span> <span class="o">=</span> <span class="i">await</span> <span class="i">document</span><span class="o">.</span><span class="i">GetSyntaxRootAsync</span>();
+<span class="i">var</span> <span class="i">newTree</span> <span class="o">=</span> <span class="i">tree</span><span class="o">.</span><span class="i">DescendantNodesAndSelf</span>()<span class="o">.</span>
+  <span class="i">OfType</span><span class="o">&lt;</span><span class="i">ClassDeclarationSyntax</span><span class="o">&gt;</span>()<span class="o">.</span>
+  <span class="i">First</span>()<span class="o">.</span><span class="i">AddMembers</span>(
+    <span class="i">SyntaxFactory</span><span class="o">.</span><span class="i">MethodDeclaration</span>(
+        <span class="i">SyntaxFactory</span><span class="o">.</span><span class="i">PredefinedType</span>(<span class="i">SyntaxFactory</span><span class="o">.</span><span class="i">Token</span>(
+          <span class="i">SyntaxKind</span><span class="o">.</span><span class="i">VoidKeyword</span>)),
+        <span class="i">SyntaxFactory</span><span class="o">.</span><span class="i">Identifier</span>(<span class="s">&quot;Main&quot;</span>))
+        <span class="o">.</span><span class="i">WithModifiers</span>(<span class="i">SyntaxFactory</span><span class="o">.</span><span class="i">TokenList</span>(<span class="i">SyntaxFactory</span><span class="o">.</span><span class="i">Token</span>(
+          <span class="i">SyntaxKind</span><span class="o">.</span><span class="i">StaticKeyword</span>)))
+        <span class="o">.</span><span class="i">WithBody</span>(<span class="i">SyntaxFactory</span><span class="o">.</span><span class="i">Block</span>())
+      )
+    )<span class="o">.</span><span class="i">NormalizeWhitespace</span>();
+<span class="i">var</span> <span class="i">newDocument</span> <span class="o">=</span> <span class="i">document</span><span class="o">.</span><span class="i">WithSyntaxRoot</span>(<span class="i">newTree</span>);
+</code></pre></td>
+</tr>
+</table>
+
+</section>
+
+<section author="Filip W" description="" theme="simple" title="Building Code Analyzers with the new C# compiler platform (Roslyn)" transition="default">
+
+<h2>Modified program</h2>
+
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+<span class="l">2: </span>
+<span class="l">3: </span>
+<span class="l">4: </span>
+<span class="l">5: </span>
+<span class="l">6: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">class</span> <span class="i">Program</span>
+{
+    <span class="k">static</span> <span class="k">void</span> <span class="i">Main</span>()
+    {
+    }
+}
+</code></pre></td>
+</tr>
+</table>
+
+<aside class="notes">
+---<br/>
+<br/>
+
+<h2>Semantic analysis<br/></h2>
+
+<br/>
+- every distinct element of the language is represented by a symbol<br/>
+- semantic model contains information about **semantic** meaning of the syntax tree<br/>
+  - symbols<br/>
+  - diagnostics<br/>
+  - variables flow<br/>
+- requires a backing compilation<br/>
+<br/>
+---<br/>
+<br/>
+
+<blockquote>
+  <p>Symbols are similar in concept to System.Reflection API. However, symbols are a representation of language ' concepts, not CLR concepts.<br/>
+</aside></p>
+</blockquote>
+
+</section>
+
+</section>
+
+<section >
+
+<section >
+
+<h1>Building stuff!</h1>
+
+</section>
+
+<section author="Filip W" description="" theme="simple" title="Building Code Analyzers with the new C# compiler platform (Roslyn)" transition="default">
+
+<p><img src="images/vsapi.png" alt="" /></p>
+
+</section>
+
+<section author="Filip W" description="" theme="simple" title="Building Code Analyzers with the new C# compiler platform (Roslyn)" transition="default">
+
+<h2>Roslyn-based code analysis tools</h2>
+
+<ul>
+<li>Analyzers</li>
+<li>Code fixes</li>
+<li>Refactorings</li>
+</ul>
+
+</section>
+
+<section author="Filip W" description="" theme="simple" title="Building Code Analyzers with the new C# compiler platform (Roslyn)" transition="default">
+
+<h2>Analyzers</h2>
+
+<ul>
+<li>find problems in the code</li>
+<li>can be installed as VSIX or Nuget</li>
+<li>run in real time</li>
+<li>integrate into the compiler</li>
+<li>report <em>Diagnostics</em>
+<aside class="notes">
+<br/>
+---<br/>
+<br/>
+<img src="images/stylecop.jpg" alt="" /><br/>
+</aside></li>
+</ul>
+
+</section>
+
+<section author="Filip W" description="" theme="simple" title="Building Code Analyzers with the new C# compiler platform (Roslyn)" transition="default">
+
+<h2>Analyzers</h2>
+
+<p><img src="images/suck.gif" alt="" /></p>
+
+</section>
+
+<section author="Filip W" description="" theme="simple" title="Building Code Analyzers with the new C# compiler platform (Roslyn)" transition="default">
+
+<h2>Code fixes</h2>
+
+<ul>
+<li>normally created for specific <em>Diagnostics</em></li>
+<li>can fix the problem identified by the analyzer</li>
+<li>fix the problem in the scope of document/project/solution</li>
+<li>typically ship together with analyzers</li>
+<li>user has to invoke it (light bulb, <em>Ctrl + .</em>)</li>
+</ul>
+
+</section>
+
+<section author="Filip W" description="" theme="simple" title="Building Code Analyzers with the new C# compiler platform (Roslyn)" transition="default">
+
+<h2>Code fixes</h2>
+
+<p><img src="images/koala.jpg" alt="" /></p>
+
+</section>
+
+<section author="Filip W" description="" theme="simple" title="Building Code Analyzers with the new C# compiler platform (Roslyn)" transition="default">
+
+<h2>Refactorings</h2>
+
+<ul>
+<li>identifies and fixes the problem in one go</li>
+<li>user has to explicitly ask for it (<em>Ctrl+.</em>)</li>
+<li>use same engine behind the scenes as code fixes</li>
+<li>only distributable via VSIX (thanks, MEF)</li>
+</ul>
+
+</section>
+
+<section author="Filip W" description="" theme="simple" title="Building Code Analyzers with the new C# compiler platform (Roslyn)" transition="default">
+
+<h2>Refactorings</h2>
+
+<img class="normal" src="images/clippy.jpg" />
+
+</section>
+
+</section>
+
+<section >
+
+<section >
+
+<h1>Show me the code!</h1>
+
+</section>
+
+<section author="Filip W" description="" theme="simple" title="Building Code Analyzers with the new C# compiler platform (Roslyn)" transition="default">
+
+<p><img src="images/demo.gif" alt="" /></p>
+
+</section>
+
+</section>
+
+<section >
+
+<section >
+
+<h1>Links</h1>
+
+</section>
+
+<section author="Filip W" description="" theme="simple" title="Building Code Analyzers with the new C# compiler platform (Roslyn)" transition="default">
+
+<h2>Tools</h2>
+
+<ul>
+<li>Syntax Visualizer in Visual Studio (<a href="https://github.com/dotnet/roslyn/wiki/Syntax-Visualizer)">https://github.com/dotnet/roslyn/wiki/Syntax-Visualizer)</a></li>
+<li>Roslyn Quoter web app (<a href="http://roslynquoter.azurewebsites.net)">http://roslynquoter.azurewebsites.net)</a></li>
+</ul>
+
+</section>
+
+<section author="Filip W" description="" theme="simple" title="Building Code Analyzers with the new C# compiler platform (Roslyn)" transition="default">
+
+<h2>Projects</h2>
+
+<ul>
+<li>Stylecop Analyzers <a href="https://github.com/DotNetAnalyzers/StyleCopAnalyzers">https://github.com/DotNetAnalyzers/StyleCopAnalyzers</a></li>
+<li>Refactoring Essentials <a href="https://github.com/icsharpcode/refactoringessentials">https://github.com/icsharpcode/refactoringessentials</a></li>
+<li>Codecracker <a href="https://github.com/code-cracker/code-cracker">https://github.com/code-cracker/code-cracker</a></li>
+<li>Official Roslyn Analyzers <a href="https://github.com/dotnet/roslyn-analyzers">https://github.com/dotnet/roslyn-analyzers</a></li>
+<li>Move class to file <a href="https://github.com/filipw/Strathweb.Roslyn">https://github.com/filipw/Strathweb.Roslyn</a></li>
+</ul>
+
+</section>
+
+<section author="Filip W" description="" theme="simple" title="Building Code Analyzers with the new C# compiler platform (Roslyn)" transition="default">
+
+<p><img src="images/all.jpg" alt="" /></p>
+
+</section>
+
+<section author="Filip W" description="" theme="simple" title="Building Code Analyzers with the new C# compiler platform (Roslyn)" transition="default">
+
+<p><img src="images/bye.gif" alt="" /></p>
+
+</section>
+
+</section>
+
+
+
+        </div>
+    </div>
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+    <script>
+        // Add the nohighlight class and data-noescape attribute to code elements that have already been formatted by FSharp.Formatting
+        $('pre.highlighted code').addClass('nohighlight').attr('data-noescape', '');
+
+        // Full list of configuration options available here:
+        // https://github.com/hakimel/reveal.js#configuration
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            history: true,
+            center: true,
+
+            transition: 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+            // Parallax scrolling
+            // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+            // parallaxBackgroundSize: '2100px 900px',
+
+            // Optional libraries used to extend on reveal.js
+            dependencies: [
+                { src: 'lib/js/classList.js', condition: function () { return !document.body.classList; } },
+                { src: 'plugin/markdown/marked.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+                { src: 'plugin/markdown/markdown.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+                { src: 'plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } },
+                { src: 'plugin/zoom-js/zoom.js', async: true, condition: function () { return !!document.body.classList; } },
+                { src: 'plugin/notes/notes.js', async: true, condition: function () { return !!document.body.classList; } }
+            ]
+        });
+
+    </script>
+</body>
+</html>
+
