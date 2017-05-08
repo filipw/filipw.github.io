@@ -23,9 +23,7 @@
     <link rel="stylesheet" href="lib/css/zenburn.css">
     <link rel="stylesheet" href="css/fsreveal.css">
     <!-- If the query includes 'print-pdf', include the PDF print sheet -->
-
     <script>
-
 			if( window.location.search.match( /print-pdf/gi ) ) {
 				var link = document.createElement( 'link' );
 				link.rel = 'stylesheet';
@@ -37,61 +35,49 @@
     <!--[if lt IE 9]>
     <script src="lib/js/html5shiv.js"></script>
     <![endif]-->
-    <style type="text/css">
-        .fragment.current-visible.visible:not(.current-fragment) {
-            display: none;
-            height:0px;
-            line-height: 0px;
-            font-size: 0px;
+    <script language="javascript" type="text/javascript">
+        function init()
+        {
+            websocket = new WebSocket("ws://localhost:8083/websocket");
+            websocket.onmessage = function(evt) { location.reload(); };
         }
-
-
-         h1, .overlay-style {background: rgba(0,0,0,0.75); color: #fff !important; padding: 5% !important;}
-
-         .overlay-style h2, 
-         .overlay-style a {color: #fff !important;}
-
-         .reveal table td {text-align: center;}
-
-         .reveal section img.icon { margin: 0; border: 0; min-height: auto; max-height: auto; }
-    </style>
+        window.addEventListener("load", init, false);
+    </script>
 </head>
 <body>
     <div class="reveal">
-        <header style="position: absolute;top: 50px; left: 100px; z-index:500; font-size:100px;background-color: rgba(0,0,0,0.5)"></header>
+        
         <!-- Any section element inside of this container is displayed as a slide -->
         <div class="slides">
             <section data-background="images/roslyn.png">
 
 </section>
 
-<section data-background="images/StockSnap_KD30XPQR0A.jpg">
+<section >
 
 <h1>Building Code Analyzers with Roslyn</h1>
 
 </section>
 
-<section data-background="images/IMG_20161025_115652.jpg">
+<section >
 
-<div class="overlay-style">
 <h2>Filip W</h2>
 
-<p>Open Source Guy</p>
+<p><a href="www.strathweb.com">strathweb.com</a></p>
 
-<p>
-    <small>
-<a href="https://strathweb.com" class="roll"><span>strathweb.com</span></a> • 
-<a href="https://twitter.com/filip_woj" class="roll"><span data-title="@filip_woj">@filip_woj</span></a> • 
-<a href="https://github.com/filipw" class="roll"><span data-title="github.com/filipw">github.com/filipw</span></a>
-</small></p>
+<p><a href="www.twitter.com/filip_woj">@filip_woj</a></p>
+
+<p><a href="github.com/filipw">github.com/filipw</a></p>
+
 <img class="normal" src="images/mvp.png" />
-</div>
 
 </section>
 
 <section >
 
-<section data-background="images/IMG_20161108_131400.jpg">
+<section >
+
+<p><img src="images/roslynlogo.png" alt="" /></p>
 
 </section>
 
@@ -106,8 +92,9 @@
 <h2>Roslyn</h2>
 
 <ul>
+<li>new .NET compiler platform</li>
 <li>compiler as a service (access to compiler APIs)</li>
-<li>facilitates code analysis (ASTs, semantic model)</li>
+<li>code analysis (AST, semantic model)</li>
 <li>facilitates building C# tooling</li>
 <li>Apache 2.0</li>
 </ul>
@@ -120,7 +107,9 @@
 
 </section>
 
-<section data-background="images/sponge.gif" author="Filip W" description="" theme="simple" title="Building Code Analyzers with the new C# compiler platform (Roslyn)" transition="default">
+<section author="Filip W" description="" theme="simple" title="Building Code Analyzers with the new C# compiler platform (Roslyn)" transition="default">
+
+<p><img src="images/sponge.gif" alt="" /></p>
 
 </section>
 
@@ -128,7 +117,7 @@
 
 <section >
 
-<section data-background="images/StockSnap_XXTEK7APLA.jpg">
+<section >
 
 <h1>Code Analysis</h1>
 
@@ -151,7 +140,7 @@
 
 </section>
 
-<!--<section author="Filip W" description="" theme="simple" title="Building Code Analyzers with the new C# compiler platform (Roslyn)" transition="default">
+<section author="Filip W" description="" theme="simple" title="Building Code Analyzers with the new C# compiler platform (Roslyn)" transition="default">
 
 <h2>Syntax Trees</h2>
 
@@ -168,7 +157,7 @@
 </ul></li>
 </ul>
 
-</section>-->
+</section>
 
 <section author="Filip W" description="" theme="simple" title="Building Code Analyzers with the new C# compiler platform (Roslyn)" transition="default">
 
@@ -262,36 +251,11 @@
 
 </section>
 
-<section author="Filip W" description="" theme="simple" title="Building Code Analyzers with the new C# compiler platform (Roslyn)" transition="default">
-
-<h2>Syntax Tree</h2>
-
-<img class="normal" src="images/ast-big2.png" />
-
-</section>
-
-<section>
-<h2>Code analysis</h2>
-  <div class="fragment" style="text-align: left; float: left;">
-    <h3>Syntax Tree-based</h3>
-    <p data-markdown>- **structural** information about the code</p>
-    <p data-markdown>- immutable</p>
-    <p data-markdown>- round-trippable</p>
-  </div>
-
-  <div class="fragment" style="text-align: left; float: right;">
-    <h3>Semantic Model-based</h3>
-    <p data-markdown>- **semantic** meaning of the syntax trees</p>
-    <p data-markdown>- backed by compilation</p>
-    <p data-markdown>- symbols, diagnostics, variables flow..</p>
-  </div>
-</section>
-
 </section>
 
 <section >
 
-<section data-background="images/StockSnap_NN2EIQQYEA.jpg">
+<section >
 
 <h1>Building stuff!</h1>
 
@@ -299,65 +263,32 @@
 
 <section author="Filip W" description="" theme="simple" title="Building Code Analyzers with the new C# compiler platform (Roslyn)" transition="default">
 
-<h2>Roslyn Features API</h2>
-<p> 
-&nbsp;&nbsp;&nbsp;
-</p>
-
-<!--<ul>
-<li>Analyzers</li>
-<li>Code fixes</li>
-<li>Refactorings</li>
-</ul>-->
-
-
-<table>
-						<thead>
-							<tr>
-								<th></th>
-								<th>Find issue</th>
-								<th>Fix issue</th>
-                                <th>Diagnostic ID</th>
-                                <th>Distribution</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>Analyzer</td>
-								<td>🔍</td>
-								<td></td>
-                                <td>🦄</td>
-                                <td><img class="icon" src="images/nuget.png" /> <img class="icon" src="images/vsix.png" /></td>
-							</tr>
-							<tr>
-								<td>Code fix</td>
-								<td></td>
-								<td>🔧</td>
-                                <td>🦄</td>
-                                <td><img class="icon" src="images/nuget.png" /> <img class="icon" src="images/vsix.png" /></td>
-							</tr>
-							<tr>
-								<td>Refactoring</td>
-								<td></td>
-								<td>🔧</td>
-                                <td></td>
-                                <td><img class="icon" src="images/vsix.png" /></td>
-							</tr>
-						</tbody>
-					</table>
+<p><img src="images/vsapi.png" alt="" /></p>
 
 </section>
 
-<!--<section author="Filip W" description="" theme="simple" title="Building Code Analyzers with the new C# compiler platform (Roslyn)" transition="default">
+<section author="Filip W" description="" theme="simple" title="Building Code Analyzers with the new C# compiler platform (Roslyn)" transition="default">
+
+<h2>Roslyn-based code analysis tools</h2>
+
+<ul>
+<li>Analyzers</li>
+<li>Code fixes</li>
+<li>Refactorings</li>
+</ul>
+
+</section>
+
+<section author="Filip W" description="" theme="simple" title="Building Code Analyzers with the new C# compiler platform (Roslyn)" transition="default">
 
 <h2>Analyzers</h2>
 
 <ul>
-<li class="fragment">find code problems</li>
-<li class="fragment">integrate into the compilation</li>
-<li class="fragment">real time</li>
-<li class="fragment">report <em>Diagnostics</em>
-<li class="fragment">VSIX or Nuget</li>
+<li>find problems in the code</li>
+<li>can be installed as VSIX or Nuget</li>
+<li>run in real time</li>
+<li>integrate into the compiler</li>
+<li>report <em>Diagnostics</em>
 <aside class="notes">
 <br/>
 ---<br/>
@@ -366,64 +297,56 @@
 </aside></li>
 </ul>
 
-</section>-->
-
-<section data-background="images/analyzers.png" transition="default">
 </section>
 
-<section author="Filip W" description="" theme="simple" title="Building Code Analyzers with the new C# compiler platform (Roslyn)" data-transition="default">
+<section author="Filip W" description="" theme="simple" title="Building Code Analyzers with the new C# compiler platform (Roslyn)" transition="default">
 
 <h2>Analyzers</h2>
 
-<p><img src="images/problem-dilbert.gif" alt="" /></p>
+<p><img src="images/suck.gif" alt="" /></p>
 
-</section>
-
-<!--<section author="Filip W" description="" theme="simple" title="Building Code Analyzers with the new C# compiler platform (Roslyn)" transition="default">
-
-<h2>Code fixes</h2>
-
-<ul>
-<li class="fragment">fix the problem reported by a *Diagnostic*</li>
-<li class="fragment">fix the problem in the scope of document/project/solution</li>
-<li class="fragment">user has to invoke it (light bulb, <em>Ctrl + .</em>)</li>
-<li class="fragment">VSIX or Nuget</li>
-</ul>
-
-</section>-->
-
-<section data-background="images/codefix.png">
 </section>
 
 <section author="Filip W" description="" theme="simple" title="Building Code Analyzers with the new C# compiler platform (Roslyn)" transition="default">
 
 <h2>Code fixes</h2>
 
-<p><img src="images/problem-solved.gif" alt="" /></p>
+<ul>
+<li>normally created for specific <em>Diagnostics</em></li>
+<li>can fix the problem identified by the analyzer</li>
+<li>fix the problem in the scope of document/project/solution</li>
+<li>typically ship together with analyzers</li>
+<li>user has to invoke it (light bulb, <em>Ctrl + .</em>)</li>
+</ul>
 
 </section>
 
-<!--<section author="Filip W" description="" theme="simple" title="Building Code Analyzers with the new C# compiler platform (Roslyn)" transition="default">
+<section author="Filip W" description="" theme="simple" title="Building Code Analyzers with the new C# compiler platform (Roslyn)" transition="default">
 
-<h2>Refactorings</h2>
+<h2>Code fixes</h2>
 
-<ul>
-<li class="fragment">same engine as code fixes</li>
-<li class="fragment">identifies and fixes the problem</li>
-<li class="fragment">user has to explicitly ask for it (<em>Ctrl+.</em>)</li>
-<li class="fragment">VSIX / DLL</li>
-</ul>
+<p><img src="images/koala.jpg" alt="" /></p>
 
-</section>-->
-
-<section data-background="images/refactoring-bg.png">
 </section>
 
 <section author="Filip W" description="" theme="simple" title="Building Code Analyzers with the new C# compiler platform (Roslyn)" transition="default">
 
 <h2>Refactorings</h2>
 
-<img class="normal" src="images/help-cat.gif" />
+<ul>
+<li>identifies and fixes the problem in one go</li>
+<li>user has to explicitly ask for it (<em>Ctrl+.</em>)</li>
+<li>use same engine behind the scenes as code fixes</li>
+<li>only distributable via VSIX (thanks, MEF)</li>
+</ul>
+
+</section>
+
+<section author="Filip W" description="" theme="simple" title="Building Code Analyzers with the new C# compiler platform (Roslyn)" transition="default">
+
+<h2>Refactorings</h2>
+
+<img class="normal" src="images/clippy.jpg" />
 
 </section>
 
@@ -431,14 +354,15 @@
 
 <section >
 
-<section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
+<section >
 
 <h1>Show me the code!</h1>
 
 </section>
 
-<section data-background="images/demo.gif" author="Filip W" description="" theme="simple" title="Building Code Analyzers with the new C# compiler platform (Roslyn)" transition="default">
+<section author="Filip W" description="" theme="simple" title="Building Code Analyzers with the new C# compiler platform (Roslyn)" transition="default">
 
+<p><img src="images/demo.gif" alt="" /></p>
 
 </section>
 
@@ -446,7 +370,7 @@
 
 <section >
 
-<section data-background="images/StockSnap_VZ86EDZ771.jpg">
+<section >
 
 <h1>Links</h1>
 
@@ -457,8 +381,8 @@
 <h2>Tools</h2>
 
 <ul>
-<li>Syntax Visualizer in Visual Studio <br/><small><a href="https://github.com/dotnet/roslyn/wiki/Syntax-Visualizer)">https://github.com/dotnet/roslyn/wiki/Syntax-Visualizer</a></small></li>
-<li>Roslyn Quoter web app <br/><small><a href="http://roslynquoter.azurewebsites.net">http://roslynquoter.azurewebsites.net</a></small></li>
+<li>Syntax Visualizer in Visual Studio (<a href="https://github.com/dotnet/roslyn/wiki/Syntax-Visualizer)">https://github.com/dotnet/roslyn/wiki/Syntax-Visualizer)</a></li>
+<li>Roslyn Quoter web app (<a href="http://roslynquoter.azurewebsites.net">http://roslynquoter.azurewebsites.net</a>)</li>
 </ul>
 
 </section>
@@ -468,15 +392,19 @@
 <h2>Projects</h2>
 
 <ul>
-<li>Stylecop Analyzers <br/><small><a href="https://github.com/DotNetAnalyzers/StyleCopAnalyzers">https://github.com/DotNetAnalyzers/StyleCopAnalyzers</a></small></li>
-<li>Refactoring Essentials <br/><small><a href="https://github.com/icsharpcode/refactoringessentials">https://github.com/icsharpcode/refactoringessentials</a></small></li>
-<li>Codecracker <br/><small><a href="https://github.com/code-cracker/code-cracker">https://github.com/code-cracker/code-cracker</a></small></li>
-<li>Official Roslyn Analyzers <br/><small><a href="https://github.com/dotnet/roslyn-analyzers">https://github.com/dotnet/roslyn-analyzers</a></small></li>
+<li>Stylecop Analyzers <a href="https://github.com/DotNetAnalyzers/StyleCopAnalyzers">https://github.com/DotNetAnalyzers/StyleCopAnalyzers</a></li>
+<li>Refactoring Essentials <a href="https://github.com/icsharpcode/refactoringessentials">https://github.com/icsharpcode/refactoringessentials</a></li>
+<li>Codecracker <a href="https://github.com/code-cracker/code-cracker">https://github.com/code-cracker/code-cracker</a></li>
+<li>Official Roslyn Analyzers <a href="https://github.com/dotnet/roslyn-analyzers">https://github.com/dotnet/roslyn-analyzers</a></li>
+<li>Move class to file <a href="https://github.com/filipw/Strathweb.Roslyn">https://github.com/filipw/Strathweb.Roslyn</a></li>
 </ul>
 
 </section>
 
-<section data-background="images/all.jpg" author="Filip W" description="" theme="simple" title="Building Code Analyzers with the new C# compiler platform (Roslyn)" transition="default">
+<section author="Filip W" description="" theme="simple" title="Building Code Analyzers with the new C# compiler platform (Roslyn)" transition="default">
+
+<p><img src="images/all.jpg" alt="" /></p>
+
 </section>
 
 <section author="Filip W" description="" theme="simple" title="Building Code Analyzers with the new C# compiler platform (Roslyn)" transition="default">
