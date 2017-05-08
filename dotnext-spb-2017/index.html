@@ -45,10 +45,30 @@
             font-size: 0px;
         }
 
-
          h1, .overlay-style {background: rgba(0,0,0,0.75); color: #fff !important; padding: 5% !important;}
 
+        .left {
+            left:-8.33%;
+            text-align: left;
+            float: left;
+            width:50%;
+            z-index:-10;
+            padding: 0 !important;
+        }
+
+        .right {
+            left:31.25%;
+            top: 75px;
+            float: right;
+            text-align: left;
+            z-index:-10;
+            width:50%;
+            padding: 0 !important;
+        }
+
+
          .overlay-style h2, 
+         .overlay-style h3,
          .overlay-style a {color: #fff !important;}
 
          .reveal table td {text-align: center;}
@@ -264,26 +284,32 @@
 
 <section author="Filip W" description="" theme="simple" title="Building Code Analyzers with the new C# compiler platform (Roslyn)" transition="default">
 
-<h2>Syntax Tree</h2>
+<h2>New Syntax Tree</h2>
 
 <img class="normal" src="images/ast-big2.png" />
 
 </section>
 
-<section>
+<section data-background="images/StockSnap_396GAHQA06.jpg">
+<div class="overlay-style" style="padding:3% !important;">
 <h2>Code analysis</h2>
-  <div class="fragment" style="text-align: left; float: left;">
+</div>
+  <div class="fragment left overlay-style" style="">
+      <div style="padding: 3%">
     <h3>Syntax Tree-based</h3>
     <p data-markdown>- **structural** information about the code</p>
     <p data-markdown>- immutable</p>
     <p data-markdown>- round-trippable</p>
+      </div>
   </div>
 
-  <div class="fragment" style="text-align: left; float: right;">
+  <div class="fragment right overlay-style" style="padding: 0">
+      <div style="padding: 3%">
     <h3>Semantic Model-based</h3>
     <p data-markdown>- **semantic** meaning of the syntax trees</p>
     <p data-markdown>- backed by compilation</p>
-    <p data-markdown>- symbols, diagnostics, variables flow..</p>
+    <p data-markdown>- symbols, diagnostics, code flow..</p>
+      </div>
   </div>
 </section>
 
@@ -294,57 +320,6 @@
 <section data-background="images/StockSnap_NN2EIQQYEA.jpg">
 
 <h1>Building stuff!</h1>
-
-</section>
-
-<section author="Filip W" description="" theme="simple" title="Building Code Analyzers with the new C# compiler platform (Roslyn)" transition="default">
-
-<h2>Roslyn Features API</h2>
-<p> 
-&nbsp;&nbsp;&nbsp;
-</p>
-
-<!--<ul>
-<li>Analyzers</li>
-<li>Code fixes</li>
-<li>Refactorings</li>
-</ul>-->
-
-
-<table>
-						<thead>
-							<tr>
-								<th></th>
-								<th>Find issue</th>
-								<th>Fix issue</th>
-                                <th>Diagnostic ID</th>
-                                <th>Distribution</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>Analyzer</td>
-								<td>🔍</td>
-								<td></td>
-                                <td>🦄</td>
-                                <td><img class="icon" src="images/nuget.png" /> <img class="icon" src="images/vsix.png" /></td>
-							</tr>
-							<tr>
-								<td>Code fix</td>
-								<td></td>
-								<td>🔧</td>
-                                <td>🦄</td>
-                                <td><img class="icon" src="images/nuget.png" /> <img class="icon" src="images/vsix.png" /></td>
-							</tr>
-							<tr>
-								<td>Refactoring</td>
-								<td></td>
-								<td>🔧</td>
-                                <td></td>
-                                <td><img class="icon" src="images/vsix.png" /></td>
-							</tr>
-						</tbody>
-					</table>
 
 </section>
 
@@ -424,6 +399,50 @@
 <h2>Refactorings</h2>
 
 <img class="normal" src="images/help-cat.gif" />
+
+</section>
+
+<section>
+
+<h2>Roslyn Features API</h2>
+<p> 
+&nbsp;&nbsp;&nbsp;
+</p>
+
+<table>
+						<thead>
+							<tr>
+								<th></th>
+								<th>Find issue</th>
+								<th>Change code</th>
+                                <th>Diagnostic</th>
+                                <th>Distribution</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Analyzer</td>
+								<td>🔍</td>
+								<td></td>
+                                <td>🦄</td>
+                                <td><img class="icon" src="images/nuget.png" /> <img class="icon" src="images/vsix.png" /></td>
+							</tr>
+							<tr>
+								<td>Code fix</td>
+								<td></td>
+								<td>🔧</td>
+                                <td>🦄</td>
+                                <td><img class="icon" src="images/nuget.png" /> <img class="icon" src="images/vsix.png" /></td>
+							</tr>
+							<tr>
+								<td>Refactoring</td>
+								<td></td>
+								<td>🔧</td>
+                                <td></td>
+                                <td><img class="icon" src="images/vsix.png" /></td>
+							</tr>
+						</tbody>
+					</table>
 
 </section>
 
