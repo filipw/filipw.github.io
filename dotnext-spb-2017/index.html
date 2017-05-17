@@ -110,7 +110,7 @@
 
 </section>
 
-<section >
+<section>
 
 <section data-background="images/IMG_20161108_131400.jpg">
 
@@ -147,7 +147,7 @@
 
 </section>
 
-<section >
+<section>
 
 <section data-background="images/StockSnap_XXTEK7APLA.jpg">
 
@@ -242,8 +242,7 @@ var classDeclaration = tree.DescendantNodesAndSelf().
 var semanticModel = await document.GetSemanticModelAsync();
 var typeSymbol = semanticModel.GetDeclaredSymbol(classDeclaration);
 
-var references = await SymbolFinder.FindReferencesAsync(document.Project.Solution,
-  typeSymbol);
+var references = await SymbolFinder.FindReferencesAsync(document.Project.Solution, typeSymbol);
 // process references
     </code>
 </pre>
@@ -275,33 +274,13 @@ var references = await SymbolFinder.FindReferencesAsync(document.Project.Solutio
 
 </section>
 
-<section >
+<section>
 
 <section data-background="images/StockSnap_NN2EIQQYEA.jpg">
 
 <h1>Building stuff!</h1>
 
 </section>
-
-<!--<section author="Filip W" description="" theme="simple" title="Building Code Analyzers with the new C# compiler platform (Roslyn)" transition="default">
-
-<h2>Analyzers</h2>
-
-<ul>
-<li class="fragment">find code problems</li>
-<li class="fragment">integrate into the compilation</li>
-<li class="fragment">real time</li>
-<li class="fragment">report <em>Diagnostics</em>
-<li class="fragment">VSIX or Nuget</li>
-<aside class="notes">
-<br/>
----<br/>
-<br/>
-<img src="images/stylecop.jpg" alt="" /><br/>
-</aside></li>
-</ul>
-
-</section>-->
 
 <section data-background="images/analyzers.png" transition="default">
 </section>
@@ -314,19 +293,6 @@ var references = await SymbolFinder.FindReferencesAsync(document.Project.Solutio
 
 </section>
 
-<!--<section author="Filip W" description="" theme="simple" title="Building Code Analyzers with the new C# compiler platform (Roslyn)" transition="default">
-
-<h2>Code fixes</h2>
-
-<ul>
-<li class="fragment">fix the problem reported by a *Diagnostic*</li>
-<li class="fragment">fix the problem in the scope of document/project/solution</li>
-<li class="fragment">user has to invoke it (light bulb, <em>Ctrl + .</em>)</li>
-<li class="fragment">VSIX or Nuget</li>
-</ul>
-
-</section>-->
-
 <section data-background="images/codefix.png">
 </section>
 
@@ -337,19 +303,6 @@ var references = await SymbolFinder.FindReferencesAsync(document.Project.Solutio
 <p><img src="images/problem-solved.gif" alt="" /></p>
 
 </section>
-
-<!--<section author="Filip W" description="" theme="simple" title="Building Code Analyzers with the new C# compiler platform (Roslyn)" transition="default">
-
-<h2>Refactorings</h2>
-
-<ul>
-<li class="fragment">same engine as code fixes</li>
-<li class="fragment">identifies and fixes the problem</li>
-<li class="fragment">user has to explicitly ask for it (<em>Ctrl+.</em>)</li>
-<li class="fragment">VSIX / DLL</li>
-</ul>
-
-</section>-->
 
 <section data-background="images/refactoring-bg.png">
 </section>
@@ -408,7 +361,7 @@ var references = await SymbolFinder.FindReferencesAsync(document.Project.Solutio
 
 </section>
 
-<section >
+<section>
 
 <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
 
@@ -417,13 +370,11 @@ var references = await SymbolFinder.FindReferencesAsync(document.Project.Solutio
 </section>
 
 <section data-background="images/demo.gif" author="Filip W" description="" theme="simple" title="Building Code Analyzers with the new C# compiler platform (Roslyn)" transition="default">
-
-
 </section>
 
 </section>
 
-<section >
+<section>
 
 <section data-background="images/StockSnap_VZ86EDZ771.jpg">
 
