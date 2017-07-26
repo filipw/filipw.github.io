@@ -44,7 +44,7 @@
         }
 
          h1, .overlay-style {background: rgba(0,0,0,0.75); color: #fff !important; padding: 5% !important;}
-         h2.overlay-style {padding: 2% !important;}
+         h2.overlay-style, h3.overlay-style {padding: 2% !important;}
 
         .left {
             left:-8.33%;
@@ -64,6 +64,8 @@
             width:50%;
             padding: 0 !important;
         }
+
+        .reveal pre.small { font-size: 0.45em;}
 
         html.bg-auto-height div.slide-background.present {
             background-size: auto 100%;
@@ -104,7 +106,7 @@
 
 <div class="overlay-style">
 <h2>Filip W</h2>
-<p>Neither PM, nor architect</p>
+<p>not PM. not architect. not developer advocate.</p>
 
 <p>
     <small>
@@ -124,6 +126,43 @@
 </section>
 
 <section data-background="images/scripting2.png" data-state="bg-auto-height" transition="default">
+</section>
+
+<section data-background="images/mark-solarski-209233.jpg">
+<h2 class="overlay-style">Run with runner</h2>
+<pre>
+    <code class="sh">
+C:\>csi script.csx scriptArgs
+
+C:\>scriptcs script.csx -- scriptArgs
+
+C:\>dotnet script script.csx -- scriptArgs
+
+C:\>cake build.cake -Target build
+    </code>
+</pre>
+
+</section>
+
+<section data-background="images/mark-solarski-209233.jpg">
+<h2 class="overlay-style">Use Roslyn APIs</h2>
+<pre>
+    <code class="cs">
+var scriptCode = File.ReadAllText("script.csx");
+var scriptOptions = ScriptOptions.Default.
+    WithImports("System.Net.Http").
+    WithReferences(typeof(HttpClient).GetTypeInfo().Assembly);
+
+// Run
+var scriptResult = await CSharpScript.RunAsync(scriptCode, scriptOptions);
+
+// Create and run later
+var script = await CSharpScript.Create(scriptCode, scriptOptions);
+var diagnostics = script.GetCompilation().GetDiagnostics();
+var scriptResult = await script.RunAsync();
+    </code>
+</pre>
+
 </section>
 
 <section data-background="images/mark-solarski-209233.jpg">
@@ -190,14 +229,14 @@
   </div>
 </section>
 
-<section>
+<section data-background="images/mark-solarski-209233.jpg">
 
-<h2>.NET Core Scripting</h2>
+<h2 class="overlay-style">.NET Core Scripting</h2>
 <p> 
 &nbsp;&nbsp;&nbsp;
 </p>
 
-<table>
+<table class="overlay-style">
 						<thead>
 							<tr>
 								<th></th>
@@ -242,8 +281,153 @@
 
 </section>
 
+</section>
+
+<section>
+
+<section data-background="images/StockSnap_NN2EIQQYEA.jpg">
+
+<h1>Use cases</h1>
+
+</section>
+
+<section data-background="images/StockSnap_NN2EIQQYEA.jpg">
+<div class="overlay-style" style="padding:3% !important;">
+<h2>Popular C# Scripting Use Cases</h2>
+</div>
+  <div class="left overlay-style">
+      <div style="padding: 3%">
+        <ul>
+            <li>⚙️Automation<br/>
+                <small>Batch jobs, build scripts, command line tools</small>
+            </li>
+            <li>🍃Lightweight programs<br/>
+                <small>Experiments, API exploration</small>
+            </li>
+        </ul>
+      </div>
+  </div>
+
+  <div class="right overlay-style" style="padding: 0">
+      <div style="padding: 3%">
+        <ul>
+            <li>🖇Application extensibility<br/>
+                <small>Plugins, modules, dynamic configuration</small>
+            </li>
+
+            <li>⚗️Code generation<br/>
+                <small>T4-like features, emitting code</small>
+            </li>
+        </ul>
+      </div>
+  </div>
+</section>
+
 <section data-background="images/sponge.gif" author="Filip W" description="" theme="simple" title="C# Scripting in the .NET Core world" transition="default">
 
+</section>
+
+<section data-background="images/StockSnap_NN2EIQQYEA.jpg">
+<h3 class="overlay-style">Emit code with IL</h2>
+
+<pre class="small">
+    <code class="cs">
+var name = new AssemblyName("DynamicAssembly");
+var assemblyBuilder = AssemblyBuilder.DefineDynamicAssembly(name, AssemblyBuilderAccess.Run);
+var moduleBuilder = assemblyBuilder.DefineDynamicModule("DynamicModule");
+var typeBuilder = moduleBuilder.DefineType("DynamicClass", TypeAttributes.Public);
+var methodBuilder = typeBuilder.DefineMethod("DynamicMethod", MethodAttributes.Public, 
+    typeof(int), new[] { typeof(int), typeof(int) });
+
+var ilGenerator = methodBuilder.GetILGenerator();
+
+ilGenerator.DeclareLocal(typeof(int));
+ilGenerator.Emit(OpCodes.Ldarg_1);
+ilGenerator.Emit(OpCodes.Ldarg_2);
+ilGenerator.Emit(OpCodes.Sub_Ovf);
+ilGenerator.Emit(OpCodes.Stloc_0);
+ilGenerator.Emit(OpCodes.Ldloc_0);
+ilGenerator.Emit(OpCodes.Ret);
+
+var createdType = typeBuilder.CreateTypeInfo().AsType();
+
+var instance = Activator.CreateInstance(createdType);
+var methodInfo = createdType.GetMethod("DynamicMethod", BindingFlags.Instance | BindingFlags.Public);
+
+var result = methodInfo.Invoke(instance, new object[] { 5, 3 });
+    </code>
+</pre>
+
+</section>
+
+<section data-background="images/StockSnap_NN2EIQQYEA.jpg">
+<h3 class="overlay-style">Emit code with Roslyn compilation</h2>
+<pre class="small">
+    <code class="cs">
+var compilation = CSharpCompilation.Create(
+    "DynamicAssembly", new[] { CSharpSyntaxTree.ParseText(@"
+     public class DynamicClass {
+        public int DynamicMethod(int a, int b) {
+            return a-b;
+        }
+     }") }, new[] { MetadataReference.CreateFromFile(typeof(object).GetTypeInfo().Assembly.Location) },
+    new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary));
+
+using (var ms = new MemoryStream())
+{
+    var cr = compilation.Emit(ms);
+    ms.Seek(0, SeekOrigin.Begin);
+    var assembly = AssemblyLoadContext.Default.LoadFromStream(ms);
+
+    var createdType = assembly.ExportedTypes.FirstOrDefault(x => x.Name == "DynamicClass");
+    var methodInfo = createdType.GetMethod("DynamicMethod", BindingFlags.Instance | BindingFlags.Public);
+    var instance = Activator.CreateInstance(createdType);
+
+    var result = methodInfo.Invoke(instance, new object[] { 5, 3 });
+}
+    </code>
+</pre>
+
+</section>
+
+<section data-background="images/StockSnap_NN2EIQQYEA.jpg">
+<h3 class="overlay-style">Emit code with Roslyn scripting</h2>
+<pre class="small">
+    <code class="cs">
+var result = await CSharpScript.EvaluateAsync&lt;int&gt;("5 - 3");
+
+// or
+
+var script = CSharpScript.Create&lt;int&gt;("5 - 3");
+var handle = script.CreateDelegate();
+await handle();
+
+// or
+
+public class ScriptHost
+{
+    public int Number1 { get; set; }
+    public int Number2 { get; set; }
+}
+
+var host = new ScriptHost { Number1 = 5, Number2 = 3 };
+var result = await CSharpScript.EvaluateAsync&lt;int&gt;("int Substract(int x, int y) => x - y; Substract(Number1, Number2)", 
+    globals: host, globalsType: typeof(ScriptHost));
+    </code>
+</pre>
+
+</section>
+
+<section data-background="images/StockSnap_NN2EIQQYEA.jpg" data-background-transition="default">
+    <img src="images/azure-functions2.png" />
+</section>
+
+<section data-background="images/StockSnap_NN2EIQQYEA.jpg" data-background-transition="default">
+    <img src="images/workbooks.png" />
+</section>
+
+<section data-background="images/StockSnap_NN2EIQQYEA.jpg" data-background-transition="default">
+    <img src="images/script-games.png" />
 </section>
 
 </section>
@@ -300,28 +484,6 @@
 
 <section>
 
-<section data-background="images/StockSnap_NN2EIQQYEA.jpg">
-
-<h1>Exciting use cases</h1>
-
-</section>
-<!--"images/azure-functions2.png"-->
-<section data-background="images/StockSnap_NN2EIQQYEA.jpg" data-background-transition="default">
-    <img src="images/azure-functions2.png" />
-</section>
-
-<section data-background="images/StockSnap_NN2EIQQYEA.jpg" data-background-transition="default">
-    <img src="images/workbooks.png" />
-</section>
-
-<section data-background="images/StockSnap_NN2EIQQYEA.jpg" data-background-transition="default">
-    <img src="images/script-games.png" />
-</section>
-
-</section>
-
-<section>
-
 <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
 
 <h1>New features in CSI</h1>
@@ -349,7 +511,7 @@
 
 <section data-background="images/StockSnap_VZ86EDZ771.jpg">
 
-<h1>Future</h1>
+<h1>Nuget</h1>
 
 </section>
 
@@ -383,23 +545,7 @@ Console.WriteLine(typeof(MapperConfiguration));
 
 </section>
 
-<section author="Filip W" description="" theme="simple" title="C# Scripting in the .NET Core world" transition="default">
-
-<h2>Projects</h2>
-
-<ul>
-<li>Stylecop Analyzers <br/><small><a href="https://github.com/DotNetAnalyzers/StyleCopAnalyzers">https://github.com/DotNetAnalyzers/StyleCopAnalyzers</a></small></li>
-<li>Refactoring Essentials <br/><small><a href="https://github.com/icsharpcode/refactoringessentials">https://github.com/icsharpcode/refactoringessentials</a></small></li>
-<li>Codecracker <br/><small><a href="https://github.com/code-cracker/code-cracker">https://github.com/code-cracker/code-cracker</a></small></li>
-<li>Official Roslyn Analyzers <br/><small><a href="https://github.com/dotnet/roslyn-analyzers">https://github.com/dotnet/roslyn-analyzers</a></small></li>
-</ul>
-
-</section>
-
 <section data-background="images/all.jpg" author="Filip W" description="" theme="simple" title="C# Scripting in the .NET Core world" transition="default">
-</section>
-
-<section data-background="images/1490632612_maxresdefault.jpg" author="Filip W" description="" theme="simple" title="C# Scripting in the .NET Core world" transition="default">
 </section>
 
 <section author="Filip W" description="" theme="simple" title="C# Scripting in the .NET Core world" transition="default">
