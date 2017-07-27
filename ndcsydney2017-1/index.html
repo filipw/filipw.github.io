@@ -36,6 +36,31 @@
     <script src="lib/js/html5shiv.js"></script>
     <![endif]-->
     <style type="text/css">
+      .reveal .slides section .fragment.current-only {
+        opacity: 1;
+        visibility: visible;
+        display: none;
+      }
+      .reveal .slides section .fragment.current-only.current-fragment {
+        display: block;
+      }
+
+      /* Solarized Light theme */
+      .line { display: block; padding: 1px 10px !important; }
+      .line.focus { background: #fff; color: #657b83; }
+      .line.focus .hljs-comment, .line.focus .hljs-quote { color: #93a1a1; }
+      .line.focus .hljs-keyword, .line.focus .hljs-selector-tag, .line.focus .hljs-addition { color: #859900; }
+      .line.focus .hljs-number, .line.focus .hljs-string, .line.focus .hljs-meta .hljs-meta-string, .line.focus .hljs-literal, .line.focus .hljs-doctag, .line.focus .hljs-regexp { color: #2aa198; }
+      .line.focus .hljs-title, .line.focus .hljs-section, .line.focus .hljs-name, .line.focus .hljs-selector-id, .line.focus .hljs-selector-class { color: #268bd2; }
+      .line.focus .hljs-attribute, .line.focus .hljs-attr, .line.focus .hljs-variable, .line.focus .hljs-template-variable, .line.focus .hljs-class .hljs-title, .line.focus .hljs-type { color: #b58900; }
+      .line.focus .hljs-symbol, .line.focus .hljs-bullet, .line.focus .hljs-subst, .line.focus .hljs-meta, .line.focus .hljs-meta .hljs-keyword, .line.focus .hljs-selector-attr, .line.focus .hljs-selector-pseudo, .line.focus .hljs-link { color: #cb4b16; }
+      .line.focus .hljs-built_in, .line.focus .hljs-deletion { color: #dc322f; }
+      .line.focus .hljs-formula { background: #eee8d5; }
+      .line.focus .hljs-emphasis { font-style: italic; }
+      .line.focus .hljs-strong { font-weight: bold; }
+
+      .yellow-slide .line.focus:nth-child(2) { background: yellow; }
+
         .fragment.current-visible.visible:not(.current-fragment) {
             display: none;
             height:0px;
@@ -66,6 +91,7 @@
         }
 
         .reveal pre.small { font-size: 0.45em;}
+        .reveal pre.very-small { font-size: 0.35em;}
 
         html.bg-auto-height div.slide-background.present {
             background-size: auto 100%;
@@ -92,9 +118,6 @@
         <header style="position: absolute;top: 50px; left: 100px; z-index:500; font-size:100px;background-color: rgba(0,0,0,0.5)"></header>
         <!-- Any section element inside of this container is displayed as a slide -->
         <div class="slides">
-            <section data-background="images/roslyn.png">
-
-</section>
 
 <section data-background="images/StockSnap_KD30XPQR0A.jpg">
 
@@ -129,7 +152,7 @@
 </section>
 
 <section data-background="images/mark-solarski-209233.jpg">
-<h2 class="overlay-style">Run with runner</h2>
+<h3 class="overlay-style">Run a script with script runner</h3>
 <pre>
     <code class="sh">
 C:\>csi script.csx scriptArgs
@@ -142,10 +165,15 @@ C:\>cake build.cake -Target build
     </code>
 </pre>
 
+<p class="fragment" data-code-focus="2"></p>
+<p class="fragment" data-code-focus="4"></p>
+<p class="fragment" data-code-focus="6"></p>
+<p class="fragment" data-code-focus="8"></p>
+
 </section>
 
 <section data-background="images/mark-solarski-209233.jpg">
-<h2 class="overlay-style">Use Roslyn APIs</h2>
+<h3 class="overlay-style">Use Roslyn APIs</h3>
 <pre>
     <code class="cs">
 var scriptCode = File.ReadAllText("script.csx");
@@ -163,6 +191,9 @@ var scriptResult = await script.RunAsync();
     </code>
 </pre>
 
+<p class="fragment" data-code-focus="8"></p>
+<p class="fragment" data-code-focus="11-13"></p>
+
 </section>
 
 <section data-background="images/mark-solarski-209233.jpg">
@@ -172,10 +203,10 @@ var scriptResult = await script.RunAsync();
   <div class="left overlay-style">
       <div style="padding: 3%">
         <ul>
-            <li>🎉C# scripting is cross platform<br/>
+            <li class="fragment">🎉C# scripting is cross platform<br/>
 <small>Mono 4.6+ support, .NET Core</small></li>
 
-<li>🎼CSI is on your machine already<br/>
+<li class="fragment">🎼CSI is on your machine already<br/>
 <small>Bundled with MSBuild Tools</small></li>
 
             </ul>
@@ -185,10 +216,10 @@ var scriptResult = await script.RunAsync();
   <div class="right overlay-style" style="padding: 0">
       <div style="padding: 3%">
 <ul>
-    <li>💻Script & Interactive Mode<br/>
+    <li  class="fragment">💻Script & Interactive Mode<br/>
 <small>.csx, C# REPL</small></li>
 
-<li>🔬Works with any .NET assemblies<br/>
+<li class="fragment">🔬Works with any .NET assemblies<br/>
 <small>Can marshal objects between host app and script</small></li>
 </ul>
       </div>
@@ -202,11 +233,11 @@ var scriptResult = await script.RunAsync();
   <div class="left overlay-style">
       <div style="padding: 3%">
         <ul>
-            <li>📐Syntax<br/>
+            <li class="fragment">📐Syntax<br/>
                 <small><em>SourceCodeKind.Script</em> vs <em>SourceCodeKind.Regular</em></small>
             </li>
 
-            <li>📚 Language services<br/>
+            <li class="fragment">📚 Language services<br/>
                 <small><em>ProjectInfo</em> knows about host object Type & global usings</small>
             </li>
 
@@ -217,11 +248,11 @@ var scriptResult = await script.RunAsync();
   <div class="right overlay-style" style="padding: 0">
       <div style="padding: 3%">
         <ul>
-            <li>🖥 Compilation<br/>
+            <li class="fragment">🖥 Compilation<br/>
                 <small>Equivalent to standard <em>CSharpCompilation</em>, submission concept</small>
             </li>
 
-            <li>📦 Development<br/>
+            <li class="fragment">📦 Development<br/>
                 <small><em>Microsoft.CodeAnalysis.Csharp.Scripting</em></small>
             </li>
         </ul>
@@ -298,10 +329,10 @@ var scriptResult = await script.RunAsync();
   <div class="left overlay-style">
       <div style="padding: 3%">
         <ul>
-            <li>⚙️Automation<br/>
+            <li class="fragment">⚙️Automation<br/>
                 <small>Batch jobs, build scripts, command line tools</small>
             </li>
-            <li>🍃Lightweight programs<br/>
+            <li class="fragment">🍃Lightweight programs<br/>
                 <small>Experiments, API exploration</small>
             </li>
         </ul>
@@ -311,11 +342,11 @@ var scriptResult = await script.RunAsync();
   <div class="right overlay-style" style="padding: 0">
       <div style="padding: 3%">
         <ul>
-            <li>🖇Application extensibility<br/>
+            <li class="fragment">🖇Application extensibility<br/>
                 <small>Plugins, modules, dynamic configuration</small>
             </li>
 
-            <li>⚗️Code generation<br/>
+            <li class="fragment">⚗️Code generation<br/>
                 <small>T4-like features, emitting code</small>
             </li>
         </ul>
@@ -329,8 +360,7 @@ var scriptResult = await script.RunAsync();
 
 <section data-background="images/StockSnap_NN2EIQQYEA.jpg">
 <h3 class="overlay-style">Emit code with IL</h2>
-
-<pre class="small">
+<pre class="very-small">
     <code class="cs">
 var name = new AssemblyName("DynamicAssembly");
 var assemblyBuilder = AssemblyBuilder.DefineDynamicAssembly(name, AssemblyBuilderAccess.Run);
@@ -358,11 +388,13 @@ var result = methodInfo.Invoke(instance, new object[] { 5, 3 });
     </code>
 </pre>
 
+<p class="fragment" data-code-focus="9-17"></p>
+
 </section>
 
 <section data-background="images/StockSnap_NN2EIQQYEA.jpg">
 <h3 class="overlay-style">Emit code with Roslyn compilation</h2>
-<pre class="small">
+<pre class="very-small">
     <code class="cs">
 var compilation = CSharpCompilation.Create(
     "DynamicAssembly", new[] { CSharpSyntaxTree.ParseText(@"
@@ -388,6 +420,8 @@ using (var ms = new MemoryStream())
     </code>
 </pre>
 
+<p class="fragment" data-code-focus="4-7"></p>
+
 </section>
 
 <section data-background="images/StockSnap_NN2EIQQYEA.jpg">
@@ -411,10 +445,13 @@ public class ScriptHost
 }
 
 var host = new ScriptHost { Number1 = 5, Number2 = 3 };
-var result = await CSharpScript.EvaluateAsync&lt;int&gt;("int Substract(int x, int y) => x - y; Substract(Number1, Number2)", 
-    globals: host, globalsType: typeof(ScriptHost));
+var result = await CSharpScript.EvaluateAsync&lt;int&gt;("int Substract(int x, int y) => x - y; Substract(Number1, Number2)", globals: host, globalsType: typeof(ScriptHost));
     </code>
 </pre>
+
+<p class="fragment" data-code-focus="2"></p>
+<p class="fragment" data-code-focus="6-8"></p>
+<p class="fragment" data-code-focus="12-19"></p>
 
 </section>
 
@@ -533,15 +570,88 @@ Console.WriteLine(typeof(MapperConfiguration));
 
 </section>
 
-<section author="Filip W" description="" theme="simple" title="C# Scripting in the .NET Core world" transition="default">
+</section>
 
-<h2>Tools & Demos</h2>
+<section>
+    <section data-background="images/StockSnap_VZ86EDZ771.jpg">
 
-<ul>
-<li>Today's demos <br/><small><a href="https://github.com/filipw/dotnext-spb2017-demos">https://github.com/filipw/dotnext-spb2017-demos</a></small></li>
-<li>Syntax Visualizer in Visual Studio <br/><small><a href="https://github.com/dotnet/roslyn/wiki/Syntax-Visualizer)">https://github.com/dotnet/roslyn/wiki/Syntax-Visualizer</a></small></li>
-<li>Roslyn Quoter web app <br/><small><a href="http://roslynquoter.azurewebsites.net">http://roslynquoter.azurewebsites.net</a></small></li>
-</ul>
+<h1>How does it all work?</h1>
+
+</section>
+
+<section data-background="images/StockSnap_VZ86EDZ771.jpg">
+
+<h2 class="overlay-style">A simple script</h2>
+
+<pre>
+    <code class="cs">
+class Foo {}
+
+void SayHi(string msg)
+{
+    Console.WriteLine(msg);
+}
+
+var message = "Hello";
+var foo = new Foo();
+
+SayHi(message + " " + Text");
+    </code>
+</pre>
+
+<p class="fragment" data-code-focus="2"></p>
+<p class="fragment" data-code-focus="4-7"></p>
+<p class="fragment" data-code-focus="9-10"></p>
+<p class="fragment" data-code-focus="12"></p>
+
+</section>
+
+<section data-background="images/StockSnap_VZ86EDZ771.jpg">
+
+<pre class="very-small">
+    <code class="cs">
+public sealed class Submission#0 {
+    public string message;
+    public string Submission#0.Foo foo;
+    public void SayHi(string msg) {
+        Console.WriteLine(msg);
+    }
+
+    public class Foo {};
+
+    public MyHost &lt;host-object&gt;;
+
+    // shortened or brevity
+    public sealed class &lt;&lt;Initialize&gt;&gt;d__0 : IAsyncStateMachine {
+        public Submission#0 &lt;&gt;4__this;
+
+        void.IAsyncStateMachine MoveNext() {
+            this.&lt;&gt;4__this.message = "hello!";
+            this.&lt;&gt;4__this.foo = new Submission#0.Foo();
+
+            this.&lt;&gt;4__this.SayHi(this.&lt;&gt;4__this.message + " " + this.&lt;&gt;4__this.&lt;host-object&gt;.Text);
+        }
+    }
+
+    public Submission#0(object[] submissionArray) {
+        submissionArray[1] = this;
+        this.&lt;host-object&gt; = (MyHost)submissionArray[0];
+    }
+
+    public static Task&lt;object&gt; &lt;Factory>(object[] submissionArray) {
+        return new Submission#0(submissionArray).&lt;Initialize&gt;();
+    }
+
+}
+    </code>
+</pre>
+
+<div class ="fragment" data-code-focus="2"></div>
+<div class="fragment" data-code-focus="3-7"></div>
+<div class="fragment" data-code-focus="9"></div>
+<div class="fragment" data-code-focus="11"></div>
+<div class="fragment" data-code-focus="13-23"></div>
+<div class="fragment" data-code-focus="30-32"></div>
 
 </section>
 
@@ -565,28 +675,35 @@ Console.WriteLine(typeof(MapperConfiguration));
     <script>
         // Full list of configuration options available here:
         // https://github.com/hakimel/reveal.js#configuration
-        Reveal.initialize({
-            controls: true,
-            progress: true,
-            history: true,
-            center: true,
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
 
-            transition: 'default', // default/cube/page/concave/zoom/linear/fade/none
+                transition: 'default', // default/cube/page/concave/zoom/linear/fade/none
 
-            // Parallax scrolling
-            // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
-            // parallaxBackgroundSize: '2100px 900px',
+                // Parallax scrolling
+                // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+                // parallaxBackgroundSize: '2100px 900px',
 
-            // Optional libraries used to extend on reveal.js
-            dependencies: [
-                { src: 'lib/js/classList.js', condition: function () { return !document.body.classList; } },
-                { src: 'plugin/markdown/marked.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
-                { src: 'plugin/markdown/markdown.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
-                { src: 'plugin/highlight/highlight.min.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } },
-                { src: 'plugin/zoom-js/zoom.js', async: true, condition: function () { return !!document.body.classList; } },
-                { src: 'plugin/notes/notes.js', async: true, condition: function () { return !!document.body.classList; } }
-            ]
-        });
+                // Optional libraries used to extend on reveal.js
+                dependencies: [
+                    { src: 'lib/js/classList.js', condition: function () { return !document.body.classList; } },
+                    { src: 'plugin/markdown/marked.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+                    { src: 'plugin/markdown/markdown.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+                    { src: 'plugin/highlight.js/highlight.pack.js', async: true, callback: function () { /*hljs.initHighlightingOnLoad();*/ } },
+                    { src: 'plugin/zoom-js/zoom.js', async: true, condition: function () { return !!document.body.classList; } },
+                    { src: 'plugin/notes/notes.js', async: true, condition: function () { return !!document.body.classList; } },
+                    {
+                        src: 'plugin/reveal-code-focus.js',
+                        async: true,
+                        callback: function () {
+                            RevealCodeFocus();
+                        }
+                    }
+                ]
+            });
 
     </script>
 </body>
