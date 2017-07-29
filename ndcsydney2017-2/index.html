@@ -184,6 +184,7 @@
             background: #de4747;
             display: inline-block;
             padding: 0 5px;
+            line-height: 1.2em;
         }
 
         .overlay-style h2,
@@ -220,13 +221,21 @@
             height: 0;
             content: "“";
             margin-left: -.6em;
-            font: italic 400%/1 Cochin,Georgia,"Times New Roman", serif;
+            font: italic 400%/1 Cochin, Georgia, "Times New Roman", serif;
             color: #999;
             text-align: left;
         }
 
-        .reveal blockquote {background: none; text-align: left;}
-        .reveal p.footnote {line-height: 1; margin: 0; font-size: 0.5em;}
+        .reveal blockquote {
+            background: none;
+            text-align: left;
+        }
+
+        .reveal p.footnote {
+            line-height: 1;
+            margin: 0;
+            font-size: 0.5em;
+        }
     </style>
 </head>
 
@@ -258,9 +267,9 @@
                 </div>
 
             </section>
-                <section data-background="images/IMG_20161108_131400.jpg">
+            <section data-background="images/IMG_20161108_131400.jpg">
 
-                </section>
+            </section>
             <section>
 
                 <section data-background="images/blake-wisz-85030.jpg">
@@ -271,7 +280,8 @@
 
                 <section data-background="images/blake-wisz-85030.jpg">
                     <p class="overlay-style">
-                    <span class="highlight">dotnet watch</span> is a dotnet CLI tool that runs a specific dotnet CLI command, with a specified set of parameters, as soon as any <span class="highlight">source file changes</span> in the project.
+                        <span class="highlight">dotnet watch</span> is a dotnet CLI tool that runs a specific dotnet CLI
+                        command, with a specified set of parameters, as soon as any <span class="highlight">source file changes</span>                        in the project.
                     </p>
                 </section>
 
@@ -295,9 +305,9 @@ C:\app>dotnet watch script foo.csx
 
                 </section>
 
-                    <section data-background="images/blake-wisz-85030.jpg">
-                    <h3 class="overlay-style">Excluding items from watch</h2>                        
-                    <pre>
+                <section data-background="images/blake-wisz-85030.jpg">
+                    <h3 class="overlay-style">Excluding items from watch</h2>
+                        <pre>
     <code class="sh">
 &lt;ItemGroup&gt;
   &lt;ProjectReference Include="..\DataAccessLibrary\DataAccessLibrary.csproj" Watch="false" /&gt;
@@ -312,14 +322,15 @@ C:\app>dotnet watch script foo.csx
 &lt;/ItemGroup&gt;
     </code>
 </pre>
-                    <p class="fragment" data-code-focus="2-4"></p>
-                    <p class="fragment" data-code-focus="6-8"></p>
-                    <p class="fragment" data-code-focus="10-12"></p>
+                        <p class="fragment" data-code-focus="2-4"></p>
+                        <p class="fragment" data-code-focus="6-8"></p>
+                        <p class="fragment" data-code-focus="10-12"></p>
                 </section>
 
-                    <section data-background="images/blake-wisz-85030.jpg">
+                <section data-background="images/blake-wisz-85030.jpg">
                     <p class="overlay-style">
-                        Any executable on the PATH that follows the <span class="highlight">dotnet-{name}</span> format can be used with dotnet CLI. It can then be used with watch: <span class="highlight">dotnet watch name</span>. 
+                        Any executable on the PATH that follows the <span class="highlight">dotnet-{name}</span> format can
+                        be used with dotnet CLI. It can then be used with watch: <span class="highlight">dotnet watch name</span>.
                     </p>
                 </section>
 
@@ -335,78 +346,164 @@ C:\app>dotnet watch script foo.csx
 
                 <section data-background="images/alexey-ruban-103990.jpg">
                     <p class="overlay-style">
-                    <span class="highlight">Edit-and-Continue</span> was already present in "Visual Studio .NET 2003", but only for C/C++ code. Since Visual Studio 2005 you can <span class="highlight">make changes to code in break mode</span> while debugging. <br/><br/>They are applied to the CLR directly without a need to restart the debugging session.
+                        <span class="highlight">Edit-and-Continue</span> was already present in "Visual Studio .NET 2003",
+                        but only for C/C++ code. Since Visual Studio 2005 you can <span class="highlight">make changes to code in break mode</span>                        while debugging. <br/><br/>They are applied to the CLR directly without a need to restart the debugging
+                        session.
                     </p>
                 </section>
 
                 <section data-background="images/alexey-ruban-103990.jpg">
-                    <img src="images/enc-announce.png"/>
+                    <img src="images/enc-announce.png" />
                 </section>
 
                 <section data-background="images/alexey-ruban-103990.jpg">
                     <div class="overlay-style">
-                        <blockquote>Program logic should not be tested in the debugger. You are wasting your time and your company's time if you do so.
+                        <blockquote>Program logic should not be tested in the debugger. You are wasting your time and your company's
+                            time if you do so.
 
-<footer>- <cite>Sam Gentile, <a href="https://web.archive.org/web/20060221144806/http://samgentile.com/blog/archive/2004/10/19/12240.aspx">2004</a></cite></footer></blockquote>
-                        <blockquote>Edit and continue is a bug-introducing machine. Why? Because you get to focusing on that one bug and twiddle the code to fix that one bug and introduce six more.
+                            <footer>- <cite>Sam Gentile, <a href="https://web.archive.org/web/20060221144806/http://samgentile.com/blog/archive/2004/10/19/12240.aspx">2004</a></cite></footer>
+                        </blockquote>
+                        <blockquote>Edit and continue is a bug-introducing machine. Why? Because you get to focusing on that one bug
+                            and twiddle the code to fix that one bug and introduce six more.
 
-<footer>- <cite>John Robbins, <a href="https://web.archive.org/web/20060219194112/http://wintellect.com:80/WEBLOGS/wintellect/archive/2004/10/17/546.aspx">2004</a></cite></footer></blockquote>
+                            <footer>- <cite>John Robbins, <a href="https://web.archive.org/web/20060219194112/http://wintellect.com:80/WEBLOGS/wintellect/archive/2004/10/17/546.aspx">2004</a></cite></footer>
+                        </blockquote>
 
                     </div>
                 </section>
 
                 <section data-background="images/alexey-ruban-103990.jpg">
                     <p class="overlay-style">
-                    The upcoming Visual Studio 2017 Version <span class="highlight">15.3</span> introduces Edit-and-Continue for <span class="highlight">C# 7</span> features.
+                        The upcoming Visual Studio 2017 Version <span class="highlight">15.3</span> introduces Edit-and-Continue
+                        for <span class="highlight">C# 7</span> features.
                     </p>
                 </section>
 
                 <section data-background="images/alexey-ruban-103990.jpg">
                     <div class="overlay-style" style="padding: 3% !important;">
-  <div class="left">
-      <div style="padding: 3%">
-          <h3>🦄 Allowed changes</h3>
-        <ul>
-            <li>Within Method/Property Bodies<br/>
-                <small>most changes</small>
-                </li>
-            <li>Within Types<br/>
-                <small>add methods, fields, constructors, nested types</small>
-                </li>
-            <li>Lambda expressions<br/>
-                <small>add/edit delegates, LINQ expressions (with limitations)</small>
-            </li>
-            <li>Async/await expressions & Iterators<br/>
-                <small>add/edit (with limitations)</small>
-            </li>
-        </ul>
-      </div>
-  </div>
+                        <div class="left">
+                            <div style="padding: 3%">
+                                <h3>🦄 Allowed changes</h3>
+                                <ul>
+                                    <li>Within Method/Property Bodies<br/>
+                                        <small>most changes</small>
+                                    </li>
+                                    <li>Within Types<br/>
+                                        <small>add methods, fields, constructors, nested types</small>
+                                    </li>
+                                    <li>Lambda expressions<br/>
+                                        <small>add/edit delegates, LINQ expressions (with limitations)</small>
+                                    </li>
+                                    <li>Async/await expressions & Iterators<br/>
+                                        <small>add/edit (with limitations)</small>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
 
-  <div class="right">
-      <div style="padding: 3%">
-          <h3>💩 Prohibited changes</h3>
-        <ul>
-            <li>Add<br/>
-                <small>abstract/virtual/override member or type, using statements, imports, generics</small>
-            </li>
-            <li>Edit<br/>
-                <small>method signatures, interfaces, generics, enums</small>
-            </li>
-            <li>Remove<br/>
-                <small>members, types, namespaces, bodies</small>
-            </li>
-            <li>Rename<br/>
-                <small>anything</small>
-            </li>
-        </ul>
-      </div>
-  </div>
+                        <div class="right">
+                            <div style="padding: 3%">
+                                <h3>💩 Prohibited changes</h3>
+                                <ul>
+                                    <li>Add<br/>
+                                        <small>abstract/virtual/override member or type, using statements, imports, generics</small>
+                                    </li>
+                                    <li>Edit<br/>
+                                        <small>method signatures, interfaces, generics, enums</small>
+                                    </li>
+                                    <li>Remove<br/>
+                                        <small>members, types, namespaces, bodies</small>
+                                    </li>
+                                    <li>Rename<br/>
+                                        <small>anything</small>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div style="clear:both;">
+                            <p class="footnote">Not exhaustive information. More: <a href="https://docs.microsoft.com/en-us/visualstudio/debugger/supported-code-changes-csharp">https://docs.microsoft.com/en-us/visualstudio/debugger/supported-code-changes-csharp</a></p>
+                        </div>
+
+                    </div>
+                </section>
+
+                <section data-background="images/alexey-ruban-103990.jpg">
+
+                    <h3 class="overlay-style">Edit And Continue with Roslyn</h2>
+
+                        <pre>
+    <code class="cs">
+class Program
+{ 
+    public static void Main() 
+    { 
+        Console.WriteLine(1); 
+    } 
+}
+
+class Program
+{ 
+    public static void Main() 
+    { 
+        Console.Write(2); 
+    }
+}
+    </code>
+</pre>
+
+                        <p class="fragment" data-code-focus="6"></p>
+                        <p class="fragment" data-code-focus="14"></p>
+
+                </section>
+
+                <section data-background="images/alexey-ruban-103990.jpg">
+
+                        <pre class="small">
+    <code class="cs">
+// we have CSharpCompilations: originalCompilation & changedCompilation
+var stream = new MemoryStream();
+var emitResult = originalCompilation.Emit(stream);
+stream.Position = 0;
+
+var originalMetadata = AssemblyMetadata.CreateFromStream(stream);
+var baseline = EmitBaseline.CreateInitialBaseline(originalMetadata.GetModules()[0], handle => default(EditAndContinueMethodDebugInformation));
+
+MemoryStream mdStream = new MemoryStream(), ilStream = new MemoryStream(), pdbStream = new MemoryStream();
+var updatedMethods = new List&lt;MethodDefinitionHandle&gt;();
+
+var edits = new[] {
+    new SemanticEdit(SemanticEditKind.Update,
+        originalCompilation.GlobalNamespace.GetMembers("Program").First().GetMembers("Main").First(),
+        changedCompilation.GlobalNamespace.GetMembers("Program").First().GetMembers("Main").First())
+};
     
-<div style="clear:both;"><p class="footnote">Not exhaustive information. More: <a href="https://docs.microsoft.com/en-us/visualstudio/debugger/supported-code-changes-csharp">https://docs.microsoft.com/en-us/visualstudio/debugger/supported-code-changes-csharp</a></p></div>
-    
-    </div>
-</section>
+var emitDifferenceResult = changedCompilation.EmitDifference(baseline, edits, mdStream, ilStream, pdbStream, updatedMethods);
+// ilStream and mdStream can be now applied to the CLR
+    </code>
+</pre>
+
+                        <p class="fragment" data-code-focus="4"></p>
+                        <p class="fragment" data-code-focus="8"></p>
+                        <p class="fragment" data-code-focus="13-17"></p>
+                        <p class="fragment" data-code-focus="19-20"></p>
+                </section>
+
+                                <section data-background="images/alexey-ruban-103990.jpg">
+
+                    <h3 class="overlay-style">IL produced by EmitDifference</h2>
+
+                        <pre>
+    <code class="cs">
+  // Code size        7 (0x7)
+  .maxstack  8
+  IL_0000:  ldc.i4.2
+  IL_0001:  call       0x0A000006
+  IL_0006:  ret
+    </code>
+</pre>
+
+                </section>
 
             </section>
 
@@ -420,15 +517,108 @@ C:\app>dotnet watch script foo.csx
 
                 <section data-background="images/dan-gold-297904.jpg">
                     <div class="overlay-style">
-<blockquote>A <span class="highlight">Read–Eval–Print Loop</span> (REPL), also known as an interactive toplevel or language shell, is a simple, <span class="highlight">interactive computer programming environment</span> that takes single user inputs (i.e. single expressions), evaluates them, and returns the result to the user; a program written in a REPL environment is <span class="highlight">executed piecewise</span>.
-<footer>- <cite><a href="https://en.wikipedia.org/wiki/Read–eval–print_loop">Wikipedia</a></cite></footer></blockquote>
+                        <blockquote>A <span class="highlight">Read–Eval–Print Loop</span> (REPL), also known as an interactive toplevel
+                            or language shell, is a simple, <span class="highlight">interactive computer programming environment</span>                            that takes single user inputs (i.e. single expressions), evaluates them, and returns the result
+                            to the user; a program written in a REPL environment is <span class="highlight">executed piecewise</span>.
+                            <footer>- <cite><a href="https://en.wikipedia.org/wiki/Read–eval–print_loop">Wikipedia</a></cite></footer>
+                        </blockquote>
                     </div>
+                </section>
+
+                <section data-background="images/alexey-ruban-103990.jpg">
+                    <div class="overlay-style" style="padding:3% !important;">
+                        <h2>C# REPLs</h2>
+                    </div>
+                    <div class="left overlay-style">
+                        <div style="padding: 3%">
+                            <ul>
+                                <li class="fragment">CSI (C# Interactive)<br/>
+                                    <small>Official Roslyn script runner and REPL</small></li>
+
+                                <li class="fragment">scriptcs<br/>
+                                    <small>Rich and extensible command infrastructure</small></li>
+
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="right overlay-style" style="padding: 0">
+                        <div style="padding: 3%">
+                            <ul>
+                                <li class="fragment">Mono<br/>
+                                    <small>Used to work x-plat before Roslyn</small></li>
+
+                                <li class="fragment">Online C# REPL<br/>
+                                    <small>csharppad.com</small></li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-background="images/dan-gold-297904.jpg">
+                    <p class="overlay-style">
+                        CSI is bundled with <span class="highlight">MSBuild Tools</span>. It is <span class="highlight">Desktop CLR</span> only but works <span class="highlight">x-plat</span>via Mono.
+                    </p>
+                </section>
+
+                <section data-background="images/dan-gold-297904.jpg">
+                        <pre>
+    <code class="cs">
+~/Documents$ csi
+Microsoft (R) Visual C# Interactive Compiler version 42.42.42.42424
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Type "#help" for more information.
+> #r "System.Net.Http"
+> using System.Net.Http;
+> var client = new HttpClient();
+> var txt = await client.GetStringAsync("https://gist.githubusercontent.com/filipw/7c22467439759c5f56cb2154717cdbe8/raw/93a4d2aa8034426c4ebcd20c67ac73daa11761dc/hello.txt");
+"Hello from a gist"
+> 
+    </code>
+</pre>
+                </section>
+
+                <section data-background="images/dan-gold-297904.jpg">
+
+                    <h2 class="overlay-style">CSI REPL Features</h2>
+
+                    <table class="overlay-style">
+                        <tbody>
+                            <tr>
+                                <td><em>csi /u {...} /r {...}</em></td>
+                                <td>Seed the REPL with namespaces and references</td>
+                            </tr>
+                            <tr>
+                                <td><em>csi script.csx /i</em></td>
+                                <td>Run a script and drop into REPL</td>
+                            </tr>
+                            <tr>
+                                <td><em>#r "{assemblyPath}"</em></td>
+                                <td>Add an assembly reference</td>
+                            </tr>
+                            <tr>
+                                <td><em>#load "{scriptPath}"</em></td>
+                                <td>Load a CSX script into REPL</td>
+                            </tr>
+                            <tr>
+                                <td><em>Enter</em></td>
+                                <td>Evaluate command or drop into a new line</td>
+                            </tr>
+                            <tr>
+                                <td><em>Ctrl+C</em></td>
+                                <td>Exit</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
                 </section>
 
                 <section data-background="images/dan-gold-297904.jpg">
                     <h3 class="overlay-style">Building a REPL with Roslyn</h2>
 
-<pre>
+                        <pre>
     <code class="cs">
 ScriptState&lt;object&gt; scriptState = null;
 while (true)
@@ -436,29 +626,31 @@ while (true)
     Console.Write("> ");
     var input = Console.ReadLine();
     scriptState = scriptState == null ?
-        await CSharpScript.RunAsync(input, ScriptOptions.Default.AddImports("System")) :
+        await CSharpScript.RunAsync(input) :
         await scriptState.ContinueWithAsync(input);
 }
     </code>
 </pre>
 
-<p class="fragment" data-code-focus="8"></p>
-<p class="fragment" data-code-focus="9"></p>
+                        <p class="fragment" data-code-focus="8"></p>
+                        <p class="fragment" data-code-focus="9"></p>
 
                 </section>
-
-                <section data-background="images/debugging-pr.png" data-state="bg-auto-height" data-background-transition="slide">
-                </section>
-
             </section>
 
             <section>
 
                 <section data-background="images/markus-spiske-135763.jpg">
 
-                    <h1>C# Interactive</h1>
+                    <h1>C# Interactive Window</h1>
 
                 </section>
+
+                <section data-background="images/markus-spiske-135763.jpg">
+                    <p class="overlay-style">
+                        C# Interactive Window is <span class="highlight">sharing</span> most of the code with CSI (the command line REPL)
+                    </p>
+                </section> 
 
             </section>
 
@@ -482,7 +674,7 @@ while (true)
 
             </section>
 
-             <section>
+            <section>
 
                 <section data-background="images/jeff-sheldon-3230.jpg">
 
