@@ -1,0 +1,546 @@
+﻿<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Interactive C# Development</title>
+    <meta name="description" content="">
+    <meta name="author" content="Filip W">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <script src="//code.jquery.com/jquery-1.8.0.js"></script>
+    <script src="//code.jquery.com/ui/1.8.23/jquery-ui.js"></script>
+    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/css/bootstrap-combined.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/default.min.css">
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/simple.css" id="theme">
+    <link type="text/css" rel="stylesheet" href="css/custom.css" />
+    <script src="fsharp.formatting/styles/tips.js" type="text/javascript"></script>
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+    <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+
+    <script>
+        if (window.location.search.match(/print-pdf/gi)) {
+            var link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = 'css/print/pdf.css';
+            document.getElementsByTagName('head')[0].appendChild(link);
+        }
+    </script>
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+    <style type="text/css">
+        .reveal .slides section .fragment.current-only {
+            opacity: 1;
+            visibility: visible;
+            display: none;
+        }
+
+        .reveal .slides section .fragment.current-only.current-fragment {
+            display: block;
+        }
+        /* Solarized Light theme */
+
+        .line {
+            display: block;
+            padding: 1px 10px !important;
+        }
+
+        .line.focus {
+            background: #fff;
+            color: #657b83;
+        }
+
+        .line.focus .hljs-comment,
+        .line.focus .hljs-quote {
+            color: #93a1a1;
+        }
+
+        .line.focus .hljs-keyword,
+        .line.focus .hljs-selector-tag,
+        .line.focus .hljs-addition {
+            color: #859900;
+        }
+
+        .line.focus .hljs-number,
+        .line.focus .hljs-string,
+        .line.focus .hljs-meta .hljs-meta-string,
+        .line.focus .hljs-literal,
+        .line.focus .hljs-doctag,
+        .line.focus .hljs-regexp {
+            color: #2aa198;
+        }
+
+        .line.focus .hljs-title,
+        .line.focus .hljs-section,
+        .line.focus .hljs-name,
+        .line.focus .hljs-selector-id,
+        .line.focus .hljs-selector-class {
+            color: #268bd2;
+        }
+
+        .line.focus .hljs-attribute,
+        .line.focus .hljs-attr,
+        .line.focus .hljs-variable,
+        .line.focus .hljs-template-variable,
+        .line.focus .hljs-class .hljs-title,
+        .line.focus .hljs-type {
+            color: #b58900;
+        }
+
+        .line.focus .hljs-symbol,
+        .line.focus .hljs-bullet,
+        .line.focus .hljs-subst,
+        .line.focus .hljs-meta,
+        .line.focus .hljs-meta .hljs-keyword,
+        .line.focus .hljs-selector-attr,
+        .line.focus .hljs-selector-pseudo,
+        .line.focus .hljs-link {
+            color: #cb4b16;
+        }
+
+        .line.focus .hljs-built_in,
+        .line.focus .hljs-deletion {
+            color: #dc322f;
+        }
+
+        .line.focus .hljs-formula {
+            background: #eee8d5;
+        }
+
+        .line.focus .hljs-emphasis {
+            font-style: italic;
+        }
+
+        .line.focus .hljs-strong {
+            font-weight: bold;
+        }
+
+        .yellow-slide .line.focus:nth-child(2) {
+            background: yellow;
+        }
+
+        .fragment.current-visible.visible:not(.current-fragment) {
+            display: none;
+            height: 0px;
+            line-height: 0px;
+            font-size: 0px;
+        }
+
+        h1,
+        .overlay-style {
+            background: rgba(0, 0, 0, 0.75);
+            color: #fff !important;
+            padding: 5% !important;
+        }
+
+        h2.overlay-style,
+        h3.overlay-style {
+            padding: 2% !important;
+        }
+
+        .left {
+            left: -8.33%;
+            text-align: left;
+            float: left;
+            width: 50%;
+            z-index: -10;
+            padding: 0 !important;
+        }
+
+        .right {
+            left: 31.25%;
+            top: 75px;
+            float: right;
+            text-align: left;
+            z-index: -10;
+            width: 50%;
+            padding: 0 !important;
+        }
+
+        .reveal pre.small {
+            font-size: 0.45em;
+        }
+
+        .reveal pre.very-small {
+            font-size: 0.35em;
+        }
+
+        html.bg-auto-height div.slide-background.present {
+            background-size: auto 100%;
+        }
+
+        html.bg-auto-width div.slide-background.present {
+            background-size: 100% auto;
+        }
+
+        span.highlight {
+            background: #de4747;
+            display: inline-block;
+            padding: 0 5px;
+        }
+
+        .overlay-style h2,
+        .overlay-style h3,
+        .overlay-style a {
+            color: #fff !important;
+        }
+
+        .reveal table td {
+            text-align: center;
+        }
+
+        .reveal section img.icon {
+            margin: 0;
+            border: 0;
+            min-height: auto;
+            max-height: auto;
+        }
+
+        .reveal pre code {
+            background: #000;
+            max-height: none;
+            padding: 1% 2%;
+        }
+
+        .reveal pre {
+            background: none;
+            box-shadow: none;
+            font-size: 0.65em;
+        }
+
+        blockquote:before {
+            display: block;
+            height: 0;
+            content: "“";
+            margin-left: -.6em;
+            font: italic 400%/1 Cochin,Georgia,"Times New Roman", serif;
+            color: #999;
+            text-align: left;
+        }
+
+        .reveal blockquote {background: none; text-align: left;}
+        .reveal p.footnote {line-height: 1; margin: 0; font-size: 0.5em;}
+    </style>
+</head>
+
+<body>
+    <div class="reveal">
+        <header style="position: absolute;top: 50px; left: 100px; z-index:500; font-size:100px;background-color: rgba(0,0,0,0.5)"></header>
+        <!-- Any section element inside of this container is displayed as a slide -->
+        <div class="slides">
+
+            <section data-background="images/jeff-sheldon-3220.jpg">
+
+                <h1>Interactive C# Development</h1>
+
+            </section>
+
+            <section data-background="images/IMG_20161025_115652.jpg">
+
+                <div class="overlay-style">
+                    <h2>Filip W</h2>
+                    <p>not PM. not architect. not developer advocate.</p>
+
+                    <p>
+                        <small>
+<a href="https://strathweb.com" class="roll"><span>strathweb.com</span></a> • 
+<a href="https://twitter.com/filip_woj" class="roll"><span data-title="@filip_woj">@filip_woj</span></a> • 
+<a href="https://github.com/filipw" class="roll"><span data-title="github.com/filipw">github.com/filipw</span></a>
+</small></p>
+                    <img class="normal" src="images/mvp.png" />
+                </div>
+
+            </section>
+                <section data-background="images/IMG_20161108_131400.jpg">
+
+                </section>
+            <section>
+
+                <section data-background="images/blake-wisz-85030.jpg">
+
+                    <h1>dotnet watch</h1>
+
+                </section>
+
+                <section data-background="images/blake-wisz-85030.jpg">
+                    <p class="overlay-style">
+                    <span class="highlight">dotnet watch</span> is a dotnet CLI tool that runs a specific dotnet CLI command, with a specified set of parameters, as soon as any <span class="highlight">source file changes</span> in the project.
+                    </p>
+                </section>
+
+                <section data-background="images/blake-wisz-85030.jpg">
+                    <pre>
+    <code class="sh">
+C:\app>dotnet watch run
+
+C:\app>dotnet watch run -f net462
+
+C:\app>dotnet watch test
+
+C:\app>dotnet watch script foo.csx
+    </code>
+</pre>
+
+                    <p class="fragment" data-code-focus="2"></p>
+                    <p class="fragment" data-code-focus="4"></p>
+                    <p class="fragment" data-code-focus="6"></p>
+                    <p class="fragment" data-code-focus="8"></p>
+
+                </section>
+
+                    <section data-background="images/blake-wisz-85030.jpg">
+                    <h3 class="overlay-style">Excluding items from watch</h2>                        
+                    <pre>
+    <code class="sh">
+&lt;ItemGroup&gt;
+  &lt;ProjectReference Include="..\DataAccessLibrary\DataAccessLibrary.csproj" Watch="false" /&gt;
+&lt;/ItemGroup&gt;
+
+&lt;ItemGroup&gt;
+  &lt;Watch Include="**\*.csx" Exclude="Codegen\**\*.cs;$(DefaultExcludes)" /&gt;
+&lt;/ItemGroup&gt;
+
+&lt;ItemGroup&gt;
+  &lt;EmbeddedResource Update="Translations.resx" Watch="false" /&gt;
+&lt;/ItemGroup&gt;
+    </code>
+</pre>
+                    <p class="fragment" data-code-focus="2-4"></p>
+                    <p class="fragment" data-code-focus="6-8"></p>
+                    <p class="fragment" data-code-focus="10-12"></p>
+                </section>
+
+                    <section data-background="images/blake-wisz-85030.jpg">
+                    <p class="overlay-style">
+                        Any executable on the PATH that follows the <span class="highlight">dotnet-{name}</span> format can be used with dotnet CLI. It can then be used with watch: <span class="highlight">dotnet watch name</span>. 
+                    </p>
+                </section>
+
+            </section>
+
+            <section>
+
+                <section data-background="images/alexey-ruban-103990.jpg">
+
+                    <h1>Edit and Continue</h1>
+
+                </section>
+
+                <section data-background="images/alexey-ruban-103990.jpg">
+                    <p class="overlay-style">
+                    <span class="highlight">Edit-and-Continue</span> was already present in "Visual Studio .NET 2003", but only for C/C++ code. Since Visual Studio 2005 you can <span class="highlight">make changes to code in break mode</span> while debugging. <br/><br/>They are applied to the CLR directly without a need to restart the debugging session.
+                    </p>
+                </section>
+
+                <section data-background="images/alexey-ruban-103990.jpg">
+                    <img src="images/enc-announce.png"/>
+                </section>
+
+                <section data-background="images/alexey-ruban-103990.jpg">
+                    <div class="overlay-style">
+                        <blockquote>Program logic should not be tested in the debugger. You are wasting your time and your company's time if you do so.
+
+<footer>- <cite>Sam Gentile, <a href="https://web.archive.org/web/20060221144806/http://samgentile.com/blog/archive/2004/10/19/12240.aspx">2004</a></cite></footer></blockquote>
+                        <blockquote>Edit and continue is a bug-introducing machine. Why? Because you get to focusing on that one bug and twiddle the code to fix that one bug and introduce six more.
+
+<footer>- <cite>John Robbins, <a href="https://web.archive.org/web/20060219194112/http://wintellect.com:80/WEBLOGS/wintellect/archive/2004/10/17/546.aspx">2004</a></cite></footer></blockquote>
+
+                    </div>
+                </section>
+
+                <section data-background="images/alexey-ruban-103990.jpg">
+                    <p class="overlay-style">
+                    The upcoming Visual Studio 2017 Version <span class="highlight">15.3</span> introduces Edit-and-Continue for <span class="highlight">C# 7</span> features.
+                    </p>
+                </section>
+
+                <section data-background="images/alexey-ruban-103990.jpg">
+                    <div class="overlay-style" style="padding: 3% !important;">
+  <div class="left">
+      <div style="padding: 3%">
+          <h3>🦄 Allowed changes</h3>
+        <ul>
+            <li>Within Method/Property Bodies<br/>
+                <small>most changes</small>
+                </li>
+            <li>Within Types<br/>
+                <small>add methods, fields, constructors, nested types</small>
+                </li>
+            <li>Lambda expressions<br/>
+                <small>add/edit delegates, LINQ expressions (with limitations)</small>
+            </li>
+            <li>Async/await expressions & Iterators<br/>
+                <small>add/edit (with limitations)</small>
+            </li>
+        </ul>
+      </div>
+  </div>
+
+  <div class="right">
+      <div style="padding: 3%">
+          <h3>💩 Prohibited changes</h3>
+        <ul>
+            <li>Add<br/>
+                <small>abstract/virtual/override member or type, using statements, imports, generics</small>
+            </li>
+            <li>Edit<br/>
+                <small>method signatures, interfaces, generics, enums</small>
+            </li>
+            <li>Remove<br/>
+                <small>members, types, namespaces, bodies</small>
+            </li>
+            <li>Rename<br/>
+                <small>anything</small>
+            </li>
+        </ul>
+      </div>
+  </div>
+    
+<div style="clear:both;"><p class="footnote">Not exhaustive information. More: <a href="https://docs.microsoft.com/en-us/visualstudio/debugger/supported-code-changes-csharp">https://docs.microsoft.com/en-us/visualstudio/debugger/supported-code-changes-csharp</a></p></div>
+    
+    </div>
+</section>
+
+            </section>
+
+            <section>
+
+                <section data-background="images/dan-gold-297904.jpg">
+
+                    <h1>C# REPL</h1>
+
+                </section>
+
+                <section data-background="images/dan-gold-297904.jpg">
+                    <div class="overlay-style">
+<blockquote>A <span class="highlight">Read–Eval–Print Loop</span> (REPL), also known as an interactive toplevel or language shell, is a simple, <span class="highlight">interactive computer programming environment</span> that takes single user inputs (i.e. single expressions), evaluates them, and returns the result to the user; a program written in a REPL environment is <span class="highlight">executed piecewise</span>.
+<footer>- <cite><a href="https://en.wikipedia.org/wiki/Read–eval–print_loop">Wikipedia</a></cite></footer></blockquote>
+                    </div>
+                </section>
+
+                <section data-background="images/dan-gold-297904.jpg">
+                    <h3 class="overlay-style">Building a REPL with Roslyn</h2>
+
+<pre>
+    <code class="cs">
+ScriptState&lt;object&gt; scriptState = null;
+while (true)
+{
+    Console.Write("> ");
+    var input = Console.ReadLine();
+    scriptState = scriptState == null ?
+        await CSharpScript.RunAsync(input, ScriptOptions.Default.AddImports("System")) :
+        await scriptState.ContinueWithAsync(input);
+}
+    </code>
+</pre>
+
+<p class="fragment" data-code-focus="8"></p>
+<p class="fragment" data-code-focus="9"></p>
+
+                </section>
+
+                <section data-background="images/debugging-pr.png" data-state="bg-auto-height" data-background-transition="slide">
+                </section>
+
+            </section>
+
+            <section>
+
+                <section data-background="images/markus-spiske-135763.jpg">
+
+                    <h1>C# Interactive</h1>
+
+                </section>
+
+            </section>
+
+            <section>
+
+                <section data-background="images/tamarcus-brown-131428.jpg">
+
+                    <h1>Xamarin Workbooks</h1>
+
+                </section>
+
+            </section>
+
+            <section>
+
+                <section data-background="images/chuttersnap-233105.jpg">
+
+                    <h1>Live Unit Testing</h1>
+
+                </section>
+
+            </section>
+
+             <section>
+
+                <section data-background="images/jeff-sheldon-3230.jpg">
+
+                    <h1>Live Code Analyzers</h1>
+
+                </section>
+
+            </section>
+
+            <section>
+                <section data-background="images/all.jpg" author="Filip W" description="" theme="simple" title="C# Scripting in the .NET Core world"
+                    transition="default">
+                </section>
+
+                <section author="Filip W" description="" theme="simple" title="C# Scripting in the .NET Core world" transition="default">
+
+                    <p><img src="images/bye.gif" alt="" /></p>
+
+                </section>
+
+            </section>
+        </div>
+    </div>
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+    <script>
+        // Full list of configuration options available here:
+        // https://github.com/hakimel/reveal.js#configuration
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            history: true,
+            center: true,
+
+            transition: 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+            // Parallax scrolling
+            // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+            // parallaxBackgroundSize: '2100px 900px',
+
+            // Optional libraries used to extend on reveal.js
+            dependencies: [
+                { src: 'lib/js/classList.js', condition: function () { return !document.body.classList; } },
+                { src: 'plugin/markdown/marked.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+                { src: 'plugin/markdown/markdown.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+                { src: 'plugin/highlight.js/highlight.pack.js', async: true, callback: function () { /*hljs.initHighlightingOnLoad();*/ } },
+                { src: 'plugin/zoom-js/zoom.js', async: true, condition: function () { return !!document.body.classList; } },
+                { src: 'plugin/notes/notes.js', async: true, condition: function () { return !!document.body.classList; } },
+                {
+                    src: 'plugin/reveal-code-focus.js',
+                    async: true,
+                    callback: function () {
+                        RevealCodeFocus();
+                    }
+                }
+            ]
+        });
+    </script>
+</body>
+
+</html>
