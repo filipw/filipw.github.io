@@ -847,7 +847,8 @@ true
 
                 <section data-background="images/chuttersnap-233105.jpg">
                     <p class="overlay-style">
-                        Xamarin Workbooks provide a fantastic mix of a <span class="highlight">C# REPL</span> and <span class="highlight">documentation</span>. Workbook files are stored as <span class="highlight">Markdown</span> files.
+                        Xamarin Workbooks provide a fantastic mix of a <span class="highlight">C# REPL</span> and <span class="highlight">documentation</span>.
+                        Workbook files are stored as <span class="highlight">Markdown</span> files.
                     </p>
                 </section>
                 <section data-background="images/chuttersnap-233105.jpg">
@@ -893,7 +894,7 @@ else
 
                 <section data-background="images/workbooks-main.png" data-state="bg-auto-height">
                 </section>
-                
+
                 <section data-background="images/chuttersnap-233105.jpg">
 
                     <div class="overlay-style" style="padding:3% !important;">
@@ -926,7 +927,8 @@ else
 
                 <section data-background="images/chuttersnap-233105.jpg">
                     <p class="overlay-style">
-                        Internally, Xamarin Workbooks uses <span class="highlight">Roslyn submissions</span> to provide its REPL-like features.
+                        Internally, Xamarin Workbooks uses <span class="highlight">Roslyn submissions</span> to provide its
+                        REPL-like features.
                     </p>
                 </section>
             </section>
@@ -940,7 +942,128 @@ else
                 </section>
 
                 <section data-background="images/chuttersnap-233105.jpg">
-                    <img src="images/liveunittesting-warn.png" />
+                    <p class="overlay-style">
+                        Live Unit Testing was introduced in Visual Studio 2017. At the moment it is available only for
+                        <span
+                            class="highlight">Visual Studio Enterprise</span>.
+                    </p>
+                </section>
+
+                <section data-background="images/chuttersnap-233105.jpg">
+
+                    <h2 class="overlay-style">Minimum Framework Versions</h2>
+
+                    <table class="overlay-style">
+                        <thead>
+                            <tr>
+                                <th>Framework</th>
+                                <th>Version</th>
+                                <th>Test Adapter</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>xUnit</td>
+                                <td>2.0.0+</td>
+                                <td>xunit.runner.visualstudio 2.2.0+</td>
+                            </tr>
+                            <tr>
+                                <td>NUnit</td>
+                                <td>3.5.0+</td>
+                                <td>NUnit3TestAdapter 3.5.1+</td>
+                            </tr>
+                            <tr>
+                                <td>MSTest</td>
+                                <td>1.1.11+</td>
+                                <td>MSTest.TestAdapter 1.1.11+</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </section>
+
+                <section data-background="images/chuttersnap-233105.jpg">
+                    <h3 class="overlay-style">Starting Live Unit Testing globally</h3>
+                    <img src="images/liveunittests-1.png" />
+                </section>
+
+                                <section data-background="images/chuttersnap-233105.jpg">
+                    <h3 class="overlay-style">Starting Live Unit Testing per project</h3>
+                                    
+                    <img class="normal" src="images/liveunittests-2.png" />
+                </section>
+
+                <section data-background="images/chuttersnap-233105.jpg">
+
+                    <h3 class="overlay-style">Unsupported Framework</h3>
+                    <pre>
+    <code class="markdown">
+[20:01:31.934 Error] Outdated package 'xunit'. Installed version: '1.9.2'. 
+Minimum supported version: '2.0.0'. Please update the package.
+
+[20:01:31.949 Error] No test adapters are referenced by this solution. 
+If you have a test project, add a NuGet reference to a test adapter corresponding to the test framework used in order to run the tests. 
+If you already have the required NuGet reference in your test project, performing a NuGet restore may resolve the issue.
+
+[20:01:31.949 Info] Start failed.
+[20:01:31.965 Info] Live Unit Testing stopped.
+    </code>
+</pre>
+                </section>
+
+                <section data-background="images/chuttersnap-233105.jpg">
+
+                    <h3 class="overlay-style">UNC Path</h3>
+                    <pre class="small">
+    <code class="markdown">
+[22:29:08.780 Info] Live Unit Testing started.
+[22:29:17.843 Info] Build completed (succeeded).
+[22:29:18.890 Error] - FatalError - System.AggregateException: One or more errors occurred. ---> System.IO.DirectoryNotFoundException: Could not find a part of the path '\\Mac\Home\Documents\dev\scriptcs\.vs\ScriptCs\16636\t\test\ScriptCs.Core.Tests\bin\Debug\ScriptCs.Core.Tests.dll'.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share)
+   at Microsoft.CodeAnalysis.LiveUnitTesting.Aggregation.FileSpanCache.ReadAssembly(String assemblyFullPath, AssemblyIdentifier assembly)
+   at Microsoft.CodeAnalysis.LiveUnitTesting.Aggregation.CoverageDataManager.PopulateSpanInformation(String buildOutputRootPath, AssemblyIdentifier assembly)
+   at Microsoft.CodeAnalysis.LiveUnitTesting.Aggregator.<>c__DisplayClass26_0.&lt;UpdateSpanInformation&gt;b__1(AssemblyIdentifier assembly)
+   at System.Threading.Tasks.Parallel.<>c__DisplayClass31_0`2.&lt;ForEachWorker&gt;b__0(Int32 i)
+   at System.Threading.Tasks.Parallel.<>c__DisplayClass17_0`1.&lt;ForWorker&gt;b__1()
+   at System.Threading.Tasks.Task.InnerInvokeWithArg(Task childTask)
+   at System.Threading.Tasks.Task.<>c__DisplayClass176_0.&lt;ExecuteSelfReplicating&gt;b__0(Object )
+    </code>
+</pre>
+                </section>
+
+                <section data-background="images/chuttersnap-233105.jpg">
+                    <h3 class="overlay-style">Large Solution</h3>
+                    <img class="normal" src="images/liveunittesting-warn.png" />
+                </section>
+
+                                <section data-background="images/chuttersnap-233105.jpg">
+                    <h3 class="overlay-style">Everything OK</h3>
+                    <img class="normal" src="images/liveunittests-before.png" />
+                </section>
+
+                                <section data-background="images/chuttersnap-233105.jpg">
+                    <h3 class="overlay-style">As soon as Filip addded some logic</h3>
+                    <img class="normal" src="images/liveunittests-after.png" />
+                </section>
+
+                <section data-background="images/chuttersnap-233105.jpg">
+
+                    <h3 class="overlay-style">Random Errors</h3>
+                    <pre>
+    <code class="markdown">
+[22:12:46.665 Info] Live Unit Testing started.
+[22:12:53.060 Info] Build completed (succeeded).
+[22:13:10.551 Info] Build completed (succeeded).
+
+[22:13:12.820 Error] Live Unit Testing has been turned off because 'Microsoft.CodeAnalysis.LiveUnitTesting.EntryPoint.exe' process has exited unexpectedly. 
+Try turning it back on again via the 'Test -> Live Unit Testing -> Start' menu.
+
+[22:13:12.820 Info] Live Unit Testing stopped.
+
+    </code>
+</pre>
                 </section>
 
                 <section data-background="images/chuttersnap-233105.jpg">
@@ -949,6 +1072,8 @@ else
                         Testing for <span class="highlight">.NET Core</span> projects.
                     </p>
                 </section>
+
+
 
             </section>
 
@@ -1054,9 +1179,9 @@ else
                         </tbody>
                     </table>
 
-                        <div class="overlay-style" style="padding:1% !important;">
-                            <p class="footnote">Source: <a href="https://github.com/dotnet/roslyn-analyzers">https://github.com/dotnet/roslyn-analyzers</a></p>
-                        </div>
+                    <div class="overlay-style" style="padding:1% !important;">
+                        <p class="footnote">Source: <a href="https://github.com/dotnet/roslyn-analyzers">https://github.com/dotnet/roslyn-analyzers</a></p>
+                    </div>
 
                 </section>
 
@@ -1119,7 +1244,9 @@ public class RemoveRegionAnalyzer : DiagnosticAnalyzer
 
                 <section data-background="images/jeff-sheldon-3230.jpg">
                     <p class="overlay-style">
-                        Analyzers & refactorings reference Roslyn DLLs from <span class="highlight">Visual Studio</span>. Building an analyzer against Roslyn 1.0.0, allows it to run in Visual Studio 2015. Targetting newer Roslyn, <span class="highlight">restricts</span> it to newer VS version only.
+                        Analyzers & refactorings reference Roslyn DLLs from <span class="highlight">Visual Studio</span>.
+                        Building an analyzer against Roslyn 1.0.0, allows it to run in Visual Studio 2015. Targetting newer
+                        Roslyn, <span class="highlight">restricts</span> it to newer VS version only.
                     </p>
                 </section>
             </section>
