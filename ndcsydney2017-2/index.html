@@ -459,7 +459,7 @@ class Program
 
                 <section data-background="images/alexey-ruban-103990.jpg">
 
-                        <pre class="small">
+                    <pre class="small">
     <code class="cs">
 // we have CSharpCompilations: originalCompilation & changedCompilation
 var stream = new MemoryStream();
@@ -483,13 +483,13 @@ var emitDifferenceResult = changedCompilation.EmitDifference(baseline, edits, md
     </code>
 </pre>
 
-                        <p class="fragment" data-code-focus="4"></p>
-                        <p class="fragment" data-code-focus="8"></p>
-                        <p class="fragment" data-code-focus="13-17"></p>
-                        <p class="fragment" data-code-focus="19-20"></p>
+                    <p class="fragment" data-code-focus="4"></p>
+                    <p class="fragment" data-code-focus="8"></p>
+                    <p class="fragment" data-code-focus="13-17"></p>
+                    <p class="fragment" data-code-focus="19-20"></p>
                 </section>
 
-                                <section data-background="images/alexey-ruban-103990.jpg">
+                <section data-background="images/alexey-ruban-103990.jpg">
 
                     <h3 class="overlay-style">IL produced by EmitDifference</h2>
 
@@ -558,12 +558,12 @@ var emitDifferenceResult = changedCompilation.EmitDifference(baseline, edits, md
 
                 <section data-background="images/dan-gold-297904.jpg">
                     <p class="overlay-style">
-                        CSI is bundled with <span class="highlight">MSBuild Tools</span>. It is <span class="highlight">Desktop CLR</span> only but works <span class="highlight">x-plat</span>via Mono.
+                        CSI is bundled with <span class="highlight">MSBuild Tools</span>. It is <span class="highlight">Desktop CLR</span>                        only but works <span class="highlight">x-plat</span>via Mono.
                     </p>
                 </section>
 
                 <section data-background="images/dan-gold-297904.jpg">
-                        <pre>
+                    <pre>
     <code class="cs">
 ~/Documents$ csi
 Microsoft (R) Visual C# Interactive Compiler version 42.42.42.42424
@@ -582,7 +582,7 @@ Type "#help" for more information.
 
                 <section data-background="images/dan-gold-297904.jpg">
 
-                    <h2 class="overlay-style">CSI REPL Features</h2>
+                    <h3 class="overlay-style">CSI REPL Features</h3>
 
                     <table class="overlay-style">
                         <tbody>
@@ -616,6 +616,37 @@ Type "#help" for more information.
                 </section>
 
                 <section data-background="images/dan-gold-297904.jpg">
+
+                    <h3 class="overlay-style">Creating a Roslyn compilation</h3>
+                    <pre class="small">
+    <code class="cs">
+public enum SourceCodeKind {
+    Regular,
+    Script
+}
+
+public sealed class CSharpCompilation : Compilation
+{
+    public static CSharpCompilation Create(string assemblyName, 
+            IEnumerable&lt;SyntaxTree&gt; syntaxTrees = null, 
+            IEnumerable&lt;MetadataReference&gt; references = null, 
+            CSharpCompilationOptions options = null);
+
+    public static CSharpCompilation CreateScriptCompilation(string assemblyName, 
+            SyntaxTree syntaxTree = null, 
+            IEnumerable&lt;MetadataReference&gt; references = null, 
+            CSharpCompilationOptions options = null, 
+            CSharpCompilation previousScriptCompilation = null, 
+            Type returnType = null, 
+            Type globalsType = null);
+}
+        </code>
+</pre>
+                    <p class="fragment" data-code-focus="18-20"></p>
+
+                </section>
+
+                <section data-background="images/dan-gold-297904.jpg">
                     <h3 class="overlay-style">Building a REPL with Roslyn</h2>
 
                         <pre>
@@ -636,6 +667,74 @@ while (true)
                         <p class="fragment" data-code-focus="9"></p>
 
                 </section>
+
+                <section data-background="images/dan-gold-297904.jpg">
+
+                    <h2 class="overlay-style">Surprises</h2>
+                    <pre>
+    <code class="cs">
+// REPL global variables are compiled into fields
+var numbers = new[] { 1, 2, 3, 4 };
+
+// this is legal in a C# REPL
+// in "regular" C# such shadowing produces CS0136
+var x = numbers.Where(x => x % 2 == 0);
+    </code>
+</pre>
+                </section>
+
+                <section data-background="images/dan-gold-297904.jpg">
+
+                    <h2 class="overlay-style">Surprises</h2>
+                    <pre>
+    <code class="cs">
+// each submission gets it's own async execution context
+// as a result, AsyncLocal doesn't work
+
+> using System.Threading;
+> var msg = new AsyncLocal<string>();
+> msg.Value = "hello";
+> msg.Value
+null
+    </code>
+</pre>
+                </section>
+
+                <section data-background="images/dan-gold-297904.jpg">
+
+                    <h2 class="overlay-style">Surprises</h2>
+                    <pre>
+    <code class="cs">
+// submission code is always wrapped into a wrapper type
+> class Foo { }
+> typeof(Foo).IsNested
+true
+    </code>
+</pre>
+                </section>
+                <section data-background="images/dan-gold-297904.jpg">
+
+                    <h2 class="overlay-style">Surprises</h2>
+                    <pre class="small">
+    <code class="cs">
+// regular extension methods are not allowed
+> var dateString = "2013-1-25";
+> static class Ext { 
+    public static bool IsDate(this string val) { 
+        return DateTime.TryParse(val, out var dt); 
+    } 
+}
+"(1,39): error CS1109: Extension methods must be defined in a top level static class; Ext is a nested class"
+
+// on the other hand, loose extension methods are allowed
+> public static bool IsDate(this string val) { 
+        return DateTime.TryParse(val, out var dt); 
+    } 
+> dateString.IsDate();
+true
+    </code>
+</pre>
+                </section>
             </section>
 
             <section>
@@ -648,13 +747,14 @@ while (true)
 
                 <section data-background="images/markus-spiske-135763.jpg">
                     <p class="overlay-style">
-                        C# Interactive Window is <span class="highlight">built into</span> Visual Studio. It <span class="highlight">shares</span> most of the code with CSI (the command line REPL).
+                        C# Interactive Window is <span class="highlight">built into</span> Visual Studio. It can be found
+                        under <span class="highlight">View > Other Windows</span> menu.
                     </p>
-                </section> 
+                </section>
 
                 <section data-background="images/markus-spiske-135763.jpg">
                     <div class="overlay-style" style="padding:3% !important;">
-                        <h2>Main C# Interactive Features</h2>
+                        <h2>Main C# Interactive Window Features</h2>
                     </div>
                     <div class="left overlay-style">
                         <div style="padding: 3%">
@@ -683,6 +783,58 @@ while (true)
                     </div>
                 </section>
 
+                <section data-background="images/markus-spiske-135763.jpg">
+                    <p class="overlay-style">
+                        C# Interactive Window <span class="highlight">shares</span> most of the code with CSI (the command
+                        line REPL).
+                        <br/><br/> Because of that <span class="highlight">same</span> C# "gotchas" apply.
+                    </p>
+                </section>
+
+                <section data-background="images/markus-spiske-135763.jpg">
+                    <img class="normal" src="images/interactive-window.png" />
+                </section>
+
+                <section data-background="images/markus-spiske-135763.jpg">
+                    <img src="images/interactive-execute.png" />
+                </section>
+
+                <section data-background="images/markus-spiske-135763.jpg">
+                    <img src="images/interactive-initialize.png" />
+                </section>
+
+                <section data-background="images/dan-gold-297904.jpg">
+
+                    <h3 class="overlay-style">C# Interactive Window Features</h3>
+
+                    <table class="overlay-style">
+                        <tbody>
+                            <tr>
+                                <td colspan="2">All of the features of CSI are supported, plus:</td>
+                            </tr>
+                            <tr>
+                                <td><em>#reset</em></td>
+                                <td>Reset the execution environment to the initial state</td>
+                            </tr>
+                            <tr>
+                                <td><em>#cls</em></td>
+                                <td>Clear the execution window</td>
+                            </tr>
+                            <tr>
+                                <td><em>ctrl+alt+arrow / alt+arrow</em></td>
+                                <td>History navigation</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </section>
+
+                <section data-background="images/markus-spiske-135763.jpg">
+                    <p class="overlay-style">
+                        At the moment C# Interactive Window <span class="highlight">does not support</span> .NET Core.
+                    </p>
+                </section>
+
             </section>
 
             <section>
@@ -693,6 +845,90 @@ while (true)
 
                 </section>
 
+                <section data-background="images/chuttersnap-233105.jpg">
+                    <p class="overlay-style">
+                        Xamarin Workbooks provide a fantastic mix of a <span class="highlight">C# REPL</span> and <span class="highlight">documentation</span>. Workbook files are stored as <span class="highlight">Markdown</span> files.
+                    </p>
+                </section>
+                <section data-background="images/chuttersnap-233105.jpg">
+                    <pre class="very-small">
+    <code>
+---
+uti: com.xamarin.workbook
+title: What's New in C# 7 | C# Guide
+platforms:
+- Console
+---
+
+## `out` variables
+
+The existing syntax that supports `out` parameters has been improved in this version.
+
+```csharp
+var input = "8675309";
+
+int numericResult;
+if (int.TryParse(input, out numericResult))
+    Console.WriteLine(numericResult);
+else
+    Console.WriteLine("Could not parse input");
+```
+
+You can now declare `out` variables in the argument list of a method call, rather than writing a separate declaration statement:
+
+```csharp
+if (int.TryParse(input, out int result))
+    Console.WriteLine(result);
+else
+    Console.WriteLine("Could not parse input");
+```
+    </code>
+</pre>
+
+                    <p class="fragment" data-code-focus="2-7"></p>
+                    <p class="fragment" data-code-focus="9-12,22-24"></p>
+                    <p class="fragment" data-code-focus="13-20,25-30"></p>
+                    <p class="fragment" data-code-focus="14,26"></p>
+                </section>
+
+                <section data-background="images/workbooks-main.png" data-state="bg-auto-height">
+                </section>
+                
+                <section data-background="images/chuttersnap-233105.jpg">
+
+                    <div class="overlay-style" style="padding:3% !important;">
+                        <h2>Main Xamarin Workbooks Features</h2>
+                    </div>
+                    <div class="left overlay-style">
+                        <div style="padding: 3%">
+                            <ul>
+                                <li class="fragment">📝 Intellisense & Colorization<br/>
+                                    <small>Completion services powered by Roslyn</small></li>
+
+                                <li class="fragment">🎁 Nuget package integration<br/>
+                                    <small>Reference Nuget packages from within the workbook</small></li>
+
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="right overlay-style" style="padding: 0">
+                        <div style="padding: 3%">
+                            <ul>
+                                <li class="fragment">🌈 Multi-platform and GUI support<br/>
+                                    <small>Console, Android, iOS, Mac, WPF</small></li>
+                                <li class="fragment">📇 Rich Text Editor for Markdown<br/>
+                                    <small>Using the CommonMark spec</small></li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-background="images/chuttersnap-233105.jpg">
+                    <p class="overlay-style">
+                        Internally, Xamarin Workbooks uses <span class="highlight">Roslyn submissions</span> to provide its REPL-like features.
+                    </p>
+                </section>
             </section>
 
             <section>
@@ -701,6 +937,17 @@ while (true)
 
                     <h1>Live Unit Testing</h1>
 
+                </section>
+
+                <section data-background="images/chuttersnap-233105.jpg">
+                    <img src="images/liveunittesting-warn.png" />
+                </section>
+
+                <section data-background="images/chuttersnap-233105.jpg">
+                    <p class="overlay-style">
+                        The upcoming Visual Studio 2017 Version <span class="highlight">15.3</span> introduces Live Unit
+                        Testing for <span class="highlight">.NET Core</span> projects.
+                    </p>
                 </section>
 
             </section>
@@ -713,14 +960,175 @@ while (true)
 
                 </section>
 
+                <section data-background="images/jeff-sheldon-3230.jpg">
+
+                    <h2 class="overlay-style">Roslyn Features API</h2>
+
+                    <table class="overlay-style">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Find issue</th>
+                                <th>Change code</th>
+                                <th>Diagnostic</th>
+                                <th>Distribution</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Analyzer</td>
+                                <td>🕵️</td>
+                                <td></td>
+                                <td>🦄</td>
+                                <td><img class="icon" src="images/nuget.png" /> <img class="icon" src="images/vsix.png" /></td>
+                            </tr>
+                            <tr>
+                                <td>Code fix</td>
+                                <td></td>
+                                <td>🔧</td>
+                                <td>🦄</td>
+                                <td><img class="icon" src="images/nuget.png" /> <img class="icon" src="images/vsix.png" /></td>
+                            </tr>
+                            <tr>
+                                <td>Refactoring</td>
+                                <td></td>
+                                <td>🔧</td>
+                                <td></td>
+                                <td><img class="icon" src="images/vsix.png" /></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </section>
+
+                <section data-background="images/analyzers.png" transition="default">
+                </section>
+
+                <section data-background="images/jeff-sheldon-3230.jpg">
+
+                    <p><img src="images/problem-solved.gif" alt="" /></p>
+
+                </section>
+
+                <section data-background="images/dan-gold-297904.jpg">
+
+                    <h3 class="overlay-style">Official Roslyn Analyzers</h3>
+
+                    <table class="overlay-style" style="font-size: 0.7em !important;">
+                        <thead>
+                            <th>Package</th>
+                            <th>Description</th>
+                            <th>Example</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><em>Microsoft.CodeQuality.Analyzers</em></td>
+                                <td>API Design Guidelines</td>
+                                <td>Avoid async void</td>
+                            </tr>
+                            <tr>
+                                <td><em>Microsoft.NetCore.Analyzers</em></td>
+                                <td>.NET Core APIs</td>
+                                <td>Avoid 0-length array allocations</td>
+                            </tr>
+                            <tr>
+                                <td><em>Microsoft.NetFramework.Analyzers</em></td>
+                                <td>Desktop .NET APIs</td>
+                                <td>Do not use weak cryptographic algorithms</td>
+                            </tr>
+                            <tr>
+                                <td><em>Microsoft.CodeAnalysis.Analyzers</em></td>
+                                <td>Roslyn APIs</td>
+                                <td>Missing diagnostic analyzer attribute</td>
+                            </tr>
+                            <tr>
+                                <td><em>Roslyn.Diagnostics.Analyzers</em></td>
+                                <td>Roslyn Development</td>
+                                <td>Include public APIs in a PublicAPI.*.txt</td>
+                            </tr>
+                            <tr>
+                                <td><em>Text.Analyzers</em></td>
+                                <td>Text included in code, such as comments.</td>
+                                <td>Spelling of C# identifiers</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                        <div class="overlay-style" style="padding:1% !important;">
+                            <p class="footnote">Source: <a href="https://github.com/dotnet/roslyn-analyzers">https://github.com/dotnet/roslyn-analyzers</a></p>
+                        </div>
+
+                </section>
+
+                <section data-background="images/markus-spiske-135763.jpg">
+                    <div class="overlay-style" style="padding:3% !important;">
+                        <h2>Some Community Analyzer Packages</h2>
+                    </div>
+                    <div class="left overlay-style">
+                        <div style="padding: 3%">
+                            <ul>
+                                <li class="fragment">Roslynator<br/>
+                                    <small>https://github.com/JosefPihrt/Roslynator</small></li>
+
+                                <li class="fragment">Code Cracker<br/>
+                                    <small>http://code-cracker.github.io</small></li>
+
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="right overlay-style" style="padding: 0">
+                        <div style="padding: 3%">
+                            <ul>
+                                <li class="fragment">Stylecop Analyzers<br/>
+                                    <small>https://github.com/DotNetAnalyzers/StyleCopAnalyzers</small></li>
+
+                                <li class="fragment">Plenty of library-specific ones<br/>
+                                    <small>For example: https://github.com/xunit/xunit.analyzers</small></li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+                <section data-background="images/markus-spiske-135763.jpg">
+                    <pre class="small">
+    <code class="cs">
+[DiagnosticAnalyzer(LanguageNames.CSharp)]
+public class RemoveRegionAnalyzer : DiagnosticAnalyzer
+{
+    public const string DiagnosticId = "RemoveRegionAnalyzer";
+    private const string Category = "Naming";
+    private static DiagnosticDescriptor Rule = new DiagnosticDescriptor(DiagnosticId, "Regions are banned", 
+        "Region '{0}' can't be used. In fact no regions can.", "Sanity", DiagnosticSeverity.Error, 
+        isEnabledByDefault: true);
+    
+    public override ImmutableArray&lt;DiagnosticDescriptor&gt; SupportedDiagnostics => ImmutableArray.Create(Rule);
+    
+    public override void Initialize(AnalysisContext context)
+    {
+        context.RegisterSyntaxNodeAction(ctx =&gt; {
+            var diagnostic = Diagnostic.Create(Rule, context.Node.GetLocation());
+            context.ReportDiagnostic(diagnostic);   
+        }, ImmutableArray.Create(SyntaxKind.RegionDirectiveTrivia, SyntaxKind.EndRegionDirectiveTrivia));
+    }
+}
+    </code>
+</pre>
+                    <p class="fragment" data-code-focus="13-19"></p>
+                </section>
+
+                <section data-background="images/jeff-sheldon-3230.jpg">
+                    <p class="overlay-style">
+                        Analyzers & refactorings reference Roslyn DLLs from <span class="highlight">Visual Studio</span>. Building an analyzer against Roslyn 1.0.0, allows it to run in Visual Studio 2015. Targetting newer Roslyn, <span class="highlight">restricts</span> it to newer VS version only.
+                    </p>
+                </section>
             </section>
 
             <section>
-                <section data-background="images/all.jpg" author="Filip W" description="" theme="simple" title="C# Scripting in the .NET Core world"
-                    transition="default">
+                <section data-background="images/all.jpg">
                 </section>
 
-                <section author="Filip W" description="" theme="simple" title="C# Scripting in the .NET Core world" transition="default">
+                <section>
 
                     <p><img src="images/bye.gif" alt="" /></p>
 
