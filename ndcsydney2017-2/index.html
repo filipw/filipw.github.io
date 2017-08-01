@@ -286,7 +286,20 @@
                 </section>
 
                 <section data-background="images/blake-wisz-85030.jpg">
-                    <pre>
+                    <h3 class="overlay-style">Adding dotnet watcher</h2>
+                        <pre>
+    <code class="sh">
+&lt;ItemGroup&gt;
+    &lt;DotNetCliToolReference Include="Microsoft.DotNet.Watcher.Tools" 
+        Version="1.0.1" /&gt;
+&lt;/ItemGroup&gt;
+    </code>
+</pre>
+                </section>
+
+                <section data-background="images/blake-wisz-85030.jpg">
+                    <h3 class="overlay-style">Using dotnet watcher</h2>
+                        <pre>
     <code class="sh">
 C:\app>dotnet watch run
 
@@ -298,11 +311,35 @@ C:\app>dotnet watch script foo.csx
     </code>
 </pre>
 
-                    <p class="fragment" data-code-focus="2"></p>
-                    <p class="fragment" data-code-focus="4"></p>
-                    <p class="fragment" data-code-focus="6"></p>
-                    <p class="fragment" data-code-focus="8"></p>
+                        <p class="fragment" data-code-focus="2"></p>
+                        <p class="fragment" data-code-focus="4"></p>
+                        <p class="fragment" data-code-focus="6"></p>
+                        <p class="fragment" data-code-focus="8"></p>
 
+                </section>
+
+                <section data-background="images/blake-wisz-85030.jpg">
+                    <h3 class="overlay-style">Running dotnet watcher</h2>
+                        <pre class="small">
+    <code class="sh">
+C:\code\IdentityWebApp>dotnet watch run
+watch : Started
+Hosting environment: Production
+Content root path: C:\code\IdentityWebApp
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+watch : Exited with error code 1
+watch : File changed: C:\code\IdentityWebApp\Translation\JwtTranslationGrant.cs
+watch : Started
+Hosting environment: Production
+Content root path: C:\code\IdentityWebApp
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+    </code>
+</pre>
+                        <p class="fragment" data-code-focus="3-7"></p>
+                        <p class="fragment" data-code-focus="9"></p>
+                        <p class="fragment" data-code-focus="10-14"></p>
                 </section>
 
                 <section data-background="images/blake-wisz-85030.jpg">
@@ -373,13 +410,6 @@ C:\app>dotnet watch script foo.csx
                 </section>
 
                 <section data-background="images/alexey-ruban-103990.jpg">
-                    <p class="overlay-style">
-                        The upcoming Visual Studio 2017 Version <span class="highlight">15.3</span> introduces Edit-and-Continue
-                        for <span class="highlight">C# 7</span> features.
-                    </p>
-                </section>
-
-                <section data-background="images/alexey-ruban-103990.jpg">
                     <div class="overlay-style" style="padding: 3% !important;">
                         <div class="left">
                             <div style="padding: 3%">
@@ -429,10 +459,17 @@ C:\app>dotnet watch script foo.csx
                 </section>
 
                 <section data-background="images/alexey-ruban-103990.jpg">
+                    <p class="overlay-style">
+                        The upcoming Visual Studio 2017 Version <span class="highlight">15.3</span> introduces Edit-and-Continue
+                        for <span class="highlight">C# 7</span> features.
+                    </p>
+                </section>
+
+                <section data-background="images/alexey-ruban-103990.jpg">
 
                     <h3 class="overlay-style">Edit And Continue with Roslyn</h2>
 
-                        <pre>
+                        <pre class="small">
     <code class="cs">
 class Program
 { 
@@ -558,7 +595,7 @@ var emitDifferenceResult = changedCompilation.EmitDifference(baseline, edits, md
 
                 <section data-background="images/dan-gold-297904.jpg">
                     <p class="overlay-style">
-                        CSI is bundled with <span class="highlight">MSBuild Tools</span>. It is <span class="highlight">Desktop CLR</span>                        only but works <span class="highlight">x-plat</span>via Mono.
+                        CSI is bundled with <span class="highlight">MSBuild Tools</span>. It is <span class="highlight">Desktop CLR</span>                        only but works <span class="highlight">x-plat</span> via Mono.
                     </p>
                 </section>
 
@@ -617,7 +654,7 @@ Type "#help" for more information.
 
                 <section data-background="images/dan-gold-297904.jpg">
 
-                    <h3 class="overlay-style">Creating a Roslyn compilation</h3>
+                    <h3 class="overlay-style">Creating a REPL compilation</h3>
                     <pre class="small">
     <code class="cs">
 public enum SourceCodeKind {
@@ -944,8 +981,7 @@ else
                 <section data-background="images/chuttersnap-233105.jpg">
                     <p class="overlay-style">
                         Live Unit Testing was introduced in Visual Studio 2017. At the moment it is available only for
-                        <span
-                            class="highlight">Visual Studio Enterprise</span>.
+                        <span class="highlight">Visual Studio Enterprise</span>.
                     </p>
                 </section>
 
@@ -987,9 +1023,9 @@ else
                     <img src="images/liveunittests-1.png" />
                 </section>
 
-                                <section data-background="images/chuttersnap-233105.jpg">
+                <section data-background="images/chuttersnap-233105.jpg">
                     <h3 class="overlay-style">Starting Live Unit Testing per project</h3>
-                                    
+
                     <img class="normal" src="images/liveunittests-2.png" />
                 </section>
 
@@ -1038,12 +1074,12 @@ If you already have the required NuGet reference in your test project, performin
                     <img class="normal" src="images/liveunittesting-warn.png" />
                 </section>
 
-                                <section data-background="images/chuttersnap-233105.jpg">
+                <section data-background="images/chuttersnap-233105.jpg">
                     <h3 class="overlay-style">Everything OK</h3>
                     <img class="normal" src="images/liveunittests-before.png" />
                 </section>
 
-                                <section data-background="images/chuttersnap-233105.jpg">
+                <section data-background="images/chuttersnap-233105.jpg">
                     <h3 class="overlay-style">As soon as Filip addded some logic</h3>
                     <img class="normal" src="images/liveunittests-after.png" />
                 </section>
