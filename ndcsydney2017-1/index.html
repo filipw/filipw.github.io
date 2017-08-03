@@ -1,5 +1,6 @@
 ﻿<!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <title>C# Scripting in the .NET Core world</title>
@@ -23,75 +24,153 @@
     <!-- If the query includes 'print-pdf', include the PDF print sheet -->
 
     <script>
-
-			if( window.location.search.match( /print-pdf/gi ) ) {
-				var link = document.createElement( 'link' );
-				link.rel = 'stylesheet';
-				link.type = 'text/css';
-				link.href = 'css/print/pdf.css';
-				document.getElementsByTagName( 'head' )[0].appendChild( link );
-			}
+        if (window.location.search.match(/print-pdf/gi)) {
+            var link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = 'css/print/pdf.css';
+            document.getElementsByTagName('head')[0].appendChild(link);
+        }
     </script>
     <!--[if lt IE 9]>
     <script src="lib/js/html5shiv.js"></script>
     <![endif]-->
     <style type="text/css">
-      .reveal .slides section .fragment.current-only {
-        opacity: 1;
-        visibility: visible;
-        display: none;
-      }
-      .reveal .slides section .fragment.current-only.current-fragment {
-        display: block;
-      }
+        .reveal .slides section .fragment.current-only {
+            opacity: 1;
+            visibility: visible;
+            display: none;
+        }
 
-      /* Solarized Light theme */
-      .line { display: block; padding: 1px 10px !important; }
-      .line.focus { background: #fff; color: #657b83; }
-      .line.focus .hljs-comment, .line.focus .hljs-quote { color: #93a1a1; }
-      .line.focus .hljs-keyword, .line.focus .hljs-selector-tag, .line.focus .hljs-addition { color: #859900; }
-      .line.focus .hljs-number, .line.focus .hljs-string, .line.focus .hljs-meta .hljs-meta-string, .line.focus .hljs-literal, .line.focus .hljs-doctag, .line.focus .hljs-regexp { color: #2aa198; }
-      .line.focus .hljs-title, .line.focus .hljs-section, .line.focus .hljs-name, .line.focus .hljs-selector-id, .line.focus .hljs-selector-class { color: #268bd2; }
-      .line.focus .hljs-attribute, .line.focus .hljs-attr, .line.focus .hljs-variable, .line.focus .hljs-template-variable, .line.focus .hljs-class .hljs-title, .line.focus .hljs-type { color: #b58900; }
-      .line.focus .hljs-symbol, .line.focus .hljs-bullet, .line.focus .hljs-subst, .line.focus .hljs-meta, .line.focus .hljs-meta .hljs-keyword, .line.focus .hljs-selector-attr, .line.focus .hljs-selector-pseudo, .line.focus .hljs-link { color: #cb4b16; }
-      .line.focus .hljs-built_in, .line.focus .hljs-deletion { color: #dc322f; }
-      .line.focus .hljs-formula { background: #eee8d5; }
-      .line.focus .hljs-emphasis { font-style: italic; }
-      .line.focus .hljs-strong { font-weight: bold; }
+        .reveal .slides section .fragment.current-only.current-fragment {
+            display: block;
+        }
+        /* Solarized Light theme */
 
-      .yellow-slide .line.focus:nth-child(2) { background: yellow; }
+        .line {
+            display: block;
+            padding: 1px 10px !important;
+        }
+
+        .line.focus {
+            background: #fff;
+            color: #657b83;
+        }
+
+        .line.focus .hljs-comment,
+        .line.focus .hljs-quote {
+            color: #93a1a1;
+        }
+
+        .line.focus .hljs-keyword,
+        .line.focus .hljs-selector-tag,
+        .line.focus .hljs-addition {
+            color: #859900;
+        }
+
+        .line.focus .hljs-number,
+        .line.focus .hljs-string,
+        .line.focus .hljs-meta .hljs-meta-string,
+        .line.focus .hljs-literal,
+        .line.focus .hljs-doctag,
+        .line.focus .hljs-regexp {
+            color: #2aa198;
+        }
+
+        .line.focus .hljs-title,
+        .line.focus .hljs-section,
+        .line.focus .hljs-name,
+        .line.focus .hljs-selector-id,
+        .line.focus .hljs-selector-class {
+            color: #268bd2;
+        }
+
+        .line.focus .hljs-attribute,
+        .line.focus .hljs-attr,
+        .line.focus .hljs-variable,
+        .line.focus .hljs-template-variable,
+        .line.focus .hljs-class .hljs-title,
+        .line.focus .hljs-type {
+            color: #b58900;
+        }
+
+        .line.focus .hljs-symbol,
+        .line.focus .hljs-bullet,
+        .line.focus .hljs-subst,
+        .line.focus .hljs-meta,
+        .line.focus .hljs-meta .hljs-keyword,
+        .line.focus .hljs-selector-attr,
+        .line.focus .hljs-selector-pseudo,
+        .line.focus .hljs-link {
+            color: #cb4b16;
+        }
+
+        .line.focus .hljs-built_in,
+        .line.focus .hljs-deletion {
+            color: #dc322f;
+        }
+
+        .line.focus .hljs-formula {
+            background: #eee8d5;
+        }
+
+        .line.focus .hljs-emphasis {
+            font-style: italic;
+        }
+
+        .line.focus .hljs-strong {
+            font-weight: bold;
+        }
+
+        .yellow-slide .line.focus:nth-child(2) {
+            background: yellow;
+        }
 
         .fragment.current-visible.visible:not(.current-fragment) {
             display: none;
-            height:0px;
+            height: 0px;
             line-height: 0px;
             font-size: 0px;
         }
 
-         h1, .overlay-style {background: rgba(0,0,0,0.75); color: #fff !important; padding: 5% !important;}
-         h2.overlay-style, h3.overlay-style {padding: 2% !important;}
+        h1,
+        .overlay-style {
+            background: rgba(0, 0, 0, 0.75);
+            color: #fff !important;
+            padding: 5% !important;
+        }
+
+        h2.overlay-style,
+        h3.overlay-style {
+            padding: 2% !important;
+        }
 
         .left {
-            left:-8.33%;
+            left: -8.33%;
             text-align: left;
             float: left;
-            width:50%;
-            z-index:-10;
+            width: 50%;
+            z-index: -10;
             padding: 0 !important;
         }
 
         .right {
-            left:31.25%;
+            left: 31.25%;
             top: 75px;
             float: right;
             text-align: left;
-            z-index:-10;
-            width:50%;
+            z-index: -10;
+            width: 50%;
             padding: 0 !important;
         }
 
-        .reveal pre.small { font-size: 0.45em;}
-        .reveal pre.very-small { font-size: 0.35em;}
+        .reveal pre.small {
+            font-size: 0.45em;
+        }
+
+        .reveal pre.very-small {
+            font-size: 0.35em;
+        }
 
         html.bg-auto-height div.slide-background.present {
             background-size: auto 100%;
@@ -101,59 +180,78 @@
             background-size: 100% auto;
         }
 
-         .overlay-style h2, 
-         .overlay-style h3,
-         .overlay-style a {color: #fff !important;}
+        .overlay-style h2,
+        .overlay-style h3,
+        .overlay-style a {
+            color: #fff !important;
+        }
 
-         .reveal table td {text-align: center;}
+        .reveal table td {
+            text-align: center;
+        }
 
-         .reveal section img.icon { margin: 0; border: 0; min-height: auto; max-height: auto; }
+        .reveal section img.icon {
+            margin: 0;
+            border: 0;
+            min-height: auto;
+            max-height: auto;
+        }
 
-         .reveal pre code { background: #000; max-height: none; padding: 1% 2%; }
-         .reveal pre {background: none; box-shadow: none; font-size: 0.65em; }
+        .reveal pre code {
+            background: #000;
+            max-height: none;
+            padding: 1% 2%;
+        }
+
+        .reveal pre {
+            background: none;
+            box-shadow: none;
+            font-size: 0.65em;
+        }
     </style>
 </head>
+
 <body>
     <div class="reveal">
         <header style="position: absolute;top: 50px; left: 100px; z-index:500; font-size:100px;background-color: rgba(0,0,0,0.5)"></header>
         <!-- Any section element inside of this container is displayed as a slide -->
         <div class="slides">
 
-<section data-background="images/StockSnap_KD30XPQR0A.jpg">
+            <section data-background="images/StockSnap_KD30XPQR0A.jpg">
 
-<h1>C# Scripting <small>(in the .NET Core world)</small></h1>
+                <h1>C# Scripting <small>(in the .NET Core world)</small></h1>
 
-</section>
+            </section>
 
-<section data-background="images/IMG_20161025_115652.jpg">
+            <section data-background="images/IMG_20161025_115652.jpg">
 
-<div class="overlay-style">
-<h2>Filip W</h2>
-<p>not PM. not architect. not developer advocate.</p>
+                <div class="overlay-style">
+                    <h2>Filip W</h2>
+                    <p>not PM. not architect. not developer advocate.</p>
 
-<p>
-    <small>
+                    <p>
+                        <small>
 <a href="https://strathweb.com" class="roll"><span>strathweb.com</span></a> • 
 <a href="https://twitter.com/filip_woj" class="roll"><span data-title="@filip_woj">@filip_woj</span></a> • 
 <a href="https://github.com/filipw" class="roll"><span data-title="github.com/filipw">github.com/filipw</span></a>
 </small></p>
-<img class="normal" src="images/mvp.png" />
-</div>
+                    <img class="normal" src="images/mvp.png" />
+                </div>
 
-</section>
+            </section>
 
-<section>
+            <section>
 
-<section data-background="images/IMG_20161108_131400.jpg">
+                <section data-background="images/IMG_20161108_131400.jpg">
 
-</section>
+                </section>
 
-<section data-background="images/scripting2.png" data-state="bg-auto-height" transition="default">
-</section>
+                <section data-background="images/scripting2.png" data-state="bg-auto-height" transition="default">
+                </section>
 
-<section data-background="images/mark-solarski-209233.jpg">
-<h3 class="overlay-style">Run a script with script runner</h3>
-<pre>
+                <section data-background="images/mark-solarski-209233.jpg">
+                    <h3 class="overlay-style">Run a script with script runner</h3>
+                    <pre>
     <code class="sh">
 C:\>csi script.csx scriptArgs
 
@@ -165,16 +263,16 @@ C:\>cake build.cake -Target build
     </code>
 </pre>
 
-<p class="fragment" data-code-focus="2"></p>
-<p class="fragment" data-code-focus="4"></p>
-<p class="fragment" data-code-focus="6"></p>
-<p class="fragment" data-code-focus="8"></p>
+                    <p class="fragment" data-code-focus="2"></p>
+                    <p class="fragment" data-code-focus="4"></p>
+                    <p class="fragment" data-code-focus="6"></p>
+                    <p class="fragment" data-code-focus="8"></p>
 
-</section>
+                </section>
 
-<section data-background="images/mark-solarski-209233.jpg">
-<h3 class="overlay-style">Use Roslyn APIs</h3>
-<pre>
+                <section data-background="images/mark-solarski-209233.jpg">
+                    <h3 class="overlay-style">Use Roslyn APIs</h3>
+                    <pre>
     <code class="cs">
 var scriptCode = File.ReadAllText("script.csx");
 var scriptOptions = ScriptOptions.Default.
@@ -190,177 +288,179 @@ var diagnostics = script.GetCompilation().GetDiagnostics();
 var scriptResult = await script.RunAsync();
     </code>
 </pre>
+                    <p class="fragment" data-code-focus="3-5"></p>
+                    <p class="fragment" data-code-focus="8"></p>
+                    <p class="fragment" data-code-focus="11-13"></p>
 
-<p class="fragment" data-code-focus="8"></p>
-<p class="fragment" data-code-focus="11-13"></p>
+                </section>
 
-</section>
+                <section data-background="images/mark-solarski-209233.jpg">
+                    <div class="overlay-style" style="padding:3% !important;">
+                        <h2>Scripting Key Features</h2>
+                    </div>
+                    <div class="left overlay-style">
+                        <div style="padding: 3%">
+                            <ul>
+                                <li class="fragment">🎉 C# scripting is cross platform<br/>
+                                    <small>Mono 4.6+ support, .NET Core</small></li>
 
-<section data-background="images/mark-solarski-209233.jpg">
-<div class="overlay-style" style="padding:3% !important;">
-<h2>Scripting Key Features</h2>
-</div>
-  <div class="left overlay-style">
-      <div style="padding: 3%">
-        <ul>
-            <li class="fragment">🎉 C# scripting is cross platform<br/>
-<small>Mono 4.6+ support, .NET Core</small></li>
+                                <li class="fragment">💯 CSI is on your machine already<br/>
+                                    <small>Bundled with MSBuild Tools</small></li>
 
-<li class="fragment">💯 CSI is on your machine already<br/>
-<small>Bundled with MSBuild Tools</small></li>
+                            </ul>
+                        </div>
+                    </div>
 
-            </ul>
-      </div>
-  </div>
+                    <div class="right overlay-style" style="padding: 0">
+                        <div style="padding: 3%">
+                            <ul>
+                                <li class="fragment">💻 Script & Interactive Mode<br/>
+                                    <small>.csx, C# REPL</small></li>
 
-  <div class="right overlay-style" style="padding: 0">
-      <div style="padding: 3%">
-<ul>
-    <li  class="fragment">💻 Script & Interactive Mode<br/>
-<small>.csx, C# REPL</small></li>
+                                <li class="fragment">🔬 Works with any .NET assemblies<br/>
+                                    <small>Can marshal objects between host app and script</small></li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
 
-<li class="fragment">🔬 Works with any .NET assemblies<br/>
-<small>Can marshal objects between host app and script</small></li>
-</ul>
-      </div>
-  </div>
-</section>
+                <section data-background="images/mark-solarski-209233.jpg">
+                    <div class="overlay-style" style="padding:3% !important;">
+                        <h2>1st class Roslyn citizen</h2>
+                    </div>
+                    <div class="left overlay-style">
+                        <div style="padding: 3%">
+                            <ul>
+                                <li class="fragment">📐 Syntax<br/>
+                                    <small><em>SourceCodeKind.Script</em> vs <em>SourceCodeKind.Regular</em></small>
+                                </li>
 
-<section data-background="images/mark-solarski-209233.jpg">
-<div class="overlay-style" style="padding:3% !important;">
-<h2>1st class Roslyn citizen</h2>
-</div>
-  <div class="left overlay-style">
-      <div style="padding: 3%">
-        <ul>
-            <li class="fragment">📐 Syntax<br/>
-                <small><em>SourceCodeKind.Script</em> vs <em>SourceCodeKind.Regular</em></small>
-            </li>
+                                <li class="fragment">📚 Language services<br/>
+                                    <small><em>ProjectInfo</em> knows about host object Type & global usings</small>
+                                </li>
 
-            <li class="fragment">📚 Language services<br/>
-                <small><em>ProjectInfo</em> knows about host object Type & global usings</small>
-            </li>
+                            </ul>
+                        </div>
+                    </div>
 
-        </ul>
-      </div>
-  </div>
+                    <div class="right overlay-style" style="padding: 0">
+                        <div style="padding: 3%">
+                            <ul>
+                                <li class="fragment">🖥 Script Compilation<br/>
+                                    <small>Equivalent to standard <em>CSharpCompilation</em>, submission concept</small>
+                                </li>
 
-  <div class="right overlay-style" style="padding: 0">
-      <div style="padding: 3%">
-        <ul>
-            <li class="fragment">🖥 Script Compilation<br/>
-                <small>Equivalent to standard <em>CSharpCompilation</em>, submission concept</small>
-            </li>
+                                <li class="fragment">📦 Development<br/>
+                                    <small><em>Microsoft.CodeAnalysis.Csharp.Scripting</em></small>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
 
-            <li class="fragment">📦 Development<br/>
-                <small><em>Microsoft.CodeAnalysis.Csharp.Scripting</em></small>
-            </li>
-        </ul>
-      </div>
-  </div>
-</section>
+                <section data-background="images/mark-solarski-209233.jpg">
 
-<section data-background="images/mark-solarski-209233.jpg">
+                    <h2 class="overlay-style">.NET Core Scripting</h2>
+                    <p>
+                        &nbsp;&nbsp;&nbsp;
+                    </p>
 
-<h2 class="overlay-style">.NET Core Scripting</h2>
-<p> 
-&nbsp;&nbsp;&nbsp;
-</p>
-
-<table class="overlay-style">
-						<thead>
-							<tr>
-								<th></th>
-								<th>Standard syntax</th>
-								<th>DSL syntax</th>
-                                <th>.NET Core support</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>Roslyn libraries</td>
-								<td>✅</td>
-								<td>✅</td>
-                                <td>🦄</td>
-							</tr>
-							<tr>
-								<td>CSI</td>
-								<td>✅</td>
-								<td></td>
-                                <td>💩</td>
-							</tr>
-							<tr>
-								<td>scriptcs</td>
-								<td></td>
-								<td>✅</td>
-                                <td>💩</td>
-							</tr>
-							<tr><!-- 🔧 -->
-								<td>Cake</td>
-								<td></td>
-								<td>✅</td>
-                                <td>💩</td>
-							</tr>
+                    <table class="overlay-style">
+                        <thead>
                             <tr>
-								<td>dotnet-script</td>
-								<td>✅</td>
-								<td></td>
+                                <th></th>
+                                <th>Standard syntax</th>
+                                <th>DSL syntax</th>
+                                <th>.NET Core support</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Roslyn libraries</td>
+                                <td>✅</td>
+                                <td>✅</td>
                                 <td>🦄</td>
-							</tr>
-						</tbody>
-					</table>
+                            </tr>
+                            <tr>
+                                <td>CSI</td>
+                                <td>✅</td>
+                                <td></td>
+                                <td>💩</td>
+                            </tr>
+                            <tr>
+                                <td>scriptcs</td>
+                                <td></td>
+                                <td>✅</td>
+                                <td>💩</td>
+                            </tr>
+                            <tr>
+                                <!-- 🔧 -->
+                                <td>Cake</td>
+                                <td></td>
+                                <td>✅</td>
+                                <td>🔧</td>
+                            </tr>
+                            <tr>
+                                <td>dotnet-script</td>
+                                <td>✅</td>
+                                <td></td>
+                                <td>🦄</td>
+                            </tr>
+                        </tbody>
+                    </table>
 
-</section>
+                </section>
 
-</section>
+            </section>
 
-<section>
+            <section>
 
-<section data-background="images/StockSnap_NN2EIQQYEA.jpg">
+                <section data-background="images/StockSnap_NN2EIQQYEA.jpg">
 
-<h1>Use cases</h1>
+                    <h1>Use cases</h1>
 
-</section>
+                </section>
 
-<section data-background="images/StockSnap_NN2EIQQYEA.jpg">
-<div class="overlay-style" style="padding:3% !important;">
-<h2>Popular C# Scripting Use Cases</h2>
-</div>
-  <div class="left overlay-style">
-      <div style="padding: 3%">
-        <ul>
-            <li class="fragment">⚙️Automation<br/>
-                <small>Batch jobs, build scripts, command line tools</small>
-            </li>
-            <li class="fragment">🍃Lightweight programs<br/>
-                <small>Experiments, API exploration</small>
-            </li>
-        </ul>
-      </div>
-  </div>
+                <section data-background="images/StockSnap_NN2EIQQYEA.jpg">
+                    <div class="overlay-style" style="padding:3% !important;">
+                        <h2>Popular C# Scripting Use Cases</h2>
+                    </div>
+                    <div class="left overlay-style">
+                        <div style="padding: 3%">
+                            <ul>
+                                <li class="fragment">⚙️Automation<br/>
+                                    <small>Batch jobs, build scripts, command line tools</small>
+                                </li>
+                                <li class="fragment">🍃Lightweight programs<br/>
+                                    <small>Experiments, API exploration</small>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
 
-  <div class="right overlay-style" style="padding: 0">
-      <div style="padding: 3%">
-        <ul>
-            <li class="fragment">🖇Application extensibility<br/>
-                <small>Plugins, modules, dynamic configuration</small>
-            </li>
+                    <div class="right overlay-style" style="padding: 0">
+                        <div style="padding: 3%">
+                            <ul>
+                                <li class="fragment">🖇Application extensibility<br/>
+                                    <small>Plugins, modules, dynamic configuration</small>
+                                </li>
 
-            <li class="fragment">⚗️Code generation<br/>
-                <small>T4-like features, emitting code</small>
-            </li>
-        </ul>
-      </div>
-  </div>
-</section>
+                                <li class="fragment">⚗️Code generation<br/>
+                                    <small>T4-like features, emitting code</small>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
 
-<section data-background="images/sponge.gif" author="Filip W" description="" theme="simple" title="C# Scripting in the .NET Core world" transition="default">
+                <section data-background="images/sponge.gif" author="Filip W" description="" theme="simple" title="C# Scripting in the .NET Core world"
+                    transition="default">
 
-</section>
+                </section>
 
-<section data-background="images/StockSnap_NN2EIQQYEA.jpg">
-<h3 class="overlay-style">Emit code with IL</h2>
-<pre class="very-small">
+                <section data-background="images/StockSnap_NN2EIQQYEA.jpg">
+                    <h3 class="overlay-style">Emit code with IL</h2>
+                        <pre class="very-small">
     <code class="cs">
 var name = new AssemblyName("DynamicAssembly");
 var assemblyBuilder = AssemblyBuilder.DefineDynamicAssembly(name, AssemblyBuilderAccess.Run);
@@ -388,13 +488,13 @@ var result = methodInfo.Invoke(instance, new object[] { 5, 3 });
     </code>
 </pre>
 
-<p class="fragment" data-code-focus="9-17"></p>
+                        <p class="fragment" data-code-focus="9-17"></p>
 
-</section>
+                </section>
 
-<section data-background="images/StockSnap_NN2EIQQYEA.jpg">
-<h3 class="overlay-style">Emit code with Roslyn compilation</h2>
-<pre class="very-small">
+                <section data-background="images/StockSnap_NN2EIQQYEA.jpg">
+                    <h3 class="overlay-style">Emit code with Roslyn compilation</h2>
+                        <pre class="very-small">
     <code class="cs">
 var compilation = CSharpCompilation.Create(
     "DynamicAssembly", new[] { CSharpSyntaxTree.ParseText(@"
@@ -420,13 +520,13 @@ using (var ms = new MemoryStream())
     </code>
 </pre>
 
-<p class="fragment" data-code-focus="4-7"></p>
+                        <p class="fragment" data-code-focus="4-7"></p>
 
-</section>
+                </section>
 
-<section data-background="images/StockSnap_NN2EIQQYEA.jpg">
-<h3 class="overlay-style">Emit code with Roslyn scripting</h2>
-<pre class="small">
+                <section data-background="images/StockSnap_NN2EIQQYEA.jpg">
+                    <h3 class="overlay-style">Emit code with Roslyn scripting</h2>
+                        <pre class="small">
     <code class="cs">
 var result = await CSharpScript.EvaluateAsync&lt;int&gt;("5 - 3");
 
@@ -445,121 +545,118 @@ public class ScriptHost
 }
 
 var host = new ScriptHost { Number1 = 5, Number2 = 3 };
-var result = await CSharpScript.EvaluateAsync&lt;int&gt;("int Substract(int x, int y) => x - y; Substract(Number1, Number2)", globals: host, globalsType: typeof(ScriptHost));
+var result = await CSharpScript.EvaluateAsync&lt;int&gt;("Number1 - Number2", globals: host, globalsType: typeof(ScriptHost));
     </code>
 </pre>
 
-<p class="fragment" data-code-focus="2"></p>
-<p class="fragment" data-code-focus="6-8"></p>
-<p class="fragment" data-code-focus="12-19"></p>
+                        <p class="fragment" data-code-focus="2"></p>
+                        <p class="fragment" data-code-focus="6-8"></p>
+                        <p class="fragment" data-code-focus="12-19"></p>
 
-</section>
+                </section>
 
-<section data-background="images/StockSnap_NN2EIQQYEA.jpg" data-background-transition="default">
-    <img src="images/azure-functions2.png" />
-</section>
+                <section data-background="images/StockSnap_NN2EIQQYEA.jpg" data-background-transition="default">
+                    <img src="images/azure-functions2.png" />
+                </section>
 
-<section data-background="images/StockSnap_NN2EIQQYEA.jpg" data-background-transition="default">
-    <img src="images/workbooks.png" />
-</section>
+                <section data-background="images/StockSnap_NN2EIQQYEA.jpg" data-background-transition="default">
+                    <img src="images/workbooks.png" />
+                </section>
 
-<section data-background="images/StockSnap_NN2EIQQYEA.jpg" data-background-transition="default">
-    <img src="images/script-games.png" />
-</section>
+                <section data-background="images/StockSnap_NN2EIQQYEA.jpg" data-background-transition="default">
+                    <img src="images/script-games.png" />
+                </section>
 
-</section>
+            </section>
 
-<section>
+            <section>
 
-<section data-background="images/StockSnap_XXTEK7APLA.jpg">
+                <section data-background="images/StockSnap_XXTEK7APLA.jpg">
 
-<h1>Editor Features</h1>
+                    <h1>Editor Features</h1>
 
-</section>
+                </section>
 
-<section data-background="images/StockSnap_XXTEK7APLA.jpg">
+                <section data-background="images/StockSnap_XXTEK7APLA.jpg">
 
-<h2 class="overlay-style">CSX as a valid launch target</h2>
+                    <h3 class="overlay-style">CSX as a valid launch target</h3>
 
-<img src="images/editor3.png" />
+                    <img src="images/editor3.png" />
 
-</section>
+                </section>
 
-<section data-background="images/StockSnap_XXTEK7APLA.jpg">
+                <section data-background="images/StockSnap_XXTEK7APLA.jpg">
 
-<h2 class="overlay-style">Realtime #r & #load</h2>
+                    <h3 class="overlay-style">Realtime #r & #load</h3>
 
-<img src="images/editor1.png" />
+                    <img src="images/editor1.png" />
 
-</section>
+                </section>
 
-<section data-background="images/StockSnap_XXTEK7APLA.jpg">
+                <section data-background="images/StockSnap_XXTEK7APLA.jpg">
 
-<h2 class="overlay-style">Go to Definition</h2>
+                    <h3 class="overlay-style">Go to Definition</h3>
 
-<img src="images/editor2.png" />
+                    <img src="images/editor2.png" />
 
-</section>
+                </section>
 
-<section data-background="images/StockSnap_XXTEK7APLA.jpg">
+                <section data-background="images/StockSnap_XXTEK7APLA.jpg">
 
-<h2 class="overlay-style">Refactoring support</h2>
+                    <h2 class="overlay-style">Refactoring support</h2>
 
-<img src="images/editor4.png" />
+                    <img src="images/editor4.png" />
 
-</section>
+                </section>
 
-<section data-background="images/StockSnap_XXTEK7APLA.jpg">
+                <section data-background="images/StockSnap_XXTEK7APLA.jpg">
 
-<h2 class="overlay-style">Language features support at C# level</h2>
+                    <h2 class="overlay-style">Language features support at C# level</h2>
 
-<img src="images/editor5.png" />
+                    <img src="images/editor5.png" />
 
-</section>
+                </section>
 
-</section>
+            </section>
 
-<section>
+            <section>
 
-<section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
+                <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
 
-<h1>New features in CSI</h1>
+                    <h1>New features in CSI</h1>
 
-</section>
+                </section>
 
-<section data-background="images/debugging-pr.png" data-state="bg-auto-height" data-background-transition="slide">
-</section>
+                <section data-background="images/debugging-pr.png" data-state="bg-auto-height">
+                </section>
 
-<section data-background="images/StockSnap_W0RUS6FWBJ.jpg" data-background-transition="slide">
-    <img src="images/error1.png" />
-</section>
+                <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
+                    <img src="images/csi-debug.png" />
+                </section>
 
-<section  data-background="images/StockSnap_W0RUS6FWBJ.jpg">
-    <img src="images/error2.png" />
-</section>
+                <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
+                    <img src="images/error1.png" />
+                </section>
 
-<section  data-background="images/StockSnap_W0RUS6FWBJ.jpg">
-    <img src="images/csi-debug.png" />
-</section>
+                <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
+                    <img src="images/error2.png" />
+                </section>
 
-</section>
+            </section>
 
-<section>
+            <section>
 
-<section data-background="images/StockSnap_VZ86EDZ771.jpg">
+                <section data-background="images/StockSnap_VZ86EDZ771.jpg">
 
-<h1>Nuget</h1>
+                    <h1>Nuget</h1>
 
-</section>
+                </section>
 
-<section data-background="images/nuget-csharp.png" data-state="bg-auto-height" data-background-transition="slide">
-</section>
+                <section data-background="images/StockSnap_VZ86EDZ771.jpg">
 
-<section data-background="images/StockSnap_VZ86EDZ771.jpg">
+                    <h2 class="overlay-style">Inline Nuget Packages in CSX</h2>
 
-<h2 class="overlay-style">Inline Nuget Packages in CSX</h2>
-
-<pre>
+                    <pre>
     <code class="cs">
 #r "nuget:AutoMapper, 5.1.1"
 
@@ -568,22 +665,25 @@ Console.WriteLine(typeof(MapperConfiguration));
     </code>
 </pre>
 
-</section>
+                </section>
 
-</section>
+                <section data-background="images/nuget-csharp.png" data-state="bg-auto-height">
+                </section>
 
-<section>
-    <section data-background="images/aaron-barnaby-135630.jpg">
+            </section>
 
-<h1>How does it all work?</h1>
+            <section>
+                <section data-background="images/aaron-barnaby-135630.jpg">
 
-</section>
+                    <h1>How does it all work?</h1>
 
-<section data-background="images/aaron-barnaby-135630.jpg">
+                </section>
 
-<h2 class="overlay-style">Consider a simple script...</h2>
+                <section data-background="images/aaron-barnaby-135630.jpg">
 
-<pre>
+                    <h2 class="overlay-style">Consider a simple script...</h2>
+
+                    <pre>
     <code class="cs">
 class Foo {}
 
@@ -599,16 +699,16 @@ SayHi(message + " " + Text");
     </code>
 </pre>
 
-<p class="fragment" data-code-focus="2"></p>
-<p class="fragment" data-code-focus="4-7"></p>
-<p class="fragment" data-code-focus="9-10"></p>
-<p class="fragment" data-code-focus="12"></p>
+                    <p class="fragment" data-code-focus="2"></p>
+                    <p class="fragment" data-code-focus="4-7"></p>
+                    <p class="fragment" data-code-focus="9-10"></p>
+                    <p class="fragment" data-code-focus="12"></p>
 
-</section>
+                </section>
 
-<section data-background="images/aaron-barnaby-135630.jpg">
+                <section data-background="images/aaron-barnaby-135630.jpg">
 
-<pre class="very-small">
+                    <pre class="very-small">
     <code class="cs">
 public sealed class Submission#0 {
     public string message;
@@ -646,25 +746,26 @@ public sealed class Submission#0 {
     </code>
 </pre>
 
-<div class ="fragment" data-code-focus="2"></div>
-<div class="fragment" data-code-focus="3-7"></div>
-<div class="fragment" data-code-focus="9"></div>
-<div class="fragment" data-code-focus="11"></div>
-<div class="fragment" data-code-focus="13-23"></div>
-<div class="fragment" data-code-focus="30-32"></div>
+                    <div class="fragment" data-code-focus="2"></div>
+                    <div class="fragment" data-code-focus="3-7"></div>
+                    <div class="fragment" data-code-focus="9"></div>
+                    <div class="fragment" data-code-focus="11"></div>
+                    <div class="fragment" data-code-focus="13-23"></div>
+                    <div class="fragment" data-code-focus="30-32"></div>
 
-</section>
+                </section>
 
-<section data-background="images/all.jpg" author="Filip W" description="" theme="simple" title="C# Scripting in the .NET Core world" transition="default">
-</section>
+                <section data-background="images/all.jpg" author="Filip W" description="" theme="simple" title="C# Scripting in the .NET Core world"
+                    transition="default">
+                </section>
 
-<section author="Filip W" description="" theme="simple" title="C# Scripting in the .NET Core world" transition="default">
+                <section author="Filip W" description="" theme="simple" title="C# Scripting in the .NET Core world" transition="default">
 
-<p><img src="images/bye.gif" alt="" /></p>
+                    <p><img src="images/bye.gif" alt="" /></p>
 
-</section>
+                </section>
 
-</section>
+            </section>
 
 
 
@@ -675,37 +776,36 @@ public sealed class Submission#0 {
     <script>
         // Full list of configuration options available here:
         // https://github.com/hakimel/reveal.js#configuration
-            Reveal.initialize({
-                controls: true,
-                progress: true,
-                history: true,
-                center: true,
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            history: true,
+            center: true,
 
-                transition: 'default', // default/cube/page/concave/zoom/linear/fade/none
+            transition: 'default', // default/cube/page/concave/zoom/linear/fade/none
 
-                // Parallax scrolling
-                // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
-                // parallaxBackgroundSize: '2100px 900px',
+            // Parallax scrolling
+            // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+            // parallaxBackgroundSize: '2100px 900px',
 
-                // Optional libraries used to extend on reveal.js
-                dependencies: [
-                    { src: 'lib/js/classList.js', condition: function () { return !document.body.classList; } },
-                    { src: 'plugin/markdown/marked.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
-                    { src: 'plugin/markdown/markdown.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
-                    { src: 'plugin/highlight.js/highlight.pack.js', async: true, callback: function () { /*hljs.initHighlightingOnLoad();*/ } },
-                    { src: 'plugin/zoom-js/zoom.js', async: true, condition: function () { return !!document.body.classList; } },
-                    { src: 'plugin/notes/notes.js', async: true, condition: function () { return !!document.body.classList; } },
-                    {
-                        src: 'plugin/reveal-code-focus.js',
-                        async: true,
-                        callback: function () {
-                            RevealCodeFocus();
-                        }
+            // Optional libraries used to extend on reveal.js
+            dependencies: [
+                { src: 'lib/js/classList.js', condition: function () { return !document.body.classList; } },
+                { src: 'plugin/markdown/marked.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+                { src: 'plugin/markdown/markdown.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+                { src: 'plugin/highlight.js/highlight.pack.js', async: true, callback: function () { /*hljs.initHighlightingOnLoad();*/ } },
+                { src: 'plugin/zoom-js/zoom.js', async: true, condition: function () { return !!document.body.classList; } },
+                { src: 'plugin/notes/notes.js', async: true, condition: function () { return !!document.body.classList; } },
+                {
+                    src: 'plugin/reveal-code-focus.js',
+                    async: true,
+                    callback: function () {
+                        RevealCodeFocus();
                     }
-                ]
-            });
-
+                }
+            ]
+        });
     </script>
 </body>
-</html>
 
+</html>
