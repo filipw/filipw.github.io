@@ -370,7 +370,6 @@ var scriptResult = await script.RunAsync();
                             <tr>
                                 <th></th>
                                 <th>Standard syntax</th>
-                                <th>DSL syntax</th>
                                 <th>.NET Core support</th>
                             </tr>
                         </thead>
@@ -378,32 +377,27 @@ var scriptResult = await script.RunAsync();
                             <tr>
                                 <td>Roslyn libraries</td>
                                 <td>✅</td>
-                                <td>✅</td>
                                 <td>🦄</td>
                             </tr>
                             <tr>
                                 <td>CSI</td>
                                 <td>✅</td>
-                                <td></td>
                                 <td>💩</td>
                             </tr>
                             <tr>
                                 <td>scriptcs</td>
                                 <td></td>
-                                <td>✅</td>
                                 <td>💩</td>
                             </tr>
                             <tr>
                                 <!-- 🔧 -->
                                 <td>Cake</td>
                                 <td></td>
-                                <td>✅</td>
                                 <td>🔧</td>
                             </tr>
                             <tr>
                                 <td>dotnet-script</td>
                                 <td>✅</td>
-                                <td></td>
                                 <td>🦄</td>
                             </tr>
                         </tbody>
@@ -428,10 +422,10 @@ var scriptResult = await script.RunAsync();
                     <div class="left overlay-style">
                         <div style="padding: 3%">
                             <ul>
-                                <li class="fragment">⚙️Automation<br/>
+                                <li class="fragment">⚙️ Automation<br/>
                                     <small>Batch jobs, build scripts, command line tools</small>
                                 </li>
-                                <li class="fragment">🍃Lightweight programs<br/>
+                                <li class="fragment">🍃 Lightweight programs<br/>
                                     <small>Experiments, API exploration</small>
                                 </li>
                             </ul>
@@ -441,11 +435,11 @@ var scriptResult = await script.RunAsync();
                     <div class="right overlay-style" style="padding: 0">
                         <div style="padding: 3%">
                             <ul>
-                                <li class="fragment">🖇Application extensibility<br/>
+                                <li class="fragment">🖇 Application extensibility<br/>
                                     <small>Plugins, modules, dynamic configuration</small>
                                 </li>
 
-                                <li class="fragment">⚗️Code generation<br/>
+                                <li class="fragment">⚗️ Code generation<br/>
                                     <small>T4-like features, emitting code</small>
                                 </li>
                             </ul>
@@ -595,7 +589,7 @@ var result = await CSharpScript.EvaluateAsync&lt;int&gt;("Number1 - Number2", gl
 
                 <section data-background="images/StockSnap_XXTEK7APLA.jpg">
 
-                    <h3 class="overlay-style">Go to Definition</h3>
+                    <h3 class="overlay-style">Go to Metadata</h3>
 
                     <img src="images/editor2.png" />
 
@@ -695,7 +689,7 @@ void SayHi(string msg)
 var message = "Hello";
 var foo = new Foo();
 
-SayHi(message + " " + Text");
+SayHi(message + " " + Text);
     </code>
 </pre>
 
@@ -752,6 +746,7 @@ public sealed class Submission#0 {
                     <div class="fragment" data-code-focus="11"></div>
                     <div class="fragment" data-code-focus="13-23"></div>
                     <div class="fragment" data-code-focus="30-32"></div>
+                    <div class="fragment" data-code-focus="27"></div>
 
                 </section>
 

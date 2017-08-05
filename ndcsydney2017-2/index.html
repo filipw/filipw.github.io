@@ -520,7 +520,7 @@ var emitDifferenceResult = changedCompilation.EmitDifference(baseline, edits, md
     </code>
 </pre>
 
-                    <p class="fragment" data-code-focus="4"></p>
+                    <p class="fragment" data-code-focus="7"></p>
                     <p class="fragment" data-code-focus="8"></p>
                     <p class="fragment" data-code-focus="13-17"></p>
                     <p class="fragment" data-code-focus="19-20"></p>
@@ -729,7 +729,7 @@ var x = numbers.Where(x => x % 2 == 0);
 // as a result, AsyncLocal doesn't work
 
 > using System.Threading;
-> var msg = new AsyncLocal<string>();
+> var msg = new AsyncLocal&lt;string&gt;();
 > msg.Value = "hello";
 > msg.Value
 null
@@ -986,6 +986,35 @@ else
                 </section>
 
                 <section data-background="images/chuttersnap-233105.jpg">
+                    <h3 class="overlay-style">Starting Live Unit Testing globally</h3>
+                    <img src="images/liveunittests-1.png" />
+                </section>
+
+                <section data-background="images/chuttersnap-233105.jpg">
+                    <h3 class="overlay-style">Starting Live Unit Testing per project</h3>
+
+                    <img class="normal" src="images/liveunittests-2.png" />
+                </section>
+
+                <section data-background="images/chuttersnap-233105.jpg">
+
+                    <h3 class="overlay-style">Unsupported Framework</h3>
+                    <pre>
+    <code class="markdown">
+[20:01:31.934 Error] Outdated package 'xunit'. Installed version: '1.9.2'. 
+Minimum supported version: '2.0.0'. Please update the package.
+
+[20:01:31.949 Error] No test adapters are referenced by this solution. 
+If you have a test project, add a NuGet reference to a test adapter corresponding to the test framework used in order to run the tests. 
+If you already have the required NuGet reference in your test project, performing a NuGet restore may resolve the issue.
+
+[20:01:31.949 Info] Start failed.
+[20:01:31.965 Info] Live Unit Testing stopped.
+    </code>
+</pre>
+                </section>
+
+                <section data-background="images/chuttersnap-233105.jpg">
 
                     <h2 class="overlay-style">Minimum Framework Versions</h2>
 
@@ -1016,35 +1045,6 @@ else
                         </tbody>
                     </table>
 
-                </section>
-
-                <section data-background="images/chuttersnap-233105.jpg">
-                    <h3 class="overlay-style">Starting Live Unit Testing globally</h3>
-                    <img src="images/liveunittests-1.png" />
-                </section>
-
-                <section data-background="images/chuttersnap-233105.jpg">
-                    <h3 class="overlay-style">Starting Live Unit Testing per project</h3>
-
-                    <img class="normal" src="images/liveunittests-2.png" />
-                </section>
-
-                <section data-background="images/chuttersnap-233105.jpg">
-
-                    <h3 class="overlay-style">Unsupported Framework</h3>
-                    <pre>
-    <code class="markdown">
-[20:01:31.934 Error] Outdated package 'xunit'. Installed version: '1.9.2'. 
-Minimum supported version: '2.0.0'. Please update the package.
-
-[20:01:31.949 Error] No test adapters are referenced by this solution. 
-If you have a test project, add a NuGet reference to a test adapter corresponding to the test framework used in order to run the tests. 
-If you already have the required NuGet reference in your test project, performing a NuGet restore may resolve the issue.
-
-[20:01:31.949 Info] Start failed.
-[20:01:31.965 Info] Live Unit Testing stopped.
-    </code>
-</pre>
                 </section>
 
                 <section data-background="images/chuttersnap-233105.jpg">
