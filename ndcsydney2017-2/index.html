@@ -467,9 +467,9 @@ Application started. Press Ctrl+C to shut down.
 
                 <section data-background="images/alexey-ruban-103990.jpg">
 
-                    <h3 class="overlay-style">Edit And Continue with Roslyn</h2>
+                    <h3 class="overlay-style">Edit And Continue with Roslyn (before)</h2>
 
-                        <pre class="small">
+                        <pre>
     <code class="cs">
 class Program
 { 
@@ -478,7 +478,18 @@ class Program
         Console.WriteLine(1); 
     } 
 }
+    </code>
+</pre>
 
+                        <p class="fragment" data-code-focus="6"></p>
+                </section>
+
+                                <section data-background="images/alexey-ruban-103990.jpg">
+
+                    <h3 class="overlay-style">Edit And Continue with Roslyn (after)</h2>
+
+                        <pre>
+    <code class="cs">
 class Program
 { 
     public static void Main() 
@@ -490,21 +501,16 @@ class Program
 </pre>
 
                         <p class="fragment" data-code-focus="6"></p>
-                        <p class="fragment" data-code-focus="14"></p>
-
                 </section>
 
                 <section data-background="images/alexey-ruban-103990.jpg">
 
                     <pre class="small">
     <code class="cs">
-// we have CSharpCompilations: originalCompilation & changedCompilation
-var stream = new MemoryStream();
-var emitResult = originalCompilation.Emit(stream);
-stream.Position = 0;
-
-var originalMetadata = AssemblyMetadata.CreateFromStream(stream);
-var baseline = EmitBaseline.CreateInitialBaseline(originalMetadata.GetModules()[0], handle => default(EditAndContinueMethodDebugInformation));
+// read metadata from the original compilation
+var originalMetadata = AssemblyMetadata.CreateFromStream(originalCompilationStream);
+var baseline = EmitBaseline.CreateInitialBaseline(originalMetadata.GetModules()[0], 
+    handle => default(EditAndContinueMethodDebugInformation));
 
 MemoryStream mdStream = new MemoryStream(), ilStream = new MemoryStream(), pdbStream = new MemoryStream();
 var updatedMethods = new List&lt;MethodDefinitionHandle&gt;();
@@ -520,10 +526,10 @@ var emitDifferenceResult = changedCompilation.EmitDifference(baseline, edits, md
     </code>
 </pre>
 
-                    <p class="fragment" data-code-focus="7"></p>
-                    <p class="fragment" data-code-focus="8"></p>
-                    <p class="fragment" data-code-focus="13-17"></p>
-                    <p class="fragment" data-code-focus="19-20"></p>
+                    <p class="fragment" data-code-focus="3"></p>
+                    <p class="fragment" data-code-focus="4-5"></p>
+                    <p class="fragment" data-code-focus="10-14"></p>
+                    <p class="fragment" data-code-focus="16"></p>
                 </section>
 
                 <section data-background="images/alexey-ruban-103990.jpg">
@@ -610,7 +616,7 @@ Type "#help" for more information.
 > #r "System.Net.Http"
 > using System.Net.Http;
 > var client = new HttpClient();
-> var txt = await client.GetStringAsync("https://gist.githubusercontent.com/filipw/7c22467439759c5f56cb2154717cdbe8/raw/93a4d2aa8034426c4ebcd20c67ac73daa11761dc/hello.txt");
+> await client.GetStringAsync("https://gist.githubusercontent.com/filipw/7c22467439759c5f56cb2154717cdbe8/raw/93a4d2aa8034426c4ebcd20c67ac73daa11761dc/hello.txt");
 "Hello from a gist"
 > 
     </code>
@@ -651,35 +657,39 @@ Type "#help" for more information.
                     </table>
 
                 </section>
-
                 <section data-background="images/dan-gold-297904.jpg">
 
-                    <h3 class="overlay-style">Creating a REPL compilation</h3>
-                    <pre class="small">
+                    <h3 class="overlay-style">Source code kinds in Roslyn</h3>
+                    <pre>
     <code class="cs">
-public enum SourceCodeKind {
+public enum SourceCodeKind 
+{
     Regular,
     Script
 }
-
-public sealed class CSharpCompilation : Compilation
-{
-    public static CSharpCompilation Create(string assemblyName, 
-            IEnumerable&lt;SyntaxTree&gt; syntaxTrees = null, 
-            IEnumerable&lt;MetadataReference&gt; references = null, 
-            CSharpCompilationOptions options = null);
-
-    public static CSharpCompilation CreateScriptCompilation(string assemblyName, 
-            SyntaxTree syntaxTree = null, 
-            IEnumerable&lt;MetadataReference&gt; references = null, 
-            CSharpCompilationOptions options = null, 
-            CSharpCompilation previousScriptCompilation = null, 
-            Type returnType = null, 
-            Type globalsType = null);
-}
         </code>
 </pre>
-                    <p class="fragment" data-code-focus="18-20"></p>
+                </section>
+                <section data-background="images/dan-gold-297904.jpg">
+
+                    <h3 class="overlay-style">Creating a REPL compilation</h3>
+                    <pre>
+    <code class="cs">
+public static CSharpCompilation Create(string assemblyName, 
+        IEnumerable&lt;SyntaxTree&gt; syntaxTrees = null, 
+        IEnumerable&lt;MetadataReference&gt; references = null, 
+        CSharpCompilationOptions options = null);
+
+public static CSharpCompilation CreateScriptCompilation(string assemblyName,
+        SyntaxTree syntaxTree = null, 
+        IEnumerable&lt;MetadataReference&gt; references = null, 
+        CSharpCompilationOptions options = null, 
+        CSharpCompilation previousScriptCompilation = null, 
+        Type returnType = null, 
+        Type globalsType = null);
+    </code>
+</pre>
+                    <p class="fragment" data-code-focus="11-13"></p>
 
                 </section>
 
@@ -752,7 +762,7 @@ true
                 <section data-background="images/dan-gold-297904.jpg">
 
                     <h2 class="overlay-style">Surprises</h2>
-                    <pre class="small">
+                    <pre>
     <code class="cs">
 // regular extension methods are not allowed
 > var dateString = "2013-1-25";
@@ -762,8 +772,16 @@ true
     } 
 }
 "(1,39): error CS1109: Extension methods must be defined in a top level static class; Ext is a nested class"
+    </code>
+</pre>
+                </section>
+                <section data-background="images/dan-gold-297904.jpg">
 
+                    <h2 class="overlay-style">Surprises</h2>
+                    <pre>
+    <code class="cs">
 // on the other hand, loose extension methods are allowed
+> var dateString = "2013-1-25";
 > public static bool IsDate(this string val) { 
         return DateTime.TryParse(val, out var dt); 
     } 
@@ -929,7 +947,7 @@ else
                     <p class="fragment" data-code-focus="14,26"></p>
                 </section>
 
-                <section data-background="images/workbooks-main.png" data-state="bg-auto-height">
+                <section data-background="images/workbooks-main.png" data-state="bg-auto-width">
                 </section>
 
                 <section data-background="images/chuttersnap-233105.jpg">
@@ -1171,7 +1189,7 @@ Try turning it back on again via the 'Test -> Live Unit Testing -> Start' menu.
 
                 </section>
 
-                <section data-background="images/dan-gold-297904.jpg">
+                <section data-background="images/jeff-sheldon-3230.jpg">
 
                     <h3 class="overlay-style">Official Roslyn Analyzers</h3>
 
@@ -1221,7 +1239,7 @@ Try turning it back on again via the 'Test -> Live Unit Testing -> Start' menu.
 
                 </section>
 
-                <section data-background="images/markus-spiske-135763.jpg">
+                <section data-background="images/jeff-sheldon-3230.jpg">
                     <div class="overlay-style" style="padding:3% !important;">
                         <h2>Some Community Analyzer Packages</h2>
                     </div>
@@ -1251,7 +1269,7 @@ Try turning it back on again via the 'Test -> Live Unit Testing -> Start' menu.
                         </div>
                     </div>
                 </section>
-                <section data-background="images/markus-spiske-135763.jpg">
+                <section data-background="images/jeff-sheldon-3230.jpg">
                     <pre class="small">
     <code class="cs">
 [DiagnosticAnalyzer(LanguageNames.CSharp)]
