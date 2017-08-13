@@ -398,17 +398,19 @@ Application started. Press Ctrl+C to shut down.
                         <blockquote>Program logic should not be tested in the debugger. You are wasting your time and your company's
                             time if you do so.
 
-                            <footer>- <cite>Sam Gentile, <a href="https://web.archive.org/web/20060221144806/http://samgentile.com/blog/archive/2004/10/19/12240.aspx">2004</a></cite></footer>
+                            <footer>- <cite>Microsoft MVP, <a href="https://web.archive.org/web/20060221144806/http://samgentile.com/blog/archive/2004/10/19/12240.aspx">2004</a></cite></footer>
                         </blockquote>
                         <blockquote>Edit and continue is a bug-introducing machine. Why? Because you get to focusing on that one bug
                             and twiddle the code to fix that one bug and introduce six more.
 
-                            <footer>- <cite>John Robbins, <a href="https://web.archive.org/web/20060219194112/http://wintellect.com:80/WEBLOGS/wintellect/archive/2004/10/17/546.aspx">2004</a></cite></footer>
+                            <footer>- <cite>Another Microsoft MVP, <a href="https://web.archive.org/web/20060219194112/http://wintellect.com:80/WEBLOGS/wintellect/archive/2004/10/17/546.aspx">2004</a></cite></footer>
                         </blockquote>
 
                     </div>
                 </section>
-
+                <section data-background="images/alexey-ruban-103990.jpg">
+                    <img src="images/edit-and-continue-google.png" />
+                </section>
                 <section data-background="images/alexey-ruban-103990.jpg">
                     <div class="overlay-style" style="padding: 3% !important;">
                         <div class="left">
@@ -484,7 +486,7 @@ class Program
                         <p class="fragment" data-code-focus="6"></p>
                 </section>
 
-                                <section data-background="images/alexey-ruban-103990.jpg">
+                <section data-background="images/alexey-ruban-103990.jpg">
 
                     <h3 class="overlay-style">Edit And Continue with Roslyn (after)</h2>
 
@@ -507,7 +509,7 @@ class Program
 
                     <pre class="small">
     <code class="cs">
-// read metadata from the original compilation
+// read metadata from the original compilation or using metadata reader
 var originalMetadata = AssemblyMetadata.CreateFromStream(originalCompilationStream);
 var baseline = EmitBaseline.CreateInitialBaseline(originalMetadata.GetModules()[0], 
     handle => default(EditAndContinueMethodDebugInformation));
@@ -601,7 +603,7 @@ var emitDifferenceResult = changedCompilation.EmitDifference(baseline, edits, md
 
                 <section data-background="images/dan-gold-297904.jpg">
                     <p class="overlay-style">
-                        CSI is bundled with <span class="highlight">MSBuild Tools</span>. It is <span class="highlight">Desktop CLR</span>                        only but works <span class="highlight">x-plat</span> via Mono.
+                        CSI is bundled with <span class="highlight">MSBuild Tools</span>. It supports <span class="highlight">Desktop .NET</span> only, but works <span class="highlight">cross platform</span> via Mono.
                     </p>
                 </section>
 
@@ -759,6 +761,20 @@ true
     </code>
 </pre>
                 </section>
+
+                <section data-background="images/dan-gold-297904.jpg">
+
+                    <h2 class="overlay-style">Surprises</h2>
+                    <pre>
+                                            <code class="cs">
+// namespaces are not allowed
+> namespace Foo { }
+(1,1): error CS7021: Cannot declare namespace in script code
+> 
+                                            </code>
+                                        </pre>
+                </section>
+
                 <section data-background="images/dan-gold-297904.jpg">
 
                     <h2 class="overlay-style">Surprises</h2>
