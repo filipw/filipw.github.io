@@ -246,7 +246,7 @@
 
                 </section>
 
-                <section data-background="images/scripting2.png" data-state="bg-auto-height" transition="default">
+                <section data-background-image="images/scripting2.png" data-background-color="black" data-state="bg-auto-width" transition="default">
                 </section>
 
                 <section data-background="images/mark-solarski-209233.jpg">
@@ -347,7 +347,7 @@ var scriptResult = await script.RunAsync();
                         <div style="padding: 3%">
                             <ul>
                                 <li class="fragment">🖥 Script Compilation<br/>
-                                    <small>Equivalent to standard <em>CSharpCompilation</em>, submission concept</small>
+                                    <small>Shares logic with standard <em>CSharpCompilation</em></small>
                                 </li>
 
                                 <li class="fragment">📦 Development<br/>
@@ -369,36 +369,36 @@ var scriptResult = await script.RunAsync();
                         <thead>
                             <tr>
                                 <th></th>
-                                <th>Standard syntax</th>
                                 <th>.NET Core support</th>
+                                <th>Standard syntax</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td>Roslyn libraries</td>
-                                <td>✅</td>
                                 <td>🦄</td>
+                                <td>N/A</td>
                             </tr>
                             <tr>
                                 <td>CSI</td>
-                                <td>✅</td>
                                 <td>💩</td>
+                                <td>✅</td>
                             </tr>
                             <tr>
                                 <td>scriptcs</td>
-                                <td></td>
                                 <td>💩</td>
+                                <td></td>
                             </tr>
                             <tr>
                                 <!-- 🔧 -->
                                 <td>Cake</td>
-                                <td></td>
                                 <td>🔧</td>
+                                <td></td>
                             </tr>
                             <tr>
                                 <td>dotnet-script</td>
-                                <td>✅</td>
                                 <td>🦄</td>
+                                <td>✅</td>
                             </tr>
                         </tbody>
                     </table>
@@ -460,8 +460,7 @@ var name = new AssemblyName("DynamicAssembly");
 var assemblyBuilder = AssemblyBuilder.DefineDynamicAssembly(name, AssemblyBuilderAccess.Run);
 var moduleBuilder = assemblyBuilder.DefineDynamicModule("DynamicModule");
 var typeBuilder = moduleBuilder.DefineType("DynamicClass", TypeAttributes.Public);
-var methodBuilder = typeBuilder.DefineMethod("DynamicMethod", MethodAttributes.Public, 
-    typeof(int), new[] { typeof(int), typeof(int) });
+var methodBuilder = typeBuilder.DefineMethod("DynamicMethod", MethodAttributes.Public, typeof(int), new[] { typeof(int), typeof(int) });
 
 var ilGenerator = methodBuilder.GetILGenerator();
 
@@ -525,13 +524,11 @@ using (var ms = new MemoryStream())
 var result = await CSharpScript.EvaluateAsync&lt;int&gt;("5 - 3");
 
 // or
-
 var script = CSharpScript.Create&lt;int&gt;("5 - 3");
 var handle = script.CreateDelegate();
 await handle();
 
 // or
-
 public class ScriptHost
 {
     public int Number1 { get; set; }
@@ -544,8 +541,8 @@ var result = await CSharpScript.EvaluateAsync&lt;int&gt;("Number1 - Number2", gl
 </pre>
 
                         <p class="fragment" data-code-focus="2"></p>
-                        <p class="fragment" data-code-focus="6-8"></p>
-                        <p class="fragment" data-code-focus="12-19"></p>
+                        <p class="fragment" data-code-focus="5-7"></p>
+                        <p class="fragment" data-code-focus="10-17"></p>
 
                 </section>
 
@@ -605,7 +602,7 @@ var result = await CSharpScript.EvaluateAsync&lt;int&gt;("Number1 - Number2", gl
 
                 <section data-background="images/StockSnap_XXTEK7APLA.jpg">
 
-                    <h2 class="overlay-style">Language features support at C# level</h2>
+                    <h2 class="overlay-style">Language features at "regular" C# level</h2>
 
                     <img src="images/lang-features.png" />
 
@@ -617,7 +614,7 @@ var result = await CSharpScript.EvaluateAsync&lt;int&gt;("Number1 - Number2", gl
 
                 <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
 
-                    <h1>New features in CSI</h1>
+                    <h1>Symbols</h1>
 
                 </section>
 
@@ -664,7 +661,7 @@ Console.WriteLine(typeof(MapperConfiguration));
                 <section data-background="images/nuget-csharp.png" data-state="bg-auto-height">
                 </section>
 
-                <section data-background="images/dotnet-script-release.png" data-state="bg-auto-height">
+                <section data-background="images/dotnet-script-release.png" data-state="bg-auto-width">
                 </section>
 
             </section>
@@ -744,7 +741,8 @@ public sealed class Submission#0 {
 </pre>
 
                     <div class="fragment" data-code-focus="2"></div>
-                    <div class="fragment" data-code-focus="3-7"></div>
+                    <div class="fragment" data-code-focus="3-4"></div>
+                    <div class="fragment" data-code-focus="5-7"></div>
                     <div class="fragment" data-code-focus="9"></div>
                     <div class="fragment" data-code-focus="11"></div>
                     <div class="fragment" data-code-focus="13-23"></div>
