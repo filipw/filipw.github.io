@@ -364,13 +364,6 @@ Application started. Press Ctrl+C to shut down.
                         <p class="fragment" data-code-focus="10-12"></p>
                 </section>
 
-                <section data-background="images/blake-wisz-85030.jpg">
-                    <p class="overlay-style">
-                        Any executable on the PATH that follows the <span class="highlight">dotnet-{name}</span> format can
-                        be used with dotnet CLI. It can then be used with watch: <span class="highlight">dotnet watch name</span>.
-                    </p>
-                </section>
-
             </section>
 
             <section>
@@ -715,6 +708,10 @@ while (true)
                 </section>
 
                 <section data-background="images/markus-spiske-135763.jpg">
+                    <img class="normal" src="images/interactive-window.png" />
+                </section>
+
+                <section data-background="images/markus-spiske-135763.jpg">
                     <div class="overlay-style" style="padding:3% !important;">
                         <h2>Main C# Interactive Window Features</h2>
                     </div>
@@ -753,10 +750,6 @@ while (true)
                 </section>
 
                 <section data-background="images/markus-spiske-135763.jpg">
-                    <img class="normal" src="images/interactive-window.png" />
-                </section>
-
-                <section data-background="images/markus-spiske-135763.jpg">
                     <img src="images/interactive-execute.png" />
                 </section>
 
@@ -784,81 +777,6 @@ var x = numbers.Where(x => x % 2 == 0);
     </code>
 </pre>
                 </section>
-
-<!--                 <section data-background="images/dan-gold-297904.jpg">
-
-                    <h2 class="overlay-style">Surprises</h2>
-                    <pre>
-    <code class="cs">
-// each submission gets it's own async execution context
-// as a result, AsyncLocal doesn't work
-
-> using System.Threading;
-> var msg = new AsyncLocal&lt;string&gt;();
-> msg.Value = "hello";
-> msg.Value
-null
-    </code>
-</pre>
-                </section>
-
-                <section data-background="images/dan-gold-297904.jpg">
-
-                    <h2 class="overlay-style">Surprises</h2>
-                    <pre>
-    <code class="cs">
-// submission code is always wrapped into a wrapper type
-> class Foo { }
-> typeof(Foo).IsNested
-true
-    </code>
-</pre>
-                </section>
-
-                <section data-background="images/dan-gold-297904.jpg">
-
-                    <h2 class="overlay-style">Surprises</h2>
-                    <pre>
-                                            <code class="cs">
-// namespaces are not allowed
-> namespace Foo { }
-(1,1): error CS7021: Cannot declare namespace in script code
-> 
-                                            </code>
-                                        </pre>
-                </section>
-
-                <section data-background="images/dan-gold-297904.jpg">
-
-                    <h2 class="overlay-style">Surprises</h2>
-                    <pre>
-    <code class="cs">
-// regular extension methods are not allowed
-> var dateString = "2013-1-25";
-> static class Ext { 
-    public static bool IsDate(this string val) { 
-        return DateTime.TryParse(val, out var dt); 
-    } 
-}
-"(1,39): error CS1109: Extension methods must be defined in a top level static class; Ext is a nested class"
-    </code>
-</pre>
-                </section>
-                <section data-background="images/dan-gold-297904.jpg">
-
-                    <h2 class="overlay-style">Surprises</h2>
-                    <pre>
-    <code class="cs">
-// on the other hand, loose extension methods are allowed
-> var dateString = "2013-1-25";
-> public static bool IsDate(this string val) { 
-        return DateTime.TryParse(val, out var dt); 
-    } 
-> dateString.IsDate();
-true
-    </code>
-</pre>
-                </section> -->
                 
             </section>
 
@@ -1159,14 +1077,6 @@ public class RemoveRegionAnalyzer : DiagnosticAnalyzer
     </code>
 </pre>
                     <p class="fragment" data-code-focus="13-19"></p>
-                </section>
-
-                <section data-background="images/jeff-sheldon-3230.jpg">
-                    <p class="overlay-style">
-                        Analyzers & refactorings reference Roslyn DLLs from <span class="highlight">Visual Studio</span>.
-                        Building an analyzer against Roslyn 1.0.0, allows it to run in Visual Studio 2015. Targetting newer
-                        Roslyn, <span class="highlight">restricts</span> it to newer VS version only.
-                    </p>
                 </section>
             </section>
 
