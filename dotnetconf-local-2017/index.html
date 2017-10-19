@@ -798,41 +798,41 @@ var x = numbers.Where(x => x % 2 == 0);
                     <pre class="very-small">
     <code>
 ---
-uti: com.xamarin.workbook
-title: What's New in C# 7 | C# Guide
+title: "UrhoSharp: Planet Earth in C#"
 platforms:
 - Console
+packages:
+- id: UrhoSharp
+  version: 1.5.22
 ---
 
-## `out` variables
+# UrhoSharp: Planet Earth in C#
 
-The existing syntax that supports `out` parameters has been improved in this version.
+[UrhoSharp](https://developer.xamarin.com/guides/cross-platform/urho/) is a powerful 3D game engine for Xamarin and .NET developers. Start by loading URho into the workbook and import some namespaces that we’ll want to consume.
 
 ```csharp
-var input = "8675309";
+#r "Urho"
 
-int numericResult;
-if (int.TryParse(input, out numericResult))
-    Console.WriteLine(numericResult);
-else
-    Console.WriteLine("Could not parse input");
+using Urho;
+using Urho.Actions;
+using Urho.Shapes;
+
+var app = SimpleApplication.Show(new ApplicationOptions("Data") { Width = 600, Height = 600, TouchEmulation = true });
 ```
 
-You can now declare `out` variables in the argument list of a method call, rather than writing a separate declaration statement:
+We have created a window containing a `ApplicationOptions`. Let’s add a new `Node` to the scene, representing the Earth.
 
 ```csharp
-if (int.TryParse(input, out int result))
-    Console.WriteLine(result);
-else
-    Console.WriteLine("Could not parse input");
+var earthNode = app.RootNode.CreateChild(name: "Earth");
+var earth = earthNode.CreateComponent&lt;Sphere&gt;();
 ```
     </code>
 </pre>
 
-                    <p class="fragment" data-code-focus="2-7"></p>
-                    <p class="fragment" data-code-focus="9-12,22-24"></p>
-                    <p class="fragment" data-code-focus="13-20,25-30"></p>
-                    <p class="fragment" data-code-focus="14,26"></p>
+                    <p class="fragment" data-code-focus="2-9"></p>
+                    <p class="fragment" data-code-focus="11-13,24-26"></p>
+                    <p class="fragment" data-code-focus="15-22,27-30"></p>
+                    <p class="fragment" data-code-focus="22,28"></p>
                 </section>
 
                 <section data-background="images/workbooks-main.png" data-state="bg-auto-width">
