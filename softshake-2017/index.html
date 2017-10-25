@@ -668,28 +668,6 @@ public static CSharpCompilation CreateScriptCompilation(string assemblyName,
 
                 </section>
 
-                <section data-background="images/dan-gold-297904.jpg">
-                    <h3 class="overlay-style">Building a REPL with Roslyn</h2>
-
-                        <pre>
-    <code class="cs">
-ScriptState&lt;object&gt; scriptState = null;
-while (true)
-{
-    Console.Write("> ");
-    var input = Console.ReadLine();
-    scriptState = scriptState == null ?
-        await CSharpScript.RunAsync(input) :
-        await scriptState.ContinueWithAsync(input);
-}
-    </code>
-</pre>
-
-                        <p class="fragment" data-code-focus="8"></p>
-                        <p class="fragment" data-code-focus="9"></p>
-
-                </section>
-
             </section>
 
             <section>
@@ -961,28 +939,6 @@ If you already have the required NuGet reference in your test project, performin
                 <section data-background="images/chuttersnap-233105.jpg">
                     <h3 class="overlay-style">As soon as Filip addded some logic</h3>
                     <img class="normal" src="images/liveunittests-after.png" />
-                </section>
-
-                <section data-background="images/chuttersnap-233105.jpg">
-                    <img src="images/baby.gif" />
-                </section>
-
-                <section data-background="images/chuttersnap-233105.jpg">
-
-                    <h3 class="overlay-style">Random Errors</h3>
-                    <pre>
-    <code class="markdown">
-[22:12:46.665 Info] Live Unit Testing started.
-[22:12:53.060 Info] Build completed (succeeded).
-[22:13:10.551 Info] Build completed (succeeded).
-
-[22:13:12.820 Error] Live Unit Testing has been turned off because 'Microsoft.CodeAnalysis.LiveUnitTesting.EntryPoint.exe' process has exited unexpectedly. 
-Try turning it back on again via the 'Test -> Live Unit Testing -> Start' menu.
-
-[22:13:12.820 Info] Live Unit Testing stopped.
-
-    </code>
-</pre>
                 </section>
 
                 <section data-background="images/chuttersnap-233105.jpg">
