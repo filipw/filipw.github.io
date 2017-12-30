@@ -1,0 +1,1133 @@
+﻿<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Interactive C# Development</title>
+    <meta name="description" content="">
+    <meta name="author" content="Filip W">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <script src="//code.jquery.com/jquery-1.8.0.js"></script>
+    <script src="//code.jquery.com/ui/1.8.23/jquery-ui.js"></script>
+    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/css/bootstrap-combined.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/default.min.css">
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/simple.css" id="theme">
+    <link type="text/css" rel="stylesheet" href="css/custom.css" />
+    <script src="fsharp.formatting/styles/tips.js" type="text/javascript"></script>
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+    <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+
+    <script>
+        if (window.location.search.match(/print-pdf/gi)) {
+            var link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = 'css/print/pdf.css';
+            document.getElementsByTagName('head')[0].appendChild(link);
+        }
+    </script>
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+    <style type="text/css">
+        .reveal .slides section .fragment.current-only {
+            opacity: 1;
+            visibility: visible;
+            display: none;
+        }
+
+        .reveal .slides section .fragment.current-only.current-fragment {
+            display: block;
+        }
+        /* Solarized Light theme */
+
+        .line {
+            display: block;
+            padding: 1px 10px !important;
+        }
+
+        .line.focus {
+            background: #fff;
+            color: #657b83;
+        }
+
+        .line.focus .hljs-comment,
+        .line.focus .hljs-quote {
+            color: #93a1a1;
+        }
+
+        .line.focus .hljs-keyword,
+        .line.focus .hljs-selector-tag,
+        .line.focus .hljs-addition {
+            color: #859900;
+        }
+
+        .line.focus .hljs-number,
+        .line.focus .hljs-string,
+        .line.focus .hljs-meta .hljs-meta-string,
+        .line.focus .hljs-literal,
+        .line.focus .hljs-doctag,
+        .line.focus .hljs-regexp {
+            color: #2aa198;
+        }
+
+        .line.focus .hljs-title,
+        .line.focus .hljs-section,
+        .line.focus .hljs-name,
+        .line.focus .hljs-selector-id,
+        .line.focus .hljs-selector-class {
+            color: #268bd2;
+        }
+
+        .line.focus .hljs-attribute,
+        .line.focus .hljs-attr,
+        .line.focus .hljs-variable,
+        .line.focus .hljs-template-variable,
+        .line.focus .hljs-class .hljs-title,
+        .line.focus .hljs-type {
+            color: #b58900;
+        }
+
+        .line.focus .hljs-symbol,
+        .line.focus .hljs-bullet,
+        .line.focus .hljs-subst,
+        .line.focus .hljs-meta,
+        .line.focus .hljs-meta .hljs-keyword,
+        .line.focus .hljs-selector-attr,
+        .line.focus .hljs-selector-pseudo,
+        .line.focus .hljs-link {
+            color: #cb4b16;
+        }
+
+        .line.focus .hljs-built_in,
+        .line.focus .hljs-deletion {
+            color: #dc322f;
+        }
+
+        .line.focus .hljs-formula {
+            background: #eee8d5;
+        }
+
+        .line.focus .hljs-emphasis {
+            font-style: italic;
+        }
+
+        .line.focus .hljs-strong {
+            font-weight: bold;
+        }
+
+        .yellow-slide .line.focus:nth-child(2) {
+            background: yellow;
+        }
+
+        .fragment.current-visible.visible:not(.current-fragment) {
+            display: none;
+            height: 0px;
+            line-height: 0px;
+            font-size: 0px;
+        }
+
+        h1,
+        .overlay-style {
+            background: rgba(0, 0, 0, 0.75);
+            color: #fff !important;
+            padding: 5% !important;
+        }
+
+        h2.overlay-style,
+        h3.overlay-style {
+            padding: 2% !important;
+        }
+
+        .left {
+            left: -8.33%;
+            text-align: left;
+            float: left;
+            width: 50%;
+            z-index: -10;
+            padding: 0 !important;
+        }
+
+        .right {
+            left: 31.25%;
+            top: 75px;
+            float: right;
+            text-align: left;
+            z-index: -10;
+            width: 50%;
+            padding: 0 !important;
+        }
+
+        .reveal pre.small {
+            font-size: 0.45em;
+        }
+
+        .reveal pre.very-small {
+            font-size: 0.35em;
+        }
+
+        html.bg-auto-height div.slide-background.present {
+            background-size: auto 100%;
+        }
+
+        html.bg-auto-width div.slide-background.present {
+            background-size: 100% auto;
+        }
+
+        span.highlight {
+            background: #de4747;
+            display: inline-block;
+            padding: 0 5px;
+            line-height: 1.2em;
+        }
+
+        .overlay-style h2,
+        .overlay-style h3,
+        .overlay-style a {
+            color: #fff !important;
+        }
+
+        .reveal table td {
+            text-align: center;
+        }
+
+        .reveal section img.icon {
+            margin: 0;
+            border: 0;
+            min-height: auto;
+            max-height: auto;
+        }
+
+        .reveal pre code {
+            background: #000;
+            max-height: none;
+            padding: 1% 2%;
+        }
+
+        .reveal pre {
+            background: none;
+            box-shadow: none;
+            font-size: 0.65em;
+        }
+
+        blockquote:before {
+            display: block;
+            height: 0;
+            content: "“";
+            margin-left: -.6em;
+            font: italic 400%/1 Cochin, Georgia, "Times New Roman", serif;
+            color: #999;
+            text-align: left;
+        }
+
+        .reveal blockquote {
+            background: none;
+            text-align: left;
+        }
+
+        .reveal p.footnote {
+            line-height: 1;
+            margin: 0;
+            font-size: 0.5em;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="reveal">
+        <header style="position: absolute;top: 50px; left: 100px; z-index:500; font-size:100px;background-color: rgba(0,0,0,0.5)"></header>
+        <!-- Any section element inside of this container is displayed as a slide -->
+        <div class="slides">
+
+            <section data-background="images/jeff-sheldon-3220.jpg">
+
+                <h1>Interactive C# Development</h1>
+
+            </section>
+
+            <section data-background="images/IMG_20161025_115652.jpg">
+
+                <div class="overlay-style">
+                    <h2>Filip W</h2>
+                    <p>not PM. not architect. not developer advocate.</p>
+
+                    <p>
+                        <small>
+<a href="https://strathweb.com" class="roll"><span>strathweb.com</span></a> • 
+<a href="https://twitter.com/filip_woj" class="roll"><span data-title="@filip_woj">@filip_woj</span></a> • 
+<a href="https://github.com/filipw" class="roll"><span data-title="github.com/filipw">github.com/filipw</span></a>
+</small></p>
+                    <img class="normal" src="images/mvp.png" />
+                </div>
+
+            </section>
+            <section data-background="images/IMG_20161108_131400.jpg">
+
+            </section>
+            <section>
+
+                <section data-background="images/blake-wisz-85030.jpg">
+
+                    <h1>dotnet watch</h1>
+
+                </section>
+
+                <section data-background="images/blake-wisz-85030.jpg">
+                    <p class="overlay-style">
+                        <span class="highlight">dotnet watch</span> is a dotnet CLI tool that runs a specific dotnet CLI
+                        command, with a specified set of parameters, as soon as any <span class="highlight">source file changes</span>                        in the project.
+                    </p>
+                </section>
+
+                <section data-background="images/blake-wisz-85030.jpg">
+                    <h3 class="overlay-style">Adding dotnet watcher</h2>
+                        <pre>
+    <code class="sh">
+&lt;ItemGroup&gt;
+    &lt;DotNetCliToolReference Include="Microsoft.DotNet.Watcher.Tools" 
+        Version="1.0.1" /&gt;
+&lt;/ItemGroup&gt;
+    </code>
+</pre>
+                </section>
+
+                <section data-background="images/blake-wisz-85030.jpg">
+                    <h3 class="overlay-style">Using dotnet watcher</h2>
+                        <pre>
+    <code class="sh">
+C:\app>dotnet watch run
+
+C:\app>dotnet watch run -f net462
+
+C:\app>dotnet watch test
+
+C:\app>dotnet watch script foo.csx
+    </code>
+</pre>
+
+                        <p class="fragment" data-code-focus="2"></p>
+                        <p class="fragment" data-code-focus="4"></p>
+                        <p class="fragment" data-code-focus="6"></p>
+                        <p class="fragment" data-code-focus="8"></p>
+
+                </section>
+
+                <section data-background="images/blake-wisz-85030.jpg">
+                    <h3 class="overlay-style">Running dotnet watcher</h2>
+                        <pre class="small">
+    <code class="sh">
+C:\code\IdentityWebApp>dotnet watch run
+watch : Started
+Hosting environment: Production
+Content root path: C:\code\IdentityWebApp
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+watch : Exited with error code 1
+watch : File changed: C:\code\IdentityWebApp\Translation\JwtTranslationGrant.cs
+watch : Started
+Hosting environment: Production
+Content root path: C:\code\IdentityWebApp
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+    </code>
+</pre>
+                        <p class="fragment" data-code-focus="3-7"></p>
+                        <p class="fragment" data-code-focus="9"></p>
+                        <p class="fragment" data-code-focus="10-14"></p>
+                </section>
+
+                <section data-background="images/blake-wisz-85030.jpg">
+                    <h3 class="overlay-style">Excluding items from watch</h2>
+                        <pre>
+    <code class="sh">
+&lt;ItemGroup&gt;
+  &lt;ProjectReference Include="..\DataAccessLibrary\DataAccessLibrary.csproj" Watch="false" /&gt;
+&lt;/ItemGroup&gt;
+
+&lt;ItemGroup&gt;
+  &lt;Watch Include="**\*.csx" Exclude="Codegen\**\*.cs;$(DefaultExcludes)" /&gt;
+&lt;/ItemGroup&gt;
+
+&lt;ItemGroup&gt;
+  &lt;EmbeddedResource Update="Translations.resx" Watch="false" /&gt;
+&lt;/ItemGroup&gt;
+    </code>
+</pre>
+                        <p class="fragment" data-code-focus="2-4"></p>
+                        <p class="fragment" data-code-focus="6-8"></p>
+                        <p class="fragment" data-code-focus="10-12"></p>
+                </section>
+
+            </section>
+
+            <section>
+
+                <section data-background="images/alexey-ruban-103990.jpg">
+
+                    <h1>Edit and Continue</h1>
+
+                </section>
+
+                <section data-background="images/alexey-ruban-103990.jpg">
+                    <p class="overlay-style">
+                        <span class="highlight">Edit-and-Continue</span> was already present in "Visual Studio .NET 2003",
+                        but only for C/C++ code. Since Visual Studio 2005 you can <span class="highlight">make changes to code in break mode</span>                        while debugging. <br/><br/>They are applied to the CLR directly without a need to restart the debugging
+                        session.
+                    </p>
+                </section>
+
+                <section data-background="images/alexey-ruban-103990.jpg">
+                    <img src="images/enc-announce.png" />
+                </section>
+
+                <section data-background="images/alexey-ruban-103990.jpg">
+                    <div class="overlay-style">
+                        <blockquote>Program logic should not be tested in the debugger. You are wasting your time and your company's
+                            time if you do so.
+
+                            <footer>- <cite>Microsoft MVP, <a href="https://web.archive.org/web/20060221144806/http://samgentile.com/blog/archive/2004/10/19/12240.aspx">2004</a></cite></footer>
+                        </blockquote>
+                        <blockquote>Edit and continue is a bug-introducing machine. Why? Because you get to focusing on that one bug
+                            and twiddle the code to fix that one bug and introduce six more.
+
+                            <footer>- <cite>Another Microsoft MVP, <a href="https://web.archive.org/web/20060219194112/http://wintellect.com:80/WEBLOGS/wintellect/archive/2004/10/17/546.aspx">2004</a></cite></footer>
+                        </blockquote>
+
+                    </div>
+                </section>
+                <section data-background="images/alexey-ruban-103990.jpg">
+                    <img src="images/edit-and-continue-google.png" />
+                </section>
+                <section data-background="images/alexey-ruban-103990.jpg">
+                    <img src="images/angrymad.gif" />
+                </section>
+                
+                <section data-background="images/alexey-ruban-103990.jpg">
+                    <p class="overlay-style">
+                        Roslyn introduced a ton of <span class="highlight">improvements</span> to Edit-and-Continue, as the entire compiler part of that functionality was rewritten.
+                    </p>
+                </section>
+
+                <section data-background="images/alexey-ruban-103990.jpg">
+                    <div class="overlay-style" style="padding: 3% !important;">
+                        <div class="left">
+                            <div style="padding: 3%">
+                                <h3>🦄 Allowed changes</h3>
+                                <ul>
+                                    <li>Within Method/Property Bodies<br/>
+                                        <small>most changes</small>
+                                    </li>
+                                    <li>Within Types<br/>
+                                        <small>add methods, fields, constructors, nested types</small>
+                                    </li>
+                                    <li>Lambda expressions<br/>
+                                        <small>add/edit delegates, LINQ expressions (with limitations)</small>
+                                    </li>
+                                    <li>Async/await expressions & Iterators<br/>
+                                        <small>add/edit (with limitations)</small>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="right">
+                            <div style="padding: 3%">
+                                <h3>💩 Prohibited changes</h3>
+                                <ul>
+                                    <li>Add<br/>
+                                        <small>abstract/virtual/override member or type, using statements, imports, generics</small>
+                                    </li>
+                                    <li>Edit<br/>
+                                        <small>method signatures, interfaces, generics, enums</small>
+                                    </li>
+                                    <li>Remove<br/>
+                                        <small>members, types, namespaces, bodies</small>
+                                    </li>
+                                    <li>Rename<br/>
+                                        <small>anything</small>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div style="clear:both;">
+                            <p class="footnote">Not exhaustive information. More: <a href="https://github.com/dotnet/roslyn/wiki/EnC-Supported-Edits">https://github.com/dotnet/roslyn/wiki/EnC-Supported-Edits</a></p>
+                        </div>
+
+                    </div>
+                </section>
+
+                <section data-background="images/alexey-ruban-103990.jpg">
+                    <p class="overlay-style">
+                        Visual Studio 2017 Version <span class="highlight">15.3</span> introduces Edit-and-Continue
+                        for <span class="highlight">C# 7</span> features.
+                    </p>
+                </section>
+
+                <section data-background="images/alexey-ruban-103990.jpg">
+
+                    <h3 class="overlay-style">Edit And Continue with Roslyn (before)</h2>
+
+                        <pre>
+    <code class="cs">
+class Program
+{ 
+    public static void Main() 
+    { 
+        Console.WriteLine(1); 
+    } 
+}
+    </code>
+</pre>
+
+                        <p class="fragment" data-code-focus="6"></p>
+                </section>
+
+                <section data-background="images/alexey-ruban-103990.jpg">
+
+                    <h3 class="overlay-style">Edit And Continue with Roslyn (after)</h2>
+
+                        <pre>
+    <code class="cs">
+class Program
+{ 
+    public static void Main() 
+    { 
+        Console.Write(2); 
+    }
+}
+    </code>
+</pre>
+
+                        <p class="fragment" data-code-focus="6"></p>
+                </section>
+
+                <section data-background="images/alexey-ruban-103990.jpg">
+
+                    <pre class="small">
+    <code class="cs">
+// read metadata from the original compilation or using metadata reader
+var originalMetadata = AssemblyMetadata.CreateFromStream(originalCompilationStream);
+var baseline = EmitBaseline.CreateInitialBaseline(originalMetadata.GetModules()[0], 
+    handle => default(EditAndContinueMethodDebugInformation));
+
+MemoryStream mdStream = new MemoryStream(), ilStream = new MemoryStream(), pdbStream = new MemoryStream();
+var updatedMethods = new List&lt;MethodDefinitionHandle&gt;();
+
+var edits = new[] {
+    new SemanticEdit(SemanticEditKind.Update,
+        originalCompilation.GlobalNamespace.GetMembers("Program").First().GetMembers("Main").First(),
+        changedCompilation.GlobalNamespace.GetMembers("Program").First().GetMembers("Main").First())
+};
+    
+var emitDifferenceResult = changedCompilation.EmitDifference(baseline, edits, mdStream, ilStream, pdbStream, updatedMethods);
+// ilStream and mdStream can be now applied to the CLR
+    </code>
+</pre>
+
+                    <p class="fragment" data-code-focus="3"></p>
+                    <p class="fragment" data-code-focus="4-5"></p>
+                    <p class="fragment" data-code-focus="10-14"></p>
+                    <p class="fragment" data-code-focus="16"></p>
+                </section>
+
+                <section data-background="images/alexey-ruban-103990.jpg">
+
+                    <h3 class="overlay-style">IL produced by EmitDifference</h2>
+
+                        <pre>
+    <code class="cs">
+  // Code size        7 (0x7)
+  .maxstack  8
+  IL_0000:  ldc.i4.2
+  IL_0001:  call       0x0A000006
+  IL_0006:  ret
+    </code>
+</pre>
+
+                </section>
+
+            </section>
+
+            <section>
+
+                <section data-background="images/dan-gold-297904.jpg">
+
+                    <h1>C# REPL</h1>
+
+                </section>
+
+                <section data-background="images/dan-gold-297904.jpg">
+                    <div class="overlay-style">
+                        <blockquote>A <span class="highlight">Read–Eval–Print Loop</span> (REPL), also known as an interactive toplevel
+                            or language shell, is a simple, <span class="highlight">interactive computer programming environment</span>                            that takes single user inputs (i.e. single expressions), evaluates them, and returns the result
+                            to the user; a program written in a REPL environment is <span class="highlight">executed piecewise</span>.
+                            <footer>- <cite><a href="https://en.wikipedia.org/wiki/Read–eval–print_loop">Wikipedia</a></cite></footer>
+                        </blockquote>
+                    </div>
+                </section>
+
+                <section data-background="images/alexey-ruban-103990.jpg">
+                    <div class="overlay-style" style="padding:3% !important;">
+                        <h2>C# REPLs</h2>
+                    </div>
+                    <div class="left overlay-style">
+                        <div style="padding: 3%">
+                            <ul>
+                                <li class="fragment">CSI (C# Interactive)<br/>
+                                    <small>Official Roslyn script runner and REPL</small></li>
+
+                                <li class="fragment">scriptcs<br/>
+                                    <small>Rich and extensible command infrastructure</small></li>
+
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="right overlay-style" style="padding: 0">
+                        <div style="padding: 3%">
+                            <ul>
+                                <li class="fragment">Mono<br/>
+                                    <small>Used to work x-plat before Roslyn</small></li>
+
+                                <li class="fragment">Online C# REPL<br/>
+                                    <small>csharppad.com</small></li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-background="images/dan-gold-297904.jpg">
+                    <p class="overlay-style">
+                        CSI is bundled with <span class="highlight">MSBuild Tools</span>. It supports <span class="highlight">Desktop .NET</span> only, but works <span class="highlight">cross platform</span> via Mono.
+                    </p>
+                </section>
+
+                <section data-background="images/dan-gold-297904.jpg">
+                    <pre>
+    <code class="cs">
+~/Documents$ csi
+Microsoft (R) Visual C# Interactive Compiler version 42.42.42.42424
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Type "#help" for more information.
+> #r "System.Net.Http"
+> using System.Net.Http;
+> var client = new HttpClient();
+> await client.GetStringAsync("https://gist.githubusercontent.com/filipw/7c22467439759c5f56cb2154717cdbe8/raw/93a4d2aa8034426c4ebcd20c67ac73daa11761dc/hello.txt");
+"Hello from a gist"
+> 
+    </code>
+</pre>
+                </section>
+
+                <section data-background="images/dan-gold-297904.jpg">
+                    <img src="images/canary-repl-await.png" />
+                </section>
+
+                <section data-background="images/dan-gold-297904.jpg">
+
+                    <h3 class="overlay-style">Source code kinds in Roslyn</h3>
+                    <pre>
+    <code class="cs">
+public enum SourceCodeKind 
+{
+    Regular,
+    Script
+}
+        </code>
+</pre>
+                </section>
+                <section data-background="images/dan-gold-297904.jpg">
+
+                    <h3 class="overlay-style">Creating a REPL compilation</h3>
+                    <pre>
+    <code class="cs">
+public static CSharpCompilation Create(string assemblyName, 
+        IEnumerable&lt;SyntaxTree&gt; syntaxTrees = null, 
+        IEnumerable&lt;MetadataReference&gt; references = null, 
+        CSharpCompilationOptions options = null);
+
+public static CSharpCompilation CreateScriptCompilation(string assemblyName,
+        SyntaxTree syntaxTree = null, 
+        IEnumerable&lt;MetadataReference&gt; references = null, 
+        CSharpCompilationOptions options = null, 
+        CSharpCompilation previousScriptCompilation = null, 
+        Type returnType = null, 
+        Type globalsType = null);
+    </code>
+</pre>
+                    <p class="fragment" data-code-focus="11-13"></p>
+
+                </section>
+
+                <section data-background="images/dan-gold-297904.jpg">
+                    <h3 class="overlay-style">Building a REPL with Roslyn</h2>
+
+                        <pre>
+    <code class="cs">
+ScriptState&lt;object&gt; scriptState = null;
+while (true)
+{
+    Console.Write("> ");
+    var input = Console.ReadLine();
+    scriptState = scriptState == null ?
+        await CSharpScript.RunAsync(input) :
+        await scriptState.ContinueWithAsync(input);
+}
+    </code>
+</pre>
+
+                        <p class="fragment" data-code-focus="8"></p>
+                        <p class="fragment" data-code-focus="9"></p>
+
+                </section>
+
+            </section>
+
+            <section>
+
+                <section data-background="images/markus-spiske-135763.jpg">
+
+                    <h1>C# Interactive Window</h1>
+
+                </section>
+
+                <section data-background="images/markus-spiske-135763.jpg">
+                    <p class="overlay-style">
+                        C# Interactive Window is <span class="highlight">built into</span> Visual Studio. It can be found
+                        under <span class="highlight">View > Other Windows</span> menu.
+                    </p>
+                </section>
+
+                <section data-background="images/markus-spiske-135763.jpg">
+                    <img class="normal" src="images/interactive-window.png" />
+                </section>
+
+                <section data-background="images/markus-spiske-135763.jpg">
+                    <div class="overlay-style" style="padding:3% !important;">
+                        <h2>Main C# Interactive Window Features</h2>
+                    </div>
+                    <div class="left overlay-style">
+                        <div style="padding: 3%">
+                            <ul>
+                                <li class="fragment">📝 Intellisense & Colorization<br/>
+                                    <small>Completion services - same as those powering Visual Studio - are available</small></li>
+
+                                <li class="fragment">📜 History navigation<br/>
+                                    <small>Cycle through submissions</small></li>
+
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="right overlay-style" style="padding: 0">
+                        <div style="padding: 3%">
+                            <ul>
+                                <li class="fragment">🏓 Integration With Open Solution<br/>
+                                    <small>Send references and code into C# Interactive Window</small></li>
+
+                                <li class="fragment">🌽 Seeding<br/>
+                                    <small>C# Interactive Window can be seeded with references/using statements from a file</small></li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-background="images/markus-spiske-135763.jpg">
+                    <p class="overlay-style">
+                        C# Interactive Window <span class="highlight">shares</span> most of the code with CSI (the command
+                        line REPL).
+                    </p>
+                </section>
+
+                <section data-background="images/markus-spiske-135763.jpg">
+                    <img src="images/interactive-execute.png" />
+                </section>
+
+                <section data-background="images/markus-spiske-135763.jpg">
+                    <img src="images/interactive-initialize.png" />
+                </section>
+
+                <section data-background="images/markus-spiske-135763.jpg">
+                    <p class="overlay-style">
+                        At the moment C# Interactive Window <span class="highlight">does not support</span> .NET Core.
+                    </p>
+                </section>
+
+                <section data-background="images/dan-gold-297904.jpg">
+
+                    <h2 class="overlay-style">Surprises</h2>
+                    <pre>
+    <code class="cs">
+// REPL global variables are compiled into fields
+var numbers = new[] { 1, 2, 3, 4 };
+
+// this is legal in a C# REPL
+// in "regular" C# such shadowing produces CS0136
+var x = numbers.Where(x => x % 2 == 0);
+    </code>
+</pre>
+                </section>
+                
+            </section>
+
+            <section>
+
+                <section data-background="images/tamarcus-brown-131428.jpg">
+
+                    <h1>Xamarin Workbooks</h1>
+
+                </section>
+
+                <section data-background="images/chuttersnap-233105.jpg">
+                    <p class="overlay-style">
+                        Xamarin Workbooks provide a fantastic mix of a <span class="highlight">C# REPL</span> and <span class="highlight">documentation</span>.
+                        Workbook files are stored as <span class="highlight">Markdown</span> files.
+                    </p>
+                </section>
+                <section data-background="images/chuttersnap-233105.jpg">
+                    <pre class="very-small">
+    <code>
+---
+title: "UrhoSharp: Planet Earth in C#"
+platforms:
+- Console
+packages:
+- id: UrhoSharp
+  version: 1.5.22
+---
+
+# UrhoSharp: Planet Earth in C#
+
+[UrhoSharp](https://developer.xamarin.com/guides/cross-platform/urho/) is a powerful 3D game engine for Xamarin and .NET developers. Start by loading URho into the workbook and import some namespaces that we’ll want to consume.
+
+```csharp
+#r "Urho"
+
+using Urho;
+using Urho.Actions;
+using Urho.Shapes;
+
+var app = SimpleApplication.Show(new ApplicationOptions("Data") { Width = 600, Height = 600, TouchEmulation = true });
+```
+
+We have created a window containing a `ApplicationOptions`. Let’s add a new `Node` to the scene, representing the Earth.
+
+```csharp
+var earthNode = app.RootNode.CreateChild(name: "Earth");
+var earth = earthNode.CreateComponent&lt;Sphere&gt;();
+```
+    </code>
+</pre>
+
+                    <p class="fragment" data-code-focus="2-9"></p>
+                    <p class="fragment" data-code-focus="11-13,24-26"></p>
+                    <p class="fragment" data-code-focus="15-22,27-30"></p>
+                    <p class="fragment" data-code-focus="22,28"></p>
+                </section>
+
+                <section data-background="images/workbooks-main.png" data-state="bg-auto-width">
+                </section>
+
+                <section data-background="images/chuttersnap-233105.jpg">
+
+                    <div class="overlay-style" style="padding:3% !important;">
+                        <h2>Main Xamarin Workbooks Features</h2>
+                    </div>
+                    <div class="left overlay-style">
+                        <div style="padding: 3%">
+                            <ul>
+                                <li class="fragment">📝 Intellisense & Colorization<br/>
+                                    <small>Completion services powered by Roslyn</small></li>
+
+                                <li class="fragment">🎁 Nuget package integration<br/>
+                                    <small>Reference Nuget packages from within the workbook</small></li>
+
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="right overlay-style" style="padding: 0">
+                        <div style="padding: 3%">
+                            <ul>
+                                <li class="fragment">🌈 Multi-platform and GUI support<br/>
+                                    <small>Console, Android, iOS, Mac, WPF</small></li>
+                                <li class="fragment">📇 Rich Text Editor for Markdown<br/>
+                                    <small>Using the CommonMark spec</small></li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-background="images/chuttersnap-233105.jpg">
+                    <p class="overlay-style">
+                        Internally, Xamarin Workbooks uses <span class="highlight">Roslyn scripting</span> to provide its
+                        REPL-like features.
+                    </p>
+                </section>
+            </section>
+
+            <section>
+
+                <section data-background="images/chuttersnap-233105.jpg">
+
+                    <h1>Live Unit Testing</h1>
+
+                </section>
+
+                <section data-background="images/chuttersnap-233105.jpg">
+                    <p class="overlay-style">
+                        Live Unit Testing was introduced in Visual Studio 2017. At the moment it is available only for
+                        <span class="highlight">Visual Studio Enterprise</span>.
+                    </p>
+                </section>
+
+                <section data-background="images/chuttersnap-233105.jpg">
+                    <h3 class="overlay-style">Starting Live Unit Testing globally</h3>
+                    <img src="images/liveunittests-1.png" />
+                </section>
+
+                <section data-background="images/chuttersnap-233105.jpg">
+                    <h3 class="overlay-style">Starting Live Unit Testing per project</h3>
+
+                    <img class="normal" src="images/liveunittests-2.png" />
+                </section>
+
+                <section data-background="images/chuttersnap-233105.jpg">
+
+                    <h3 class="overlay-style">Unsupported Framework</h3>
+                    <pre>
+    <code class="markdown">
+[20:01:31.934 Error] Outdated package 'xunit'. Installed version: '1.9.2'. 
+Minimum supported version: '2.0.0'. Please update the package.
+
+[20:01:31.949 Error] No test adapters are referenced by this solution. 
+If you have a test project, add a NuGet reference to a test adapter corresponding to the test framework used in order to run the tests. 
+If you already have the required NuGet reference in your test project, performing a NuGet restore may resolve the issue.
+
+[20:01:31.949 Info] Start failed.
+[20:01:31.965 Info] Live Unit Testing stopped.
+    </code>
+</pre>
+                </section>
+
+                <section data-background="images/chuttersnap-233105.jpg">
+
+                    <h2 class="overlay-style">Minimum Framework Versions</h2>
+
+                    <table class="overlay-style">
+                        <thead>
+                            <tr>
+                                <th>Framework</th>
+                                <th>Version</th>
+                                <th>Test Adapter</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>xUnit</td>
+                                <td>2.0.0+</td>
+                                <td>xunit.runner.visualstudio 2.2.0+</td>
+                            </tr>
+                            <tr>
+                                <td>NUnit</td>
+                                <td>3.5.0+</td>
+                                <td>NUnit3TestAdapter 3.5.1+</td>
+                            </tr>
+                            <tr>
+                                <td>MSTest</td>
+                                <td>1.1.11+</td>
+                                <td>MSTest.TestAdapter 1.1.11+</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </section>
+
+                <section data-background="images/chuttersnap-233105.jpg">
+                    <h3 class="overlay-style">Everything OK</h3>
+                    <img class="normal" src="images/liveunittests-before.png" />
+                </section>
+
+                <section data-background="images/chuttersnap-233105.jpg">
+                    <h3 class="overlay-style">As soon as Filip addded some logic</h3>
+                    <img class="normal" src="images/liveunittests-after.png" />
+                </section>
+
+                <section data-background="images/chuttersnap-233105.jpg">
+                    <img src="images/baby.gif" />
+                </section>
+
+                <section data-background="images/chuttersnap-233105.jpg">
+
+                    <h3 class="overlay-style">Random Errors</h3>
+                    <pre>
+    <code class="markdown">
+[22:12:46.665 Info] Live Unit Testing started.
+[22:12:53.060 Info] Build completed (succeeded).
+[22:13:10.551 Info] Build completed (succeeded).
+
+[22:13:12.820 Error] Live Unit Testing has been turned off because 'Microsoft.CodeAnalysis.LiveUnitTesting.EntryPoint.exe' process has exited unexpectedly. 
+Try turning it back on again via the 'Test -> Live Unit Testing -> Start' menu.
+
+[22:13:12.820 Info] Live Unit Testing stopped.
+
+    </code>
+</pre>
+                </section>
+
+                <section data-background="images/chuttersnap-233105.jpg">
+                    <p class="overlay-style">
+                        Visual Studio 2017 Version <span class="highlight">15.3</span> introduces Live Unit
+                        Testing for <span class="highlight">.NET Core</span> projects.
+                    </p>
+                </section>
+
+            </section>
+
+            <section>
+
+                <section data-background="images/jeff-sheldon-3230.jpg">
+
+                    <h1>Live Code Analyzers</h1>
+
+                </section>
+
+                <section data-background="images/jeff-sheldon-3230.jpg">
+
+                    <h2 class="overlay-style">Roslyn Features API</h2>
+
+                    <table class="overlay-style">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Find issue</th>
+                                <th>Change code</th>
+                                <th>Diagnostic</th>
+                                <th>Distribution</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Analyzer</td>
+                                <td>🕵️</td>
+                                <td></td>
+                                <td>🦄</td>
+                                <td><img class="icon" src="images/nuget.png" /> <img class="icon" src="images/vsix.png" /></td>
+                            </tr>
+                            <tr>
+                                <td>Code fix</td>
+                                <td></td>
+                                <td>🔧</td>
+                                <td>🦄</td>
+                                <td><img class="icon" src="images/nuget.png" /> <img class="icon" src="images/vsix.png" /></td>
+                            </tr>
+                            <tr>
+                                <td>Refactoring</td>
+                                <td></td>
+                                <td>🔧</td>
+                                <td></td>
+                                <td><img class="icon" src="images/vsix.png" /></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </section>
+
+                <section data-background="images/analyzers.png" transition="default">
+                </section>
+
+                <section data-background="images/jeff-sheldon-3230.jpg">
+
+                    <p><img src="images/problem-solved.gif" alt="" /></p>
+
+                </section>
+
+                <section data-background="images/jeff-sheldon-3230.jpg">
+                    <pre class="small">
+    <code class="cs">
+[DiagnosticAnalyzer(LanguageNames.CSharp)]
+public class RemoveRegionAnalyzer : DiagnosticAnalyzer
+{
+    public const string DiagnosticId = "RemoveRegionAnalyzer";
+    private const string Category = "Naming";
+    private static DiagnosticDescriptor Rule = new DiagnosticDescriptor(DiagnosticId, "Regions are banned", 
+        "Region '{0}' can't be used. In fact no regions can.", "Sanity", DiagnosticSeverity.Error, 
+        isEnabledByDefault: true);
+    
+    public override ImmutableArray&lt;DiagnosticDescriptor&gt; SupportedDiagnostics => ImmutableArray.Create(Rule);
+    
+    public override void Initialize(AnalysisContext context)
+    {
+        context.RegisterSyntaxNodeAction(ctx =&gt; {
+            var diagnostic = Diagnostic.Create(Rule, context.Node.GetLocation());
+            context.ReportDiagnostic(diagnostic);   
+        }, ImmutableArray.Create(SyntaxKind.RegionDirectiveTrivia, SyntaxKind.EndRegionDirectiveTrivia));
+    }
+}
+    </code>
+</pre>
+                    <p class="fragment" data-code-focus="13-19"></p>
+                </section>
+            </section>
+
+            <section>
+                <section data-background="images/all.jpg">
+                </section>
+
+                <section>
+
+                    <p><img src="images/bye.gif" alt="" /></p>
+
+                </section>
+
+            </section>
+        </div>
+    </div>
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+    <script>
+        // Full list of configuration options available here:
+        // https://github.com/hakimel/reveal.js#configuration
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            history: true,
+            center: true,
+
+            transition: 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+            // Parallax scrolling
+            // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+            // parallaxBackgroundSize: '2100px 900px',
+
+            // Optional libraries used to extend on reveal.js
+            dependencies: [
+                { src: 'lib/js/classList.js', condition: function () { return !document.body.classList; } },
+                { src: 'plugin/markdown/marked.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+                { src: 'plugin/markdown/markdown.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+                { src: 'plugin/highlight.js/highlight.pack.js', async: true, callback: function () { /*hljs.initHighlightingOnLoad();*/ } },
+                { src: 'plugin/zoom-js/zoom.js', async: true, condition: function () { return !!document.body.classList; } },
+                { src: 'plugin/notes/notes.js', async: true, condition: function () { return !!document.body.classList; } },
+                {
+                    src: 'plugin/reveal-code-focus.js',
+                    async: true,
+                    callback: function () {
+                        RevealCodeFocus();
+                    }
+                }
+            ]
+        });
+    </script>
+</body>
+
+</html>
