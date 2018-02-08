@@ -291,7 +291,7 @@
     <code class="sh">
 &lt;ItemGroup&gt;
     &lt;DotNetCliToolReference Include="Microsoft.DotNet.Watcher.Tools" 
-        Version="1.0.1" /&gt;
+        Version="2.0.0" /&gt;
 &lt;/ItemGroup&gt;
     </code>
 </pre>
@@ -369,9 +369,11 @@ Application started. Press Ctrl+C to shut down.
             <section>
 
                 <section data-background="images/alexey-ruban-103990.jpg">
-
                     <h1>Edit and Continue</h1>
+                </section>
 
+                <section data-background="images/alexey-ruban-103990.jpg">
+                    <img src="images/enc-announce.png" />
                 </section>
 
                 <section data-background="images/alexey-ruban-103990.jpg">
@@ -383,27 +385,9 @@ Application started. Press Ctrl+C to shut down.
                 </section>
 
                 <section data-background="images/alexey-ruban-103990.jpg">
-                    <img src="images/enc-announce.png" />
-                </section>
-
-                <section data-background="images/alexey-ruban-103990.jpg">
-                    <div class="overlay-style">
-                        <blockquote>Program logic should not be tested in the debugger. You are wasting your time and your company's
-                            time if you do so.
-
-                            <footer>- <cite>Microsoft MVP, <a href="https://web.archive.org/web/20060221144806/http://samgentile.com/blog/archive/2004/10/19/12240.aspx">2004</a></cite></footer>
-                        </blockquote>
-                        <blockquote>Edit and continue is a bug-introducing machine. Why? Because you get to focusing on that one bug
-                            and twiddle the code to fix that one bug and introduce six more.
-
-                            <footer>- <cite>Another Microsoft MVP, <a href="https://web.archive.org/web/20060219194112/http://wintellect.com:80/WEBLOGS/wintellect/archive/2004/10/17/546.aspx">2004</a></cite></footer>
-                        </blockquote>
-
-                    </div>
-                </section>
-                <section data-background="images/alexey-ruban-103990.jpg">
                     <img src="images/edit-and-continue-google.png" />
                 </section>
+
                 <section data-background="images/alexey-ruban-103990.jpg">
                     <img src="images/angrymad.gif" />
                 </section>
@@ -593,8 +577,8 @@ var emitDifferenceResult = changedCompilation.EmitDifference(baseline, edits, md
                     <div class="right overlay-style" style="padding: 0">
                         <div style="padding: 3%">
                             <ul>
-                                <li class="fragment">Mono<br/>
-                                    <small>Used to work x-plat before Roslyn</small></li>
+                                <li class="fragment">dotnet-script<br/>
+                                    <small>C# REPL for .NET Core</small></li>
 
                                 <li class="fragment">Online C# REPL<br/>
                                     <small>csharppad.com</small></li>
@@ -668,28 +652,6 @@ public static CSharpCompilation CreateScriptCompilation(string assemblyName,
 
                 </section>
 
-                <section data-background="images/dan-gold-297904.jpg">
-                    <h3 class="overlay-style">Building a REPL with Roslyn</h2>
-
-                        <pre>
-    <code class="cs">
-ScriptState&lt;object&gt; scriptState = null;
-while (true)
-{
-    Console.Write("> ");
-    var input = Console.ReadLine();
-    scriptState = scriptState == null ?
-        await CSharpScript.RunAsync(input) :
-        await scriptState.ContinueWithAsync(input);
-}
-    </code>
-</pre>
-
-                        <p class="fragment" data-code-focus="8"></p>
-                        <p class="fragment" data-code-focus="9"></p>
-
-                </section>
-
             </section>
 
             <section>
@@ -698,6 +660,13 @@ while (true)
 
                     <h1>C# Interactive Window</h1>
 
+                </section>
+
+                <section data-background="images/markus-spiske-135763.jpg">
+                    <p class="overlay-style">
+                        C# Interactive Window <span class="highlight">shares</span> most of the code with CSI (the command
+                        line REPL).
+                    </p>
                 </section>
 
                 <section data-background="images/markus-spiske-135763.jpg">
@@ -740,13 +709,6 @@ while (true)
                             </ul>
                         </div>
                     </div>
-                </section>
-
-                <section data-background="images/markus-spiske-135763.jpg">
-                    <p class="overlay-style">
-                        C# Interactive Window <span class="highlight">shares</span> most of the code with CSI (the command
-                        line REPL).
-                    </p>
                 </section>
 
                 <section data-background="images/markus-spiske-135763.jpg">
@@ -903,57 +865,6 @@ var earth = earthNode.CreateComponent&lt;Sphere&gt;();
                 </section>
 
                 <section data-background="images/chuttersnap-233105.jpg">
-
-                    <h3 class="overlay-style">Unsupported Framework</h3>
-                    <pre>
-    <code class="markdown">
-[20:01:31.934 Error] Outdated package 'xunit'. Installed version: '1.9.2'. 
-Minimum supported version: '2.0.0'. Please update the package.
-
-[20:01:31.949 Error] No test adapters are referenced by this solution. 
-If you have a test project, add a NuGet reference to a test adapter corresponding to the test framework used in order to run the tests. 
-If you already have the required NuGet reference in your test project, performing a NuGet restore may resolve the issue.
-
-[20:01:31.949 Info] Start failed.
-[20:01:31.965 Info] Live Unit Testing stopped.
-    </code>
-</pre>
-                </section>
-
-                <section data-background="images/chuttersnap-233105.jpg">
-
-                    <h2 class="overlay-style">Minimum Framework Versions</h2>
-
-                    <table class="overlay-style">
-                        <thead>
-                            <tr>
-                                <th>Framework</th>
-                                <th>Version</th>
-                                <th>Test Adapter</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>xUnit</td>
-                                <td>2.0.0+</td>
-                                <td>xunit.runner.visualstudio 2.2.0+</td>
-                            </tr>
-                            <tr>
-                                <td>NUnit</td>
-                                <td>3.5.0+</td>
-                                <td>NUnit3TestAdapter 3.5.1+</td>
-                            </tr>
-                            <tr>
-                                <td>MSTest</td>
-                                <td>1.1.11+</td>
-                                <td>MSTest.TestAdapter 1.1.11+</td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                </section>
-
-                <section data-background="images/chuttersnap-233105.jpg">
                     <h3 class="overlay-style">Everything OK</h3>
                     <img class="normal" src="images/liveunittests-before.png" />
                 </section>
@@ -961,28 +872,6 @@ If you already have the required NuGet reference in your test project, performin
                 <section data-background="images/chuttersnap-233105.jpg">
                     <h3 class="overlay-style">As soon as Filip addded some logic</h3>
                     <img class="normal" src="images/liveunittests-after.png" />
-                </section>
-
-                <section data-background="images/chuttersnap-233105.jpg">
-                    <img src="images/baby.gif" />
-                </section>
-
-                <section data-background="images/chuttersnap-233105.jpg">
-
-                    <h3 class="overlay-style">Random Errors</h3>
-                    <pre>
-    <code class="markdown">
-[22:12:46.665 Info] Live Unit Testing started.
-[22:12:53.060 Info] Build completed (succeeded).
-[22:13:10.551 Info] Build completed (succeeded).
-
-[22:13:12.820 Error] Live Unit Testing has been turned off because 'Microsoft.CodeAnalysis.LiveUnitTesting.EntryPoint.exe' process has exited unexpectedly. 
-Try turning it back on again via the 'Test -> Live Unit Testing -> Start' menu.
-
-[22:13:12.820 Info] Live Unit Testing stopped.
-
-    </code>
-</pre>
                 </section>
 
                 <section data-background="images/chuttersnap-233105.jpg">
