@@ -410,6 +410,68 @@ var scriptResult = await script.RunAsync();
                 </section>
 
                 <section data-background="images/StockSnap_NN2EIQQYEA.jpg">
+                    <h3 class="overlay-style">Composing lambdas dynamically</h2>
+                        <pre>
+    <code class="cs">
+var albums = new List&lt;Album&gt;
+{
+    new Album { Quantity = 10, Artist = "Betontod", Title = "Revolution" },
+    new Album { Quantity = 50, Artist = "The Dangerous Summer", Title = "The Dangerous Summer" },
+    new Album { Quantity = 200, Artist = "Depeche Mode", Title = "Spirit" },
+};
+
+// the real challenge
+Func&lt;Album, bool&gt; discountFilterExpression = ?????;
+ 
+var discountedAlbums = albums.Where(discountFilterExpression);
+    </code>
+</pre>
+
+                        <p class="fragment" data-code-focus="10"></p>
+
+                </section>
+
+                <section data-background="images/StockSnap_NN2EIQQYEA.jpg">
+                    <h3 class="overlay-style">Crafting the expression tree</h2>
+                        <pre>
+    <code class="cs">
+var parameter = Expression.Parameter(typeof(Album), "album");
+
+var comparison = Expression.GreaterThan(Expression.Property(parameter, 
+    Type.GetType("ConsoleApp6.Album").GetProperty("Quantity")), 
+    Expression.Constant(10));
+ 
+var discountFilterExpression = Expression.Lambda&lt;Func&lt;Album, bool&gt;&gt;(comparison, parameter).Compile();
+ 
+var discountedAlbums = albums.Where(discountFilterExpression);
+    </code>
+</pre>
+
+                        <p class="fragment" data-code-focus="2"></p>
+                        <p class="fragment" data-code-focus="4-6"></p>
+                        <p class="fragment" data-code-focus="8"></p>
+                </section>
+
+                <section data-background="images/StockSnap_NN2EIQQYEA.jpg">
+                    <h3 class="overlay-style">With C# Scripting</h2>
+                        <pre>
+    <code class="cs">
+var discountFilter = "album => album.Quantity > 10";
+var options = ScriptOptions.Default.AddReferences(typeof(Album).Assembly);
+ 
+var discountFilterExpression = 
+    await CSharpScript.EvaluateAsync&lt;Func&lt;Album, bool&gt;&gt;(discountFilter, options);
+ 
+var discountedAlbums = albums.Where(discountFilterExpression);
+    </code>
+</pre>
+
+                        <p class="fragment" data-code-focus="2"></p>
+                        <p class="fragment" data-code-focus="5-6"></p>
+
+                </section>
+
+                <!-- <section data-background="images/StockSnap_NN2EIQQYEA.jpg">
                     <h3 class="overlay-style">Emit code with IL</h2>
                         <pre class="very-small">
     <code class="cs">
@@ -501,7 +563,7 @@ var result = await CSharpScript.EvaluateAsync&lt;int&gt;("Number1 - Number2", gl
                         <p class="fragment" data-code-focus="5-7"></p>
                         <p class="fragment" data-code-focus="10-17"></p>
 
-                </section>
+                </section> -->
 
                 <section data-background="images/StockSnap_NN2EIQQYEA.jpg" data-background-transition="default">
                     <img src="images/azure-functions2.png" />
