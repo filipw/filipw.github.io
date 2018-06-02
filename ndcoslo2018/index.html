@@ -37,7 +37,6 @@
     <script src="lib/js/html5shiv.js"></script>
     <![endif]-->
     <style type="text/css">
-
     </style>
 </head>
 
@@ -49,14 +48,16 @@
 
             <section data-background="images/sneha-chekuri-329387-unsplash.jpg">
 
-                <h1><small>adapting</small>
-                    <br/>ASP.NET Core MVC<br/>
+                <h1>
+                    <small>adapting</small>
+                    <br/>ASP.NET Core MVC
+                    <br/>
                     <small>to your needs</small>
                 </h1>
 
             </section>
 
-            <section data-background="images/IMG_20161025_115652.jpg">
+            <section data-background="images/ibf.net-144.jpg">
 
                 <div class="overlay-style">
                     <h2>Filip W</h2>
@@ -78,6 +79,10 @@
                     <img class="normal" src="images/mvp.png" />
                 </div>
 
+            </section>
+
+            <section>
+                <img src="images/sonova.png" style="min-height: auto" />
             </section>
 
             <!-- structure -->
@@ -128,7 +133,7 @@
                     </div>
                 </section>
                 <section data-background="images/microservices.png" data-background-color="#fff" data-state="bg-auto-height" data-background-position="0 0">
-                </section>                
+                </section>
                 <section data-background="images/mark-solarski-209233.jpg">
                     <p class="overlay-style">
                         For lightweight, small Web APIs (microservices 🤧), you may
@@ -174,7 +179,7 @@ public class Program
                     </p>
                 </section>
                 <section data-background="images/addmvc.png" data-background-color="#fff" data-state="bg-auto-height" data-background-position="0 0">
-                </section>  
+                </section>
                 <section data-background="images/mark-solarski-209233.jpg">
                     <h3 class="overlay-style">Pick what you need</h3>
                     <pre>
@@ -202,8 +207,9 @@ services.AddMvcCore()
 
                 <section data-background="images/mark-solarski-209233.jpg">
                     <p class="overlay-style">
-                        MVC scans the <span class="highlight">entire
-                        <em>AssemblyLoadContext</em></span> to discover its working parts, so they have to be constrained separately.
+                        MVC scans the
+                        <span class="highlight">entire AssemblyLoadContext
+                        </span> to discover its working parts, so they have to be constrained separately.
                     </p>
                 </section>
 
@@ -243,9 +249,9 @@ app.UseBranchWithServices("/welcome-branch",
             </section>
 
             <section>
-                    <section data-background="images/StockSnap_NN2EIQQYEA.jpg">
-                        <h1>MVC Application Model</h1>
-                    </section>
+                <section data-background="images/StockSnap_NN2EIQQYEA.jpg">
+                    <h1>MVC Application Model</h1>
+                </section>
                 <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
                     <div class="overlay-style" style="padding:3% !important;">
                         <h2>Application Model</h2>
@@ -286,15 +292,58 @@ app.UseBranchWithServices("/welcome-branch",
                         </div>
                     </div>
                 </section>
+
+                <section data-background="images/mark-solarski-209233.jpg">
+                    <div class="overlay-style" style="padding:3% !important;">
+                        <h2>Application Model</h2>
+                    </div>
+                    <div>
+                        <div class="left overlay-style" style="padding: 0">
+                            <div style="padding: 3%">
+                                <ul>
+                                    <li class="fragment">✅ Controllers
+                                        <br/>
+                                        <small>Define behaviours
+                                        </small>
+                                    </li>
+
+                                    <li class="fragment">✅ Actions & Parameters
+                                        <br/>
+                                        <small>Select relevant methods, define behaviours</small>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="right overlay-style" style="padding: 0">
+                            <div style="padding: 3%">
+                                <ul>
+                                    <li class="fragment">✅ Filters
+                                        <br/>
+                                        <small>Apply filters</small>
+                                    </li>
+                                    <li class="fragment">✅ Routing
+                                        <br/>
+                                        <small>Compose selectors</small>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
                 <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
                     <p class="overlay-style">
                         <span class="highlight">IApplicationModelProvider</span> and
-                        <span class="highlight">IApplicationModelConvention</span> allow applying customizations to the MVC application model.
+                        <span class="highlight">IApplicationModelConvention</span> allow modifying to the MVC application model.
                         <br/>They can be used to customize framework behavior at
                         <span class="highlight">controller</span>,
                         <span class="highlight">action</span> or
                         <span class="highlight">parameter</span> level.
                     </p>
+                </section>
+
+                <section data-background="images/angrybirds.jpg" data-background-color="#fff" data-state="bg-auto-height">
                 </section>
 
                 <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
@@ -347,8 +396,12 @@ public class GlobalRoutePrefixConvention : IApplicationModelConvention
                 <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
                     <p class="overlay-style">
                         <span class="highlight">IActionConstraint</span> is used to impose additional action matching rules.
-                        <br/>
-                        <br/>It may, for example,
+                    </p>
+                </section>
+
+                <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
+                    <p class="overlay-style">
+                        IActionConstraint may
                         <span class="highlight">disambiguate</span> multiple actions from matching the same request or
                         <span class="highlight">reject</span> a certain request from being handled by an action candidate.
                     </p>
@@ -382,9 +435,9 @@ public class AcceptLanguageActionConstraint : IActionConstraint, IActionConstrai
             </section>
 
             <section>
-                    <section data-background="images/StockSnap_KD30XPQR0A.jpg">
-                        <h1>Plugins and Extensibility</h1>
-                    </section>
+                <section data-background="images/StockSnap_KD30XPQR0A.jpg">
+                    <h1>Plugins and Extensibility</h1>
+                </section>
                 <section data-background="images/taduuda-72915.jpg">
                     <div class="overlay-style" style="padding:3% !important;">
                         <h2>Plugins and Extensibility</h2>
@@ -416,10 +469,10 @@ public class AcceptLanguageActionConstraint : IActionConstraint, IActionConstrai
                                         <br/>
                                         <small>Rebuild application model at runtime</small>
                                     </li>
-                                    <li class="fragment">⚙️ Dynamic Options
+                                    <!-- <li class="fragment">⚙️ Dynamic Options
                                         <br/>
                                         <small>Improve the options experience</small>
-                                    </li>
+                                    </li> -->
                                 </ul>
                             </div>
                         </div>
@@ -461,6 +514,40 @@ app.UseStaticFiles(new StaticFileOptions()
 
                 <section data-background="images/taduuda-72915.jpg">
                     <p class="overlay-style">
+                        <span class="highlight">ApplicationPartManager</span> is used to load ASP.NET Core MVC features.
+                    </p>
+                </section>
+
+                <section data-background="images/taduuda-72915.jpg">
+                    <h3 class="overlay-style">Adding controllers from external assembly</h3>
+                    <pre>
+    <code class="cs">
+services.AddMvc().ConfigureApplicationPartManager(a =>
+{
+    var binDirectory = fileProvider.GetDirectoryContents("plugins");
+    foreach (var item in binDirectory)
+    {
+        using (var assemblyStream = item.CreateReadStream())
+        {
+            using (MemoryStream ms = new MemoryStream())
+            {
+                assemblyStream.CopyTo(ms);
+                var assembly = Assembly.Load(ms.ToArray());
+                a.ApplicationParts.Add(new AssemblyPart(assembly));
+            }
+        }
+    }
+});
+    </code>
+</pre>
+
+                    <p class="fragment" data-code-focus="2"></p>
+                    <p class="fragment" data-code-focus="4"></p>
+                    <p class="fragment" data-code-focus="13"></p>
+                </section>
+
+                <section data-background="images/taduuda-72915.jpg">
+                    <p class="overlay-style">
                         <span class="highlight">IActionDescriptorChangeProvider</span> can be used to rebuild the MVC action descriptor cache.
                         <br/>This allows building plugin systems, where controllers and actions are added and removed
                         <span class="highlight">dynamically</span>, without restarting the application
@@ -480,6 +567,9 @@ actionDescriptorChangeProvider.TokenSource.Cancel();
                     <p class="fragment" data-code-focus="2"></p>
                     <p class="fragment" data-code-focus="3"></p>
                     <p class="fragment" data-code-focus="4"></p>
+                </section>
+
+                <section data-background="images/sponge-wow.gif">
                 </section>
 
             </section>
