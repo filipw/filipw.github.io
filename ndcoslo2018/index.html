@@ -1,0 +1,551 @@
+﻿<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Adapting ASP.NET Core MVC to your needs</title>
+    <meta name="description" content="">
+    <meta name="author" content="Filip W">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <script src="//code.jquery.com/jquery-1.8.0.js"></script>
+    <script src="//code.jquery.com/ui/1.8.23/jquery-ui.js"></script>
+    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/css/bootstrap-combined.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/default.min.css">
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/simple.css" id="theme">
+    <link rel="stylesheet" href="css/custom.css" />
+    <link rel="stylesheet" href="css/monokai_sublime.css" />
+    <script src="fsharp.formatting/styles/tips.js" type="text/javascript"></script>
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+    <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+
+    <script>
+        if (window.location.search.match(/print-pdf/gi)) {
+            var link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = 'css/print/pdf.css';
+            document.getElementsByTagName('head')[0].appendChild(link);
+        }
+    </script>
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+    <style type="text/css">
+
+    </style>
+</head>
+
+<body>
+    <div class="reveal">
+        <header style="position: absolute;top: 50px; left: 100px; z-index:500; font-size:100px;background-color: rgba(0,0,0,0.5)"></header>
+        <!-- Any section element inside of this container is displayed as a slide -->
+        <div class="slides">
+
+            <section data-background="images/sneha-chekuri-329387-unsplash.jpg">
+
+                <h1><small>adapting</small>
+                    <br/>ASP.NET Core MVC<br/>
+                    <small>to your needs</small>
+                </h1>
+
+            </section>
+
+            <section data-background="images/IMG_20161025_115652.jpg">
+
+                <div class="overlay-style">
+                    <h2>Filip W</h2>
+                    <p>not PM. not architect. not developer advocate.</p>
+
+                    <p>
+                        <small>
+                            <a href="https://strathweb.com" class="roll">
+                                <span>strathweb.com</span>
+                            </a> •
+                            <a href="https://twitter.com/filip_woj" class="roll">
+                                <span data-title="@filip_woj">@filip_woj</span>
+                            </a> •
+                            <a href="https://github.com/filipw" class="roll">
+                                <span data-title="github.com/filipw">github.com/filipw</span>
+                            </a>
+                        </small>
+                    </p>
+                    <img class="normal" src="images/mvp.png" />
+                </div>
+
+            </section>
+
+            <!-- structure -->
+            <section>
+                <section data-background="images/StockSnap_XXTEK7APLA.jpg">
+                    <h1>Setup</h1>
+                </section>
+
+                <section data-background="images/mark-solarski-209233.jpg">
+                    <div class="overlay-style" style="padding:3% !important;">
+                        <h2>Setup</h2>
+                    </div>
+                    <div>
+                        <div class="left overlay-style" style="padding: 0">
+                            <div style="padding: 3%">
+                                <ul>
+                                    <li class="fragment">🕊 No MVC
+                                        <br/>
+                                        <small>ASP.NET Core apps built on
+                                            <em>IRouter</em>
+                                        </small>
+                                    </li>
+
+                                    <li class="fragment">🎯
+                                        <em>AddMvcCore()</em> vs
+                                        <em>AddMvc()</em>
+                                        <br/>
+                                        <small>Use the things you need</small>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="right overlay-style" style="padding: 0">
+                            <div style="padding: 3%">
+                                <ul>
+                                    <li class="fragment">👯 MVC side-by-side
+                                        <br/>
+                                        <small>Multiple MVC instances in the same app</small>
+                                    </li>
+                                    <li class="" style="list-style-type:none;">
+                                        <br/>
+                                        <br/>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section data-background="images/microservices.png" data-background-color="#fff" data-state="bg-auto-height" data-background-position="0 0">
+                </section>                
+                <section data-background="images/mark-solarski-209233.jpg">
+                    <p class="overlay-style">
+                        For lightweight, small Web APIs (microservices 🤧), you may
+                        <span class="highlight">not use MVC at all</span> and instead rely on
+                        <span class="highlight">IRouter</span>.
+                    </p>
+                </section>
+
+                <section data-background="images/mark-solarski-209233.jpg">
+                    <pre>
+    <code class="cs">
+public class Program
+{
+    public static async Task Main(string[] args) =>
+       await WebHost.CreateDefaultBuilder(args)
+          .ConfigureServices(s => s.AddRouting())
+          .Configure(app =>
+          {
+              .UseRouter(r => // define all API endpoints
+              {
+                  r.MapGet("contacts", async (req, res, data) =>
+                  { });
+
+                  r.MapGet("contacts/{id:int}", async (req, res, data) =>
+                  { });
+              });
+          })
+          .Build().RunAsync();
+}
+    </code>
+</pre>
+
+                    <p class="fragment" data-code-focus="6"></p>
+                    <p class="fragment" data-code-focus="11-12"></p>
+                    <p class="fragment" data-code-focus="14-15"></p>
+                </section>
+
+                <section data-background="images/mark-solarski-209233.jpg">
+                    <p class="overlay-style">
+                        You can choose which MVC features you need with
+                        <span class="highlight">services.AddMvcCore()</span> instead of
+                        <span class="highlight">services.AddMvc()</span>.
+                    </p>
+                </section>
+                <section data-background="images/addmvc.png" data-background-color="#fff" data-state="bg-auto-height" data-background-position="0 0">
+                </section>  
+                <section data-background="images/mark-solarski-209233.jpg">
+                    <h3 class="overlay-style">Pick what you need</h3>
+                    <pre>
+    <code class="cs">
+// kitchen sink
+services.AddMvc();
+
+// pick what you need
+services.AddMvcCore()
+    .AddDataAnnotations().AddJsonFormatters().AddApiExplorer();
+    </code>
+</pre>
+
+                    <p class="fragment" data-code-focus="3"></p>
+                    <p class="fragment" data-code-focus="6-7"></p>
+                </section>
+
+                <section data-background="images/mark-solarski-209233.jpg">
+                    <p class="overlay-style">
+                        Thanks to
+                        <span class="highlight">DI child scopes</span>, you can have
+                        <span class="highlight">multiple isolated</span> ASP.NET Core pipelines, with their own DI containers, in the same process.
+                    </p>
+                </section>
+
+                <section data-background="images/mark-solarski-209233.jpg">
+                    <p class="overlay-style">
+                        MVC scans the <span class="highlight">entire
+                        <em>AssemblyLoadContext</em></span> to discover its working parts, so they have to be constrained separately.
+                    </p>
+                </section>
+
+                <section data-background="images/mark-solarski-209233.jpg">
+                    <pre class="small">
+    <code class="cs">
+app.UseBranchWithServices("/hi-branch",
+    services => services.AddTransient&lt;IGreetService, HiService&gt;(),
+    nestedApp =>
+    {
+        nestedApp.Run(async c =>
+        {
+            var service = c.RequestServices.GetRequiredService&lt;IGreetService&gt;();
+            await c.Response.WriteAsync(service.Greet());
+        });
+    });
+
+app.UseBranchWithServices("/welcome-branch",
+    services => services.AddTransient&lt;IGreetService, WelcomeService&gt;(),
+    nestedApp =>
+    {
+        nestedApp.Run(async c =>
+        {
+            var service = c.RequestServices.GetRequiredService&lt;IGreetService&gt;();
+            await c.Response.WriteAsync(service.Greet());
+        });
+    });
+    </code>
+</pre>
+
+                    <p class="fragment" data-code-focus="2,13"></p>
+                    <p class="fragment" data-code-focus="3,14"></p>
+                    <p class="fragment" data-code-focus="8-9,19-20"></p>
+
+                </section>
+
+            </section>
+
+            <section>
+                    <section data-background="images/StockSnap_NN2EIQQYEA.jpg">
+                        <h1>MVC Application Model</h1>
+                    </section>
+                <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
+                    <div class="overlay-style" style="padding:3% !important;">
+                        <h2>Application Model</h2>
+                    </div>
+                    <div>
+                        <div class="left overlay-style" style="padding: 0">
+                            <div style="padding: 3%">
+                                <ul>
+                                    <li class="fragment">🔧
+                                        <em>IApplicationModelProvider</em>
+                                        <br/>
+                                        <small>Customize the application model</small>
+                                    </li>
+
+                                    <li class="fragment">📚
+                                        <em>IApplicationModelConvention</em>
+                                        <br/>
+                                        <small>Customize the application model</small>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="right overlay-style" style="padding: 0">
+                            <div style="padding: 3%">
+                                <ul>
+                                    <li class="fragment">⛔️
+                                        <em>IActionConstraint</em>
+                                        <br/>
+                                        <small>Customize the action selection</small>
+                                    </li>
+                                    <li class="" style="list-style-type:none;">
+                                        <br/>
+                                        <br/>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
+                    <p class="overlay-style">
+                        <span class="highlight">IApplicationModelProvider</span> and
+                        <span class="highlight">IApplicationModelConvention</span> allow applying customizations to the MVC application model.
+                        <br/>They can be used to customize framework behavior at
+                        <span class="highlight">controller</span>,
+                        <span class="highlight">action</span> or
+                        <span class="highlight">parameter</span> level.
+                    </p>
+                </section>
+
+                <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
+                    <p class="overlay-style">
+                        <span class="highlight">IApplicationModelProvider</span> should be used by frameworks and libraries, while
+                        <span class="highlight">IApplicationModelConvention</span> by applications.
+                        <br/>Providers always run before conventions.
+                    </p>
+                </section>
+
+                <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
+                    <pre class="small">
+    <code class="cs">
+public class GlobalRoutePrefixConvention : IApplicationModelConvention
+{
+    private readonly AttributeRouteModel _centralPrefix;
+    public GlobalRoutePrefixConvention(string routeTemplate)
+    {
+        _centralPrefix = new AttributeRouteModel(new RouteAttribute(routeTemplate));
+    }
+    
+    public void Apply(ApplicationModel application)
+    {
+        foreach (var controller in application.Controllers)
+        {
+            foreach (var selectorModel in controller.Selectors)
+            {
+                if (selectorModel.AttributeRouteModel != null)
+                {
+                    selectorModel.AttributeRouteModel = AttributeRouteModel.
+                        CombineAttributeRouteModel(_centralPrefix, selectorModel.AttributeRouteModel);
+                }
+                else
+                {
+                    selectorModel.AttributeRouteModel = _centralPrefix;
+                }
+            }
+        }
+    }
+}
+    </code>
+</pre>
+
+                    <p class="fragment" data-code-focus="12"></p>
+                    <p class="fragment" data-code-focus="14"></p>
+                    <p class="fragment" data-code-focus="18-19"></p>
+                    <p class="fragment" data-code-focus="23"></p>
+                </section>
+
+                <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
+                    <p class="overlay-style">
+                        <span class="highlight">IActionConstraint</span> is used to impose additional action matching rules.
+                        <br/>
+                        <br/>It may, for example,
+                        <span class="highlight">disambiguate</span> multiple actions from matching the same request or
+                        <span class="highlight">reject</span> a certain request from being handled by an action candidate.
+                    </p>
+                </section>
+
+                <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
+                    <pre class="small">
+    <code class="cs">
+public class AcceptLanguageActionConstraint : IActionConstraint, IActionConstraintMetadata
+{
+    private string _locale;
+
+    public AcceptLanguageActionConstraint(string locale) => _locale = locale;
+
+    public int Order => 0;
+
+    public bool Accept(ActionConstraintContext ctx)
+    {
+        var headers = ctx.RouteContext.HttpContext.Request.GetTypedHeaders();
+        
+        return headers.AcceptLanguage != null && 
+            headers.AcceptLanguage.Any(x => x.Value.Equals(_locale, StringComparison.OrdinalIgnoreCase)))
+    }
+}
+    </code>
+</pre>
+
+                    <p class="fragment" data-code-focus="6"></p>
+                    <p class="fragment" data-code-focus="14-15"></p>
+                </section>
+            </section>
+
+            <section>
+                    <section data-background="images/StockSnap_KD30XPQR0A.jpg">
+                        <h1>Plugins and Extensibility</h1>
+                    </section>
+                <section data-background="images/taduuda-72915.jpg">
+                    <div class="overlay-style" style="padding:3% !important;">
+                        <h2>Plugins and Extensibility</h2>
+                    </div>
+                    <div>
+                        <div class="left overlay-style" style="padding: 0">
+                            <div style="padding: 3%">
+                                <ul>
+                                    <li class="fragment">📋
+                                        <em>IFileProvider</em>
+                                        <br/>
+                                        <small>Virtual file system</small>
+                                    </li>
+
+                                    <li class="fragment">📦
+                                        <em>ApplicationPartManager</em>
+                                        <br/>
+                                        <small>Externally loaded features</small>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="right overlay-style" style="padding: 0">
+                            <div style="padding: 3%">
+                                <ul>
+                                    <li class="fragment">🏗
+                                        <em>Change providers</em>
+                                        <br/>
+                                        <small>Rebuild application model at runtime</small>
+                                    </li>
+                                    <li class="fragment">⚙️ Dynamic Options
+                                        <br/>
+                                        <small>Improve the options experience</small>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section data-background="images/taduuda-72915.jpg">
+                    <p class="overlay-style">
+                        It is possible to use
+                        <span class="highlight">virtual file systems</span> in MVC apps by implementing an
+                        <span class="highlight">IFileProvider</span>.
+                        <br/>Multiple providers can be used together via a
+                        <span class="highlight">CompositeFileProvider</span>.
+                    </p>
+                </section>
+
+                <section data-background="images/taduuda-72915.jpg">
+                    <h3 class="overlay-style">Custom file provider</h3>
+                    <pre>
+    <code class="cs">
+var blobFileProvider = app.ApplicationServices.GetRequiredService<AzureBlobFileProvider>();
+
+app.UseStaticFiles(new StaticFileOptions()
+    {
+        FileProvider = blobFileProvider,
+        RequestPath = "/files"
+    }.
+    UseDirectoryBrowser(new DirectoryBrowserOptions
+    {
+        FileProvider = blobFileProvider,
+        RequestPath = "/files"
+    });
+    </code>
+</pre>
+
+                    <p class="fragment" data-code-focus="2"></p>
+                    <p class="fragment" data-code-focus="4-8"></p>
+                    <p class="fragment" data-code-focus="9-13"></p>
+                </section>
+
+                <section data-background="images/taduuda-72915.jpg">
+                    <p class="overlay-style">
+                        <span class="highlight">IActionDescriptorChangeProvider</span> can be used to rebuild the MVC action descriptor cache.
+                        <br/>This allows building plugin systems, where controllers and actions are added and removed
+                        <span class="highlight">dynamically</span>, without restarting the application
+                    </p>
+                </section>
+
+                <section data-background="images/taduuda-72915.jpg">
+                    <h3 class="overlay-style">Adding an assembly to a running MVC app</h3>
+                    <pre>
+    <code class="cs">
+var assembly = Assembly.Load(assemblyPath);
+applicationPartManager.ApplicationParts.Add(new AssemblyPart(assembly));
+actionDescriptorChangeProvider.TokenSource.Cancel();
+    </code>
+</pre>
+
+                    <p class="fragment" data-code-focus="2"></p>
+                    <p class="fragment" data-code-focus="3"></p>
+                    <p class="fragment" data-code-focus="4"></p>
+                </section>
+
+            </section>
+
+            <section data-background="images/all.jpg" author="Filip W" description="" theme="simple" title="C# Scripting in the .NET Core world"
+                transition="default">
+            </section>
+
+            <section author="Filip W" description="" theme="simple" title="C# Scripting in the .NET Core world" transition="default">
+
+                <p>
+                    <img src="images/bye.gif" alt="" />
+                </p>
+
+            </section>
+
+        </div>
+    </div>
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+    <script>
+        // Full list of configuration options available here:
+        // https://github.com/hakimel/reveal.js#configuration
+
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            history: true,
+            center: true,
+            keyboard: {
+                39: 'next', // Right Arrow
+                37: 'prev'  // Left Arrow
+            },
+            transition: 'slide', // default/cube/page/concave/zoom/linear/fade/none
+
+            // Parallax scrolling
+            // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+            // parallaxBackgroundSize: '2100px 900px',
+
+            // Optional libraries used to extend on reveal.js
+            dependencies: [
+                { src: 'lib/js/classList.js', condition: function () { return !document.body.classList; } },
+                { src: 'plugin/markdown/marked.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+                { src: 'plugin/markdown/markdown.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+                { src: 'plugin/highlight.js/highlight.pack.js', async: true, callback: function () { /*hljs.initHighlightingOnLoad();*/ } },
+                { src: 'plugin/zoom-js/zoom.js', async: true, condition: function () { return !!document.body.classList; } },
+                { src: 'plugin/notes/notes.js', async: true, condition: function () { return !!document.body.classList; } },
+                { src: 'plugin/alt-arrows/alt-arrows.js' },
+                {
+                    src: 'plugin/reveal-code-focus.js',
+                    async: true,
+                    callback: function () {
+                        RevealCodeFocus();
+                    }
+                }
+            ]
+        });
+
+        // Reveal.configure({
+        //     keyboard: {
+        //         39: 'next', // Right Arrow
+        //         37: 'prev'  // Left Arrow
+        //     }
+        // });
+
+    </script>
+</body>
+
+</html>
