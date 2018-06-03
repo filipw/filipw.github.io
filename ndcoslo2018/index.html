@@ -132,7 +132,7 @@
                         </div>
                     </div>
                 </section>
-                <section data-background="images/microservices.png" data-background-color="#fff" data-state="bg-auto-height" data-background-position="0 0">
+                <section data-background="images/microservices.png" data-background-color="#fff" data-state="bg-auto-height">
                 </section>
                 <section data-background="images/mark-solarski-209233.jpg">
                     <p class="overlay-style">
@@ -167,6 +167,7 @@ public class Program
 </pre>
 
                     <p class="fragment" data-code-focus="6"></p>
+                    <p class="fragment" data-code-focus="9"></p>
                     <p class="fragment" data-code-focus="11-12"></p>
                     <p class="fragment" data-code-focus="14-15"></p>
                 </section>
@@ -252,46 +253,6 @@ app.UseBranchWithServices("/welcome-branch",
                 <section data-background="images/StockSnap_NN2EIQQYEA.jpg">
                     <h1>MVC Application Model</h1>
                 </section>
-                <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
-                    <div class="overlay-style" style="padding:3% !important;">
-                        <h2>Application Model</h2>
-                    </div>
-                    <div>
-                        <div class="left overlay-style" style="padding: 0">
-                            <div style="padding: 3%">
-                                <ul>
-                                    <li class="fragment">🔧
-                                        <em>IApplicationModelProvider</em>
-                                        <br/>
-                                        <small>Customize the application model</small>
-                                    </li>
-
-                                    <li class="fragment">📚
-                                        <em>IApplicationModelConvention</em>
-                                        <br/>
-                                        <small>Customize the application model</small>
-                                    </li>
-
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="right overlay-style" style="padding: 0">
-                            <div style="padding: 3%">
-                                <ul>
-                                    <li class="fragment">⛔️
-                                        <em>IActionConstraint</em>
-                                        <br/>
-                                        <small>Customize the action selection</small>
-                                    </li>
-                                    <li>
-                                        <br/>
-                                        <br/>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </section>
 
                 <section data-background="images/mark-solarski-209233.jpg">
                     <div class="overlay-style" style="padding:3% !important;">
@@ -333,13 +294,51 @@ app.UseBranchWithServices("/welcome-branch",
                 </section>
 
                 <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
+                    <div class="overlay-style" style="padding:3% !important;">
+                        <h2>Application Model</h2>
+                    </div>
+                    <div>
+                        <div class="left overlay-style" style="padding: 0">
+                            <div style="padding: 3%">
+                                <ul>
+                                    <li class="fragment">🔧
+                                        <em>IApplicationModelProvider</em>
+                                        <br/>
+                                        <small>Customize the application model</small>
+                                    </li>
+
+                                    <li class="fragment">📚
+                                        <em>IApplicationModelConvention</em>
+                                        <br/>
+                                        <small>Customize the application model</small>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="right overlay-style" style="padding: 0">
+                            <div style="padding: 3%">
+                                <ul>
+                                    <li class="fragment">⛔️
+                                        <em>IActionConstraint</em>
+                                        <br/>
+                                        <small>Customize the action selection</small>
+                                    </li>
+                                    <li>
+                                        <br/>
+                                        <br/>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
                     <p class="overlay-style">
                         <span class="highlight">IApplicationModelProvider</span> and
-                        <span class="highlight">IApplicationModelConvention</span> allow modifying to the MVC application model.
-                        <br/>They can be used to customize framework behavior at
-                        <span class="highlight">controller</span>,
-                        <span class="highlight">action</span> or
-                        <span class="highlight">parameter</span> level.
+                        <span class="highlight">IApplicationModelConvention</span> allow modifying the MVC application model, targetting
+                        the controller, action or parameter level.
                     </p>
                 </section>
 
@@ -359,38 +358,32 @@ app.UseBranchWithServices("/welcome-branch",
     <code class="cs">
 public class GlobalRoutePrefixConvention : IApplicationModelConvention
 {
-    private readonly AttributeRouteModel _centralPrefix;
-    public GlobalRoutePrefixConvention(string routeTemplate)
+  private readonly AttributeRouteModel _centralPrefix;
+  public GlobalRoutePrefixConvention(string routeTemplate)
+  {
+      _centralPrefix = new AttributeRouteModel(new RouteAttribute(routeTemplate));
+  }
+  
+  public void Apply(ApplicationModel application)
+  {
+    foreach (var controller in application.Controllers)
     {
-        _centralPrefix = new AttributeRouteModel(new RouteAttribute(routeTemplate));
+      foreach (var selectorModel in controller.Selectors)
+      {
+        selectorModel.AttributeRouteModel = selectorModel.AttributeRouteModel != null
+          ? AttributeRouteModel.CombineAttributeRouteModel(_centralPrefix, selectorModel.AttributeRouteModel)
+          : _centralPrefix;
+      }
     }
-    
-    public void Apply(ApplicationModel application)
-    {
-        foreach (var controller in application.Controllers)
-        {
-            foreach (var selectorModel in controller.Selectors)
-            {
-                if (selectorModel.AttributeRouteModel != null)
-                {
-                    selectorModel.AttributeRouteModel = AttributeRouteModel.
-                        CombineAttributeRouteModel(_centralPrefix, selectorModel.AttributeRouteModel);
-                }
-                else
-                {
-                    selectorModel.AttributeRouteModel = _centralPrefix;
-                }
-            }
-        }
-    }
+  }
 }
     </code>
 </pre>
 
                     <p class="fragment" data-code-focus="12"></p>
                     <p class="fragment" data-code-focus="14"></p>
-                    <p class="fragment" data-code-focus="18-19"></p>
-                    <p class="fragment" data-code-focus="23"></p>
+                    <p class="fragment" data-code-focus="17"></p>
+                    <p class="fragment" data-code-focus="18"></p>
                 </section>
 
                 <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
@@ -469,14 +462,10 @@ public class AcceptLanguageActionConstraint : IActionConstraint, IActionConstrai
                                         <br/>
                                         <small>Rebuild application model at runtime</small>
                                     </li>
-                                    <li>
+                                    <li class="fragment">🎁 Packaging Razor
                                         <br/>
-                                        <br/>
+                                        <small>Ship MVC plugins with their own embedded UI</small>
                                     </li>
-                                    <!-- <li class="fragment">⚙️ Dynamic Options
-                                        <br/>
-                                        <small>Improve the options experience</small>
-                                    </li> -->
                                 </ul>
                             </div>
                         </div>
@@ -487,7 +476,12 @@ public class AcceptLanguageActionConstraint : IActionConstraint, IActionConstrai
                         It is possible to use
                         <span class="highlight">virtual file systems</span> in MVC apps by implementing an
                         <span class="highlight">IFileProvider</span>.
-                        <br/>Multiple providers can be used together via a
+                    </p>
+                </section>
+
+                <section data-background="images/taduuda-72915.jpg">
+                    <p class="overlay-style">
+                        Multiple providers can be used together via a
                         <span class="highlight">CompositeFileProvider</span>.
                     </p>
                 </section>
@@ -496,7 +490,7 @@ public class AcceptLanguageActionConstraint : IActionConstraint, IActionConstrai
                     <h3 class="overlay-style">Custom file provider</h3>
                     <pre>
     <code class="cs">
-var blobFileProvider = app.ApplicationServices.GetRequiredService<AzureBlobFileProvider>();
+var blobFileProvider = app.ApplicationServices.GetRequiredService&lt;AzureBlobFileProvider&gt;();
 
 app.UseStaticFiles(new StaticFileOptions()
     {
@@ -553,7 +547,12 @@ services.AddMvc().ConfigureApplicationPartManager(a =>
                 <section data-background="images/taduuda-72915.jpg">
                     <p class="overlay-style">
                         <span class="highlight">IActionDescriptorChangeProvider</span> can be used to rebuild the MVC action descriptor cache.
-                        <br/>This allows building plugin systems, where controllers and actions are added and removed
+                    </p>
+                </section>
+
+                <section data-background="images/taduuda-72915.jpg">
+                    <p class="overlay-style">
+                        This allows building plugin systems, where controllers and actions are added and removed
                         <span class="highlight">dynamically</span>, without restarting the application
                     </p>
                 </section>
@@ -574,6 +573,14 @@ actionDescriptorChangeProvider.TokenSource.Cancel();
                 </section>
 
                 <section data-background="images/sponge-wow.gif">
+                </section>
+
+                <section data-background="images/taduuda-72915.jpg">
+                    <p class="overlay-style">
+                        With
+                        <span class="highlight">Microsoft.NET.Sdk.Razor</span> it is possible to precompile Razor views and distribute them in a
+                        DLL.
+                    </p>
                 </section>
 
             </section>
