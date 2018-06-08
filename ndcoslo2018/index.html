@@ -85,7 +85,7 @@
                 <img src="images/sonova.png" style="min-height: auto" />
             </section>
 
-            <!-- structure -->
+            <!-- setup -->
             <section>
                 <section data-background="images/StockSnap_XXTEK7APLA.jpg">
                     <h1>Setup</h1>
@@ -167,6 +167,7 @@ public class Program
 </pre>
 
                     <p class="fragment" data-code-focus="6"></p>
+                    <p class="fragment" data-code-focus="7"></p>
                     <p class="fragment" data-code-focus="9"></p>
                     <p class="fragment" data-code-focus="11-12"></p>
                     <p class="fragment" data-code-focus="14-15"></p>
@@ -217,216 +218,45 @@ services.AddMvcCore()
                 <section data-background="images/mark-solarski-209233.jpg">
                     <pre class="small">
     <code class="cs">
-app.UseBranchWithServices("/hi-branch",
-    services => services.AddTransient&lt;IGreetService, HiService&gt;(),
-    nestedApp =>
-    {
-        nestedApp.Run(async c =>
-        {
-            var service = c.RequestServices.GetRequiredService&lt;IGreetService&gt;();
-            await c.Response.WriteAsync(service.Greet());
-        });
-    });
-
-app.UseBranchWithServices("/welcome-branch",
-    services => services.AddTransient&lt;IGreetService, WelcomeService&gt;(),
-    nestedApp =>
-    {
-        nestedApp.Run(async c =>
-        {
-            var service = c.RequestServices.GetRequiredService&lt;IGreetService&gt;();
-            await c.Response.WriteAsync(service.Greet());
-        });
-    });
-    </code>
-</pre>
-
-                    <p class="fragment" data-code-focus="2,13"></p>
-                    <p class="fragment" data-code-focus="3,14"></p>
-                    <p class="fragment" data-code-focus="8-9,19-20"></p>
-
-                </section>
-
-            </section>
-
-            <section>
-                <section data-background="images/StockSnap_NN2EIQQYEA.jpg">
-                    <h1>MVC Application Model</h1>
-                </section>
-
-                <section data-background="images/mark-solarski-209233.jpg">
-                    <div class="overlay-style" style="padding:3% !important;">
-                        <h2>Application Model</h2>
-                    </div>
-                    <div>
-                        <div class="left overlay-style" style="padding: 0">
-                            <div style="padding: 3%">
-                                <ul>
-                                    <li class="fragment">✅ Controllers
-                                        <br/>
-                                        <small>Define behaviours
-                                        </small>
-                                    </li>
-
-                                    <li class="fragment">✅ Actions & Parameters
-                                        <br/>
-                                        <small>Select relevant methods, define behaviours</small>
-                                    </li>
-
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="right overlay-style" style="padding: 0">
-                            <div style="padding: 3%">
-                                <ul>
-                                    <li class="fragment">✅ Filters
-                                        <br/>
-                                        <small>Apply filters</small>
-                                    </li>
-                                    <li class="fragment">✅ Routing
-                                        <br/>
-                                        <small>Compose selectors</small>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
-                    <div class="overlay-style" style="padding:3% !important;">
-                        <h2>Application Model</h2>
-                    </div>
-                    <div>
-                        <div class="left overlay-style" style="padding: 0">
-                            <div style="padding: 3%">
-                                <ul>
-                                    <li class="fragment">🔧
-                                        <em>IApplicationModelProvider</em>
-                                        <br/>
-                                        <small>Customize the application model</small>
-                                    </li>
-
-                                    <li class="fragment">📚
-                                        <em>IApplicationModelConvention</em>
-                                        <br/>
-                                        <small>Customize the application model</small>
-                                    </li>
-
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="right overlay-style" style="padding: 0">
-                            <div style="padding: 3%">
-                                <ul>
-                                    <li class="fragment">⛔️
-                                        <em>IActionConstraint</em>
-                                        <br/>
-                                        <small>Customize the action selection</small>
-                                    </li>
-                                    <li>
-                                        <br/>
-                                        <br/>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
-                    <p class="overlay-style">
-                        <span class="highlight">IApplicationModelProvider</span> and
-                        <span class="highlight">IApplicationModelConvention</span> allow modifying the MVC application model, targetting
-                        the controller, action or parameter level.
-                    </p>
-                </section>
-
-                <section data-background="images/angrybirds.jpg" data-background-color="#fff" data-state="bg-auto-height">
-                </section>
-
-                <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
-                    <p class="overlay-style">
-                        <span class="highlight">IApplicationModelProvider</span> should be used by frameworks and libraries, while
-                        <span class="highlight">IApplicationModelConvention</span> by applications.
-                        <br/>Providers always run before conventions.
-                    </p>
-                </section>
-
-                <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
-                    <pre class="small">
-    <code class="cs">
-public class GlobalRoutePrefixConvention : IApplicationModelConvention
+public class HiStartup
 {
-  private readonly AttributeRouteModel _centralPrefix;
-  public GlobalRoutePrefixConvention(string routeTemplate)
-  {
-      _centralPrefix = new AttributeRouteModel(new RouteAttribute(routeTemplate));
-  }
-  
-  public void Apply(ApplicationModel application)
-  {
-    foreach (var controller in application.Controllers)
+    public void ConfigureServices(IServiceCollection services)
+        =&gt; services.AddTransient&lt;IGreetService, HiService&gt;()
+
+    public void Configure(IApplicationBuilder app)
     {
-      foreach (var selectorModel in controller.Selectors)
-      {
-        selectorModel.AttributeRouteModel = selectorModel.AttributeRouteModel != null
-          ? AttributeRouteModel.CombineAttributeRouteModel(_centralPrefix, selectorModel.AttributeRouteModel)
-          : _centralPrefix;
-      }
+        app.Run(async c => {
+            var service = c.RequestServices.GetRequiredService&lt;IGreetService&gt;();
+            await c.Response.WriteAsync(service.Greet());
+        });
     }
-  }
+}
+
+public class Startup
+{
+    public void ConfigureServices(IServiceCollection services) {}
+
+    public void Configure(IApplicationBuilder app)
+    {
+        app.IsolatedMap&lt;HiStartup&gt;("/hi-branch");
+        app.IsolatedMap&lt;OtherStartup&gt;("/other-branch");
+    }
 }
     </code>
 </pre>
 
-                    <p class="fragment" data-code-focus="12"></p>
-                    <p class="fragment" data-code-focus="14"></p>
-                    <p class="fragment" data-code-focus="17"></p>
+                    <p class="fragment" data-code-focus="2"></p>
+                    <p class="fragment" data-code-focus="5"></p>
+                    <p class="fragment" data-code-focus="9-11"></p>
+                    <p class="fragment" data-code-focus="16"></p>
                     <p class="fragment" data-code-focus="18"></p>
+                    <p class="fragment" data-code-focus="22-23"></p>
+
                 </section>
 
-                <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
-                    <p class="overlay-style">
-                        <span class="highlight">IActionConstraint</span> is used to impose additional action matching rules.
-                    </p>
-                </section>
-
-                <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
-                    <p class="overlay-style">
-                        IActionConstraint may
-                        <span class="highlight">disambiguate</span> multiple actions from matching the same request or
-                        <span class="highlight">reject</span> a certain request from being handled by an action candidate.
-                    </p>
-                </section>
-
-                <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
-                    <pre class="small">
-    <code class="cs">
-public class AcceptLanguageActionConstraint : IActionConstraint, IActionConstraintMetadata
-{
-    private string _locale;
-
-    public AcceptLanguageActionConstraint(string locale) => _locale = locale;
-
-    public int Order => 0;
-
-    public bool Accept(ActionConstraintContext ctx)
-    {
-        var headers = ctx.RouteContext.HttpContext.Request.GetTypedHeaders();
-        
-        return headers.AcceptLanguage != null && 
-            headers.AcceptLanguage.Any(x => x.Value.Equals(_locale, StringComparison.OrdinalIgnoreCase)))
-    }
-}
-    </code>
-</pre>
-
-                    <p class="fragment" data-code-focus="6"></p>
-                    <p class="fragment" data-code-focus="14-15"></p>
-                </section>
             </section>
 
+            <!-- plugins -->
             <section>
                 <section data-background="images/StockSnap_KD30XPQR0A.jpg">
                     <h1>Plugins and Extensibility</h1>
@@ -585,16 +415,185 @@ actionDescriptorChangeProvider.TokenSource.Cancel();
 
             </section>
 
-            <section data-background="images/all.jpg" author="Filip W" description="" theme="simple" title="C# Scripting in the .NET Core world"
-                transition="default">
+            <!-- application model -->
+            <section>
+                <section data-background="images/StockSnap_NN2EIQQYEA.jpg">
+                    <h1>MVC Application Model</h1>
+                </section>
+
+                <section data-background="images/mark-solarski-209233.jpg">
+                    <div class="overlay-style" style="padding:3% !important;">
+                        <h2>Application Model</h2>
+                    </div>
+                    <div>
+                        <div class="left overlay-style" style="padding: 0">
+                            <div style="padding: 3%">
+                                <ul>
+                                    <li class="fragment">✅ Controllers
+                                        <br/>
+                                        <small>Define behaviours
+                                        </small>
+                                    </li>
+
+                                    <li class="fragment">✅ Actions & Parameters
+                                        <br/>
+                                        <small>Select relevant methods, define behaviours</small>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="right overlay-style" style="padding: 0">
+                            <div style="padding: 3%">
+                                <ul>
+                                    <li class="fragment">✅ Filters
+                                        <br/>
+                                        <small>Apply filters</small>
+                                    </li>
+                                    <li class="fragment">✅ Routing
+                                        <br/>
+                                        <small>Compose selectors</small>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
+                    <div class="overlay-style" style="padding:3% !important;">
+                        <h2>Application Model</h2>
+                    </div>
+                    <div>
+                        <div class="left overlay-style" style="padding: 0">
+                            <div style="padding: 3%">
+                                <ul>
+                                    <li class="fragment">🔧
+                                        <em>IApplicationModelProvider</em>
+                                        <br/>
+                                        <small>Customize the application model</small>
+                                    </li>
+
+                                    <li class="fragment">📚
+                                        <em>IApplicationModelConvention</em>
+                                        <br/>
+                                        <small>Customize the application model</small>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="right overlay-style" style="padding: 0">
+                            <div style="padding: 3%">
+                                <ul>
+                                    <li class="fragment">⛔️
+                                        <em>IActionConstraint</em>
+                                        <br/>
+                                        <small>Customize the action selection</small>
+                                    </li>
+                                    <li>
+                                        <br/>
+                                        <br/>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
+                    <p class="overlay-style">
+                        <span class="highlight">IApplicationModelProvider</span> and
+                        <span class="highlight">IApplicationModelConvention</span> allow modifying the MVC application model, targetting
+                        the controller, action or parameter level.
+                    </p>
+                </section>
+
+                <section data-background="images/angrybirds.jpg" data-background-color="#fff" data-state="bg-auto-height">
+                </section>
+
+                <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
+                    <p class="overlay-style">
+                        <span class="highlight">IApplicationModelProvider</span> should be used by frameworks and libraries, while
+                        <span class="highlight">IApplicationModelConvention</span> by applications.
+                        <br/>Providers always run before conventions.
+                    </p>
+                </section>
+
+                <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
+                    <pre>
+    <code class="cs">
+public class GlobalRoutePrefixConvention : IApplicationModelConvention
+{
+    public void Apply(ApplicationModel application)
+    {
+        var route = new RouteAttribute("api/[controller]");
+        var prefix = new AttributeRouteModel(route);
+        foreach (var controller in application.Controllers)
+        {
+            foreach (var selector in controller.Selectors)
+            {
+                selector.AttributeRouteModel = 
+                  selector.AttributeRouteModel != null
+                  ? AttributeRouteModel.CombineAttributeRouteModel(prefix, selector.AttributeRouteModel)
+                  : prefix;
+            }
+        }
+    }
+}
+    </code>
+</pre>
+
+                    <p class="fragment" data-code-focus="6-7"></p>
+                    <p class="fragment" data-code-focus="8"></p>
+                    <p class="fragment" data-code-focus="10"></p>
+                    <p class="fragment" data-code-focus="12-15"></p>
+                </section>
+
+                <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
+                    <p class="overlay-style">
+                        <span class="highlight">IActionConstraint</span> is used to impose additional action matching rules.
+                    </p>
+                </section>
+
+                <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
+                    <p class="overlay-style">
+                        IActionConstraint may
+                        <span class="highlight">disambiguate</span> multiple actions from matching the same request or
+                        <span class="highlight">reject</span> a certain request from being handled by an action candidate.
+                    </p>
+                </section>
+
+                <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
+                    <pre>
+    <code class="cs">
+public class SwissAcceptLanguageActionConstraint : IActionConstraint, IActionConstraintMetadata
+{
+    public int Order => 0;
+
+    public bool Accept(ActionConstraintContext ctx)
+    {
+        var headers = ctx.RouteContext.HttpContext.Request.GetTypedHeaders();
+        
+        return headers.AcceptLanguage != null && 
+            headers.AcceptLanguage.Any(x => x.Value.Equals("de-CH", StringComparison.OrdinalIgnoreCase)))
+    }
+}
+    </code>
+</pre>
+
+                    <p class="fragment" data-code-focus="6"></p>
+                    <p class="fragment" data-code-focus="10-11"></p>
+                </section>
             </section>
 
-            <section author="Filip W" description="" theme="simple" title="C# Scripting in the .NET Core world" transition="default">
+            <section data-background="images/all.jpg">
+            </section>
 
-                <p>
-                    <img src="images/bye.gif" alt="" />
+            <section data-background="images/joshua-earle-234740-unsplash.jpg">
+                <p class="fragment">
+                    <img src="images/thankyou.gif" />
                 </p>
-
             </section>
 
         </div>
