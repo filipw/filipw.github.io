@@ -81,7 +81,7 @@
 
             </section>
 
-            <section>
+            <section data-background-color="#fff">
                 <img src="images/sonova.png" style="min-height: auto" />
             </section>
 
@@ -121,7 +121,7 @@
                                 <ul>
                                     <li class="fragment">👯 MVC side-by-side
                                         <br/>
-                                        <small>Multiple MVC instances in the same app</small>
+                                        <small>Multiple sub-applications in the same app</small>
                                     </li>
                                     <li>
                                         <br/>
@@ -137,8 +137,8 @@
                 <section data-background="images/mark-solarski-209233.jpg">
                     <p class="overlay-style">
                         For lightweight, small Web APIs (microservices 🤧), you may
-                        <span class="highlight">not use MVC at all</span> and instead rely on
-                        <span class="highlight">IRouter</span>.
+                        <span class="highlight">not use MVC</span> at all and instead rely only on
+                        <span class="highlight">ASP.NET Core Routing</span>.
                     </p>
                 </section>
 
@@ -191,12 +191,17 @@ services.AddMvc();
 
 // pick what you need
 services.AddMvcCore()
-    .AddDataAnnotations().AddJsonFormatters().AddApiExplorer();
+    .AddDataAnnotations() // for model validation
+    .AddJsonFormatters() // for JSON
+    .AddApiExplorer(); // for Swagger
     </code>
 </pre>
 
                     <p class="fragment" data-code-focus="3"></p>
-                    <p class="fragment" data-code-focus="6-7"></p>
+                    <p class="fragment" data-code-focus="6"></p>
+                    <p class="fragment" data-code-focus="7"></p>
+                    <p class="fragment" data-code-focus="8"></p>
+                    <p class="fragment" data-code-focus="9"></p>
                 </section>
 
                 <section data-background="images/mark-solarski-209233.jpg">
@@ -216,25 +221,41 @@ services.AddMvcCore()
                 </section>
 
                 <section data-background="images/mark-solarski-209233.jpg">
-                    <pre class="small">
+                    <pre>
     <code class="cs">
 public class HiStartup
 {
     public void ConfigureServices(IServiceCollection services)
-        =&gt; services.AddTransient&lt;IGreetService, HiService&gt;()
+    {
+        services.AddTransient&lt;IGreetService, HiService&gt;();
+    }
 
     public void Configure(IApplicationBuilder app)
     {
-        app.Run(async c => {
-            var service = c.RequestServices.GetRequiredService&lt;IGreetService&gt;();
-            await c.Response.WriteAsync(service.Greet());
+        app.Run(async c => 
+        {
+            var svc = c.RequestServices.GetRequiredService&lt;IGreetService&gt;();
+            await c.Response.WriteAsync(svc.Greet());
         });
     }
 }
+    </code>
+</pre>
 
+                    <p class="fragment" data-code-focus="2"></p>
+                    <p class="fragment" data-code-focus="6"></p>
+                    <p class="fragment" data-code-focus="13"></p>
+
+                </section>
+
+            </section>
+            <section data-background="images/mark-solarski-209233.jpg">
+                <pre>
+<code class="cs">
 public class Startup
 {
-    public void ConfigureServices(IServiceCollection services) {}
+    public void ConfigureServices(IServiceCollection services) 
+    { }
 
     public void Configure(IApplicationBuilder app)
     {
@@ -242,19 +263,15 @@ public class Startup
         app.IsolatedMap&lt;OtherStartup&gt;("/other-branch");
     }
 }
-    </code>
+</code>
 </pre>
 
-                    <p class="fragment" data-code-focus="2"></p>
-                    <p class="fragment" data-code-focus="5"></p>
-                    <p class="fragment" data-code-focus="9-11"></p>
-                    <p class="fragment" data-code-focus="16"></p>
-                    <p class="fragment" data-code-focus="18"></p>
-                    <p class="fragment" data-code-focus="22-23"></p>
-
-                </section>
-
+                <p class="fragment" data-code-focus="2"></p>
+                <p class="fragment" data-code-focus="4-5"></p>
+                <p class="fragment" data-code-focus="9-10"></p>
             </section>
+
+        </section>
 
             <!-- plugins -->
             <section>
@@ -418,46 +435,7 @@ actionDescriptorChangeProvider.TokenSource.Cancel();
             <!-- application model -->
             <section>
                 <section data-background="images/StockSnap_NN2EIQQYEA.jpg">
-                    <h1>MVC Application Model</h1>
-                </section>
-
-                <section data-background="images/mark-solarski-209233.jpg">
-                    <div class="overlay-style" style="padding:3% !important;">
-                        <h2>Application Model</h2>
-                    </div>
-                    <div>
-                        <div class="left overlay-style" style="padding: 0">
-                            <div style="padding: 3%">
-                                <ul>
-                                    <li class="fragment">✅ Controllers
-                                        <br/>
-                                        <small>Define behaviours
-                                        </small>
-                                    </li>
-
-                                    <li class="fragment">✅ Actions & Parameters
-                                        <br/>
-                                        <small>Select relevant methods, define behaviours</small>
-                                    </li>
-
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="right overlay-style" style="padding: 0">
-                            <div style="padding: 3%">
-                                <ul>
-                                    <li class="fragment">✅ Filters
-                                        <br/>
-                                        <small>Apply filters</small>
-                                    </li>
-                                    <li class="fragment">✅ Routing
-                                        <br/>
-                                        <small>Compose selectors</small>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+                    <h1>MVC Application Model</h1><!-- how the app is wired together -->
                 </section>
 
                 <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
@@ -471,7 +449,7 @@ actionDescriptorChangeProvider.TokenSource.Cancel();
                                     <li class="fragment">🔧
                                         <em>IApplicationModelProvider</em>
                                         <br/>
-                                        <small>Customize the application model</small>
+                                        <small>Compose the application model</small>
                                     </li>
 
                                     <li class="fragment">📚
@@ -501,13 +479,74 @@ actionDescriptorChangeProvider.TokenSource.Cancel();
                     </div>
                 </section>
 
+                <section data-background="images/mark-solarski-209233.jpg">
+                    <div class="overlay-style" style="padding:3% !important;">
+                        <h2>Application Model</h2>
+                    </div>
+                    <div>
+                        <div class="left overlay-style" style="padding: 0">
+                            <div style="padding: 3%">
+                                <ul>
+                                    <li class="fragment">✅ Controllers
+                                        <br/>
+                                        <small>Defined behaviours
+                                        </small>
+                                    </li>
+
+                                    <li class="fragment">✅ Actions & Parameters
+                                        <br/>
+                                        <small>Select relevant methods, defined behaviours</small>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="right overlay-style" style="padding: 0">
+                            <div style="padding: 3%">
+                                <ul>
+                                    <li class="fragment">✅ Filters
+                                        <br/>
+                                        <small>Apply filters</small>
+                                    </li>
+                                    <li class="fragment">✅ Selectors
+                                        <br/>
+                                        <small>Mapping to routing</small>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+
                 <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
                     <p class="overlay-style">
-                        <span class="highlight">IApplicationModelProvider</span> and
-                        <span class="highlight">IApplicationModelConvention</span> allow modifying the MVC application model, targetting
-                        the controller, action or parameter level.
+                        MVC ships with several built-in <span class="highlight">IApplicationModelProviders</span> to define its own behaviors.
                     </p>
                 </section>
+
+                <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
+                    <pre>
+    <code class="cs">
+[ApiController]
+[Route("[controller]")]
+public class BookController : Controller 
+{
+    [HttpPost]
+    public IActionResult PostBook(<span style="text-decoration: line-through;">[FromBody]</span>Book book) 
+    { 
+        <span style="text-decoration: line-through;">if (ModelState.IsValid)</span>
+        <span style="text-decoration: line-through;">{</span>
+            <span style="text-decoration: line-through;">return BadRequest(ModelState)</span>;
+        <span style="text-decoration: line-through;">}</span>
+
+        // controller logic
+    }
+}
+    </code>
+</pre>
+<p class="fragment" data-code-focus="2"></p>
+</section>
 
                 <section data-background="images/angrybirds.jpg" data-background-color="#fff" data-state="bg-auto-height">
                 </section>
@@ -544,7 +583,7 @@ public class GlobalRoutePrefixConvention : IApplicationModelConvention
     </code>
 </pre>
 
-                    <p class="fragment" data-code-focus="6-7"></p>
+                    <p class="fragment" data-code-focus="6"></p>
                     <p class="fragment" data-code-focus="8"></p>
                     <p class="fragment" data-code-focus="10"></p>
                     <p class="fragment" data-code-focus="12-15"></p>
