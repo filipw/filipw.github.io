@@ -248,7 +248,6 @@ public class HiStartup
 
                 </section>
 
-            </section>
             <section data-background="images/mark-solarski-209233.jpg">
                 <pre>
 <code class="cs">
@@ -409,14 +408,19 @@ services.AddMvc().ConfigureApplicationPartManager(a =>
                     <pre>
     <code class="cs">
 var assembly = Assembly.Load(assemblyPath);
-applicationPartManager.ApplicationParts.Add(new AssemblyPart(assembly));
+var partFactory = ApplicationPartFactory.GetApplicationPartFactory(assembly);
+foreach (var part in partFactory.GetApplicationParts(assembly))
+{
+    applicationPartManager.ApplicationParts.Add(part);
+}
 actionDescriptorChangeProvider.TokenSource.Cancel();
     </code>
 </pre>
 
                     <p class="fragment" data-code-focus="2"></p>
                     <p class="fragment" data-code-focus="3"></p>
-                    <p class="fragment" data-code-focus="4"></p>
+                    <p class="fragment" data-code-focus="6"></p>
+                    <p class="fragment" data-code-focus="8"></p>
                 </section>
 
                 <section data-background="images/sponge-wow.gif">
@@ -655,8 +659,9 @@ public class SwissAcceptLanguageActionConstraint : IActionConstraint, IActionCon
 
                                 <li style="margin-bottom: 0.8em">💻 <a href="https://github.com/filipw/2018-ndcoslo-demos">github.com/filipw/2018-ndcoslo-demos</a>
                                 </li>
-
-                                <li>🇸🇪👎 <br/> 🇨🇭👍
+                                <li style="margin-bottom: 0.6em">🇸🇪 👎
+                                </li>
+                                <li>🇨🇭 👍
                                 </li>
                             </ul>
                         </div>
