@@ -1,0 +1,557 @@
+﻿<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Authentication and Authorization for HTTP APIs in ASP.NET Core</title>
+    <meta name="description" content="">
+    <meta name="author" content="Filip W">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <script src="//code.jquery.com/jquery-1.8.0.js"></script>
+    <script src="//code.jquery.com/ui/1.8.23/jquery-ui.js"></script>
+    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/css/bootstrap-combined.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/default.min.css">
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/simple.css" id="theme">
+    <link rel="stylesheet" href="css/custom.css" />
+    <link rel="stylesheet" href="css/monokai_sublime.css" />
+    <script src="fsharp.formatting/styles/tips.js" type="text/javascript"></script>
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+    <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+
+    <script>
+        if (window.location.search.match(/print-pdf/gi)) {
+            var link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = 'css/print/pdf.css';
+            document.getElementsByTagName('head')[0].appendChild(link);
+        }
+    </script>
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+    <style type="text/css">
+    </style>
+</head>
+
+<body>
+    <div class="reveal">
+        <header style="position: absolute;top: 50px; left: 100px; z-index:500; font-size:100px;background-color: rgba(0,0,0,0.5)"></header>
+        <!-- Any section element inside of this container is displayed as a slide -->
+        <div class="slides">
+
+            <section data-background="images/jason-blackeye-198848-unsplash.jpg">
+
+                <h1>
+                    <small>authentication and authorization for</small>
+                    <br/>HTTP APIs
+                    <br/>
+                    <small>in ASP.NET Core</small>
+                </h1>
+
+            </section>
+
+            <section data-background="images/ibf.net-144.jpg">
+
+                <div class="overlay-style">
+                    <h2>Filip W</h2>
+                    <p>a random guy from the internet</p>
+
+                    <p>
+                        <small>
+                            <a href="https://strathweb.com" class="roll">
+                                <span>strathweb.com</span>
+                            </a> •
+                            <a href="https://twitter.com/filip_woj" class="roll">
+                                <span data-title="@filip_woj">@filip_woj</span>
+                            </a> •
+                            <a href="https://github.com/filipw" class="roll">
+                                <span data-title="github.com/filipw">github.com/filipw</span>
+                            </a>
+                        </small>
+                    </p>
+                    <img class="normal" src="images/mvp.png" />
+                </div>
+
+            </section>
+
+            <section data-background-color="#fff">
+                <img src="images/sonova.png" style="min-height: auto" />
+            </section>
+
+            <section data-background="images/gold-chain-collective-695929-unsplash.jpg">
+            <!-- <section data-background-color="#fff" data-state="bg-auto-width"> -->
+                <img src="images/email.png" style="min-height: auto" />
+            </section>
+
+            <section data-background="images/gold-chain-collective-695929-unsplash.jpg">
+            <!-- <section data-background-color="#fff" data-state="bg-auto-height"> -->
+                <img src="images/security-chose.jpg" style="min-height: auto" />
+            </section>
+
+            <!-- background -->
+            <section>
+                <section data-background="images/jose-fontano-246362-unsplash.jpg">
+                    <h1>Background</h1>
+                </section>
+
+                <section data-background="images/pawel-czerwinski-773353-unsplash.jpg">
+                    <div class="overlay-style" style="padding:3% !important;">
+                        <h2>API Security Timeline</h2>
+                    </div>
+                    <div>
+                        <div class="left overlay-style" style="padding: 0">
+                            <div style="padding: 3%">
+                                <ul>
+                                    <li class="fragment">👹 until 2010: SAML & others
+                                        <br/>
+                                        <small>
+                                            The dark ages
+                                        </small>
+                                    </li>
+
+                                    <li class="fragment">🐣 2010: OAuth 1.0
+                                        <br/>
+                                        <small>RFC 5849. Open standard for API access delegation</small>
+                                    </li>
+
+                                    <li class="fragment">🐥 2012: OAuth 2.0
+                                        <small>RFC 6749. Not backwards compatible with OAuth 1.0</small>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="right overlay-style" style="padding: 0">
+                            <div style="padding: 3%">
+                                <ul>
+                                    <li class="fragment">👮 2014: OpenID Connect
+                                        <br/>
+                                        <small>Identity layer on top of OAuth 2.0</small>
+                                    </li>
+                                    <li class="fragment">📝 2015: JSON Web Token
+                                        <br/>
+                                        <small>RFC 7519. Token & claim assertions standard</small>
+                                    </li>
+                                    <li class="fragment">🛡 soon: Token Binding
+                                        <br/>
+                                        <small>Cryptographically binding tokens to TLS connection</small>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-background="images/pawel-czerwinski-773353-unsplash.jpg">
+                    <div class="overlay-style" style="padding:3% !important;">
+                        <h3 style="margin-bottom: 0 !important;">Security is hard</h3>
+                    </div>
+                    <img src="images/security-scooter.jpg" />
+                </section>
+
+                <section data-background="images/pawel-czerwinski-773353-unsplash.jpg">
+                    <img src="images/kirk.jpg" />
+                </section>
+
+                <section data-background="images/pawel-czerwinski-773353-unsplash.jpg">
+                    <h3 class="overlay-style">OAuth 2.0 related RFCs</h3>
+                    <table class="overlay-style simple">
+                            <tbody>
+                                    <tr><td><em>RFC 6749</em></td><td>The OAuth 2.0 Authorization Framework</td></tr>
+                                    <tr><td><em>RFC 6750</em></td><td>The OAuth 2.0 Authorization Framework: Bearer Token Usage</td></tr>
+                                    <tr><td><em>RFC 6755</em></td><td>An IETF URN Sub-Namespace for OAuth</td></tr>
+                                    <tr><td><em>RFC 6819</em></td><td>OAuth 2.0 Threat Model and Security Considerations</td></tr>
+                                    <tr><td><em>RFC 7009</em></td><td>OAuth 2.0 Token Revocation</td></tr>
+                                    <tr><td><em>RFC 7519</em></td><td>JSON Web Token (JWT)</td></tr>
+                                    <tr><td><em>RFC 7521</em></td><td>Assertion Framework for OAuth 2.0 Client Authentication and Authorization Grants</td></tr>
+                                    <tr><td><em>RFC 7522</em></td><td>Security Assertion Markup Language (SAML) 2.0 Profile for OAuth 2.0 Client Authentication and Authorization Grants</td></tr>
+                                    <tr><td><em>RFC 7523</em></td><td>JSON Web Token (JWT) Profile for OAuth 2.0 Client Authentication and Authorization Grants</td></tr>
+                                    <tr><td><em>RFC 7591</em></td><td>OAuth 2.0 Dynamic Client Registration Protocol</td></tr>
+                                    <tr><td><em>RFC 7592</em></td><td>OAuth 2.0 Dynamic Client Registration Management Protocol</td></tr>
+                                    <tr><td><em>RFC 7662</em></td><td>OAuth 2.0 Token Introspection</td></tr>
+                                    <tr><td><em>RFC 7797</em></td><td>JSON Web Signature (JWS) Unencoded Payload Option </td></tr>                                    <tr><td><em>RFC 7636</em></td><td>Proof Key for Code Exchange by OAuth Public Clients</td></tr>
+                                    <tr><td><em>RFC 7800</em></td><td>Proof-of-Possession Key Semantics for JSON Web Tokens (JWTs)</td></tr>
+                                    <tr><td><em>RFC 8176</em></td><td>Authentication Method Reference Values</td></tr>
+                                    <tr><td><em>RFC 8252</em></td><td>OAuth 2.0 for Native Apps</td></tr>
+                                    <tr class="noborder"><td><em>RFC 8414</em></td><td>OAuth 2.0 Authorization Server Metadata</td></tr>
+                                    <tr><td class="footnote" colspan="2"><small>that's 428 A4 pages, and only includes published RFC</small></td></tr>
+                            </tbody>
+                        </table>
+                </section>
+
+                <section data-background="images/pawel-czerwinski-773353-unsplash.jpg">
+                    <p class="overlay-style">
+                        The word <span class="highlight">should</span> appears in RFC 6749 75 times, 
+                        <span class="highlight">may</span> 69 times and <span class="highlight">optional</span> 27 times.
+                    </p>
+                </section>
+
+                <section data-background="images/pawel-czerwinski-773353-unsplash.jpg">
+                    <img src="images/medieval.jpeg" style="min-height: auto" />
+                </section>
+        </section>
+
+            <!-- Standards -->
+            <section>
+                <section data-background="images/chris-barbalis-705864-unsplash.jpg">
+                    <h1>Standards</h1>
+                </section>
+                <section data-background="images/masaaki-komori-580425-unsplash.jpg">
+                    <div class="overlay-style" style="padding:3% !important;">
+                        <h2>OAuth 2.0</h2>
+                    </div>
+                    <div>
+                        <div class="left overlay-style" style="padding: 0">
+                            <div style="padding: 3%">
+                                <ul>
+                                    <li class="fragment">🛠
+                                        Four flows (different use cases)
+                                        <br/>
+                                        <small>authorization code (most common), implicit (JS), client credentials (M2M), password (legacy)</small>
+                                    </li>
+
+                                    <li class="fragment">👜
+                                        Bearer concept
+                                        <small><em>Authorization: Bearer {token}</em></small>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="right overlay-style" style="padding: 0">
+                            <div style="padding: 3%">
+                                <ul>
+                                    <li class="fragment">🎭
+                                        Public client concept
+                                        <br/>
+                                        <small>Implicit grant, optional secret, no backend brokerage</small>
+                                    </li>
+                                    <li class="fragment">🤖
+                                        Delegated authorization only
+                                        <br/>
+                                        <small>Does not deal with authentication, only describes granting authorization</small>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-background="images/masaaki-komori-580425-unsplash.jpg">
+                    <div class="overlay-style" style="padding:3% !important;">
+                        <h2>OpenID Connect</h2>
+                    </div>
+                    <div>
+                        <div class="left overlay-style" style="padding: 0">
+                            <div style="padding: 3%">
+                                <ul>
+                                    <li class="fragment">🏭
+                                            OAuth 2.0 extension 
+                                        <br/>
+                                        <small>Adds identity concept and federated authentication</small>
+                                    </li>
+
+                                    <li class="fragment">🦄
+                                        Identity token
+                                        <small><em>id_token</em> in addition to <em>access token</em></small>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="right overlay-style" style="padding: 0">
+                            <div style="padding: 3%">
+                                <ul>
+                                    <li class="fragment">📚
+                                        Discovery endpoint
+                                        <br/>
+                                        <small>Standardzied way of exposing server metadata</small>
+                                    </li>
+                                    <li class="fragment">🖥
+                                            Session management
+                                            <br/>
+                                            <small>Log out once</small>
+                                        </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section data-background="images/masaaki-komori-580425-unsplash.jpg">
+                    <p class="overlay-style">
+                        JSON Web Tokens (<span class="highlight">JWT</span>) is an open standard (<span class="highlight">RFC 7519</span>) method for representing claims securely between two parties.
+                    </p>
+                </section>
+
+                <section data-background="images/masaaki-komori-580425-unsplash.jpg">
+                    <p class="overlay-style">
+                        TODO JWT sample
+                    </p>
+                </section>
+
+                <section data-background="images/masaaki-komori-580425-unsplash.jpg">
+                    <img src="images/OpenIDConnect-Map-4Feb2014.png" style="min-height: auto" />
+                </section>
+
+                <section data-background="images/openid-certified.png" data-state="bg-auto-height">
+                </section>
+
+                <section data-background-color="#fff">
+                        <img src="images/identityserver.png" style="min-height: auto" />
+                    </section>
+            </section>
+
+            <!-- authentication -->
+            <section>
+                <section data-background="images/photo-1465257474426-bd133d4db35e.jpeg">
+                    <h1>Authentication</h1><!-- how the app is wired together -->
+                </section>
+
+                <section data-background="images/artem-bali-580895-unsplash.jpg">
+                    <div class="overlay-style" style="padding:3% !important;">
+                        <h2>API Authentication anti-patterns</h2>
+                    </div>
+                    <div>
+                        <div class="left overlay-style" style="padding: 0">
+                            <div style="padding: 3%">
+                                <ul>
+                                    <li class="fragment">💩
+                                        Rolling out custom security
+                                        <br/>
+                                        <small>Re-inventing the wheel</small>
+                                    </li>
+
+                                    <li class="fragment">💩
+                                        Using implicit authentication
+                                        <br/>
+                                        <small>i.e. classic cookie-authentication models</small>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="right overlay-style" style="padding: 0">
+                            <div style="padding: 3%">
+                                <ul>
+                                    <li class="fragment">💩
+                                        Mixing authN and authZ
+                                        <br/>
+                                        <small>i.e. only OAuth 2.0 for both purposes</small>
+                                    </li>
+                                    <li class="fragment">💩
+                                        Fat tokens
+                                        <br/>
+                                        <small>Transporting too much data in tokens</small>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-background="images/artem-bali-580895-unsplash.jpg">
+                    <div class="overlay-style" style="padding:3% !important;">
+                        <h2>Authentication in ASP.NET Core</h2>
+                    </div>
+                    <div>
+                        <div class="left overlay-style" style="padding: 0">
+                            <div style="padding: 3%">
+                                <ul>
+                                    <li class="fragment">✅ Authentication handlers
+                                        <br/>
+                                        <small>Registered in DI - cookies, social, JWT, OpenIdConnect
+                                        </small>
+                                    </li>
+
+                                    <li class="fragment">✅ Middleware invoked
+                                        <br/>
+                                        <small>Can also be manually triggered</small>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="right overlay-style" style="padding: 0">
+                            <div style="padding: 3%">
+                                <ul>
+                                    <li class="fragment">✅ Claims transformation
+                                        <br/>
+                                        <small>Allows per-request manipulation of claims</small>
+                                    </li>
+                                    <li class="fragment">✅ Based loosely on Katana
+                                        <br/>
+                                        <small>Completely new if you have not worked with OWIN</small>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-background="images/artem-bali-580895-unsplash.jpg">
+                    <p class="overlay-style">
+                        .NET introduced
+                        <span class="highlight">ClaimsPrincipal
+                        </span> as primary identity model in 2012 (.NET 4.5).
+                    </p>
+                </section>
+
+            </section>
+
+            <!-- authorization -->
+            <section>
+                    <section data-background="images/sarah-white-422370-unsplash.jpg">
+                        <h1>Authorization</h1><!-- how the app is wired together -->
+                    </section>
+    
+                    <section data-background="images/photo-1511699725551-7b894c2ffe42.jpeg">
+                        <h3 class="overlay-style">API Authorization Levels</h3>
+                        <table class="overlay-style medium">
+                                <thead>
+                                        <tr>
+                                            <th>Level</th>
+                                            <th>Mechanism</th>
+                                            <th>Source</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="noborder">
+                                            <td>⛅ Accessing an API endpoint</td>
+                                            <td>🔒 authorization framework</td>
+                                            <td>access_token scopes</td>
+                                        </tr>
+                                        <tr><td colspan="3"><small>Can you interact with Orders API in any way?</small></td></tr>
+                                        <tr class="noborder">
+                                            <td>🌤 Role verification</td>
+                                            <td>🔒 authorization framework</td>
+                                            <td>profile / policy service</td>
+                                        </tr>
+                                        <tr><td colspan="3"><small>Can you invoke a specific operation in the Orders API? For example: place a new order.</small></td></tr>
+                                        <tr class="noborder">
+                                            <td>☀️ Business workflow permissions</td>
+                                            <td>🗂 business logic</td>
+                                            <td>custom</td>
+                                        </tr>
+                                        <tr><td colspan="3"><small>Can you invoke a specific operation, with specialized conditions in the Orders API? For example: place a new order with value over 10 000 EUR.</small></td></tr>
+                                    </tbody>
+                            </table>
+                    </section>
+    
+                    <section data-background="images/photo-1511699725551-7b894c2ffe42.jpeg">
+                        <p class="overlay-style">
+                            Until ASP.NET Core, ASP.NET <span class="highlight">never</span> shipped with a comprehensive authorization framework.
+                        </p>
+                    </section>
+
+                    <section data-background="images/photo-1511699725551-7b894c2ffe42.jpeg">
+                        <div class="overlay-style" style="padding:3% !important;">
+                            <h2>Authorization in ASP.NET Core</h2>
+                        </div>
+                        <div>
+                            <div class="left overlay-style" style="padding: 0">
+                                <div style="padding: 3%">
+                                    <ul>
+                                            <li class="fragment">✅ new <em>IAuthorizationService</em>
+                                                <br/>
+                                                <small>Decouple authorization from business code</small>
+                                            </li>
+    
+                                        <li class="fragment">✅ Policy based
+                                            <br/>
+                                            <small>No more coupling or misinterpreting "roles"</small>
+                                        </li>
+    
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="right overlay-style" style="padding: 0">
+                                <div style="padding: 3%">
+                                    <ul>
+                                            <li class="fragment">✅ Requirements concept
+                                                    <br/>
+                                                    <small>Decouple authorization input from authorization logic</small>
+                                                </li>
+
+                                            <li class="fragment">✅ Decoupled from MVC
+                                                    <br/>
+                                                    <small>works with raw ASP.NET Core, DI integrated
+                                                    </small>
+                                                </li>
+
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+            </section>
+
+            <section data-background="images/all.jpg">
+            </section>
+
+            <section>
+
+                    <p><img src="images/bye.gif" alt="" /></p>
+
+                </section>
+
+        </div>
+    </div>
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+    <script>
+        // Full list of configuration options available here:
+        // https://github.com/hakimel/reveal.js#configuration
+
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            history: true,
+            center: true,
+            keyboard: {
+                39: 'next', // Right Arrow
+                37: 'prev'  // Left Arrow
+            },
+            transition: 'slide', // default/cube/page/concave/zoom/linear/fade/none
+
+            // Parallax scrolling
+            // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+            // parallaxBackgroundSize: '2100px 900px',
+
+            // Optional libraries used to extend on reveal.js
+            dependencies: [
+                { src: 'lib/js/classList.js', condition: function () { return !document.body.classList; } },
+                { src: 'plugin/markdown/marked.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+                { src: 'plugin/markdown/markdown.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+                { src: 'plugin/highlight.js/highlight.pack.js', async: true, callback: function () { /*hljs.initHighlightingOnLoad();*/ } },
+                { src: 'plugin/zoom-js/zoom.js', async: true, condition: function () { return !!document.body.classList; } },
+                { src: 'plugin/notes/notes.js', async: true, condition: function () { return !!document.body.classList; } },
+                { src: 'plugin/alt-arrows/alt-arrows.js' },
+                {
+                    src: 'plugin/reveal-code-focus.js',
+                    async: true,
+                    callback: function () {
+                        RevealCodeFocus();
+                    }
+                }
+            ]
+        });
+
+        // Reveal.configure({
+        //     keyboard: {
+        //         39: 'next', // Right Arrow
+        //         37: 'prev'  // Left Arrow
+        //     }
+        // });
+
+    </script>
+</body>
+
+</html>

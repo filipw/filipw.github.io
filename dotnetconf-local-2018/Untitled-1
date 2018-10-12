@@ -1,0 +1,17 @@
+RFC 6749 The OAuth 2.0 Authorization Framework
+RFC 6750 The OAuth 2.0 Authorization Framework: Bearer Token Usage
+RFC8176 Authentication Method Reference Values
+RFC7521 Assertion Framework for OAuth 2.0 Client Authentication and Authorization Grants
+RFC8414 OAuth 2.0 Authorization Server Metadata
+RFC7591 OAuth 2.0 Dynamic Client Registration Protocol
+RFC7592 OAuth 2.0 Dynamic Client Registration Management Protocol
+RFC7662 OAuth 2.0 Token Introspection
+RFC7519 JSON Web Token (JWT)
+RFC7797 JSON Web Signature (JWS) Unencoded Payload Option 
+RFC7523 JSON Web Token (JWT) Profile for OAuth 2.0 Client Authentication and Authorization Grants
+RFC 8252 OAuth 2.0 for Native Apps
+RFC 7800	Proof-of-Possession Key Semantics for JSON Web Tokens (JWTs)
+RFC 7009    OAuth 2.0 Token Revocation
+RFC 7522    Security Assertion Markup Language (SAML) 2.0 Profile for OAuth 2.0 Client Authentication and Authorization Grants
+RFC 7636	Proof Key for Code Exchange by OAuth Public Clients
+RFC 6755    An IETF URN Sub-Namespace for OAuth
