@@ -266,6 +266,10 @@ blockquote:before {
   font-size: 0.5em;
 }
 
+.reveal table {
+  margin-top: 20px;
+}
+
 table.simple td {
   font-size: 0.5em !important; 
   text-align: left !important;
@@ -286,3 +290,7 @@ table td.footnote {
   font-size: 0.4em !important; 
   text-align: center !important;
 }
+
+.reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5 {
+  margin-bottom: 0;
+} 

@@ -284,16 +284,112 @@
                         </div>
                     </div>
                 </section>
+
+                <section data-background="images/masaaki-komori-580425-unsplash.jpg">
+                    <div class="overlay-style" style="padding:3% !important;">
+                        <h3>Typical OpenID Connect response</h3>
+                    </div>
+                    <pre class="small">
+    <code class="cs">
+{
+    "expires_in": 3600,
+    "token_type": "Bearer",
+    "id_token": "eyJhbGciOiJSUzI1NiIsImtpZCI6ImY5ZjBjOTZjMTFlZWEzYmI4YWJlZWRkYWFlNGVlODMyIiwidHlwIjoiSldUIn0.eyJuYmYiOjE1Mzk1MzI2NDcsImV4cCI6MTUzOTUzMjk0NywiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NDQzNTYvb3BlbmlkIiwiYXVkIjoiZHVtbXlfdXNlcl9hcHBfY2xpZW50IiwiaWF0IjoxNTM5NTMyNjQ3LCJhdF9oYXNoIjoibjNuQUViNmtjV25NNTNsczB2Si1iUSIsInN1YiI6ImQwMTQ0MGVkYzUwNTQ4OWU5MDQ4NzhjZTk3Mzg4NjVhIiwiYXV0aF90aW1lIjoxNTM5NTMyMjU5LCJpZHAiOiJlbWJlZGRlZF9pZHAiLCJhbXIiOlsicHdkIl19.YNJJBBUT12wOlM-qwhMDHEjNCfrUy7uO8sr1HfEipWsjzkMilwKprXPJSv8WReo-En9CKtzMWemKkKCwH1yymmnOOHV6dhj7i7IxcF5v24VyVwjbh6_lp-9GcIfz4EvMLAPRbMbcSJMUfW3pyhlyFwScB9UJNpNil11tGRj81sXSc8Ey47ATLsLq11owQMmU9qiUb-gfKMGAK0sgnrtaQwMGbeWPYpxcfwsxKLxIjr5oQzwWYzyQ9AHS_1eR-aIP-zNDL80V2yx-o0s_sSGJM4H8kdbMrAD3FO3liWMDGahUNhVp2LyeY3qzmY9cZ6g4pXLgEIsN_Ay2mJ14_7gdGw",
+    "access_token": "eyJhbGciOiJSUzI1NiIsImtpZCI6ImY5ZjBjOTZjMTFlZWEzYmI4YWJlZWRkYWFlNGVlODMyIiwidHlwIjoiSldUIn0.eyJuYmYiOjE1Mzk1MzI2NDcsImV4cCI6MTUzOTUzNjI0NywiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NDQzNTYvb3BlbmlkIiwiYXVkIjpbImh0dHBzOi8vbG9jYWxob3N0OjQ0MzU2L29wZW5pZC9yZXNvdXJjZXMiLCJkZXYuY29udGFjdHMuYXBpIl0sImNsaWVudF9pZCI6ImR1bW15X3VzZXJfYXBwX2NsaWVudCIsInN1YiI6ImQwMTQ0MGVkYzUwNTQ4OWU5MDQ4NzhjZTk3Mzg4NjVhIiwiYXV0aF90aW1lIjoxNTM5NTMyMjU5LCJpZHAiOiJlbWJlZGRlZF9pZHAiLCJnaXZlbl9uYW1lIjoiRmlsaXAiLCJmYW1pbHlfbmFtZSI6IlciLCJlbWFpbCI6ImZpbGlwQHcuY29tIiwic2NvcGUiOlsib3BlbmlkIiwiY29udGFjdHMudmlldyIsIm9mZmxpbmVfYWNjZXNzIl0sImFtciI6WyJwd2QiXX0.DFeTegMiai84qBwndor7GhhH09Q41JjeNGKv_3hrCRloyqWsYFgjhKujs2zrPZnYhbcFys1af72u_AYNHLlS472WKoxaAzgPUrMqfdh0qij86zcFBRDsMOASh3jOBa2Iyy1LhkhTxG3emiB-iIOj9s6HVbdKal7bGVIJq7o7Tgq2f2_A04ZVhSUJtmXGr_V1stpx_ivpAcMJ2RMwt3plwaik_oMDYbq1a-txKKiD-h_ctrsCEbb5SfsLfpjOeDhz9z7sXC39UUunN2gLRmkyaFlHCDTuF0enpXXBlBnoKRBbdHr4cXacknpZ7ZNVnu58UAOgmD3R_sgNn25aC9mS1Q",
+    "refresh_token": "5ae9f4cea98589fb6f1eaa5966b80f8e98d287356486063a9d049ee99d4d392b"
+}
+    </code>
+</pre>
+                    <p class="fragment" data-code-focus="3"></p>
+                    <p class="fragment" data-code-focus="4"></p>
+                    <p class="fragment" data-code-focus="5"></p>
+                    <p class="fragment" data-code-focus="6"></p>
+                    <p class="fragment" data-code-focus="7"></p>
+                </section>
+
                 <section data-background="images/masaaki-komori-580425-unsplash.jpg">
                     <p class="overlay-style">
                         JSON Web Tokens (<span class="highlight">JWT</span>) is an open standard (<span class="highlight">RFC 7519</span>) method for representing claims securely between two parties.
                     </p>
                 </section>
 
+                <section data-background="images/jwt.png" data-state="bg-auto-height">
+                </section>
+                
                 <section data-background="images/masaaki-komori-580425-unsplash.jpg">
-                    <p class="overlay-style">
-                        TODO JWT sample
-                    </p>
+                    <div class="overlay-style" style="padding:3% !important;">
+                        <h3>access_token payload structure</h3>
+                    </div>
+                    <pre class="small">
+    <code class="cs">
+{
+    "nbf": 1539532647,     // not before timestamp
+    "exp": 1539536247,     // expires timestamp
+    "iss": "https://localhost:44356/openid",     // issuer
+    "aud": [     // resource APIs that can consume this token
+      "dev.contacts.api"
+    ],
+    "client_id": "dummy_user_app_client",     // client for which the token was issued
+    "sub": "d01440edc505489e904878ce9738865a",     // subject
+    "auth_time": 1539532259,     // authentication time
+    "idp": "embedded_idp",     // identity ptovider name
+    "email": "filip@w.com",     // custom claim
+    "scope": [     // scopes
+      "openid",
+      "contacts.view",
+      "offline_access"
+    ],
+    "amr": [     // authentication method reference
+      "pwd"
+    ]
+}
+    </code>
+</pre>
+                    <p class="fragment" data-code-focus="3"></p>
+                    <p class="fragment" data-code-focus="4"></p>
+                    <p class="fragment" data-code-focus="5"></p>
+                    <p class="fragment" data-code-focus="6-8"></p>
+                    <p class="fragment" data-code-focus="9"></p>
+                    <p class="fragment" data-code-focus="10"></p>
+                    <p class="fragment" data-code-focus="11"></p>
+                    <p class="fragment" data-code-focus="12"></p>
+                    <p class="fragment" data-code-focus="13"></p>
+                    <p class="fragment" data-code-focus="14-18"></p>
+                    <p class="fragment" data-code-focus="19-21"></p>
+                </section>
+
+                <section data-background="images/masaaki-komori-580425-unsplash.jpg">
+                    <div class="overlay-style" style="padding:3% !important;">
+                        <h3>id_token payload structure</h3>
+                    </div>
+                    <pre class="small">
+    <code class="cs">
+{
+    "nbf": 1539532647,     // not before timestamp
+    "exp": 1539532947,     // expires timestamp
+    "iss": "https://localhost:44356/openid",     // issuer
+    "aud": "dummy_user_app_client",     // audience (maps to CLIENT ID only)
+    "iat": 1539532647,     // issued at timestamp
+    "at_hash": "n3nAEb6kcWnM53ls0vJ-bQ",     // access token hash
+    "sub": "d01440edc505489e904878ce9738865a",     // subject
+    "auth_time": 1539532259,     // authentication time (can be different than iat)
+    "idp": "demo_idp",     // identity provider name
+    "amr": [     // authentication method reference
+      "pwd"
+    ]
+}
+    </code>
+</pre>
+                    <p class="fragment" data-code-focus="3"></p>
+                    <p class="fragment" data-code-focus="4"></p>
+                    <p class="fragment" data-code-focus="5"></p>
+                    <p class="fragment" data-code-focus="6"></p>
+                    <p class="fragment" data-code-focus="7"></p>
+                    <p class="fragment" data-code-focus="8"></p>
+                    <p class="fragment" data-code-focus="9"></p>
+                    <p class="fragment" data-code-focus="10"></p>
+                    <p class="fragment" data-code-focus="11"></p>
+                    <p class="fragment" data-code-focus="12-14"></p>
                 </section>
 
                 <section data-background="images/masaaki-komori-580425-unsplash.jpg">
@@ -396,6 +492,34 @@
                 </section>
 
                 <section data-background="images/artem-bali-580895-unsplash.jpg">
+                    <div class="overlay-style" style="padding:3% !important;">
+                        <h3>Adding token validation to ASP.NET Core</h3>
+                    </div>
+                    <pre class="medium">
+    <code class="cs">
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddMvc();
+    services.AddAuthentication("Bearer").AddIdentityServerAuthentication(o =>
+        {
+            o.Authority = "https://my.identityserver.io/openid";
+            o.SupportedTokens = SupportedTokens.Jwt;
+        });
+}
+
+public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+{
+    api.UseAuthentication();
+    api.UseMvc();
+}
+    </code>
+</pre>
+                    <p class="fragment" data-code-focus="5"></p>
+                    <p class="fragment" data-code-focus="6-9"></p>
+                    <p class="fragment" data-code-focus="14"></p>
+                </section>
+
+                <section data-background="images/artem-bali-580895-unsplash.jpg">
                     <p class="overlay-style">
                         .NET introduced
                         <span class="highlight">ClaimsPrincipal
@@ -484,8 +608,6 @@
                                                     <small>works with raw ASP.NET Core, DI integrated
                                                     </small>
                                                 </li>
-
-
                                     </ul>
                                 </div>
                             </div>
