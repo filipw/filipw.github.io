@@ -116,12 +116,12 @@
                                         </small>
                                     </li>
 
-                                    <li class="fragment">🐣 2010: OAuth 1.0
+                                    <li class="fragment">🥚 2010: OAuth 1.0
                                         <br/>
                                         <small>RFC 5849. Open standard for API access delegation</small>
                                     </li>
 
-                                    <li class="fragment">🐥 2012: OAuth 2.0
+                                    <li class="fragment">🐣 2012: OAuth 2.0
                                         <small>RFC 6749. Not backwards compatible with OAuth 1.0</small>
                                     </li>
 
@@ -131,7 +131,7 @@
                         <div class="right overlay-style" style="padding: 0">
                             <div style="padding: 3%">
                                 <ul>
-                                    <li class="fragment">👮 2014: OpenID Connect
+                                    <li class="fragment">🐥 2014: OpenID Connect
                                         <br/>
                                         <small>Identity layer on top of OAuth 2.0</small>
                                     </li>
@@ -246,6 +246,47 @@
 
                 <section data-background="images/masaaki-komori-580425-unsplash.jpg">
                     <div class="overlay-style" style="padding:3% !important;">
+                        <h2>OAuth 2.0 Flows</h2>
+                    </div>
+                    <table class="overlay-style medium">
+                        <thead>
+                                <tr>
+                                    <th>Flow</th>
+                                    <th>Interactive</th>
+                                    <th>Use case</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="noborder">
+                                    <td><em>client_credentials</em></td>
+                                    <td class="center">❌</td>
+                                    <td>machine-to-machine communication</td>
+                                </tr>
+                                <tr><td colspan="3"><small>no subject, no <em>refresh_token</em></small></td></tr>
+                                <tr class="noborder">
+                                    <td><em>password</em></td>
+                                    <td class="center">❌</td>
+                                    <td>password brokerage for legacy apps</td>
+                                </tr>
+                                <tr><td colspan="3"><small>only for 100% trusted clients - user hands over the password to the client</small></td></tr>
+                                <tr class="noborder">
+                                    <td><em>implicit</em></td>
+                                    <td class="center">✅</td>
+                                    <td>public JavaScript clients</td>
+                                </tr>
+                                <tr><td colspan="3"><small>no backend involvement, no <em>refresh_token</em></small></td></tr>
+                                <tr class="noborder">
+                                    <td><em>authorization_code</em></td>
+                                    <td class="center">✅</td>
+                                    <td>most common</td>
+                                </tr>
+                                <tr><td colspan="4"><small>similar to <em>implicit</em>, but with backend involvement</small></td></tr>
+                            </tbody>
+                    </table>
+                </section>
+
+                <section data-background="images/masaaki-komori-580425-unsplash.jpg">
+                    <div class="overlay-style" style="padding:3% !important;">
                         <h2>OpenID Connect</h2>
                     </div>
                     <div>
@@ -285,9 +326,15 @@
                     </div>
                 </section>
 
+                <section data-background="images/pawel-czerwinski-773353-unsplash.jpg">
+                    <p class="overlay-style">
+                        Disocvery endpoint is available at <span class="highlight">/.well-known/openid-configuration</span>.<br/><br/>It allows clients to retrieve all security metadata, such as token & introspection URLs or JSON Web Keys.
+                    </p>
+                </section>
+
                 <section data-background="images/masaaki-komori-580425-unsplash.jpg">
                     <div class="overlay-style" style="padding:3% !important;">
-                        <h3>Typical OpenID Connect response</h3>
+                        <h3>Typical OIDC token response</h3>
                     </div>
                     <pre class="small">
     <code class="cs">
@@ -316,6 +363,40 @@
                 <section data-background="images/jwt.png" data-state="bg-auto-height">
                 </section>
                 
+                <section data-background="images/masaaki-komori-580425-unsplash.jpg">
+                    <div class="overlay-style" style="padding:3% !important;">
+                        <h3>id_token payload structure</h3>
+                    </div>
+                    <pre class="small">
+    <code class="cs">
+{
+    "nbf": 1539532647,     // not before timestamp
+    "exp": 1539532947,     // expires timestamp
+    "iss": "https://localhost:44356/openid",     // issuer
+    "aud": "dummy_user_app_client",     // audience (maps to CLIENT ID only)
+    "iat": 1539532647,     // issued at timestamp
+    "at_hash": "n3nAEb6kcWnM53ls0vJ-bQ",     // access token hash
+    "sub": "d01440edc505489e904878ce9738865a",     // subject
+    "auth_time": 1539532259,     // authentication time (can be different than iat)
+    "idp": "demo_idp",     // identity provider name
+    "amr": [     // authentication method reference
+      "pwd"
+    ]
+}
+    </code>
+</pre>
+                    <p class="fragment" data-code-focus="3"></p>
+                    <p class="fragment" data-code-focus="4"></p>
+                    <p class="fragment" data-code-focus="5"></p>
+                    <p class="fragment" data-code-focus="6"></p>
+                    <p class="fragment" data-code-focus="7"></p>
+                    <p class="fragment" data-code-focus="8"></p>
+                    <p class="fragment" data-code-focus="9"></p>
+                    <p class="fragment" data-code-focus="10"></p>
+                    <p class="fragment" data-code-focus="11"></p>
+                    <p class="fragment" data-code-focus="12-14"></p>
+                </section>
+
                 <section data-background="images/masaaki-komori-580425-unsplash.jpg">
                     <div class="overlay-style" style="padding:3% !important;">
                         <h3>access_token payload structure</h3>
@@ -358,38 +439,7 @@
                     <p class="fragment" data-code-focus="19-21"></p>
                 </section>
 
-                <section data-background="images/masaaki-komori-580425-unsplash.jpg">
-                    <div class="overlay-style" style="padding:3% !important;">
-                        <h3>id_token payload structure</h3>
-                    </div>
-                    <pre class="small">
-    <code class="cs">
-{
-    "nbf": 1539532647,     // not before timestamp
-    "exp": 1539532947,     // expires timestamp
-    "iss": "https://localhost:44356/openid",     // issuer
-    "aud": "dummy_user_app_client",     // audience (maps to CLIENT ID only)
-    "iat": 1539532647,     // issued at timestamp
-    "at_hash": "n3nAEb6kcWnM53ls0vJ-bQ",     // access token hash
-    "sub": "d01440edc505489e904878ce9738865a",     // subject
-    "auth_time": 1539532259,     // authentication time (can be different than iat)
-    "idp": "demo_idp",     // identity provider name
-    "amr": [     // authentication method reference
-      "pwd"
-    ]
-}
-    </code>
-</pre>
-                    <p class="fragment" data-code-focus="3"></p>
-                    <p class="fragment" data-code-focus="4"></p>
-                    <p class="fragment" data-code-focus="5"></p>
-                    <p class="fragment" data-code-focus="6"></p>
-                    <p class="fragment" data-code-focus="7"></p>
-                    <p class="fragment" data-code-focus="8"></p>
-                    <p class="fragment" data-code-focus="9"></p>
-                    <p class="fragment" data-code-focus="10"></p>
-                    <p class="fragment" data-code-focus="11"></p>
-                    <p class="fragment" data-code-focus="12-14"></p>
+                <section data-background="images/openidvalidation.png" data-state="bg-auto-height" data-background-color="#fafafa">
                 </section>
 
                 <section data-background="images/masaaki-komori-580425-unsplash.jpg">
@@ -509,14 +559,40 @@ public void ConfigureServices(IServiceCollection services)
 
 public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 {
-    api.UseAuthentication();
-    api.UseMvc();
+    app.UseAuthentication();
+    app.UseMvc();
 }
     </code>
 </pre>
                     <p class="fragment" data-code-focus="5"></p>
                     <p class="fragment" data-code-focus="6-9"></p>
                     <p class="fragment" data-code-focus="14"></p>
+                </section>
+
+                <section data-background="images/artem-bali-580895-unsplash.jpg">
+                    <div class="overlay-style" style="padding:3% !important;">
+                        <h3>Adding token issuing via Identity Server</h3>
+                    </div>
+                    <pre class="medium">
+    <code class="cs">
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddIdentityServer().
+        AddClientStore<ClientStoreImpl>().
+        AddResourceStore<ResourceStoreImpl>().
+        AddSigningCredential(LoadCertificate());
+}
+
+public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+{
+    app.UseIdentityServer();
+}
+    </code>
+</pre>
+                    <p class="fragment" data-code-focus="4"></p>
+                    <p class="fragment" data-code-focus="5-6"></p>
+                    <p class="fragment" data-code-focus="7"></p>
+                    <p class="fragment" data-code-focus="12"></p>
                 </section>
 
                 <section data-background="images/artem-bali-580895-unsplash.jpg">
@@ -613,6 +689,90 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
                             </div>
                         </div>
                     </section>
+
+                    <section data-background="images/photo-1511699725551-7b894c2ffe42.jpeg">
+                        <div class="overlay-style" style="padding:3% !important;">
+                            <h3>Policy based authorization in ASP.NET Core</h3>
+                        </div>
+                        <pre class="small">
+        <code class="cs">
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddMvc();
+    services.AddAuthorization(o =>
+    {
+        o.AddPolicy("ViewOrders", 
+            p => p.RequireAuthenticatedUser().RequireClaim("scope", "orders.view"));
+    });
+}
+
+[HttpGet("")]
+[Authorize("ViewOrders")]
+public async Task<IActionResult> GetAll()
+{
+    // omited for brevity
+}
+    </code>
+    </pre>
+                        <p class="fragment" data-code-focus="5"></p>
+                        <p class="fragment" data-code-focus="7-8"></p>
+                        <p class="fragment" data-code-focus="13"></p>
+                    </section>
+
+                    <section data-background="images/photo-1511699725551-7b894c2ffe42.jpeg">
+                        <div class="overlay-style" style="padding:3% !important;">
+                            <h3>Requirement authorization in ASP.NET Core</h3>
+                        </div>
+                        <pre class="small">
+        <code class="cs">
+public class VerifiedCustomerRequirement : IAuthorizationRequirement 
+{
+    public int OrderTotalThreshold { get; set; } = 10000;
+}
+
+public class VerifiedCustomerHandler : AuthorizationHandler<VerifiedCustomerRequirement, Order>
+{
+    protected override Task HandleRequirementAsync(AuthorizationHandlerContext context,
+        VerifiedCustomerRequirement requirement, Order orderResource)
+    {    
+        if (order.Total < requirement.OrderTotalThreshold || context.User.GetClaim<bool>("IsVerifiedCustomer"))
+        {
+            context.Succeed(requirement);
+        }
+                    
+        return Task.CompletedTask;
+    }
+}
+    </code>
+    </pre>
+                        <p class="fragment" data-code-focus="4"></p>
+                        <p class="fragment" data-code-focus="12-15"></p>
+                    </section>
+
+                    <section data-background="images/photo-1511699725551-7b894c2ffe42.jpeg">
+                        <div class="overlay-style" style="padding:3% !important;">
+                            <h3>Requirement authorization in ASP.NET Core</h3>
+                        </div>
+                        <pre class="medium  ">
+        <code class="cs">
+public async Task<ActionResult> PostOrder(Order orderRequest, [FromServices] 
+    IAuthorizationService authz)
+{
+    var order = ComputeTotalAndMap(orderRequest);
+    var authzResult = await authz.AuthorizeAsync(User, order, new VerifiedCustomerRequirement());
+    if (authorizationResult.Succeeded)
+    {
+        // process
+    }
+
+    return Forbid();
+}
+    </code>
+    </pre>
+                        <p class="fragment" data-code-focus="3"></p>
+                        <p class="fragment" data-code-focus="6-7"></p>
+                    </section>
+
             </section>
 
             <section data-background="images/all.jpg">

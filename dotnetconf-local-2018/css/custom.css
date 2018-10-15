@@ -294,3 +294,7 @@ table td.footnote {
 .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5 {
   margin-bottom: 0;
 } 
+
+table.medium td.center {
+  text-align: center !important;
+}
