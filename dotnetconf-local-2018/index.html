@@ -153,7 +153,7 @@
                     <div class="overlay-style" style="padding:3% !important;">
                         <h3 style="margin-bottom: 0 !important;">Security is hard</h3>
                     </div>
-                    <img src="images/security-scooter.jpg" />
+                    <img src="images/gate.jpg" />
                 </section>
 
                 <section data-background="images/pawel-czerwinski-773353-unsplash.jpg">
@@ -286,6 +286,19 @@
                 </section>
 
                 <section data-background="images/masaaki-komori-580425-unsplash.jpg">
+                    <div class="overlay-style">
+                        <blockquote>The advantage to this is that anyone can read the instructions on the Facebook Developers Page and make their website a client.
+                        </blockquote>
+                        <blockquote class="fragment">The disadvantage is that they have no security.
+
+                            
+                        </blockquote>
+                        <p><footer>- <em>John Bradley, OpenID Foundation</em></footer></p>
+
+                    </div>
+                </section>
+
+                <section data-background="images/masaaki-komori-580425-unsplash.jpg">
                     <div class="overlay-style" style="padding:3% !important;">
                         <h2>OpenID Connect</h2>
                     </div>
@@ -328,11 +341,14 @@
 
                 <section data-background="images/pawel-czerwinski-773353-unsplash.jpg">
                     <p class="overlay-style">
-                        Disocvery endpoint is available at <span class="highlight">/.well-known/openid-configuration</span>.<br/><br/>It allows clients to retrieve all security metadata, such as token & introspection URLs or JSON Web Keys.
+                        OIDC mandates that discovery endpoint is available at <span class="highlight">/.well-known/openid-configuration</span>.<br/><br/>It allows clients to retrieve all OpenID provider metadata, such as token / introspection URLs or JSON Web Keys.
                     </p>
                 </section>
 
-                <section data-background="images/masaaki-komori-580425-unsplash.jpg">
+                <section data-background="images/google-openid.png" data-state="bg-auto-height">
+                </section>
+
+                <!-- <section data-background="images/masaaki-komori-580425-unsplash.jpg">
                     <div class="overlay-style" style="padding:3% !important;">
                         <h3>Typical OIDC token response</h3>
                     </div>
@@ -352,7 +368,7 @@
                     <p class="fragment" data-code-focus="5"></p>
                     <p class="fragment" data-code-focus="6"></p>
                     <p class="fragment" data-code-focus="7"></p>
-                </section>
+                </section> -->
 
                 <section data-background="images/masaaki-komori-580425-unsplash.jpg">
                     <p class="overlay-style">
@@ -367,21 +383,14 @@
                     <div class="overlay-style" style="padding:3% !important;">
                         <h3>id_token payload structure</h3>
                     </div>
-                    <pre class="small">
+                    <pre class="medium">
     <code class="cs">
 {
-    "nbf": 1539532647,     // not before timestamp
     "exp": 1539532947,     // expires timestamp
     "iss": "https://localhost:44356/openid",     // issuer
     "aud": "dummy_user_app_client",     // audience (maps to CLIENT ID only)
     "iat": 1539532647,     // issued at timestamp
-    "at_hash": "n3nAEb6kcWnM53ls0vJ-bQ",     // access token hash
-    "sub": "d01440edc505489e904878ce9738865a",     // subject
-    "auth_time": 1539532259,     // authentication time (can be different than iat)
-    "idp": "demo_idp",     // identity provider name
-    "amr": [     // authentication method reference
-      "pwd"
-    ]
+    "sub": "d01440edc505489e904878ce9738865a"     // subject
 }
     </code>
 </pre>
@@ -390,61 +399,44 @@
                     <p class="fragment" data-code-focus="5"></p>
                     <p class="fragment" data-code-focus="6"></p>
                     <p class="fragment" data-code-focus="7"></p>
-                    <p class="fragment" data-code-focus="8"></p>
-                    <p class="fragment" data-code-focus="9"></p>
-                    <p class="fragment" data-code-focus="10"></p>
-                    <p class="fragment" data-code-focus="11"></p>
-                    <p class="fragment" data-code-focus="12-14"></p>
                 </section>
 
                 <section data-background="images/masaaki-komori-580425-unsplash.jpg">
                     <div class="overlay-style" style="padding:3% !important;">
                         <h3>access_token payload structure</h3>
                     </div>
-                    <pre class="small">
+                    <pre class="medium">
     <code class="cs">
 {
-    "nbf": 1539532647,     // not before timestamp
-    "exp": 1539536247,     // expires timestamp
+    "exp": 1539532947,     // expires timestamp
     "iss": "https://localhost:44356/openid",     // issuer
     "aud": [     // resource APIs that can consume this token
       "dev.contacts.api"
     ],
-    "client_id": "dummy_user_app_client",     // client for which the token was issued
+    "client_id": "dummy_user_app_client",     // client 
     "sub": "d01440edc505489e904878ce9738865a",     // subject
-    "auth_time": 1539532259,     // authentication time
-    "idp": "embedded_idp",     // identity ptovider name
     "email": "filip@w.com",     // custom claim
     "scope": [     // scopes
-      "openid",
       "contacts.view",
-      "offline_access"
-    ],
-    "amr": [     // authentication method reference
-      "pwd"
     ]
 }
     </code>
 </pre>
                     <p class="fragment" data-code-focus="3"></p>
                     <p class="fragment" data-code-focus="4"></p>
-                    <p class="fragment" data-code-focus="5"></p>
-                    <p class="fragment" data-code-focus="6-8"></p>
+                    <p class="fragment" data-code-focus="5-7"></p>
+                    <p class="fragment" data-code-focus="8"></p>
                     <p class="fragment" data-code-focus="9"></p>
                     <p class="fragment" data-code-focus="10"></p>
-                    <p class="fragment" data-code-focus="11"></p>
-                    <p class="fragment" data-code-focus="12"></p>
-                    <p class="fragment" data-code-focus="13"></p>
-                    <p class="fragment" data-code-focus="14-18"></p>
-                    <p class="fragment" data-code-focus="19-21"></p>
+                    <p class="fragment" data-code-focus="11-13"></p>
                 </section>
 
                 <section data-background="images/openidvalidation.png" data-state="bg-auto-height" data-background-color="#fafafa">
                 </section>
 
-                <section data-background="images/masaaki-komori-580425-unsplash.jpg">
+                <!-- <section data-background="images/masaaki-komori-580425-unsplash.jpg">
                     <img src="images/OpenIDConnect-Map-4Feb2014.png" style="min-height: auto" />
-                </section>
+                </section> -->
 
                 <section data-background="images/openid-certified.png" data-state="bg-auto-height">
                 </section>
@@ -726,15 +718,15 @@ public async Task<IActionResult> GetAll()
                         </div>
                         <pre class="small">
         <code class="cs">
-public class VerifiedCustomerRequirement : IAuthorizationRequirement 
+public class VerifiedRequirement : IAuthorizationRequirement 
 {
     public int OrderTotalThreshold { get; set; } = 10000;
 }
 
-public class VerifiedCustomerHandler : AuthorizationHandler<VerifiedCustomerRequirement, Order>
+public class VerifiedCustomerHandler : AuthorizationHandler&lt;VerifiedCustomerRequirement, Order&gt;
 {
     protected override Task HandleRequirementAsync(AuthorizationHandlerContext context,
-        VerifiedCustomerRequirement requirement, Order orderResource)
+        VerifiedRequirement requirement, Order order)
     {    
         if (order.Total < requirement.OrderTotalThreshold || context.User.GetClaim<bool>("IsVerifiedCustomer"))
         {
@@ -746,7 +738,8 @@ public class VerifiedCustomerHandler : AuthorizationHandler<VerifiedCustomerRequ
 }
     </code>
     </pre>
-                        <p class="fragment" data-code-focus="4"></p>
+                        <p class="fragment" data-code-focus="2-5"></p>
+                        <p class="fragment" data-code-focus="9-10"></p>
                         <p class="fragment" data-code-focus="12-15"></p>
                     </section>
 
@@ -760,7 +753,7 @@ public async Task<ActionResult> PostOrder(Order orderRequest, [FromServices]
     IAuthorizationService authz)
 {
     var order = ComputeTotalAndMap(orderRequest);
-    var authzResult = await authz.AuthorizeAsync(User, order, new VerifiedCustomerRequirement());
+    var authzResult = await authz.AuthorizeAsync(User, new VerifiedRequirement(), order);
     if (authorizationResult.Succeeded)
     {
         // process
