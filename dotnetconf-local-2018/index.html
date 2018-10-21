@@ -109,7 +109,7 @@
                         <div class="left overlay-style" style="padding: 0">
                             <div style="padding: 3%">
                                 <ul>
-                                    <li class="fragment">👹 until 2010: SAML & others
+                                    <li class="fragment">👹 - 2010: SAML, WS-Federation
                                         <br/>
                                         <small>
                                             The dark ages
@@ -191,6 +191,15 @@
                         The word <span class="highlight">should</span> appears in RFC 6749 75 times, 
                         <span class="highlight">may</span> 69 times and <span class="highlight">optional</span> 27 times.
                     </p>
+                </section>
+
+                <section data-background="images/pawel-czerwinski-773353-unsplash.jpg">
+                    <div class="overlay-style">
+                        <blockquote>With very little effort, pretty much anything can be called OAuth 2.0 compliant.
+                        </blockquote>
+                        <p><footer>- <em>Eran Hammer, original OAuth WG member</em></footer></p>
+
+                    </div>
                 </section>
 
                 <section data-background="images/pawel-czerwinski-773353-unsplash.jpg">
@@ -286,12 +295,16 @@
                 </section>
 
                 <section data-background="images/masaaki-komori-580425-unsplash.jpg">
+                    <p class="overlay-style">
+                        OAuth 2.0 is <span class="highlight">not an authentication protocol</span> and an access token is <span class="highlight">not proof of authentication</span>.
+                    </p>
+                </section>
+                
+                <section data-background="images/masaaki-komori-580425-unsplash.jpg">
                     <div class="overlay-style">
                         <blockquote>The advantage to this is that anyone can read the instructions on the Facebook Developers Page and make their website a client.
                         </blockquote>
                         <blockquote class="fragment">The disadvantage is that they have no security.
-
-                            
                         </blockquote>
                         <p><footer>- <em>John Bradley, OpenID Foundation</em></footer></p>
 
@@ -311,11 +324,12 @@
                                         <br/>
                                         <small>Adds identity concept and federated authentication</small>
                                     </li>
+                                    <li class="fragment">🖥
+                                        Regulates OAuth2.0 "gaps"
+                                            <br/>
+                                            <small>Token format and validation, common set of scopes</small>
+                                        </li>
 
-                                    <li class="fragment">🦄
-                                        Identity token
-                                        <small><em>id_token</em> in addition to <em>access token</em></small>
-                                    </li>
 
                                 </ul>
                             </div>
@@ -323,16 +337,16 @@
                         <div class="right overlay-style" style="padding: 0">
                             <div style="padding: 3%">
                                 <ul>
+                                        <li class="fragment">🦄
+                                                Identity token
+                                                <small><em>id_token</em> in addition to <em>access token</em></small>
+                                            </li>
                                     <li class="fragment">📚
                                         Discovery endpoint
                                         <br/>
                                         <small>Standardzied way of exposing server metadata</small>
                                     </li>
-                                    <li class="fragment">🖥
-                                            Session management
-                                            <br/>
-                                            <small>Log out once</small>
-                                        </li>
+
                                 </ul>
                             </div>
                         </div>
@@ -534,8 +548,14 @@
                 </section>
 
                 <section data-background="images/artem-bali-580895-unsplash.jpg">
+                    <p class="overlay-style">
+                        Simplest way to add token validation to an ASP.NET Core app is to use <span class="highlight">IdentityServer4.AccessTokenValidation</span> Nuget package.
+                    </p>
+                </section>
+
+                <section data-background="images/artem-bali-580895-unsplash.jpg">
                     <div class="overlay-style" style="padding:3% !important;">
-                        <h3>Adding token validation to ASP.NET Core</h3>
+                        <h3>Token validation in ASP.NET Core</h3>
                     </div>
                     <pre class="medium">
     <code class="cs">
@@ -562,8 +582,14 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
                 </section>
 
                 <section data-background="images/artem-bali-580895-unsplash.jpg">
+                    <p class="overlay-style">
+                        Simplest way to add token issuing to an ASP.NET Core app is to use <span class="highlight">IdentityServer4</span> Nuget package.
+                    </p>
+                </section>
+
+                <section data-background="images/artem-bali-580895-unsplash.jpg">
                     <div class="overlay-style" style="padding:3% !important;">
-                        <h3>Adding token issuing via Identity Server</h3>
+                        <h3>Token issuing via Identity Server</h3>
                     </div>
                     <pre class="medium">
     <code class="cs">
@@ -587,13 +613,13 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
                     <p class="fragment" data-code-focus="12"></p>
                 </section>
 
-                <section data-background="images/artem-bali-580895-unsplash.jpg">
+                <!-- <section data-background="images/artem-bali-580895-unsplash.jpg">
                     <p class="overlay-style">
                         .NET introduced
                         <span class="highlight">ClaimsPrincipal
                         </span> as primary identity model in 2012 (.NET 4.5).
                     </p>
-                </section>
+                </section> -->
 
             </section>
 
@@ -603,6 +629,12 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
                         <h1>Authorization</h1><!-- how the app is wired together -->
                     </section>
     
+                    <section data-background="images/photo-1511699725551-7b894c2ffe42.jpeg">
+                        <p class="overlay-style">
+                            Until ASP.NET Core, ASP.NET <span class="highlight">never</span> shipped with a comprehensive authorization framework.
+                        </p>
+                    </section>
+
                     <section data-background="images/photo-1511699725551-7b894c2ffe42.jpeg">
                         <h3 class="overlay-style">API Authorization Levels</h3>
                         <table class="overlay-style medium">
@@ -635,12 +667,6 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
                                         <tr class="fragment" data-fragment-index="3"><td colspan="3"><small>Can you invoke a specific operation, with specialized conditions in the API? For example: send a message to user X.</small></td></tr>
                                     </tbody>
                             </table>
-                    </section>
-    
-                    <section data-background="images/photo-1511699725551-7b894c2ffe42.jpeg">
-                        <p class="overlay-style">
-                            Until ASP.NET Core, ASP.NET <span class="highlight">never</span> shipped with a comprehensive authorization framework.
-                        </p>
                     </section>
 
                     <section data-background="images/photo-1511699725551-7b894c2ffe42.jpeg">
@@ -720,15 +746,15 @@ public async Task<IActionResult> GetAll()
         <code class="cs">
 public class VerifiedRequirement : IAuthorizationRequirement 
 {
-    public int OrderTotalThreshold { get; set; } = 10000;
+    public int OrderLimit { get; set; } = 10000;
 }
 
-public class VerifiedCustomerHandler : AuthorizationHandler&lt;VerifiedCustomerRequirement, Order&gt;
+public class VerifiedCustomerHandler : AuthorizationHandler&lt;VerifiedRequirement, Order&gt;
 {
     protected override Task HandleRequirementAsync(AuthorizationHandlerContext context,
         VerifiedRequirement requirement, Order order)
     {    
-        if (order.Total < requirement.OrderTotalThreshold || context.User.GetClaim<bool>("IsVerifiedCustomer"))
+        if (order.Total < requirement.OrderLimit || context.User.Claim&lt;bool&gt;("IsVerifiedCustomer"))
         {
             context.Succeed(requirement);
         }
@@ -739,7 +765,7 @@ public class VerifiedCustomerHandler : AuthorizationHandler&lt;VerifiedCustomerR
     </code>
     </pre>
                         <p class="fragment" data-code-focus="2-5"></p>
-                        <p class="fragment" data-code-focus="9-10"></p>
+                        <p class="fragment" data-code-focus="7"></p>
                         <p class="fragment" data-code-focus="12-15"></p>
                     </section>
 
@@ -749,11 +775,12 @@ public class VerifiedCustomerHandler : AuthorizationHandler&lt;VerifiedCustomerR
                         </div>
                         <pre class="medium  ">
         <code class="cs">
-public async Task<ActionResult> PostOrder(Order orderRequest, [FromServices] 
-    IAuthorizationService authz)
+public async Task&lt;IActionResult&gt; Post(Order orderRequest, 
+    [FromServices]IAuthorizationService authz)
 {
     var order = ComputeTotalAndMap(orderRequest);
-    var authzResult = await authz.AuthorizeAsync(User, new VerifiedRequirement(), order);
+    var requirement = new VerifiedRequirement();
+    var authzResult = await authz.AuthorizeAsync(User, requirement, order);
     if (authorizationResult.Succeeded)
     {
         // process
@@ -764,7 +791,7 @@ public async Task<ActionResult> PostOrder(Order orderRequest, [FromServices]
     </code>
     </pre>
                         <p class="fragment" data-code-focus="3"></p>
-                        <p class="fragment" data-code-focus="6-7"></p>
+                        <p class="fragment" data-code-focus="7"></p>
                     </section>
 
             </section>
