@@ -268,21 +268,69 @@
                     <h3 class="overlay-style">Run a script with script runner</h3>
                     <pre>
     <code class="sh">
+// desktop .NET
 C:\>csi script.csx scriptArgs
 
-C:\>scriptcs script.csx -- scriptArgs
-
+// .NET Core
 C:\>dotnet script script.csx -- scriptArgs
-
-C:\>cake build.cake -Target build
     </code>
 </pre>
 
-                    <p class="fragment" data-code-focus="2"></p>
-                    <p class="fragment" data-code-focus="4"></p>
+                    <p class="fragment" data-code-focus="3"></p>
                     <p class="fragment" data-code-focus="6"></p>
-                    <p class="fragment" data-code-focus="8"></p>
+                </section>
 
+                <section data-background="images/mark-solarski-209233.jpg">
+
+                    <h3 class="overlay-style">.NET Core scripting in 3 quick steps</h3>
+                    <pre>
+    <code class="sh">
+~$ dotnet tool install dotnet-script -g
+Tool 'dotnet-script' (version '0.24.0') was successfully installed.
+
+~$ dotnet script init
+Creating VS Code launch configuration file
+...'/Users/filip/Documents/dev/temp/.vscode/launch.json' [Created]
+Creating OmniSharp configuration file
+...'/Users/filip/Documents/dev/temp/omnisharp.json' [Created]
+Creating default script file 'main.csx'
+Creating 'main.csx'
+...'/Users/filip/Documents/dev/temp/main.csx' [Created]
+
+~$ dotnet script main.csx
+Hello world!
+    </code>
+</pre>
+
+<p class="fragment" data-code-focus="2"></p>
+<p class="fragment" data-code-focus="5"></p>
+<p class="fragment" data-code-focus="14"></p>
+
+                </section>
+
+                <section data-background="images/mark-solarski-209233.jpg">
+                    <pre>
+    <code class="json">
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": ".NET Script Debug",
+            "type": "coreclr",
+            "request": "launch",
+            "program": "dotnet",
+            "args": [
+              "exec", 
+              "/Users/filip/.dotnet/tools/.store/dotnet-script/0.24.0/dotnet-script/0.24.0/tools/netcoreapp2.1/any/dotnet-script.dll", 
+              "${file}"
+            ],
+            "cwd": "${workspaceRoot}",
+            "stopAtEntry": true
+        }
+    ]
+}
+    </code>
+</pre>
                 </section>
 
                 <section data-background="images/mark-solarski-209233.jpg">
@@ -591,7 +639,7 @@ var result = await CSharpScript.EvaluateAsync&lt;int&gt;("Number1 - Number2", gl
 
             </section>
 
-            <section>
+            <!-- <section>
 
                 <section data-background="images/StockSnap_VZ86EDZ771.jpg">
 
@@ -652,7 +700,7 @@ Hello world!
 </pre>
                 </section>
 
-            </section>
+            </section> -->
 
             <!-- <section>
 
@@ -716,7 +764,7 @@ Hello world!
 
             </section> -->
 
-            <section>
+            <!-- <section>
 
                 <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
 
@@ -755,7 +803,7 @@ throw new Exception("die!!!");
 
 
 
-            </section>
+            </section> -->
 
              <section>
                 <section data-background="images/aaron-barnaby-135630.jpg">
@@ -839,6 +887,35 @@ public sealed class Submission#0 {
                     <div class="fragment" data-code-focus="30-32"></div>
                     <div class="fragment" data-code-focus="27"></div>
 
+                </section>
+
+                <section data-background="images/aaron-barnaby-135630.jpg">
+                    <img src="images/csi-debug.png" />
+                </section>
+
+                <section data-background="images/aaron-barnaby-135630.jpg">
+
+                    <h2 class="overlay-style">Script with exception</h2>
+
+                    <pre>
+    <code class="cs">
+var text = "hello";
+Console.WriteLine(text + " world");
+throw new Exception("die!!!");
+    </code>
+</pre>
+
+<p class="fragment" data-code-focus="4"></p>
+                </section>
+
+                <section data-background="images/aaron-barnaby-135630.jpg">
+                    <h2 class="overlay-style">Without symbols</h2>
+                    <img src="images/error1.png" />
+                </section>
+
+                <section data-background="images/aaron-barnaby-135630.jpg">
+                    <h2 class="overlay-style">With symbols</h2>
+                    <img src="images/error3.png" style="min-height: auto;" />
                 </section>
 
             </section>
