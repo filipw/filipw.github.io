@@ -209,9 +209,8 @@ services.AddMvcCore()
 
                 <section data-background="images/mark-solarski-209233.jpg">
                     <p class="overlay-style">
-                        Thanks to
-                        <span class="highlight">DI child scopes</span>, you can have
-                        <span class="highlight">multiple isolated</span> ASP.NET Core pipelines, with their own DI containers, in the same process.
+                        You can run
+                        <span class="highlight">multiple isolated</span> ASP.NET Core pipelines, with their own DI containers, in the same process (parent application).
                     </p>
                 </section>
 
@@ -219,14 +218,14 @@ services.AddMvcCore()
                     <p class="overlay-style">
                         MVC scans the
                         <span class="highlight">entire AssemblyLoadContext
-                        </span> to discover its working parts, so they have to be constrained separately.
+                        </span> to discover its features, so it has to be constrained separately.
                     </p>
                 </section>
 
                 <section data-background="images/mark-solarski-209233.jpg">
                     <pre>
     <code class="cs">
-public class HiStartup
+public class CustomerStartup
 {
     public void ConfigureServices(IServiceCollection services)
     {
@@ -261,8 +260,8 @@ public class Startup
 
     public void Configure(IApplicationBuilder app)
     {
-        app.IsolatedMap&lt;HiStartup&gt;("/hi-branch");
-        app.IsolatedMap&lt;OtherStartup&gt;("/other-branch");
+        app.IsolatedMap&lt;CustomerStartup&gt;("/customer");
+        app.IsolatedMap&lt;AdminStartup&gt;("/admin");
     }
 }
 </code>

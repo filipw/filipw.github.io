@@ -265,3 +265,7 @@ blockquote:before {
 .hljs-meta {
   color: #CDCDCD !important;
 }
+
+.line.focus .hljs-meta {
+  color: #657b83 !important;
+}

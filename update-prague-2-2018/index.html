@@ -309,28 +309,9 @@ Hello world!
                 </section>
 
                 <section data-background="images/mark-solarski-209233.jpg">
-                    <pre>
-    <code class="json">
-{
-    "version": "0.2.0",
-    "configurations": [
-        {
-            "name": ".NET Script Debug",
-            "type": "coreclr",
-            "request": "launch",
-            "program": "dotnet",
-            "args": [
-              "exec", 
-              "/Users/filip/.dotnet/tools/.store/dotnet-script/0.24.0/dotnet-script/0.24.0/tools/netcoreapp2.1/any/dotnet-script.dll", 
-              "${file}"
-            ],
-            "cwd": "${workspaceRoot}",
-            "stopAtEntry": true
-        }
-    ]
-}
-    </code>
-</pre>
+                    <p class="overlay-style">
+                        You can embed C# scripting engine in your own app by adding <span class="highlight">Microsoft.CodeAnalysis.CSharp.Scripting</span> package.
+                    </p>
                 </section>
 
                 <section data-background="images/mark-solarski-209233.jpg">
@@ -385,6 +366,11 @@ var scriptResult = await script.RunAsync();
                             </ul>
                         </div>
                     </div>
+                </section>
+
+                <section data-background="images/sponge.gif" author="Filip W" description="" theme="simple" title="C# Scripting in the .NET Core world"
+                    transition="default">
+
                 </section>
 
                 <!-- <section data-background="images/mark-solarski-209233.jpg">
@@ -455,17 +441,12 @@ var scriptResult = await script.RunAsync();
                                     <small>Plugins, modules, dynamic configuration</small>
                                 </li>
 
-                                <li class="fragment">⚗️ Code generation<br/>
-                                    <small>T4-like features, emitting code</small>
+                                <li class="fragment">⚗️ Code compilation<br/>
+                                    <small>Lightweight way of emitting assemblies</small>
                                 </li>
                             </ul>
                         </div>
                     </div>
-                </section>
-
-                <section data-background="images/sponge.gif" author="Filip W" description="" theme="simple" title="C# Scripting in the .NET Core world"
-                    transition="default">
-
                 </section>
 
                 <section data-background="images/StockSnap_NN2EIQQYEA.jpg">
