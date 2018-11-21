@@ -596,6 +596,50 @@ public class GlobalRoutePrefixConvention : IApplicationModelConvention
                 </section>
 
                 <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
+                    <pre>
+    <code class="cs">
+public class OrderController
+{
+    [Route("order")]
+    public IActionResult Process(Order order)
+    {
+        // handle VIP customers
+        // handle standard customers
+        // handle basic customers
+    }
+}
+    </code>
+</pre>
+
+                    <p class="fragment" data-code-focus="4"></p>
+                </section>
+
+                <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
+                    <pre>
+    <code class="cs">
+public class OrderController
+{
+    [VIPOnly]
+    [Route("order")]
+    public IActionResult ProcessVIP(Order order) { }
+
+    [StandardOnly]
+    [Route("order")]
+    public IActionResult ProcessStandard(Order order) { }
+
+    [BasicOnly]
+    [Route("order")]
+    public IActionResult ProcessBasic(Order order) { }
+}
+    </code>
+</pre>
+
+                    <p class="fragment" data-code-focus="4-6"></p>
+                    <p class="fragment" data-code-focus="8-10"></p>
+                    <p class="fragment" data-code-focus="12-14"></p>
+                </section>
+
+                <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
                     <p class="overlay-style">
                         IActionConstraint may
                         <span class="highlight">disambiguate</span> multiple actions from matching the same request or

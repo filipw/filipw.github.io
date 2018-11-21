@@ -261,3 +261,11 @@ blockquote:before {
   margin: 0;
   font-size: 0.5em;
 }
+
+.hljs-meta {
+  color: #CDCDCD !important;
+}
+
+.line.focus .hljs-meta {
+  color: #657b83 !important;
+}
