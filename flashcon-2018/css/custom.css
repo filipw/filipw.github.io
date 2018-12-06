@@ -298,3 +298,11 @@ table td.footnote {
 table.medium td.center {
   text-align: center !important;
 }
+
+table.large th {
+  text-align: center !important;
+}
+
+table.large td {
+  font-size: 3.5em;
+}

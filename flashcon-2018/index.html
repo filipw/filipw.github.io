@@ -49,7 +49,7 @@
             <section data-background="images/jason-blackeye-198848-unsplash.jpg">
 
                 <h1>
-                    <br />Abusing the C# Compiler
+                    Abusing the C# Compiler
                     <br />
                     <small>for fun and no profit</small>
                 </h1>
@@ -95,7 +95,13 @@
 
                 <section data-background="images/pawel-czerwinski-773353-unsplash.jpg">
                     <p class="overlay-style">
-                        <span class="highlight">Nothing.</span> <br />In fact, quite the opposite, most of the things today won't make a lot of sense.
+                        <span class="highlight">Nothing.</span>
+                    </p>
+                </section>
+
+                <section data-background="images/pawel-czerwinski-773353-unsplash.jpg">
+                    <p class="overlay-style">
+                        In fact, quite the opposite, most of the things today  <span class="highlight">won't make a lot of sense</span>.
                     </p>
                 </section>
             </section>
@@ -103,10 +109,12 @@
             <!-- background -->
             <section>
                 <section data-background="images/photo-1465257474426-bd133d4db35e.jpeg">
-                    <h1>Compiler Background</h1>
+                    <h1>C# Compiler</h1>
                 </section>
 
-                // funny compiler diagram
+                <section data-background="images/artem-bali-580895-unsplash.jpg">
+                    <img src="images/unicorn.png" style="min-height: auto" />
+                </section>
 
                 <section data-background="images/artem-bali-580895-unsplash.jpg">
                     <div class="overlay-style" style="padding:3% !important;">
@@ -158,6 +166,9 @@
                     <h1>Can you trust the compiler?</h1>
                 </section>
 
+               <section data-background="images/spec.png">
+                </section>
+
                 <section data-background="images/pawel-czerwinski-773353-unsplash.jpg">
                     <div class="overlay-style">
                         <blockquote>Customers will depend on the new compiler behaving exactly the same way as the old
@@ -170,26 +181,62 @@
                     </div>
                 </section>
 
-                // deliberate spec violation here
-
                 <section data-background="images/pawel-czerwinski-773353-unsplash.jpg">
                     <p class="overlay-style">
                         Can the compiler produce a program that won't work?
                         <br />
                         <span class="fragment">
-                            <span class="highlight">Yes</span> - for example due to CLR/CoreCLR bugs.
+                            <span class="highlight">Yes</span>.
                         </span>
                     </p>
                 </section>
 
                 <section data-background="images/pawel-czerwinski-773353-unsplash.jpg">
+                    <table class="overlay-style large">
+                        <thead>
+                            <tr>
+                                <th>Language Spec</th>
+                                <th>Compiler</th>
+                                <th>CoreCLR</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>🦄</td>
+                                <td>🦄</td>
+                                <td>💩</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <section data-background="images/pawel-czerwinski-773353-unsplash.jpg">
                     <p class="overlay-style">
-                        Can the runtime run the code that compiler doesn’t allow?
+                        Can the compiler and the runtime allow the code that language specification doesn’t allow?
                         <br />
                         <span class="fragment">
-                            <span class="highlight">Yes</span> - CLR is much less restrictive.
+                            <span class="highlight">Yes</span>.
                         </span>
                     </p>
+                </section>
+
+                <section data-background="images/pawel-czerwinski-773353-unsplash.jpg">
+                    <table class="overlay-style large">
+                        <thead>
+                            <tr>
+                                <th>Language Spec</th>
+                                <th>Compiler</th>
+                                <th>CoreCLR</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>💩</td>
+                                <td>🦄</td>
+                                <td>🦄</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </section>
 
                 <section data-background="images/pawel-czerwinski-773353-unsplash.jpg">
@@ -197,382 +244,59 @@
                         Can the compiler produce code that doesn’t behave as expected?
                         <br />
                         <span class="fragment">
-                            <span class="highlight">Yes</span> - compiler interprets the language spec.
+                            <span class="highlight">Yes</span>.
                         </span>
                     </p>
                 </section>
 
                 <section data-background="images/pawel-czerwinski-773353-unsplash.jpg">
-                    <p class="overlay-style">
-                        Can you bypass some of the strict compiler rules?
-                        <br />
-                        <span class="fragment">
-                            <span class="highlight">Yes</span> - compiler has a lot of "knobs".
-                        </span>
-                    </p>
-                </section>
-
-                <section data-background="images/masaaki-komori-580425-unsplash.jpg">
-                    <img src="images/tooeasy.gif" style="min-height: auto" />
-                </section>
-            </section>
-
-            <!-- <section data-background="images/masaaki-komori-580425-unsplash.jpg">
-                    <img src="images/OpenIDConnect-Map-4Feb2014.png" style="min-height: auto" />
-                </section> -->
-
-            <section data-background="images/openid-certified.png" data-state="bg-auto-height">
-            </section>
-
-            <section data-background-color="#fff">
-                <img src="images/identityserver.png" style="min-height: auto" />
-            </section>
-            </section>
-
-            <!-- authentication -->
-            <section>
-                <section data-background="images/photo-1465257474426-bd133d4db35e.jpeg">
-                    <h1>Authentication</h1><!-- how the app is wired together -->
-                </section>
-
-                <section data-background="images/artem-bali-580895-unsplash.jpg">
-                    <div class="overlay-style" style="padding:3% !important;">
-                        <h2>API Authentication anti-patterns</h2>
-                    </div>
-                    <div>
-                        <div class="left overlay-style" style="padding: 0">
-                            <div style="padding: 3%">
-                                <ul>
-                                    <li class="fragment">💩
-                                        Rolling out custom security
-                                        <br />
-                                        <small>Re-inventing the wheel</small>
-                                    </li>
-
-                                    <li class="fragment">💩
-                                        Using implicit authentication
-                                        <br />
-                                        <small>i.e. classic cookie-authentication models</small>
-                                    </li>
-
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="right overlay-style" style="padding: 0">
-                            <div style="padding: 3%">
-                                <ul>
-                                    <li class="fragment">💩
-                                        Mixing authN and authZ
-                                        <br />
-                                        <small>i.e. only OAuth 2.0 for both purposes</small>
-                                    </li>
-                                    <li class="fragment">💩
-                                        Fat tokens
-                                        <br />
-                                        <small>Transporting too much data in tokens</small>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <section data-background="images/artem-bali-580895-unsplash.jpg">
-                    <div class="overlay-style" style="padding:3% !important;">
-                        <h2>Authentication in ASP.NET Core</h2>
-                    </div>
-                    <div>
-                        <div class="left overlay-style" style="padding: 0">
-                            <div style="padding: 3%">
-                                <ul>
-                                    <li class="fragment">✅ Authentication handlers
-                                        <br />
-                                        <small>Registered in DI - cookies, social, JWT, OpenIdConnect
-                                        </small>
-                                    </li>
-
-                                    <li class="fragment">✅ Middleware invoked
-                                        <br />
-                                        <small>Can also be manually triggered</small>
-                                    </li>
-
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="right overlay-style" style="padding: 0">
-                            <div style="padding: 3%">
-                                <ul>
-                                    <li class="fragment">✅ Claims transformation
-                                        <br />
-                                        <small>Allows per-request manipulation of claims</small>
-                                    </li>
-                                    <li class="fragment">✅ Based loosely on Katana
-                                        <br />
-                                        <small>Completely new if you have not worked with OWIN</small>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <section data-background="images/artem-bali-580895-unsplash.jpg">
-                    <p class="overlay-style">
-                        Simplest way to add token validation to an ASP.NET Core app is to use <span class="highlight">IdentityServer4.AccessTokenValidation</span>
-                        Nuget package.
-                    </p>
-                </section>
-
-                <section data-background="images/artem-bali-580895-unsplash.jpg">
-                    <div class="overlay-style" style="padding:3% !important;">
-                        <h3>Token validation in ASP.NET Core</h3>
-                    </div>
-                    <pre class="medium">
-    <code class="cs">
-public void ConfigureServices(IServiceCollection services)
-{
-    services.AddMvc();
-    services.AddAuthentication("Bearer").AddIdentityServerAuthentication(o =>
-        {
-            o.Authority = "https://my.identityserver.io/openid";
-            o.SupportedTokens = SupportedTokens.Jwt;
-        });
-}
-
-public void Configure(IApplicationBuilder app, IHostingEnvironment env)
-{
-    app.UseAuthentication();
-    app.UseMvc();
-}
-    </code>
-</pre>
-                    <p class="fragment" data-code-focus="5"></p>
-                    <p class="fragment" data-code-focus="6-9"></p>
-                    <p class="fragment" data-code-focus="14"></p>
-                </section>
-
-                <section data-background="images/artem-bali-580895-unsplash.jpg">
-                    <p class="overlay-style">
-                        Simplest way to add token issuing to an ASP.NET Core app is to use <span class="highlight">IdentityServer4</span>
-                        Nuget package.
-                    </p>
-                </section>
-
-                <section data-background="images/artem-bali-580895-unsplash.jpg">
-                    <div class="overlay-style" style="padding:3% !important;">
-                        <h3>Token issuing via Identity Server</h3>
-                    </div>
-                    <pre class="medium">
-    <code class="cs">
-public void ConfigureServices(IServiceCollection services)
-{
-    services.AddIdentityServer().
-        AddClientStore<ClientStoreImpl>().
-        AddResourceStore<ResourceStoreImpl>().
-        AddSigningCredential(LoadCertificate());
-}
-
-public void Configure(IApplicationBuilder app, IHostingEnvironment env)
-{
-    app.UseIdentityServer();
-}
-    </code>
-</pre>
-                    <p class="fragment" data-code-focus="4"></p>
-                    <p class="fragment" data-code-focus="5-6"></p>
-                    <p class="fragment" data-code-focus="7"></p>
-                    <p class="fragment" data-code-focus="12"></p>
-                </section>
-
-                <!-- <section data-background="images/artem-bali-580895-unsplash.jpg">
-                    <p class="overlay-style">
-                        .NET introduced
-                        <span class="highlight">ClaimsPrincipal
-                        </span> as primary identity model in 2012 (.NET 4.5).
-                    </p>
-                </section> -->
-
-            </section>
-
-            <!-- authorization -->
-            <section>
-                <section data-background="images/sarah-white-422370-unsplash.jpg">
-                    <h1>Authorization</h1><!-- how the app is wired together -->
-                </section>
-
-                <section data-background="images/photo-1511699725551-7b894c2ffe42.jpeg">
-                    <p class="overlay-style">
-                        Until ASP.NET Core, ASP.NET <span class="highlight">never</span> shipped with a comprehensive
-                        authorization framework.
-                    </p>
-                </section>
-
-                <section data-background="images/photo-1511699725551-7b894c2ffe42.jpeg">
-                    <h3 class="overlay-style">API Authorization Levels</h3>
-                    <table class="overlay-style medium">
+                    <table class="overlay-style large">
                         <thead>
                             <tr>
-                                <th>Level</th>
-                                <th>Mechanism</th>
-                                <th>Source</th>
+                                <th>Language Spec</th>
+                                <th>Compiler</th>
+                                <th>CoreCLR</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="noborder fragment" data-fragment-index="1">
-                                <td>⛅ Accessing an API endpoint</td>
-                                <td>🔒 authorization framework</td>
-                                <td>access_token scopes</td>
-                            </tr>
-                            <tr class="fragment" data-fragment-index="1">
-                                <td colspan="3"><small>Can you interact with an API in any way?</small></td>
-                            </tr>
-                            </tr>
-                            <tr class="noborder fragment" data-fragment-index="2">
-                                <td>🌤 Role / permission verification</td>
-                                <td>🔒 authorization framework</td>
-                                <td>profile / policy service</td>
-                            </tr>
-                            <tr class="fragment" data-fragment-index="2">
-                                <td colspan="3"><small>Can you invoke a specific operation in the API? For example:
-                                        send a message.</small></td>
-                            </tr>
-                            <tr class="noborder fragment" data-fragment-index="3">
-                                <td>☀️ Business workflow rules</td>
-                                <td>🗂 business logic</td>
-                                <td>custom</td>
-                            </tr>
-                            <tr class="fragment" data-fragment-index="3">
-                                <td colspan="3"><small>Can you invoke a specific operation, with specialized conditions
-                                        in the API? For example: send a message to user X.</small></td>
+                            <tr>
+                                <td>🦄</td>
+                                <td>💩</td>
+                                <td>🦄</td>
                             </tr>
                         </tbody>
                     </table>
                 </section>
 
-                <section data-background="images/photo-1511699725551-7b894c2ffe42.jpeg">
-                    <div class="overlay-style" style="padding:3% !important;">
-                        <h2>Authorization in ASP.NET Core</h2>
-                    </div>
-                    <div>
-                        <div class="left overlay-style" style="padding: 0">
-                            <div style="padding: 3%">
-                                <ul>
-                                    <li class="fragment">✅ new <em>IAuthorizationService</em>
-                                        <br />
-                                        <small>Decouple authorization from business code</small>
-                                    </li>
-
-                                    <li class="fragment">✅ Policy based
-                                        <br />
-                                        <small>No more coupling or misinterpreting "roles"</small>
-                                    </li>
-
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="right overlay-style" style="padding: 0">
-                            <div style="padding: 3%">
-                                <ul>
-                                    <li class="fragment">✅ Requirements concept
-                                        <br />
-                                        <small>Decouple authorization input from authorization logic</small>
-                                    </li>
-
-                                    <li class="fragment">✅ Decoupled from MVC
-                                        <br />
-                                        <small>works with raw ASP.NET Core, DI integrated
-                                        </small>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+                <section data-background="images/pawel-czerwinski-773353-unsplash.jpg">
+                    <p class="overlay-style">
+                        Can you abuse the compiler to bypass some of the language rules?
+                        <br />
+                        <span class="fragment">
+                            <span class="highlight">Yes</span>.
+                        </span>
+                    </p>
                 </section>
 
-                <section data-background="images/photo-1511699725551-7b894c2ffe42.jpeg">
-                    <div class="overlay-style" style="padding:3% !important;">
-                        <h3>Policy based authorization in ASP.NET Core</h3>
-                    </div>
-                    <pre class="small">
-        <code class="cs">
-public void ConfigureServices(IServiceCollection services)
-{
-    services.AddMvc();
-    services.AddAuthorization(o =>
-    {
-        o.AddPolicy("ViewOrders", 
-            p => p.RequireAuthenticatedUser().RequireClaim("scope", "orders.view"));
-    });
-}
-
-[HttpGet("")]
-[Authorize("ViewOrders")]
-public async Task<IActionResult> GetAll()
-{
-    // omited for brevity
-}
-    </code>
-    </pre>
-                    <p class="fragment" data-code-focus="5"></p>
-                    <p class="fragment" data-code-focus="7-8"></p>
-                    <p class="fragment" data-code-focus="13"></p>
+                <section data-background="images/pawel-czerwinski-773353-unsplash.jpg">
+                    <table class="overlay-style large">
+                        <thead>
+                            <tr>
+                                <th>Language Spec</th>
+                                <th>Compiler</th>
+                                <th>CoreCLR</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>💩</td>
+                                <td>💩</td>
+                                <td>🦄</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </section>
-
-                <section data-background="images/photo-1511699725551-7b894c2ffe42.jpeg">
-                    <div class="overlay-style" style="padding:3% !important;">
-                        <h3>Requirement authorization in ASP.NET Core</h3>
-                    </div>
-                    <pre class="small">
-        <code class="cs">
-public class VerifiedRequirement : IAuthorizationRequirement 
-{
-    public int OrderLimit { get; set; } = 10000;
-}
-
-public class VerifiedCustomerHandler : AuthorizationHandler&lt;VerifiedRequirement, Order&gt;
-{
-    protected override Task HandleRequirementAsync(AuthorizationHandlerContext context,
-        VerifiedRequirement requirement, Order order)
-    {    
-        if (order.Total < requirement.OrderLimit || context.User.Claim&lt;bool&gt;("IsVerifiedCustomer"))
-        {
-            context.Succeed(requirement);
-        }
-                    
-        return Task.CompletedTask;
-    }
-}
-    </code>
-    </pre>
-                    <p class="fragment" data-code-focus="2-5"></p>
-                    <p class="fragment" data-code-focus="7"></p>
-                    <p class="fragment" data-code-focus="12-15"></p>
-                </section>
-
-                <section data-background="images/photo-1511699725551-7b894c2ffe42.jpeg">
-                    <div class="overlay-style" style="padding:3% !important;">
-                        <h3>Requirement authorization in ASP.NET Core</h3>
-                    </div>
-                    <pre class="medium  ">
-        <code class="cs">
-public async Task&lt;IActionResult&gt; Post(Order orderRequest, 
-    [FromServices]IAuthorizationService authz)
-{
-    var order = ComputeTotalAndMap(orderRequest);
-    var requirement = new VerifiedRequirement();
-    var authzResult = await authz.AuthorizeAsync(User, requirement, order);
-    if (authorizationResult.Succeeded)
-    {
-        // process
-    }
-
-    return Forbid();
-}
-    </code>
-    </pre>
-                    <p class="fragment" data-code-focus="3"></p>
-                    <p class="fragment" data-code-focus="7"></p>
-                </section>
+            </section>
 
             </section>
 
