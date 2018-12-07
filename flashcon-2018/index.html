@@ -197,7 +197,7 @@
                             <tr>
                                 <th>Language Spec</th>
                                 <th>Compiler</th>
-                                <th>CoreCLR</th>
+                                <th>Runtime</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -208,6 +208,9 @@
                             </tr>
                         </tbody>
                     </table>
+                </section>
+
+                <section data-background="images/monkey-code.gif">
                 </section>
 
                 <section data-background="images/pawel-czerwinski-773353-unsplash.jpg">
@@ -226,7 +229,7 @@
                             <tr>
                                 <th>Language Spec</th>
                                 <th>Compiler</th>
-                                <th>CoreCLR</th>
+                                <th>Runtime</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -237,6 +240,9 @@
                             </tr>
                         </tbody>
                     </table>
+                </section>
+
+                <section data-background="images/demo.gif">
                 </section>
 
                 <section data-background="images/pawel-czerwinski-773353-unsplash.jpg">
@@ -255,7 +261,7 @@
                             <tr>
                                 <th>Language Spec</th>
                                 <th>Compiler</th>
-                                <th>CoreCLR</th>
+                                <th>Runtime</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -266,6 +272,9 @@
                             </tr>
                         </tbody>
                     </table>
+                </section>
+
+                <section data-background="images/angrymad.gif">
                 </section>
 
                 <section data-background="images/pawel-czerwinski-773353-unsplash.jpg">
@@ -284,7 +293,7 @@
                             <tr>
                                 <th>Language Spec</th>
                                 <th>Compiler</th>
-                                <th>CoreCLR</th>
+                                <th>Runtime</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -296,6 +305,120 @@
                         </tbody>
                     </table>
                 </section>
+
+                <section data-background="images/dog-code.gif">
+                </section>
+            </section>
+
+            <!-- Trust -->
+            <section>
+                <section data-background="images/sarah-white-422370-unsplash.jpg">
+                    <h1>Compiler Lowering</h1>
+                </section>
+
+                <section data-background="images/photo-1511699725551-7b894c2ffe42.jpeg">
+                    <div class="overlay-style">
+                        <blockquote>A common technique (...) is to have the compiler “lower” from high-level language features to low-level language features in the same language.
+                        </blockquote>
+                        <p>
+                            <footer>- <em>Eric Lippert</em></footer>
+                        </p>
+
+                    </div>
+                </section>
+
+                <section data-background="images/photo-1511699725551-7b894c2ffe42.jpeg">
+                    <p class="overlay-style">
+                        Lowering allows new C# features to be implemented (mostly) <span class="highlight">without</span> changes in CLR/CoreCLR.
+                    </p>
+                </section>
+
+                <section data-background="images/photo-1511699725551-7b894c2ffe42.jpeg">
+                    <div class="overlay-style" style="padding:3% !important;">
+                        <h2>Lowering examples</h2>
+                    </div>
+                    <div>
+                        <div class="left overlay-style" style="padding: 0">
+                            <div style="padding: 3%">
+                                <ul>
+                                    <li class="fragment">📕
+                                        loops
+                                        <br />
+                                        <small>IL only has <i>branch</i> which acts as <i>goto</i></small>
+                                    </li>
+
+                                    <li class="fragment">📘
+                                        using blocks
+                                        <br />
+                                        <small>IL only has <i>try/catch/finally</i></small>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="right overlay-style" style="padding: 0">
+                            <div style="padding: 3%">
+                                <ul>
+                                    <li class="fragment">📙
+                                        lambdas
+                                        <br />
+                                        <small>translated into ordinary methods</small>
+                                    </li>
+                                    <li class="fragment">📗
+                                        iterators, async/await
+                                        <br />
+                                        <small>massive, complex state machines</small>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-background="images/photo-1511699725551-7b894c2ffe42.jpeg">
+                    <div class="overlay-style" style="padding:3% !important;">
+                        <h3>The tuple case</h3>
+                    </div>
+                    <pre>
+    <code class="cs">
+var gift1 = ("chocolate", 5);
+var gift2 = ("socks", 2);
+
+Console.WriteLine(gift1 == gift2);
+    </code>
+</pre>
+                    <p class="fragment" data-code-focus="5"></p>
+                </section>
+
+                <section data-background="images/photo-1511699725551-7b894c2ffe42.jpeg">
+                    <div class="overlay-style" style="padding:3% !important;">
+                        <h3>Lowered to...</h3>
+                    </div>
+                    <pre>
+    <code class="cs">
+Console.WriteLine(
+    valueTuple.Item1 == valueTuple2.Item1 && 
+    valueTuple.Item2 == valueTuple2.Item2
+);
+    </code>
+</pre>
+                    <p class="fragment" data-code-focus="3-4"></p>
+                </section>
+
+                <section data-background="images/photo-1511699725551-7b894c2ffe42.jpeg">
+                    <div class="overlay-style">
+                        <blockquote>If someone wrote their own ValueTuple types with an implementation of the comparison operator, it would have previously been picked up by overload resolution. But since the new tuple case comes before overload resolution, we would handle this case with tuple comparison instead of relying on the user-defined comparison.
+                        </blockquote>
+                        <p>
+                            <footer>- <em>C# 7.3 tuple equality speclet</em></footer>
+                        </p>
+
+                    </div>
+                </section>
+
+                <section data-background="images/tuple.png" data-state="bg-auto-width">
+                </section>
+
             </section>
 
             </section>
