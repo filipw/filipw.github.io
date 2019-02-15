@@ -106,15 +106,9 @@
                                         </small>
                                     </li>
 
-                                    <!-- <li class="fragment">🎯
-                                        <em>AddMvcCore()</em> vs
-                                        <em>AddMvc()</em>
+                                    <li class="fragment">🎯 MVC without controllers
                                         <br/>
-                                        <small>Use the things you need</small>
-                                    </li> -->
-                                    <li>
-                                        <br/>
-                                        <br/>
+                                        <small><em>ActionResults</em> in middleware</small>
                                     </li>
                                 </ul>
                             </div>
@@ -176,36 +170,30 @@ public class Program
                     <p class="fragment" data-code-focus="14-15"></p>
                 </section>
 
-                <!-- <section data-background="images/mark-solarski-209233.jpg">
+                <section data-background="images/mark-solarski-209233.jpg">
                     <p class="overlay-style">
-                        You can choose which MVC features you need with
-                        <span class="highlight">services.AddMvcCore()</span> instead of
-                        <span class="highlight">services.AddMvc()</span>.
+                        ASP.NET Core 2.1 introduced <span class="highlight">IActionResultExecutor&lt;T&gt;</span> which allows us to use <span class="highlight">IActionResult&lt;T&gt;</span> outside of controllers.
                     </p>
                 </section>
-                <section data-background="images/addmvc.png" data-background-color="#fff" data-state="bg-auto-height" data-background-position="0 0">
-                </section>
                 <section data-background="images/mark-solarski-209233.jpg">
-                    <h3 class="overlay-style">Pick what you need</h3>
+                    <h3 class="overlay-style">Like in a controller</h3>
                     <pre>
     <code class="cs">
-// kitchen sink
-services.AddMvc();
+r.MapGet("download-file", async (request, response, routeData) =>
+{
+    var fileStream = new FileStream("myfile.pdf",
+        FileMode.Open, FileAccess.Read, FileShare.ReadWrite, 65536,
+        FileOptions.Asynchronous | FileOptions.SequentialScan);
 
-// pick what you need
-services.AddMvcCore()
-    .AddDataAnnotations() // for model validation
-    .AddJsonFormatters() // for JSON
-    .AddApiExplorer(); // for Swagger
+    await response.WriteActionResult(
+        new FileStreamResult(fileStream, "application/pdf"));
+});
     </code>
 </pre>
-
-                    <p class="fragment" data-code-focus="3"></p>
-                    <p class="fragment" data-code-focus="6"></p>
-                    <p class="fragment" data-code-focus="7"></p>
-                    <p class="fragment" data-code-focus="8"></p>
-                    <p class="fragment" data-code-focus="9"></p>
-                </section> -->
+                    <p class="fragment" data-code-focus="2"></p>
+                    <p class="fragment" data-code-focus="4-6"></p>
+                    <p class="fragment" data-code-focus="8-9"></p>
+                </section>
 
                 <section data-background="images/mark-solarski-209233.jpg">
                     <p class="overlay-style">
