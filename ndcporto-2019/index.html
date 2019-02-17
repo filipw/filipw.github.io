@@ -101,8 +101,7 @@
                                 <ul>
                                     <li class="fragment">🕊 No MVC
                                         <br/>
-                                        <small>ASP.NET Core apps built on
-                                            <em>IRouter</em>
+                                        <small>ASP.NET Core apps built on routing only
                                         </small>
                                     </li>
 
@@ -140,34 +139,58 @@
                 </section>
 
                 <section data-background="images/mark-solarski-209233.jpg">
+                    <h3 class="overlay-style">ASP.NET Core 2.1 / 2.2 - IRouter</h3>
                     <pre>
     <code class="cs">
-public class Program
-{
-    public static async Task Main(string[] args) =>
-       await WebHost.CreateDefaultBuilder(args)
-          .ConfigureServices(s => s.AddRouting())
-          .Configure(app =>
+public static async Task Main(string[] args) =>
+   await WebHost.CreateDefaultBuilder(args)
+      .ConfigureServices(s => s.AddRouting())
+      .Configure(app =>
+      {
+          app.UseRouter(r => // define all API endpoints
           {
-              .UseRouter(r => // define all API endpoints
-              {
-                  r.MapGet("contacts", async (req, res, data) =>
-                  { });
+              r.MapGet("contacts", async (req, res, data) =>
+              { });
 
-                  r.MapGet("contacts/{id:int}", async (req, res, data) =>
-                  { });
-              });
-          })
-          .Build().RunAsync();
-}
+              r.MapGet("contacts/{id:int}", async (req, res, data) =>
+              { });
+          });
+      }).Build().RunAsync();
     </code>
 </pre>
 
-                    <p class="fragment" data-code-focus="6"></p>
+                    <p class="fragment" data-code-focus="4"></p>
                     <p class="fragment" data-code-focus="7"></p>
-                    <p class="fragment" data-code-focus="9"></p>
-                    <p class="fragment" data-code-focus="11-12"></p>
-                    <p class="fragment" data-code-focus="14-15"></p>
+                    <p class="fragment" data-code-focus="9-10"></p>
+                    <p class="fragment" data-code-focus="12-13"></p>
+                </section>
+
+                <section data-background="images/mark-solarski-209233.jpg">
+                    <h3 class="overlay-style">ASP.NET Core 3.0 - Endpoint Routing</h3>
+                    <pre>
+    <code class="cs">
+public static async Task Main(string[] args) =>
+   await WebHost.CreateDefaultBuilder(args)
+      .ConfigureServices(s => s.AddRouting())
+      .Configure(app =>
+      {
+            app.UseRouting(routes =>
+            {
+                // bring in MVC controllers, replaces UseMvc()
+                routes.MapApplication(); 
+        
+                // non-MVC endpoints
+                routes.MapGet("/contacts", async context =>
+                { });
+            });
+      }).Build().RunAsync();
+    </code>
+</pre>
+
+<p class="fragment" data-code-focus="4"></p>
+<p class="fragment" data-code-focus="7"></p>
+<p class="fragment" data-code-focus="9-10"></p>
+<p class="fragment" data-code-focus="12-14"></p>
                 </section>
 
                 <section data-background="images/mark-solarski-209233.jpg">
@@ -409,13 +432,22 @@ actionDescriptorChangeProvider.TokenSource.Cancel();
 
                 <section data-background="images/taduuda-72915.jpg">
                     <p class="overlay-style">
+                        <span class="highlight">.NET Core 3.0</span> adds support for <span class="highlight">collectible assemblies</span>, which is perfect for plugins. 
+                    </p>
+                </section>
+
+                <section data-background="images/columbo.jpg" data-background-color="#ebf1e4" data-state="bg-auto-height">
+                </section>
+
+                <section data-background="images/taduuda-72915.jpg">
+                    <p class="overlay-style">
                         With
                         <span class="highlight">Microsoft.NET.Sdk.Razor</span> it is possible to precompile Razor views and distribute them in a
                         DLL.
                     </p>
                 </section>
 
-                <section data-background="images/sponge-wow.gif">
+                <section data-background="images/sponge-wow.gif" >
                 </section>
 
             </section>
@@ -550,20 +582,19 @@ public class BookController : Controller
                 <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
                     <pre>
     <code class="cs">
-public class GlobalRoutePrefixConvention : IApplicationModelConvention
+public class AuthorizeConvention : IApplicationModelConvention
 {
     public void Apply(ApplicationModel application)
     {
-        var route = new RouteAttribute("api/[controller]");
-        var prefix = new AttributeRouteModel(route);
         foreach (var controller in application.Controllers)
         {
-            foreach (var selector in controller.Selectors)
+            foreach (var actionModel in controller.Actions)
             {
-                selector.AttributeRouteModel = 
-                  selector.AttributeRouteModel != null
-                  ? AttributeRouteModel.CombineAttributeRouteModel(prefix, selector.AttributeRouteModel)
-                  : prefix;
+                if (actionModel.ActionName.StartsWith("Authorized") && 
+                    !actionModel.Filters.OfType&lt;IAuthorizeData&gt;().Any()) 
+                {
+                    actionModel.Filters.Add(new AuthorizeFilter());
+                }
             }
         }
     }
@@ -571,10 +602,11 @@ public class GlobalRoutePrefixConvention : IApplicationModelConvention
     </code>
 </pre>
 
+                    <p class="fragment" data-code-focus="4"></p>
                     <p class="fragment" data-code-focus="6"></p>
                     <p class="fragment" data-code-focus="8"></p>
-                    <p class="fragment" data-code-focus="10"></p>
-                    <p class="fragment" data-code-focus="12-15"></p>
+                    <p class="fragment" data-code-focus="10-11"></p>
+                    <p class="fragment" data-code-focus="13"></p>
                 </section>
 
                 <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
