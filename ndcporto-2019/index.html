@@ -193,6 +193,15 @@ public static async Task Main(string[] args) =>
                 </section>
 
                 <section data-background="images/mark-solarski-209233.jpg">
+                    <h3 class="overlay-style">ActionResult in a controller</h3>
+                    <pre>
+    <code class="cs">
+to do controller wit haction result
+    </code>
+</pre>
+                    <p class="fragment" data-code-focus="2"></p>
+                </section>
+                <section data-background="images/mark-solarski-209233.jpg">
                     <p class="overlay-style">
                         ASP.NET Core 2.1 introduced <span class="highlight">IActionResultExecutor&lt;T&gt;</span> which allows us to use <span class="highlight">IActionResults</span> outside of controllers.
                     </p>
@@ -458,15 +467,15 @@ actionDescriptorChangeProvider.TokenSource.Cancel();
                             <div style="padding: 3%">
                                 <ul>
                                     <li class="fragment">🔧
-                                        <em>IApplicationModelProvider</em>
+                                        <em>Understanding the model</em>
                                         <br/>
-                                        <small>Compose the application model</small>
+                                        <small>MVC component snapshot</small>
                                     </li>
 
                                     <li class="fragment">📚
-                                        <em>IApplicationModelConvention</em>
+                                        <em>Customizing the model</em>
                                         <br/>
-                                        <small>Customize the application model</small>
+                                        <small><em>IApplicationModelConvention</em></small>
                                     </li>
 
                                 </ul>
@@ -532,7 +541,7 @@ actionDescriptorChangeProvider.TokenSource.Cancel();
 
                 <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
                     <p class="overlay-style">
-                        MVC ships with several built-in <span class="highlight">IApplicationModelProviders</span> to define its own behaviors.
+                        At application startup the default MVC behaviors can be changed by <span class="highlight">modifying the application model</span>.
                     </p>
                 </section>
 
@@ -558,9 +567,6 @@ public class BookController : Controller
 </pre>
 <p class="fragment" data-code-focus="2"></p>
 </section>
-
-                <section data-background="images/angrybirds.jpg" data-background-color="#fff" data-state="bg-auto-height">
-                </section>
 
                 <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
                     <p class="overlay-style">
@@ -598,6 +604,9 @@ public class AuthorizeConvention : IApplicationModelConvention
                     <p class="fragment" data-code-focus="8"></p>
                     <p class="fragment" data-code-focus="10-11"></p>
                     <p class="fragment" data-code-focus="13"></p>
+                </section>
+
+                <section data-background="images/angrybirds.jpg" data-background-color="#fff" data-state="bg-auto-height">
                 </section>
 
                 <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
