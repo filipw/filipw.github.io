@@ -105,7 +105,7 @@
                                         </small>
                                     </li>
 
-                                    <li class="fragment">🎯 MVC without controllers
+                                    <li class="fragment">🎯 ActionResults without MVC
                                         <br/>
                                         <small><em>ActionResults</em> in middleware</small>
                                     </li>
@@ -174,14 +174,13 @@ public static async Task Main(string[] args) =>
       .ConfigureServices(s => s.AddRouting())
       .Configure(app =>
       {
-            app.UseRouting(routes =>
+            app.UseRouting(r =>
             {
-                // bring in MVC controllers, replaces UseMvc()
-                routes.MapApplication(); 
-        
-                // non-MVC endpoints
-                routes.MapGet("/contacts", async context =>
+                r.MapGet("/contacts", async context =>
                 { });
+
+                r.MapGet("contacts/{id:int}", async context =>
+                { }).RequireAuthorization("API");
             });
       }).Build().RunAsync();
     </code>
@@ -190,12 +189,12 @@ public static async Task Main(string[] args) =>
 <p class="fragment" data-code-focus="4"></p>
 <p class="fragment" data-code-focus="7"></p>
 <p class="fragment" data-code-focus="9-10"></p>
-<p class="fragment" data-code-focus="12-14"></p>
+<p class="fragment" data-code-focus="12-13"></p>
                 </section>
 
                 <section data-background="images/mark-solarski-209233.jpg">
                     <p class="overlay-style">
-                        ASP.NET Core 2.1 introduced <span class="highlight">IActionResultExecutor&lt;T&gt;</span> which allows us to use <span class="highlight">IActionResult&lt;T&gt;</span> outside of controllers.
+                        ASP.NET Core 2.1 introduced <span class="highlight">IActionResultExecutor&lt;T&gt;</span> which allows us to use <span class="highlight">IActionResults</span> outside of controllers.
                     </p>
                 </section>
                 <section data-background="images/mark-solarski-209233.jpg">
@@ -226,14 +225,6 @@ r.MapGet("download-file", async (request, response, routeData) =>
                 </section>
 
                 <section data-background="images/mark-solarski-209233.jpg">
-                    <p class="overlay-style">
-                        MVC scans the
-                        <span class="highlight">entire AssemblyLoadContext
-                        </span> to discover its features, so it has to be constrained separately.
-                    </p>
-                </section>
-
-                <section data-background="images/mark-solarski-209233.jpg">
                     <pre>
     <code class="cs">
 public class CustomerStartup
@@ -257,7 +248,7 @@ public class CustomerStartup
 
                     <p class="fragment" data-code-focus="2"></p>
                     <p class="fragment" data-code-focus="6"></p>
-                    <p class="fragment" data-code-focus="13"></p>
+                    <p class="fragment" data-code-focus="11-15"></p>
 
                 </section>
 
@@ -718,6 +709,9 @@ public class SwissAcceptLanguageActionConstraint : IActionConstraint, IActionCon
                                 </li>
 
                                 <li style="margin-bottom: 0.8em">💻 <a href="https://github.com/filipw/2019-ndcporto-demos">github.com/filipw/2019-ndcporto-demos</a>
+                                </li>
+
+                                <li style="margin-bottom: 0.8em">&nbsp;
                                 </li>
                             </ul>
                         </div>
