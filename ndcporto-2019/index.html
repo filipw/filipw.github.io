@@ -195,11 +195,23 @@ public static async Task Main(string[] args) =>
                 <section data-background="images/mark-solarski-209233.jpg">
                     <h3 class="overlay-style">ActionResult in a controller</h3>
                     <pre>
-    <code class="cs">
-to do controller wit haction result
-    </code>
+                        <code class="cs">
+[HttpGet("contacts")]
+public IActionResult Get()
+{
+    var contacts = new[]
+    {
+        new Contact { Name = "Filip", City = "Zurich" },
+        new Contact { Name = "Not Filip", City = "Not Zurich" }
+    };
+
+    // will do content negotation
+    return new ObjectResult(contacts);
+}
+                                </code>
 </pre>
-                    <p class="fragment" data-code-focus="2"></p>
+                    <p class="fragment" data-code-focus="3"></p>
+                    <p class="fragment" data-code-focus="11-12"></p>
                 </section>
                 <section data-background="images/mark-solarski-209233.jpg">
                     <p class="overlay-style">
@@ -210,20 +222,22 @@ to do controller wit haction result
                     <h3 class="overlay-style">Like in a controller</h3>
                     <pre>
     <code class="cs">
-r.MapGet("download-file", async (request, response, routeData) =>
+r.MapGet("contacts", async (request, response, routeData) =>
 {
-    var fileStream = new FileStream("myfile.pdf",
-        FileMode.Open, FileAccess.Read, FileShare.ReadWrite, 65536,
-        FileOptions.Asynchronous | FileOptions.SequentialScan);
+    var contacts = new[]
+    {
+        new Contact { Name = "Filip", City = "Zurich" },
+        new Contact { Name = "Not Filip", City = "Not Zurich" }
+    };
 
-    await response.WriteActionResult(
-        new FileStreamResult(fileStream, "application/pdf"));
+    var result = new ObjectResult(contacts);
+    await response.WriteActionResult(result);
 });
     </code>
 </pre>
                     <p class="fragment" data-code-focus="2"></p>
-                    <p class="fragment" data-code-focus="4-6"></p>
-                    <p class="fragment" data-code-focus="8-9"></p>
+                    <p class="fragment" data-code-focus="4-8"></p>
+                    <p class="fragment" data-code-focus="10-11"></p>
                 </section>
 
                 <section data-background="images/mark-solarski-209233.jpg">
