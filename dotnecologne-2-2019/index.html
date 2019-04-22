@@ -1,0 +1,993 @@
+﻿<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>C# Scripting in the .NET Core world</title>
+    <meta name="description" content="">
+    <meta name="author" content="Filip W">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <script src="//code.jquery.com/jquery-1.8.0.js"></script>
+    <script src="//code.jquery.com/ui/1.8.23/jquery-ui.js"></script>
+    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/css/bootstrap-combined.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/default.min.css">
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/simple.css" id="theme">
+    <link type="text/css" rel="stylesheet" href="css/custom.css" />
+    <script src="fsharp.formatting/styles/tips.js" type="text/javascript"></script>
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+    <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+
+    <script>
+        if (window.location.search.match(/print-pdf/gi)) {
+            var link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = 'css/print/pdf.css';
+            document.getElementsByTagName('head')[0].appendChild(link);
+        }
+    </script>
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+    <!-- <style type="text/css">
+        .reveal .slides section .fragment.current-only {
+            opacity: 1;
+            visibility: visible;
+            display: none;
+        }
+        .reveal .slides section .fragment.current-only.current-fragment {
+            display: block;
+        }
+        /* Solarized Light theme */
+        .line {
+            display: block;
+            padding: 1px 10px !important;
+        }
+        .line.focus {
+            background: #fff;
+            color: #657b83;
+        }
+        .line.focus .hljs-comment,
+        .line.focus .hljs-quote {
+            color: #93a1a1;
+        }
+        .line.focus .hljs-keyword,
+        .line.focus .hljs-selector-tag,
+        .line.focus .hljs-addition {
+            color: #859900;
+        }
+        .line.focus .hljs-number,
+        .line.focus .hljs-string,
+        .line.focus .hljs-meta .hljs-meta-string,
+        .line.focus .hljs-literal,
+        .line.focus .hljs-doctag,
+        .line.focus .hljs-regexp {
+            color: #2aa198;
+        }
+        .line.focus .hljs-title,
+        .line.focus .hljs-section,
+        .line.focus .hljs-name,
+        .line.focus .hljs-selector-id,
+        .line.focus .hljs-selector-class {
+            color: #268bd2;
+        }
+        .line.focus .hljs-attribute,
+        .line.focus .hljs-attr,
+        .line.focus .hljs-variable,
+        .line.focus .hljs-template-variable,
+        .line.focus .hljs-class .hljs-title,
+        .line.focus .hljs-type {
+            color: #b58900;
+        }
+        .line.focus .hljs-symbol,
+        .line.focus .hljs-bullet,
+        .line.focus .hljs-subst,
+        .line.focus .hljs-meta,
+        .line.focus .hljs-meta .hljs-keyword,
+        .line.focus .hljs-selector-attr,
+        .line.focus .hljs-selector-pseudo,
+        .line.focus .hljs-link {
+            color: #cb4b16;
+        }
+        .line.focus .hljs-built_in,
+        .line.focus .hljs-deletion {
+            color: #dc322f;
+        }
+        .line.focus .hljs-formula {
+            background: #eee8d5;
+        }
+        .line.focus .hljs-emphasis {
+            font-style: italic;
+        }
+        .line.focus .hljs-strong {
+            font-weight: bold;
+        }
+        .yellow-slide .line.focus:nth-child(2) {
+            background: yellow;
+        }
+        .fragment.current-visible.visible:not(.current-fragment) {
+            display: none;
+            height: 0px;
+            line-height: 0px;
+            font-size: 0px;
+        }
+        h1,
+        .overlay-style {
+            background: rgba(0, 0, 0, 0.75);
+            color: #fff !important;
+            padding: 5% !important;
+        }
+        h2.overlay-style,
+        h3.overlay-style {
+            padding: 2% !important;
+        }
+        .left {
+            left: -8.33%;
+            text-align: left;
+            float: left;
+            width: 50%;
+            z-index: -10;
+            padding: 0 !important;
+        }
+        .right {
+            left: 31.25%;
+            top: 75px;
+            float: right;
+            text-align: left;
+            z-index: -10;
+            width: 50%;
+            padding: 0 !important;
+        }
+        .reveal pre.small {
+            font-size: 0.45em;
+        }
+        .reveal pre.very-small {
+            font-size: 0.35em;
+        }
+        html.bg-auto-height div.slide-background.present {
+            background-size: auto 100%;
+        }
+        html.bg-auto-width div.slide-background.present {
+            background-size: 100% auto;
+        }
+        span.highlight {
+            background: #de4747;
+            display: inline-block;
+            padding: 0 5px;
+            line-height: 1.2em;
+        }
+        .overlay-style h2,
+        .overlay-style h3,
+        .overlay-style a {
+            color: #fff !important;
+        }
+        .reveal table td {
+            text-align: center;
+        }
+        .reveal section img.icon {
+            margin: 0;
+            border: 0;
+            min-height: auto;
+            max-height: auto;
+        }
+        .reveal pre code {
+            background: #000;
+            max-height: none;
+            padding: 1% 2%;
+        }
+        .reveal pre {
+            background: none;
+            box-shadow: none;
+            font-size: 0.65em;
+        }
+        blockquote:before {
+            display: block;
+            height: 0;
+            content: "“";
+            margin-left: -.6em;
+            font: italic 400%/1 Cochin, Georgia, "Times New Roman", serif;
+            color: #999;
+            text-align: left;
+        }
+        .reveal blockquote {
+            background: none;
+            text-align: left;
+        }
+        .reveal p.footnote {
+            line-height: 1;
+            margin: 0;
+            font-size: 0.5em;
+        }
+    </style> -->
+</head>
+
+<body>
+    <div class="reveal">
+        <header style="position: absolute;top: 50px; left: 100px; z-index:500; font-size:100px;background-color: rgba(0,0,0,0.5)"></header>
+        <!-- Any section element inside of this container is displayed as a slide -->
+        <div class="slides">
+
+            <section data-background="images/StockSnap_KD30XPQR0A.jpg">
+
+                <h1>C# Scripting</h1>
+
+            </section>
+
+            <section data-background="images/ibf.net-144.jpg">
+
+                <div class="overlay-style">
+                    <h2>Filip W</h2>
+                    <p>a random guy from the internet</p>
+
+                    <p>
+                        <small>
+                            <a href="https://strathweb.com" class="roll">
+                                <span>strathweb.com</span>
+                            </a> •
+                            <a href="https://twitter.com/filip_woj" class="roll">
+                                <span data-title="@filip_woj">@filip_woj</span>
+                            </a> •
+                            <a href="https://github.com/filipw" class="roll">
+                                <span data-title="github.com/filipw">github.com/filipw</span>
+                            </a>
+                        </small>
+                    </p>
+                    <img class="normal" src="images/mvp.png" />
+                </div>
+
+            </section>
+
+            <section data-background-color="#fff">
+                <img src="images/sonova.png" style="min-height: auto" />
+            </section>
+
+            <section>
+
+                <section data-background="images/IMG_20161108_131400.jpg">
+
+                </section>
+
+                <section data-background="images/mark-solarski-209233.jpg">
+                    <p class="overlay-style">
+                        C# Scripting is a <span class="highlight">variant of C#</span> introduced by the Roslyn compiler. <br/>
+                        It is characterized by <span class="highlight">relaxed syntax</span> and 
+                        <span class="highlight">looser semantics</span> of the language.
+                    </p>
+                </section>
+
+                <section data-background-image="images/scripting2.png" data-background-color="black" data-state="bg-auto-width" transition="default">
+                </section>
+
+                <section data-background="images/mark-solarski-209233.jpg">
+                    <h3 class="overlay-style">Run a script with script runner</h3>
+                    <pre>
+    <code class="sh">
+// desktop .NET
+C:\>csi script.csx scriptArgs
+
+// .NET Core
+C:\>dotnet script script.csx -- scriptArgs
+    </code>
+</pre>
+
+                    <p class="fragment" data-code-focus="3"></p>
+                    <p class="fragment" data-code-focus="6"></p>
+                </section>
+
+                <section data-background="images/mark-solarski-209233.jpg">
+
+                    <h3 class="overlay-style">.NET Core scripting in 3 quick steps</h3>
+                    <pre>
+    <code class="sh">
+~$ dotnet tool install dotnet-script -g
+Tool 'dotnet-script' (version '0.24.0') was successfully installed.
+
+~$ dotnet script init
+Creating VS Code launch configuration file
+...'/Users/filip/Documents/dev/temp/.vscode/launch.json' [Created]
+Creating OmniSharp configuration file
+...'/Users/filip/Documents/dev/temp/omnisharp.json' [Created]
+Creating default script file 'main.csx'
+Creating 'main.csx'
+...'/Users/filip/Documents/dev/temp/main.csx' [Created]
+
+~$ dotnet script main.csx
+Hello world!
+    </code>
+</pre>
+
+<p class="fragment" data-code-focus="2"></p>
+<p class="fragment" data-code-focus="5"></p>
+<p class="fragment" data-code-focus="14"></p>
+
+                </section>
+
+                <section data-background="images/mark-solarski-209233.jpg">
+                    <p class="overlay-style">
+                        You can embed C# scripting engine in your own app by adding <span class="highlight">Microsoft.CodeAnalysis.CSharp.Scripting</span> package.
+                    </p>
+                </section>
+
+                <section data-background="images/mark-solarski-209233.jpg">
+                    <h3 class="overlay-style">Use Roslyn APIs</h3>
+                    <pre>
+    <code class="cs">
+var scriptCode = File.ReadAllText("script.csx");
+var scriptOptions = ScriptOptions.Default.
+    WithImports("System.Net.Http").
+    WithReferences(typeof(HttpClient).GetTypeInfo().Assembly);
+
+// Run
+var scriptResult = await CSharpScript.RunAsync(scriptCode, scriptOptions);
+
+// Create and run later
+var script = await CSharpScript.Create(scriptCode, scriptOptions);
+var diagnostics = script.GetCompilation().GetDiagnostics();
+var scriptResult = await script.RunAsync();
+    </code>
+</pre>
+                    <p class="fragment" data-code-focus="2"></p>
+                    <p class="fragment" data-code-focus="3-5"></p>
+                    <p class="fragment" data-code-focus="8"></p>
+                    <p class="fragment" data-code-focus="11"></p>
+                    <p class="fragment" data-code-focus="12"></p>
+                    <p class="fragment" data-code-focus="13"></p>
+
+                </section>
+
+                <section data-background="images/mark-solarski-209233.jpg">
+                    <div class="overlay-style" style="padding:3% !important;">
+                        <h2>Scripting Key Features</h2>
+                    </div>
+                    <div class="left overlay-style">
+                        <div style="padding: 3%">
+                            <ul>
+                                <li class="fragment">🎉 C# scripting is cross platform<br/>
+                                    <small>Mono 4.6+ support, .NET Core</small></li>
+
+                                <li class="fragment">💯 CSI is on your machine already<br/>
+                                    <small>Bundled with MSBuild Tools</small></li>
+
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="right overlay-style" style="padding: 0">
+                        <div style="padding: 3%">
+                            <ul>
+                                <li class="fragment">💻 Script & Interactive Mode<br/>
+                                    <small>.csx, C# REPL</small></li>
+
+                                <li class="fragment">🔬 Any .NET assemblies<br/>
+                                    <small>Can marshal objects between host app and script</small></li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-background="images/sponge.gif" author="Filip W" description="" theme="simple" title="C# Scripting in the .NET Core world"
+                    transition="default">
+
+                </section>
+
+                <!-- <section data-background="images/mark-solarski-209233.jpg">
+                    <div class="overlay-style" style="padding:3% !important;">
+                        <h2>1st class Roslyn citizen</h2>
+                    </div>
+                    <div class="left overlay-style">
+                        <div style="padding: 3%">
+                            <ul>
+                                <li class="fragment">📐 Syntax<br/>
+                                    <small><em>SourceCodeKind.Script</em> vs <em>SourceCodeKind.Regular</em></small>
+                                </li>
+
+                                <li class="fragment">📚 Language services<br/>
+                                    <small><em>ProjectInfo</em> knows about host object Type & global usings</small>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="right overlay-style" style="padding: 0">
+                        <div style="padding: 3%">
+                            <ul>
+                                <li class="fragment">🖥 Script Compilation<br/>
+                                    <small>Shares logic with standard <em>CSharpCompilation</em></small>
+                                </li>
+
+                                <li class="fragment">📦 Development<br/>
+                                    <small><em>Microsoft.CodeAnalysis.Csharp.Scripting</em></small>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section> -->
+
+            </section>
+
+            <section>
+
+                <section data-background="images/StockSnap_NN2EIQQYEA.jpg">
+
+                    <h1>Use cases</h1>
+
+                </section>
+
+                <section data-background="images/StockSnap_NN2EIQQYEA.jpg">
+                    <div class="overlay-style" style="padding:3% !important;">
+                        <h2>Popular C# Scripting Use Cases</h2>
+                    </div>
+                    <div class="left overlay-style">
+                        <div style="padding: 3%">
+                            <ul>
+                                <li class="fragment">⚙️ Automation<br/>
+                                    <small>Batch jobs, build scripts, command line tools</small>
+                                </li>
+                                <li class="fragment">🍃 Lightweight programs<br/>
+                                    <small>Experiments, API exploration</small>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="right overlay-style" style="padding: 0">
+                        <div style="padding: 3%">
+                            <ul>
+                                <li class="fragment">🖇 Application extensibility<br/>
+                                    <small>Plugins, modules, dynamic configuration</small>
+                                </li>
+
+                                <li class="fragment">⚗️ Code compilation<br/>
+                                    <small>Lightweight way of emitting assemblies</small>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-background="images/StockSnap_NN2EIQQYEA.jpg">
+                    <h3 class="overlay-style">Composing lambdas dynamically</h2>
+                        <pre>
+    <code class="cs">
+var albums = new List&lt;Album&gt;
+{
+    new Album { Quantity = 10, Artist = "Betontod", Title = "Revolution" },
+    new Album { Quantity = 50, Artist = "The Dangerous Summer", Title = "The Dangerous Summer" },
+    new Album { Quantity = 200, Artist = "Depeche Mode", Title = "Spirit" },
+};
+
+// the real challenge
+Func&lt;Album, bool&gt; discountFilterExpression = ?????;
+ 
+var discountedAlbums = albums.Where(discountFilterExpression);
+    </code>
+</pre>
+
+                        <p class="fragment" data-code-focus="10"></p>
+
+                </section>
+
+                <section data-background="images/StockSnap_NN2EIQQYEA.jpg">
+                    <h3 class="overlay-style">Crafting the expression tree</h2>
+                        <pre>
+    <code class="cs">
+var parameter = Expression.Parameter(typeof(Album), "album");
+
+var comparison = Expression.GreaterThan(Expression.Property(parameter, 
+    Type.GetType("ConsoleApp6.Album").GetProperty("Quantity")), 
+    Expression.Constant(10));
+ 
+var discountFilterExpression = Expression.Lambda&lt;Func&lt;Album, bool&gt;&gt;(comparison, parameter).Compile();
+ 
+var discountedAlbums = albums.Where(discountFilterExpression);
+    </code>
+</pre>
+
+                        <p class="fragment" data-code-focus="2"></p>
+                        <p class="fragment" data-code-focus="4-6"></p>
+                        <p class="fragment" data-code-focus="8"></p>
+                </section>
+
+                <section data-background="images/StockSnap_NN2EIQQYEA.jpg">
+                    <h3 class="overlay-style">With C# Scripting</h2>
+                        <pre>
+    <code class="cs">
+var discountFilter = "album => album.Quantity > 10";
+var options = ScriptOptions.Default.AddReferences(typeof(Album).Assembly);
+ 
+var discountFilterExpression = 
+    await CSharpScript.EvaluateAsync&lt;Func&lt;Album, bool&gt;&gt;(discountFilter, options);
+ 
+var discountedAlbums = albums.Where(discountFilterExpression);
+    </code>
+</pre>
+
+                        <p class="fragment" data-code-focus="2"></p>
+                        <p class="fragment" data-code-focus="3"></p>
+                        <p class="fragment" data-code-focus="5-6"></p>
+
+                </section>
+
+                <!-- <section data-background="images/StockSnap_NN2EIQQYEA.jpg">
+                    <h3 class="overlay-style">Emit code with IL</h2>
+                        <pre class="very-small">
+    <code class="cs">
+var name = new AssemblyName("DynamicAssembly");
+var assemblyBuilder = AssemblyBuilder.DefineDynamicAssembly(name, AssemblyBuilderAccess.Run);
+var moduleBuilder = assemblyBuilder.DefineDynamicModule("DynamicModule");
+var typeBuilder = moduleBuilder.DefineType("DynamicClass", TypeAttributes.Public);
+var methodBuilder = typeBuilder.DefineMethod("DynamicMethod", MethodAttributes.Public, typeof(int), new[] { typeof(int), typeof(int) });
+
+var ilGenerator = methodBuilder.GetILGenerator();
+
+ilGenerator.DeclareLocal(typeof(int));
+ilGenerator.Emit(OpCodes.Ldarg_1);
+ilGenerator.Emit(OpCodes.Ldarg_2);
+ilGenerator.Emit(OpCodes.Sub_Ovf);
+ilGenerator.Emit(OpCodes.Stloc_0);
+ilGenerator.Emit(OpCodes.Ldloc_0);
+ilGenerator.Emit(OpCodes.Ret);
+
+var createdType = typeBuilder.CreateTypeInfo().AsType();
+
+var instance = Activator.CreateInstance(createdType);
+var methodInfo = createdType.GetMethod("DynamicMethod", BindingFlags.Instance | BindingFlags.Public);
+
+var result = methodInfo.Invoke(instance, new object[] { 5, 3 });
+    </code>
+</pre>
+
+                        <p class="fragment" data-code-focus="9-17"></p>
+
+                </section>
+
+                <section data-background="images/StockSnap_NN2EIQQYEA.jpg">
+                    <h3 class="overlay-style">Emit code with Roslyn compilation</h2>
+                        <pre class="very-small">
+    <code class="cs">
+var compilation = CSharpCompilation.Create(
+    "DynamicAssembly", new[] { CSharpSyntaxTree.ParseText(@"
+     public class DynamicClass {
+        public int DynamicMethod(int a, int b) {
+            return a-b;
+        }
+     }") }, new[] { MetadataReference.CreateFromFile(typeof(object).GetTypeInfo().Assembly.Location) },
+    new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary));
+
+using (var ms = new MemoryStream())
+{
+    var cr = compilation.Emit(ms);
+    ms.Seek(0, SeekOrigin.Begin);
+    var assembly = AssemblyLoadContext.Default.LoadFromStream(ms);
+
+    var createdType = assembly.ExportedTypes.FirstOrDefault(x => x.Name == "DynamicClass");
+    var methodInfo = createdType.GetMethod("DynamicMethod", BindingFlags.Instance | BindingFlags.Public);
+    var instance = Activator.CreateInstance(createdType);
+
+    var result = methodInfo.Invoke(instance, new object[] { 5, 3 });
+}
+    </code>
+</pre>
+
+                        <p class="fragment" data-code-focus="4-7"></p>
+
+                </section>
+
+                <section data-background="images/StockSnap_NN2EIQQYEA.jpg">
+                    <h3 class="overlay-style">Emit code with Roslyn scripting</h2>
+                        <pre class="small">
+    <code class="cs">
+var result = await CSharpScript.EvaluateAsync&lt;int&gt;("5 - 3");
+
+// or
+var script = CSharpScript.Create&lt;int&gt;("5 - 3");
+var handle = script.CreateDelegate();
+await handle();
+
+// or
+public class ScriptHost
+{
+    public int Number1 { get; set; }
+    public int Number2 { get; set; }
+}
+
+var host = new ScriptHost { Number1 = 5, Number2 = 3 };
+var result = await CSharpScript.EvaluateAsync&lt;int&gt;("Number1 - Number2", globals: host, globalsType: typeof(ScriptHost));
+    </code>
+</pre>
+
+                        <p class="fragment" data-code-focus="2"></p>
+                        <p class="fragment" data-code-focus="5-7"></p>
+                        <p class="fragment" data-code-focus="10-17"></p>
+
+                </section> -->
+
+                <section data-background="images/StockSnap_NN2EIQQYEA.jpg" data-background-transition="default">
+                    <img src="images/azure-functions2.png" />
+                </section>
+
+                <section data-background="images/StockSnap_NN2EIQQYEA.jpg" data-background-transition="default">
+                    <img src="images/workbooks.png" />
+                </section>
+
+                <section data-background="images/StockSnap_NN2EIQQYEA.jpg" data-background-transition="default">
+                    <img src="images/trydotnet.png" />
+                </section>
+
+            </section>
+
+            <!-- <section>
+
+                <section data-background="images/StockSnap_VZ86EDZ771.jpg">
+
+                    <h1>.NET Core</h1>
+
+                </section>
+
+                <section data-background="images/StockSnap_VZ86EDZ771.jpg">
+
+                    <h3 class="overlay-style">.NET Core scripting in 3 quick steps</h3>
+                    <pre>
+    <code class="sh">
+~$ dotnet tool install dotnet-script -g
+Tool 'dotnet-script' (version '0.24.0') was successfully installed.
+
+~$ dotnet script init
+Creating VS Code launch configuration file
+...'/Users/filip/Documents/dev/temp/.vscode/launch.json' [Created]
+Creating OmniSharp configuration file
+...'/Users/filip/Documents/dev/temp/omnisharp.json' [Created]
+Creating default script file 'main.csx'
+Creating 'main.csx'
+...'/Users/filip/Documents/dev/temp/main.csx' [Created]
+
+~$ dotnet script main.csx
+Hello world!
+    </code>
+</pre>
+
+<p class="fragment" data-code-focus="2"></p>
+<p class="fragment" data-code-focus="5"></p>
+<p class="fragment" data-code-focus="14"></p>
+
+                </section>
+
+                <section data-background="images/StockSnap_VZ86EDZ771.jpg">
+                    <pre>
+    <code class="json">
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": ".NET Script Debug",
+            "type": "coreclr",
+            "request": "launch",
+            "program": "dotnet",
+            "args": [
+              "exec", 
+              "/Users/filip/.dotnet/tools/.store/dotnet-script/0.24.0/dotnet-script/0.24.0/tools/netcoreapp2.1/any/dotnet-script.dll", 
+              "${file}"
+            ],
+            "cwd": "${workspaceRoot}",
+            "stopAtEntry": true
+        }
+    ]
+}
+    </code>
+</pre>
+                </section>
+
+            </section> -->
+
+            <!-- <section>
+
+                <section data-background="images/StockSnap_XXTEK7APLA.jpg">
+
+                    <h1>Editor Features</h1>
+
+                </section>
+
+                <section data-background="images/ws.png" data-state="bg-auto-height" data-background-position="0 0">
+                </section>
+
+
+                <section data-background="images/StockSnap_XXTEK7APLA.jpg">
+
+                    <h3 class="overlay-style">CSX as a valid launch target</h3>
+
+                    <img src="images/editor3.png" />
+
+                </section>
+
+                <section data-background="images/StockSnap_XXTEK7APLA.jpg">
+
+                    <h3 class="overlay-style">Realtime #r & #load</h3>
+
+                    <img src="images/editor1.png" />
+
+                </section>
+
+                <section data-background="images/StockSnap_XXTEK7APLA.jpg">
+
+                    <h3 class="overlay-style">#r & #load from NuGet</h3>
+
+                    <img src="images/editor1-2.png" />
+
+                </section>
+
+                <section data-background="images/StockSnap_XXTEK7APLA.jpg">
+
+                    <h3 class="overlay-style">Go to Metadata</h3>
+
+                    <img src="images/editor2.png" />
+
+                </section>
+
+                <section data-background="images/StockSnap_XXTEK7APLA.jpg">
+
+                    <h2 class="overlay-style">Refactoring support</h2>
+
+                    <img src="images/editor4.png" />
+
+                </section>
+
+                <section data-background="images/StockSnap_XXTEK7APLA.jpg">
+
+                    <h2 class="overlay-style">Language features at "regular" C# level</h2>
+
+                    <img src="images/lang-features.png" />
+
+                </section>
+
+            </section> -->
+
+            <!-- <section>
+
+                <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
+
+                    <h1>Symbols</h1>
+
+                </section>
+
+                <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
+                    <img src="images/csi-debug.png" />
+                </section>
+
+                <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
+
+                    <h2 class="overlay-style">Script with exception</h2>
+
+                    <pre>
+    <code class="cs">
+var text = "hello";
+Console.WriteLine(text + " world");
+throw new Exception("die!!!");
+    </code>
+</pre>
+
+<p class="fragment" data-code-focus="4"></p>
+                </section>
+
+                <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
+                    <h2 class="overlay-style">Without symbols</h2>
+                    <img src="images/error1.png" />
+                </section>
+
+                <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
+                    <h2 class="overlay-style">With symbols</h2>
+                    <img src="images/error3.png" style="min-height: auto;" />
+                </section>
+
+
+
+            </section> -->
+
+             <section>
+                <section data-background="images/aaron-barnaby-135630.jpg">
+
+                    <h1>How does it all work?</h1>
+
+                </section>
+
+                <section data-background="images/aaron-barnaby-135630.jpg">
+
+                    <h2 class="overlay-style">Consider a simple script...</h2>
+
+                    <pre>
+    <code class="cs">
+class Foo {}
+
+void SayHi(string msg)
+{
+    Console.WriteLine(msg);
+}
+
+var message = "Hello";
+var foo = new Foo();
+
+SayHi(message + " " + Text);
+    </code>
+</pre>
+
+                    <p class="fragment" data-code-focus="2"></p>
+                    <p class="fragment" data-code-focus="4-7"></p>
+                    <p class="fragment" data-code-focus="9-10"></p>
+                    <p class="fragment" data-code-focus="12"></p>
+
+                </section>
+
+                <section data-background="images/aaron-barnaby-135630.jpg">
+
+                    <pre class="very-small">
+    <code>
+public sealed class Submission#0 {
+    public string message;
+    public string Submission#0.Foo foo;
+    public void SayHi(string msg) {
+        Console.WriteLine(msg);
+    }
+
+    public class Foo {};
+
+    public MyHost &lt;host-object&gt;;
+
+    // shortened or brevity
+    public sealed class &lt;&lt;Initialize&gt;&gt;d__0 : IAsyncStateMachine {
+        public Submission#0 &lt;&gt;4__this;
+
+        void.IAsyncStateMachine MoveNext() {
+            this.&lt;&gt;4__this.message = "hello!";
+            this.&lt;&gt;4__this.foo = new Submission#0.Foo();
+
+            this.&lt;&gt;4__this.SayHi(this.&lt;&gt;4__this.message + " " + this.&lt;&gt;4__this.&lt;host-object&gt;.Text);
+        }
+    }
+
+    public Submission#0(object[] submissionArray) {
+        submissionArray[1] = this;
+        this.&lt;host-object&gt; = (MyHost)submissionArray[0];
+    }
+
+    public static Task&lt;object&gt; &lt;Factory>(object[] submissionArray) {
+        return new Submission#0(submissionArray).&lt;Initialize&gt;();
+    }
+}
+    </code>
+</pre>
+
+                    <div class="fragment" data-code-focus="2"></div>
+                    <div class="fragment" data-code-focus="3-4"></div>
+                    <div class="fragment" data-code-focus="5-7"></div>
+                    <div class="fragment" data-code-focus="9"></div>
+                    <div class="fragment" data-code-focus="11"></div>
+                    <div class="fragment" data-code-focus="13-23"></div>
+                    <div class="fragment" data-code-focus="30-32"></div>
+                    <div class="fragment" data-code-focus="27"></div>
+
+                </section>
+
+                <section data-background="images/aaron-barnaby-135630.jpg">
+                    <img src="images/csi-debug.png" />
+                </section>
+
+                <section data-background="images/aaron-barnaby-135630.jpg">
+
+                    <h2 class="overlay-style">Script with exception</h2>
+
+                    <pre>
+    <code class="cs">
+var text = "hello";
+Console.WriteLine(text + " world");
+throw new Exception("die!!!");
+    </code>
+</pre>
+
+<p class="fragment" data-code-focus="4"></p>
+                </section>
+
+                <section data-background="images/aaron-barnaby-135630.jpg">
+                    <h2 class="overlay-style">Without symbols</h2>
+                    <img src="images/error1.png" />
+                </section>
+
+                <section data-background="images/aaron-barnaby-135630.jpg">
+                    <h2 class="overlay-style">With symbols</h2>
+                    <img src="images/error3.png" style="min-height: auto;" />
+                </section>
+
+            </section>
+
+            <section data-background="images/all.jpg" author="Filip W" description="" theme="simple" title="C# Scripting in the .NET Core world"
+            transition="default">
+        </section>
+
+        <section data-background="images/aaron-barnaby-135630.jpg">
+            <div class="overlay-style" style="padding:3% !important;">
+                <h2>Thank you</h2>
+            </div>
+            <div style="display: table">
+                    <div class="overlay-style" style="padding-top: 0 !important; padding-right: 0 !important; width:25%; display: table-cell;">
+                            <div style="padding: 3%">
+                                <p>
+                                    <img class="small" src="images/thankyou.gif" style="min-height: auto; margin:0" />
+                                </p>
+                            </div>
+                        </div>
+                <div class="overlay-style" style="padding-top: 0 !important; padding-left: 0 !important; width:75%; display: table-cell;">
+                    <div style="padding: 3%;">
+                        <ul>
+                            <li style="margin-bottom: 0.8em">📝 <a href="https://filipw.github.io/update-prague-2-2018">filipw.github.io/update-prague-2-2018</a>
+                            </li>
+
+                            <li style="margin-bottom: 0.8em">💻 <a href="https://github.com/filipw/update-conf-2018-demos">github.com/filipw/update-conf-2018-demos</a>
+                            </li>
+
+                            <li style="margin-bottom: 0.8em">🚀 See you next year!
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div style="clear:both"></div>
+            </div>
+        </section>
+
+        </div>
+    </div>
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+    <script>
+        // Full list of configuration options available here:
+        // https://github.com/hakimel/reveal.js#configuration
+
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            history: true,
+            center: true,
+            keyboard: {
+                39: 'next', // Right Arrow
+                37: 'prev'  // Left Arrow
+            },
+            transition: 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+            // Parallax scrolling
+            // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+            // parallaxBackgroundSize: '2100px 900px',
+
+            // Optional libraries used to extend on reveal.js
+            dependencies: [
+                { src: 'lib/js/classList.js', condition: function () { return !document.body.classList; } },
+                { src: 'plugin/markdown/marked.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+                { src: 'plugin/markdown/markdown.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+                { src: 'plugin/highlight.js/highlight.pack.js', async: true, callback: function () { /*hljs.initHighlightingOnLoad();*/ } },
+                { src: 'plugin/zoom-js/zoom.js', async: true, condition: function () { return !!document.body.classList; } },
+                { src: 'plugin/notes/notes.js', async: true, condition: function () { return !!document.body.classList; } },
+                { src: 'plugin/alt-arrows/alt-arrows.js' },
+                {
+                    src: 'plugin/reveal-code-focus.js',
+                    async: true,
+                    callback: function () {
+                        RevealCodeFocus();
+                    }
+                }
+            ]
+        });
+
+        // Reveal.configure({
+        //     keyboard: {
+        //         39: 'next', // Right Arrow
+        //         37: 'prev'  // Left Arrow
+        //     }
+        // });
+
+    </script>
+</body>
+
+</html>
