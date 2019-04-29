@@ -80,6 +80,10 @@
 
             </section>
 
+            <section data-background-color="rgb(236, 236, 236)">
+                <img src="images/omnisharp.png" style="min-height: auto" />
+            </section>
+
             <section data-background-color="#fff">
                 <img src="images/sonova.png" style="min-height: auto" />
             </section>
@@ -337,6 +341,77 @@
                     <p class="overlay-style">
                         Lowering allows new C# features to be implemented (mostly) <span class="highlight">without</span> changes in CLR/CoreCLR.
                     </p>
+                </section>
+
+                <section data-background="images/photo-1511699725551-7b894c2ffe42.jpeg">
+                    <div class="overlay-style" style="padding:3% !important;">
+                        <h3>C# using block</h3>
+                    </div>
+                    <pre>
+    <code class="cs">
+using(new C()) 
+{
+    // do stuff    
+}
+    </code>
+</pre>
+                </section>
+
+                <section data-background="images/photo-1511699725551-7b894c2ffe42.jpeg">
+                    <div class="overlay-style" style="padding:3% !important;">
+                        <h3>Emitted IL</h3>
+                    </div>
+                    <pre class="small">
+    <code class="il">
+IL_0000: nop
+IL_0001: newobj instance void C::.ctor()
+IL_0006: stloc.0
+.try
+{
+    IL_0007: nop
+    IL_0008: nop
+    IL_0009: leave.s IL_0016
+} // end .try
+finally
+{
+    // sequence point: hidden
+    IL_000b: ldloc.0
+    IL_000c: brfalse.s IL_0015
+    IL_000e: ldloc.0
+    IL_000f: callvirt instance void [mscorlib]System.IDisposable::Dispose()
+    IL_0014: nop
+    // sequence point: hidden
+    IL_0015: endfinally
+} // end handler
+    </code>
+</pre>
+                    <p class="fragment" data-code-focus="3"></p>
+                    <p class="fragment" data-code-focus="5-10"></p>
+                    <p class="fragment" data-code-focus="11-21"></p>
+                </section>
+
+                <section data-background="images/photo-1511699725551-7b894c2ffe42.jpeg">
+                    <div class="overlay-style" style="padding:3% !important;">
+                        <h3>Emitted IL as C#</h3>
+                    </div>
+                    <pre>
+    <code class="cs">
+C c = new C();
+try
+{
+}
+finally
+{
+    if (c != null)
+    {
+        ((IDisposable)c).Dispose();
+    }
+}
+    </code>
+</pre>
+                    <p class="fragment" data-code-focus="2"></p>
+                    <p class="fragment" data-code-focus="3-5"></p>
+                    <p class="fragment" data-code-focus="6-12"></p>
                 </section>
 
                 <section data-background="images/photo-1511699725551-7b894c2ffe42.jpeg">
