@@ -802,6 +802,42 @@ throw new Exception("die!!!");
 
                 <section data-background="images/aaron-barnaby-135630.jpg">
 
+                    <h3 class="overlay-style">Source code kinds in Roslyn</h3>
+                    <pre>
+    <code class="cs">
+public enum SourceCodeKind 
+{
+    Regular,
+    Script
+}
+        </code>
+</pre>
+                </section>
+                <section data-background="images/aaron-barnaby-135630.jpg">
+
+                    <h3 class="overlay-style">Creating a script compilation</h3>
+                    <pre>
+    <code class="cs">
+public static CSharpCompilation Create(string assemblyName, 
+        IEnumerable&lt;SyntaxTree&gt; syntaxTrees = null, 
+        IEnumerable&lt;MetadataReference&gt; references = null, 
+        CSharpCompilationOptions options = null);
+
+public static CSharpCompilation CreateScriptCompilation(string assemblyName,
+        SyntaxTree syntaxTree = null, 
+        IEnumerable&lt;MetadataReference&gt; references = null, 
+        CSharpCompilationOptions options = null, 
+        CSharpCompilation previousScriptCompilation = null, 
+        Type returnType = null, 
+        Type globalsType = null);
+    </code>
+</pre>
+                    <p class="fragment" data-code-focus="11-13"></p>
+
+                </section>
+
+                <section data-background="images/aaron-barnaby-135630.jpg">
+
                     <h2 class="overlay-style">Consider a simple script...</h2>
 
                     <pre>
@@ -904,6 +940,28 @@ throw new Exception("die!!!");
                 <section data-background="images/aaron-barnaby-135630.jpg">
                     <h2 class="overlay-style">With symbols</h2>
                     <img src="images/error3.png" style="min-height: auto;" />
+                </section>
+
+                <section data-background="images/aaron-barnaby-135630.jpg">
+                    <h3 class="overlay-style">Building a REPL with Roslyn</h2>
+
+                        <pre>
+    <code class="cs">
+ScriptState&lt;object&gt; scriptState = null;
+while (true)
+{
+    Console.Write("> ");
+    var input = Console.ReadLine();
+    scriptState = scriptState == null ?
+        await CSharpScript.RunAsync(input) :
+        await scriptState.ContinueWithAsync(input);
+}
+    </code>
+</pre>
+
+                        <p class="fragment" data-code-focus="8"></p>
+                        <p class="fragment" data-code-focus="9"></p>
+
                 </section>
 
             </section>
