@@ -299,6 +299,10 @@ table.medium td.center {
   text-align: center !important;
 }
 
+table.align-left td {
+  text-align: left !important;
+}
+
 table.large th {
   text-align: center !important;
 }
