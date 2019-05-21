@@ -297,6 +297,98 @@ interface IBar
                     </table>
                 </section>
 
+                <section data-background="images/photo-1511699725551-7b894c2ffe42.jpeg">
+                    <div class="overlay-style">
+                        <blockquote>A common technique (...) is to have the compiler “lower” from high-level language features to low-level language features in the same language.
+                        </blockquote>
+                        <p>
+                            <footer>- <em>Eric Lippert</em></footer>
+                        </p>
+
+                    </div>
+                </section>
+
+                <section data-background="images/photo-1511699725551-7b894c2ffe42.jpeg">
+                    <div class="overlay-style" style="padding:3% !important;">
+                        <h3>C# using block</h3>
+                    </div>
+                    <pre>
+    <code class="cs">
+using(new C()) 
+{
+    // do stuff    
+}
+    </code>
+</pre>
+                </section>
+
+                <section data-background="images/photo-1511699725551-7b894c2ffe42.jpeg">
+                    <div class="overlay-style" style="padding:3% !important;">
+                        <h3>Emitted IL</h3>
+                    </div>
+                    <pre class="small">
+    <code class="il">
+IL_0000: nop
+IL_0001: newobj instance void C::.ctor()
+IL_0006: stloc.0
+.try
+{
+    IL_0007: nop
+    IL_0008: nop
+    IL_0009: leave.s IL_0016
+} // end .try
+finally
+{
+    // sequence point: hidden
+    IL_000b: ldloc.0
+    IL_000c: brfalse.s IL_0015
+    IL_000e: ldloc.0
+    IL_000f: callvirt instance void [mscorlib]System.IDisposable::Dispose()
+    IL_0014: nop
+    // sequence point: hidden
+    IL_0015: endfinally
+} // end handler
+    </code>
+</pre>
+                    <p class="fragment" data-code-focus="3"></p>
+                    <p class="fragment" data-code-focus="5-10"></p>
+                    <p class="fragment" data-code-focus="11-21"></p>
+                </section>
+
+                <section data-background="images/photo-1511699725551-7b894c2ffe42.jpeg">
+                    <div class="overlay-style">
+                        <blockquote>This method terminates a process <span class="highlight">without</span> running any active try/finally blocks or finalizers.
+                        <p>
+                            <footer>- <em>Environment.FailFast(...)</em></footer>
+                        </p>
+
+                    </div>
+                </section>
+
+                <section data-background="images/photo-1511699725551-7b894c2ffe42.jpeg">
+                    <div class="overlay-style" style="padding:3% !important;">
+                        <h3>Emitted IL as C#</h3>
+                    </div>
+                    <pre>
+    <code class="cs">
+C c = new C();
+try
+{
+}
+finally
+{
+    if (c != null)
+    {
+        ((IDisposable)c).Dispose();
+    }
+}
+    </code>
+</pre>
+                    <p class="fragment" data-code-focus="2"></p>
+                    <p class="fragment" data-code-focus="3-5"></p>
+                    <p class="fragment" data-code-focus="6-12"></p>
+                </section>
+
                 <section data-background="images/pawel-czerwinski-773353-unsplash.jpg">
                     <div class="overlay-style" style="padding:3% !important;">
                     <h3>So far we have managed to</h3>
@@ -385,148 +477,6 @@ interface IBar
                 </section>
             </section>
 
-            <!-- Trust -->
-            <section>
-                <section data-background="images/sarah-white-422370-unsplash.jpg">
-                    <h1>Lowering in the Compiler</h1>
-                </section>
-
-                <section data-background="images/photo-1511699725551-7b894c2ffe42.jpeg">
-                    <div class="overlay-style">
-                        <blockquote>A common technique (...) is to have the compiler “lower” from high-level language features to low-level language features in the same language.
-                        </blockquote>
-                        <p>
-                            <footer>- <em>Eric Lippert</em></footer>
-                        </p>
-
-                    </div>
-                </section>
-
-                <section data-background="images/photo-1511699725551-7b894c2ffe42.jpeg">
-                    <p class="overlay-style">
-                        Lowering allows new C# features to be implemented (mostly) <span class="highlight">without</span> changes in CLR/CoreCLR.
-                    </p>
-                </section>
-
-                <section data-background="images/photo-1511699725551-7b894c2ffe42.jpeg">
-                    <div class="overlay-style" style="padding:3% !important;">
-                        <h3>C# using block</h3>
-                    </div>
-                    <pre>
-    <code class="cs">
-using(new C()) 
-{
-    // do stuff    
-}
-    </code>
-</pre>
-                </section>
-
-                <section data-background="images/photo-1511699725551-7b894c2ffe42.jpeg">
-                    <div class="overlay-style" style="padding:3% !important;">
-                        <h3>Emitted IL</h3>
-                    </div>
-                    <pre class="small">
-    <code class="il">
-IL_0000: nop
-IL_0001: newobj instance void C::.ctor()
-IL_0006: stloc.0
-.try
-{
-    IL_0007: nop
-    IL_0008: nop
-    IL_0009: leave.s IL_0016
-} // end .try
-finally
-{
-    // sequence point: hidden
-    IL_000b: ldloc.0
-    IL_000c: brfalse.s IL_0015
-    IL_000e: ldloc.0
-    IL_000f: callvirt instance void [mscorlib]System.IDisposable::Dispose()
-    IL_0014: nop
-    // sequence point: hidden
-    IL_0015: endfinally
-} // end handler
-    </code>
-</pre>
-                    <p class="fragment" data-code-focus="3"></p>
-                    <p class="fragment" data-code-focus="5-10"></p>
-                    <p class="fragment" data-code-focus="11-21"></p>
-                </section>
-
-                <section data-background="images/photo-1511699725551-7b894c2ffe42.jpeg">
-                    <div class="overlay-style" style="padding:3% !important;">
-                        <h3>Emitted IL as C#</h3>
-                    </div>
-                    <pre>
-    <code class="cs">
-C c = new C();
-try
-{
-}
-finally
-{
-    if (c != null)
-    {
-        ((IDisposable)c).Dispose();
-    }
-}
-    </code>
-</pre>
-                    <p class="fragment" data-code-focus="2"></p>
-                    <p class="fragment" data-code-focus="3-5"></p>
-                    <p class="fragment" data-code-focus="6-12"></p>
-                </section>
-
-                <section data-background="images/photo-1511699725551-7b894c2ffe42.jpeg">
-                    <div class="overlay-style" style="padding:3% !important;">
-                        <h3>The tuple case</h3>
-                    </div>
-                    <pre>
-    <code class="cs">
-var gift1 = ("chocolate", 5);
-var gift2 = ("socks", 2);
-
-Console.WriteLine(gift1 == gift2);
-    </code>
-</pre>
-                    <p class="fragment" data-code-focus="5"></p>
-                </section>
-
-                <section data-background="images/photo-1511699725551-7b894c2ffe42.jpeg">
-                    <div class="overlay-style" style="padding:3% !important;">
-                        <h3>Lowered to...</h3>
-                    </div>
-                    <pre>
-    <code class="cs">
-Console.WriteLine(
-    valueTuple.Item1 == valueTuple2.Item1 && 
-    valueTuple.Item2 == valueTuple2.Item2
-);
-    </code>
-</pre>
-                    <p class="fragment" data-code-focus="3-4"></p>
-                </section>
-
-                <section data-background="images/photo-1511699725551-7b894c2ffe42.jpeg">
-                    <div class="overlay-style">
-                        <blockquote>If someone wrote their own ValueTuple types (...) we would handle this case with tuple comparison instead of relying on the user-defined comparison.
-                        </blockquote>
-                        <p>
-                            <footer>- <em>C# 7.3 tuple equality speclet</em></footer>
-                        </p>
-
-                    </div>
-                </section>
-                
-                <section data-background="images/tuple.png" data-state="bg-auto-width">
-                </section>
-
-            </section>
-
-            </section>
-
             <section data-background="images/all.jpg">
             </section>
 
@@ -545,10 +495,10 @@ Console.WriteLine(
                     <div class="overlay-style" style="padding-top: 0 !important; padding-left: 0 !important; width:75%; display: table-cell;">
                         <div style="padding: 3%;">
                             <ul>
-                                <li style="margin-bottom: 0.8em">📝 <a href="https://filipw.github.io/dotnetcologne-1-2019">filipw.github.io/dotnetcologne-1-2019</a>
+                                <li style="margin-bottom: 0.8em">📝 <a href="https://filipw.github.io/dotnetday-zurich-2019">filipw.github.io/dotnetday-zurich-2019</a>
                                 </li>
     
-                                <li style="margin-bottom: 0.8em">💻 <a href="https://github.com/filipw/2019-dotnetcologne-demos">github.com/filipw/2019-dotnetcologne-demos</a>
+                                <li style="margin-bottom: 0.8em">💻 <a href="https://github.com/filipw/2019-switzerland-netday-demos">github.com/filipw/2019-switzerland-netday-demos</a>
                                 </li>
     
                                 <li style="margin-bottom: 0.8em">🚀 See you next year!
