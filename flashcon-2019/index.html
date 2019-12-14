@@ -1,0 +1,260 @@
+﻿<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Abusing the C# Compiler for fun and no profit</title>
+    <meta name="description" content="">
+    <meta name="author" content="Filip W">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <script src="//code.jquery.com/jquery-1.8.0.js"></script>
+    <script src="//code.jquery.com/ui/1.8.23/jquery-ui.js"></script>
+    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/css/bootstrap-combined.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/default.min.css">
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/simple.css" id="theme">
+    <link rel="stylesheet" href="css/custom.css" />
+    <link rel="stylesheet" href="css/monokai_sublime.css" />
+    <script src="fsharp.formatting/styles/tips.js" type="text/javascript"></script>
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+    <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+
+    <script>
+        if (window.location.search.match(/print-pdf/gi)) {
+            var link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = 'css/print/pdf.css';
+            document.getElementsByTagName('head')[0].appendChild(link);
+        }
+    </script>
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+    <style type="text/css">
+    </style>
+</head>
+
+<body>
+    <div class="reveal">
+        <header style="position: absolute;top: 50px; left: 100px; z-index:500; font-size:100px;background-color: rgba(0,0,0,0.5)"></header>
+        <!-- Any section element inside of this container is displayed as a slide -->
+        <div class="slides">
+
+            <section data-background="images/joshua-coleman-fXls-tVemno-unsplash.jpg">
+
+                <h1>
+                    Abusing the C# Compiler
+                    <br />
+                    <small class="hide-fragments"> 
+                        <span class="fragment fade-out" data-fragment-index="0">for fun and no profit</span>
+                        <span class="fragment fade-in" data-fragment-index="0">the squeakuel</span>
+
+                    </small>
+                </h1>
+
+            </section>
+
+            <section  data-background="images/__5951d5644dff3.jpg" data-state="bg-auto-width">
+                <!-- <img src="images/__5951d5644dff3.jpg" style="min-height: auto" /> -->
+            </section>
+
+            <section data-background="images/ibf.net-144.jpg">
+
+                <div class="overlay-style">
+                    <h2>Filip W</h2>
+                    <p>a random guy from the internet</p>
+
+                    <p>
+                        <small>
+                            <a href="https://strathweb.com" class="roll">
+                                <span>strathweb.com</span>
+                            </a> •
+                            <a href="https://twitter.com/filip_woj" class="roll">
+                                <span data-title="@filip_woj">@filip_woj</span>
+                            </a> •
+                            <a href="https://github.com/filipw" class="roll">
+                                <span data-title="github.com/filipw">github.com/filipw</span>
+                            </a>
+                        </small>
+                    </p>
+                    <img class="normal" src="images/mvp.png" />
+                </div>
+
+            </section>
+
+            <section data-background-color="rgb(236, 236, 236)">
+                <img src="images/omnisharp.png" style="min-height: auto" />
+            </section>
+
+            <section data-background-color="#fff">
+                <img src="images/sonova.png" style="min-height: auto" />
+            </section>
+
+            <section>
+
+                    <section data-background="images/bernard-hermant-bSpqe48INMg-unsplash.jpg">
+
+                        <h1>C# may not be what it seems</h1>
+    
+                    </section>
+
+                <section data-background="images/marcus-lenk-kCa6cRVtgWI-unsplash.jpg">
+                    <div class="overlay-style">
+                        <blockquote>Instances of classes are created using the <span class="highlight">new</span> operator, which allocates memory for a new instance, invokes a constructor to initialize the instance, and returns a reference to the instance.
+                        </blockquote>
+                        <p>
+                            <footer>- <em>C# Language Spec, section 1.6</em></footer>
+                        </p>
+
+                    </div>
+                </section>
+
+                <section data-background="images/designecologist-0xYkkvLu9So-unsplash.jpg">
+                    <div class="overlay-style">
+                        <blockquote>If M is an instance function member declared in a reference-type (...) if the value of E is null, a <span class="highlight">System.NullReferenceException</span> is thrown and no further steps are executed.
+                        </blockquote>
+                        <p>
+                            <footer>- <em>C# Language Spec, section 7.5.5</em></footer>
+                        </p>
+
+                    </div>
+                </section>
+
+                <section data-background="images/andrew-wulf-59yg_LpcvzQ-unsplash.jpg">
+                    <div class="overlay-style">
+                        <blockquote>the try...finally statement is used to specify finalization code that is <span class="highlight">always executed</span>, whether an exception occurred or not.
+                        </blockquote>
+                        <p>
+                            <footer>- <em>C# Language Spec, section 1.5</em></footer>
+                        </p>
+
+                    </div>
+                </section>
+
+                <section data-background="images/jordan-lomibao-j3dxI7CNYL0-unsplash.jpg">
+                    <div class="overlay-style">
+                        <p>
+                            Can you overlay different members in the same memory location?
+                            <br />
+                            <span class="fragment">
+                                <span class="highlight">yes</span> - without even needing unsafe code
+                            </span>
+                        </p>
+
+                    </div>
+                </section>
+
+                <section data-background="images/designecologist-NLIjl3lYRYs-unsplash.jpg">
+                    <div class="overlay-style">
+                        <p>
+                            Can you cast anything to anything?
+                            <br />
+                            <span class="fragment">
+                                <span class="highlight">yes</span> - without even needing unsafe code
+                            </span>
+                        </p>
+
+                    </div>
+                </section>
+
+                <section data-background-color="#fff">
+                    <img src="images/csharp8.png" style="min-height: auto" />
+                </section>
+
+                <section data-background-color="#fff">
+                        <img src="images/strings.png" style="min-height: auto" />
+                    </section>
+            </section>
+
+            <section data-background="images/all.jpg">
+            </section>
+
+            <section data-background="images/pineapple-supply-co-qWlkCwBnwOE-unsplash.jpg">
+                <div class="overlay-style" style="padding:3% !important;">
+                    <h2>Thank you</h2>
+                </div>
+                <div style="display: table">
+                        <div class="overlay-style" style="padding-top: 0 !important; padding-right: 0 !important; width:25%; display: table-cell;">
+                                <div style="padding: 3%">
+                                    <p>
+                                        <img class="small" src="images/thankyou.gif" style="min-height: auto; margin:0" />
+                                    </p>
+                                </div>
+                            </div>
+                    <div class="overlay-style" style="padding-top: 0 !important; padding-left: 0 !important; width:75%; display: table-cell;">
+                        <div style="padding: 3%;">
+                            <ul>
+                                <li style="margin-bottom: 0.8em">📝 <a href="https://filipw.github.io/flashcon-2019">filipw.github.io/flashcon-2019</a>
+                                </li>
+    
+                                <li style="margin-bottom: 0.8em">💻 <a href="https://github.com/filipw/2019-flashcon-demos">github.com/filipw/2019-flashcon-demos</a>
+                                </li>
+    
+                                <li style="margin-bottom: 0.8em">🚀 See you next year!
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div style="clear:both"></div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+    <script>
+        // Full list of configuration options available here:
+        // https://github.com/hakimel/reveal.js#configuration
+
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            history: true,
+            center: true,
+            keyboard: {
+                39: 'next', // Right Arrow
+                37: 'prev'  // Left Arrow
+            },
+            transition: 'slide', // default/cube/page/concave/zoom/linear/fade/none
+
+            // Parallax scrolling
+            // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+            // parallaxBackgroundSize: '2100px 900px',
+
+            // Optional libraries used to extend on reveal.js
+            dependencies: [
+                { src: 'lib/js/classList.js', condition: function () { return !document.body.classList; } },
+                { src: 'plugin/markdown/marked.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+                { src: 'plugin/markdown/markdown.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+                { src: 'plugin/highlight.js/highlight.pack.js', async: true, callback: function () { /*hljs.initHighlightingOnLoad();*/ } },
+                { src: 'plugin/zoom-js/zoom.js', async: true, condition: function () { return !!document.body.classList; } },
+                { src: 'plugin/notes/notes.js', async: true, condition: function () { return !!document.body.classList; } },
+                { src: 'plugin/alt-arrows/alt-arrows.js' },
+                {
+                    src: 'plugin/reveal-code-focus.js',
+                    async: true,
+                    callback: function () {
+                        RevealCodeFocus();
+                    }
+                }
+            ]
+        });
+
+        // Reveal.configure({
+        //     keyboard: {
+        //         39: 'next', // Right Arrow
+        //         37: 'prev'  // Left Arrow
+        //     }
+        // });
+
+    </script>
+</body>
+
+</html>
