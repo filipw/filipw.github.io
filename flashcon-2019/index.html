@@ -12,7 +12,8 @@
     <script src="//code.jquery.com/jquery-1.8.0.js"></script>
     <script src="//code.jquery.com/ui/1.8.23/jquery-ui.js"></script>
     <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript"
+        src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/css/bootstrap-combined.min.css" rel="stylesheet">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/default.min.css">
     <link rel="stylesheet" href="css/reveal.css">
@@ -42,7 +43,9 @@
 
 <body>
     <div class="reveal">
-        <header style="position: absolute;top: 50px; left: 100px; z-index:500; font-size:100px;background-color: rgba(0,0,0,0.5)"></header>
+        <header
+            style="position: absolute;top: 50px; left: 100px; z-index:500; font-size:100px;background-color: rgba(0,0,0,0.5)">
+        </header>
         <!-- Any section element inside of this container is displayed as a slide -->
         <div class="slides">
 
@@ -51,7 +54,7 @@
                 <h1>
                     Abusing the C# Compiler
                     <br />
-                    <small class="hide-fragments"> 
+                    <small class="hide-fragments">
                         <span class="fragment fade-out" data-fragment-index="0">for fun and no profit</span>
                         <span class="fragment fade-in" data-fragment-index="0">the squeakuel</span>
 
@@ -60,7 +63,7 @@
 
             </section>
 
-            <section  data-background="images/__5951d5644dff3.jpg" data-state="bg-auto-width">
+            <section data-background="images/__5951d5644dff3.jpg" data-state="bg-auto-width">
                 <!-- <img src="images/__5951d5644dff3.jpg" style="min-height: auto" /> -->
             </section>
 
@@ -96,21 +99,62 @@
                 <img src="images/sonova.png" style="min-height: auto" />
             </section>
 
+            <section data-background-color="#fff">
+                <img src="images/400_crystallize_strip_02.jpg" />
+            </section>
+
             <section>
 
-                    <section data-background="images/bernard-hermant-bSpqe48INMg-unsplash.jpg">
+                <section data-background="images/bernard-hermant-bSpqe48INMg-unsplash.jpg">
 
-                        <h1>C# may not be what it seems...</h1>
-    
-                    </section>
+                    <h1>C# may not be what it seems...</h1>
 
-                    <section data-background="images/bernard-hermant-bSpqe48INMg-unsplash.jpg">
-                            <img src="images/3jj23s.png" style="min-height: auto" />
-                    </section>
+                </section>
+
+
+
+                <section data-background="images/bernard-hermant-bSpqe48INMg-unsplash.jpg">
+                    <div class="overlay-style" style="padding:3% !important;">
+                        <h3>Season 1 recap</h3>
+                    </div>
+                    <table class="overlay-style align-left">
+                        <tbody>
+                            <tr>
+                                <td>✅</td>
+                                <td>Created a program that cannot run on CLR</td>
+
+                            </tr>
+                            <tr>
+                                <td>✅</td>
+                                <td>Compiled a program that violates C# language spec</td>
+                            </tr>
+                            <tr>
+                                <td>✅</td>
+                                <td>Created an instance of an open generic</td>
+                            </tr>
+                            <tr>
+                                <td>✅</td>
+                                <td>Created a program that doesn't behave as expected</td>
+                            </tr>
+                            <tr>
+                                <td>✅</td>
+                                <td>Modified the compiler to ignore accessibility rules</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <section data-background="images/bernard-hermant-bSpqe48INMg-unsplash.jpg">
+                    <img src="images/1kjbx1.jpg" style="min-height: auto" />
+                </section>
+
+
 
                 <section data-background="images/marcus-lenk-kCa6cRVtgWI-unsplash.jpg">
                     <div class="overlay-style">
-                        <blockquote>Instances of classes are created using the <span class="highlight">new</span> operator, which allocates memory for a new instance, invokes a constructor to initialize the instance, and returns a reference to the instance.
+                        <blockquote>Instances of classes are created using the <span class="highlight">new</span>
+                            operator, which allocates memory for a new instance, invokes a constructor to initialize the
+                            instance, and returns a reference to the instance.
                         </blockquote>
                         <p>
                             <footer>- <em>C# Language Spec, section 1.6</em></footer>
@@ -121,7 +165,9 @@
 
                 <section data-background="images/designecologist-0xYkkvLu9So-unsplash.jpg">
                     <div class="overlay-style">
-                        <blockquote>If M is an instance function member declared in a reference-type (...) if the value of E is null, a <span class="highlight">System.NullReferenceException</span> is thrown and no further steps are executed.
+                        <blockquote>If M is an instance function member declared in a reference-type (...) if the value
+                            of E is null, a <span class="highlight">System.NullReferenceException</span> is thrown and
+                            no further steps are executed.
                         </blockquote>
                         <p>
                             <footer>- <em>C# Language Spec, section 7.5.5</em></footer>
@@ -132,7 +178,8 @@
 
                 <section data-background="images/andrew-wulf-59yg_LpcvzQ-unsplash.jpg">
                     <div class="overlay-style">
-                        <blockquote>the try...finally statement is used to specify finalization code that is <span class="highlight">always executed</span>, whether an exception occurred or not.
+                        <blockquote>the try...finally statement is used to specify finalization code that is <span
+                                class="highlight">always executed</span>, whether an exception occurred or not.
                         </blockquote>
                         <p>
                             <footer>- <em>C# Language Spec, section 1.5</em></footer>
@@ -167,16 +214,60 @@
                     </div>
                 </section>
 
+
+
+                <section data-background="images/bernard-hermant-bSpqe48INMg-unsplash.jpg">
+                    <img src="images/3jj23s.png" style="min-height: auto" />
+                </section>
+
                 <section data-background-color="#fff">
                     <img src="images/csharp8.png" style="min-height: auto" />
                 </section>
 
                 <section data-background-color="#fff">
-                        <img src="images/strings.png" style="min-height: auto" />
-                    </section>
+                    <img src="images/strings.png" style="min-height: auto" />
+                </section>
             </section>
 
-            <section data-background="images/all.jpg">
+            <section data-background="images/bernard-hermant-bSpqe48INMg-unsplash.jpg">
+                <div class="overlay-style" style="padding:3% !important;">
+                    <h3>Season 2 recap</h3>
+                </div>
+                <table class="overlay-style align-left">
+                    <tbody>
+                        <tr>
+                            <td>✅</td>
+                            <td>Created an object instance without using the constructor</td>
+                        </tr>
+                        <tr>
+                            <td>✅</td>
+                            <td>Called an instance method on a null object</td>
+                        </tr>
+                        <tr>
+                            <td>✅</td>
+                            <td>Bypassed finally clause</td>
+                        </tr>
+                        <tr>
+                            <td>✅</td>
+                            <td>Overlayed two objects in memory</td>
+                        </tr>
+                        <tr>
+                            <td>✅</td>
+                            <td>Cast an object to an unrelated object</td>
+                        </tr>
+                        <tr>
+                            <td>✅</td>
+                            <td>Manually activated an unsupported language feature</td>
+                        </tr>
+                        <tr>
+                            <td>✅</td>
+                            <td>Modified an immutable string</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section data-background="images/CMU_tb0WoAAkwh9.jpg" data-state="bg-auto-height">
             </section>
 
             <section data-background="images/pineapple-supply-co-qWlkCwBnwOE-unsplash.jpg">
@@ -184,22 +275,26 @@
                     <h2>Thank you</h2>
                 </div>
                 <div style="display: table">
-                        <div class="overlay-style" style="padding-top: 0 !important; padding-right: 0 !important; width:25%; display: table-cell;">
-                                <div style="padding: 3%">
-                                    <p>
-                                        <img class="small" src="images/thankyou.gif" style="min-height: auto; margin:0" />
-                                    </p>
-                                </div>
-                            </div>
-                    <div class="overlay-style" style="padding-top: 0 !important; padding-left: 0 !important; width:75%; display: table-cell;">
+                    <div class="overlay-style"
+                        style="padding-top: 0 !important; padding-right: 0 !important; width:25%; display: table-cell;">
+                        <div style="padding: 3%">
+                            <p>
+                                <img class="small" src="images/thankyou.gif" style="min-height: auto; margin:0" />
+                            </p>
+                        </div>
+                    </div>
+                    <div class="overlay-style"
+                        style="padding-top: 0 !important; padding-left: 0 !important; width:75%; display: table-cell;">
                         <div style="padding: 3%;">
                             <ul>
-                                <li style="margin-bottom: 0.8em">📝 <a href="https://filipw.github.io/flashcon-2019">filipw.github.io/flashcon-2019</a>
+                                <li style="margin-bottom: 0.8em">📝 <a
+                                        href="https://filipw.github.io/flashcon-2019">filipw.github.io/flashcon-2019</a>
                                 </li>
-    
-                                <li style="margin-bottom: 0.8em">💻 <a href="https://github.com/filipw/2019-flashcon-demos">github.com/filipw/2019-flashcon-demos</a>
+
+                                <li style="margin-bottom: 0.8em">💻 <a
+                                        href="https://github.com/filipw/2019-flashcon-demos">github.com/filipw/2019-flashcon-demos</a>
                                 </li>
-    
+
                                 <li style="margin-bottom: 0.8em">🚀 See you next year!
                                 </li>
                             </ul>
@@ -244,7 +339,8 @@
                 {
                     src: 'plugin/reveal-code-focus.js',
                     async: true,
-                    callback: function () {
+                    callback: function ()
+                    {
                         RevealCodeFocus();
                     }
                 }
