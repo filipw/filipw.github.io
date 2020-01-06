@@ -1,0 +1,13 @@
+.reveal section img {
+  margin: 15px 0px;
+  background: rgba(255, 255, 255, 0.12);
+  border: none;
+  box-shadow: none;
+  min-height: 500px;
+  max-height: 600px;
+}
+
+
+.reveal section img.normal {
+  min-height: auto;
+}
