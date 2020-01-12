@@ -299,12 +299,12 @@ table td.footnote {
   margin-bottom: 0;
 } 
 
-table.medium td.center {
+table td.center {
   text-align: center !important;
 }
 
 table.align-left td {
-  text-align: left !important;
+  text-align: left;
 }
 
 table.large th {
@@ -315,6 +315,33 @@ table.large td {
   font-size: 3.5em;
 }
 
+.reveal table th {
+  font-size: 80%;
+  color: #a7a7a7;
+}
+
 .hljs-section {
   color: #798800;
+}
+
+.reveal kbd {
+  display: inline-block;
+  margin: 0 .1em;
+  padding: .1em .6em;
+  font-family: Arial,"Helvetica Neue",Helvetica,sans-serif;
+  font-size: 11px;
+  line-height: 1.4;
+  color: #242729;
+  text-shadow: 0 1px 0 #fff;
+  background-color: #e1e3e5;
+  border: 1px solid #adb3b8;
+  border-radius: 3px;
+  box-shadow: 0 1px 0 rgba(12,13,14,0.2), 0 0 0 2px #fff inset;
+  white-space: nowrap;
+}
+
+.reveal p.footnote {
+  line-height: 1;
+  margin: 0;
+  font-size: 0.5em;
 }

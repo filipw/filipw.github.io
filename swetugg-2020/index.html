@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Abusing the C# Compiler for fun and no profit</title>
+    <title>EditorConfig, rulesets, analyzers - get your C# code under control</title>
     <meta name="description" content="">
     <meta name="author" content="Filip W">
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -130,10 +130,131 @@
                 </section>
 
                 <section data-background-color="#fff">
-                    <img src="images/648_developer_comics_tabs_vs_spaces.jpg" />
+                    <img class="normal" style="max-width: 250px;" src="images/logo-rider.png" />
+                    <img class="normal" style="max-width: 250px;" src="images/logo-vs.png" />
+                    <img class="normal" style="max-width: 250px;" src="images/logo-vs-mac.png" /><br/>
+                    <img class="normal" style="max-width: 250px;" src="images/logo-vscode.jpg" />
+                    <img class="normal" style="max-width: 250px;" src="images/logo-omnisharp.png" />
+                    <img class="normal" style="max-width: 220px; padding: 20px;" src="images/logo-cmd.png" />
                 </section>
 
+                <section data-background="images/artem-bali-580895-unsplash.jpg">
+                    <div class="overlay-style" style="padding:3% !important;">
+                        <h2>EditorConfig C# rules</h2>
+                    </div>
+                    <div>
+                        <div class="left overlay-style" style="padding: 0">
+                            <div style="padding: 3%">
+                                <ul>
+                                    <li class="fragment">🛠
+                                        Standard
+                                        <br />
+                                        <small>general indent size, indent style, new lines...</small>
+                                    </li>
+
+                                    <li class="fragment">📐
+                                        Formatting conventions
+                                        <br />
+                                        <small>language specific indentation, spacing, wrapping...</small>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="right overlay-style" style="padding: 0">
+                            <div style="padding: 3%">
+                                <ul>
+                                    <li class="fragment">⚙️
+                                        Language conventions
+                                        <br />
+                                        <small>modifiers, qualifiers, expressions...</small>
+                                    </li>
+
+                                    <li class="fragment">🔧
+                                        Naming conventions
+                                        <br />
+                                        <small>capitalization, prefixes, suffixes...</small>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-background="images/artem-bali-580895-unsplash.jpg">
+
+                    <div class="overlay-style" style="padding:3% !important;">
+                        <h3>EditorConfig conventions</h3>
+                    </div>
+                    
+                    <table class="overlay-style align-left">
+                                            <thead>
+                                                <tr>
+                                                    <th>Applied on...</th>
+                                                    <th>Format <br/><kbd>CTRL + E</kbd><kbd>D</kbd></th>
+                                                    <th>Clean Up <br/><kbd>CTRL + K</kbd><kbd>CTRL + E</kbd></th>
+                                                    <th>Code Fix <br/><kbd>CTRL + .</kbd><kbd>ENTER</kbd></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Standard&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                                    <td class="center">🦄</td>
+                                                    <td class="center">🦄</td>
+                                                    <td class="center">🦄</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Formatting&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                                    <td class="center">🦄</td>
+                                                    <td class="center">🦄</td>
+                                                    <td class="center">🦄</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Language&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                                    <td class="center"></td>
+                                                    <td class="center">🦄</td>
+                                                    <td class="center">🦄</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Naming&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                                    <td class="center"></td>
+                                                    <td class="center"></td>
+                                                    <td class="center">🦄</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                    </section>
+
+                    <section data-background="images/artem-bali-580895-unsplash.jpg">
+                        <div class="overlay-style">
+                            Standard and formatting conventions can also be applied using a <span class="highlight">dotnet format</span> global tool.
+                        </div>
+                    </section>
+
+                    <section data-background="images/artem-bali-580895-unsplash.jpg">
+                        <pre>
+        <code class="shell">
+// format specific folder
+dotnet format -f {folder}
+
+// format specific project / solution
+dotnet format -f {project_path|solution_path}
+
+// format specific files
+dotnet format -files {comma_separated_list_of_files}
+        </code>
+    </pre>
+    <p class="fragment" data-code-focus="3"></p>
+    <p class="fragment" data-code-focus="6"></p>
+    <p class="fragment" data-code-focus="9"></p>
+
+                    </section>   
+
 <!-- standard convention -->
+
+                <section data-background-color="#fff">
+                    <img src="images/648_developer_comics_tabs_vs_spaces.jpg" />
+                </section>
 
                 <section data-background="images/artem-bali-580895-unsplash.jpg">
                     <div class="overlay-style">
@@ -375,335 +496,120 @@ class Program
 <p class="fragment" data-code-focus="8"></p>
                 </section> 
 
-                <section data-background="images/artem-bali-580895-unsplash.jpg">
-                    <div class="overlay-style" style="padding:3% !important;">
-                        <h2>EditorConfig C# rules</h2>
-                    </div>
-                    <div>
-                        <div class="left overlay-style" style="padding: 0">
-                            <div style="padding: 3%">
-                                <ul>
-                                    <li class="fragment">🛠
-                                        Standard
-                                        <br />
-                                        <small>general indent size, indent style, new lines...</small>
-                                    </li>
-
-                                    <li class="fragment">⚙️
-                                        Language conventions
-                                        <br />
-                                        <small>modifiers, parentheses, expresions...</small>
-                                    </li>
-
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="right overlay-style" style="padding: 0">
-                            <div style="padding: 3%">
-                                <ul>
-                                    <li class="fragment">📐
-                                        Formatting conventions
-                                        <br />
-                                        <small>language specific indentation, spacing, wrapping...</small>
-                                    </li>
-                                    <li class="fragment">🔧
-                                        Naming conventions
-                                        <br />
-                                        <small>capitalization, prefixes, suffixes...</small>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
             </section>
 
-            <!-- Trust -->
+            <!-- Analyzers -->
             <section>
                 <section data-background="images/chris-barbalis-705864-unsplash.jpg">
-                    <h1>Can you trust the compiler?</h1>
-                </section>
-
-               <section data-background="images/spec.png">
+                    <h1>Analyzers</h1>
                 </section>
 
                 <section data-background="images/pawel-czerwinski-773353-unsplash.jpg">
-                    <div class="overlay-style">
-                        <blockquote>Customers will depend on the new compiler behaving exactly the same way as the old
-                            one. Writing a new compiler for C# means trying to match the old compiler bug-for-bug.
-                        </blockquote>
-                        <p>
-                            <footer>- <em>Mads Torgersen, C# Lead Designer</em></footer>
-                        </p>
 
-                    </div>
-                </section>
-
+                    <h2 class="overlay-style">Analyzers</h2>
+                    
+                    <p><img src="images/problem-dilbert.gif" /></p>
+                    
+                    </section>
+                    
                 <section data-background="images/pawel-czerwinski-773353-unsplash.jpg">
-                    <div class="overlay-style" style="padding:3% !important;">
-                        <h3>Invalid C#, compiler error</h3>
-                    </div>
-                    <pre>
-    <code class="cs">
-static class Foo {}
-
-class Bar
-{
-    // error CS0722: 'Foo': static types cannot be used as return types
-    Foo GetFoo() => null;
-}
-    </code>
-</pre>
-<p class="fragment" data-code-focus="2"></p>
-<p class="fragment" data-code-focus="6-7"></p>
-
-                </section>
-
+                    
+                    <h2 class="overlay-style">Code fixes</h2 class="overlay-style">
+                    
+                    <p><img src="images/problem-solved.gif" /></p>
+                    
+                    </section>
+                    
                 <section data-background="images/pawel-czerwinski-773353-unsplash.jpg">
-                    <div class="overlay-style" style="padding:3% !important;">
-                        <h3>Invalid C#, no compiler error</h3>
-                    </div>
-                    <pre>
-    <code class="cs">
-static class Foo {}
+                    
+                    <h2 class="overlay-style">Refactorings</h2 class="overlay-style">
+                    
+                    <img class="normal" src="images/help-cat.gif" />
+                    
+                    </section>
+                
+                    <section data-background="images/pawel-czerwinski-773353-unsplash.jpg">
+                    
+                        <div class="overlay-style" style="padding:3% !important;">
+                            <h3>Roslyn Features API</h3>
+                        </div>
+                        
+                        <table class="overlay-style align-left">
+                                                <thead>
+                                                    <tr>
+                                                        <th></th>
+                                                        <th>Find issue</th>
+                                                        <th>Change code</th>
+                                                        <th>Diagnostic</th>
+                                                        <th>Distribution</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Analyzer</td>
+                                                        <td class="center">🔍</td>
+                                                        <td></td>
+                                                        <td class="center">🦄</td>
+                                                        <td class="center"><img class="icon" src="images/nuget.png" /> <img class="icon" src="images/vsix.png" /></td class="center">
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Code fix</td>
+                                                        <td></td>
+                                                        <td class="center">🔧</td>
+                                                        <td class="center">🦄</td>
+                                                        <td class="center"><img class="icon" src="images/nuget.png" /> <img class="icon" src="images/vsix.png" /></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Refactoring</td>
+                                                        <td></td>
+                                                        <td class="center">🔧</td class="center">
+                                                        <td></td>
+                                                        <td class="center"><img class="icon" src="images/vsix.png" /></td class="center">
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                        
+                        </section>
 
-interface IBar
-{
-    // compiles fine
-    Foo GetFoo();
-}
-    </code>
-    <p class="fragment" data-code-focus="2"></p>
-    <p class="fragment" data-code-focus="6-7"></p>
-</pre>
-                </section>
+                        <section data-background="images/pawel-czerwinski-773353-unsplash.jpg">
+                            <div class="overlay-style">
+                                Analyzers emit compilation diagnostics and are part of code analysis both in <span class="highlight">IDE</span> and in <span class="highlight">command line</span> builds.
+                            </div>
+                        </section>
 
-                <section data-background="images/pawel-czerwinski-773353-unsplash.jpg">
-                    <p class="overlay-style">
-                        Can the compiler produce a program that won't work?
-                        <br />
-                        <span class="fragment">
-                            <span class="highlight">Yes</span>
-                        </span>
-                    </p>
-                </section>
+                    <section data-background="images/pawel-czerwinski-773353-unsplash.jpg">
+                            <div class="overlay-style">
+                                <blockquote>Never do a 'catch exception and do nothing’. (…) Always catch only the specific exception, not generic exception.
+                                </blockquote>
+                                <p>
+                                    <footer>- <em>🇧🇭 The Government of Bahrain </em></footer>
+                                </p>
+                        
+                            </div>
+                        </section>
 
-                <section data-background="images/pawel-czerwinski-773353-unsplash.jpg">
-                    <p class="overlay-style">Let's assume that the code is 100% error free.
-                            <br />
-                            <span class="fragment">
-                                <span class="highlight">Still yes</span>
-                            </span>
-                    </p>
+                    <section data-background="images/pawel-czerwinski-773353-unsplash.jpg">
+                            <div class="overlay-style">
+                                Diagnostic <span class="highlight">CA1031</span> from Microsoft.CodeQuality.Analyzers:<br/> Do not catch general exception types.
+                            </div>
+                        </section>
 
-                </section>
+                        <section data-background="images/pawel-czerwinski-773353-unsplash.jpg">
+                            <div class="overlay-style">
+                                <blockquote>Do not have more than one class in a single file.
+                                </blockquote>
+                                <p>
+                                    <footer>- <em>🇧🇭 The Government of Bahrain </em></footer>
+                                </p>
+                        
+                            </div>
+                        </section>
 
-                <section data-background="images/pawel-czerwinski-773353-unsplash.jpg">
-                    <table class="overlay-style large">
-                        <thead>
-                            <tr>
-                                <th>Language Spec</th>
-                                <th>Compiler</th>
-                                <th>Runtime</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>🦄</td>
-                                <td>🦄</td>
-                                <td>💩</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </section>
-
-                <section data-background="images/monkey-code.gif">
-                </section>
-
-                <section data-background="images/pawel-czerwinski-773353-unsplash.jpg">
-                    <p class="overlay-style">
-                        Can the runtime allow you to violate the C# language specification?
-                        <br />
-                        <span class="fragment">
-                            <span class="highlight">Yes</span>
-                        </span>
-                    </p>
-                </section>
-
-                <section data-background="images/pawel-czerwinski-773353-unsplash.jpg">
-                    <table class="overlay-style large">
-                        <thead>
-                            <tr>
-                                <th>Language Spec</th>
-                                <th>Compiler</th>
-                                <th>Runtime</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>💩</td>
-                                <td>🦄</td>
-                                <td>🦄</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </section>
-
-                <section data-background="images/photo-1511699725551-7b894c2ffe42.jpeg">
-                    <div class="overlay-style">
-                        <blockquote>A common technique (...) is to have the compiler “lower” from high-level language features to low-level language features in the same language.
-                        </blockquote>
-                        <p>
-                            <footer>- <em>Eric Lippert</em></footer>
-                        </p>
-
-                    </div>
-                </section>
-
-                <section data-background="images/photo-1511699725551-7b894c2ffe42.jpeg">
-                    <div class="overlay-style" style="padding:3% !important;">
-                        <h3>C# using block</h3>
-                    </div>
-                    <pre>
-    <code class="cs">
-using(new C()) 
-{
-    // do stuff    
-}
-    </code>
-</pre>
-                </section>
-
-                <section data-background="images/photo-1511699725551-7b894c2ffe42.jpeg">
-                    <div class="overlay-style" style="padding:3% !important;">
-                        <h3>Emitted IL</h3>
-                    </div>
-                    <pre class="small">
-    <code class="il">
-IL_0000: nop
-IL_0001: newobj instance void C::.ctor()
-IL_0006: stloc.0
-.try
-{
-    IL_0007: nop
-    IL_0008: nop
-    IL_0009: leave.s IL_0016
-} // end .try
-finally
-{
-    // sequence point: hidden
-    IL_000b: ldloc.0
-    IL_000c: brfalse.s IL_0015
-    IL_000e: ldloc.0
-    IL_000f: callvirt instance void [mscorlib]System.IDisposable::Dispose()
-    IL_0014: nop
-    // sequence point: hidden
-    IL_0015: endfinally
-} // end handler
-    </code>
-</pre>
-                    <p class="fragment" data-code-focus="3"></p>
-                    <p class="fragment" data-code-focus="5-10"></p>
-                    <p class="fragment" data-code-focus="11-21"></p>
-                </section>
-
-                <section data-background="images/photo-1511699725551-7b894c2ffe42.jpeg">
-                    <div class="overlay-style">
-                        <blockquote>This method terminates a process <span class="highlight">without</span> running any active try/finally blocks or finalizers.
-                        <p>
-                            <footer>- <em>Environment.FailFast(...)</em></footer>
-                        </p>
-
-                    </div>
-                </section>
-
-                <section data-background="images/pawel-czerwinski-773353-unsplash.jpg">
-                    <div class="overlay-style" style="padding:3% !important;">
-                    <h3>So far we have managed to</h3>
-                </div>
-                <table class="overlay-style align-left">
-                        <tbody>
-                            <tr>
-                                    <td>✅</td><td>Create an instance without calling a constructor</td>
-
-                            </tr>
-                            <tr>
-                                    <td>✅</td><td>Bypass a 'finally' clause</td>
-                            </tr>
-                            <tr>
-                                    <td>✅</td><td>Create an instance of an open generic</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </section>
-
-                <section data-background="images/demo.gif">
-                </section>
-
-                <section data-background="images/pawel-czerwinski-773353-unsplash.jpg">
-                    <p class="overlay-style">
-                        Can the compiler produce code that doesn’t behave as expected?
-                        <br />
-                        <span class="fragment">
-                            <span class="highlight">Yes</span>
-                        </span>
-                    </p>
-                </section>
-
-                <section data-background="images/pawel-czerwinski-773353-unsplash.jpg">
-                    <table class="overlay-style large">
-                        <thead>
-                            <tr>
-                                <th>Language Spec</th>
-                                <th>Compiler</th>
-                                <th>Runtime</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>🦄</td>
-                                <td>💩</td>
-                                <td>🦄</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </section>
-
-                <section data-background="images/angrymad.gif">
-                </section>
-
-                <section data-background="images/pawel-czerwinski-773353-unsplash.jpg">
-                    <p class="overlay-style">
-                        How badly can you abuse the language and the compiler?
-                        <br />
-                        <span class="fragment">
-                            <span class="highlight">Very badly</span>
-                        </span>
-                    </p>
-                </section>
-
-                <section data-background="images/pawel-czerwinski-773353-unsplash.jpg">
-                    <table class="overlay-style large">
-                        <thead>
-                            <tr>
-                                <th>Language Spec</th>
-                                <th>Compiler</th>
-                                <th>Runtime</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>💩</td>
-                                <td>💩</td>
-                                <td>🦄</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </section>
-
-                <section data-background="images/dog-code.gif">
-                </section>
+                    <section data-background="images/pawel-czerwinski-773353-unsplash.jpg">
+                            <div class="overlay-style">
+                                Diagnostic <span class="highlight">SA1402</span> from StyleCop.Analyzers:<br/> A C# code file contains more than one unique type.
+                            </div>
+                        </section>
             </section>
 
             <section data-background="images/all.jpg">
