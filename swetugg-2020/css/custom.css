@@ -243,6 +243,11 @@ span.highlight {
   padding: 1% 2%;
 }
 
+.reveal .overlay-style pre code {
+  background: none;
+  text-align: center;
+}
+
 .reveal pre {
   background: none;
   box-shadow: none;

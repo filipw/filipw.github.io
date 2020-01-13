@@ -112,6 +112,10 @@
 
                     </div>
                 </section>
+
+                <section data-background-color="#fff">
+                    <img src="images/guidelines-brain.jpg" style="min-height: auto" />
+                </section>
             </section>
 
             <!-- background -->
@@ -496,6 +500,28 @@ class Program
 <p class="fragment" data-code-focus="8"></p>
                 </section> 
 
+                <section data-background="images/artem-bali-580895-unsplash.jpg">
+                    <div class="overlay-style">
+                        Editorconfig file can also be <span class="highlight">generated</span> from your Visual Studio preferences.
+                    </div>
+                </section>
+
+                <section data-background="images/editorconfig-vs.png" data-background-color="white" data-state="bg-auto-width">
+                </section>
+
+                <section data-background="images/artem-bali-580895-unsplash.jpg">
+                    <div class="overlay-style">
+                        EditorConfig rules are part of code analysis in IDE but <span class="highlight">not in command line</span> builds.
+                    </div>
+                </section>
+
+                <section data-background="images/artem-bali-580895-unsplash.jpg">
+                    <div class="overlay-style">
+                        EditorConfig code style rules have corresponding <span class="highlight">diagnostic IDs</span> (IDExxxx). Formatting rules share the same <span class="highlight">IDE0055</span> diagnostic ID.
+                </section>
+
+                <!-- todo screenshot with error + no error -->
+
             </section>
 
             <!-- Analyzers -->
@@ -571,10 +597,24 @@ class Program
                         
                         </section>
 
+                        <section data-background="images/analyzers-vs.png" data-background-color="white" data-state="bg-auto-height">
+                        </section>
+
                         <section data-background="images/pawel-czerwinski-773353-unsplash.jpg">
                             <div class="overlay-style">
-                                Analyzers emit compilation diagnostics and are part of code analysis both in <span class="highlight">IDE</span> and in <span class="highlight">command line</span> builds.
+                                Analyzers emit diagnostics and are part of code analysis both in <span class="highlight">IDE</span> and in <span class="highlight">command line</span> builds.
                             </div>
+                        </section>
+
+                        <section data-background="images/pawel-czerwinski-773353-unsplash.jpg">
+                            <div class="overlay-style">
+                                <p>
+                                    Since VS 16.3, analyzers severity can be controlled from EditorConfig, using the relevant diagnostic ID.
+                                </p>
+                                <pre>
+                                    <code class="shell">dotnet_diagnostic.&lt;diagnostic id&gt;.severity = &lt;severity&gt;</code></pre>
+                            </div>
+  
                         </section>
 
                     <section data-background="images/pawel-czerwinski-773353-unsplash.jpg">
@@ -610,6 +650,27 @@ class Program
                                 Diagnostic <span class="highlight">SA1402</span> from StyleCop.Analyzers:<br/> A C# code file contains more than one unique type.
                             </div>
                         </section>
+
+                        <section data-background="images/pawel-czerwinski-773353-unsplash.jpg">
+                            <div class="overlay-style">
+                                Analyzer <span class="highlight">ClrHeapAllocationAnalyzer</span> can point out all the allocations in your code.
+                            </div>
+                        </section>
+
+                        <section data-background="images/allocations.png" data-background-color="white" data-state="bg-auto-width">
+                        </section>
+            </section>
+
+            <section>
+                <section data-background="images/photo-1511699725551-7b894c2ffe42.jpeg">
+                    <h1>Rulesets</h1>
+                </section>
+
+                <section data-background="images/sarah-white-422370-unsplash.jpg">
+                    <div class="overlay-style">
+                        Going forward <span class="highlight">EditorConfig</span> will be the recommended single point of managing all rules, for both IDE and command line builds.
+                    </div>
+                </section>
             </section>
 
             <section data-background="images/all.jpg">
