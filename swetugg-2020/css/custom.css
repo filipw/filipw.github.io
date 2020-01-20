@@ -230,6 +230,10 @@ span.highlight {
   text-align: center;
 }
 
+.reveal table.left-aligned td, .reveal table.left-aligned th {
+  text-align: left;
+}
+
 .reveal section img.icon {
   margin: 0;
   border: 0;

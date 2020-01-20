@@ -60,7 +60,7 @@
 
                 <div class="overlay-style">
                     <h2>Filip W</h2>
-                    <p>a random guy from the internet</p>
+                    <p>open source guy</p>
 
                     <p>
                         <small>
@@ -204,7 +204,7 @@
                                     </li>
                                 </ul>
                             </div>
-                        </div>
+                        </div>                        
                     </div>
                 </section>
 
@@ -632,7 +632,55 @@ class Program
                         
                         </section>
 
-                        <section data-background="images/analyzers-vs.png" data-background-color="white" data-state="bg-auto-height">
+                        <section data-background="images/pawel-czerwinski-773353-unsplash.jpg">
+
+                            <h3 class="overlay-style">Sample Roslyn Analyzers</h3>
+        
+                            <table class="overlay-style left-aligned" style="font-size: 0.7em !important;">
+                                <thead>
+                                    <th>Nuget Package</th>
+                                    <th>Description</th>
+                                    <th>Example</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><em>Microsoft.CodeAnalysis.FxCopAnalyzers</em></td>
+                                        <td>Ported FxCop rules</td>
+                                        <td>Meta package</td>
+                                    </tr>
+                                    <tr>
+                                        <td><em>Microsoft.CodeQuality.Analyzers</em></td>
+                                        <td>API Design Guidelines</td>
+                                        <td>Avoid async void</td>
+                                    </tr>
+                                    <tr>
+                                        <td><em>Microsoft.NetCore.Analyzers</em></td>
+                                        <td>.NET Core APIs</td>
+                                        <td>Avoid 0-length array allocations</td>
+                                    </tr>
+                                    <tr>
+                                        <td><em>Microsoft.NetFramework.Analyzers</em></td>
+                                        <td>Desktop .NET APIs</td>
+                                        <td>Insecure XSLT processing</td>
+                                    </tr>
+                                    <tr>
+                                        <td><em>StyleCop.Analyzers</em></td>
+                                        <td>Ported StyleCop rules</td>
+                                        <td>Do not use regions</td>
+                                    </tr>
+                                    <tr>
+                                        <td><em>Roslynator.Analyzers</em></td>
+                                        <td>Best independent package</td>
+                                        <td>Simplify code branching</td>
+                                    </tr>
+                                </tbody>
+                            </table>    
+                        </section>
+
+                        <section data-background="images/analyzers-vs.png" data-background-color="#f5f5f5" data-state="bg-auto-height">
+                        </section>
+
+                        <section data-background="images/analyzer-codefix.png" data-background-color="white" data-state="bg-auto-height">
                         </section>
 
                         <section data-background="images/barrel.jpg">
@@ -764,7 +812,7 @@ class Program
                         <section data-background="images/monty.jpg">
                             <h3 class="overlay-style">Back to the main program...</h3>
                         </section> 
-
+                        
                     <section data-background="images/pawel-czerwinski-773353-unsplash.jpg">
                             <div class="overlay-style">
                                 <blockquote>Never do a 'catch exception and do nothing’. (…) Always catch only the specific exception, not generic exception.
@@ -810,14 +858,14 @@ class Program
                             </div>
                         </section>
 
-                        <section data-background="images/3mkeut.jpg" data-state="bg-auto-height">
+                        <section data-background="images/3mkeut.jpg" data-background-color="black" data-state="bg-auto-height">
                         </section> 
 
-                        <section data-background="images/pawel-czerwinski-773353-unsplash.jpg">
+                        <section data-background="images/monkey-code.gif" data-state="bg-auto-width">
                             <div class="overlay-style">
                                 Let's <span class="highlight">build</span> an analyzer.
                             </div>
-                        </section>
+                        </section> 
 
                         <section data-background="images/pawel-czerwinski-773353-unsplash.jpg">
                             <div class="overlay-style">
@@ -894,7 +942,7 @@ private async Task<Solution> AdjustLength(Document document, VariableDeclaratorS
 
                         <section data-background="images/pawel-czerwinski-773353-unsplash.jpg">
                             <div class="overlay-style">
-                                Analyzer <span class="highlight">ClrHeapAllocationAnalyzer</span> can point out all the allocations in your code.
+                                Analyzers can do very creative things. <span class="highlight">ClrHeapAllocationAnalyzer</span> can point out all the allocations in your code.
                             </div>
                         </section>
 
