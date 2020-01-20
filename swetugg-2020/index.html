@@ -97,7 +97,7 @@
 
                 <section data-background="images/artem-bali-580895-unsplash.jpg">
                     <div class="overlay-style">
-                        <blockquote>Coding conventions are a set of guidelines for a specific programming language that recommend programming style, practices, and methods for each aspect of a program written in that language.
+                        <blockquote>Coding conventions are a set of guidelines for a specific programming language that recommend programming style, practices, and methods for each aspect of a program.
                         </blockquote>
                         <p>
                             <footer>- <em>Wiki</em></footer>
@@ -117,6 +117,10 @@
 
                 <section data-background="images/guidelines4.png" data-background-color="white" data-state="bg-auto-height">
                 </section>
+
+                <section data-background="images/guidelines4.png" data-background-color="white" data-state="bg-auto-height">
+                    <h1 class="overlay-style">🇧🇭</h1>
+                </section> 
 
                 <section data-background="images/jose-fontano-246362-unsplash.jpg">
                     <div class="overlay-style">
@@ -291,6 +295,9 @@ dotnet format -files {comma_separated_list_of_files}
                 </section>
 
                 <section data-background="images/artem-bali-580895-unsplash.jpg">
+                    <div class="overlay-style" style="padding:3% !important;">
+                        <h3>Standard convention example</h3>
+                    </div>
                     <pre>
     <code class="editorconfig">
 root = true
@@ -302,6 +309,7 @@ indent_style = tab
 indent_size = 4
     </code>
 </pre>
+<p class="fragment" data-code-focus="5,8"></p>
                 </section>             
 
 <!-- formatting convention -->
@@ -342,6 +350,9 @@ class Program
                 </section>  
 
                 <section data-background="images/artem-bali-580895-unsplash.jpg">
+                    <div class="overlay-style" style="padding:3% !important;">
+                        <h3>Formatting convention example</h3>
+                    </div>
                     <pre class="medium">
     <code class="editorconfig">
 [*.cs]
@@ -418,6 +429,9 @@ class Program
                 </section> 
 
                 <section data-background="images/artem-bali-580895-unsplash.jpg">
+                    <div class="overlay-style" style="padding:3% !important;">
+                        <h3>Language convention example</h3>
+                    </div>
                     <pre class="medium">
     <code class="editorconfig">
 [*.cs]
@@ -482,6 +496,9 @@ class Program
                 </section> 
 
                 <section data-background="images/artem-bali-580895-unsplash.jpg">
+                    <div class="overlay-style" style="padding:3% !important;">
+                        <h3>Naming convention example</h3>
+                    </div>
                     <pre class="medium">
     <code class="editorconfig">
 [*.cs]
@@ -533,8 +550,14 @@ class Program
                         EditorConfig rules are part of code analysis in IDE but <span class="highlight">not in command line</span> builds.
                     </div>
                 </section>
-                <!-- todo screenshot with error + no error -->
+                
+                <section data-background="images/build-no-error.png" data-background-color="white" data-state="bg-auto-height">
+                </section>
 
+                <section data-background="images/sarah-white-422370-unsplash.jpg">
+                    <div class="overlay-style">
+                        EditorConfig rules have dedicated diagnostic IDs. Formatting rules share the same diagnostic ID: <span class="highlight">IDE0055</span>.
+                </section>
             </section>
 
             <!-- Analyzers -->
@@ -544,27 +567,26 @@ class Program
                 </section>
 
                 <section data-background="images/pawel-czerwinski-773353-unsplash.jpg">
+                    <div class="overlay-style">
+                        Roslyn compiler provides extensibility point - <span class="highlight">Features API</span>, allowing developers to create code analysis tools that run in IDE and/or during build.
+                </section>
+
+                <section data-background="images/pawel-czerwinski-773353-unsplash.jpg">
 
                     <h2 class="overlay-style">Analyzers</h2>
-                    
                     <p><img src="images/problem-dilbert.gif" /></p>
-                    
                     </section>
                     
                 <section data-background="images/pawel-czerwinski-773353-unsplash.jpg">
                     
                     <h2 class="overlay-style">Code fixes</h2 class="overlay-style">
-                    
                     <p><img src="images/problem-solved.gif" /></p>
-                    
                     </section>
                     
                 <section data-background="images/pawel-czerwinski-773353-unsplash.jpg">
                     
                     <h2 class="overlay-style">Refactorings</h2 class="overlay-style">
-                    
                     <img class="normal" src="images/help-cat.gif" />
-                    
                     </section>
                 
                     <section data-background="images/pawel-czerwinski-773353-unsplash.jpg">
@@ -739,11 +761,6 @@ class Program
                             </div>
                         </section>
 
-                        <section data-background="images/sarah-white-422370-unsplash.jpg">
-                            <div class="overlay-style">
-                                EditorConfig formatting rules share the same diagnostic ID: <span class="highlight">IDE0055</span>.
-                        </section>
-
                         <section data-background="images/monty.jpg">
                             <h3 class="overlay-style">Back to the main program...</h3>
                         </section> 
@@ -802,11 +819,8 @@ class Program
                             </div>
                         </section>
 
-                        <section data-background="images/barrel.jpg">
-                            <h3 class="overlay-style">And now for something completely different...</h3>
-                        </section> 
-
-                    <section data-background="images/gold-chain-collective-695929-unsplash.jpg">
+                        <section data-background="images/pawel-czerwinski-773353-unsplash.jpg">
+                            <!-- <section data-background="images/gold-chain-collective-695929-unsplash.jpg"> -->
                             <div class="overlay-style">
                             <h2>Code analysis</h2>
                             </div>
@@ -833,9 +847,51 @@ class Program
                               </div>
                             </section>
 
-                            <section data-background="images/monty.jpg">
-                                <h3 class="overlay-style">Back to the main program...</h3>
-                            </section> 
+                        <section data-background="images/pawel-czerwinski-773353-unsplash.jpg">
+                                <pre>
+                <code class="cs">
+ private static void AnalyzeSyntaxNode(SyntaxNodeAnalysisContext context)
+ {
+     var declaration = (VariableDeclaratorSyntax)context.Node;
+     string name = declaration.Identifier.Text;
+     if (name != null && (name.Length < 8 || name.Length > 20))
+     {
+         // report diagnostic
+     }
+ }
+                </code>
+            </pre>
+            <p class="fragment" data-code-focus="2"></p>
+            <p class="fragment" data-code-focus="4"></p>
+            <p class="fragment" data-code-focus="5"></p>
+            <p class="fragment" data-code-focus="6-9"></p>
+                            </section>  
+
+                            <section data-background="images/pawel-czerwinski-773353-unsplash.jpg">
+                                <pre>
+                <code class="cs">
+private async Task<Solution> AdjustLength(Document document, VariableDeclaratorSyntax declaration, CancellationToken ct)
+{
+    var variableName = declaration.Identifier.Text;
+    var newName = variableName.Length < 8 ? 
+        variableName.PadRight(8, 'X') : variableName.Substring(0, 20);
+
+    var semanticModel = await document.GetSemanticModelAsync(ct);
+    var localSymbol = semanticModel.GetDeclaredSymbol(declaration, ct);
+
+    var newSolution = await Renamer.RenameSymbolAsync(
+        document.Project.Solution, localSymbol, newName, 
+        document.Project.Solution.Workspace.Options, ct);
+
+    return newSolution;
+}
+                </code>
+            </pre>
+            <p class="fragment" data-code-focus="2"></p>
+            <p class="fragment" data-code-focus="5-6"></p>
+            <p class="fragment" data-code-focus="8-9"></p>
+            <p class="fragment" data-code-focus="11-13"></p>
+                            </section>  
 
                         <section data-background="images/pawel-czerwinski-773353-unsplash.jpg">
                             <div class="overlay-style">
