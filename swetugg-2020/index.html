@@ -331,49 +331,47 @@ indent_size = 4
                 <section data-background="images/artem-bali-580895-unsplash.jpg">
                     <pre>
     <code class="cs">
-class Program
+static void Main(string[] args)
 {
-    static void Main(string[] args)
+    foreach (var arg in args) 
     {
-        foreach (var arg in args) { Print(arg); }
-        var number = (int)(object)args[0];
-        var differentNumber = (number + number) * 4;
+        Console.WriteLine(arg); 
     }
 
-    private static void Print(string msg) =>
-        Console.WriteLine($"Message: {msg}!");
+    var number = (int)(object)args[0];
+
+    Console.WriteLine(number * number);
+    Console.ReadLine();
 }
     </code>
 </pre>
-<p class="fragment" data-code-focus="4,11"></p>
-<p class="fragment" data-code-focus="6"></p>
-<p class="fragment" data-code-focus="7"></p>
-<p class="fragment" data-code-focus="8"></p>
-<p class="fragment" data-code-focus="12"></p>
+<p class="fragment" data-code-focus="2"></p>
+<p class="fragment" data-code-focus="4-7"></p>
+<p class="fragment" data-code-focus="9"></p>
+<p class="fragment" data-code-focus="11-12,6"></p>
                 </section>   
 
                 <section data-background="images/artem-bali-580895-unsplash.jpg">
                     <pre>
     <code class="cs">
-class Program
+static void Main ( string[] args )
 {
-    static void Main ( string[] args )
+    foreach ( var arg in args )
     {
-        foreach ( var arg in args ) { Print ( arg ); }
-        var number = ( int )( object )args[ 0 ];
-        var differentNumber = ( number + number ) * 4;
+        Console.WriteLine ( arg );
     }
 
-    private static void Print ( string msg ) =>
-        Console.WriteLine ( $"Message: {msg}!" );
+    var number = ( int )( object )args[ 0 ];
+
+    Console.WriteLine ( number * number );
+    Console.ReadLine ( );
 }
     </code>
 </pre>
-<p class="fragment" data-code-focus="4,11"></p>
-<p class="fragment" data-code-focus="6"></p>
-<p class="fragment" data-code-focus="7"></p>
-<p class="fragment" data-code-focus="8"></p>
-<p class="fragment" data-code-focus="12"></p>
+<p class="fragment" data-code-focus="2"></p>
+<p class="fragment" data-code-focus="4-7"></p>
+<p class="fragment" data-code-focus="9"></p>
+<p class="fragment" data-code-focus="11-12,6"></p>
                 </section>  
 
                 <section data-background="images/artem-bali-580895-unsplash.jpg">
@@ -415,39 +413,41 @@ csharp_space_between_square_brackets = true
                 <section data-background="images/artem-bali-580895-unsplash.jpg">
                     <pre>
     <code class="cs">
-class Program
+class Person
 {
-    static void Main(String[] args)
+    public Person(String name, Int32 age)
     {
-        String text = "hello";
-        Int32 index = 100;
-        Console.WriteLine($"{text} {index}");
+        Name = name;
+        Age = age;
     }
+
+    public String Name { get; }
+    public Int32 Age { get; }
 }
     </code>
 </pre>
-<p class="fragment" data-code-focus="4"></p>
-<p class="fragment" data-code-focus="6"></p>
-<p class="fragment" data-code-focus="7"></p>
+<p class="fragment" data-code-focus="4,10"></p>
+<p class="fragment" data-code-focus="4,11"></p>
                 </section>  
 
                 <section data-background="images/artem-bali-580895-unsplash.jpg">
                     <pre>
     <code class="cs">
-class Program
+class Person
 {
-    static void Main(string[] args)
+    public Person(string name, int age)
     {
-        string text = "hello";
-        int index = 100;
-        Console.WriteLine($"{text} {index}");
+        Name = name;
+        Age = age;
     }
+
+    public string Name { get; }
+    public int Age { get; }
 }
     </code>
 </pre>
-<p class="fragment" data-code-focus="4"></p>
-<p class="fragment" data-code-focus="6"></p>
-<p class="fragment" data-code-focus="7"></p>
+<p class="fragment" data-code-focus="4,10"></p>
+<p class="fragment" data-code-focus="4,11"></p>
                 </section> 
 
                 <section data-background="images/artem-bali-580895-unsplash.jpg">
@@ -481,14 +481,14 @@ dotnet_style_predefined_type_for_member_access = true:error
                 <section data-background="images/artem-bali-580895-unsplash.jpg">
                     <pre>
     <code class="cs">
-class Program
+class Dog
 {
-    private const string hello = "hello";
-
-    static void Main(string[] args)
+    private const string woofwoof = "Woof woof!";
+     
+    public void Bark()
     {
-        const string world = "world";
-        Console.WriteLine($"{hello} {world}");
+        const string barks = "dog barks";
+        Console.WriteLine($"{woofwoof} {barks}!");
     }
 }
     </code>
@@ -500,14 +500,14 @@ class Program
                 <section data-background="images/artem-bali-580895-unsplash.jpg">
                     <pre>
     <code class="cs">
-class Program
+class Dog
 {
-    private const string HELLO = "hello";
+    private const string WOOFWOOF = "Woof woof!";
 
-    static void Main(string[] args)
+    public void Bark()
     {
-        const string WORLD = "world";
-        Console.WriteLine($"{HELLO} {WORLD}");
+        const string BARKS = "dog barks";
+        Console.WriteLine($"{WOOFWOOF} {BARKS}!");
     }
 }
     </code>
@@ -899,21 +899,24 @@ dotnet_naming_style.all_upper_style.capitalization = all_upper
                         <section data-background="images/pawel-czerwinski-773353-unsplash.jpg">
                                 <pre>
                 <code class="cs">
- private static void AnalyzeSyntaxNode(SyntaxNodeAnalysisContext context)
- {
-     var declaration = (VariableDeclaratorSyntax)context.Node;
-     string name = declaration.Identifier.Text;
-     if (name != null && (name.Length < 8 || name.Length > 20))
-     {
-         // report diagnostic
-     }
- }
+private static void AnalyzeSyntaxNode(SyntaxNodeAnalysisContext context)
+{
+    var declaration = (VariableDeclaratorSyntax)context.Node;
+    string name = declaration.Identifier.Text;
+    if (name != null && (name.Length < 8 || name.Length > 20))
+    {
+       var diagnostic = Diagnostic.Create(Rule, declaration.GetLocation(), 
+                            name, name.Length);
+       context.ReportDiagnostic(diagnostic);
+    }
+}
                 </code>
             </pre>
             <p class="fragment" data-code-focus="2"></p>
             <p class="fragment" data-code-focus="4"></p>
             <p class="fragment" data-code-focus="5"></p>
-            <p class="fragment" data-code-focus="6-9"></p>
+            <p class="fragment" data-code-focus="6"></p>
+            <p class="fragment" data-code-focus="8-10"></p>
                             </section>  
 
                             <section data-background="images/pawel-czerwinski-773353-unsplash.jpg">
