@@ -549,16 +549,18 @@ dotnet_naming_style.all_upper_style.capitalization = all_upper
 
                 <section data-background="images/artem-bali-580895-unsplash.jpg">
                     <div class="overlay-style">
-                        EditorConfig rules are part of code analysis in IDE but <span class="highlight">not in command line</span> builds.
+                        EditorConfig rules are part of live code analysis in IDE but <span class="highlight">not in command line</span> builds.
                     </div>
                 </section>
                 
                 <section data-background="images/build-no-error.png" data-background-color="white" data-state="bg-auto-height">
                 </section>
 
-                <section data-background="images/sarah-white-422370-unsplash.jpg">
+                <section data-background="images/artem-bali-580895-unsplash.jpg">
                     <div class="overlay-style">
-                        EditorConfig rules have dedicated diagnostic IDs. Formatting rules share the same diagnostic ID: <span class="highlight">IDE0055</span>.
+                        From Roslyn 3.3, the compiler <span class="highlight">supports EditorConfig</span> natively.<br/>
+                        EditorConfig rules will be migrated to <span class="highlight">analyzers infrastructure</span>.
+                    </div>
                 </section>
             </section>
 
@@ -570,7 +572,8 @@ dotnet_naming_style.all_upper_style.capitalization = all_upper
 
                 <section data-background="images/pawel-czerwinski-773353-unsplash.jpg">
                     <div class="overlay-style">
-                        Roslyn compiler provides extensibility point - <span class="highlight">Features API</span>, allowing developers to create code analysis tools that run in IDE and/or during build.
+                        Roslyn compiler provides extensibility via <span class="highlight">Features API</span>, allowing developers to create code analysis tools that run in IDE and/or during build.
+                    </div>
                 </section>
 
                 <section data-background="images/pawel-czerwinski-773353-unsplash.jpg">
@@ -800,7 +803,7 @@ dotnet_naming_style.all_upper_style.capitalization = all_upper
                                 Going forward <span class="highlight">EditorConfig</span> will be the recommended single point of managing all rules, for both IDE and command line builds.
                             </div>
                         </section>
-        
+
                         <section data-background="images/sarah-white-422370-unsplash.jpg">
                             <div class="overlay-style">
                                 <p>
@@ -817,7 +820,7 @@ dotnet_naming_style.all_upper_style.capitalization = all_upper
                         
                     <section data-background="images/pawel-czerwinski-773353-unsplash.jpg">
                             <div class="overlay-style">
-                                <blockquote>Never do a 'catch exception and do nothing’. (…) Always catch only the specific exception, not generic exception.
+                                <blockquote>Always catch only the specific exception, not generic exception.
                                 </blockquote>
                                 <p>
                                     <footer>- <em>🇧🇭 The Government of Bahrain </em></footer>
@@ -944,6 +947,20 @@ private async Task<Solution> AdjustLength(Document document, VariableDeclaratorS
             <p class="fragment" data-code-focus="8-9"></p>
             <p class="fragment" data-code-focus="11-13"></p>
                             </section>  
+
+                        <section data-background="images/pawel-czerwinski-773353-unsplash.jpg">
+                                <h3 class="overlay-style">Analyzers can be turned off</h3>
+            
+                                <pre>
+                <code class="xml">
+&lt;PropertyGroup&gt;
+  &lt;RunAnalyzersDuringBuild&gt;false&lt;/RunAnalyzersDuringBuild&gt;
+  &lt;RunAnalyzersDuringLiveAnalysis&gt;false&lt;/RunAnalyzersDuringLiveAnalysis&gt;
+  &lt;RunAnalyzers&gt;false&lt;/RunAnalyzers&gt;
+&lt;PropertyGroup&gt;
+        </code>
+            </pre>
+                            </section> 
 
                         <section data-background="images/pawel-czerwinski-773353-unsplash.jpg">
                             <div class="overlay-style">
