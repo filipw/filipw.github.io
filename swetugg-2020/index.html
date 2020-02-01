@@ -561,8 +561,15 @@ dotnet_naming_style.all_upper_style.capitalization = all_upper
 
                 <section data-background="images/StockSnap_VZ86EDZ771.jpg">
                     <div class="overlay-style">
+                        EditorConfig rules are analyzers but are <span class="highlight">embedded into IDE</span>.<br/>
+                        The file would also be parsed by the IDE layer.
+                    </div>
+                </section>
+
+                <section data-background="images/StockSnap_VZ86EDZ771.jpg">
+                    <div class="overlay-style">
                         From Roslyn 3.3, the compiler <span class="highlight">supports EditorConfig</span> natively.<br/>
-                        EditorConfig rules will be migrated to <span class="highlight">analyzers infrastructure</span>.
+                        EditorConfig rules will be available as <span class="highlight">Nuget analyzers</span>.
                     </div>
                 </section>
             </section>
@@ -642,7 +649,7 @@ dotnet_naming_style.all_upper_style.capitalization = all_upper
 
                         <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
                             <div class="overlay-style">
-                                Analyzers emit diagnostics and are part of code analysis both in <span class="highlight">IDE</span> and in <span class="highlight">command line</span> builds.
+                                Analyzers are part of code analysis both in <span class="highlight">IDE</span> and in <span class="highlight">command line</span> builds.
                             </div>
                         </section>
 
@@ -928,7 +935,7 @@ private static void AnalyzeSyntaxNode(SyntaxNodeAnalysisContext context)
                             <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
                                 <pre>
                 <code class="cs">
-private async Task<Solution> AdjustLength(Document document, VariableDeclaratorSyntax declaration, CancellationToken ct)
+private async Task&lt;Solution&gt; AdjustLength(Document document, VariableDeclaratorSyntax declaration, CancellationToken ct)
 {
     var variableName = declaration.Identifier.Text;
     var newName = variableName.Length < 8 ? 
@@ -993,13 +1000,16 @@ private async Task<Solution> AdjustLength(Document document, VariableDeclaratorS
                     <div class="overlay-style" style="padding-top: 0 !important; padding-left: 0 !important; width:75%; display: table-cell;">
                         <div style="padding: 3%;">
                             <ul>
-                                <li style="margin-bottom: 0.8em">📝 <a href="https://filipw.github.io/swetugg-2020">filipw.github.io/swetugg-2020</a>
+                                <li style="margin-bottom: 0.7em">📝 <a href="https://filipw.github.io/swetugg-2020">filipw.github.io/swetugg-2020</a>
                                 </li>
     
-                                <li style="margin-bottom: 0.8em">💻 <a href="https://github.com/filipw/swetugg2020-demos">github.com/filipw/swetugg2020-demos</a>
+                                <li style="margin-bottom: 0.7em">💻 <a href="https://github.com/filipw/swetugg2020-demos">github.com/filipw/swetugg2020-demos</a>
+                                </li>
+
+                                <li style="margin-bottom: 0.7em">🇧🇭 <a href="http://www.nea.gov.bh/Attachments/eServices%20Standards/C_Net_Coding_standard_V1.pdf">Bahrain NEA C# guidelines</a>
                                 </li>
     
-                                <li style="margin-bottom: 0.8em">🚀 Enjoy the rest of the event!
+                                <li style="margin-bottom: 0.7em">🚀 Enjoy the rest of the event!
                                 </li>
                             </ul>
                         </div>
