@@ -1,0 +1,1076 @@
+﻿<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>EditorConfig, rulesets, analyzers - get your C# code under control</title>
+    <meta name="description" content="">
+    <meta name="author" content="Filip W">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <script src="//code.jquery.com/jquery-1.8.0.js"></script>
+    <script src="//code.jquery.com/ui/1.8.23/jquery-ui.js"></script>
+    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/css/bootstrap-combined.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/default.min.css">
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/simple.css" id="theme">
+    <link rel="stylesheet" href="css/custom.css" />
+    <link rel="stylesheet" href="css/monokai_sublime.css" />
+    <script src="fsharp.formatting/styles/tips.js" type="text/javascript"></script>
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+    <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+
+    <script>
+        if (window.location.search.match(/print-pdf/gi)) {
+            var link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = 'css/print/pdf.css';
+            document.getElementsByTagName('head')[0].appendChild(link);
+        }
+    </script>
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+    <style type="text/css">
+    </style>
+</head>
+
+<body>
+    <div class="reveal">
+        <header style="position: absolute;top: 50px; left: 100px; z-index:500; font-size:100px;background-color: rgba(0,0,0,0.5)"></header>
+        <!-- Any section element inside of this container is displayed as a slide -->
+        <div class="slides">
+
+            <section data-background="images/BASTA_SE19_Template_1920x1080_55346_v1.jpg">
+
+                <h1 style="font-size: 3em; margin-top: 1.25em">
+                    EditorConfig, rulesets, analyzers
+                    <br />
+                    <small style="font-size: 0.5em;">get your C# code under control</small>
+                </h1>
+
+            </section>
+
+            <section data-background="images/ibf.net-144.jpg">
+
+                <div class="overlay-style">
+                    <h2>Filip W</h2>
+
+                    <p>
+                        <small>
+                            <a href="https://strathweb.com" class="roll">
+                                <span>strathweb.com</span>
+                            </a> •
+                            <a href="https://twitter.com/filip_woj" class="roll">
+                                <span data-title="@filip_woj">@filip_woj</span>
+                            </a> •
+                            <a href="https://github.com/filipw" class="roll">
+                                <span data-title="github.com/filipw">github.com/filipw</span>
+                            </a>
+                        </small>
+                    </p>
+                    <img class="normal" src="images/mvp.png" />
+                </div>
+
+            </section>
+
+            <section data-background-color="rgb(236, 236, 236)">
+                <img src="images/omnisharp.png" style="min-height: auto" />
+            </section>
+
+            <section data-background-color="#fff">
+                <img src="images/sonova.png" style="min-height: auto" />
+            </section>
+
+            <!-- what to learn -->
+            <section>
+                <section data-background="images/jose-fontano-246362-unsplash.jpg">
+                    <h1>C# Coding Conventions</h1>
+                </section>
+
+                <section data-background="images/artem-bali-580895-unsplash.jpg">
+                    <div class="overlay-style">
+                        <blockquote>Coding conventions are a set of guidelines (...) that recommend programming style, practices, and methods for each aspect of a program.
+                        </blockquote>
+                        <p>
+                            <footer>- <em>Wiki</em></footer>
+                        </p>
+
+                    </div>
+                </section>
+
+                <section data-background-color="#fff">
+                    <img src="images/guidelines-brain.jpg" style="min-height: auto" />
+                </section>
+
+                <section data-background="images/guidelines1.png" data-background-color="white" data-state="bg-auto-width">
+                </section>
+
+                <section data-background="images/guidelines2.png" data-background-color="white" data-state="bg-auto-width">
+                </section>
+
+                <section data-background="images/guidelines3.png" data-background-color="white" data-state="bg-auto-height">
+                </section>
+
+                <section data-background="images/guidelines4.png" data-background-color="white" data-state="bg-auto-height">
+                </section>
+
+                <section data-background="images/guidelines4.png" data-background-color="white" data-state="bg-auto-height">
+                    <h1 class="overlay-style">🇧🇭</h1>
+                </section> 
+
+                <section data-background="images/artem-bali-580895-unsplash.jpg">
+                    <div class="overlay-style">
+                        <blockquote>To develop reliable and maintainable applications, you must follow coding standards and best practices.
+                        </blockquote>
+                        <p>
+                            <footer>- <em>🇧🇭 The Government of Bahrain </em></footer>
+                        </p>
+
+                    </div>
+                </section>
+
+                <section data-background="images/conventions-wiki.png" data-background-color="white" data-state="bg-auto-width">
+                </section>
+
+                <section data-background="images/conventions-wiki.png" data-background-color="white" data-state="bg-auto-width">
+                    <h1 class="text-callout">They are.</h1>
+                </section>
+            </section>
+
+            <!-- background -->
+            <section>
+                <section data-background="images/photo-1465257474426-bd133d4db35e.jpeg">
+                    <h1>EditorConfig</h1>
+                </section>
+
+                <section data-background="images/StockSnap_VZ86EDZ771.jpg">
+                    <div class="overlay-style">
+                        EditorConfig helps maintain <span class="highlight">consistent coding styles</span> for multiple developers working on the same project across various editors and IDEs.
+                    </div>
+                </section>
+
+                <section data-background="images/editorconfig.png" data-background-color="white" data-state="bg-auto-height">
+                </section>
+
+                <section data-background-color="#fff">
+                    <img class="normal" style="max-width: 250px;" src="images/logo-rider.png" />
+                    <img class="normal" style="max-width: 250px;" src="images/logo-vs.png" />
+                    <img class="normal" style="max-width: 250px;" src="images/logo-vs-mac.png" /><br/>
+                    <img class="normal" style="max-width: 250px;" src="images/logo-vscode.jpg" />
+                    <img class="normal" style="max-width: 250px;" src="images/logo-omnisharp.png" />
+                    <img class="normal" style="max-width: 220px; padding: 20px;" src="images/logo-cmd.png" />
+                </section>
+
+                <section data-background="images/StockSnap_VZ86EDZ771.jpg">
+                    <div class="overlay-style" style="padding:3% !important;">
+                        <h2>EditorConfig C# rules</h2>
+                    </div>
+                    <div>
+                        <div class="left overlay-style" style="padding: 0">
+                            <div style="padding: 3%">
+                                <ul>
+                                    <li class="fragment">🛠
+                                        Standard
+                                        <br />
+                                        <small>general indent size, indent style, new lines...</small>
+                                    </li>
+
+                                    <li class="fragment">📐
+                                        Formatting conventions
+                                        <br />
+                                        <small>language specific indentation, spacing, wrapping...</small>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="right overlay-style" style="padding: 0">
+                            <div style="padding: 3%">
+                                <ul>
+                                    <li class="fragment">⚙️
+                                        Language conventions
+                                        <br />
+                                        <small>modifiers, qualifiers, expressions...</small>
+                                    </li>
+
+                                    <li class="fragment">🔧
+                                        Naming conventions
+                                        <br />
+                                        <small>capitalization, prefixes, suffixes...</small>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>                        
+                    </div>
+                </section>
+
+                <section data-background="images/StockSnap_VZ86EDZ771.jpg">
+
+                    <div class="overlay-style" style="padding:3% !important;">
+                        <h3>EditorConfig conventions</h3>
+                    </div>
+                    
+                    <table class="overlay-style align-left">
+                                            <thead>
+                                                <tr>
+                                                    <th>Applied on...</th>
+                                                    <th>Format <br/><kbd>CTRL + E</kbd><kbd>D</kbd></th>
+                                                    <th>Clean Up <br/><kbd>CTRL + K</kbd><kbd>CTRL + E</kbd></th>
+                                                    <th>Code Fix <br/><kbd>CTRL + .</kbd><kbd>ENTER</kbd></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Standard&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                                    <td class="center">🦄</td>
+                                                    <td class="center">🦄</td>
+                                                    <td class="center">🦄</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Formatting&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                                    <td class="center">🦄</td>
+                                                    <td class="center">🦄</td>
+                                                    <td class="center">🦄</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Language&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                                    <td class="center"></td>
+                                                    <td class="center">🦄</td>
+                                                    <td class="center">🦄</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Naming&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                                    <td class="center"></td>
+                                                    <td class="center"></td>
+                                                    <td class="center">🦄</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                    </section>
+
+                    <section data-background="images/StockSnap_VZ86EDZ771.jpg">
+                        <div class="overlay-style">
+                            Standard and formatting conventions can also be applied using a <span class="highlight">dotnet format</span> global tool.
+                        </div>
+                    </section>
+
+                    <section data-background="images/StockSnap_VZ86EDZ771.jpg">
+                        <pre>
+        <code class="shell">
+// format specific folder
+dotnet format -f {folder}
+
+// format specific project / solution
+dotnet format -f {project_path|solution_path}
+
+// format specific files
+dotnet format -files {comma_separated_list_of_files}
+        </code>
+    </pre>
+    <p class="fragment" data-code-focus="3"></p>
+    <p class="fragment" data-code-focus="6"></p>
+    <p class="fragment" data-code-focus="9"></p>
+
+                    </section>   
+
+<!-- standard convention -->
+
+                <section data-background-color="#fff">
+                    <img src="images/648_developer_comics_tabs_vs_spaces.jpg" />
+                </section>
+
+                <section data-background="images/StockSnap_VZ86EDZ771.jpg">
+                    <div class="overlay-style">
+                        <blockquote>Use TAB for indentation. Do not use SPACES. Define the Tab size as 4.
+                        </blockquote>
+                        <p>
+                            <footer>- <em>🇧🇭 The Government of Bahrain </em></footer>
+                        </p>
+
+                    </div>
+                </section>
+
+                <section data-background="images/StockSnap_VZ86EDZ771.jpg">
+                    <div class="overlay-style" style="padding:3% !important;">
+                        <h3>Standard convention example</h3>
+                    </div>
+                    <pre>
+    <code class="editorconfig">
+root = true
+ 
+[*]
+indent_style = tab
+        
+[*.cs]
+indent_size = 4
+    </code>
+</pre>
+<p class="fragment" data-code-focus="5,8"></p>
+                </section>             
+
+<!-- formatting convention -->
+
+                <section data-background="images/StockSnap_VZ86EDZ771.jpg">
+                    <div class="overlay-style">
+                        <blockquote>Use a single space before and after each operator and brackets.
+                        </blockquote>
+                        <p>
+                            <footer>- <em>🇧🇭 The Government of Bahrain </em></footer>
+                        </p>
+
+                    </div>
+                </section>
+
+                <section data-background="images/StockSnap_VZ86EDZ771.jpg">
+                    <pre>
+    <code class="cs">
+static void Main(string[] args)
+{
+    foreach (var arg in args) 
+    {
+        Console.WriteLine(arg); 
+    }
+
+    var number = (int)(object)args[0];
+
+    Console.WriteLine(number * number);
+    Console.ReadLine();
+}
+    </code>
+</pre>
+<p class="fragment" data-code-focus="2"></p>
+<p class="fragment" data-code-focus="4-7"></p>
+<p class="fragment" data-code-focus="9"></p>
+<p class="fragment" data-code-focus="11-12,6"></p>
+                </section>   
+
+                <section data-background="images/StockSnap_VZ86EDZ771.jpg">
+                    <pre>
+    <code class="cs">
+static void Main ( string[] args )
+{
+    foreach ( var arg in args )
+    {
+        Console.WriteLine ( arg );
+    }
+
+    var number = ( int )( object )args[ 0 ];
+
+    Console.WriteLine ( number * number );
+    Console.ReadLine ( );
+}
+    </code>
+</pre>
+<p class="fragment" data-code-focus="2"></p>
+<p class="fragment" data-code-focus="4-7"></p>
+<p class="fragment" data-code-focus="9"></p>
+<p class="fragment" data-code-focus="11-12,6"></p>
+                </section>  
+
+                <section data-background="images/StockSnap_VZ86EDZ771.jpg">
+                    <div class="overlay-style" style="padding:3% !important;">
+                        <h3>Formatting convention example</h3>
+                    </div>
+                    <pre class="medium">
+    <code class="editorconfig">
+[*.cs]
+csharp_space_between_method_call_empty_parameter_list_parentheses = true
+csharp_space_between_method_call_name_and_opening_parenthesis = true
+csharp_space_between_method_call_parameter_list_parentheses = true
+csharp_space_between_method_declaration_empty_parameter_list_parentheses = true
+csharp_space_between_method_declaration_name_and_open_parenthesis = true
+csharp_space_between_method_declaration_parameter_list_parentheses = true
+csharp_space_between_parentheses = control_flow_statements, expressions, type_casts
+csharp_space_between_square_brackets = true
+    </code>
+</pre>
+<p class="fragment" data-code-focus="3-5"></p>
+<p class="fragment" data-code-focus="6-8"></p>
+<p class="fragment" data-code-focus="9"></p>
+<p class="fragment" data-code-focus="10"></p>
+                </section> 
+
+<!-- language convention -->
+
+                <section data-background="images/StockSnap_VZ86EDZ771.jpg">
+                    <div class="overlay-style">
+                        <blockquote>Use the c# or VB.NET specific types (aliases), rather than the types defined in System namespace.
+                        </blockquote>
+                        <p>
+                            <footer>- <em>🇧🇭 The Government of Bahrain </em></footer>
+                        </p>
+
+                    </div>
+                </section>
+
+                <section data-background="images/StockSnap_VZ86EDZ771.jpg">
+                    <pre>
+    <code class="cs">
+class Person
+{
+    public Person(String name, Int32 age)
+    {
+        Name = name;
+        Age = age;
+    }
+
+    public String Name { get; }
+    public Int32 Age { get; }
+}
+    </code>
+</pre>
+<p class="fragment" data-code-focus="4,10"></p>
+<p class="fragment" data-code-focus="4,11"></p>
+                </section>  
+
+                <section data-background="images/StockSnap_VZ86EDZ771.jpg">
+                    <pre>
+    <code class="cs">
+class Person
+{
+    public Person(string name, int age)
+    {
+        Name = name;
+        Age = age;
+    }
+
+    public string Name { get; }
+    public int Age { get; }
+}
+    </code>
+</pre>
+<p class="fragment" data-code-focus="4,10"></p>
+<p class="fragment" data-code-focus="4,11"></p>
+                </section> 
+
+                <section data-background="images/StockSnap_VZ86EDZ771.jpg">
+                    <div class="overlay-style" style="padding:3% !important;">
+                        <h3>Language convention example</h3>
+                    </div>
+                    <pre class="medium">
+    <code class="editorconfig">
+[*.cs]
+dotnet_style_predefined_type_for_locals_parameters_members = true:error
+dotnet_style_predefined_type_for_member_access = true:error
+    </code>
+</pre>
+<p class="fragment" data-code-focus="3"></p>
+<p class="fragment" data-code-focus="4"></p>
+                </section> 
+
+<!-- naming convention -->
+
+<section data-background="images/StockSnap_VZ86EDZ771.jpg">
+    <div class="overlay-style">
+        <blockquote>The following table summarizes the capitalization rules(...)<br/><br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Constant Values - UpperCase.
+        </blockquote>
+        <p>
+            <footer>- <em>🇧🇭 The Government of Bahrain </em></footer>
+        </p>
+
+    </div>
+</section>
+
+                <section data-background="images/StockSnap_VZ86EDZ771.jpg">
+                    <pre>
+    <code class="cs">
+class Dog
+{
+    private const string woofwoof = "Woof woof!";
+     
+    public void Bark()
+    {
+        const string barks = "dog barks";
+        Console.WriteLine($"{woofwoof} {barks}!");
+    }
+}
+    </code>
+</pre>
+<p class="fragment" data-code-focus="4"></p>
+<p class="fragment" data-code-focus="8"></p>
+                </section> 
+
+                <section data-background="images/StockSnap_VZ86EDZ771.jpg">
+                    <pre>
+    <code class="cs">
+class Dog
+{
+    private const string WOOFWOOF = "Woof woof!";
+
+    public void Bark()
+    {
+        const string BARKS = "dog barks";
+        Console.WriteLine($"{WOOFWOOF} {BARKS}!");
+    }
+}
+    </code>
+</pre>
+<p class="fragment" data-code-focus="4"></p>
+<p class="fragment" data-code-focus="8"></p>
+                </section> 
+
+                <section data-background="images/StockSnap_VZ86EDZ771.jpg">
+                    <div class="overlay-style" style="padding:3% !important;">
+                        <h3>Naming convention example</h3>
+                    </div>
+                    <pre class="medium">
+    <code class="editorconfig">
+[*.cs]
+dotnet_naming_rule.constants_must_be_upper_cased.symbols = constant_symbols
+dotnet_naming_rule.constants_must_be_upper_cased.style = all_upper_style
+dotnet_naming_rule.constants_must_be_upper_cased.severity = error
+
+dotnet_naming_symbols.constant_symbols.applicable_kinds = *
+dotnet_naming_symbols.constant_symbols.required_modifiers = const
+
+dotnet_naming_style.all_upper_style.capitalization = all_upper
+    </code>
+</pre>
+<p class="fragment" data-code-focus="10"></p>
+<p class="fragment" data-code-focus="7-8"></p>
+<p class="fragment" data-code-focus="3-5"></p>
+                </section>  
+
+                <section data-background="images/StockSnap_VZ86EDZ771.jpg">
+                    <div class="overlay-style">
+                        Editorconfig file can also be <span class="highlight">generated</span> from your Visual Studio preferences.
+                    </div>
+                </section>
+
+                <section data-background="images/editorconfig-vs.png" data-background-color="white" data-state="bg-auto-width">
+                </section>
+
+                <section data-background="images/StockSnap_VZ86EDZ771.jpg">
+                    <div class="overlay-style">
+                        EditorConfig rules are part of live code analysis in IDE but <span class="highlight">not in command line</span> builds.
+                    </div>
+                </section>
+                
+                <section data-background="images/build-no-error.png" data-background-color="white" data-state="bg-auto-height">
+                </section>
+
+                <section data-background="images/editorconfig-issue.png" data-background-color="white" data-state="bg-auto-width">
+                </section>
+
+                <section data-background="images/StockSnap_VZ86EDZ771.jpg">
+                    <div class="overlay-style">
+                        EditorConfig rules are analyzers but are <span class="highlight">embedded into IDE</span>.<br/>
+                        The file would also be parsed by the IDE layer.
+                    </div>
+                </section>
+
+                <section data-background="images/StockSnap_VZ86EDZ771.jpg">
+                    <div class="overlay-style">
+                        From Roslyn 3.3, the compiler <span class="highlight">supports EditorConfig</span> natively.<br/>
+                        EditorConfig rules will be available as <span class="highlight">Nuget analyzers</span>.
+                    </div>
+                </section>
+            </section>
+
+            <!-- Analyzers -->
+            <section>
+                <section data-background="images/chris-barbalis-705864-unsplash.jpg">
+                    <h1>Analyzers</h1>
+                </section>
+
+                <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
+                    <div class="overlay-style">
+                        Roslyn compiler provides extensibility via <span class="highlight">Features API</span>, allowing developers to create code analysis tools that run in IDE and/or during build.
+                    </div>
+                </section>
+
+                <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
+
+                    <h2 class="overlay-style">Analyzers</h2>
+                    <p><img src="images/problem-dilbert.gif" /></p>
+                    </section>
+                    
+                <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
+                    
+                    <h2 class="overlay-style">Code fixes</h2 class="overlay-style">
+                    <p><img src="images/problem-solved.gif" /></p>
+                    </section>
+                    
+                <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
+                    
+                    <h2 class="overlay-style">Refactorings</h2 class="overlay-style">
+                    <img class="normal" src="images/help-cat.gif" />
+                    </section>
+                
+                    <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
+                    
+                        <div class="overlay-style" style="padding:3% !important;">
+                            <h3>Roslyn Features API</h3>
+                        </div>
+                        
+                        <table class="overlay-style align-left">
+                                                <thead>
+                                                    <tr>
+                                                        <th></th>
+                                                        <th>Find issue</th>
+                                                        <th>Change code</th>
+                                                        <th>Diagnostic</th>
+                                                        <th>Distribution</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Analyzer</td>
+                                                        <td class="center">🔍</td>
+                                                        <td></td>
+                                                        <td class="center">🦄</td>
+                                                        <td class="center"><img class="icon" src="images/nuget.png" /> <img class="icon" src="images/vsix.png" /></td class="center">
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Code fix</td>
+                                                        <td></td>
+                                                        <td class="center">🔧</td>
+                                                        <td class="center">🦄</td>
+                                                        <td class="center"><img class="icon" src="images/nuget.png" /> <img class="icon" src="images/vsix.png" /></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Refactoring</td>
+                                                        <td></td>
+                                                        <td class="center">🔧</td class="center">
+                                                        <td></td>
+                                                        <td class="center"><img class="icon" src="images/vsix.png" /></td class="center">
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                        
+                        </section>
+
+                        <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
+                            <div class="overlay-style">
+                                Analyzers are part of code analysis both in <span class="highlight">IDE</span> and in <span class="highlight">command line</span> builds.
+                            </div>
+                        </section>
+
+                        <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
+
+                            <h3 class="overlay-style">Sample Roslyn Analyzers</h3>
+        
+                            <table class="overlay-style left-aligned" style="font-size: 0.7em !important;">
+                                <thead>
+                                    <th>Nuget Package</th>
+                                    <th>Description</th>
+                                    <th>Example</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><em>Microsoft.CodeAnalysis.FxCopAnalyzers</em></td>
+                                        <td>Ported FxCop rules</td>
+                                        <td>Meta package</td>
+                                    </tr>
+                                    <tr>
+                                        <td><em>Microsoft.CodeQuality.Analyzers</em></td>
+                                        <td>API Design Guidelines</td>
+                                        <td>Avoid async void</td>
+                                    </tr>
+                                    <tr>
+                                        <td><em>Microsoft.NetCore.Analyzers</em></td>
+                                        <td>.NET Core APIs</td>
+                                        <td>Avoid 0-length array allocations</td>
+                                    </tr>
+                                    <tr>
+                                        <td><em>Microsoft.NetFramework.Analyzers</em></td>
+                                        <td>Desktop .NET APIs</td>
+                                        <td>Insecure XSLT processing</td>
+                                    </tr>
+                                    <tr>
+                                        <td><em>StyleCop.Analyzers</em></td>
+                                        <td>Ported StyleCop rules</td>
+                                        <td>Do not use regions</td>
+                                    </tr>
+                                    <tr>
+                                        <td><em>Roslynator.Analyzers</em></td>
+                                        <td>Best independent package</td>
+                                        <td>Simplify code branching</td>
+                                    </tr>
+                                </tbody>
+                            </table>    
+                        </section>
+
+                        <section data-background="images/analyzers-vs.png" data-background-color="#252526" data-state="bg-auto-height">
+                        </section>
+
+                        <section data-background="images/analyzer-codefix.png" data-background-color="white" data-state="bg-auto-height">
+                        </section>
+
+                        <section data-background="images/barrel.jpg">
+                            <h3 class="overlay-style">And now for something completely different...</h3>
+                        </section> 
+
+                        <section data-background="images/sarah-white-422370-unsplash.jpg">
+                    
+                            <div class="overlay-style" style="padding:3% !important;">
+                                <h3>Diagnostic Severities</h3>
+                            </div>
+                            
+                            <table class="overlay-style align-left">
+                                                    <thead>
+                                                        <tr>
+                                                            <th></th>
+                                                            <th>Severity</th>
+                                                            <th>Shown in IDE?</th>
+                                                            <th>Breaking build?</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>🕵️‍♂️</td>
+                                                            <td>Hidden</td>
+                                                            <td>❌</td>
+                                                            <td>❌</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>ℹ️</td>
+                                                            <td>Info</td>
+                                                            <td>✅</td>
+                                                            <td>❌</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>⚠️</td>
+                                                            <td>Warning</td>
+                                                            <td>✅</td>
+                                                            <td>❓</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>⛔️</td>
+                                                            <td>Error</td>
+                                                            <td>✅</td>
+                                                            <td>✅</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                            
+                            </section>
+
+                        <section data-background="images/sarah-white-422370-unsplash.jpg">
+                            <h3 class="overlay-style">So how do you control diagnostic severity for analyzers?</h3>
+                        </section>
+
+                        <section data-background="images/sarah-white-422370-unsplash.jpg">
+                            <h3 class="overlay-style">Rulesets</h3>
+        
+                            <pre>
+            <code class="xml">
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;RuleSet Name="Demo rules" ToolsVersion="14.0"&gt;
+  &lt;Rules AnalyzerId="StyleCop.Analyzers" RuleNamespace="StyleCop.Analyzers"&gt;
+    &lt;Rule Id="SA1005" Action="Error" /&gt;
+  &lt;Rules&gt;
+  &lt;Rules AnalyzerId="Microsoft.CodeAnalysis.CSharp.Features" RuleNamespace="Microsoft.CodeAnalysis.CSharp.Features"&gt;
+    &lt;Rule Id="IDE0003" Action="Error" /&gt;
+  &lt;Rules&gt;
+&lt;RuleSet&gt;
+    </code>
+        </pre>
+        <p class="fragment" data-code-focus="5"></p>
+        <p class="fragment" data-code-focus="8"></p>
+                        </section> 
+        
+                        <section data-background="images/sarah-white-422370-unsplash.jpg">
+                            <h1 class="overlay-style">💩</h1>
+                        </section> 
+        
+                        <section data-background="images/sarah-white-422370-unsplash.jpg">
+                            <div class="overlay-style">
+                                <blockquote>Tip: It's easier to edit a rule set in the graphical Rule Set Editor than by hand.
+                                </blockquote>
+                                <p>
+                                    <footer>- <em>MSDN</em></footer>
+                                </p>
+        
+                            </div>
+                        </section>
+        
+                        <section data-background="images/ruleset-msdn.png" data-background-color="white" data-state="bg-auto-width">
+                        </section>
+        
+                        <section data-background="images/ruleset-msdn.png" data-background-color="white" data-state="bg-auto-width">
+                            <h1 class="overlay-style">No.</h1>
+                        </section>
+                        
+                        <!-- <section data-background="images/ruleset-deprecate.png" data-background-color="white" data-state="bg-auto-width">
+                        </section> -->
+
+                        <section data-background="images/sarah-white-422370-unsplash.jpg">
+                            <div class="overlay-style">
+                                Since VS 16.3, rulesets are <span class="highlight">deprecated</span>.
+                            </div>
+                        </section>
+        
+                        <section data-background="images/sarah-white-422370-unsplash.jpg">
+                            <div class="overlay-style">
+                                Going forward <span class="highlight">EditorConfig</span> will be the recommended single point of managing all rules, for both IDE and command line builds.
+                            </div>
+                        </section>
+
+                        <section data-background="images/sarah-white-422370-unsplash.jpg">
+                            <div class="overlay-style">
+                                <p>
+                                    Since VS 16.3, analyzers severity can be controlled from EditorConfig, using the relevant diagnostic ID.
+                                </p>
+                                <pre>
+                                    <code class="shell">dotnet_diagnostic.&lt;diagnostic id&gt;.severity = &lt;severity&gt;</code></pre>
+                            </div>
+                        </section>
+
+                        <section data-background="images/monty.jpg">
+                            <h3 class="overlay-style">Back to the main program...</h3>
+                        </section> 
+                        
+                    <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
+                            <div class="overlay-style">
+                                <blockquote>Always catch only the specific exception, not generic exception.
+                                </blockquote>
+                                <p>
+                                    <footer>- <em>🇧🇭 The Government of Bahrain </em></footer>
+                                </p>
+                        
+                            </div>
+                        </section>
+
+                    <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
+                            <div class="overlay-style">
+                                Diagnostic <span class="highlight">CA1031</span> from Microsoft.CodeQuality.Analyzers:<br/> Do not catch general exception types.
+                            </div>
+                        </section>
+
+                        <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
+                            <div class="overlay-style">
+                                <blockquote>Do not have more than one class in a single file.
+                                </blockquote>
+                                <p>
+                                    <footer>- <em>🇧🇭 The Government of Bahrain </em></footer>
+                                </p>
+                        
+                            </div>
+                        </section>
+
+                    <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
+                            <div class="overlay-style">
+                                Diagnostic <span class="highlight">SA1402</span> from StyleCop.Analyzers:<br/> A C# code file contains more than one unique type.
+                            </div>
+                        </section>
+
+                        <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
+                            <div class="overlay-style">
+                                <blockquote>Variable names should be between 8 - 20 characters long.
+                                </blockquote>
+                                <p>
+                                    <footer>- <em>🇧🇭 The Government of Bahrain </em></footer>
+                                </p>
+                        
+                            </div>
+                        </section>
+
+                        <section data-background="images/3mkeut.jpg" data-background-color="black" data-state="bg-auto-height">
+                        </section> 
+
+                        <section data-background="images/monkey-code.gif" data-state="bg-auto-width">
+                            <div class="overlay-style">
+                                Let's <span class="highlight">build</span> an analyzer.
+                            </div>
+                        </section> 
+
+                        <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
+                            <div class="overlay-style">
+                            <h2>Code analysis</h2>
+                            </div>
+                              <div class="fragment left overlay-style" style="">
+                                  <div style="padding: 3%">
+                                    <h3 style="margin-bottom: 3%">Syntax Trees</h3>
+                                    <ul>
+                                        <li>✅ <b>structural</b> information about the code</li>
+                                        <li>✅ immutable</li>
+                                        <li>✅ round-trippable</li>
+                                    </ul>
+                                  </div>
+                              </div>
+                            
+                              <div class="fragment right overlay-style" style="padding: 0">
+                                  <div style="padding: 3%">
+                                    <h3 style="margin-bottom: 3%">Semantic Model</h3>
+                                    <ul>
+                                    <li>✅ <b>semantic</b> meaning of syntax trees</li>
+                                    <li>✅ backed by compilation</li>
+                                    <li>✅ symbols, diagnostics, flow..</li>
+                                    </ul>
+                                  </div>
+                              </div>
+                            </section>
+
+                        <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
+                                <pre>
+                <code class="cs">
+private static void AnalyzeSyntaxNode(SyntaxNodeAnalysisContext context)
+{
+    var declaration = (VariableDeclaratorSyntax)context.Node;
+    string name = declaration.Identifier.Text;
+    if (name != null && (name.Length < 8 || name.Length > 20))
+    {
+       var diagnostic = Diagnostic.Create(Rule, declaration.GetLocation(), 
+                            name, name.Length);
+       context.ReportDiagnostic(diagnostic);
+    }
+}
+                </code>
+            </pre>
+            <p class="fragment" data-code-focus="2"></p>
+            <p class="fragment" data-code-focus="4"></p>
+            <p class="fragment" data-code-focus="5"></p>
+            <p class="fragment" data-code-focus="6"></p>
+            <p class="fragment" data-code-focus="8-10"></p>
+                            </section>  
+
+                            <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
+                                <pre>
+                <code class="cs">
+private async Task&lt;Solution&gt; AdjustLength(Document document, VariableDeclaratorSyntax declaration, CancellationToken ct)
+{
+    var variableName = declaration.Identifier.Text;
+    var newName = variableName.Length < 8 ? 
+        variableName.PadRight(8, 'X') : variableName.Substring(0, 20);
+
+    var semanticModel = await document.GetSemanticModelAsync(ct);
+    var localSymbol = semanticModel.GetDeclaredSymbol(declaration, ct);
+
+    var newSolution = await Renamer.RenameSymbolAsync(
+        document.Project.Solution, localSymbol, newName, 
+        document.Project.Solution.Workspace.Options, ct);
+
+    return newSolution;
+}
+                </code>
+            </pre>
+            <p class="fragment" data-code-focus="2"></p>
+            <p class="fragment" data-code-focus="5-6"></p>
+            <p class="fragment" data-code-focus="8-9"></p>
+            <p class="fragment" data-code-focus="11-13"></p>
+                            </section>  
+
+                        <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
+                                <h3 class="overlay-style">Analyzers can be turned off</h3>
+            
+                                <pre>
+                <code class="xml">
+&lt;PropertyGroup&gt;
+  &lt;RunAnalyzersDuringBuild&gt;false&lt;/RunAnalyzersDuringBuild&gt;
+  &lt;RunAnalyzersDuringLiveAnalysis&gt;false&lt;/RunAnalyzersDuringLiveAnalysis&gt;
+  &lt;RunAnalyzers&gt;false&lt;/RunAnalyzers&gt;
+&lt;PropertyGroup&gt;
+        </code>
+            </pre>
+                            </section> 
+
+                        <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
+                            <div class="overlay-style">
+                                Analyzers can do very creative things. <span class="highlight">ClrHeapAllocationAnalyzer</span> can point out all the allocations in your code.
+                            </div>
+                        </section>
+
+                        <section data-background="images/allocations.png" data-background-color="white" data-state="bg-auto-width">
+                        </section>
+            </section>
+
+            <section data-background="images/all.jpg">
+            </section>
+
+                            <section data-background="images/gold-chain-collective-695929-unsplash.jpg">
+                <div class="overlay-style" style="padding:3% !important;">
+                    <h2>Thank you</h2>
+                </div>
+                <div style="display: table">
+                        <div class="overlay-style" style="padding-top: 0 !important; padding-right: 0 !important; width:25%; display: table-cell;">
+                                <div style="padding: 3%">
+                                    <p>
+                                        <img class="small" src="images/thankyou.gif" style="min-height: auto; margin:0" />
+                                    </p>
+                                </div>
+                            </div>
+                    <div class="overlay-style" style="padding-top: 0 !important; padding-left: 0 !important; width:75%; display: table-cell;">
+                        <div style="padding: 3%;">
+                            <ul>
+                                <li style="margin-bottom: 0.7em">📝 <a href="https://filipw.github.io/basta-spring-2020">filipw.github.io/basta-spring-2020</a>
+                                </li>
+    
+                                <li style="margin-bottom: 0.7em">💻 <a href="https://github.com/filipw/2020-bastaspring-demos">github.com/filipw/2020-bastaspring-demos</a>
+                                </li>
+
+                                <li style="margin-bottom: 0.7em">🇧🇭 <a href="http://www.nea.gov.bh/Attachments/eServices%20Standards/C_Net_Coding_standard_V1.pdf">Bahrain NEA C# guidelines</a>
+                                </li>
+    
+                                <li style="margin-bottom: 0.7em">🚀 Enjoy the rest of the event!
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div style="clear:both"></div>
+                </div>
+            </section>
+
+            <section data-background-color="#000">
+                <img src="images/bye.gif" />
+            </section>
+
+        </div>
+    </div>
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+    <script>
+        // Full list of configuration options available here:
+        // https://github.com/hakimel/reveal.js#configuration
+
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            history: true,
+            center: true,
+            keyboard: {
+                39: 'next', // Right Arrow
+                37: 'prev'  // Left Arrow
+            },
+            transition: 'slide', // default/cube/page/concave/zoom/linear/fade/none
+
+            // Parallax scrolling
+            // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+            // parallaxBackgroundSize: '2100px 900px',
+
+            // Optional libraries used to extend on reveal.js
+            dependencies: [
+                { src: 'lib/js/classList.js', condition: function () { return !document.body.classList; } },
+                { src: 'plugin/markdown/marked.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+                { src: 'plugin/markdown/markdown.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+                { src: 'plugin/highlight.js/highlight.pack.js', async: true, callback: function () { /*hljs.initHighlightingOnLoad();*/ } },
+                { src: 'plugin/zoom-js/zoom.js', async: true, condition: function () { return !!document.body.classList; } },
+                { src: 'plugin/notes/notes.js', async: true, condition: function () { return !!document.body.classList; } },
+                { src: 'plugin/alt-arrows/alt-arrows.js' },
+                {
+                    src: 'plugin/reveal-code-focus.js',
+                    async: true,
+                    callback: function () {
+                        RevealCodeFocus();
+                    }
+                }
+            ]
+        });
+
+        // Reveal.configure({
+        //     keyboard: {
+        //         39: 'next', // Right Arrow
+        //         37: 'prev'  // Left Arrow
+        //     }
+        // });
+
+    </script>
+</body>
+
+</html>
