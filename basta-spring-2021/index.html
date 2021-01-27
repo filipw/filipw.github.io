@@ -116,10 +116,10 @@
 
                 <section data-background="images/feynman2.jpg">
                     <div class="container">
-                
+
                         <div class="col">
                         </div>
-                
+
                         <div class="col overlay-style">
                             <blockquote>I think I can safely say that nobody understands quantum mechanics
                             </blockquote>
@@ -252,18 +252,25 @@
                 </section>
 
                 <section data-background="images/StockSnap_VZ86EDZ771.jpg">
-                    <div class="overlay-style">
-                        <p>The state of a single qubit is described by a vector in a two dimensional Hilbert space, where $\alpha$ and $\beta$ are complex numbers.</p>
-                        <h2 class="r-fit-text">$\begin{bmatrix} \alpha \cr \beta \end{bmatrix}$</h2>
+                    <div class="container">
+                
+                        <div class="col overlay-style">
+                            <p>The state of a qubit is described by a <span class="highlight">vector</span> in a two dimensional <span class="highlight">Hilbert space</span>, where $\alpha$ and $\beta$ are complex numbers.</p>
+                        </div>
+                
+                        <div class="col overlay-style">
+                            <h2 class="r-fit-text">$\begin{bmatrix} \alpha \cr \beta \end{bmatrix}$</h2>
+                        </div>
                     </div>
                 </section>
 
                 <section data-background="images/StockSnap_VZ86EDZ771.jpg">
                     <div class="overlay-style">
-                        <p>Two linearly indepndenent (orthogonal) unit vectors, form a basis. The so-called computational basis is:</p>
+                        <p>Two linearly indepndenent (orthogonal) unit vectors, form a basis. The so-called
+                            <span class="highlight">computational basis</span> is:</p>
                         <p class="r-fit-text">
                             $$
-                            \ket{0} = \begin{bmatrix} 1 \cr 0 \end{bmatrix} \\ 
+                            \ket{0} = \begin{bmatrix} 1 \cr 0 \end{bmatrix} \;\;\;\;
                             \ket{1} = \begin{bmatrix} 0 \cr 1 \end{bmatrix}
                             $$
                         </p>
@@ -272,50 +279,70 @@
 
                 <section data-background="images/StockSnap_VZ86EDZ771.jpg">
                     <div class="overlay-style">
-                        <p>A qubit can be a linear combination of both basis states:</p>
+                        <p>A qubit can be a <span class="highlight">linear combination</span> of both basis states:</p>
                         <h2 class="r-fit-text">$$\ket{\varphi} = \alpha\ket{0} + \beta\ket{1}$$</h2>
                     </div>
                 </section>
 
+                <section data-background="images/StockSnap_VZ86EDZ771.jpg">
+                    <div class="overlay-style">
+                        <p>This is known as the</p>
+                        <h2 class="r-fit-text">superposition</h2>
+                    </div>
+                </section>
+
+                <section data-background="images/StockSnap_VZ86EDZ771.jpg">
+                    <div class="container">
+
+                        <div class="col overlay-style">
+                            We refer to $\alpha$ and $\beta$ as <span class="highlight">probability amplitudes</span>.
+                            They can be converted to probabilities using the <span class="highlight">Born rule</span>.
+                        </div>
+
+                        <div class="col overlay-style">
+                            <h2 class="r-fit-text">$$|\alpha|^2 + |\beta|^2 = 1$$</h2>
+                        </div>
+                    </div>
+                </section>
 
 
             </section>
 
-                <section data-background="images/monkey-code.gif" data-state="bg-auto-width">
-                    <div class="overlay-style">
-                        Let's <span class="highlight">build</span> an analyzer.
-                    </div>
-                </section>
+            <section data-background="images/monkey-code.gif" data-state="bg-auto-width">
+                <div class="overlay-style">
+                    Let's <span class="highlight">build</span> an analyzer.
+                </div>
+            </section>
 
-                <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
-                    <div class="overlay-style">
-                        <h2>Code analysis</h2>
+            <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
+                <div class="overlay-style">
+                    <h2>Code analysis</h2>
+                </div>
+                <div class="fragment left overlay-style" style="">
+                    <div style="padding: 3%">
+                        <h3 style="margin-bottom: 3%">Syntax Trees</h3>
+                        <ul>
+                            <li>✅ <b>structural</b> information about the code</li>
+                            <li>✅ immutable</li>
+                            <li>✅ round-trippable</li>
+                        </ul>
                     </div>
-                    <div class="fragment left overlay-style" style="">
-                        <div style="padding: 3%">
-                            <h3 style="margin-bottom: 3%">Syntax Trees</h3>
-                            <ul>
-                                <li>✅ <b>structural</b> information about the code</li>
-                                <li>✅ immutable</li>
-                                <li>✅ round-trippable</li>
-                            </ul>
-                        </div>
-                    </div>
+                </div>
 
-                    <div class="fragment right overlay-style" style="padding: 0">
-                        <div style="padding: 3%">
-                            <h3 style="margin-bottom: 3%">Semantic Model</h3>
-                            <ul>
-                                <li>✅ <b>semantic</b> meaning of syntax trees</li>
-                                <li>✅ backed by compilation</li>
-                                <li>✅ symbols, diagnostics, flow..</li>
-                            </ul>
-                        </div>
+                <div class="fragment right overlay-style" style="padding: 0">
+                    <div style="padding: 3%">
+                        <h3 style="margin-bottom: 3%">Semantic Model</h3>
+                        <ul>
+                            <li>✅ <b>semantic</b> meaning of syntax trees</li>
+                            <li>✅ backed by compilation</li>
+                            <li>✅ symbols, diagnostics, flow..</li>
+                        </ul>
                     </div>
-                </section>
+                </div>
+            </section>
 
-                <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
-                    <pre>
+            <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
+                <pre>
                 <code class="cs">
 private static void AnalyzeSyntaxNode(SyntaxNodeAnalysisContext context)
 {
@@ -330,15 +357,15 @@ private static void AnalyzeSyntaxNode(SyntaxNodeAnalysisContext context)
 }
                 </code>
             </pre>
-                    <p class="fragment" data-code-focus="2"></p>
-                    <p class="fragment" data-code-focus="4"></p>
-                    <p class="fragment" data-code-focus="5"></p>
-                    <p class="fragment" data-code-focus="6"></p>
-                    <p class="fragment" data-code-focus="8-10"></p>
-                </section>
+                <p class="fragment" data-code-focus="2"></p>
+                <p class="fragment" data-code-focus="4"></p>
+                <p class="fragment" data-code-focus="5"></p>
+                <p class="fragment" data-code-focus="6"></p>
+                <p class="fragment" data-code-focus="8-10"></p>
+            </section>
 
-                <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
-                    <pre>
+            <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
+                <pre>
                 <code class="cs">
 private async Task&lt;Solution&gt; AdjustLength(Document document, VariableDeclaratorSyntax declaration, CancellationToken ct)
 {
@@ -357,16 +384,16 @@ private async Task&lt;Solution&gt; AdjustLength(Document document, VariableDecla
 }
                 </code>
             </pre>
-                    <p class="fragment" data-code-focus="2"></p>
-                    <p class="fragment" data-code-focus="5-6"></p>
-                    <p class="fragment" data-code-focus="8-9"></p>
-                    <p class="fragment" data-code-focus="11-13"></p>
-                </section>
+                <p class="fragment" data-code-focus="2"></p>
+                <p class="fragment" data-code-focus="5-6"></p>
+                <p class="fragment" data-code-focus="8-9"></p>
+                <p class="fragment" data-code-focus="11-13"></p>
+            </section>
 
-                <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
-                    <h3 class="overlay-style">Analyzers can be turned off</h3>
+            <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
+                <h3 class="overlay-style">Analyzers can be turned off</h3>
 
-                    <pre>
+                <pre>
                 <code class="xml">
 &lt;PropertyGroup&gt;
   &lt;RunAnalyzersDuringBuild&gt;false&lt;/RunAnalyzersDuringBuild&gt;
@@ -375,18 +402,17 @@ private async Task&lt;Solution&gt; AdjustLength(Document document, VariableDecla
 &lt;PropertyGroup&gt;
         </code>
             </pre>
-                </section>
+            </section>
 
-                <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
-                    <div class="overlay-style">
-                        Analyzers can do very creative things. <span class="highlight">ClrHeapAllocationAnalyzer</span>
-                        can point out all the allocations in your code.
-                    </div>
-                </section>
+            <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
+                <div class="overlay-style">
+                    Analyzers can do very creative things. <span class="highlight">ClrHeapAllocationAnalyzer</span>
+                    can point out all the allocations in your code.
+                </div>
+            </section>
 
-                <section data-background="images/allocations.png" data-background-color="white"
-                    data-state="bg-auto-width">
-                </section>
+            <section data-background="images/allocations.png" data-background-color="white" data-state="bg-auto-width">
+            </section>
             </section>
 
             <section data-background="images/all.jpg">
