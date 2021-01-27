@@ -253,11 +253,13 @@
 
                 <section data-background="images/StockSnap_VZ86EDZ771.jpg">
                     <div class="container">
-                
+
                         <div class="col overlay-style">
-                            <p>The state of a qubit is described by a <span class="highlight">vector</span> in a two dimensional <span class="highlight">Hilbert space</span>, where $\alpha$ and $\beta$ are complex numbers.</p>
+                            <p>The state of a qubit is described by a <span class="highlight">vector</span> in a two
+                                dimensional <span class="highlight">Hilbert space</span>, where $\alpha$ and $\beta$ are
+                                complex numbers.</p>
                         </div>
-                
+
                         <div class="col overlay-style">
                             <h2 class="r-fit-text">$\begin{bmatrix} \alpha \cr \beta \end{bmatrix}$</h2>
                         </div>
@@ -267,7 +269,8 @@
                 <section data-background="images/StockSnap_VZ86EDZ771.jpg">
                     <div class="overlay-style">
                         <p>Two linearly indepndenent (orthogonal) unit vectors, form a basis. The so-called
-                            <span class="highlight">computational basis</span> is:</p>
+                            <span class="highlight">computational basis</span> is:
+                        </p>
                         <p class="r-fit-text">
                             $$
                             \ket{0} = \begin{bmatrix} 1 \cr 0 \end{bmatrix} \;\;\;\;
@@ -305,12 +308,75 @@
                     </div>
                 </section>
 
+                <section data-background="images/StockSnap_VZ86EDZ771.jpg">
+                    <div class="overlay-style">
+                        <p>To describe the state of a two qubit system, we need a vector in a <span
+                                class="highlight">four dimensional</span>Hilbert space.</p>
+                        <h3 class="r-fit-text">$$\ket{\varphi} = \alpha\ket{00} + \beta\ket{01} + \gamma\ket{10} +
+                            \delta\ket{11}$$</h3>
+                    </div>
+                </section>
+
+                <section data-background="images/StockSnap_VZ86EDZ771.jpg">
+                    <div class="overlay-style">
+                        <p>Quantum state of a qubit system of size $n$ is described by $2^n$ amplitudes. For example,
+                            for a 260 qubit computer:</p>
+                        <h2 class="r-fit-text">$2^{260} \approx 10^{80}$</h2>
+                        <p> which roughly equals of atoms in observable universe</p>
+                    </div>
+                </section>
+
+                <section data-background="images/StockSnap_VZ86EDZ771.jpg">
+                    <div class="overlay-style">
+                        <p>However we can only read a single classical bit out of every qubit, meaning that for a 256
+                            qubit computer we can only extract:</p>
+                        <h2 class="r-fit-text">256 bits = 4kB</h2>
+                    </div>
+                </section>
 
             </section>
 
-            <section data-background="images/monkey-code.gif" data-state="bg-auto-width">
-                <div class="overlay-style">
-                    Let's <span class="highlight">build</span> an analyzer.
+            <section data-background="images/chemistry.jpg">
+                <div class="container">
+                    <div class="col">
+                    </div>
+                    <div class="col overlay-style">
+                        <h3>Chemistry</h3>
+                        <p>subatomic modeling, molecular simulations, material science</p>
+                    </div>
+                </div>
+            </section>
+
+            <section data-background="images/energy.jpg">
+                <div class="container">
+                    <div class="col">
+                    </div>
+                    <div class="col overlay-style">
+                        <h3>Energy</h3>
+                        <p>problem optimization, energy research, simulation</p>
+                    </div>
+                </div>
+            </section>
+
+            <section data-background="images/machinelearning.jpg">
+                <div class="container">
+                    <div class="col">
+                    </div>
+                    <div class="col overlay-style">
+                        <h3>Machine Learning</h3>
+                        <p>quantum classifiers, hybrid quantum/classical training</p>
+                    </div>
+                </div>
+            </section>            
+
+            <section data-background="images/risk-analysis.jpg">
+                <div class="container">
+                    <div class="col">
+                    </div>
+                    <div class="col overlay-style">
+                        <h3>Financial Services</h3>
+                        <p>risk analysis, complex simulations, portfolio optimization</p>
+                    </div>
                 </div>
             </section>
 
@@ -512,8 +578,7 @@ private async Task&lt;Solution&gt; AdjustLength(Document document, VariableDecla
                 {
                     src: 'plugin/reveal-code-focus.js',
                     async: true,
-                    callback: function ()
-                    {
+                    callback: function () {
                         RevealCodeFocus();
                     }
                 }

@@ -10,6 +10,10 @@ section {
   line-height: 0.9;
 }
 
+.MathJax_CHTML {
+  font-size: 117% !important;
+}
+
     /* .MJXc-TeX-unknown-R {font-family: monospace; font-style: normal; font-weight: normal}
     .MJXc-TeX-unknown-I {font-family: monospace; font-style: italic; font-weight: normal}
     .MJXc-TeX-unknown-B {font-family: monospace; font-style: normal; font-weight: bold}
