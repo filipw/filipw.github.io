@@ -10,6 +10,36 @@ section {
   line-height: 0.9;
 }
 
+    /* .MJXc-TeX-unknown-R {font-family: monospace; font-style: normal; font-weight: normal}
+    .MJXc-TeX-unknown-I {font-family: monospace; font-style: italic; font-weight: normal}
+    .MJXc-TeX-unknown-B {font-family: monospace; font-style: normal; font-weight: bold}
+    .MJXc-TeX-unknown-BI {font-family: monospace; font-style: italic; font-weight: bold}
+    .MJXc-TeX-ams-R {font-family: MJXc-TeX-ams-R,MJXc-TeX-ams-Rw !important}
+    .MJXc-TeX-cal-B {font-family: MJXc-TeX-cal-B,MJXc-TeX-cal-Bx,MJXc-TeX-cal-Bw !important}
+    .MJXc-TeX-frak-R {font-family: MJXc-TeX-frak-R,MJXc-TeX-frak-Rw !important}
+    .MJXc-TeX-frak-B {font-family: MJXc-TeX-frak-B,MJXc-TeX-frak-Bx,MJXc-TeX-frak-Bw !important}
+    .MJXc-TeX-math-BI {font-family: MJXc-TeX-math-BI,MJXc-TeX-math-BIx,MJXc-TeX-math-BIw !important}
+    .MJXc-TeX-sans-R {font-family: MJXc-TeX-sans-R,MJXc-TeX-sans-Rw !important}
+    .MJXc-TeX-sans-B {font-family: MJXc-TeX-sans-B,MJXc-TeX-sans-Bx,MJXc-TeX-sans-Bw !important}
+    .MJXc-TeX-sans-I {font-family: MJXc-TeX-sans-I,MJXc-TeX-sans-Ix,MJXc-TeX-sans-Iw !important}
+    .MJXc-TeX-script-R {font-family: MJXc-TeX-script-R,MJXc-TeX-script-Rw !important}
+    .MJXc-TeX-type-R {font-family: MJXc-TeX-type-R,MJXc-TeX-type-Rw !important}
+    .MJXc-TeX-cal-R {font-family: MJXc-TeX-cal-R,MJXc-TeX-cal-Rw !important}
+    .MJXc-TeX-main-B {font-family: MJXc-TeX-main-B,MJXc-TeX-main-Bx,MJXc-TeX-main-Bw !important}
+    .MJXc-TeX-main-I {font-family: MJXc-TeX-main-I,MJXc-TeX-main-Ix,MJXc-TeX-main-Iw !important}
+    .MJXc-TeX-main-R {font-family: MJXc-TeX-main-R,MJXc-TeX-main-Rw !important}
+    .MJXc-TeX-math-I {font-family: MJXc-TeX-math-I,MJXc-TeX-math-Ix,MJXc-TeX-math-Iw !important}
+    .MJXc-TeX-size1-R {font-family: MJXc-TeX-size1-R,MJXc-TeX-size1-Rw !important}
+    .MJXc-TeX-size2-R {font-family: MJXc-TeX-size2-R,MJXc-TeX-size2-Rw !important}
+    .MJXc-TeX-size3-R {font-family: MJXc-TeX-size3-R,MJXc-TeX-size3-Rw !important}
+    .MJXc-TeX-size4-R {font-family: MJXc-TeX-size4-R,MJXc-TeX-size4-Rw !important}
+    .MJXc-TeX-vec-R {font-family: MJXc-TeX-vec-R,MJXc-TeX-vec-Rw !important}
+    .MJXc-TeX-vec-B {font-family: MJXc-TeX-vec-B,MJXc-TeX-vec-Bx,MJXc-TeX-vec-Bw !important} */
+
+/* .reveal .mjx-chtml span {
+  font-family: MJXc-TeX-math-BI !important;
+} */
+
 ul ul {
   font-size: 0.75em !important;
 }
@@ -215,7 +245,7 @@ html.bg-auto-width div.slide-background.present {
   background-size: 100% auto;
 }
 
-span.highlight, span.mjx-math {
+span.highlight/*, span.mjx-math*/ {
   background: #de4747;
   display: inline-block;
   padding: 0 5px;
