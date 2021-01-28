@@ -50,7 +50,19 @@ ul ul {
 
 .container{
   display: flex;
+  align-items: stretch;
+  justify-content: center;
 }
+
+.container.centered {
+  align-items: center;
+}
+
+.reveal section .container.centered img {
+  min-height: auto;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
 .col {
   flex: 1;
 }
@@ -249,6 +261,10 @@ html.bg-auto-width div.slide-background.present {
   background-size: 100% auto;
 }
 
+html.bg-top-left div.slide-background.present {
+  background-position: 0 0;
+}
+
 span.highlight/*, span.mjx-math*/ {
   background: #de4747;
   display: inline-block;
@@ -346,7 +362,8 @@ table td.footnote {
 }
 
 .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5 {
-  margin-bottom: 0;
+  margin-top: 0.4em;
+  margin-bottom: 0.4em;
 } 
 
 table td.center {
@@ -399,4 +416,8 @@ table.large td {
 .mjx-char {
   padding-top: 0 !important;
   padding-bottom: 0 !important;
+}
+
+.reveal .inset {
+  padding: 1em;
 }
