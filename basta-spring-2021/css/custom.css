@@ -48,17 +48,17 @@ ul ul {
   font-size: 0.75em !important;
 }
 
-.container{
+.column-container {
   display: flex;
   align-items: stretch;
   justify-content: center;
 }
 
-.container.centered {
+.column-container.centered {
   align-items: center;
 }
 
-.reveal section .container.centered img {
+.reveal section .column-container.centered img {
   min-height: auto;
   box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }
@@ -110,6 +110,14 @@ minor:after {
 
 .reveal ul li {
   margin-bottom: 0.5em;
+}
+
+.reveal ul li:first-child {
+  margin-top: 0.5em;
+}
+
+.reveal ul li:last-child {
+  margin-bottom: 0;
 }
 
 .reveal .slides section .fragment.current-only {
@@ -366,6 +374,10 @@ table td.footnote {
   margin-bottom: 0.4em;
 } 
 
+.reveal section h2:first-child {
+  margin-top: 0;
+}
+
 table td.center {
   text-align: center !important;
 }
@@ -418,6 +430,14 @@ table.large td {
   padding-bottom: 0 !important;
 }
 
-.reveal .inset {
-  padding: 1em;
+.reveal .inset-right {
+  padding: 1em 0 1em 1em;
+}
+
+.reveal .inset-left {
+  padding: 1em 1em 1em 0;
+}
+
+.reveal .slides > section, .reveal .slides > section > section {
+  padding: 0;
 }
