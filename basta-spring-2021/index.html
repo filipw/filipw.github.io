@@ -625,54 +625,39 @@
             </section>
 
             <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
+                <div class="column-container centered">
+                    <div class="col">
+                        <img src="images/repo1.png" />
+                    </div>
+                    <div class="col">
+                        <img src="images/repo2.png" />
+                    </div>
+                </div>
+                <div class="overlay-style">Q# and QDK are entirely <span class="highlight">open source</span>.</div>
+            </section>            
+
+            <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
+                <h2 class="overlay-style">Simple Q# program</h2>
                 <pre>
                 <code class="cs">
-private async Task&lt;Solution&gt; AdjustLength(Document document, VariableDeclaratorSyntax declaration, CancellationToken ct)
-{
-    var variableName = declaration.Identifier.Text;
-    var newName = variableName.Length < 8 ? 
-        variableName.PadRight(8, 'X') : variableName.Substring(0, 20);
-
-    var semanticModel = await document.GetSemanticModelAsync(ct);
-    var localSymbol = semanticModel.GetDeclaredSymbol(declaration, ct);
-
-    var newSolution = await Renamer.RenameSymbolAsync(
-        document.Project.Solution, localSymbol, newName, 
-        document.Project.Solution.Workspace.Options, ct);
-
-    return newSolution;
+@EntryPoint()
+operation Start() : Unit {
+    using (qubit = Qubit()) {
+        H(qubit);
+        let result = MResetZ(qubit) == One ? 1 | 0;
+        Message($"Measured: {IntAsString(result)}");
+    }
 }
                 </code>
             </pre>
-                <p class="fragment" data-code-focus="2"></p>
-                <p class="fragment" data-code-focus="5-6"></p>
-                <p class="fragment" data-code-focus="8-9"></p>
-                <p class="fragment" data-code-focus="11-13"></p>
+                <p class="fragment" data-code-focus="2-3"></p>
+                <p class="fragment" data-code-focus="4"></p>
+                <p class="fragment" data-code-focus="5"></p>
+                <p class="fragment" data-code-focus="6"></p>
+                <p class="fragment" data-code-focus="7"></p>
             </section>
 
-            <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
-                <h3 class="overlay-style">Analyzers can be turned off</h3>
-
-                <pre>
-                <code class="xml">
-&lt;PropertyGroup&gt;
-  &lt;RunAnalyzersDuringBuild&gt;false&lt;/RunAnalyzersDuringBuild&gt;
-  &lt;RunAnalyzersDuringLiveAnalysis&gt;false&lt;/RunAnalyzersDuringLiveAnalysis&gt;
-  &lt;RunAnalyzers&gt;false&lt;/RunAnalyzers&gt;
-&lt;PropertyGroup&gt;
-        </code>
-            </pre>
-            </section>
-
-            <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
-                <div class="overlay-style">
-                    Analyzers can do very creative things. <span class="highlight">ClrHeapAllocationAnalyzer</span>
-                    can point out all the allocations in your code.
-                </div>
-            </section>
-
-            <section data-background="images/allocations.png" data-background-color="white" data-state="bg-auto-width">
-            </section>
+   
             </section>
 
             <section data-background="images/all.jpg">
