@@ -370,10 +370,11 @@
 
                 <section data-background="images/StockSnap_VZ86EDZ771.jpg">
                     <div class="overlay-style">
-                        <p>We can define infinitely many bases, as long as the two basis unit vector states are orthogonal.</p>
+                        <p>We can define infinitely many bases, as long as the two basis unit vector states are
+                            orthogonal.</p>
                         <p>Superposition is <span class="highlight">basis dependent</span>.</p>
                     </div>
-                </section>               
+                </section>
 
                 <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
                     <div class="column-container centered overlay-style">
@@ -386,16 +387,17 @@
                             <img src="images/x-basis.png" style="max-width: 60%;" />
                         </div>
                     </div>
-                </section>  
+                </section>
 
                 <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
                     <div class="column-container centered">
                         <div class="col overlay-style">
-                            <p>A simplified way to think about superposition is to consider the <span class="highlight">angle $\theta$</span> between the basis state vectors.</p>
+                            <p>A simplified way to think about superposition is to consider the <span
+                                    class="highlight">angle $\theta$</span> between the basis state vectors.</p>
                             <p>$$\ket{\varphi} = \cos\theta\ket{0} + \sin\theta\ket{1}$$</p>
                         </div>
                         <div class="col inset-right">
-                            <img src="images/arbitrary-state.png"  />
+                            <img src="images/arbitrary-state.png" />
                         </div>
                     </div>
                 </section>
@@ -445,8 +447,8 @@
                         <h2>Classical circuits</h2>
                         <div class="column-container centered">
                             <div class="col">
-                                Logic in classical computation models is expressed by logic gates (e.g. NOT, OR, XOR,
-                                AND) composed into <span class="highlight">circuits</span>.
+                                Logic in classical computation models is expressed by <span class="highlight">logic
+                                    gates</span> (e.g. NOT, OR, XOR, AND) composed into <span class="highlight">circuits</span>.
                             </div>
 
                             <div class="col">
@@ -461,8 +463,10 @@
                         <h2>Quantum circuits</h2>
                         <div class="column-container centered">
                             <div class="col">
-                                Logic in quantum computing is expressed by <span class="highlight">quantum gates</span>
-                                (e.g. X, CNOT, H, Y, Z) composed into <span class="highlight">circuits</span>.
+                                Logic in quantum computing is expressed by <span class="highlight">linear
+                                    operators</span>
+                                (e.g. X, CNOT, H, Y, Z). They are often referred to as <span class="highlight">gates</span> too and composed into
+                                <span class="highlight">circuits</span>.
                             </div>
 
                             <div class="col">
@@ -478,8 +482,9 @@
                         <div class="column-container">
                             <div class="col">
                                 <span class="highlight">Hadamard gate</span> is used to create a uniform <span
-                                    class="highlight">superposition</span>. It has fundamental importance in quantum
-                                parallelism.
+                                    class="highlight">superposition</span>. It has fundamental importance in <span
+                                    class="highlight">quantum
+                                parallelism</span>.
                             </div>
                             <div class="col">
                                 <p>$$
@@ -539,9 +544,32 @@
                         <p>When the control qubit is in placed in a superposition using the H gate, followed by a CNOT,
                             a maximally entangled state is created.</p>
                         <h3 class="r-fit-text">
-                            $$CNOT(H\ket{0} \otimes \ket{0}) = \frac{1}{\sqrt{2}}(\ket{00} + \ket{11})<br />
-                            $$
+                            $$CNOT(H\ket{0} \otimes \ket{0}) = \frac{1}{\sqrt{2}}(\ket{00} + \ket{11})$$
                         </h3>
+                    </div>
+                </section>
+
+                <section data-background="images/StockSnap_VZ86EDZ771.jpg">
+                    <div class="overlay-style">
+                        <p>Both qubits are now guaranteed to have measurement result equal to each other.</p>
+                        <p>
+                            This is <span class="highlight">instantenous</span> and holds even when the qubits are
+                            spatially separated. Einstein called it
+                        </p>
+                        <h3 class="r-fit-text">
+                            "spooky action at a distance"
+                        </h3>
+                    </div>
+                </section>
+
+                <section data-background="images/StockSnap_VZ86EDZ771.jpg">
+                    <div class="overlay-style">
+                        <p>This is now called one of the four Bell states.</p>
+                        <p>$$\ket{\Phi^+} = \frac{1}{\sqrt{2}}(\ket{00} + \ket{11}) \;\;\;
+                            \ket{\Phi^-} = \frac{1}{\sqrt{2}}(\ket{00} &#8211; \ket{11})$$
+                            $$\ket{\Psi^+} = \frac{1}{\sqrt{2}}(\ket{01} + \ket{10})\;\;\;
+                            \ket{\Psi^-} = \frac{1}{\sqrt{2}}(\ket{01} &#8211; \ket{10})$$</p>
+                        <p>Together, they form an orthonormal basis for a two-qubit system</p>
                     </div>
                 </section>
 
@@ -666,7 +694,21 @@
                     </div>
                 </div>
                 <div class="overlay-style">Q# and QDK are entirely <span class="highlight">open source</span>.</div>
-            </section>            
+            </section>
+
+            <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
+                <h2 class="overlay-style">Getting started with the QDK</h2>
+                <pre>
+                <code class="cs">
+> dotnet new console -lang Q#
+The template "Console Application" was created successfully.
+> dotnet run
+Hello quantum world!
+                </code>
+            </pre>
+                <p class="fragment" data-code-focus="2-3"></p>
+                <p class="fragment" data-code-focus="4-5"></p>
+            </section>
 
             <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
                 <h2 class="overlay-style">Simple Q# program</h2>
@@ -674,11 +716,10 @@
                 <code class="cs">
 @EntryPoint()
 operation Start() : Unit {
-    using (qubit = Qubit()) {
-        H(qubit);
-        let result = MResetZ(qubit) == One ? 1 | 0;
-        Message($"Measured: {IntAsString(result)}");
-    }
+    use qubit = Qubit();
+    H(qubit);
+    let result = MResetZ(qubit) == One ? 1 | 0;
+    Message($"Measured: {IntAsString(result)}");
 }
                 </code>
             </pre>
@@ -689,7 +730,30 @@ operation Start() : Unit {
                 <p class="fragment" data-code-focus="7"></p>
             </section>
 
-   
+            <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
+                <h2 class="overlay-style">Q# Entanglement</h2>
+                <pre>
+                <code class="cs">
+operation EntanglementExample() : Unit {
+    use (control, target) = (Qubit(), Qubit());
+
+    H(control);
+    CNOT(control, target);
+    
+    let resultControl = ResultAsBool(MResetZ(control)) ? "1" | "0";
+    let resultTarget = ResultAsBool(MResetZ(target)) ? "1" | "0";
+
+    Message("Result: |{resultControl}{resultTarget}">");
+}
+                </code>
+            </pre>
+                <p class="fragment" data-code-focus="3"></p>
+                <p class="fragment" data-code-focus="5-6"></p>
+                <p class="fragment" data-code-focus="8-9"></p>
+                <p class="fragment" data-code-focus="11"></p>
+            </section>
+
+
             </section>
 
             <section data-background="images/all.jpg">
