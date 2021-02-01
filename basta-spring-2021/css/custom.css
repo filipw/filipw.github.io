@@ -273,6 +273,11 @@ html.bg-top-left div.slide-background.present {
   background-position: 0 0;
 }
 
+html.bg-auto-width-08 div.slide-background.present {
+  opacity: 0.8;
+  background-size: 100% auto;
+}
+
 span.highlight/*, span.mjx-math*/ {
   background: #de4747;
   display: inline-block;
