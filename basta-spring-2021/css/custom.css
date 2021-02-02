@@ -67,6 +67,10 @@ ul ul {
   flex: 1;
 }
 
+.col.auto {
+  flex: auto;
+}
+
 minor {
   color: grey;
 }

@@ -317,8 +317,6 @@
                     </div>
                 </section>
 
-                
-
                 <section data-background="images/preskill.jpg">
                     <div class="column-container">
                         <div class="col">
@@ -444,7 +442,7 @@
                     <div class="column-container centered overlay-style">
 
                         <div class="col">
-                            <p>In quantum computing a computation unit is called a <span class="highlight">qubit</span>.
+                            <p>In quantum computing an information unit is called a <span class="highlight">qubit</span>.
                             </p>
                             <p>The state of a qubit is described by a <span class="highlight">vector</span> in a two
                                 dimensional <span class="highlight">Hilbert space</span>, where $\alpha$ and $\beta$ are
@@ -473,8 +471,8 @@
 
                 <section data-background="images/StockSnap_VZ86EDZ771.jpg">
                     <div class="overlay-style">
-                        <p>A qubit can be a <span class="highlight">linear combination</span> of both basis states:</p>
-                        <h2 class="r-fit-text">$$\ket{\varphi} = \alpha\ket{0} + \beta\ket{1}$$</h2>
+                        <p>A qubit can be expressed as a <span class="highlight">linear combination</span> of both basis states:</p>
+                        <h2 class="r-fit-text">$$\ket{\psi} = \alpha\ket{0} + \beta\ket{1}$$</h2>
                     </div>
                 </section>
 
@@ -482,6 +480,19 @@
                     <div class="overlay-style">
                         <p>This is known as the</p>
                         <h2 class="r-fit-text">superposition</h2>
+                    </div>
+                </section>
+
+                <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
+                    <div class="column-container centered">
+                        <div class="col overlay-style">
+                            <p>The values of $\alpha$ and $\beta$ depend on the <span class="highlight">angle $\theta$</span>
+                                between the basis state vectors.</p>
+                            <p>$$\ket{\psi} = \cos\theta\ket{0} + \sin\theta\ket{1}$$</p>
+                        </div>
+                        <div class="col inset-right">
+                            <img src="images/arbitrary-state.png" />
+                        </div>
                     </div>
                 </section>
 
@@ -506,19 +517,6 @@
                     </div>
                 </section>
 
-                <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
-                    <div class="column-container centered">
-                        <div class="col overlay-style">
-                            <p>We can think of a superposition using the <span class="highlight">angle $\theta$</span>
-                                between the basis state vectors.</p>
-                            <p>$$\ket{\varphi} = \cos\theta\ket{0} + \sin\theta\ket{1}$$</p>
-                        </div>
-                        <div class="col inset-right">
-                            <img src="images/arbitrary-state.png" />
-                        </div>
-                    </div>
-                </section>
-
                 <section data-background="images/StockSnap_VZ86EDZ771.jpg">
                     <div class="column-container centered overlay-style">
 
@@ -535,9 +533,17 @@
 
                 <section data-background="images/StockSnap_VZ86EDZ771.jpg">
                     <div class="overlay-style">
+                        <p>Upon measurement the state of a qubit <span class="highlight">collapses</span> to one of the basis states with the probability $|\alpha|^2$ or $|\beta|^2$.</p>
+                    </div>
+                </section>
+
+                <section data-background="images/StockSnap_VZ86EDZ771.jpg">
+                    <div class="overlay-style">
                         <p>To describe the state of a two qubit system, we need a vector in a <span
                                 class="highlight">four dimensional</span> Hilbert space.</p>
-                        <p class="r-fit-text">$$\ket{\varphi} = \alpha_1\alpha_2\ket{00} + \alpha_1\beta_2\ket{01} +
+                        <p>$$\ket{\psi_1} = \alpha_1\ket{0} + \beta_1\ket{1} \;\;\;
+                             \ket{\psi_2} = \alpha_2\ket{0} + \beta_2\ket{1}$$</p>
+                        <p class="r-fit-text">$$\ket{\psi_{12}} = \alpha_1\alpha_2\ket{00} + \alpha_1\beta_2\ket{01} +
                             \beta_1\alpha_2\ket{10} + \beta_1\beta_2\ket{11}$$</p>
                     </div>
                 </section>
@@ -553,7 +559,7 @@
 
                 <section data-background="images/StockSnap_VZ86EDZ771.jpg">
                     <div class="overlay-style">
-                        <p>However we can only read a single classical bit out of every qubit, meaning that for a 256
+                        <p>However we can only read a <span class="highlight">single</span> classical bit out of every qubit, meaning that for a 256
                             qubit computer we can only extract:</p>
                         <h2 class="r-fit-text">256 bits = 4kB</h2>
                     </div>
@@ -862,7 +868,8 @@ operation EntanglementExample() : Unit {
                 <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
                     <div class="column-container centered">
                         <div class="col overlay-style">
-                            <p>Classically, <span class="highlight">two</span> function evaluations are needed. After the first execution, we still cannot say if the function is balanced or constant.</p>
+                            <p>Classically, <span class="highlight">two</span> function evaluations are needed. After
+                                the first execution, we still cannot say if the function is balanced or constant.</p>
                         </div>
                         <div class="col inset">
                             <img src="images/deutsch-classical.png" />
@@ -873,7 +880,8 @@ operation EntanglementExample() : Unit {
                 <section data-background="images/StockSnap_W0RUS6FWBJ.jpg">
                     <div class="column-container centered">
                         <div class="col overlay-style">
-                            <p>On a quantum computer, the answer can be obtained in just <span class="highlight">one</span> oracle call.</p>
+                            <p>On a quantum computer, the answer can be obtained in just <span
+                                    class="highlight">one</span> oracle call.</p>
                         </div>
                         <div class="col inset">
                             <img src="images/deutsch.png" />
@@ -884,7 +892,9 @@ operation EntanglementExample() : Unit {
                 <section data-background="images/quantumcomputationandinformation.jpg" data-state="bg-auto-width-08">
                     <div class="column-container">
                         <div class="col overlay-style">
-                            <blockquote>Heuristically, and at the risk of over-simplifying, quantum parallelism allows quantum computers to evaluate a function $f(x)$ for many different values of x simultaneously.
+                            <blockquote>Heuristically, and at the risk of over-simplifying, quantum parallelism allows
+                                quantum computers to evaluate a function $f(x)$ for many different values of x
+                                simultaneously.
                             </blockquote>
                             <p>
                             <footer>- <em>Nielsen and Chuang</em></footer>
@@ -895,7 +905,20 @@ operation EntanglementExample() : Unit {
                     </div>
                 </section>
 
-
+                <section data-background="images/StockSnap_VZ86EDZ771.jpg">
+                    <div class="overlay-style">
+                        <p>The linear algebra for the circuit produces</p>
+                        <h3 class="r-fit-text">
+                            $$\ket{\Psi} =
+                            \begin{cases}
+                            \pm\ket{0}\frac{1}{\sqrt{2}}(\ket{0} - \ket{1}) \; \text{if f(0) = f(1)} \\
+                            \pm\ket{1}\frac{1}{\sqrt{2}}(\ket{0} - \ket{1}) \; \text{if f(0)} \neq \text{f(1)} \\
+                            \end{cases}
+                            $$
+                        </h3>
+                        <p>This solves the problem in a single shot.</p>
+                    </div>
+                </section>
             </section>
             <!-- end Q# -->
 
@@ -903,36 +926,29 @@ operation EntanglementExample() : Unit {
             </section>
 
             <section data-background="images/gold-chain-collective-695929-unsplash.jpg">
-                <div class="overlay-style" style="padding:3% !important;">
+                <div class="overlay-style">
                     <h2>Thank you</h2>
-                </div>
-                <div style="display: table">
-                    <div class="overlay-style"
-                        style="padding-top: 0 !important; padding-right: 0 !important; width:25%; display: table-cell;">
-                        <div style="padding: 3%">
-                            <p>
-                                <img class="small" src="images/thankyou.gif" style="min-height: auto; margin:0" />
-                            </p>
+                    <div class="column-container centered">
+                        <div class="col auto">
+                            <img class="small" src="images/thankyou.gif" style="min-height: auto; margin:0" />
                         </div>
-                    </div>
-                    <div class="overlay-style"
-                        style="padding-top: 0 !important; padding-left: 0 !important; width:75%; display: table-cell;">
-                        <div style="padding: 3%;">
-                            <ul>
-                                <li style="margin-bottom: 0.7em">📝 <a
+                        <div class="col auto">
+                            <ul style="font-size: 0.9em;">
+                                <li>📝 <a
                                         href="https://filipw.github.io/basta-spring-2021">filipw.github.io/basta-spring-2021</a>
                                 </li>
 
-                                <li style="margin-bottom: 0.7em">💻 <a
+                                <li>💻 <a
                                         href="https://github.com/filipw/2021-bastaspring-demos">github.com/filipw/2021-bastaspring-demos</a>
                                 </li>
 
-                                <li style="margin-bottom: 0.7em">🚀 Enjoy the rest of the event!
+                                <li>📚 <a href="https://www.strathweb.com/category/quantum-computing/">strathweb.com/category/quantum-computing</a></li>
+
+                                <li>🚀 Enjoy the rest of the event!
                                 </li>
                             </ul>
                         </div>
                     </div>
-                    <div style="clear:both"></div>
                 </div>
             </section>
 
