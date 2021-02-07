@@ -837,7 +837,7 @@ operation EntanglementExample() : Unit {
     let resultControl = ResultAsBool(MResetZ(control)) ? "1" | "0";
     let resultTarget = ResultAsBool(MResetZ(target)) ? "1" | "0";
 
-    Message("Result: |{resultControl}{resultTarget}">");
+    Message($"Result: |{resultControl}{resultTarget}>");
 }
                 </code>
             </pre>
@@ -846,7 +846,7 @@ operation EntanglementExample() : Unit {
                     <p class="fragment" data-code-focus="8-9"></p>
                     <p class="fragment" data-code-focus="11"></p>
                 </section>
-
+<!-- 
                 <section data-background="images/cern-alice.jpg">
                     <div class="overlay-style">
                         <h2>Deutsch's problem</h2>
@@ -935,7 +935,7 @@ operation EntanglementExample() : Unit {
                         </h3>
                         <p>This solves the problem in a single shot.</p>
                     </div>
-                </section>
+                </section> -->
             </section>
             <!-- end Q# -->
 
