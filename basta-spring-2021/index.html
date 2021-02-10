@@ -143,6 +143,9 @@
                             </p>
                         </div>
                     </div>
+                    <aside class="notes">
+                        Feynman got the 1965 Nobel prize for his work on quantum electrodynamics.
+                    </aside>
                 </section>
 
                 <section data-background="images/atlas2.jpg">
@@ -480,7 +483,7 @@
                     <div class="column-container centered overlay-style">
 
                         <div class="col">
-                            <p>In quantum computing an information unit is called a <span class="highlight">qubit</span>.
+                            <p>In quantum information theory an information unit is called a <span class="highlight">qubit</span>.
                             </p>
                             <p>The state of a qubit is described by a <span class="highlight">vector</span> in a two
                                 dimensional <span class="highlight">Hilbert space</span>, where $\alpha$ and $\beta$ are
@@ -489,6 +492,7 @@
 
                         <div class="col">
                             <h2 class="r-fit-text">$\begin{bmatrix} \alpha \cr \beta \end{bmatrix}$</h2>
+                            <p>$$|\alpha|^2 + |\beta|^2 = 1$$</p>
                         </div>
                     </div>
                 </section>
@@ -505,6 +509,9 @@
                             $$
                         </p>
                     </div>
+                    <aside class="notes">
+                        These two vectors play a special role in the quantum information theory, as they define the conditions for measurement. In quantum mechanics our knowledge of the system is limited to the act of measurement.
+                    </aside>
                 </section>
 
                 <section data-background="images/cern-theory2.jpg">
@@ -531,13 +538,39 @@
                             <img src="images/arbitrary-state.png" />
                         </div>
                     </div>
+                    <aside class="notes">
+                        Normally a single qubit state is represented by the so-called Bloch sphere, which is 3-dimensional. However for simplicity we can use a 2-dimensional circle too.
+                    </aside>
                 </section>
 
                 <section data-background="images/cern-theory2.jpg">
                     <div class="overlay-style">
-                        <p>To extract a classical value out of a qubit, it must be <span class="highlight">measured</span> in a chosen basis. The value then <span class="highlight">collapses</span> to one of the basis states.</p>
+                        <p>To extract a classical value out of a qubit, it must be <span class="highlight">measured</span> in a chosen basis.</p>
+                        <p>The state of a qubit <span class="highlight">collapses</span> then to one of the basis states.</p>
                     </div>
-                </section>               
+                    <aside class="notes">
+                        What does it mean, "collapses"? If the qubit doesn't have a definite basis state e.g. |0> or |1> the measurement outcome is probabilistic. The choice of basis has a profound importance as we will see in a moment.
+                    </aside>
+                </section>                           
+
+                <section data-background="images/cern-theory2.jpg">
+                    <div class="column-container centered overlay-style">
+                        <div class="col inset-left">
+                            We refer to $\alpha$ and $\beta$ as <span class="highlight">probability amplitudes</span>.
+                            They can be converted to probabilities using the <span class="highlight">Born rule</span>.
+                        </div>
+
+                        <div class="col inset-right">
+                            <p class="r-fit-text">
+                                $$P(\ket{0}) = P(0) = |\alpha|^2$$
+                                $$P(\ket{1}) = P(1) = |\beta|^2$$
+                            </p>
+                        </div>
+                    </div>
+                    <aside class="notes">
+                        Born rule is not derived, it is an axiom in quantum mechanics, confirmed experimentally, or rather never violated by any experiment.
+                    </aside>
+                </section>
 
                 <section data-background="images/cern-theory2.jpg">
                     <div class="column-container centered overlay-style">
@@ -550,36 +583,25 @@
                             <img src="images/x-basis.png" style="max-width: 60%;" />
                         </div>
                     </div>
+                    <aside class="notes">
+                        A state |+> is a definite state in basis X, and maps to a classical 0 with 100% probability. However, in Z basis, it has a 50% probability of collapsing to |0> or |1>, so classical 0 or 1.
+                    </aside>
                 </section>
 
                 <section data-background="images/cern-theory2.jpg">
                     <div class="overlay-style">
                         <p>Superposition is <span class="highlight">basis dependent</span>.</p>
                     </div>
-                </section>              
-
-                <section data-background="images/cern-theory2.jpg">
-                    <div class="column-container centered overlay-style">
-                        <div class="col inset-left">
-                            We refer to $\alpha$ and $\beta$ as <span class="highlight">probability amplitudes</span>.
-                            They can be converted to probabilities using the <span class="highlight">Born rule</span>.
-                        </div>
-
-                        <div class="col inset-right">
-                            <h2 class="r-fit-text">$$|\alpha|^2 + |\beta|^2 = 1$$</h2>
-                        </div>
-                    </div>
-                </section>
+                    <aside class="notes">
+                        Because of this, the choice of basis  allows us to encode information in a qubit in a specific way. The information can only be accuretly read, if you know the basis you should use upon measurement, otherwise it will be random.
+                        
+                        This concept underpins quantum cryptography.
+                    </aside>
+                </section>  
 
                 <section data-background="images/cern-theory2.jpg">
                     <div class="overlay-style">
-                        <p>Upon measurement the state of a qubit <span class="highlight">collapses</span> to one of the basis states with the probability $|\alpha|^2$ or $|\beta|^2$.</p>
-                    </div>
-                </section>
-
-                <section data-background="images/cern-theory2.jpg">
-                    <div class="overlay-style">
-                        <p>To describe the state of a two qubit system, we need a vector in a <span
+                        <p>To describe the state of a two qubit system, we use a <span class="highlight">tensor product</span> of the individual qubit states, thus creating a vector in a <span
                                 class="highlight">four dimensional</span> Hilbert space.</p>
                         <p>$$\ket{\psi_1} = \alpha_1\ket{0} + \beta_1\ket{1} \;\;\;
                              \ket{\psi_2} = \alpha_2\ket{0} + \beta_2\ket{1}$$</p>
@@ -595,6 +617,9 @@
                         <h2 class="r-fit-text">$2^{260} \approx 10^{80}$</h2>
                         <p> which roughly equals of atoms in observable universe</p>
                     </div>
+                    <aside class="notes">
+                        The way we can think of it: whatever algorithm you run on a quantum computer, the answer is already there, and the art of writing a quantum algorithm is to amplify the probability of the correct result, and reduce the probability of the wrong result.
+                    </aside>
                 </section>
 
                 <section data-background="images/cern-theory2.jpg">
