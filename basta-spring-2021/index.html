@@ -677,9 +677,17 @@
                                 </p>
                             </div>
                         </div>
-                        <p>$$H(\ket{0}) = \begin{bmatrix} \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}}
+                    </div>
+                </section>
+
+                <section data-background="images/cern-theory2.jpg">
+                    <div class="overlay-style">
+                        <p>$$H\ket{0} = \begin{bmatrix} \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}}
                             & -\frac{1}{\sqrt{2}} \end{bmatrix}\begin{bmatrix} 1 \\ 0 \end{bmatrix} =
                             \frac{1}{\sqrt{2}}\ket{0} + \frac{1}{\sqrt{2}}\ket{1}$$</p>
+                        <p>$$H\ket{1} = \begin{bmatrix} \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}}
+                            & -\frac{1}{\sqrt{2}} \end{bmatrix}\begin{bmatrix} 0 \\ 1 \end{bmatrix} = \frac{1}{\sqrt{2}}\ket{0} - \frac{1}{\sqrt{2}}\ket{1}$$</p>
+                        <p>Upon measurement, there is a <span class="highglight">50% probability</span> of reading out a classical 0 or a classical 1.</p>
                     </div>
                 </section>
 
@@ -697,6 +705,15 @@
                                 </p>
                             </div>
                         </div>
+                    </div>
+                </section>
+
+                <section data-background="images/cern-theory2.jpg">
+                    <div class="overlay-style">
+                        <p>$$X\ket{0} = \begin{bmatrix} 0 &amp; 1 \\ 1 &amp; 0
+                            \end{bmatrix}\begin{bmatrix} 1 \\ 0 \end{bmatrix} = \ket{1}$$</p>
+                        <p>$$X\ket{1} = \begin{bmatrix} 0 &amp; 1 \\ 1 &amp; 0
+                                \end{bmatrix}\begin{bmatrix} 0 \\ 1 \end{bmatrix} = \ket{0}$$</p>
                         <p>$$X(\alpha\ket{0} + \beta\ket{1}) = \begin{bmatrix} 0 &amp; 1 \\ 1 &amp; 0
                             \end{bmatrix}(\alpha\ket{0} + \beta\ket{1}) = \beta\ket{0} + \alpha\ket{1}$$</p>
                     </div>
@@ -711,7 +728,6 @@
                                 can create <span class="highlight">entanglement</span>.
                             </div>
                             <div class="col">
-
                                 <p>$$
                                     CNOT=\begin{bmatrix} 1 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 &amp; 0 \\ 0
                                     &amp; 0 &amp; 0 &amp; 1 \\ 0 &amp; 0 &amp; 1 &amp; 0 \end{bmatrix}$$
@@ -725,19 +741,18 @@
 
                 <section data-background="images/cern-theory2.jpg">
                     <div class="overlay-style">
-                        <p>When the control qubit is in placed in a superposition using the H gate, followed by a CNOT,
-                            a maximally entangled state is created.</p>
-                        <h3 class="r-fit-text">
-                            $$CNOT(H\ket{0} \otimes \ket{0}) = \frac{1}{\sqrt{2}}(\ket{00} + \ket{11})$$
-                        </h3>
+                        <p>When the control qubit is in placed in a superposition, a <span class="highlight">maximally entangled state</span> is created.</p>
+                        <p class="r-fit-text">
+                            $$CNOT(H\ket{0} \otimes \ket{0}) = \frac{1}{\sqrt{2}}\ket{00} + \frac{1}{\sqrt{2}}\ket{11}$$
+                        </p>
+                        <p>Upon measurement, there is a <span class="highlight">50% probability</span> of reading out a classical 00 or a classical 11.</p> 
                     </div>
                 </section>
 
                 <section data-background="images/cern-theory2.jpg">
                     <div class="overlay-style">
-                        <p>Both qubits are now guaranteed to have measurement result equal to each other.</p>
                         <p>
-                            This is <span class="highlight">instantenous</span>, even when the qubits are
+                            The effect is <span class="highlight">instantenous</span>, even when the qubits are
                             spatially separated. Einstein called it
                         </p>
                         <h3 class="r-fit-text">
@@ -760,7 +775,7 @@
                 <section data-background="images/cern-theory2.jpg">
                     <div class="overlay-style">
                         <p>Remember how we said that two qubit system can be described as</p>
-                        <p>$$\ket{\varphi} = \alpha_1\alpha_2\ket{00} + \alpha_1\beta_2\ket{01} +
+                        <p>$$\ket{\psi} = \alpha_1\alpha_2\ket{00} + \alpha_1\beta_2\ket{01} +
                             \beta_1\alpha_2\ket{10} + \beta_1\beta_2\ket{11}$$</p>
                     </div>
                 </section>
