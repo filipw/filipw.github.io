@@ -492,8 +492,7 @@
                             <p>In quantum information theory an information unit is called a <span class="highlight">qubit</span>.
                             </p>
                             <p>The state of a qubit is described by a <span class="highlight">vector</span> in a two
-                                dimensional <span class="highlight">Hilbert space</span>, where $\alpha$ and $\beta$ are
-                                complex numbers.</p>
+                                dimensional <span class="highlight">Hilbert space</span>, where $\alpha$ and $\beta$ are complex numbers.</p>
                         </div>
 
                         <div class="col">
@@ -505,7 +504,7 @@
 
                 <section data-background="images/cern-theory2.jpg">
                     <div class="overlay-style">
-                        <p>Two linearly independent (orthogonal) unit vectors, form a measurement basis. The so-called
+                        <p>Two linearly independent (orthogonal) unit vectors form a measurement basis. The so-called
                             <span class="highlight">computational basis (Z)</span> is:
                         </p>
                         <p class="r-fit-text">
@@ -524,7 +523,7 @@
 
                 <section data-background="images/cern-theory2.jpg">
                     <div class="overlay-style">
-                        <p>A qubit state vector can be expressed as a <span class="highlight">linear combination</span> of both basis states:</p>
+                        <p>Any qubit state vector can be expressed as a <span class="highlight">linear combination</span> of computational basis states:</p>
                         <h2 class="r-fit-text">$$\ket{\psi} = \alpha\ket{0} + \beta\ket{1}$$</h2>
                     </div>
                 </section>
@@ -682,8 +681,8 @@
                             </div>
                             <div class="col">
                                 <p>$$
-                                    H=\begin{bmatrix} \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} &
-                                    -\frac{1}{\sqrt{2}} \end{bmatrix}$$
+                                    H=\frac{1}{\sqrt{2}}\begin{bmatrix} 1 & 1 \\ 1 &
+                                    -1 \end{bmatrix}$$
                                 </p>
                             </div>
                         </div>
@@ -692,11 +691,11 @@
 
                 <section data-background="images/cern-theory2.jpg">
                     <div class="overlay-style">
-                        <p>$$H\ket{0} = \begin{bmatrix} \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}}
-                            & -\frac{1}{\sqrt{2}} \end{bmatrix}\begin{bmatrix} 1 \\ 0 \end{bmatrix} =
+                        <p>$$H\ket{0} = \frac{1}{\sqrt{2}}\begin{bmatrix} 1 & 1 \\ 1 &
+                            -1 \end{bmatrix}\begin{bmatrix} 1 \\ 0 \end{bmatrix} =
                             \frac{1}{\sqrt{2}}\ket{0} + \frac{1}{\sqrt{2}}\ket{1}$$</p>
-                        <p>$$H\ket{1} = \begin{bmatrix} \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}}
-                            & -\frac{1}{\sqrt{2}} \end{bmatrix}\begin{bmatrix} 0 \\ 1 \end{bmatrix} = \frac{1}{\sqrt{2}}\ket{0} - \frac{1}{\sqrt{2}}\ket{1}$$</p>
+                        <p>$$H\ket{1} = \frac{1}{\sqrt{2}}\begin{bmatrix} 1 & 1 \\ 1 &
+                            -1 \end{bmatrix}\begin{bmatrix} 0 \\ 1 \end{bmatrix} = \frac{1}{\sqrt{2}}\ket{0} - \frac{1}{\sqrt{2}}\ket{1}$$</p>
                         <p>Upon measurement, there is a <span class="highlight">50% probability</span> of reading out a classical 0 or a classical 1.</p>
                     </div>
                 </section>
