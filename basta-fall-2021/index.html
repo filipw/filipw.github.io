@@ -266,6 +266,30 @@ let detectorResult = M(photon) == Zero ? "d2" | "d1";
                 </section>
             
                 <section data-background="images/cern-theory2.jpg">
+                    <div class="overlay-style">
+                        <p>We witnessed two uniquely quantum phenomena</p>
+                        <h2 class="r-fit-text">superposition <br/>wave-particle duality</h2>
+                    </div>
+                </section>
+
+                <section data-background="images/bohr.jpg">
+                    <div class="column-container">
+
+                        <div class="col">
+                        </div>
+
+                        <div class="col overlay-style">
+                            <blockquote>There is no quantum world. There is only an abstract quantum mechanical
+                                description
+                            </blockquote>
+                            <p>
+                            <footer>- <em>Niels Bohr</em></footer>
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-background="images/cern-theory2.jpg">
                     <div class="column-container centered overlay-style">
 
                         <div class="col">
@@ -379,6 +403,139 @@ let detectorResult = M(photon) == Zero ? "d2" | "d1";
 
                 <section data-background="images/atlas2.jpg">
                     <div class="column-container">
+                        <iframe width="66%"" height="486" scrolling="no" src="/Stern_Gerlach_Apparatus/Stern_Gerlach_Apparatus.html"></iframe>
+                    </div>
+                </section>
+
+                <section data-background="images/cern-alice.jpg">
+                    <pre>
+                <code class="cs">
+// prepare state up or down
+use electron = Qubit();
+if (flip) { X(electron); }
+
+// basis may be PauliZ or PauliX
+let result = Measure([basis], [electron]);
+
+// map One or Zero to up/down or +/-
+let outcome = basis == PauliX ? 
+    (result == Zero ? "+" | "-") | 
+    (result == Zero ? "up" | "down")
+                </code>
+            </pre>
+                    <p class="fragment" data-code-focus="3-4"></p>
+                    <p class="fragment" data-code-focus="7"></p>
+                    <p class="fragment" data-code-focus="10-12"></p>
+                </section>   
+                
+                <section data-background="images/cern-alice.jpg">
+                    <pre>
+                <code class="cs">
+// prepare state + or -
+use electron = Qubit();
+if (flip) { X(electron); }
+H(electron);
+
+// basis may be PauliZ or PauliX
+let result = Measure([basis], [electron]);
+
+// map One or Zero to up/down or +/-
+let outcome = basis == PauliX ? 
+    (result == Zero ? "+" | "-") | 
+    (result == Zero ? "up" | "down")
+                </code>
+            </pre>
+                    <p class="fragment" data-code-focus="3-4"></p>
+                    <p class="fragment" data-code-focus="5"></p>
+                    <p class="fragment" data-code-focus="8"></p>
+                    <p class="fragment" data-code-focus="11-13"></p>
+                </section>   
+
+                <section data-background="images/cern-theory2.jpg">
+                    <div class="overlay-style">
+                        <p>We witnessed a uniquely quantum phenomenon</p>
+                        <h2 class="r-fit-text">uncertainty principle</h2>
+                    </div>
+                </section>
+
+                <section data-background="images/cern-theory2.jpg">
+                    <div class="overlay-style">
+                        <p>In quantum mechanics we cannot simultaneously know values of</p>
+                        <h2 class="r-fit-text">conjugate variables</h2>
+                        <p>with arbitrary precision.</p>
+                    </div>
+                </section>
+
+                <section data-background="images/cern-theory2.jpg">
+                    <div class="column-container centered overlay-style">
+
+                        <div class="col">
+                            <p>Those are for example <span class="highlight">position and momentum</span> or <span class="highlight"> and time</span>.</p>
+                        </div>
+
+                        <div class="col">
+                            <p class="r-fit-text">$\Delta x \Delta p \approx \hbar$</p>
+                            <p class="r-fit-text">$\Delta E \Delta t \approx \hbar$</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-background="images/einstein.jpg">
+                    <div class="column-container">
+
+                        <div class="col overlay-style">
+                            <blockquote>I am convinced that Old Man [God] does not play dice
+                            </blockquote>
+                            <p>
+                            <footer>- <em>Albert Einstein</em></footer>
+                            </p>
+                        </div>
+
+                        <div class="col">
+                        </div>
+                    </div>
+                    <aside class="notes">
+                        Apparently, Niels Bohr responded "Einstein, don't tell God what to do."
+                      </aside>
+                </section>
+
+                <section data-background="images/cern-theory2.jpg">
+                    <div class="overlay-style">
+                        <p>Measurement of the spin value in the Z basis creates</p>
+                        <h2 class="r-fit-text">maximum uncertainty</h2>
+                        <p>of the spin value in X the basis, and vice versa.</p>
+                    </div>
+                </section>
+
+                <section data-background="images/cern-theory2.jpg">
+                    <div class="column-container centered overlay-style">
+                        <div class="col inset">
+                            <h2>Z basis</h2>
+                            <img src="images/z-basis.png" style="max-width: 60%;" />
+                        </div>
+                        <div class="col inset">
+                            <h2>X basis</h2>
+                            <img src="images/x-basis.png" style="max-width: 60%;" />
+                        </div>
+                    </div>
+                    <aside class="notes">
+                        A state |+> is a definite state in basis X, and maps to a classical 0 with 100% probability. However, in Z basis, it has a 50% probability of collapsing to |0> or |1>, so classical 0 or 1.
+                    </aside>
+                </section>
+
+                <section data-background="images/cern-theory2.jpg">
+                    <div class="overlay-style">
+                        <p>Superposition is <span class="highlight">basis dependent</span>.</p>
+                    </div>
+                    <aside class="notes">
+                        Because of this, the choice of basis allows us to encode information in a qubit in a specific way. The information can only be accurately read, if you know the basis you should use upon measurement, otherwise the result will be random.
+                        <br/><br/>
+                        This concept underpins quantum cryptography.
+                    </aside>
+                </section>  
+
+                <section data-background="images/atlas2.jpg">
+                    <div class="column-container">
                         <iframe width="66%"" height="486" scrolling="no" src="/Entanglement1/Entanglement1.html"></iframe>
                     </div>
                 </section>
@@ -390,7 +547,7 @@ let detectorResult = M(photon) == Zero ? "d2" | "d1";
                 </section>
 
 
-                <section data-background="images/atlas2.jpg">
+                <!-- <section data-background="images/atlas2.jpg">
                     <div class="overlay-style">
                         <h2>Quantum strangeness</h2>
                         <div class="column-container">
@@ -429,34 +586,9 @@ let detectorResult = M(photon) == Zero ? "d2" | "d1";
                     <aside class="notes">
                         Locality violation means that in QM correlations apparently propagate instantenously. 
                     </aside>
-                </section>
+                </section> -->
 
-                <section data-background="images/atlas2.jpg">
-                    <div class="column-container">
-                        <iframe width="66%"" height="486" scrolling="no" src="/Stern_Gerlach_Apparatus/Stern_Gerlach_Apparatus.html"></iframe>
-                    </div>
-                </section>
-
-                <section data-background="images/einstein.jpg">
-                    <div class="column-container">
-
-                        <div class="col overlay-style">
-                            <blockquote>I am convinced that Old Man [God] does not play dice
-                            </blockquote>
-                            <p>
-                            <footer>- <em>Albert Einstein</em></footer>
-                            </p>
-                        </div>
-
-                        <div class="col">
-                        </div>
-                    </div>
-                    <aside class="notes">
-                        Apparently, Niels Bohr responded "Einstein, don't tell God what to do."
-                      </aside>
-                </section>
-
-                <section data-background="images/uv.jpg" data-state="bg-top-left">
+                <!-- <section data-background="images/uv.jpg" data-state="bg-top-left">
                     <div class="overlay-style">
                         <p>Contrary to classical physics, quantum mechanics doesn't provide</p>
                         <h2 class="r-fit-text">objective description of reality</h2>
@@ -475,25 +607,10 @@ let detectorResult = M(photon) == Zero ? "d2" | "d1";
                     <aside class="notes">
                         In his 1925 Heisenberg got rid of the idea of trying to explain electrons using classical orbits in favor of a completely abstract description.
                       </aside>
-                </section>
+                </section> -->
 
-                <section data-background="images/bohr.jpg">
-                    <div class="column-container">
 
-                        <div class="col">
-                        </div>
-
-                        <div class="col overlay-style">
-                            <blockquote>There is no quantum world. There is only an abstract quantum mechanical
-                                description
-                            </blockquote>
-                            <p>
-                            <footer>- <em>Niels Bohr</em></footer>
-                            </p>
-                        </div>
-                    </div>
-                </section>
-                <section data-background="images/uv.jpg">
+                <!-- <section data-background="images/uv.jpg">
                     <div class="column-container">
                         <div class="col">
                         </div>
@@ -507,7 +624,7 @@ let detectorResult = M(photon) == Zero ? "d2" | "d1";
                         </div>
 
                     </div>
-                </section>
+                </section> -->
             </section>
             <!-- end QM-->
 
@@ -805,7 +922,7 @@ let detectorResult = M(photon) == Zero ? "d2" | "d1";
                     </aside>
                 </section>
 
-                <section data-background="images/cern-theory2.jpg">
+                <!-- <section data-background="images/cern-theory2.jpg">
                     <div class="column-container centered overlay-style">
                         <div class="col inset">
                             <h2>Z basis</h2>
@@ -830,7 +947,7 @@ let detectorResult = M(photon) == Zero ? "d2" | "d1";
                         <br/><br/>
                         This concept underpins quantum cryptography.
                     </aside>
-                </section>  
+                </section>   -->
 
                 <section data-background="images/cern-theory2.jpg">
                     <div class="overlay-style">
