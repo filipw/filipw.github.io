@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Old Man really plays dice - Introduction to Quantum Computing with Q#</title>
+    <title>The Bizarre Quantum World</title>
     <meta name="description" content="">
     <meta name="author" content="Filip W">
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -50,9 +50,9 @@
             <section data-background="images/D810_NEF_3483.jpg">
 
                 <h1 style="font-size: 3em; margin-top: 1.25em">
-                    Old Man really plays dice
+                    The Bizarre Quantum World
                     <br />
-                    <small style="font-size: 0.5em;">Introduction to Quantum Computing with Q#</small>
+                    <small style="font-size: 0.5em;">with Q# and Azure Quantum</small>
                 </h1>
 
             </section>
@@ -84,52 +84,11 @@
                 <img src="images/sonova.png" style="min-height: auto" />
             </section>
 
-            <!-- QM-->
+            <!-- Superposition-->
             <section>
                 <section data-background="images/atlas1.jpg">
                     <h1>Quantum Mechanics</h1>
                 </section>
-
-                <!-- <section data-background="images/heisenberg.png" data-state="bg-top-left">
-                    <div class="overlay-style">
-                        <p>Quantum mechanics dates back to 1925, the year of the breakthrough paper by Werner
-                            Heisenberg.</p>
-                        <p>It is the foundation of all quantum physics and allows for probabilistic prediction of <span class="highlight">atomic and subatomic phenonomena</span>.</p>
-                    </div>
-
-                    <aside class="notes">
-                        Heisenberg introduced some key foundational ideas in the paper: 
-                        <ul>
-                            <li>the concept of observables (restricted what we can know). He focused on "relationships between quantities that in principle are observable"</li>
-                            <li>the fact that observables do not always commute, namely P*Q != Q*P</li>
-                            <li>he used was a form of matrices (matrix mechanics) later reformulated as mathematically equivalent wave mechanics. this nicely ties into QC</li>
-                        </ul>
-                      </aside>
-                </section>
-                <section data-background="images/heisenberg.png" data-state="bg-top-left">
-                    <div class="overlay-style">
-                        <p>Quantum mechanics is one of the <span class="highlight">most successful</span> scientific theories of all time.</p>
-                        <p>It has enabled uprecedented progress - without it, there would be no modern
-                            chemistry, technology or medicine.</p>
-                    </div>
-
-                    <aside class="notes">
-                        <ul>
-                            <li>transistors</li>
-                            <li>lasers, supeconductors, semiconductors</li>
-                            <li>GPS</li>
-                            <li>material science, chemistry</li>
-                            <li>MRI</li>
-                        </ul>
-                      </aside>
-                </section> -->
-                <!-- 
-                <section data-background="images/uv.jpg" data-state="bg-top-left">
-                    <div class="overlay-style">
-                        <p>It is also</p>
-                        <h2 class="fragment r-fit-text">very strange</h2>
-                    </div>
-                </section> -->
 
                 <section data-background="images/feynman2.jpg">
                     <div class="column-container">
@@ -442,11 +401,20 @@ let detectorResult = M(photon) == Zero ? "d2" | "d1";
                             -1 \end{bmatrix} =
                             \begin{bmatrix} 1 & 0 \\ 0 &
                             1 \end{bmatrix} = I $$</p>
-                        <p>H is <span class="highlight">unitary</span> and its own <span
-                                class="highlight">inverse</span>, so applying it twice in a row <span
-                                class="highlight">reverts</span>
+                        <p>H is its own <span
+                                class="highlight">inverse</span>, so applying it the second time<span
+                                class="highlight">reverts</span> the earlier effect.
                     </div>
                 </section>
+            </section>
+            <!-- end Superposition-->
+
+            <!-- Uncertainty Principle -->
+            <section>
+                <section data-background="images/cern-theory.jpg">
+                    <h1>Uncertainty principle</h1>
+                </section>
+
 
                 <section data-background="images/atlas2.jpg">
                     <div class="column-container">
@@ -518,8 +486,8 @@ let outcome = basis == PauliX ?
                     <div class="column-container centered overlay-style">
 
                         <div class="col">
-                            <p>Those are for example <span class="highlight">position and momentum</span> or <span
-                                    class="highlight"> and time</span>.</p>
+                            <p>Those are for example <span class="highlight">position & momentum</span> or <span
+                                    class="highlight">energy & time</span>.</p>
                         </div>
 
                         <div class="col">
@@ -590,12 +558,12 @@ let outcome = basis == PauliX ?
                     <div class="overlay-style">
                         <h2>BB84 Quantum Key Distribution</h2>
                         <ol>
-                            <li class="fragment">Alice generates a random bit string</li>
-                            <li class="fragment">Alice encodes it into qubits, randomly selecting Z or X basis</li>
-                            <li class="fragment">Alice sends the qubits to Bob</li>
-                            <li class="fragment">Bob measures the qubit, randomly selecting Z or X basis</li>
-                            <li class="fragment">Alice and Bob compare the bases they chose</li>
-                            <li class="fragment">They keep the bits for which they used the same bases</li>
+                            <li class="fragment">👧🏻 Alice generates a random bit array</li>
+                            <li class="fragment">👧🏻 Alice encodes it, randomly selecting Z or X basis</li>
+                            <li class="fragment">👧🏻 Alice sends the qubits to Bob</li>
+                            <li class="fragment">👦🏼 Bob measures, randomly selecting Z or X basis</li>
+                            <li class="fragment">👧🏻  👦🏼 Alice and Bob compare the bases they chose</li>
+                            <li class="fragment">👧🏻 👦🏼 Alice and Bob keep the bits where they used same bases</li>
                         </ol>
                     </div>
 
@@ -605,8 +573,8 @@ let outcome = basis == PauliX ?
                     <div class="overlay-style">
                         <h2>BB84</h2>
                         <table>
-                            <tr>
-                                <td>Alice</td>
+                            <tr class="fragment">
+                                <td>👧🏻</td>
                                 <td>1</td>
                                 <td>0</td>
                                 <td>0</td>
@@ -624,7 +592,7 @@ let outcome = basis == PauliX ?
                                 <td>1</td>
                                 <td>0</td>
                             </tr>
-                            <tr>
+                            <tr class="fragment">
                                 <td></td>
                                 <td>Z</td>
                                 <td>Z</td>
@@ -643,11 +611,11 @@ let outcome = basis == PauliX ?
                                 <td>X</td>
                                 <td>Z</td>
                             </tr>
-                            <tr>
-                                <td colspan="17">... sending qubits ...</td>
+                            <tr class="fragment">
+                                <td colspan="17">💌</td>
                             </tr>
-                            <tr>
-                                <td>Bob</td>
+                            <tr class="fragment">
+                                <td>👦🏼</td>
                                 <td>Z</td>
                                 <td>Z</td>
                                 <td>Z</td>
@@ -665,7 +633,7 @@ let outcome = basis == PauliX ?
                                 <td>X</td>
                                 <td>X</td>
                             </tr>
-                            <tr>
+                            <tr class="fragment">
                                 <td></td>
                                 <td>1</td>
                                 <td>0</td>
@@ -685,9 +653,43 @@ let outcome = basis == PauliX ?
                                 <td>❌</td>
                             </tr>
                         </table>
-                        <p>Shared key: <span class="highlight">0 1 0 1 0 1 1 1</span></p>
+                        <p class="fragment">Shared key: <span class="highlight">0 1 0 1 0 1 1 1</span></p>
                     </div>
                 </section>
+
+                <section data-background="images/cern-theory2.jpg">
+                    <div class="overlay-style">
+                        <p>Because arbitrary quantum states <span class="highlight">cannot be cloned</span>, an attacker, 🦹‍♀️ Eve, would need to measure the qubits to steal information.</p>
+                        <p>She <span class="highlight">must guess</span> between X and Z bases.</p>
+                </section>
+
+                <section data-background="images/cern-theory2.jpg">
+                    <div class="overlay-style">
+                        <p>👧🏻 👦🏼 Alice and Bob should compare half of their resulting bits to perform an <span class="highlight">eavesdropper check</span>.</p>
+                </section>
+
+                <section data-background="images/cern-theory2.jpg">
+                    <div class="overlay-style">
+                        <p>If 👧🏻 👦🏼 Alice and Bob find <span class="highlight">mismatches</span> between the bits for which their bases agreed, they <span class="highlight">detected</span> an attacker.</p>
+                        <p>Otherwise the remaining half of the bits make up the shared key.</p>
+                </section>
+
+                <section data-background="images/cern-theory2.jpg">
+                    <div class="overlay-style">
+                        <p>The efficiency of BB84 is <span class="highlight">25%</span></p>
+                        <p>A total of <span class="highlight">4n</span> qubits is needed for a key of length <span class="highlight">n</span>.</p>
+                </section>
+
+            </section>
+            <!-- End Uncertainty Principle-->
+
+            <!-- Entanglement -->
+            <section>
+                <section data-background="images/cern-theory.jpg">
+                    <h1>Entanglement</h1>
+                </section>
+
+
 
                 <section data-background="images/atlas2.jpg">
                     <div class="column-container">
@@ -818,7 +820,7 @@ let agreement = result1 == result2;
 
                 <section data-background="images/cern-theory2.jpg">
                     <div class="overlay-style">
-                        <p>We cannot find $\alpha_1$, $\alpha_2$, $\beta_1$ and $\beta_2$ to satisfy</p>
+                        <p>We <span class="highlight">cannot find</span> $\alpha_1$, $\alpha_2$, $\beta_1$ and $\beta_2$ to satisfy</p>
                         <p>$\alpha_1\alpha_2\ket{00} + \alpha_1\beta_2\ket{01} + \beta_1\alpha_2\ket{10} +
                             \beta_1\beta_2\ket{11} = \frac{1}{\sqrt{2}}(\ket{00} + \ket{11})$</p>
 
@@ -834,7 +836,13 @@ let agreement = result1 == result2;
 
                 <section data-background="images/cern-theory2.jpg">
                     <div class="overlay-style">
-                        <p>A single quantum state can span across multiple quantum objects, which can affect each other <span class="highlight">instantly</span>. We call this</p>
+                        <p>A single quantum state can span across multiple quantum objects, which can affect each other
+                            <span class="highlight">instantly</span>.
+                </section>
+
+                <section data-background="images/cern-theory2.jpg">
+                    <div class="overlay-style">
+                        <p> We call this</p>
                         <h2 class="r-fit-text">non-locality</h2>
                 </section>
 
@@ -869,9 +877,8 @@ let agreement = result1 == result2;
                         </div>
                     </div>
                 </section>
-
             </section>
-            <!-- end QM-->
+            <!-- End Entanglement -->
 
             <section data-background="images/all.jpg">
             </section>
