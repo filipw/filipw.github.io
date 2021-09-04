@@ -401,8 +401,7 @@ let detectorResult = M(photon) == Zero ? "d2" | "d1";
                             -1 \end{bmatrix} =
                             \begin{bmatrix} 1 & 0 \\ 0 &
                             1 \end{bmatrix} = I $$</p>
-                        <p>H is its own <span
-                                class="highlight">inverse</span>, so applying it the second time<span
+                        <p>H is its own <span class="highlight">inverse</span>, so applying it the second time<span
                                 class="highlight">reverts</span> the earlier effect.
                     </div>
                 </section>
@@ -562,7 +561,7 @@ let outcome = basis == PauliX ?
                             <li class="fragment">👧🏻 Alice encodes it, randomly selecting Z or X basis</li>
                             <li class="fragment">👧🏻 Alice sends the qubits to Bob</li>
                             <li class="fragment">👦🏼 Bob measures, randomly selecting Z or X basis</li>
-                            <li class="fragment">👧🏻  👦🏼 Alice and Bob compare the bases they chose</li>
+                            <li class="fragment">👧🏻 👦🏼 Alice and Bob compare the bases they chose</li>
                             <li class="fragment">👧🏻 👦🏼 Alice and Bob keep the bits where they used same bases</li>
                         </ol>
                     </div>
@@ -659,25 +658,29 @@ let outcome = basis == PauliX ?
 
                 <section data-background="images/cern-theory2.jpg">
                     <div class="overlay-style">
-                        <p>Because arbitrary quantum states <span class="highlight">cannot be cloned</span>, an attacker, 🦹‍♀️ Eve, would need to measure the qubits to steal information.</p>
+                        <p>Because arbitrary quantum states <span class="highlight">cannot be cloned</span>, an
+                            attacker, 🦹‍♀️ Eve, would need to measure the qubits to steal information.</p>
                         <p>She <span class="highlight">must guess</span> between X and Z bases.</p>
                 </section>
 
                 <section data-background="images/cern-theory2.jpg">
                     <div class="overlay-style">
-                        <p>👧🏻 👦🏼 Alice and Bob should compare half of their resulting bits to perform an <span class="highlight">eavesdropper check</span>.</p>
+                        <p>👧🏻 👦🏼 Alice and Bob should compare half of their resulting bits to perform an <span
+                                class="highlight">eavesdropper check</span>.</p>
                 </section>
 
                 <section data-background="images/cern-theory2.jpg">
                     <div class="overlay-style">
-                        <p>If 👧🏻 👦🏼 Alice and Bob find <span class="highlight">mismatches</span> between the bits for which their bases agreed, they <span class="highlight">detected</span> an attacker.</p>
+                        <p>If 👧🏻 👦🏼 Alice and Bob find <span class="highlight">mismatches</span> between the bits
+                            for which their bases agreed, they <span class="highlight">detected</span> an attacker.</p>
                         <p>Otherwise the remaining half of the bits make up the shared key.</p>
                 </section>
 
                 <section data-background="images/cern-theory2.jpg">
                     <div class="overlay-style">
                         <p>The efficiency of BB84 is <span class="highlight">25%</span></p>
-                        <p>A total of <span class="highlight">4n</span> qubits is needed for a key of length <span class="highlight">n</span>.</p>
+                        <p>A total of <span class="highlight">4n</span> qubits is needed for a key of length <span
+                                class="highlight">n</span>.</p>
                 </section>
 
             </section>
@@ -820,7 +823,8 @@ let agreement = result1 == result2;
 
                 <section data-background="images/cern-theory2.jpg">
                     <div class="overlay-style">
-                        <p>We <span class="highlight">cannot find</span> $\alpha_1$, $\alpha_2$, $\beta_1$ and $\beta_2$ to satisfy</p>
+                        <p>We <span class="highlight">cannot find</span> $\alpha_1$, $\alpha_2$, $\beta_1$ and $\beta_2$
+                            to satisfy</p>
                         <p>$\alpha_1\alpha_2\ket{00} + \alpha_1\beta_2\ket{01} + \beta_1\alpha_2\ket{10} +
                             \beta_1\beta_2\ket{11} = \frac{1}{\sqrt{2}}(\ket{00} + \ket{11})$</p>
 
@@ -879,6 +883,64 @@ let agreement = result1 == result2;
                 </section>
             </section>
             <!-- End Entanglement -->
+
+            <!-- Azure Quantum-->
+            <section>
+                <section data-background="images/azure-quantum.png">
+                    <h1>Azure Quantum</h1>
+                </section>
+
+                <section data-background="images/cern-alice.jpg">
+                    <div class="column-container centered">
+                        <div class="col overlay-style">
+                            <ul>
+                                <li class="fragment">💻
+                                    Q# programming language
+                                    <br />
+                                    <small>Standalone, C# and Python interop</small>
+                                </li>
+
+                                <li class="fragment">📦
+                                    .NET ecosystem integration
+                                    <br />
+                                    <small>VS Code and Visual Studio support, Nuget, csproj</small>
+                                </li>
+
+                                <li class="fragment">📚
+                                    Rich family of libraries
+                                    <br />
+                                    <small>Math, machine learing, chemistry</small>
+                                </li>
+
+                                <li class="fragment">🔬
+                                    Simulator + Azure Quantum
+                                    <br />
+                                    <small>Simulate locally, run on hardware in Azure</small>
+                                </li>
+
+                            </ul>
+                        </div>
+                        <div class="col inset-right">
+                            <img src="images/QDK3.png" />
+                        </div>
+                    </div>
+                </section>
+
+                <section data-background="images/azure-quantum-overview.gif">
+                </section>
+
+                <section data-background="images/cern-theory2.jpg">
+                    <h2 class="overlay-style">Azure Quantum Execution</h2>
+                    <img class="normal" src="images/azure-quantum-flow-diagram.png" />
+
+                </section>
+
+                <section data-background="images/cern-theory2.jpg">
+                    <img src="images/quantum-pricing1.png" />
+
+                </section>
+
+            </section>
 
             <section data-background="images/all.jpg">
             </section>
