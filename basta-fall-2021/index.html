@@ -84,29 +84,109 @@
                 <img src="images/sonova.png" style="min-height: auto" />
             </section>
 
+            <section data-background="images/feynman2.jpg">
+                <div class="column-container">
+
+                    <div class="col">
+                    </div>
+
+                    <div class="col overlay-style">
+                        <blockquote>I think I can safely say that nobody understands quantum mechanics
+                        </blockquote>
+                        <p>
+                        <footer>- <em>Richard Feynman</em></footer>
+                        </p>
+                    </div>
+                </div>
+                <aside class="notes">
+                    Feynman got the 1965 Nobel prize for his work on quantum electrodynamics.
+                </aside>
+            </section>
+
+            <!-- Q# -->
+            <section>
+                <section data-background="images/cern-dc.jpg">
+                    <h1>Q# and QDK</h1>
+                </section>
+
+                <section data-background="images/cern-alice.jpg">
+                    <div class="column-container centered">
+                        <div class="col overlay-style">
+                            <ul>
+                                <li class="fragment">💻
+                                    Q# programming language
+                                    <br />
+                                    <small>Standalone, C# and Python interop</small>
+                                </li>
+
+                                <li class="fragment">📦
+                                    .NET ecosystem integration
+                                    <br />
+                                    <small>VS Code and Visual Studio support, Nuget, csproj</small>
+                                </li>
+
+                                <li class="fragment">📚
+                                    Rich family of libraries
+                                    <br />
+                                    <small>Math, machine learing, chemistry</small>
+                                </li>
+
+                                <li class="fragment">🔬
+                                    Simulator + Azure Quantum
+                                    <br />
+                                    <small>Simulate locally, run on hardware in Azure</small>
+                                </li>
+
+                            </ul>
+                        </div>
+                        <div class="col inset-right">
+                            <img src="images/QDK3.png" />
+                        </div>
+                    </div>
+                </section>
+
+                <section data-background="images/cern-alice.jpg">
+                    <div class="overlay-style">
+                        <p>QDK and Azure Quantum allow us to access an ecosystem where we can learn about, and experience, quantum phenomena <span class="highlight">first hand</span>.</p>
+                    </div>
+                </section>
+            </section>
+
             <!-- Superposition-->
             <section>
                 <section data-background="images/atlas1.jpg">
-                    <h1>Quantum Mechanics</h1>
+                    <h1>Superposition</h1>
                 </section>
 
-                <section data-background="images/feynman2.jpg">
+                <section data-background="images/atlas2.jpg">
                     <div class="column-container">
-
-                        <div class="col">
-                        </div>
-
-                        <div class="col overlay-style">
-                            <blockquote>I think I can safely say that nobody understands quantum mechanics
-                            </blockquote>
-                            <p>
-                            <footer>- <em>Richard Feynman</em></footer>
-                            </p>
-                        </div>
+                        <iframe width="66%"" height=" 486" scrolling="no" src="BeamSplitter/BeamSplitter.html"></iframe>
                     </div>
-                    <aside class="notes">
-                        Feynman got the 1965 Nobel prize for his work on quantum electrodynamics.
-                    </aside>
+                </section>
+
+                <section data-background="images/cern-alice.jpg">
+                    <pre>
+                <code class="cs">
+// allocate a new qubit in default state
+use photon = Qubit();
+
+// beam splitter
+H(photon);
+
+// result is a random Zero or One
+let detectorResult = M(photon) == Zero ? "d2" | "d1";
+                </code>
+            </pre>
+                    <p class="fragment" data-code-focus="2-3"></p>
+                    <p class="fragment" data-code-focus="5-6"></p>
+                    <p class="fragment" data-code-focus="8-9"></p>
+                </section>
+
+                <section data-background="images/cern-alice.jpg">
+                    <div class="overlay-style">
+                        <p>So this was all very logical</p>
+                        <h2 class="r-fit-text fragment ">or was it really?</h2>
+                    </div>
                 </section>
 
                 <section data-background="images/weinberg.jpg">
@@ -141,31 +221,6 @@
                     </div>
                     <aside class="notes">
                     </aside>
-                </section>
-
-                <section data-background="images/atlas2.jpg">
-                    <div class="column-container">
-                        <iframe width="66%"" height=" 486" scrolling="no"
-                            src="BeamSplitter/BeamSplitter.html"></iframe>
-                    </div>
-                </section>
-
-                <section data-background="images/cern-alice.jpg">
-                    <pre>
-                <code class="cs">
-// allocate a new qubit in default state
-use photon = Qubit();
-
-// beam splitter
-H(photon);
-
-// result is a random Zero or One
-let detectorResult = M(photon) == Zero ? "d2" | "d1";
-                </code>
-            </pre>
-                    <p class="fragment" data-code-focus="2-3"></p>
-                    <p class="fragment" data-code-focus="5-6"></p>
-                    <p class="fragment" data-code-focus="8-9"></p>
                 </section>
 
                 <section data-background="images/atlas2.jpg">
@@ -234,23 +289,6 @@ let detectorResult = M(photon) == Zero ? "d2" | "d1";
                     <div class="overlay-style">
                         <p>We witnessed two uniquely quantum phenomena</p>
                         <h2 class="r-fit-text">superposition <br />wave-particle duality</h2>
-                    </div>
-                </section>
-
-                <section data-background="images/bohr.jpg">
-                    <div class="column-container">
-
-                        <div class="col">
-                        </div>
-
-                        <div class="col overlay-style">
-                            <blockquote>There is no quantum world. There is only an abstract quantum mechanical
-                                description
-                            </blockquote>
-                            <p>
-                            <footer>- <em>Niels Bohr</em></footer>
-                            </p>
-                        </div>
                     </div>
                 </section>
 
@@ -403,6 +441,23 @@ let detectorResult = M(photon) == Zero ? "d2" | "d1";
                             1 \end{bmatrix} = I $$</p>
                         <p>H is its own <span class="highlight">inverse</span>, so applying it the second time<span
                                 class="highlight">reverts</span> the earlier effect.
+                    </div>
+                </section>
+
+                <section data-background="images/bohr.jpg">
+                    <div class="column-container">
+
+                        <div class="col">
+                        </div>
+
+                        <div class="col overlay-style">
+                            <blockquote>There is no quantum world. There is only an abstract quantum mechanical
+                                description
+                            </blockquote>
+                            <p>
+                            <footer>- <em>Niels Bohr</em></footer>
+                            </p>
+                        </div>
                     </div>
                 </section>
             </section>
@@ -893,21 +948,21 @@ let agreement = result1 == result2;
                         <div class="col overlay-style">
                             <ul>
                                 <li class="fragment">💻
-                                    Q# programming language
+                                    Easy to use
                                     <br />
-                                    <small>Standalone, C# and Python interop</small>
+                                    <small>High level programs with QDK and Q#</small>
                                 </li>
 
-                                <li class="fragment">📦
-                                    .NET ecosystem integration
+                                <li class="fragment">⚛️
+                                    Quantum Hardware
                                     <br />
-                                    <small>VS Code and Visual Studio support, Nuget, csproj</small>
+                                    <small>Run programs on real quantum hardware</small>
                                 </li>
 
-                                <li class="fragment">📚
-                                    Rich family of libraries
+                                <li class="fragment">📈
+                                    Quantum-inspired Optimisation
                                     <br />
-                                    <small>Math, machine learing, chemistry</small>
+                                    <small>Accelerated compute resources</small>
                                 </li>
 
                                 <li class="fragment">🔬
@@ -935,7 +990,6 @@ let agreement = result1 == result2;
 
                 <section data-background="images/cern-theory2.jpg">
                     <img src="images/quantum-pricing1.png" />
-
                 </section>
 
             </section>
