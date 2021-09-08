@@ -292,7 +292,7 @@ let detectorResult = M(photon) == Zero ? "d2" | "d1";
                         <h2 class="r-fit-text">superposition <br />wave-particle duality</h2>
                     </div>
                 </section>
-
+<!-- 
                 <section data-background="images/cms2.jpg">
                     <div class="column-container centered overlay-style">
 
@@ -305,28 +305,44 @@ let detectorResult = M(photon) == Zero ? "d2" | "d1";
                             <h2 class="r-fit-text">$\begin{bmatrix} \alpha \cr \beta \end{bmatrix}$</h2>
                         </div>
                     </div>
-                </section>
-
+                </section> -->
+<!-- 
                 <section data-background="images/cms2.jpg">
                     <div class="overlay-style">
                         <p>Additionally, $\alpha$ and $\beta$ must fulfill normalization condition</p>
                         <h2 class="r-fit-text">$$|\alpha|^2 + |\beta|^2 = 1$$</h2>
                     </div>
+                </section> -->
+
+                <section data-background="images/cms2.jpg">
+                    <div class="overlay-style">
+                        <p>Information can only be extracted from a quantum system using a <span class="highlight">measurement</span>. They are performed using <span class="highlight">bases</span>.</p>
+                    </div>
+                </section>
+
+                <section data-background="images/cms2.jpg">
+                    <div class="overlay-style">
+                        <p>Bases are defined by pairs of <span class="highlight">orthonormal</span> vectors.</p>
+                    </div>
                 </section>
 
                 <section data-background="images/cms2.jpg">
                     <div class="column-container centered overlay-style">
-
                         <div class="col">
-                            <p>The so-called <span class="highlight">computational basis</span> is represented by two
-                                special case orthonormal vectors.
-                        </div>
-
-                        <div class="col">
+                            <h2>$\mathbf{Z}$ basis</h2>
                             <p class="r-fit-text">
                                 $$
                                 \ket{0} = \begin{bmatrix} 1 \cr 0 \end{bmatrix} $$
                                 $$\ket{1} = \begin{bmatrix} 0 \cr 1 \end{bmatrix}
+                                $$
+                            </p>
+                        </div>
+                        <div class="col">
+                            <h2>$\mathbf{X}$ basis</h2>
+                            <p class="r-fit-text">
+                                $$
+                                \ket{+} = \frac{1}{\sqrt{2}}\begin{bmatrix} 1 \\ 1 \end{bmatrix} $$
+                                $$\ket{-} = \frac{1}{\sqrt{2}}\begin{bmatrix} 1 \\ -1 \end{bmatrix}
                                 $$
                             </p>
                         </div>
@@ -357,8 +373,8 @@ let detectorResult = M(photon) == Zero ? "d2" | "d1";
 
                 <section data-background="images/cms2.jpg">
                     <div class="overlay-style">
-                        <p>A quantum state vector can be expressed as a <span class="highlight">linear
-                                combination</span> of basis states:</p>
+                        <p>A quantum state can be expressed as a <span class="highlight">linear
+                                combination</span> of two basis states:</p>
                         <h2 class="r-fit-text">$$\ket{\psi} = \alpha\ket{0} + \beta\ket{1}$$</h2>
                     </div>
                 </section>
@@ -379,7 +395,7 @@ let detectorResult = M(photon) == Zero ? "d2" | "d1";
                     </aside>
                 </section>
 
-                <section data-background="images/uv.jpg" data-state="bg-top-left" data-transition="fade">
+                <!-- <section data-background="images/uv.jpg" data-state="bg-top-left" data-transition="fade">
                     <div class="overlay-style">
                         <p>Quantum objects in a superposition are in</p>
                         <h2 class="r-fit-text">no definite observable state</h2>
@@ -393,13 +409,34 @@ let detectorResult = M(photon) == Zero ? "d2" | "d1";
                         <h2 class="r-fit-text">all possible observable states</h2>
                         <p>until they are observed</p>
                     </div>
-                </section>
+                </section> -->
 
                 <section data-background="images/cms2.jpg" data-state="bg-top-left" data-transition="fade">
                     <div class="overlay-style">
                         <p>Measurement outcome is probabilistic. Upon measurement, quantum state <span
                                 class="highlight">collapses</span> to one of the observable states.</p>
                     </div>
+                </section>
+
+                <section data-background="images/zeilinger.jpeg">
+                    <div class="column-container">
+
+                        <div class="col overlay-style">
+                            <blockquote>The world is not as real as we think
+                            </blockquote>
+                            <p>
+                            <footer>- <em>Anton Zeilinger</em></footer>
+                            </p>
+                        </div>
+
+                        <div class="col">
+                        </div>
+                    </div>
+                    <aside class="notes">
+                        It is a fundamental quantum doctrine that a measurement does not reveal a pre-existing value of
+                        the measured property. On the contrary, the outcome of a measurement is brought into being by
+                        the act of measurement itself. - David Mermin
+                    </aside>
                 </section>
 
                 <section data-background="images/cms2.jpg">
@@ -481,7 +518,7 @@ let detectorResult = M(photon) == Zero ? "d2" | "d1";
                 <section data-background="images/cern-alice.jpg">
                     <pre>
                 <code class="cs">
-// prepare state up or down
+// prepare state |up> or |down>
 use electron = Qubit();
 if (flip) { X(electron); }
 
@@ -499,7 +536,7 @@ let outcome = basis == PauliX ?
                     <p class="fragment" data-code-focus="10-12"></p>
                 </section>
 
-                <section data-background="images/cern-alice.jpg">
+                <!-- <section data-background="images/cern-alice.jpg">
                     <pre>
                 <code class="cs">
 // prepare state + or -
@@ -520,7 +557,7 @@ let outcome = basis == PauliX ?
                     <p class="fragment" data-code-focus="5"></p>
                     <p class="fragment" data-code-focus="8"></p>
                     <p class="fragment" data-code-focus="11-13"></p>
-                </section>
+                </section> -->
 
                 <section data-background="images/monty.jpg">
                     <div class="overlay-style">
@@ -553,30 +590,42 @@ let outcome = basis == PauliX ?
                 </section>
 
                 <section data-background="images/cms-beam.jpg">
-                    <div class="overlay-style">
-                        <p>In linear algebra, we define the commutator for two operators $\mathbf{A}$ and $\mathbf{B}$
-                            as:
-                        </p>
-                        <p>$[\mathbf{A}, \mathbf{B}] = \mathbf{A}\mathbf{B} - \mathbf{B}\mathbf{A}$</p>
+                    <img src="images/Quantum_Fluctuations.gif" />
+                    <div class="overlay-style" style="padding: 1% !important;">
+                        <div style="clear:both;">
+                            <p class="footnote" style="text-align: center;">By Ahmed Neutron - Own work, CC BY-SA 4.0, <a href="https://commons.wikimedia.org/w/index.php?curid=69715938">https://commons.wikimedia.org/w/index.php?curid=69715938</a></p>
+                        </div>
                     </div>
                 </section>
 
                 <section data-background="images/cms-beam.jpg">
                     <div class="overlay-style">
-                        <p>The operators commute when:
+                        <p>In linear algebra, the two operators $\mathbf{A}$ and $\mathbf{B}$ commute when:
                         </p>
-                        <p>$[\mathbf{A}, \mathbf{B}] = 0$</p>
+                        <p>$\mathbf{A}\mathbf{B} - \mathbf{B}\mathbf{A} = 0$</p>
                     </div>
                 </section>
 
+
                 <section data-background="images/cms-beam.jpg">
                     <div class="overlay-style">
-                        <p>For X and Z basis measurements:
-                        </p>
-                        <p>$X \cdot Z =\begin{bmatrix} 0 & 1 \\  1 & 0  \end{bmatrix}\begin{bmatrix} 1 & 0 \\  0 & -1  \end{bmatrix} = \begin{bmatrix} 0 & -1 \\  1 & 0  \end{bmatrix}$</p>
-                        <p>$Z \cdot X =\begin{bmatrix} 1 & 0 \\  0 & -1  \end{bmatrix}\begin{bmatrix} 0 & 1 \\  1 & 0  \end{bmatrix} = \begin{bmatrix} 0 & 1 \\  -1 & 0  \end{bmatrix}$</p>
+                        <p>In quantum mechanics, the measurements using $\mathbf{Z}$ and $\mathbf{X}$ bases <span class="highlight">do not commute</span>.
                     </div>
+                    <aside class="notes">
+                        $X \cdot Z - Z \cdot X \neq 0$ which means the order of measurements matters!
+                    </aside>
                 </section>
+
+                <!-- <section data-background="images/cms-beam.jpg">
+                    <div class="overlay-style">
+                        <h3>For X and Z bases:</h3>
+                        <p>$X \cdot Z =\begin{bmatrix} 0 & 1 \\ 1 & 0 \end{bmatrix}\begin{bmatrix} 1 & 0 \\ 0 & -1
+                            \end{bmatrix} = \begin{bmatrix} 0 & -1 \\ 1 & 0 \end{bmatrix}$</p>
+                        <p>$Z \cdot X =\begin{bmatrix} 1 & 0 \\ 0 & -1 \end{bmatrix}\begin{bmatrix} 0 & 1 \\ 1 & 0
+                            \end{bmatrix} = \begin{bmatrix} 0 & 1 \\ -1 & 0 \end{bmatrix}$</p>
+                        <p>$X \cdot Z - Z \cdot X \neq 0$</p>
+                    </div>
+                </section> -->
 
                 <section data-background="images/einstein.jpg">
                     <div class="column-container">
@@ -599,20 +648,20 @@ let outcome = basis == PauliX ?
 
                 <section data-background="images/cms-beam.jpg">
                     <div class="overlay-style">
-                        <p>Measurement of the spin value in the Z basis creates</p>
+                        <p>Measurement of the spin value in the $\mathbf{Z}$ basis creates</p>
                         <h2 class="r-fit-text">maximum uncertainty</h2>
-                        <p>of the spin value in X the basis, and vice versa.</p>
+                        <p>of the spin value in $\mathbf{X}$ the basis, and vice versa.</p>
                     </div>
                 </section>
 
                 <section data-background="images/cms-beam.jpg">
                     <div class="column-container centered overlay-style">
                         <div class="col inset">
-                            <h2>Z basis</h2>
+                            <h2>$\mathbf{Z}$ basis</h2>
                             <img src="images/z-basis.png" style="max-width: 60%;" />
                         </div>
                         <div class="col inset">
-                            <h2>X basis</h2>
+                            <h2>$\mathbf{X}$ basis</h2>
                             <img src="images/x-basis.png" style="max-width: 60%;" />
                         </div>
                     </div>
@@ -640,9 +689,9 @@ let outcome = basis == PauliX ?
                         <h2>BB84 Quantum Key Distribution</h2>
                         <ol>
                             <li class="fragment">👧🏻 Alice generates a random bit array</li>
-                            <li class="fragment">👧🏻 Alice encodes it, randomly selecting Z or X basis</li>
+                            <li class="fragment">👧🏻 Alice encodes it, randomly selecting $\mathbf{Z}$ or $\mathbf{X}$ basis</li>
                             <li class="fragment">👧🏻 Alice sends the qubits to Bob</li>
-                            <li class="fragment">👦🏼 Bob measures, randomly selecting Z or X basis</li>
+                            <li class="fragment">👦🏼 Bob measures, randomly selecting $\mathbf{Z}$ or $\mathbf{X}$ basis</li>
                             <li class="fragment">👧🏻 👦🏼 Alice and Bob compare the bases they chose</li>
                             <li class="fragment">👧🏻 👦🏼 Alice and Bob keep the bits where they used same bases</li>
                         </ol>
@@ -742,7 +791,7 @@ let outcome = basis == PauliX ?
                     <div class="overlay-style">
                         <p>Because arbitrary quantum states <span class="highlight">cannot be cloned</span>, an
                             attacker, 🦹‍♀️ Eve, would need to measure the qubits to steal information.</p>
-                        <p>She <span class="highlight">must guess</span> between X and Z bases.</p>
+                        <p>She <span class="highlight">must guess</span> between $\mathbf{Z}$ and $\mathbf{X}$ bases.</p>
                 </section>
 
                 <section data-background="images/cms-beam.jpg">
@@ -788,8 +837,8 @@ let outcome = basis == PauliX ?
 use pair = Qubit[2];
 
 // measure in PauliZ or PauliX basis
-let result1 = IsResultOne(Measure([basis], [pair[0]]));
-let result2 = IsResultOne(Measure([basis], [pair[1]]));
+let result1 = Measure([basis], [pair[0]]) == Zero;
+let result2 = Measure([basis], [pair[1]]) == Zero;
 
 // classically, the measurement will agree only in the Z basis
 // in the X basis the results will be random
@@ -819,8 +868,8 @@ use pair = Qubit[2];
 PrepareEntangledState([pair[0]], [pair[1]]);
 
 // measure in PauliZ or PauliX basis
-let result1 = IsResultOne(Measure([basis], [pair[0]]));
-let result2 = IsResultOne(Measure([basis], [pair[1]]));
+let result1 = Measure([basis], [pair[0]]) == Zero;
+let result2 = Measure([basis], [pair[1]]) == Zero;
 
 // for an entangled pair, the measurement will always agree
 let agreement = result1 == result2;
@@ -1070,7 +1119,8 @@ Result     Frequency
                                 <li>📸 <a href="https://cds.cern.ch/collection/Multimedia%20%26%20Outreach?ln=en">Photos
                                         credit: CERN</a></li>
 
-                                <li>🎞 <a href="https://www.springer.com/gp/book/9783319922065">Demo credit: Pieter Kok, A First Introduction to Quantum Physics</a></li>
+                                <li>🎞 <a href="https://www.springer.com/gp/book/9783319922065">Demo credit: Pieter Kok,
+                                        A First Introduction to Quantum Physics</a></li>
                             </ul>
                         </div>
                     </div>
