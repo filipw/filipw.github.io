@@ -316,15 +316,15 @@ let detectorResult = M(photon) == Zero ? "d2" | "d1";
 
                 <section data-background="images/cms2.jpg">
                     <div class="overlay-style">
-                        <p>Information can only be extracted from quantum systems using <span class="highlight">observables</span>.</p>
+                        <p>According to quantum mechanics, information can only be extracted from quantum systems using <span class="highlight">observables</span>.</p>
                     </div>
                 </section>
 
 
                 <section data-background="images/cms2.jpg">
                     <div class="overlay-style">
-                        <p>Observables have two <span class="highlight">eigenvectors</span> (for two-level quantum systems).</p>
-                        <p>These vectors form a <span class="highlight">measurement basis</span>.</p>
+                        <p>For two-level systems observables define two vectors that form</p>
+                        <h2 class="r-fit-text">measurement basis</h2>
                     </div>
                 </section>
 
@@ -368,14 +368,14 @@ let detectorResult = M(photon) == Zero ? "d2" | "d1";
 
                 <section data-background="images/cms2.jpg">
                     <div class="overlay-style">
-                        <p>We can only ask</p>
+                        <p>For $\mathbf{Z}$ basis we can only ask</p>
                         <h2 class="r-fit-text">Are you $\ket{0}$ or are you $\ket{1}$?</h2>
                     </div>
                 </section>
 
                 <section data-background="images/cms2.jpg">
                     <div class="overlay-style">
-                        <p>Or</p>
+                        <p>For $\mathbf{X}$ basis we can only ask</p>
                         <h2 class="r-fit-text">Are you $\ket{+}$ or are you $\ket{-}$?</h2>
                     </div>
                 </section>
@@ -422,9 +422,15 @@ let detectorResult = M(photon) == Zero ? "d2" | "d1";
 
                 <section data-background="images/cms2.jpg" data-state="bg-top-left" data-transition="fade">
                     <div class="overlay-style">
-                        <p>Measurement outcome is probabilistic. Upon measurement, quantum state <span
+                        <p>Upon measurement, quantum state <span
                                 class="highlight">collapses</span> to one of the observable states.</p>
+                        <h2 class="r-fit-text">Outcome is probabilistic</h2>
                     </div>
+                    <aside class="notes">
+                        It is a fundamental quantum doctrine that a measurement does not reveal a pre-existing value of
+                        the measured property. On the contrary, the outcome of a measurement is brought into being by
+                        the act of measurement itself. - David Mermin
+                    </aside>
                 </section>
 
                 <section data-background="images/zeilinger.jpeg">
@@ -441,11 +447,6 @@ let detectorResult = M(photon) == Zero ? "d2" | "d1";
                         <div class="col">
                         </div>
                     </div>
-                    <aside class="notes">
-                        It is a fundamental quantum doctrine that a measurement does not reveal a pre-existing value of
-                        the measured property. On the contrary, the outcome of a measurement is brought into being by
-                        the act of measurement itself. - David Mermin
-                    </aside>
                 </section>
 
                 <section data-background="images/cms2.jpg">
@@ -636,6 +637,14 @@ let outcome = basis == PauliX ?
                     </div>
                 </section> -->
 
+                <section data-background="images/cms-beam.jpg">
+                    <div class="overlay-style">
+                        <p>Measurement of the spin value in the $\mathbf{Z}$ basis creates</p>
+                        <h2 class="r-fit-text">maximum uncertainty</h2>
+                        <p>of the spin value in $\mathbf{X}$ the basis, and vice versa.</p>
+                    </div>
+                </section>
+
                 <section data-background="images/einstein.jpg">
                     <div class="column-container">
 
@@ -653,14 +662,6 @@ let outcome = basis == PauliX ?
                     <aside class="notes">
                         Apparently, Niels Bohr responded "Einstein, don't tell God what to do."
                     </aside>
-                </section>
-
-                <section data-background="images/cms-beam.jpg">
-                    <div class="overlay-style">
-                        <p>Measurement of the spin value in the $\mathbf{Z}$ basis creates</p>
-                        <h2 class="r-fit-text">maximum uncertainty</h2>
-                        <p>of the spin value in $\mathbf{X}$ the basis, and vice versa.</p>
-                    </div>
                 </section>
 
                 <section data-background="images/cms-beam.jpg">
@@ -816,12 +817,12 @@ let outcome = basis == PauliX ?
                         <p>Otherwise the remaining half of the bits make up the shared key.</p>
                 </section>
 
-                <section data-background="images/cms-beam.jpg">
+                <!-- <section data-background="images/cms-beam.jpg">
                     <div class="overlay-style">
                         <p>The efficiency of BB84 is <span class="highlight">25%</span></p>
                         <p>A total of <span class="highlight">4n</span> qubits is needed for a key of length <span
                                 class="highlight">n</span>.</p>
-                </section>
+                </section> -->
 
             </section>
             <!-- End Uncertainty Principle-->
@@ -924,7 +925,7 @@ let agreement = result1 == result2;
                     </div>
                 </section> -->
 
-                <section data-background="images/atlas-nsw.jpg">
+                <!-- <section data-background="images/atlas-nsw.jpg">
                     <div class="overlay-style">
                         <p>
                             The perfect correlation for particles making up a Bell state happens even when they are
@@ -938,7 +939,7 @@ let agreement = result1 == result2;
                         There is a theorem + an experiment called Bell's test (Bell's inequalities) that prove that this
                         cannot be explained with classical local physics.
                     </aside>
-                </section>
+                </section> -->
 
                 <section data-background="images/atlas-nsw.jpg">
                     <div class="overlay-style">
@@ -977,8 +978,18 @@ let agreement = result1 == result2;
 
                 <section data-background="images/atlas-nsw.jpg">
                     <div class="overlay-style">
-                        <p>A single quantum state can span across multiple spatially separated quantum objects, which can affect each other
-                            <span class="highlight">instantly</span>.
+                        <p>A single quantum state can span across multiple spatially separated quantum objects, which seem to affect each other
+                            <span class="highlight">instantly</span>.</p><p>
+                            Einstein called it
+                        </p>
+                        <h3 class="r-fit-text">
+                            "spooky action at a distance"
+                        </h3>
+                    </div>
+                    <aside class="notes">
+                        There is a theorem + an experiment called Bell's test (Bell's inequalities) that prove that this
+                        cannot be explained with classical local physics.
+                    </aside>
                 </section>
 
                 <section data-background="images/atlas-nsw.jpg">
