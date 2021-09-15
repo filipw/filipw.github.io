@@ -183,7 +183,7 @@ let detectorResult = M(photon) == Zero ? "d2" | "d1";
                     <p class="fragment" data-code-focus="8-9"></p>
                 </section> -->
 
-                <section data-background="images/cms2.jpg">
+                <!-- <section data-background="images/cms2.jpg">
                     <div class="column-container centered overlay-style">
                         <div class="col">
                             <p>Waves can interfere with each other <span class="highlight">constructively</span> or
@@ -196,7 +196,7 @@ let detectorResult = M(photon) == Zero ? "d2" | "d1";
                     </div>
                     <aside class="notes">
                     </aside>
-                </section>
+                </section> -->
 
                 <section data-background="images/cms2.jpg">
                     <div class="column-container">
@@ -851,8 +851,8 @@ let outcome = basis == PauliX ?
 use pair = Qubit[2];
 
 // measure in PauliZ or PauliX basis
-let result1 = Measure([basis], [pair[0]]) == Zero;
-let result2 = Measure([basis], [pair[1]]) == Zero;
+let result1 = Measure([basis], [pair[0]]);
+let result2 = Measure([basis], [pair[1]]);
 
 // classically, the measurement will agree only in the Z basis
 // in the X basis the results will be random
@@ -882,8 +882,8 @@ use pair = Qubit[2];
 PrepareEntangledState([pair[0]], [pair[1]]);
 
 // measure in PauliZ or PauliX basis
-let result1 = Measure([basis], [pair[0]]) == Zero;
-let result2 = Measure([basis], [pair[1]]) == Zero;
+let result1 = Measure([basis], [pair[0]]);
+let result2 = Measure([basis], [pair[1]]);
 
 // for an entangled pair, the measurement will always agree
 let agreement = result1 == result2;
