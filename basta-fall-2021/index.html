@@ -342,13 +342,20 @@ let detectorResult = M(photon) == Zero ? "d2" | "d1";
                 </section>
 
                 <section data-background="images/cms2.jpg">
+                    <div class="overlay-style">
+                        <p>In quantum computing, basis vectors map to <span class="highlight">classical bits</span>.</p>
+                    </div>
+                </section>
+
+                <section data-background="images/cms2.jpg">
                     <div class="column-container centered overlay-style">
                         <div class="col">
                             <h2>$\mathbf{Z}$ basis</h2>
                             <p class="r-fit-text">
                                 $$
-                                \ket{0} = \begin{bmatrix} 1 \cr 0 \end{bmatrix} $$
-                                $$\ket{1} = \begin{bmatrix} 0 \cr 1 \end{bmatrix}
+                                0 = \begin{bmatrix} 1 \cr 0 \end{bmatrix} = \ket{0}$$
+                                $$
+                                1 = \begin{bmatrix} 0 \cr 1 \end{bmatrix} = \ket{1} 
                                 $$
                             </p>
                         </div>
@@ -356,8 +363,9 @@ let detectorResult = M(photon) == Zero ? "d2" | "d1";
                             <h2>$\mathbf{X}$ basis</h2>
                             <p class="r-fit-text">
                                 $$
-                                \ket{+} = \frac{1}{\sqrt{2}}\begin{bmatrix} 1 \\ 1 \end{bmatrix} $$
-                                $$\ket{-} = \frac{1}{\sqrt{2}}\begin{bmatrix} 1 \\ -1 \end{bmatrix}
+                                0 = \frac{1}{\sqrt{2}}\begin{bmatrix} 1 \\ 1 \end{bmatrix} = \ket{+}$$
+                                $$
+                                1 = \frac{1}{\sqrt{2}}\begin{bmatrix} 1 \\ -1 \end{bmatrix} = \ket{-} 
                                 $$
                             </p>
                         </div>
@@ -947,7 +955,7 @@ let agreement = result1 == result2;
 
                 <section data-background="images/atlas-nsw.jpg">
                     <div class="overlay-style">
-                        <p>To describe the state of a two qubit system, we use a <span class="highlight">tensor
+                        <p>To describe the state of a multi-qubit system, we use a <span class="highlight">tensor
                                 product</span> of the individual qubit states.</p>
                         <p>$$\ket{\psi_1} = \alpha_1\ket{0} + \beta_1\ket{1} \;\;\;
                             \ket{\psi_2} = \alpha_2\ket{0} + \beta_2\ket{1}$$</p>
@@ -1086,14 +1094,6 @@ let agreement = result1 == result2;
                     </div>
                 </section>
 
-                <!-- <section data-background="images/azure-quantum-overview.gif">
-                </section> -->
-
-                <section data-background="images/cern-network2.jpg">
-                    <h2 class="overlay-style">Azure Quantum Execution</h2>
-                    <img class="normal" src="images/azure-quantum-flow-diagram.png" />
-                </section>
-
                 <section data-background="images/cern-alice.jpg">
                     <h2 class="overlay-style">Azure Quantum Execution</h2>
                     <pre>
@@ -1116,6 +1116,11 @@ Result     Frequency
                     <p class="fragment" data-code-focus="5-6"></p>
                     <p class="fragment" data-code-focus="8-9"></p>
                     <p class="fragment" data-code-focus="11-13"></p>
+                </section>
+
+                <section data-background="images/cern-network2.jpg">
+                    <h2 class="overlay-style">Azure Quantum Execution</h2>
+                    <img class="normal" src="images/azure-quantum-flow-diagram.png" />
                 </section>
 
                 <section data-background="images/cern-network2.jpg">
