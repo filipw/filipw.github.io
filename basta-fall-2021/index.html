@@ -217,7 +217,7 @@ H(photon);
 // second beam splitter
 H(photon);
 
-// result is a certain Zero == "detector2" due to interference
+// result is a certain "d2" due to interference
 let detectorResult = M(photon) == Zero ? "d2" | "d1";
                 </code>
             </pre>
@@ -606,8 +606,8 @@ let outcome = basis == PauliX ?
                         </div>
 
                         <div class="col">
-                            <p class="r-fit-text">$\Delta x \Delta p \approx \hbar$</p>
-                            <p class="r-fit-text">$\Delta E \Delta t \approx \hbar$</p>
+                            <p class="r-fit-text">$\Delta x \Delta p \geq \frac{\hbar}{2}$</p>
+                            <p class="r-fit-text">$\Delta E \Delta t \geq \frac{\hbar}{2}$</p>
                         </div>
                     </div>
                 </section>
