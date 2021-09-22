@@ -659,6 +659,9 @@ let outcome = basis == PauliX ?
                         <h2 class="r-fit-text">maximum uncertainty</h2>
                         <p>of the spin value in $\mathbf{X}$ the basis, and vice versa.</p>
                     </div>
+                    <aside class="notes">
+                        For sequential measurements e.g. Z-X-Z, the previous results in Z get destroyed by X measurement!
+                    </aside>
                 </section>
 
                 <section data-background="images/einstein.jpg">
@@ -919,8 +922,7 @@ let agreement = result1 == result2;
                         <p class="r-fit-text">
                             $$\ket{\psi} = \frac{1}{\sqrt{2}}\ket{00} + \frac{1}{\sqrt{2}}\ket{11}$$
                         </p>
-                        <p>Upon measurement, there is a <span class="highlight">50% probability</span> of reading out a
-                            classical 00 or a classical 11.</p>
+                        <p>Upon measurement, there is a <span class="highlight">50% probability</span> of collapsing to $\ket{00}$ or $\ket{11}$.</p>
                     </div>
                     <aside class="notes">
                         Superposition is "contagious", it spills into the overall system state until it collapses via
