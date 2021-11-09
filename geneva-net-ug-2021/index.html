@@ -1,0 +1,1116 @@
+﻿<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Old Man really plays dice - Introduction to Quantum Computing with Q#</title>
+    <meta name="description" content="">
+    <meta name="author" content="Filip W">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <script src="//code.jquery.com/jquery-1.8.0.js"></script>
+    <script src="//code.jquery.com/ui/1.8.23/jquery-ui.js"></script>
+    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/js/bootstrap.min.js"></script>
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/css/bootstrap-combined.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/default.min.css">
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/simple.css" id="theme">
+    <link rel="stylesheet" href="css/custom.css" />
+    <link rel="stylesheet" href="css/monokai_sublime.css" />
+    <script src="fsharp.formatting/styles/tips.js" type="text/javascript"></script>
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+    <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+
+    <script>
+        if (window.location.search.match(/print-pdf/gi)) {
+            var link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = 'css/print/pdf.css';
+            document.getElementsByTagName('head')[0].appendChild(link);
+        }
+    </script>
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+    <style type="text/css">
+    </style>
+</head>
+
+<body>
+    <div class="reveal">
+        <header
+            style="position: absolute;top: 50px; left: 100px; z-index:500; font-size:100px;background-color: rgba(0,0,0,0.5)">
+        </header>
+        <!-- Any section element inside of this container is displayed as a slide -->
+        <div class="slides">
+
+            <section data-background="images/D810_NEF_3483.jpg">
+
+                <h1 style="font-size: 3em; margin-top: 1.25em">
+                    Old Man really plays dice
+                    <br />
+                    <small style="font-size: 0.5em;">Introduction to Quantum Computing with Q#</small>
+                </h1>
+
+            </section>
+
+            <section data-background="images/ibf.net-144.jpg">
+
+                <div class="overlay-style">
+                    <h2>Filip W</h2>
+
+                    <p>
+                        <small>
+                            <a href="https://strathweb.com" class="roll">
+                                <span>strathweb.com</span>
+                            </a> •
+                            <a href="https://twitter.com/filip_woj" class="roll">
+                                <span data-title="@filip_woj">@filip_woj</span>
+                            </a> •
+                            <a href="https://github.com/filipw" class="roll">
+                                <span data-title="github.com/filipw">github.com/filipw</span>
+                            </a>
+                        </small>
+                    </p>
+                    <img class="normal" src="images/mvp.png" />
+                </div>
+
+            </section>
+
+            <section data-background-color="#fff">
+                <img src="images/sonova.png" style="min-height: auto" />
+            </section>
+
+            <!-- QM-->
+            <section>
+                <section data-background="images/atlas1.jpg">
+                    <h1>Quantum Mechanics</h1>
+                </section>
+
+                <section data-background="images/heisenberg.png" data-state="bg-top-left">
+                    <div class="overlay-style">
+                        <p>Quantum mechanics dates back to 1925, the year of the breakthrough paper by Werner
+                            Heisenberg.</p>
+                        <p>It is the foundation of all quantum physics and allows for probabilistic prediction of <span class="highlight">atomic and subatomic phenonomena</span>.</p>
+                    </div>
+
+                    <aside class="notes">
+                        Heisenberg introduced some key foundational ideas in the paper: 
+                        <ul>
+                            <li>the concept of observables (restricted what we can know). He focused on "relationships between quantities that in principle are observable"</li>
+                            <li>the fact that observables do not always commute, namely P*Q != Q*P</li>
+                            <li>he used was a form of matrices (matrix mechanics) later reformulated as mathematically equivalent wave mechanics. this nicely ties into QC</li>
+                        </ul>
+                      </aside>
+                </section>
+                <section data-background="images/heisenberg.png" data-state="bg-top-left">
+                    <div class="overlay-style">
+                        <p>Quantum mechanics is one of the <span class="highlight">most successful</span> scientific theories of all time.</p>
+                        <p>It has enabled uprecedented progress - without it, there would be no modern
+                            chemistry, technology or medicine.</p>
+                    </div>
+
+                    <aside class="notes">
+                        <ul>
+                            <li>transistors</li>
+                            <li>lasers, supeconductors, semiconductors</li>
+                            <li>GPS</li>
+                            <li>material science, chemistry</li>
+                            <li>MRI</li>
+                        </ul>
+                      </aside>
+                </section>
+
+                <section data-background="images/uv.jpg" data-state="bg-top-left">
+                    <div class="overlay-style">
+                        <p>It is also</p>
+                        <h2 class="fragment r-fit-text">very strange</h2>
+                    </div>
+                </section>
+                <section data-background="images/feynman2.jpg">
+                    <div class="column-container">
+
+                        <div class="col">
+                        </div>
+
+                        <div class="col overlay-style">
+                            <blockquote>I think I can safely say that nobody understands quantum mechanics
+                            </blockquote>
+                            <p>
+                            <footer>- <em>Richard Feynman</em></footer>
+                            </p>
+                        </div>
+                    </div>
+                    <aside class="notes">
+                        Feynman got the 1965 Nobel prize for his work on quantum electrodynamics.
+                    </aside>
+                </section>
+
+                <section data-background="images/atlas2.jpg">
+                    <div class="overlay-style">
+                        <h2>Quantum strangeness</h2>
+                        <div class="column-container">
+                            <div class="col">
+                                <ul>
+                                    <li class="fragment">❓
+                                        Superposition
+                                        <br />
+                                        <small>Quantum objects have no definite state</small>
+                                    </li>
+
+                                    <li class="fragment">🧶
+                                        Entanglement
+                                        <br />
+                                        <small>Stronger than classical correlations, nonlocality</small>
+                                    </li>
+
+                                </ul>
+                            </div>
+                            <div class="col">
+                                <ul>
+                                    <li class="fragment">📡
+                                        Wave-particle duality
+                                        <br />
+                                        <small>Interference, all possible paths</small>
+                                    </li>
+
+                                    <li class="fragment">🎟
+                                        Randomness
+                                        <br />
+                                        <small>Lack of causality and irreducible probabilities</small>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <aside class="notes">
+                        Locality violation means that in QM correlations apparently propagate instantenously. 
+                    </aside>
+                </section>
+
+                <section data-background="images/einstein.jpg">
+                    <div class="column-container">
+
+                        <div class="col overlay-style">
+                            <blockquote>I am convinced that Old Man [God] does not play dice
+                            </blockquote>
+                            <p>
+                            <footer>- <em>Albert Einstein</em></footer>
+                            </p>
+                        </div>
+
+                        <div class="col">
+                        </div>
+                    </div>
+                    <aside class="notes">
+                        Apparently, Niels Bohr responded "Einstein, don't tell God what to do."
+                      </aside>
+                </section>
+
+                <section data-background="images/uv.jpg" data-state="bg-top-left">
+                    <div class="overlay-style">
+                        <p>Contrary to classical physics, quantum mechanics doesn't provide</p>
+                        <h2 class="r-fit-text">objective description of reality</h2>
+                    </div>
+                    <aside class="notes">
+                        Einstein's criticism was not baseless. He was looking for classical-like theory that describes reality "even when we are not looking". <br/>
+                        On the other hand, quantum mechanics tells us what what will happen when we measure a quantum object or detect a phenomena. But doesn't tell us what happens in between.
+                      </aside>
+                </section>                
+
+                <section data-background="images/heisenberg.png" data-state="bg-top-left">
+                    <div class="overlay-style">
+                        <p>Quantum mechanical mathematical formalism lacks</p>
+                        <h2 class="r-fit-text">ontological character</h2>
+                    </div>
+                    <aside class="notes">
+                        In his 1925 Heisenberg got rid of the idea of trying to explain electrons using classical orbits in favor of a completely abstract description.
+                      </aside>
+                </section>
+
+                <section data-background="images/bohr.jpg">
+                    <div class="column-container">
+
+                        <div class="col">
+                        </div>
+
+                        <div class="col overlay-style">
+                            <blockquote>There is no quantum world. There is only an abstract quantum mechanical
+                                description
+                            </blockquote>
+                            <p>
+                            <footer>- <em>Niels Bohr</em></footer>
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-background="images/uv.jpg">
+                    <div class="column-container">
+                        <div class="col">
+                        </div>
+
+                        <div class="col overlay-style">
+                            <blockquote>Shut up and calculate
+                            </blockquote>
+                            <p>
+                            <footer>- <em>David Mermin</em></footer>
+                            </p>
+                        </div>
+
+                    </div>
+                </section>
+            </section>
+            <!-- end QM-->
+
+            <!-- QC -->
+            <section>
+                <section data-background="images/atlas4.jpg">
+                    <h1>Quantum Computing</h1>
+                </section>
+
+                <section data-background="images/atlas3.jpg">
+                    <div class="overlay-style">
+                        <h2>Quantum Computing landmarks</h2>
+                        <div class="column-container">
+                            <div class="col">
+                                <ul>
+                                    <li class="fragment">📚
+                                        Benioff / Manin, early 1980s
+                                        <br />
+                                        <small>quantum mechanical Turing machine concept</small>
+                                    </li>
+
+                                    <li class="fragment">🔐
+                                        Bennett and Brassard, 1984
+                                        <br />
+                                        <small>quantum key distribution protocol</small>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col">
+                                <ul>
+                                    <li class="fragment">📝
+                                        David Deutsch, 1985
+                                        <br />
+                                        <small>first general, fully quantum, model for computation</small>
+                                    </li>
+                                    <li class="fragment">💯
+                                        Peter Shor, 1994
+                                        <br />
+                                        <small>Shor's algorithm for integer factorization</small>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <aside class="notes">
+                        <ul>
+                            <li>Charlie Bennett and Gilles Brassard</li>
+                        </ul>
+                    </aside>
+                </section>
+
+                <section data-background="images/atlas3.jpg">
+                    <div class="overlay-style">
+                        <h2>Quantum Computing landmarks</h2>
+                        <div class="column-container">
+                            <div class="col">
+                                <ul>
+                                    <li class="fragment">💾
+                                        Lov Grover, 1996
+                                        <br />
+                                        <small>search algorithm with quadratic speed-up</small>
+                                    </li>
+
+                                    <li class="fragment">🖥
+                                        Chuang et al. 1998
+                                        <br />
+                                        <small>first experimental 2-qubit quantum hardware</small>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col">
+                                <ul>
+                                    <li class="fragment">☁️
+                                        IBM, 2016
+                                        <br />
+                                        <small>cloud platform for quantum computing</small>
+                                    </li>
+                                    <li class="fragment">👑
+                                        Google 2019 / USTC 2020
+                                        <br />
+                                        <small>first cases of quantum supremacy</small>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <aside class="notes">
+                        <ul>
+                            <li>Bell Labs</li>
+                            <li>IBM's Almaden Research Center with coop from University of California, Berkeley and others</li>
+                            <li>USTC = University of Science and Technology of China</li>
+                        </ul>
+                    </aside>
+                </section>
+
+                <section data-background="images/feynman.png">
+                    <div class="column-container">
+
+                        <div class="col">
+                        </div>
+
+                        <div class="col overlay-style">
+                            <blockquote>Nature isn't classical, dammit, and if you want to make a simulation of nature,
+                                you'd better make it
+                                quantum mechanical.
+                            </blockquote>
+                            <p>
+                            <footer>- <em>Richard Feynman</em></footer>
+                            </p>
+                        </div>
+
+                    </div>
+                </section>
+
+                <section data-background="images/chemistry.jpg">
+                    <div class="column-container">
+                        <div class="col">
+                        </div>
+                        <div class="col overlay-style">
+                            <h3>Chemistry</h3>
+                            <p>subatomic modeling, molecular simulations, material science</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-background="images/energy.jpg">
+                    <div class="column-container">
+                        <div class="col">
+                        </div>
+                        <div class="col overlay-style">
+                            <h3>Energy</h3>
+                            <p>problem optimization, energy research, simulation</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-background="images/machinelearning.jpg">
+                    <div class="column-container">
+                        <div class="col">
+                        </div>
+                        <div class="col overlay-style">
+                            <h3>Machine Learning</h3>
+                            <p>quantum classifiers, hybrid quantum/classical training</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-background="images/risk-analysis.jpg">
+                    <div class="column-container">
+                        <div class="col">
+                        </div>
+                        <div class="col overlay-style">
+                            <h3>Financial Services</h3>
+                            <p>risk analysis, complex simulations, portfolio optimization</p>
+                        </div>
+                    </div>
+                    <aside class="notes">
+                        Will quantum computing ever change the world?
+                    </aside>
+                </section>
+
+                <section data-background="images/preskill.jpg">
+                    <div class="column-container">
+                        <div class="col">
+                        </div>
+
+                        <div class="col overlay-style">
+                            <blockquote>Maybe. We don’t actually know for sure.
+                            </blockquote>
+                            <p>
+                            <footer>- <em>John Preskill</em></footer>
+                            </p>
+                        </div>
+
+                    </div>
+                    <aside class="notes">
+                        Since 2000, Preskill is the Director of the Institute for Quantum Information at Caltech
+                    </aside>
+                </section>
+
+                <section data-background="images/atlas3.jpg">
+                    <div class="overlay-style">
+                        We are still in an era of (Preskill's term) <span class="highlight">NISQ: noisy intermediate-scale quantum computers</span> (50-100) qubits, where noise limit the reliability of quantum circuits.
+                    </div>
+                </section>
+
+                <section data-background="images/scaling.png" data-state="bg-top-left">
+                    <aside class="notes">
+                        IBM plans a 433 qubit machine for 2022 and 1121 qubit machine for 2023.
+                    </aside>
+                </section>
+
+                <section data-background="images/quantum-announcement.png" data-state="bg-top-left">
+                </section>
+
+                <!-- <section data-background="images/ibm-roadmap.png">
+                    <div class="overlay-style fragment">
+                        <p>According to a recent study by <a href="https://arxiv.org/pdf/1905.09749.pdf">Gidney and
+                                Ekera</a>, with the current noise levels and error correction techniques, about <span
+                                class="highlight">20 million</span> qubits are needed to break RSA-2048.</p>
+                        <p>That number has been going down continuously over the years as the hardware fidelity
+                            increases;
+                            only in 2015 the best estimation was for a billion qubits.</p>
+                    </div>
+                </section> -->
+
+            </section>
+            <!-- end QC -->
+
+            <!-- Theory -->
+            <section>
+                <section data-background="images/cern-theory.jpg">
+                    <h1>Theory</h1>
+                </section>
+
+                <section data-background="images/cern-theory2.jpg">
+                    <div class="overlay-style">
+                        <p>In classical computing a bit can have only two discrete values</p>
+                        <h2 class="r-fit-text">0 or 1</h2>
+                    </div>
+                </section>
+
+                <section data-background="images/cern-theory2.jpg">
+                    <div class="column-container centered overlay-style">
+
+                        <div class="col">
+                            <p>In quantum information theory an information unit is called a <span class="highlight">qubit</span>.
+                            </p>
+                            <p>The state of a qubit is described by a <span class="highlight">vector</span> in a two
+                                dimensional <span class="highlight">Hilbert space</span>, where $\alpha$ and $\beta$ are complex numbers.</p>
+                        </div>
+
+                        <div class="col">
+                            <h2 class="r-fit-text">$\begin{bmatrix} \alpha \cr \beta \end{bmatrix}$</h2>
+                            <p>$$|\alpha|^2 + |\beta|^2 = 1$$</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-background="images/cern-theory2.jpg">
+                    <div class="overlay-style">
+                        <p>Two linearly independent (orthogonal) unit vectors form a measurement basis. The so-called
+                            <span class="highlight">computational basis (Z)</span> is:
+                        </p>
+                        <p class="r-fit-text">
+                            $$
+                            \ket{0} = \begin{bmatrix} 1 \cr 0 \end{bmatrix} \;\;\;\;
+                            \ket{1} = \begin{bmatrix} 0 \cr 1 \end{bmatrix}
+                            $$
+                        </p>
+                    </div>
+                    <aside class="notes">                    
+                        In quantum mechanics our knowledge of the system is limited to the act of measurement.
+                        <br/><br/>
+                        We obtain basis vectors when alpha or beta is zero. At that point quantum computing is like classical computing.
+                    </aside>
+                </section>
+
+                <section data-background="images/cern-theory2.jpg">
+                    <div class="overlay-style">
+                        <p>Any qubit state vector can be expressed as a <span class="highlight">linear combination</span> of computational basis states:</p>
+                        <h2 class="r-fit-text">$$\ket{\psi} = \alpha\ket{0} + \beta\ket{1}$$</h2>
+                    </div>
+                </section>
+
+                <section data-background="images/cern-theory2.jpg">
+                    <div class="column-container centered">
+                        <div class="col overlay-style">
+                            <p>If both $\alpha$ and $\beta$ are non-zero, the qubit is in a</p>
+                        <h2 class="r-fit-text">superposition</h2>
+                        </div>
+                        <div class="col inset-right">
+                            <img src="images/arbitrary-state.png" />
+                        </div>
+                    </div>
+                    <aside class="notes">
+                        Normally a single qubit state is represented by the so-called Bloch sphere, which is 3-dimensional. However for simplicity we can use a 2-dimensional circle too.
+                    </aside>
+                </section>
+
+                <section data-background="images/cern-theory2.jpg">
+                    <div class="overlay-style">
+                        <p>To extract a classical value out of a qubit, it must be <span class="highlight">measured</span> in a chosen basis.</p>
+                        <p>The state of a qubit <span class="highlight">collapses</span> then to one of the basis states.</p>
+                    </div>
+                    <aside class="notes">
+                        What does it mean, "collapses"? If the qubit doesn't have a definite basis state e.g. |0> or |1> the measurement outcome is probabilistic. The choice of basis has a profound importance as we will see in a moment.
+                    </aside>
+                </section>                           
+
+                <section data-background="images/cern-theory2.jpg">
+                    <div class="column-container centered overlay-style">
+                        <div class="col inset-left">
+                            We refer to $\alpha$ and $\beta$ as <span class="highlight">probability amplitudes</span>.
+                            They can be converted to probabilities using the <span class="highlight">Born rule</span>.
+                        </div>
+
+                        <div class="col inset-right">
+                            <p class="r-fit-text">
+                                $$P(0) = P(\ket{0}) = |\alpha|^2$$
+                                $$P(1) = P(\ket{1}) = |\beta|^2$$
+                            </p>
+                        </div>
+                    </div>
+                    <aside class="notes">
+                        Born rule is not derived, it is an axiom in quantum mechanics, confirmed experimentally, or rather never violated by any experiment.
+                    </aside>
+                </section>
+
+                <section data-background="images/cern-theory2.jpg">
+                    <div class="column-container centered overlay-style">
+                        <div class="col inset">
+                            <h2>Z basis</h2>
+                            <img src="images/z-basis.png" style="max-width: 60%;" />
+                        </div>
+                        <div class="col inset">
+                            <h2>X basis</h2>
+                            <img src="images/x-basis.png" style="max-width: 60%;" />
+                        </div>
+                    </div>
+                    <aside class="notes">
+                        A state |+> is a definite state in basis X, and maps to a classical 0 with 100% probability. However, in Z basis, it has a 50% probability of collapsing to |0> or |1>, so classical 0 or 1.
+                    </aside>
+                </section>
+
+                <section data-background="images/cern-theory2.jpg">
+                    <div class="overlay-style">
+                        <p>Superposition is <span class="highlight">basis dependent</span>.</p>
+                    </div>
+                    <aside class="notes">
+                        Because of this, the choice of basis allows us to encode information in a qubit in a specific way. The information can only be accurately read, if you know the basis you should use upon measurement, otherwise the result will be random.
+                        <br/><br/>
+                        This concept underpins quantum cryptography.
+                    </aside>
+                </section>  
+
+                <section data-background="images/cern-theory2.jpg">
+                    <div class="overlay-style">
+                        <p>To describe the state of a two qubit system, we use a <span class="highlight">tensor product</span> of the individual qubit states, thus creating a vector in a <span
+                                class="highlight">four dimensional</span> Hilbert space.</p>
+                        <p>$$\ket{\psi_1} = \alpha_1\ket{0} + \beta_1\ket{1} \;\;\;
+                             \ket{\psi_2} = \alpha_2\ket{0} + \beta_2\ket{1}$$</p>
+                        <p class="r-fit-text">$$\ket{\psi_{12}} = \alpha_1\alpha_2\ket{00} + \alpha_1\beta_2\ket{01} +
+                            \beta_1\alpha_2\ket{10} + \beta_1\beta_2\ket{11}$$</p>
+                    </div>
+                </section>
+
+                <section data-background="images/cern-theory2.jpg">
+                    <div class="overlay-style">
+                        <p>Quantum state of a qubit system of size $n$ is described by <span class="highlight">$2^n$ amplitudes</span>. For example,
+                            for a 260 qubit computer:</p>
+                        <h2 class="r-fit-text">$2^{260} \approx 10^{80}$</h2>
+                        <p> which roughly equals of atoms in observable universe</p>
+                    </div>
+                    <aside class="notes">
+                        The way we can think of it: whatever algorithm you run on a quantum computer, the answer is already there, and the art of writing a quantum algorithm is to amplify the probability of the correct result, and reduce the probability of the wrong result.
+                    </aside>
+                </section>
+
+                <section data-background="images/cern-theory2.jpg">
+                    <div class="overlay-style">
+                        <p>However we can only read a <span class="highlight">single</span> classical bit out of every qubit, meaning that for a 256
+                            qubit computer we can only extract:</p>
+                        <h2 class="r-fit-text">256 bits = 32 bytes</h2>
+                    </div>
+                    <aside class="notes">
+                        This means that, at least initially, algorithms have resticted input and output. But you know what is like that? Nature, e.g. representing 95 energy states of an atom
+                    </aside>
+                </section>
+
+                <section data-background="images/cern-theory2.jpg">
+                    <div class="overlay-style">
+                        <h2>Classical circuits</h2>
+                        <div class="column-container centered">
+                            <div class="col">
+                                Classical computation models are expressed by <span class="highlight">logic
+                                    gates</span> (e.g. NOT, OR, XOR, AND) composed into <span
+                                    class="highlight">circuits</span>.
+                            </div>
+
+                            <div class="col">
+                                <img src="images/classic-circuit.png" />
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-background="images/cern-theory2.jpg">
+                    <div class="overlay-style">
+                        <h2>Quantum circuits</h2>
+                        <div class="column-container centered">
+                            <div class="col">
+                                Quantum computation models are realized by <span class="highlight">reversible linear
+                                    operators</span>
+                                (e.g. X, CNOT, H, Y, Z). They are also referred to as <span
+                                    class="highlight">gates</span> and composed into
+                                <span class="highlight">circuits</span>.
+                            </div>
+
+                            <div class="col">
+                                <img src="images/quantum-circuit.png" />
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-background="images/cern-theory2.jpg">
+                    <div class="overlay-style">
+                        <h2>H Gate</h2>
+                        <div class="column-container">
+                            <div class="col">
+                                <span class="highlight">Hadamard gate</span> is used to create a uniform <span
+                                    class="highlight">superposition</span>. It has fundamental importance in <span
+                                    class="highlight">quantum
+                                    parallelism</span>.
+                            </div>
+                            <div class="col">
+                                <p>$$
+                                    H=\frac{1}{\sqrt{2}}\begin{bmatrix} 1 & 1 \\ 1 &
+                                    -1 \end{bmatrix}$$
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-background="images/cern-theory2.jpg">
+                    <div class="overlay-style">
+                        <p>$$H\ket{0} = \frac{1}{\sqrt{2}}\begin{bmatrix} 1 & 1 \\ 1 &
+                            -1 \end{bmatrix}\begin{bmatrix} 1 \\ 0 \end{bmatrix} =
+                            \frac{1}{\sqrt{2}}\ket{0} + \frac{1}{\sqrt{2}}\ket{1}$$</p>
+                        <p>$$H\ket{1} = \frac{1}{\sqrt{2}}\begin{bmatrix} 1 & 1 \\ 1 &
+                            -1 \end{bmatrix}\begin{bmatrix} 0 \\ 1 \end{bmatrix} = \frac{1}{\sqrt{2}}\ket{0} - \frac{1}{\sqrt{2}}\ket{1}$$</p>
+                        <p>Upon measurement, there is a <span class="highlight">50% probability</span> of reading out a classical 0 or a classical 1.</p>
+                    </div>
+                </section>
+
+                <section data-background="images/cern-theory2.jpg">
+                    <div class="overlay-style">
+                        <h2>X Gate</h2>
+                        <div class="column-container">
+                            <div class="col">
+                                <span class="highlight">X gate</span> is one of the Pauli spin matrices. It <span
+                                    class="highlight">swaps</span> the probability amplitudes $\alpha$ and $\beta$.
+                            </div>
+                            <div class="col">
+                                <p>$$
+                                    X=\begin{bmatrix} 0 & 1 \\ 1 & 0 \end{bmatrix}$$
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-background="images/cern-theory2.jpg">
+                    <div class="overlay-style">
+                        <p>$$X(\alpha\ket{0} + \beta\ket{1}) = \begin{bmatrix} 0 &amp; 1 \\ 1 &amp; 0
+                            \end{bmatrix}(\alpha\ket{0} + \beta\ket{1}) = \beta\ket{0} + \alpha\ket{1}$$</p>
+                        <p>$$X\ket{0} = \begin{bmatrix} 0 &amp; 1 \\ 1 &amp; 0
+                            \end{bmatrix}\begin{bmatrix} 1 \\ 0 \end{bmatrix} = \ket{1}$$</p>
+                        <p>$$X\ket{1} = \begin{bmatrix} 0 &amp; 1 \\ 1 &amp; 0
+                                \end{bmatrix}\begin{bmatrix} 0 \\ 1 \end{bmatrix} = \ket{0}$$</p>                   
+                    </div>
+                </section>
+
+                <section data-background="images/cern-theory2.jpg">
+                    <div class="overlay-style">
+                        <h2>CNOT Gate</h2>
+                        <div class="column-container centered">
+                            <div class="col">
+                                <span class="highlight">CNOT gate</span> applies the XOR logic between two qubits. It
+                                can create <span class="highlight">entanglement</span>.
+                            </div>
+                            <div class="col">
+                                <p>$$
+                                    CNOT=\begin{bmatrix} 1 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 &amp; 0 \\ 0
+                                    &amp; 0 &amp; 0 &amp; 1 \\ 0 &amp; 0 &amp; 1 &amp; 0 \end{bmatrix}$$
+                                </p>
+                            </div>
+                        </div>
+                        <p>$$\ket{00}\rightarrow\ket{00} \;\;\; \ket{01}\rightarrow\ket{01} \;\;\;
+                            \ket{10}\rightarrow\ket{11} \;\;\; \ket{11}\rightarrow\ket{10}$$</p>
+                    </div>
+                </section>
+
+                <section data-background="images/cern-theory2.jpg">
+                    <div class="overlay-style">
+                        <p>When the control qubit is in placed in a superposition, a <span class="highlight">maximally entangled state</span> is created.</p>
+                        <p class="r-fit-text">
+                            $$CNOT(H\ket{0} \otimes \ket{0}) = \frac{1}{\sqrt{2}}\ket{00} + \frac{1}{\sqrt{2}}\ket{11}$$
+                        </p>
+                        <p>Upon measurement, there is a <span class="highlight">50% probability</span> of reading out a classical 00 or a classical 11.</p> 
+                    </div>
+                    <aside class="notes">
+                        Superposition is "contagious", it spills into the overall system state until it collapses via the act of measurement.
+                        The results are truly random.
+                    </aside>
+                </section>
+
+                <section data-background="images/cern-theory2.jpg">
+                    <div class="overlay-style">
+                        <p>
+                            The perfect correlation happens even when the qubits are
+                            <span class="highlight">spatially separated</span>. Einstein called it
+                        </p>
+                        <h3 class="r-fit-text">
+                            "spooky action at a distance"
+                        </h3>
+                    </div>
+                    <aside class="notes">
+                        There is a theorem + an experiment called Bell's test (Bell's inequalities) that prove that this cannot be explained with classical local physics.
+                    </aside>
+                </section>
+
+                <!-- <section data-background="images/cern-theory2.jpg">
+                    <div class="overlay-style">
+                        <p>It is one of the four Bell states.</p>
+                        <p>$$\ket{\Phi^+} = \frac{1}{\sqrt{2}}(\ket{00} + \ket{11}) \;\;\;
+                            \ket{\Phi^-} = \frac{1}{\sqrt{2}}(\ket{00} &#8211; \ket{11})$$
+                            $$\ket{\Psi^+} = \frac{1}{\sqrt{2}}(\ket{01} + \ket{10})\;\;\;
+                            \ket{\Psi^-} = \frac{1}{\sqrt{2}}(\ket{01} &#8211; \ket{10})$$</p>
+                        <p>Together, they form an orthonormal basis for a two-qubit system</p>
+                    </div>
+                </section> -->
+
+                <section data-background="images/cern-theory2.jpg">
+                    <div class="overlay-style">
+                        <p>Remember how we said that two qubit system can be described as</p>
+                        <p>$$\ket{\psi} = \alpha_1\alpha_2\ket{00} + \alpha_1\beta_2\ket{01} +
+                            \beta_1\alpha_2\ket{10} + \beta_1\beta_2\ket{11}$$</p>
+                    </div>
+                </section>
+
+                <section data-background="images/cern-theory2.jpg">
+                    <div class="overlay-style">
+                        <p>We cannot find $\alpha_1$, $\alpha_2$, $\beta_1$ and $\beta_2$ to satisfy</p>
+                        <p>$\alpha_1\alpha_2\ket{00} + \alpha_1\beta_2\ket{01} + \beta_1\alpha_2\ket{10} +
+                            \beta_1\beta_2\ket{11} = \frac{1}{\sqrt{2}}(\ket{00} + \ket{11})$</p>
+                        <p>We <span class="highlight">cannot decompose an entangled qubit state</span> into a tensor
+                            product of the individual qubit states.</p>
+                    </div>
+                    <aside class="notes">
+                        This tells us that at the fundamental level nature is non-local.
+                    </aside>
+                </section>
+
+            </section>
+            <!-- end Theory -->
+
+            <!-- Q# -->
+            <section>
+                <section data-background="images/cern-dc.jpg">
+                    <h1>Q# and QDK</h1>
+                </section>
+
+                <section data-background="images/cern-alice.jpg">
+                    <div class="column-container centered">
+                        <div class="col overlay-style">
+                            <ul>
+                                <li class="fragment">💻
+                                    Q# programming language
+                                    <br />
+                                    <small>Standalone, C# and Python interop</small>
+                                </li>
+
+                                <li class="fragment">📦
+                                    .NET ecosystem integration
+                                    <br />
+                                    <small>VS Code and Visual Studio support, Nuget, csproj</small>
+                                </li>
+
+                                <li class="fragment">📚
+                                    Rich family of libraries
+                                    <br />
+                                    <small>Math, machine learing, chemistry</small>
+                                </li>
+
+                                <li class="fragment">🔬
+                                    Simulator + Azure Quantum
+                                    <br />
+                                    <small>Simulate locally, run on hardware in Azure</small>
+                                </li>
+
+                            </ul>
+                        </div>
+                        <div class="col inset-right">
+                            <img src="images/QDK3.png" />
+                        </div>
+                    </div>
+                </section>
+
+                <section data-background="images/cern-alice.jpg">
+                    <div class="column-container centered">
+                        <div class="col">
+                            <img src="images/repo1.png" />
+                        </div>
+                        <div class="col">
+                            <img src="images/repo2.png" />
+                        </div>
+                    </div>
+                    <div class="overlay-style">Q# and QDK are entirely <span class="highlight">open source</span>.</div>
+                </section>
+
+                <section data-background="images/cern-alice.jpg">
+                    <h2 class="overlay-style">Getting started with the QDK</h2>
+                    <pre>
+                <code class="cs">
+> dotnet new console -lang Q#
+The template "Console Application" was created successfully.
+> dotnet run
+Hello quantum world!
+                </code>
+            </pre>
+                    <p class="fragment" data-code-focus="2-3"></p>
+                    <p class="fragment" data-code-focus="4-5"></p>
+                </section>
+
+                <section data-background="images/cern-alice.jpg">
+                    <h2 class="overlay-style">Simple Q# program</h2>
+                    <pre>
+                <code class="cs">
+@EntryPoint()
+operation Start() : Unit {
+    use qubit = Qubit();
+    H(qubit);
+    let result = MResetZ(qubit) == One ? 1 | 0;
+    Message($"Measured: {result}");
+}
+                </code>
+            </pre>
+                    <p class="fragment" data-code-focus="3"></p>
+                    <p class="fragment" data-code-focus="4"></p>
+                    <p class="fragment" data-code-focus="5"></p>
+                    <p class="fragment" data-code-focus="6"></p>
+                    <p class="fragment" data-code-focus="7"></p>
+                </section>
+
+                <section data-background="images/cern-alice.jpg">
+                    <h2 class="overlay-style">Q# Entanglement</h2>
+                    <pre>
+                <code class="cs">
+operation EntanglementExample() : Unit {
+    use (control, target) = (Qubit(), Qubit());
+
+    H(control);
+    CNOT(control, target);
+    
+    let resultControl = ResultAsBool(MResetZ(control)) ? "1" | "0";
+    let resultTarget = ResultAsBool(MResetZ(target)) ? "1" | "0";
+
+    Message($"Result: |{resultControl}{resultTarget}>");
+}
+                </code>
+            </pre>
+                    <p class="fragment" data-code-focus="3"></p>
+                    <p class="fragment" data-code-focus="5-6"></p>
+                    <p class="fragment" data-code-focus="8-9"></p>
+                    <p class="fragment" data-code-focus="11"></p>
+                </section>
+<!-- 
+                <section data-background="images/cern-alice.jpg">
+                    <div class="overlay-style">
+                        <h2>Deutsch's problem</h2>
+
+                        <p>
+                            Given an unknown (blackbox) function that takes a single bit as an input, and produces a
+                            single
+                            bit as an ouput $f : \{0,1\} \rightarrow \{0,1\}$, determine if the function is <span
+                                class="highlight">constant</span> or <span class="highlight">balanced</span>.
+                        </p>
+                </section>
+
+                <section data-background="images/cern-alice.jpg">
+                    <div class="overlay-style">
+                        <h2>Deutsch's problem - functions</h2>
+
+                        <div class="column-container centered">
+                            <div class="col">
+                                <ul>
+                                    <li>$f_0$ is constant $0$</li>
+                                    <li>$f_1$ is constant $1$</li>
+                                    <li>$f_2$ is "balanced same"</li>
+                                    <li>$f_3$ is "balanced flipped"</li>
+                                </ul>
+                            </div>
+                            <div class="col">
+                                <ul>
+                                    <li>$f(0) = f(1) = 0$</li>
+                                    <li>$f(0) = f(1) = 1$</li>
+                                    <li>$f(0) = 0, f(1) = 1$</li>
+                                    <li>$f(0) = 1, f(1) = 0$</li>
+                                </ul>
+                            </div>
+                </section>
+
+                <section data-background="images/cern-alice.jpg">
+                    <div class="column-container centered">
+                        <div class="col overlay-style">
+                            <p>Classically, <span class="highlight">two</span> function evaluations are needed. After
+                                the first execution, we still cannot say if the function is balanced or constant.</p>
+                        </div>
+                        <div class="col inset">
+                            <img src="images/deutsch-classical.png" />
+                        </div>
+                    </div>
+                </section>
+
+                <section data-background="images/cern-alice.jpg">
+                    <div class="column-container centered">
+                        <div class="col overlay-style">
+                            <p>On a quantum computer, the answer can be obtained in just <span
+                                    class="highlight">one</span> oracle call.</p>
+                        </div>
+                        <div class="col inset">
+                            <img src="images/deutsch.png" />
+                        </div>
+                    </div>
+                </section>
+
+                <section data-background="images/quantumcomputationandinformation.jpg" data-state="bg-auto-width-08">
+                    <div class="column-container">
+                        <div class="col overlay-style">
+                            <blockquote>Heuristically, and at the risk of over-simplifying, quantum parallelism allows
+                                quantum computers to evaluate a function $f(x)$ for many different values of x
+                                simultaneously.
+                            </blockquote>
+                            <p>
+                            <footer>- <em>Nielsen and Chuang</em></footer>
+                            </p>
+                        </div>
+                        <div class="col">
+                        </div>
+                    </div>
+                </section>
+
+                <section data-background="images/cern-alice.jpg">
+                    <div class="overlay-style">
+                        <p>The linear algebra for the circuit produces</p>
+                        <h3 class="r-fit-text">
+                            $$\ket{\Psi} =
+                            \begin{cases}
+                            \pm\ket{0}\frac{1}{\sqrt{2}}(\ket{0} - \ket{1}) \; \text{if f(0) = f(1)} \\
+                            \pm\ket{1}\frac{1}{\sqrt{2}}(\ket{0} - \ket{1}) \; \text{if f(0)} \neq \text{f(1)} \\
+                            \end{cases}
+                            $$
+                        </h3>
+                        <p>This solves the problem in a single shot.</p>
+                    </div>
+                </section> -->
+            </section>
+            <!-- end Q# -->
+
+            <section data-background="images/all.jpg">
+            </section>
+
+            <section data-background="images/gold-chain-collective-695929-unsplash.jpg">
+                <div class="overlay-style">
+                    <h2>Thank you</h2>
+                    <div class="column-container centered">
+                        <div class="col auto">
+                            <img class="small" src="images/thankyou.gif" style="min-height: auto; margin:0" />
+                        </div>
+                        <div class="col auto">
+                            <ul style="font-size: 0.9em;">
+                                <li>📝 <a
+                                        href="https://filipw.github.io/zurich-net-ug-2021">filipw.github.io/zurich-net-ug-2021</a>
+                                </li>
+
+                                <li>💻 <a
+                                        href="https://github.com/filipw/2021-zurich-net-ug-demos">github.com/filipw/2021-zurich-net-ug-demos</a>
+                                </li>
+
+                                <li>📚 <a href="https://www.strathweb.com/category/quantum-computing/">strathweb.com/category/quantum-computing</a></li>
+
+                                <li>📸 <a href="https://cds.cern.ch/collection/Multimedia%20%26%20Outreach?ln=en">Photos credit: CERN</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section data-background-color="#000">
+                <img src="images/bye.gif" />
+            </section>
+
+        </div>
+    </div>
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']]
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+    </script>
+    <script>
+        // Full list of configuration options available here:
+        // https://github.com/hakimel/reveal.js#configuration
+
+        Reveal.initialize({
+            viewDistance: 30,
+            controls: true,
+            progress: true,
+            history: true,
+            center: true,
+            keyboard: {
+                39: 'next', // Right Arrow
+                37: 'prev'  // Left Arrow
+            },
+            transition: 'slide', // default/cube/page/concave/zoom/linear/fade/none
+
+            // Parallax scrolling
+            // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+            // parallaxBackgroundSize: '2100px 900px',
+
+            // Optional libraries used to extend on reveal.js
+            dependencies: [
+                { src: 'lib/js/classList.js', condition: function () { return !document.body.classList; } },
+                { src: 'plugin/markdown/marked.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+                { src: 'plugin/markdown/markdown.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+                { src: 'plugin/highlight.js/highlight.pack.js', async: true, callback: function () { /*hljs.initHighlightingOnLoad();*/ } },
+                { src: 'plugin/zoom-js/zoom.js', async: true, condition: function () { return !!document.body.classList; } },
+                { src: 'plugin/notes/notes.js', async: true, condition: function () { return !!document.body.classList; } },
+                { src: 'plugin/alt-arrows/alt-arrows.js' },
+                {
+                    src: 'plugin/reveal-code-focus.js',
+                    async: true,
+                    callback: function () {
+                        RevealCodeFocus();
+                    }
+                }
+            ]
+        });
+
+        // Reveal.configure({
+        //     keyboard: {
+        //         39: 'next', // Right Arrow
+        //         37: 'prev'  // Left Arrow
+        //     }
+        // });
+
+    </script>
+</body>
+
+</html>
