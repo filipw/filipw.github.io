@@ -443,6 +443,22 @@
                         For example, instead of evaluating a function many times with all possible inputs, we can evaluate once with superposition of inputs.
                     </aside>
                 </section> 
+
+                <section data-background="images/quantumcomputationandinformation.jpg" data-state="bg-auto-width-08">
+                    <div class="column-container">
+                        <div class="col overlay-style">
+                            <blockquote>Heuristically, and at the risk of over-simplifying, quantum parallelism allows
+                                quantum computers to evaluate a function $f(x)$ for many different values of x
+                                simultaneously.
+                            </blockquote>
+                            <p>
+                            <footer>- <em>Nielsen and Chuang</em></footer>
+                            </p>
+                        </div>
+                        <div class="col">
+                        </div>
+                    </div>
+                </section>
             </section>
             <!-- end superposition -->
 
@@ -1025,19 +1041,25 @@ Hello quantum world!
                     <pre>
                 <code class="cs">
 @EntryPoint()
-operation Start() : Unit {
-    use qubit = Qubit();
-    H(qubit);
-    let result = MResetZ(qubit) == One ? 1 | 0;
-    Message($"Measured: {result}");
+operation Start() : Int {
+    use qubits = Qubit[8];
+    ApplyToEach(H, qubits);
+
+    // create a QPU register
+    let register = LittleEndian(qubits);
+
+    // measure the entire register to retrieve the integer
+    let randomNumber = MeasureInteger(register);
+    
+    return randomNumber;
 }
                 </code>
             </pre>
                     <p class="fragment" data-code-focus="3"></p>
                     <p class="fragment" data-code-focus="4"></p>
                     <p class="fragment" data-code-focus="5"></p>
-                    <p class="fragment" data-code-focus="6"></p>
-                    <p class="fragment" data-code-focus="7"></p>
+                    <p class="fragment" data-code-focus="7-8"></p>
+                    <p class="fragment" data-code-focus="10-11"></p>
                 </section>
 
                 <section data-background="images/cern-alice.jpg">
@@ -1050,8 +1072,8 @@ operation EntanglementExample() : Unit {
     H(control);
     CNOT(control, target);
     
-    let resultControl = ResultAsBool(MResetZ(control)) ? "1" | "0";
-    let resultTarget = ResultAsBool(MResetZ(target)) ? "1" | "0";
+    let resultControl = ResultAsBool(M(control)) ? "1" | "0";
+    let resultTarget = ResultAsBool(M(target)) ? "1" | "0";
 
     Message($"Result: |{resultControl}{resultTarget}>");
 }
