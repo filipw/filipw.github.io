@@ -115,17 +115,6 @@
                         <div class="column-container">
                             <div class="col">
                                 <ul>
-                                    <!-- <li class="fragment">📚
-                                        Benioff / Manin, early 1980s
-                                        <br />
-                                        <small>quantum mechanical Turing machine concept</small>
-                                    </li> -->
-
-                                    <!-- <li class="fragment">🔐
-                                        Bennett and Brassard, 1984
-                                        <br />
-                                        <small>quantum key distribution protocol</small>
-                                    </li> -->
                                     <li class="fragment">📝
                                         David Deutsch, 1985
                                         <br />
@@ -152,16 +141,6 @@
                                         <br />
                                         <small>first cases of quantum supremacy</small>
                                     </li>
-                                    <!-- <li class="fragment">📝
-                                        David Deutsch, 1985
-                                        <br />
-                                        <small>first general, fully quantum, model for computation</small>
-                                    </li> -->
-                                    <!-- <li class="fragment">💯
-                                        Peter Shor, 1994
-                                        <br />
-                                        <small>Shor's algorithm for integer factorization</small>
-                                    </li> -->
                                 </ul>
                             </div>
                         </div>
@@ -217,16 +196,43 @@
                     </div>
                 </section>
 
+                <section data-background="images/atlas3.jpg">
+                    <div class="overlay-style">
+                        <h2>Important concepts</h2>
+                        <div class="column-container">
+                            <div class="col">
+                                <ul>
+                                    <li class="fragment">❓
+                                        Superposition
+                                        <br />
+                                        <small>Quantum objects have no definite state</small>
+                                    </li>
+                                    <li class="fragment">🎟
+                                        Uncertainty principle
+                                        <br />
+                                        <small>Irreducible role of probabilities</small>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col">
+                                <ul>
+
+                                    <li class="fragment">🧶
+                                        Entanglement
+                                        <br />
+                                        <small>Stronger than classical correlations, nonlocality</small>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
 
             </section>
             <!-- end QC -->
 
             <!-- Superposition -->
             <section>
-                <!-- <section data-background="images/cern-theory.jpg">
-                    <h1>Theory</h1>
-                </section> -->
-
                 <section data-background="images/alice-fit.jpg">
                     <h1>Superposition</h1>
                 </section>
@@ -288,34 +294,12 @@
                                 $$
                             </p>
                         </div>
-                        <div class="col">
-                            <h2>$\mathbf{X}$ basis</h2>
-                            <p class="r-fit-text">
-                                $$
-                                0 = \frac{1}{\sqrt{2}}\begin{bmatrix} 1 \\ 1 \end{bmatrix} = \ket{+}$$
-                                $$
-                                1 = \frac{1}{\sqrt{2}}\begin{bmatrix} 1 \\ -1 \end{bmatrix} = \ket{-}
-                                $$
-                            </p>
-                        </div>
-
-                        <aside class="notes">
-                            A state |+> is a definite state in basis X, and maps to a classical 0 with 100% probability.
-                            However, in Z basis, it has a 50% probability of collapsing to |0> or |1>, so classical 0 or
-                            1.
-                        </aside>
-                </section>
-
-                <section data-background="images/cms2.jpg">
-                    <div class="column-container centered overlay-style">
                         <div class="col inset">
-                            <h2>$\mathbf{Z}$ basis</h2>
                             <img src="images/z-basis.png" style="max-width: 60%;" />
                         </div>
-                        <div class="col inset">
-                            <h2>$\mathbf{X}$ basis</h2>
-                            <img src="images/x-basis.png" style="max-width: 60%;" />
-                        </div>
+                        <aside class="notes">
+                            In quantum computing, basis vectors map to classical bits.
+                        </aside>
                 </section>
 
                 <section data-background="images/cms2.jpg">
@@ -324,9 +308,6 @@
                         <h2 class="r-fit-text">encode and decode</h2>
                         <p>information into and from qubits</p>
                     </div>
-                    <aside class="notes">
-                        In quantum computing, basis vectors map to classical bits.
-                    </aside>
                 </section>
 
                 <section data-background="images/cms2.jpg">
@@ -337,44 +318,6 @@
                     </div>
                 </section>
                 
-<!-- 
-                <section data-background="images/cms2.jpg">
-                    <div class="overlay-style">
-                        <p>These eigenvector states the only states that can be</p>
-                        <h2 class="r-fit-text">observed</h2>
-                        <p>in the measurement process.</p>
-                    </div>
-                </section>
-
-                <section data-background="images/cms2.jpg">
-                    <div class="overlay-style">
-                        <p>We cannot ask a quantum system</p>
-                        <h2 class="r-fit-text">what state are you in?</h2>
-                    </div>
-                </section>
-
-                <section data-background="images/cms2.jpg">
-                    <div class="overlay-style">
-                        <p>For $\mathbf{Z}$ basis we can only ask</p>
-                        <h2 class="r-fit-text">Are you $\ket{0}$ or are you $\ket{1}$?</h2>
-                    </div>
-                </section>
-
-                <section data-background="images/cms2.jpg">
-                    <div class="overlay-style">
-                        <p>For $\mathbf{X}$ basis we can only ask</p>
-                        <h2 class="r-fit-text">Are you $\ket{+}$ or are you $\ket{-}$?</h2>
-                    </div>
-                </section> -->
-<!-- 
-                <section data-background="images/cms2.jpg">
-                    <div class="overlay-style">
-                        <p>A quantum system can be in one of the infinitely many states possible as a <span
-                                class="highlight">linear combination</span> of two basis states:</p>
-                        <h2 class="r-fit-text">$$\ket{\psi} = \alpha\ket{0} + \beta\ket{1}$$</h2>
-                    </div>
-                </section> -->
-
                 <section data-background="images/cms2.jpg">
                     <div class="column-container centered">
                         <div class="col overlay-style">
@@ -385,10 +328,6 @@
                             <img src="images/arbitrary-state.png" />
                         </div>
                     </div>
-                    <aside class="notes">
-                        As soon as we look at the photon - it assumed the basis state. Before that it was everywhere,
-                        and nowhere.
-                    </aside>
                 </section>
 
                 <section data-background="images/cms2.jpg">
@@ -435,13 +374,32 @@
                 </section>
 
                 <section data-background="images/cms2.jpg">
+                    <div class="column-container centered overlay-style">
+                        <div class="col">
+                            <h2>$\mathbf{X}$ basis</h2>
+                            <p class="r-fit-text">
+                                $$
+                                0 = \frac{1}{\sqrt{2}}\begin{bmatrix} 1 \\ 1 \end{bmatrix} = \ket{+}$$
+                                $$
+                                1 = \frac{1}{\sqrt{2}}\begin{bmatrix} 1 \\ -1 \end{bmatrix} = \ket{-}
+                                $$
+                            </p>
+                        </div>                        
+                        <div class="col inset">
+                            <img src="images/x-basis.png" style="max-width: 60%;" />
+                        </div>
+                        <aside class="notes">
+                            A state |+> is a definite state in basis X, and maps to a classical 0 with 100% probability.
+                            However, in Z basis, it has a 50% probability of collapsing to |0> or |1>, so classical 0 or
+                            1.
+                        </aside>
+                </section>
+
+                <section data-background="images/cms2.jpg">
                     <div class="overlay-style">
                         <p>The strength of quantum computers is that the are able to take algorithmic advantage of <span class="highlight">superposition</span>. This is called</p>
                         <h2 class="r-fit-text">quantum parallelism</h2>
                     </div>
-                    <aside class="notes">
-                        For example, instead of evaluating a function many times with all possible inputs, we can evaluate once with superposition of inputs.
-                    </aside>
                 </section> 
 
                 <section data-background="images/quantumcomputationandinformation.jpg" data-state="bg-auto-width-08">
@@ -458,6 +416,9 @@
                         <div class="col">
                         </div>
                     </div>
+                    <aside class="notes">
+                        For example, instead of evaluating a function many times with all possible inputs, we can evaluate once with superposition of inputs.
+                    </aside>
                 </section>
             </section>
             <!-- end superposition -->
@@ -573,10 +534,6 @@
                             <img src="images/x-basis.png" style="max-width: 60%;" />
                         </div>
                     </div>
-                    <aside class="notes">
-                        A state |+> is a definite state in basis X, and maps to a classical 0 with 100% probability.
-                        However, in Z basis, it has a 50% probability of collapsing to |0> or |1>.
-                    </aside>
                 </section>
 
                 <section data-background="images/cms-beam.jpg">
@@ -587,7 +544,7 @@
                         Because of this, the choice of basis allows us to encode information in a qubit in a specific
                         way. The information can only be accurately read, if you know the basis you should use upon
                         measurement, otherwise the result will be random.
-                        <br /><br />
+                        <br />
                         This concept underpins quantum cryptography.
                     </aside>
                 </section>
