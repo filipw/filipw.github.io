@@ -251,8 +251,7 @@
                             <p>In quantum information theory an information unit is called a <span
                                     class="highlight">qubit</span>.
                             </p>
-                            <p>The state of a qubit is described by a <span class="highlight">vector</span> in a two
-                                dimensional <span class="highlight">Hilbert space</span>, where $\alpha$ and $\beta$ are
+                            <p>The qubit is described by a two dimensional <span class="highlight">state vector</span>, where $\alpha$ and $\beta$ are
                                 complex numbers.</p>
                         </div>
 
@@ -1029,8 +1028,8 @@ operation EntanglementExample() : Unit {
     H(control);
     CNOT(control, target);
     
-    let resultControl = ResultAsBool(M(control)) ? "1" | "0";
-    let resultTarget = ResultAsBool(M(target)) ? "1" | "0";
+    let resultControl = MResetZ(control) == One ? "1" | "0";
+    let resultTarget = MResetZ(target) == One ? "1" | "0";
 
     Message($"Result: |{resultControl}{resultTarget}>");
 }
