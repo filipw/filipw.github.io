@@ -155,6 +155,31 @@
                             phenomena <span class="highlight">first hand</span>.</p>
                     </div>
                 </section>
+
+                <section data-background="images/cern-network1.jpg">
+                    <pre>
+                <code class="cs">
+operation RandomNumberGenerator() : Int {
+    use qubits = Qubit[16];
+    ApplyToEach(H, qubits);
+
+    // create a QPU register
+    let register = LittleEndian(qubits);
+
+    // measure the entire register to retrieve the integer
+    let randomNumber = MeasureInteger(register);
+    
+    return randomNumber;
+}  
+                </code>
+            </pre>
+                    <p class="fragment" data-code-focus="2"></p>
+                    <p class="fragment" data-code-focus="3"></p>
+                    <p class="fragment" data-code-focus="4"></p>
+                    <p class="fragment" data-code-focus="6-7"></p>
+                    <p class="fragment" data-code-focus="9-10"></p>
+                    <p class="fragment" data-code-focus="12"></p>
+                </section>
             </section>
 
             <!-- Superposition-->
@@ -221,8 +246,8 @@ H(photon);
 // second beam splitter
 H(photon);
 
-// result is a certain "d2" due to interference
-let detectorResult = M(photon) == Zero ? "d2" | "d1";
+// result is a certain "detector2" due to interference
+let detectorResult = M(photon) == Zero ? "detector2" | "detector1";
                 </code>
             </pre>
                     <p class="fragment" data-code-focus="2-3"></p>
@@ -238,7 +263,7 @@ let detectorResult = M(photon) == Zero ? "d2" | "d1";
                     </div>
                 </section>
 
-                <section data-background="images/weinberg.jpg">
+                <!-- <section data-background="images/weinberg.jpg">
                     <div class="column-container">
                         <div class="col overlay-style">
                             <blockquote>The ideas of quantum mechanics present a profound departure from ordinary human
@@ -255,7 +280,7 @@ let detectorResult = M(photon) == Zero ? "d2" | "d1";
                     <aside class="notes">
                         Weinberg got the 1979 Nobel prize for his work on quantum field theory.
                     </aside>
-                </section>
+                </section> -->
 
                 <section data-background="images/cms2.jpg">
                     <div class="column-container">
@@ -280,7 +305,7 @@ let qndResult = M(photon) == Zero ? "q2" | "q1";
 H(photon);
 
 // result is a random Zero or One - interference disappears
-let detectorResult = M(photon) == Zero ? "d2" | "d1";
+let detectorResult = M(photon) == Zero ? "detector2" | "detector1";
                 </code>
             </pre>
                     <p class="fragment" data-code-focus="2-3"></p>
@@ -352,6 +377,21 @@ let detectorResult = M(photon) == Zero ? "d2" | "d1";
                 </section> -->
 
                 <section data-background="images/cms2.jpg">
+                    <div class="overlay-style">
+                        <h2>$\mathbf{Z}$ basis</h2>
+                        <p class="r-fit-text">
+                            $$
+                            0 = \begin{bmatrix} 1 \cr 0 \end{bmatrix} = \ket{0} \qquad \qquad
+                            1 = \begin{bmatrix} 0 \cr 1 \end{bmatrix} = \ket{1}
+                            $$
+                        </p>
+                    </div>
+                    <aside class="notes">
+                            In quantum computing, basis vectors map to classical bits.
+                    </aside>
+                </section>
+
+                <!-- <section data-background="images/cms2.jpg">
                     <div class="column-container centered overlay-style">
                         <div class="col">
                             <h2>$\mathbf{Z}$ basis</h2>
@@ -377,7 +417,7 @@ let detectorResult = M(photon) == Zero ? "d2" | "d1";
                         <aside class="notes">
                             In quantum computing, basis vectors map to classical bits.
                         </aside>
-                </section>
+                </section> -->
 
                 <section data-background="images/cms2.jpg">
                     <div class="overlay-style">
@@ -401,12 +441,12 @@ let detectorResult = M(photon) == Zero ? "d2" | "d1";
                     </div>
                 </section>
 
-                <section data-background="images/cms2.jpg">
+                <!-- <section data-background="images/cms2.jpg">
                     <div class="overlay-style">
                         <p>For $\mathbf{X}$ basis we can only ask</p>
                         <h2 class="r-fit-text">Are you $\ket{+}$ or are you $\ket{-}$?</h2>
                     </div>
-                </section>
+                </section> -->
 
                 <section data-background="images/cms2.jpg">
                     <div class="overlay-style">
@@ -533,6 +573,28 @@ let detectorResult = M(photon) == Zero ? "d2" | "d1";
             <section>
                 <section data-background="images/atlas-barrel.jpg">
                     <h1>Uncertainty principle</h1>
+                </section>
+
+                <section data-background="images/cms-beam.jpg">
+                    <div class="overlay-style">
+                        <h2>$\mathbf{X}$ basis</h2>
+                        <p class="r-fit-text">
+                            $$
+                            0 = \frac{1}{\sqrt{2}}\begin{bmatrix} 1 \\ 1 \end{bmatrix} = \ket{+} \qquad \qquad
+                            1 = \frac{1}{\sqrt{2}}\begin{bmatrix} 1 \\ -1 \end{bmatrix} = \ket{-}
+                            $$
+                        </p>
+                    </div>
+                    <aside class="notes">
+                            In quantum computing, basis vectors map to classical bits.
+                    </aside>
+                </section>
+
+                <section data-background="images/cms-beam.jpg">
+                    <div class="overlay-style">
+                        <p>For $\mathbf{X}$ basis we can only ask</p>
+                        <h2 class="r-fit-text">Are you $\ket{+}$ or are you $\ket{-}$?</h2>
+                    </div>
                 </section>
 
                 <section data-background="images/cms-beam.jpg">
