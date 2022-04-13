@@ -362,7 +362,7 @@ let detectorResult = M(photon) == Zero ? "detector2" | "detector1";
 
                 <section data-background="images/cms2.jpg">
                     <div class="overlay-style">
-                        <p>For two-state systems an observable has two vectors that form</p>
+                        <p>For simple systems an observable has two vectors that form</p>
                         <h2 class="r-fit-text">measurement basis</h2>
                     </div>
                     <aside class="notes">
@@ -385,9 +385,11 @@ let detectorResult = M(photon) == Zero ? "detector2" | "detector1";
                             1 = \begin{bmatrix} 0 \cr 1 \end{bmatrix} = \ket{1}
                             $$
                         </p>
+                        <p>This is the <span
+                            class="highlight">default basis</span> in quantum computing.</p>
                     </div>
                     <aside class="notes">
-                            In quantum computing, basis vectors map to classical bits.
+                            In quantum computing, basis vectors map to classical bits and Z-basis is default.
                     </aside>
                 </section>
 
@@ -421,7 +423,7 @@ let detectorResult = M(photon) == Zero ? "detector2" | "detector1";
 
                 <section data-background="images/cms2.jpg">
                     <div class="overlay-style">
-                        <p>These eigenvector states the only states that can be</p>
+                        <p>These basis states the only states that can be</p>
                         <h2 class="r-fit-text">observed</h2>
                         <p>in the measurement process.</p>
                     </div>
@@ -467,8 +469,8 @@ let detectorResult = M(photon) == Zero ? "detector2" | "detector1";
                         </div>
                     </div>
                     <aside class="notes">
-                        As soon as we looked at the photon - it assumed the basis state. Before that it was everywhere,
-                        and nowhere.
+                        As soon as we looked at the photon - it assumed the basis state.
+                        Notice if $\alpha = 1$ and $\beta = 0$ we are in basis state $\ket{0}$ and vice versa.
                     </aside>
                 </section>
 
@@ -607,17 +609,17 @@ let detectorResult = M(photon) == Zero ? "detector2" | "detector1";
                 <section data-background="images/cern-alice.jpg">
                     <pre>
                 <code class="cs">
-// prepare state |0> = |up> or |1> = |down>
+// prepare state |0⟩ = |↑⟩ or |1⟩ = |↓⟩
 use electron = Qubit();
 if (flip) { X(electron); }
 
 // basis may be PauliZ or PauliX
 let result = Measure([basis], [electron]);
 
-// map One or Zero to |up> / |down> or |+> / |->
+// map One or Zero to |↑⟩ / |↓⟩ or |+⟩ / |-⟩ 
 let outcome = basis == PauliX ? 
     (result == Zero ? "+" | "-") | 
-    (result == Zero ? "up" | "down")
+    (result == Zero ? "↑" | "↓")
                 </code>
             </pre>
                     <p class="fragment" data-code-focus="3-4"></p>
@@ -721,9 +723,9 @@ let outcome = basis == PauliX ?
 
                 <section data-background="images/cms-beam.jpg">
                     <div class="overlay-style">
-                        <p>Measurement of the spin value in the $\mathbf{Z}$ basis creates</p>
+                        <p>Measurement in the $\mathbf{Z}$ basis creates</p>
                         <h2 class="r-fit-text">maximum uncertainty</h2>
-                        <p>of the spin value in $\mathbf{X}$ the basis, and vice versa.</p>
+                        <p>for the measurement in the $\mathbf{X}$ the basis, and vice versa.</p>
                     </div>
                     <aside class="notes">
                         For sequential measurements e.g. Z-X-Z, the previous results in Z get destroyed by X
@@ -918,7 +920,7 @@ let outcome = basis == PauliX ?
                     <h1>Entanglement</h1>
                 </section>
 
-                <section data-background="images/atlas-nsw.jpg">
+                <!-- <section data-background="images/atlas-nsw.jpg">
                     <div class="column-container">
                         <iframe width="66%"" height=" 486" scrolling="no"
                             src="Entanglement1/Entanglement1.html"></iframe>
@@ -944,7 +946,7 @@ let agreement = result1 == result2;
                     <p class="fragment" data-code-focus="6-7"></p>
                     <p class="fragment" data-code-focus="11-12"></p>
                     <p class="fragment" data-code-focus="11"></p>
-                </section>
+                </section> -->
 
                 <section data-background="images/atlas-nsw.jpg">
                     <div class="column-container">
@@ -1091,7 +1093,7 @@ let agreement = result1 == result2;
                         <h2 class="r-fit-text">non-locality</h2>
                 </section>
 
-                <section data-background="images/TimMaudlin.jpg">
+                <!-- <section data-background="images/TimMaudlin.jpg">
                     <div class="column-container">
 
                         <div class="col overlay-style">
@@ -1105,7 +1107,7 @@ let agreement = result1 == result2;
                         <div class="col">
                         </div>
                     </div>
-                </section>
+                </section> -->
 
                 <section data-background="images/henrystapp.jpg">
                     <div class="column-container">
