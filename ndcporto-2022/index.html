@@ -386,7 +386,8 @@ let detectorResult = M(photon) == Zero ? "detector2" | "detector1";
                             $$
                         </p>
                         <p>This is the <span
-                            class="highlight">default basis</span> in quantum computing.</p>
+                            class="highlight">default measurement basis</span> in quantum computing and $\ket{0}$ is the <span
+                            class="highlight">default qubit state</span>.</p>
                     </div>
                     <aside class="notes">
                             In quantum computing, basis vectors map to classical bits and Z-basis is default.
@@ -476,7 +477,7 @@ let detectorResult = M(photon) == Zero ? "detector2" | "detector1";
 
                 <section data-background="images/cms2.jpg" data-state="bg-top-left" data-transition="fade">
                     <div class="overlay-style">
-                        <p>Upon measurement, quantum state <span class="highlight">collapses</span> to one of the
+                        <p>Upon measurement, superposition state <span class="highlight">collapses</span> to one of the
                             observable states</p>
                         <h2 class="r-fit-text">outcome is probabilistic</h2>
                     </div>
@@ -528,7 +529,7 @@ let detectorResult = M(photon) == Zero ? "detector2" | "detector1";
                         <p>$$H\ket{0} = \begin{bmatrix} \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} &
                             -\frac{1}{\sqrt{2}} \end{bmatrix}\begin{bmatrix} 1 \\ 0 \end{bmatrix} =
                             \frac{1}{\sqrt{2}}\ket{0} + \frac{1}{\sqrt{2}}\ket{1}$$</p>
-                        <p>According to <span class="highlight">Born rule</span>, there is a <span class="highlight">50%
+                        <p>There is a <span class="highlight">50%
                                 probability</span> of observing a
                             collapse to $\ket{0}$ or to $\ket{1}$.</p>
                     </div>
@@ -609,22 +610,24 @@ let detectorResult = M(photon) == Zero ? "detector2" | "detector1";
                 <section data-background="images/cern-alice.jpg">
                     <pre>
                 <code class="cs">
-// prepare state |0⟩ = |↑⟩ or |1⟩ = |↓⟩
+// prepare state |0⟩ = |↑⟩
 use electron = Qubit();
-if (flip) { X(electron); }
+if prepareOpposite { 
+    // or |1⟩ = |↓⟩
+    X(electron); 
+}
 
 // basis may be PauliZ or PauliX
 let result = Measure([basis], [electron]);
 
-// map One or Zero to |↑⟩ / |↓⟩ or |+⟩ / |-⟩ 
-let outcome = basis == PauliX ? 
-    (result == Zero ? "+" | "-") | 
-    (result == Zero ? "↑" | "↓")
+// if basis is Z, result is deterministic
+// if basis is X, result is random
                 </code>
             </pre>
-                    <p class="fragment" data-code-focus="3-4"></p>
-                    <p class="fragment" data-code-focus="7"></p>
-                    <p class="fragment" data-code-focus="10-12"></p>
+                    <p class="fragment" data-code-focus="3"></p>
+                    <p class="fragment" data-code-focus="6"></p>
+                    <p class="fragment" data-code-focus="10"></p>
+                    <p class="fragment" data-code-focus="12-13"></p>
                 </section>
 
                 <!-- <section data-background="images/cern-alice.jpg">
@@ -770,7 +773,8 @@ let outcome = basis == PauliX ?
 
                 <section data-background="images/cms-beam.jpg">
                     <div class="overlay-style">
-                        <p>Superposition is <span class="highlight">basis dependent</span>.</p>
+                        <p>Superposition is</p>
+                        <h2 class="r-fit-text">basis dependent</h2>
                     </div>
                     <aside class="notes">
                         Because of this, the choice of basis allows us to encode information in a qubit in a specific
@@ -1155,10 +1159,10 @@ let agreement = result1 == result2;
                                     <small>Run programs on variety of real quantum hardware</small>
                                 </li>
 
-                                <li class="fragment">📈
-                                    Quantum Optimisation
+                                <li class="fragment">💸
+                                    Free credits
                                     <br />
-                                    <small>Accelerated compute resources for QIO</small>
+                                    <small>At the moments $500 free credits to try things</small>
                                 </li>
 
                             </ul>
