@@ -227,8 +227,7 @@ operation RandomNumberGenerator() : Int {
                             <section data-background="images/cern-alice.jpg">
                                 <h2 class="overlay-style">Azure Quantum Execution</h2>
                                 <pre>
-                            <code class="cs">
-            // queue job
+                            <code class="cs">            // queue job
             az quantum job submit --target-id {target}
             
             // check job status
@@ -239,16 +238,15 @@ operation RandomNumberGenerator() : Int {
             
             Result     Frequency
             ---------  -----------  ----------------------
-            [0,1,0,0]  0.30000000   |██████              |
+            [0,1,0,0]  0.60000000   |████████████        |
             [0,0,1,0]  0.20000000   |████                |
             [1,0,1,0]  0.20000000   |████                |
-            [1,1,1,0]  0.30000000   |██████              |
-                            </code>
+</code>
                         </pre>
-                                <p class="fragment" data-code-focus="2-3"></p>
-                                <p class="fragment" data-code-focus="5-6"></p>
-                                <p class="fragment" data-code-focus="8-9"></p>
-                                <p class="fragment" data-code-focus="11-13"></p>
+                                <p class="fragment" data-code-focus="1-2"></p>
+                                <p class="fragment" data-code-focus="4-5"></p>
+                                <p class="fragment" data-code-focus="7-8"></p>
+                                <p class="fragment" data-code-focus="10-14"></p>
                             </section>
             
                             <section data-background="images/cern-network2.jpg">
@@ -265,12 +263,6 @@ operation RandomNumberGenerator() : Int {
                     <h1>Superposition</h1>
                 </section>
                 <!-- 
-                <section data-background="images/cms2.jpg">
-                    <div class="column-container">
-                        <iframe width="66%"" height=" 486" scrolling="no" src="BeamSplitter/BeamSplitter.html"></iframe>
-                    </div>
-                </section>
-
                 <section data-background="images/cern-alice.jpg">
                     <pre>
                 <code class="cs">
@@ -471,34 +463,6 @@ let detectorResult = M(photon) == Zero ? "detector2" | "detector1";
                     </aside>
                 </section>
 
-                <!-- <section data-background="images/cms2.jpg">
-                    <div class="column-container centered overlay-style">
-                        <div class="col">
-                            <h2>$\mathbf{Z}$ basis</h2>
-                            <p class="r-fit-text">
-                                $$
-                                0 = \begin{bmatrix} 1 \cr 0 \end{bmatrix} = \ket{0}$$
-                                $$
-                                1 = \begin{bmatrix} 0 \cr 1 \end{bmatrix} = \ket{1}
-                                $$
-                            </p>
-                        </div>
-                        <div class="col">
-                            <h2>$\mathbf{X}$ basis</h2>
-                            <p class="r-fit-text">
-                                $$
-                                0 = \frac{1}{\sqrt{2}}\begin{bmatrix} 1 \\ 1 \end{bmatrix} = \ket{+}$$
-                                $$
-                                1 = \frac{1}{\sqrt{2}}\begin{bmatrix} 1 \\ -1 \end{bmatrix} = \ket{-}
-                                $$
-                            </p>
-                        </div>
-
-                        <aside class="notes">
-                            In quantum computing, basis vectors map to classical bits.
-                        </aside>
-                </section> -->
-
                 <section data-background="images/cms2.jpg">
                     <div class="overlay-style">
                         <p>These basis states the only states that can be</p>
@@ -520,13 +484,6 @@ let detectorResult = M(photon) == Zero ? "detector2" | "detector1";
                         <h2 class="r-fit-text">Are you $\ket{0}$ or are you $\ket{1}$?</h2>
                     </div>
                 </section>
-
-                <!-- <section data-background="images/cms2.jpg">
-                    <div class="overlay-style">
-                        <p>For $\mathbf{X}$ basis we can only ask</p>
-                        <h2 class="r-fit-text">Are you $\ket{+}$ or are you $\ket{-}$?</h2>
-                    </div>
-                </section> -->
 
                 <section data-background="images/cms2.jpg">
                     <div class="overlay-style">
@@ -678,10 +635,21 @@ let detectorResult = M(photon) == Zero ? "detector2" | "detector1";
                 </section>
 
                 <section data-background="images/cms-beam.jpg">
-                    <div class="column-container">
-                        <iframe width="66%"" height=" 486" scrolling="no"
-                            src="Stern_Gerlach_Apparatus/Stern_Gerlach_Apparatus.html"></iframe>
-                    </div>
+                    <p class="overlay-style">Electrons prepared with spin up, measured in the $\mathbf{Z}$ basis.</p>
+                        <iframe width="66%"" height="500" scrolling="no"
+                            src="interactive/stern-gerlach-z-up.html"></iframe>
+                </section>
+
+                <section data-background="images/cms-beam.jpg">
+                    <p class="overlay-style">Electrons prepared with spin down, measured in the $\mathbf{Z}$ basis.</p>
+                        <iframe width="66%"" height="500" scrolling="no"
+                            src="interactive/stern-gerlach-z-down.html"></iframe>
+                </section>
+
+                <section data-background="images/cms-beam.jpg">
+                    <p class="overlay-style">Electrons prepared with spin up or down, measured in the $\mathbf{X}$ basis.</p>
+                        <iframe width="66%"" height="500" scrolling="no"
+                            src="interactive/stern-gerlach-x.html"></iframe>
                 </section>
 
                 <section data-background="images/cern-alice.jpg">
@@ -1001,39 +969,15 @@ let outcome = basis == PauliX ?
                     <h1>Entanglement</h1>
                 </section>
 
-                <!-- <section data-background="images/atlas-nsw.jpg">
-                    <div class="column-container">
-                        <iframe width="66%"" height=" 486" scrolling="no"
-                            src="Entanglement1/Entanglement1.html"></iframe>
-                    </div>
-                </section>
-
-                <section data-background="images/cern-alice.jpg">
-                    <pre>
-                <code class="cs">
-// create a pair of particles in state |up>, |up>
-use pair = Qubit[2];
-
-// measure in PauliZ or PauliX basis
-let result1 = Measure([basis], [pair[0]]);
-let result2 = Measure([basis], [pair[1]]);
-
-// classically, the measurement will agree only in the Z basis
-// in the X basis the results will be random
-let agreement = result1 == result2;
-                </code>
-            </pre>
-                    <p class="fragment" data-code-focus="3"></p>
-                    <p class="fragment" data-code-focus="6-7"></p>
-                    <p class="fragment" data-code-focus="11-12"></p>
-                    <p class="fragment" data-code-focus="11"></p>
-                </section> -->
-
                 <section data-background="images/atlas-nsw.jpg">
-                    <div class="column-container">
-                        <iframe width="66%"" height=" 486" scrolling="no"
-                            src="Entanglement2/Entanglement2.html"></iframe>
-                    </div>
+                    <p class="overlay-style">Entangled pair, measured in the $\mathbf{Z}$ basis.</p>
+                        <iframe width="62%"" height="280" scrolling="no"
+                            src="interactive/entanglement-z.html"></iframe>
+                </section>
+                <section data-background="images/atlas-nsw.jpg">
+                    <p class="overlay-style">Entangled pair, measured in the $\mathbf{X}$ basis.</p>
+                        <iframe width="62%"" height="280" scrolling="no"
+                            src="interactive/entanglement-x.html"></iframe>
                 </section>
 
                 <section data-background="images/cern-alice.jpg">
