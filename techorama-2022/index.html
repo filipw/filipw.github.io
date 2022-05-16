@@ -110,7 +110,7 @@
             <!-- Q# -->
             <section>
                 <section data-background="images/cern-dc.jpg">
-                    <h1>Q# and QDK</h1>
+                    <h1>Q# and Azure Quantum</h1>
                 </section>
 
                 <section data-background="images/cern-network1.jpg">
@@ -159,7 +159,9 @@
                 <section data-background="images/cern-network1.jpg">
                     <pre>
                 <code class="cs">
-operation RandomNumberGenerator() : Int {
+@EntryPoint()
+operation Start() : Unit {
+    // allocate qubits
     use qubits = Qubit[16];
 
     // create superposition
@@ -170,23 +172,23 @@ operation RandomNumberGenerator() : Int {
 
     // convert to integer
     let randomNumber = ResultArrayAsInt(results);
-    return randomNumber;
-}  
+    Message($"Random uint16: {randomNumber}");
+}
                 </code>
             </pre>
-                    <p class="fragment" data-code-focus="2"></p>
-                    <p class="fragment" data-code-focus="3"></p>
-                    <p class="fragment" data-code-focus="6"></p>
-                    <p class="fragment" data-code-focus="9"></p>
-                    <p class="fragment" data-code-focus="12-13"></p>
+                    <p class="fragment" data-code-focus="2-3"></p>
+                    <p class="fragment" data-code-focus="5"></p>
+                    <p class="fragment" data-code-focus="8"></p>
+                    <p class="fragment" data-code-focus="11"></p>
+                    <p class="fragment" data-code-focus="14-15"></p>
                 </section>
-            </section>
+            <!-- </section> -->
 
                         <!-- Azure Quantum-->
-                        <section>
+                        <!-- <section>
                             <section data-background="images/azure-quantum.png">
                                 <h1>Azure Quantum</h1>
-                            </section>
+                            </section> -->
             
                             <section data-background="images/cern-network2.jpg">
                                 <div class="column-container centered">
@@ -198,16 +200,16 @@ operation RandomNumberGenerator() : Int {
                                                 <small>High level code with QDK</small>
                                             </li>
             
-                                            <li class="fragment">🤖
-                                                Simulators
-                                                <br />
-                                                <small>Simulate quantum jobs</small>
-                                            </li>
-            
                                             <li class="fragment">⚛️
                                                 Quantum Hardware
                                                 <br />
                                                 <small>Run programs on variety of real quantum hardware</small>
+                                            </li>
+
+                                            <li class="fragment">🤖
+                                                Simulators
+                                                <br />
+                                                <small>Simulate jobs on vendor-specific simulators</small>
                                             </li>
             
                                             <li class="fragment">💸
