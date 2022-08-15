@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <style>
+    body { background: white;}
+    #canvas {
+      position: absolute
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="canvas" width="918" height="299" >
+  </canvas>
+  <img id="sterngerlach" src="entanglement-z.svg" width="918" height="299" />
+
+  <script>
+    window.onload = function () {
+      var canvas = document.getElementById("canvas");
+      var dotContext = canvas.getContext("2d");
+      let counter = 0;
+      setInterval(function () {
+        dotContext.beginPath();
+        var position = Math.random() < 0.5 ? {p1: {x: 854, y: 116}, p2: {x: 44, y: 116}} : {p1: {x: 854, y: 186}, p2: {x: 44, y: 186}};
+        dotContext.arc(position.p1.x, position.p1.y, 10, 0, 2 * Math.PI);
+        dotContext.arc(position.p2.x, position.p2.y, 10, 0, 2 * Math.PI);
+
+        dotContext.lineWidth = 0;
+        dotContext.fillStyle = "green";
+        if (counter % 2 === 0) {
+          dotContext.fill();
+        } else {
+          dotContext.clearRect(0, 0, canvas.width, canvas.height);
+        }
+        counter++;
+      }, 500);
+    };
+  </script>
+</body>
+
+</html>
