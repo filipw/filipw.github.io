@@ -400,15 +400,42 @@ let detectorResult = M(photon) == Zero ? "detector2" | "detector1";
 
                 <section data-background="images/cms2.jpg">
                     <div class="overlay-style">
-                        <p>According to quantum mechanics, information can only be extracted from qubits via <span
-                                class="highlight">observables</span>.</p>
+                                    <p>A qubit state is described by a</p>
+                                    <h2 class="r-fit-text">two-dimensional vector</h2>
+                    </div>
+                </section>
+
+                <section data-background="images/cms2.jpg">
+                    <div class="overlay-style">
+                        <p>An <span
+                                class="highlight">observable</span> defines which states are possible to be measured.</p>
+                                <p>
+                                    <p>$$
+                                        \sigma_x=\begin{bmatrix} 0 & 1 \\  1 & 0  \end{bmatrix} \qquad
+    \sigma_y=\begin{bmatrix} 0 & -i \\  i & 0  \end{bmatrix} \qquad
+    \sigma_z=\begin{bmatrix} 1 & 0 \\  0 & -1  \end{bmatrix}
+                                        $$</p>
+                                </p>
                     </div>
                     <aside class="notes">
                         Observables are matrices.
                     </aside>
                 </section>
 
-                <section data-background="images/cms2.jpg">
+                <!-- <section data-background="images/cms2.jpg">
+                    <div class="overlay-style">
+                        <h2>Observables</h2>
+                        <p>$$\mathbf{Z} = \begin{bmatrix} 1 & 0 \\ 0 & -1 \end{bmatrix} \quad  \rightarrow \quad \begin{bmatrix} 1 \\ 0 \end{bmatrix} = \ket{0} \quad \begin{bmatrix} 0 \cr 1 \end{bmatrix} = \ket{1}$$</p>
+                        <p>$$\mathbf{X} = \begin{bmatrix} 0 & 1 \\ 1 & 0 \end{bmatrix} \quad  \rightarrow \quad \begin{bmatrix} 1 \\ 0 \end{bmatrix} = \ket{0} \quad \begin{bmatrix} 0 \cr 1 \end{bmatrix} = \ket{1}$$</p>
+                            
+                    </div>
+                    <aside class="notes">
+                        Born rule is not derived, it is an axiom in quantum mechanics, confirmed experimentally, or
+                        rather never violated by any experiment.
+                    </aside>
+                </section> -->
+
+                <!-- <section data-background="images/cms2.jpg">
                     <div class="overlay-style">
                         <p>For qubits an observable defines two vectors that form</p>
                         <h2 class="r-fit-text">measurement basis</h2>
@@ -416,16 +443,18 @@ let detectorResult = M(photon) == Zero ? "detector2" | "detector1";
                     <aside class="notes">
                         These are the so-called eigenvectors or eigenstates.
                     </aside>
-                </section>
+                </section> -->
 
                 <section data-background="images/cms2.jpg">
                     <div class="overlay-style">
                         <h2>$\mathbf{Z}$ basis</h2>
+                        
                         <p class="r-fit-text">
-                            $$
+                            $$\sigma_z = \begin{bmatrix} 1 & 0 \\ 0 & -1 \end{bmatrix} \quad  \rightarrow \quad 0 = \begin{bmatrix} 1 \\ 0 \end{bmatrix} = \ket{0} \quad 1 = \begin{bmatrix} 0 \cr 1 \end{bmatrix} = \ket{1}$$
+                            <!-- $$
                             0 = \begin{bmatrix} 1 \cr 0 \end{bmatrix} = \ket{0} \qquad \qquad
                             1 = \begin{bmatrix} 0 \cr 1 \end{bmatrix} = \ket{1}
-                            $$
+                            $$ -->
                         </p>
                         <p>This is the <span
                             class="highlight">default measurement basis</span> in quantum computing and $\ket{0}$ is the <span
@@ -436,13 +465,13 @@ let detectorResult = M(photon) == Zero ? "detector2" | "detector1";
                     </aside>
                 </section>
 
-                <section data-background="images/cms2.jpg">
+                <!-- <section data-background="images/cms2.jpg">
                     <div class="overlay-style">
                         <p>These basis states the only states that can be</p>
                         <h2 class="r-fit-text">observed</h2>
                         <p>in the measurement process.</p>
                     </div>
-                </section>
+                </section> -->
 
                 <section data-background="images/cms2.jpg">
                     <div class="overlay-style">
