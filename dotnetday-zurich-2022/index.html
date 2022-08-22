@@ -51,30 +51,31 @@
 
                 <div class="col overlay-style" style="padding: 0 !important">
 
-                <h1 style="font-size: 2em; background: none; margin-bottom: 0;">
-                    The Bizarre Quantum World <br/>
-        <small style="font-size: 0.5em; line-height: 2em;">with Q# and Azure Quantum</small>
+                    <h1 style="font-size: 2em; background: none; margin-bottom: 0;">
+                        The Bizarre Quantum World <br />
+                        <small style="font-size: 0.5em; line-height: 2em;">with Q# and Azure Quantum</small>
 
-                </h1>
-                <p>
-                    <small>
-                        <a href="https://strathweb.com" class="roll">
-                            <span>strathweb.com</span>
-                        </a> •
-                        <a href="https://twitter.com/filip_woj" class="roll">
-                            <span data-title="@filip_woj">@filip_woj</span>
-                        </a> •
-                        <a href="https://github.com/filipw" class="roll">
-                            <span data-title="github.com/filipw">Filip W</span>
-                        </a>
-                    </small>
-                </p>
+                    </h1>
+                    <p>
+                        <small>
+                            <a href="https://strathweb.com" class="roll">
+                                <span>strathweb.com</span>
+                            </a> •
+                            <a href="https://twitter.com/filip_woj" class="roll">
+                                <span data-title="@filip_woj">@filip_woj</span>
+                            </a> •
+                            <a href="https://github.com/filipw" class="roll">
+                                <span data-title="github.com/filipw">Filip W</span>
+                            </a>
+                        </small>
+                    </p>
                 </div>
 
             </section>
-            
+
             <section data-background="images/D810_NEF_3483.jpg">
-                <img src="images/filip-book.jpg" style="min-height: auto; border: 3px solid black !important;box-shadow: 5px 2px 2px black;" />
+                <img src="images/filip-book.jpg"
+                    style="min-height: auto; border: 3px solid black !important;box-shadow: 5px 2px 2px black;" />
             </section>
 
             <section data-background-color="#fff">
@@ -117,7 +118,7 @@
                                 </li>
 
                                 <li class="fragment">📦
-                                    Familiar to .NET developers 
+                                    Familiar to .NET developers
                                     <br />
                                     <small>VS Code and VS support, dotnet CLI, Nuget, MSBuild</small>
                                 </li>
@@ -142,80 +143,45 @@
                     </div>
                 </section>
 
-                <!-- <section data-background="images/cern-network1.jpg">
-                    <div class="overlay-style">
-                        <p>QDK and Azure Quantum allow us to access an ecosystem where we can experience quantum
-                            phenomena <span class="highlight">first hand</span>.</p>
+                <section data-background="images/cern-network2.jpg">
+                    <div class="column-container centered">
+                        <div class="col overlay-style">
+                            <ul>
+                                <li class="fragment">💻
+                                    Azure Quantum
+                                    <br />
+                                    <small>Cloud platform for QDK</small>
+                                </li>
+
+                                <li class="fragment">⚛️
+                                    Quantum Hardware
+                                    <br />
+                                    <small>Run programs on variety of real quantum hardware</small>
+                                </li>
+
+                                <li class="fragment">🤖
+                                    Simulators
+                                    <br />
+                                    <small>Simulate jobs on vendor-specific simulators</small>
+                                </li>
+
+                                <li class="fragment">💸
+                                    Free credits
+                                    <br />
+                                    <small>At the moments $500 free credits to try things</small>
+                                </li>
+
+                            </ul>
+                        </div>
+                        <div class="col inset-right">
+                            <img src="images/azure-quantum-overview.gif" />
+                        </div>
                     </div>
-                </section> -->
+                </section>
 
-                <!-- <section data-background="images/cern-network1.jpg">
+                <section data-background="images/cern-alice.jpg">
+                    <h2 class="overlay-style">Azure Quantum Execution</h2>
                     <pre>
-                <code class="cs">
-@EntryPoint()
-operation Main() : Unit {
-    // allocate qubits
-    use qubits = Qubit[16];
-
-    // create superposition
-    ApplyToEach(H, qubits);
-
-    // measure qubits
-    let results = MultiM(qubits);
-
-    // convert to integer
-    let randomNumber = ResultArrayAsInt(results);
-    Message($"Random uint16: {randomNumber}");
-}
-                </code>
-            </pre>
-                    <p class="fragment" data-code-focus="3"></p>
-                    <p class="fragment" data-code-focus="5"></p>
-                    <p class="fragment" data-code-focus="8"></p>
-                    <p class="fragment" data-code-focus="11"></p>
-                    <p class="fragment" data-code-focus="14-15"></p>
-                </section> -->
-            <!-- </section> -->
-
-                            <section data-background="images/cern-network2.jpg">
-                                <div class="column-container centered">
-                                    <div class="col overlay-style">
-                                        <ul>
-                                            <li class="fragment">💻
-                                                Azure Quantum
-                                                <br />
-                                                <small>Cloud platform for QDK</small>
-                                            </li>
-            
-                                            <li class="fragment">⚛️
-                                                Quantum Hardware
-                                                <br />
-                                                <small>Run programs on variety of real quantum hardware</small>
-                                            </li>
-
-                                            <li class="fragment">🤖
-                                                Simulators
-                                                <br />
-                                                <small>Simulate jobs on vendor-specific simulators</small>
-                                            </li>
-            
-                                            <li class="fragment">💸
-                                                Free credits
-                                                <br />
-                                                <small>At the moments $500 free credits to try things</small>
-                                            </li>
-            
-                                        </ul>
-                                    </div>
-                                    <div class="col inset-right">
-                                        <img src="images/azure-quantum-overview.gif" />
-                                    </div>
-                                </div>
-                            </section>
-            
-                            <section data-background="images/cern-alice.jpg">
-                                <h2 class="overlay-style">Azure Quantum Execution</h2>
-                                <pre>
                             <code class="cs">// queue job
 az quantum job submit --target-id {target}
 
@@ -232,18 +198,12 @@ Result     Frequency
 [1,0,1,0]  0.20000000   |████                |
 </code>
                         </pre>
-                                <p class="fragment" data-code-focus="1-2"></p>
-                                <p class="fragment" data-code-focus="4-5"></p>
-                                <p class="fragment" data-code-focus="7-8"></p>
-                                <p class="fragment" data-code-focus="10-14"></p>
-                            </section>
-            
-                            <!-- <section data-background="images/cern-network2.jpg">
-                                <h2 class="overlay-style">Azure Quantum Execution</h2>
-                                <img class="normal" src="images/azure-quantum-flow-diagram.png" />
-                            </section> -->
-            
-                        </section>
+                    <p class="fragment" data-code-focus="1-2"></p>
+                    <p class="fragment" data-code-focus="4-5"></p>
+                    <p class="fragment" data-code-focus="7-8"></p>
+                    <p class="fragment" data-code-focus="10-14"></p>
+                </section>
+            </section>
 
 
             <!-- Superposition-->
@@ -257,7 +217,7 @@ Result     Frequency
                     <img src="interactive/BeamSplitter-mzi-1.svg" style="min-height: 500px; background-color: white;" />
                 </section>
 
-                                <!-- <section data-background="images/cms2.jpg">
+                <!-- <section data-background="images/cms2.jpg">
                     <div class="column-container centered overlay-style">
                         <div class="col">
                             <p>Waves can interfere with each other <span class="highlight">constructively</span> or
@@ -303,7 +263,8 @@ let detectorResult = M(photon) == Zero ? "detector2" | "detector1";
 
                 <section data-background="images/cms2.jpg">
                     <p class="overlay-style">Mach-Zehnder interferometer with QNDs.</p>
-                    <img src="interactive/BeamSplitter-mzi-qnd.svg" style="min-height: 500px; background-color: white;" />
+                    <img src="interactive/BeamSplitter-mzi-qnd.svg"
+                        style="min-height: 500px; background-color: white;" />
                 </section>
 
                 <section data-background="images/cms2.jpg">
@@ -395,22 +356,22 @@ let detectorResult = M(photon) == Zero ? "detector2" | "detector1";
 
                 <section data-background="images/cms2.jpg">
                     <div class="overlay-style">
-                                    <p>A qubit state is described by a</p>
-                                    <h2 class="r-fit-text">two-dimensional vector</h2>
+                        <p>A qubit state is described by a</p>
+                        <h2 class="r-fit-text">two-dimensional vector</h2>
                     </div>
                 </section>
 
                 <section data-background="images/cms2.jpg">
                     <div class="overlay-style">
-                        <p>An <span
-                                class="highlight">observable</span> defines which states are possible to be measured.</p>
-                                <p>
-                                    <p>$$
-                                        \sigma_x=\begin{bmatrix} 0 & 1 \\  1 & 0  \end{bmatrix} \qquad
-    \sigma_y=\begin{bmatrix} 0 & -i \\  i & 0  \end{bmatrix} \qquad
-    \sigma_z=\begin{bmatrix} 1 & 0 \\  0 & -1  \end{bmatrix}
-                                        $$</p>
-                                </p>
+                        <p>An <span class="highlight">observable</span> defines which states are possible to be
+                            measured.</p>
+                        <p>
+                        <p>$$
+                            \sigma_x=\begin{bmatrix} 0 & 1 \\ 1 & 0 \end{bmatrix} \qquad
+                            \sigma_y=\begin{bmatrix} 0 & -i \\ i & 0 \end{bmatrix} \qquad
+                            \sigma_z=\begin{bmatrix} 1 & 0 \\ 0 & -1 \end{bmatrix}
+                            $$</p>
+                        </p>
                     </div>
                     <aside class="notes">
                         Observables are matrices.
@@ -443,20 +404,21 @@ let detectorResult = M(photon) == Zero ? "detector2" | "detector1";
                 <section data-background="images/cms2.jpg">
                     <div class="overlay-style">
                         <h2>$\mathbf{Z}$ basis</h2>
-                        
+
                         <p class="r-fit-text">
-                            $$\sigma_z = \begin{bmatrix} 1 & 0 \\ 0 & -1 \end{bmatrix} \quad  \rightarrow \quad 0 = \begin{bmatrix} 1 \\ 0 \end{bmatrix} = \ket{0} \quad 1 = \begin{bmatrix} 0 \cr 1 \end{bmatrix} = \ket{1}$$
+                            $$\sigma_z = \begin{bmatrix} 1 & 0 \\ 0 & -1 \end{bmatrix} \quad \rightarrow \quad 0 =
+                            \begin{bmatrix} 1 \\ 0 \end{bmatrix} = \ket{0} \quad 1 = \begin{bmatrix} 0 \cr 1
+                            \end{bmatrix} = \ket{1}$$
                             <!-- $$
                             0 = \begin{bmatrix} 1 \cr 0 \end{bmatrix} = \ket{0} \qquad \qquad
                             1 = \begin{bmatrix} 0 \cr 1 \end{bmatrix} = \ket{1}
                             $$ -->
                         </p>
-                        <p>This is the <span
-                            class="highlight">default measurement basis</span> in quantum computing and $\ket{0}$ is the <span
-                            class="highlight">default qubit state</span>.</p>
+                        <p>This is the <span class="highlight">default measurement basis</span> in quantum computing and
+                            $\ket{0}$ is the <span class="highlight">default qubit state</span>.</p>
                     </div>
                     <aside class="notes">
-                            In quantum computing, basis vectors map to classical bits and Z-basis is default.
+                        In quantum computing, basis vectors map to classical bits and Z-basis is default.
                     </aside>
                 </section>
 
@@ -494,7 +456,8 @@ let detectorResult = M(photon) == Zero ? "detector2" | "detector1";
                     <div class="column-container centered">
                         <div class="col overlay-style">
                             <h2 class="r-fit-text">$$\ket{\psi} = \alpha\ket{0} + \beta\ket{1}$$</h2>
-                            <p>If both $\alpha$ and $\beta$ are non-zero, the system is in a <span class="highlight">superposition</span>.</p>
+                            <p>If both $\alpha$ and $\beta$ are non-zero, the system is in a <span
+                                    class="highlight">superposition</span>.</p>
 
                         </div>
                         <div class="col inset-right">
@@ -612,29 +575,25 @@ let detectorResult = M(photon) == Zero ? "detector2" | "detector1";
 
                 <section data-background="images/cms-beam.jpg">
                     <p class="overlay-style">Electrons prepared with spin up, measured in the $\mathbf{Z}$ basis.</p>
-                        <iframe width="66%"" height="500" scrolling="no"
-                            src="interactive/stern-gerlach-z-up.html"></iframe>
+                    <iframe width="66%"" height=" 500" scrolling="no"
+                        src="interactive/stern-gerlach-z-up.html"></iframe>
                 </section>
 
                 <section data-background="images/cms-beam.jpg">
                     <p class="overlay-style">Electrons prepared with spin down, measured in the $\mathbf{Z}$ basis.</p>
-                        <iframe width="66%"" height="500" scrolling="no"
-                            src="interactive/stern-gerlach-z-down.html"></iframe>
+                    <iframe width="66%"" height=" 500" scrolling="no"
+                        src="interactive/stern-gerlach-z-down.html"></iframe>
                 </section>
 
                 <section data-background="images/cms-beam.jpg">
                     <div class="overlay-style">
                         <h2>$\mathbf{X}$ basis</h2>
                         <p class="r-fit-text">
-                            $$
-                            0 = \frac{1}{\sqrt{2}}\begin{bmatrix} 1 \\ 1 \end{bmatrix} = \ket{+} \qquad \qquad
-                            1 = \frac{1}{\sqrt{2}}\begin{bmatrix} 1 \\ -1 \end{bmatrix} = \ket{-}
-                            $$
+                            $$\sigma_x=\begin{bmatrix} 0 & 1 \\ 1 & 0 \end{bmatrix} \quad \rightarrow \quad 
+                            0 = \frac{1}{\sqrt{2}}\begin{bmatrix} 1 \\ 1 \end{bmatrix} = \ket{+} \quad 
+                            1 = \frac{1}{\sqrt{2}}\begin{bmatrix} 1 \\ -1 \end{bmatrix} = \ket{-}$$
                         </p>
                     </div>
-                    <aside class="notes">
-                            In quantum computing, basis vectors map to classical bits.
-                    </aside>
                 </section>
 
                 <section data-background="images/cms-beam.jpg">
@@ -645,9 +604,9 @@ let detectorResult = M(photon) == Zero ? "detector2" | "detector1";
                 </section>
 
                 <section data-background="images/cms-beam.jpg">
-                    <p class="overlay-style">Electrons prepared with spin up or down, measured in the $\mathbf{X}$ basis.</p>
-                        <iframe width="66%"" height="500" scrolling="no"
-                            src="interactive/stern-gerlach-x.html"></iframe>
+                    <p class="overlay-style">Electrons prepared with spin up or down, measured in the $\mathbf{X}$
+                        basis.</p>
+                    <iframe width="66%"" height=" 500" scrolling="no" src="interactive/stern-gerlach-x.html"></iframe>
                 </section>
 
                 <section data-background="images/cern-alice.jpg">
@@ -915,7 +874,9 @@ let result = Measure([basis], [electron]);
 
                 <section data-background="images/cms-beam.jpg">
                     <div class="overlay-style">
-                        <p>👧🏻 👦🏼 Alice and Bob need to compare half of their resulting bits. If there are <span class="highlight">mismatches</span>, they <span class="highlight">detected</span> an attacker.</p>
+                        <p>👧🏻 👦🏼 Alice and Bob need to compare half of their resulting bits. If there are <span
+                                class="highlight">mismatches</span>, they <span class="highlight">detected</span> an
+                            attacker.</p>
                         <aside class="notes">Otherwise the remaining half of the bits make up the shared key.</aside>
                 </section>
 
@@ -951,13 +912,11 @@ let result = Measure([basis], [electron]);
 
                 <section data-background="images/atlas-nsw.jpg">
                     <p class="overlay-style">Entangled pair, measured in the $\mathbf{Z}$ basis.</p>
-                        <iframe width="62%"" height="280" scrolling="no"
-                            src="interactive/entanglement-z.html"></iframe>
+                    <iframe width="62%"" height=" 280" scrolling="no" src="interactive/entanglement-z.html"></iframe>
                 </section>
                 <section data-background="images/atlas-nsw.jpg">
                     <p class="overlay-style">Entangled pair, measured in the $\mathbf{X}$ basis.</p>
-                        <iframe width="62%"" height="280" scrolling="no"
-                            src="interactive/entanglement-x.html"></iframe>
+                    <iframe width="62%"" height=" 280" scrolling="no" src="interactive/entanglement-x.html"></iframe>
                 </section>
 
                 <section data-background="images/cern-alice.jpg">
@@ -1012,9 +971,9 @@ let agreement = result1 == result2;
                 <section data-background="images/atlas-nsw.jpg">
                     <div class="overlay-style">
                         <p>However, entangled states
-                            <h2 class="r-fit-text">cannot be decomposed</h2>
-                            <p>into a tensor
-                                product of the individual quantum states.</p>
+                        <h2 class="r-fit-text">cannot be decomposed</h2>
+                        <p>into a tensor
+                            product of the individual quantum states.</p>
                     </div>
                     <aside class="notes">
                         This tells us, at the quantum level, the smallest possible unit of reality is the composite
@@ -1152,8 +1111,8 @@ let agreement = result1 == result2;
                                         href="https://github.com/filipw/2022-dotnetday-demos">github.com/filipw/2022-dotnetday-demos</a>
                                 </li>
 
-                                <li>📚 <a
-                                        href="https://link.springer.com/book/10.1007/978-3-030-99379-5">My Quantum Computing book</a>
+                                <li>📚 <a href="https://link.springer.com/book/10.1007/978-3-030-99379-5">My Quantum
+                                        Computing book</a>
                                 </li>
 
                                 <li>📸 <a href="https://cds.cern.ch/collection/Multimedia%20%26%20Outreach?ln=en">Photos
@@ -1217,8 +1176,7 @@ let agreement = result1 == result2;
                 {
                     src: 'plugin/reveal-code-focus.js',
                     async: true,
-                    callback: function ()
-                    {
+                    callback: function () {
                         RevealCodeFocus();
                     }
                 }
