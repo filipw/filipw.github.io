@@ -56,7 +56,7 @@
                         <small style="font-size: 0.5em; line-height: 2em;">with Q# and Azure Quantum</small>
 
                     </h1>
-                    <p>
+                    <p style="margin-top: 0; padding-bottom: 20px;">
                         <small>
                             <a href="https://strathweb.com" class="roll">
                                 <span>strathweb.com</span>
@@ -147,6 +147,46 @@
                 </section>
 
                 <section data-background="images/cern-network2.jpg">
+                    <h2 class="overlay-style">Getting started with the QDK</h2>
+                    <pre>
+                <code class="cs">
+> dotnet new console -lang Q#
+The template "Console Application" was created successfully.
+
+> dotnet run
+Hello quantum world!
+                </code>
+            </pre>
+                    <p class="fragment" data-code-focus="2-3"></p>
+                    <p class="fragment" data-code-focus="5-6"></p>
+                </section>
+
+                <section data-background="images/cern-network2.jpg">
+                    <pre>
+                <code class="cs">
+operation RandomNumberGenerator() : Int {
+    use qubits = Qubit[16];
+
+    // create superposition
+    ApplyToEach(H, qubits);
+
+    // measure qubits
+    let results = MultiM(qubits);
+
+    // convert to integer
+    let randomNumber = ResultArrayAsInt(results);
+    return randomNumber;
+}  
+                </code>
+            </pre>
+                    <p class="fragment" data-code-focus="2"></p>
+                    <p class="fragment" data-code-focus="3"></p>
+                    <p class="fragment" data-code-focus="6"></p>
+                    <p class="fragment" data-code-focus="9"></p>
+                    <p class="fragment" data-code-focus="12-13"></p>
+                </section>
+
+                <section data-background="images/cern-network2.jpg">
                     <div class="column-container centered">
                         <div class="col overlay-style">
                             <ul>
@@ -177,7 +217,7 @@
                             </ul>
                         </div>
                         <div class="col inset-right">
-                            <img src="images/azure-quantum-overview.gif" />
+                            <img src="images/credits-image.jpg" />
                         </div>
                     </div>
                 </section>
@@ -205,6 +245,11 @@ Result     Frequency
                     <p class="fragment" data-code-focus="4-5"></p>
                     <p class="fragment" data-code-focus="7-8"></p>
                     <p class="fragment" data-code-focus="10-14"></p>
+                </section>
+
+                <section data-background="images/cern-network2.jpg">
+                    <h2 class="overlay-style">Azure Quantum Execution</h2>
+                    <img class="normal" src="images/azure-quantum-flow-diagram.png" />
                 </section>
             </section>
 
@@ -881,6 +926,17 @@ let agreement = result1 == result2;
                     </div>
                 </section>
 
+
+                <section data-background="images/atlas-nsw.jpg">
+                    <div class="overlay-style">
+                        <p>In $\mathbf{Z}$ basis:</p>
+                        <p>$$\ket{\psi_1} = \alpha_1\ket{0} + \beta_1\ket{1} \;\;\;
+                            \ket{\psi_2} = \alpha_2\ket{0} + \beta_2\ket{1}$$</p>
+                        <p class="r-fit-text">$$\ket{\psi_{12}} = \alpha_1\alpha_2\ket{00} + \alpha_1\beta_2\ket{01} +
+                            \beta_1\alpha_2\ket{10} + \beta_1\beta_2\ket{11}$$</p>
+                    </div>
+                </section>
+
                 <section data-background="images/atlas-nsw.jpg">
                     <div class="overlay-style">
                         <p>However, entangled states
@@ -897,10 +953,19 @@ let agreement = result1 == result2;
 
                 <section data-background="images/atlas-nsw.jpg">
                     <div class="overlay-style">
+                        <p>We <span class="highlight">cannot find</span> $\alpha_1$, $\alpha_2$, $\beta_1$ and $\beta_2$
+                            to satisfy</p>
+                        <p>$\alpha_1\alpha_2\ket{00} + \alpha_1\beta_2\ket{01} + \beta_1\alpha_2\ket{10} +
+                            \beta_1\beta_2\ket{11} = \frac{1}{\sqrt{2}}(\ket{00} + \ket{11})$</p>
+
+                    </div>
+                </section>
+
+                <section data-background="images/atlas-nsw.jpg">
+                    <div class="overlay-style">
                         <p>A single quantum state can span across multiple <span class="highlight">spatially
                                 separated</span> quantum objects, which
-                            seem to affect each other
-                            <span class="highlight">instantly</span>.
+                            seem to influence each other <span class="highlight">instantly</span>.
                         </p>
                     </div>
                 </section>
