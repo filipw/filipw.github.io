@@ -61,9 +61,6 @@
                             <a href="https://strathweb.com" class="roll">
                                 <span>strathweb.com</span>
                             </a> •
-                            <a href="https://twitter.com/filip_woj" class="roll">
-                                <span data-title="@filip_woj">@filip_woj</span>
-                            </a> •
                             <a href="https://mathstodon.xyz/filipw" class="roll">
                                 <span data-title="@filip_woj">@filipw@mathstodon.xyz</span>
                             </a> •
@@ -146,7 +143,7 @@
                     </div>
                 </section>
 
-                <section data-background="images/cern-network2.jpg">
+                <!-- <section data-background="images/cern-network2.jpg">
                     <h2 class="overlay-style">Getting started with the QDK</h2>
                     <pre>
                 <code class="cs">
@@ -184,7 +181,7 @@ operation RandomNumberGenerator() : Int {
                     <p class="fragment" data-code-focus="6"></p>
                     <p class="fragment" data-code-focus="9"></p>
                     <p class="fragment" data-code-focus="12-13"></p>
-                </section>
+                </section> -->
 
                 <section data-background="images/cern-network2.jpg">
                     <div class="column-container centered">
@@ -972,6 +969,17 @@ let agreement = result1 == result2;
 
                 <section data-background="images/atlas-nsw.jpg">
                     <div class="overlay-style">
+                        <p>We <span class="highlight">cannot find</span> $\alpha_1$, $\alpha_2$, $\beta_1$ and
+                            $\beta_2$
+                            to satisfy</p>
+                        <p>$\alpha_1\alpha_2\ket{00} + \alpha_1\beta_2\ket{01} + \beta_1\alpha_2\ket{10} +
+                            \beta_1\beta_2\ket{11} = \frac{1}{\sqrt{2}}(\ket{00} + \ket{11})$</p>
+
+                    </div>
+                </section>
+
+                <section data-background="images/atlas-nsw.jpg">
+                    <div class="overlay-style">
                         <p>However, entangled states
                         <h2 class="r-fit-text">cannot be decomposed</h2>
                         <p>into a tensor
@@ -983,17 +991,6 @@ let agreement = result1 == result2;
                         anymore.
                         The problem is they can physically be separate from each other.
                     </aside>
-                </section>
-
-                <section data-background="images/atlas-nsw.jpg">
-                    <div class="overlay-style">
-                        <p>We <span class="highlight">cannot find</span> $\alpha_1$, $\alpha_2$, $\beta_1$ and
-                            $\beta_2$
-                            to satisfy</p>
-                        <p>$\alpha_1\alpha_2\ket{00} + \alpha_1\beta_2\ket{01} + \beta_1\alpha_2\ket{10} +
-                            \beta_1\beta_2\ket{11} = \frac{1}{\sqrt{2}}(\ket{00} + \ket{11})$</p>
-
-                    </div>
                 </section>
 
                 <section data-background="images/atlas-nsw.jpg">
@@ -1141,14 +1138,6 @@ let agreement = result1 == result2;
                 }
             ]
         });
-
-        // Reveal.configure({
-        //     keyboard: {
-        //         39: 'next', // Right Arrow
-        //         37: 'prev'  // Left Arrow
-        //     }
-        // });
-
     </script>
 </body>
 
