@@ -247,10 +247,10 @@
             </section>
             <!-- end QC -->
 
-            <!-- Superposition -->
+            <!-- Theory -->
             <section>
                 <section data-background="images/alice-fit.jpg">
-                    <h1>Superposition</h1>
+                    <h1>Basic Theory</h1>
                 </section>
 
                 <section data-background="images/cms2.jpg">
@@ -468,7 +468,150 @@
                     </aside>
                 </section>
             </section>
-            <!-- end superposition -->
+            <!-- end basic theory -->
+
+            <!-- Circuits -->
+            <section>
+                <section data-background="images/compass.jpg">
+                    <h1>Circuits</h1>
+                </section>
+
+                <section data-background="images/cern-theory2.jpg">
+                    <div class="overlay-style">
+                        <h2>Classical circuits</h2>
+                        <div class="column-container centered">
+                            <div class="col">
+                                Classical computation models are expressed by <span class="highlight">logic
+                                    gates</span> (e.g. NOT, OR, XOR, AND) composed into <span
+                                    class="highlight">circuits</span>.
+                            </div>
+
+                            <div class="col">
+                                <img src="images/classic-circuit.png" />
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-background="images/cern-theory2.jpg">
+                    <div class="overlay-style">
+                        <h2>Quantum circuits</h2>
+                        <div class="column-container centered">
+                            <div class="col">
+                                Quantum computation models are realized by <span class="highlight">reversible linear
+                                    operators</span>
+                                (e.g. X, CNOT, H, Y, Z). They are also referred to as <span
+                                    class="highlight">gates</span> and composed into
+                                <span class="highlight">circuits</span>.
+                            </div>
+
+                            <div class="col">
+                                <img src="images/quantum-circuit.png" />
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-background="images/cern-theory2.jpg">
+                    <div class="overlay-style">
+                        <h2>H Gate</h2>
+                        <div class="column-container">
+                            <div class="col">
+                                <span class="highlight">Hadamard gate</span> is used to create a uniform <span
+                                    class="highlight">superposition</span>. It has fundamental importance in <span
+                                    class="highlight">quantum
+                                    parallelism</span>.
+                            </div>
+                            <div class="col">
+                                <p>$$
+                                    H=\frac{1}{\sqrt{2}}\begin{bmatrix} 1 & 1 \\ 1 &
+                                    -1 \end{bmatrix}$$
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-background="images/cern-theory2.jpg">
+                    <div class="overlay-style">
+                        <p>$$H\ket{0} = \frac{1}{\sqrt{2}}\begin{bmatrix} 1 & 1 \\ 1 &
+                            -1 \end{bmatrix}\begin{bmatrix} 1 \\ 0 \end{bmatrix} =
+                            \frac{1}{\sqrt{2}}\ket{0} + \frac{1}{\sqrt{2}}\ket{1}$$</p>
+                        <p>$$H\ket{1} = \frac{1}{\sqrt{2}}\begin{bmatrix} 1 & 1 \\ 1 &
+                            -1 \end{bmatrix}\begin{bmatrix} 0 \\ 1 \end{bmatrix} = \frac{1}{\sqrt{2}}\ket{0} -
+                            \frac{1}{\sqrt{2}}\ket{1}$$</p>
+                        <p>Upon measurement, there is a <span class="highlight">50% probability</span> of reading out a
+                            classical 0 or a classical 1.</p>
+                    </div>
+                </section>
+
+                <!-- <section data-background="images/cern-theory2.jpg">
+                    <div class="overlay-style">
+                        <h2>X Gate</h2>
+                        <div class="column-container">
+                            <div class="col">
+                                <span class="highlight">X gate</span> is one of the Pauli spin matrices. It <span
+                                    class="highlight">swaps</span> the probability amplitudes $\alpha$ and $\beta$.
+                            </div>
+                            <div class="col">
+                                <p>$$
+                                    X=\begin{bmatrix} 0 & 1 \\ 1 & 0 \end{bmatrix}$$
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-background="images/cern-theory2.jpg">
+                    <div class="overlay-style">
+                        <p>$$X(\alpha\ket{0} + \beta\ket{1}) = \begin{bmatrix} 0 &amp; 1 \\ 1 &amp; 0
+                            \end{bmatrix}(\alpha\ket{0} + \beta\ket{1}) = \beta\ket{0} + \alpha\ket{1}$$</p>
+                        <p>$$X\ket{0} = \begin{bmatrix} 0 &amp; 1 \\ 1 &amp; 0
+                            \end{bmatrix}\begin{bmatrix} 1 \\ 0 \end{bmatrix} = \ket{1}$$</p>
+                        <p>$$X\ket{1} = \begin{bmatrix} 0 &amp; 1 \\ 1 &amp; 0
+                            \end{bmatrix}\begin{bmatrix} 0 \\ 1 \end{bmatrix} = \ket{0}$$</p>
+                    </div>
+                </section> -->
+
+                <section data-background="images/cern-theory2.jpg">
+                    <div class="overlay-style">
+                        <h2>CNOT Gate</h2>
+                        <div class="column-container centered">
+                            <div class="col">
+                                <span class="highlight">CNOT gate</span> applies the XOR logic between two qubits. It
+                                can create <span class="highlight">entanglement</span>.
+                            </div>
+                            <div class="col">
+                                <p>$$
+                                    CNOT=\begin{bmatrix} 1 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 &amp; 0 \\ 0
+                                    &amp; 0 &amp; 0 &amp; 1 \\ 0 &amp; 0 &amp; 1 &amp; 0 \end{bmatrix}$$
+                                </p>
+                            </div>
+                        </div>
+                        <p>$$\ket{00}\rightarrow\ket{00} \;\;\; \ket{01}\rightarrow\ket{01} \;\;\;
+                            \ket{10}\rightarrow\ket{11} \;\;\; \ket{11}\rightarrow\ket{10}$$</p>
+                    </div>
+                </section>
+
+                <section data-background="images/cern-theory2.jpg">
+                    <div class="overlay-style">
+                        <p>When the control qubit is in placed in a superposition, a <span class="highlight">maximally
+                                entangled state</span> is created.</p>
+                        <p class="r-fit-text">
+                            $$CNOT(H\ket{0} \otimes \ket{0}) = \frac{1}{\sqrt{2}}\ket{00} + \frac{1}{\sqrt{2}}\ket{11}$$
+                        </p>
+                        <p>Upon measurement, there is a <span class="highlight">50% probability</span> of reading out a
+                            classical 00 or a classical 11.</p>
+                    </div>
+                    <aside class="notes">
+                        Superposition is "contagious", it spills into the overall system state until it collapses via
+                        the act of measurement.
+                        The results are truly random.
+                    </aside>
+                </section>
+
+            </section>
+            <!-- end circuits -->
 
             <!-- Uncertainty -->
             <section>
@@ -870,148 +1013,7 @@
             </section>
             <!-- end entanglement -->
 
-            <!-- Circuits -->
-            <section>
-                <section data-background="images/compass.jpg">
-                    <h1>Circuits</h1>
-                </section>
 
-                <section data-background="images/cern-theory2.jpg">
-                    <div class="overlay-style">
-                        <h2>Classical circuits</h2>
-                        <div class="column-container centered">
-                            <div class="col">
-                                Classical computation models are expressed by <span class="highlight">logic
-                                    gates</span> (e.g. NOT, OR, XOR, AND) composed into <span
-                                    class="highlight">circuits</span>.
-                            </div>
-
-                            <div class="col">
-                                <img src="images/classic-circuit.png" />
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <section data-background="images/cern-theory2.jpg">
-                    <div class="overlay-style">
-                        <h2>Quantum circuits</h2>
-                        <div class="column-container centered">
-                            <div class="col">
-                                Quantum computation models are realized by <span class="highlight">reversible linear
-                                    operators</span>
-                                (e.g. X, CNOT, H, Y, Z). They are also referred to as <span
-                                    class="highlight">gates</span> and composed into
-                                <span class="highlight">circuits</span>.
-                            </div>
-
-                            <div class="col">
-                                <img src="images/quantum-circuit.png" />
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <section data-background="images/cern-theory2.jpg">
-                    <div class="overlay-style">
-                        <h2>H Gate</h2>
-                        <div class="column-container">
-                            <div class="col">
-                                <span class="highlight">Hadamard gate</span> is used to create a uniform <span
-                                    class="highlight">superposition</span>. It has fundamental importance in <span
-                                    class="highlight">quantum
-                                    parallelism</span>.
-                            </div>
-                            <div class="col">
-                                <p>$$
-                                    H=\frac{1}{\sqrt{2}}\begin{bmatrix} 1 & 1 \\ 1 &
-                                    -1 \end{bmatrix}$$
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <section data-background="images/cern-theory2.jpg">
-                    <div class="overlay-style">
-                        <p>$$H\ket{0} = \frac{1}{\sqrt{2}}\begin{bmatrix} 1 & 1 \\ 1 &
-                            -1 \end{bmatrix}\begin{bmatrix} 1 \\ 0 \end{bmatrix} =
-                            \frac{1}{\sqrt{2}}\ket{0} + \frac{1}{\sqrt{2}}\ket{1}$$</p>
-                        <p>$$H\ket{1} = \frac{1}{\sqrt{2}}\begin{bmatrix} 1 & 1 \\ 1 &
-                            -1 \end{bmatrix}\begin{bmatrix} 0 \\ 1 \end{bmatrix} = \frac{1}{\sqrt{2}}\ket{0} -
-                            \frac{1}{\sqrt{2}}\ket{1}$$</p>
-                        <p>Upon measurement, there is a <span class="highlight">50% probability</span> of reading out a
-                            classical 0 or a classical 1.</p>
-                    </div>
-                </section>
-
-                <section data-background="images/cern-theory2.jpg">
-                    <div class="overlay-style">
-                        <h2>X Gate</h2>
-                        <div class="column-container">
-                            <div class="col">
-                                <span class="highlight">X gate</span> is one of the Pauli spin matrices. It <span
-                                    class="highlight">swaps</span> the probability amplitudes $\alpha$ and $\beta$.
-                            </div>
-                            <div class="col">
-                                <p>$$
-                                    X=\begin{bmatrix} 0 & 1 \\ 1 & 0 \end{bmatrix}$$
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <section data-background="images/cern-theory2.jpg">
-                    <div class="overlay-style">
-                        <p>$$X(\alpha\ket{0} + \beta\ket{1}) = \begin{bmatrix} 0 &amp; 1 \\ 1 &amp; 0
-                            \end{bmatrix}(\alpha\ket{0} + \beta\ket{1}) = \beta\ket{0} + \alpha\ket{1}$$</p>
-                        <p>$$X\ket{0} = \begin{bmatrix} 0 &amp; 1 \\ 1 &amp; 0
-                            \end{bmatrix}\begin{bmatrix} 1 \\ 0 \end{bmatrix} = \ket{1}$$</p>
-                        <p>$$X\ket{1} = \begin{bmatrix} 0 &amp; 1 \\ 1 &amp; 0
-                            \end{bmatrix}\begin{bmatrix} 0 \\ 1 \end{bmatrix} = \ket{0}$$</p>
-                    </div>
-                </section>
-
-                <section data-background="images/cern-theory2.jpg">
-                    <div class="overlay-style">
-                        <h2>CNOT Gate</h2>
-                        <div class="column-container centered">
-                            <div class="col">
-                                <span class="highlight">CNOT gate</span> applies the XOR logic between two qubits. It
-                                can create <span class="highlight">entanglement</span>.
-                            </div>
-                            <div class="col">
-                                <p>$$
-                                    CNOT=\begin{bmatrix} 1 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 &amp; 0 \\ 0
-                                    &amp; 0 &amp; 0 &amp; 1 \\ 0 &amp; 0 &amp; 1 &amp; 0 \end{bmatrix}$$
-                                </p>
-                            </div>
-                        </div>
-                        <p>$$\ket{00}\rightarrow\ket{00} \;\;\; \ket{01}\rightarrow\ket{01} \;\;\;
-                            \ket{10}\rightarrow\ket{11} \;\;\; \ket{11}\rightarrow\ket{10}$$</p>
-                    </div>
-                </section>
-
-                <section data-background="images/cern-theory2.jpg">
-                    <div class="overlay-style">
-                        <p>When the control qubit is in placed in a superposition, a <span class="highlight">maximally
-                                entangled state</span> is created.</p>
-                        <p class="r-fit-text">
-                            $$CNOT(H\ket{0} \otimes \ket{0}) = \frac{1}{\sqrt{2}}\ket{00} + \frac{1}{\sqrt{2}}\ket{11}$$
-                        </p>
-                        <p>Upon measurement, there is a <span class="highlight">50% probability</span> of reading out a
-                            classical 00 or a classical 11.</p>
-                    </div>
-                    <aside class="notes">
-                        Superposition is "contagious", it spills into the overall system state until it collapses via
-                        the act of measurement.
-                        The results are truly random.
-                    </aside>
-                </section>
-
-            </section>
-            <!-- end circuits -->
 
             <!-- Q# -->
             <section>
