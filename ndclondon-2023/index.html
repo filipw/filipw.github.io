@@ -16,8 +16,8 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/default.min.css">
     <link rel="stylesheet" href="css/reveal.css">
     <link rel="stylesheet" href="css/theme/simple.css" id="theme">
-    <link rel="stylesheet" href="css/custom.css" />
     <link rel="stylesheet" href="css/monokai_sublime.css" />
+    <link rel="stylesheet" href="css/custom.css" />
     <script src="fsharp.formatting/styles/tips.js" type="text/javascript"></script>
     <!-- For syntax highlighting -->
     <link rel="stylesheet" href="lib/css/zenburn.css">
@@ -47,7 +47,7 @@
         <!-- Any section element inside of this container is displayed as a slide -->
         <div class="slides">
 
-            <section data-background="images/D810_NEF_3483.jpg">
+            <section data-background="images/NaturePhysics_cover_notracks_bleed_CMYK.jpeg">
 
                 <div class="col overlay-style" style="padding: 0 !important">
 
@@ -81,23 +81,20 @@
                 <img src="images/sonova.png" style="min-height: auto" />
             </section>
 
-            <section data-background="images/feynman2.jpg">
+            <section data-background="images/heisenberg.png" data-state="bg-top-left">
                 <div class="column-container">
 
                     <div class="col">
                     </div>
 
                     <div class="col overlay-style">
-                        <blockquote>I think I can safely say that nobody understands quantum mechanics
+                        <blockquote>Can Nature possibly be so absurd?
                         </blockquote>
                         <p>
-                        <footer>- <em>Richard Feynman</em></footer>
+                        <footer>- <em>Werner Heisenberg</em></footer>
                         </p>
                     </div>
                 </div>
-                <aside class="notes">
-                    Feynman got the 1965 Nobel prize for his work on quantum electrodynamics.
-                </aside>
             </section>
 
             <!-- QC -->
@@ -127,15 +124,14 @@
 
                 <section data-background="images/quantum-computer.jpg">
                     <div class="column-container">
-
-                        <div class="col">
+                        <div class="column-container">
+                            <div class="col">
+                            </div>
+                            <div class="col overlay-style">
+                                <h3>Quantum computer</h3>
+                                <p>a device capable of performing computation using the principles of quantum information theory</p>
+                            </div>
                         </div>
-
-                        <div class="col overlay-style">
-                            <blockquote><strong>Quantum computer</strong>: a device capable of performing computation using the principles of quantum information theory. 
-                            </blockquote>
-                        </div>
-
                     </div>
                 </section>
 
@@ -148,7 +144,7 @@
                                     <li class="fragment">📝
                                         David Deutsch, 1985
                                         <br />
-                                        <small>first general, fully quantum, model for computation</small>
+                                        <small>first universal quantum model for computation</small>
                                     </li>
 
                                     <li class="fragment">💯
@@ -166,10 +162,10 @@
                                         <small>first experimental 2-qubit quantum hardware</small>
                                     </li>
 
-                                    <li class="fragment">👑
-                                        Google 2019 / USTC 2020
+                                    <li class="fragment">🌤️
+                                        IBM 2016
                                         <br />
-                                        <small>first cases of quantum supremacy</small>
+                                        <small>first quantum computing cloud platform</small>
                                     </li>
                                 </ul>
                             </div>
@@ -200,6 +196,17 @@
                         <div class="col overlay-style">
                             <h3>Energy</h3>
                             <p>problem optimization, energy research, simulation</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-background="images/security.jpg">
+                    <div class="column-container">
+                        <div class="col">
+                        </div>
+                        <div class="col overlay-style">
+                            <h3>Security</h3>
+                            <p>secure communication guaranteed by the laws of nature</p>
                         </div>
                     </div>
                 </section>
@@ -263,18 +270,44 @@
 
             <!-- Theory -->
             <section>
-                <section data-background="images/alice-fit.jpg">
+                <section data-background="images/cern-theory.jpg">
                     <h1>Basic Theory</h1>
                 </section>
 
-                <section data-background="images/cms2.jpg">
+                <section data-background="images/cern-theory3.jpg">
+                    <h2 class="overlay-style">Sample Q# program</h2>
+                    <pre>
+                <code class="cs">
+@EntryPoint()
+operation Run() : Int {
+    use qubits = Qubit[8];
+    ApplyToEach(H, qubits);
+
+    // create a QPU register
+    let register = LittleEndian(qubits);
+
+    // measure the entire register to retrieve the integer
+    let randomNumber = MeasureInteger(register);
+
+    return randomNumber;
+}
+                </code>
+            </pre>
+                    <p class="fragment" data-code-focus="3"></p>
+                    <p class="fragment" data-code-focus="4"></p>
+                    <p class="fragment" data-code-focus="5"></p>
+                    <p class="fragment" data-code-focus="7-8"></p>
+                    <p class="fragment" data-code-focus="10-11"></p>
+                </section>
+
+                <section data-background="images/cern-theory2.jpg">
                     <div class="overlay-style">
                         <p>In classical computing a bit can have only two discrete values</p>
                         <h2 class="r-fit-text">0 or 1</h2>
                     </div>
                 </section>
 
-                <section data-background="images/cms2.jpg">
+                <section data-background="images/cern-theory2.jpg">
                     <div class="column-container centered overlay-style">
 
                         <div class="col">
@@ -293,7 +326,7 @@
                     </div>
                 </section>
 
-                <section data-background="images/cms2.jpg">
+                <section data-background="images/cern-theory2.jpg">
 
                     <div class="column-container centered overlay-style">
 
@@ -312,14 +345,14 @@
                     </div>
                 </section>
 
-                <section data-background="images/cms2.jpg">
+                <section data-background="images/cern-theory2.jpg">
                     <div class="overlay-style">
                         <p>A quantum state vector for $n$ qubits has</p>
                         <h2 class="r-fit-text">$2^n$ dimensions</h2>
                     </div>
                 </section>
 
-                <section data-background="images/cms2.jpg">
+                <section data-background="images/cern-theory2.jpg">
                     <div class="overlay-style">
                         <p>It's been estimated that to simulate a molecule of <span class="highlight">penicillin</span> we need</p>
                         <h2 class="r-fit-text">$2^{286} \approx 10^{86}$</h2>
@@ -327,7 +360,7 @@
                     </div>
                 </section>
 
-                <section data-background="images/cms2.jpg">
+                <section data-background="images/cern-theory2.jpg">
                     <div class="overlay-style">
                         <p>The same can be done on a </p>
                         <h2 class="r-fit-text">286 qubit</h2>
@@ -360,7 +393,7 @@
                     </aside>
                 </section> -->
 
-                <section data-background="images/cms2.jpg">
+                <section data-background="images/cern-theory2.jpg">
                     <div class="column-container centered overlay-style">
                         <div class="col">
                             <h2>$\mathbf{Z}$ basis</h2>
@@ -381,7 +414,7 @@
                         </aside>
                 </section>
 
-                <section data-background="images/cms2.jpg">
+                <section data-background="images/cern-theory2.jpg">
                     <div class="overlay-style">
                         <p>The choice of basis is a way to</p>
                         <h2 class="r-fit-text">encode and decode</h2>
@@ -389,7 +422,7 @@
                     </div>
                 </section>
 
-                <section data-background="images/cms2.jpg">
+                <section data-background="images/cern-theory2.jpg">
                     <div class="overlay-style">
                         <p>Any quantum state can be expressed as a <span class="highlight">linear combination</span> of
                             the $\mathbf{Z}$ basis states</p>
@@ -398,7 +431,7 @@
                     </div>
                 </section>
 
-                <section data-background="images/cms2.jpg">
+                <section data-background="images/cern-theory2.jpg">
                     <div class="column-container centered">
                         <div class="col overlay-style">
                             <h2 class="r-fit-text">$$\ket{\psi} = \alpha\ket{0} + \beta\ket{1}$$</h2>
@@ -412,50 +445,7 @@
                     </div>
                 </section>
 
-                <section data-background="images/cms2.jpg">
-                    <div class="overlay-style">
-                        <p>Quantum state is not directly observable. It must be</p>
-                        <h2 class="r-fit-text">measured in a specific basis</h2>
-                    </div>
-                    <aside class="notes">
-                        This produces a classical 0 or 1.
-                    </aside>
-                </section>
-
-                <section data-background="images/cms2.jpg">
-                    <div class="overlay-style">
-                        <p>Upon measurement, quantum superposition state <span class="highlight">collapses</span> to one of the
-                            observable states</p>
-                        <h2 class="r-fit-text">outcome is probabilistic</h2>
-                    </div>
-                    <aside class="notes">
-                        It is a fundamental quantum doctrine that a measurement does not reveal a pre-existing value of
-                        the measured property. On the contrary, the outcome of a measurement is brought into being by
-                        the act of measurement itself. - David Mermin
-                    </aside>
-                </section>
-
-                <section data-background="images/cms2.jpg">
-                    <div class="column-container centered overlay-style">
-                        <div class="col inset-left">
-                            We refer to $\alpha$ and $\beta$ as <span class="highlight">probability amplitudes</span>.
-                            They can be converted to probabilities using the <span class="highlight">Born rule</span>.
-                        </div>
-
-                        <div class="col inset-right">
-                            <p class="r-fit-text">
-                                $$P(0) = P(\ket{0}) = |\alpha|^2$$
-                                $$P(1) = P(\ket{1}) = |\beta|^2$$
-                            </p>
-                        </div>
-                    </div>
-                    <aside class="notes">
-                        Born rule is not derived, it is an axiom in quantum mechanics, confirmed experimentally, or
-                        rather never violated by any experiment.
-                    </aside>
-                </section>
-
-                <section data-background="images/cms2.jpg">
+                <section data-background="images/cern-theory2.jpg">
                     <div class="overlay-style">
                         <p>The strength of quantum computers is that they are able to take algorithmic advantage of <span
                                 class="highlight">superposition</span>. This is called</p>
@@ -480,6 +470,67 @@
                     <aside class="notes">
                         For example, instead of evaluating a function many times with all possible inputs, we can
                         evaluate once with superposition of inputs.
+                    </aside>
+                </section>
+
+                <section data-background="images/cern-theory2.jpg">
+                    <div class="overlay-style">
+                        <p>Quantum state is not directly observable. It must be</p>
+                        <h2 class="r-fit-text">measured in a specific basis</h2>
+                    </div>
+                    <aside class="notes">
+                        This produces a classical 0 or 1.
+                    </aside>
+                </section>
+
+                <section data-background="images/cern-theory2.jpg">
+                    <div class="overlay-style">
+                        <p>Upon measurement, quantum superposition state <span class="highlight">collapses</span> to one of the
+                            observable states</p>
+                        <h2 class="r-fit-text">outcome is probabilistic</h2>
+                    </div>
+                    <aside class="notes">
+                        It is a fundamental quantum doctrine that a measurement does not reveal a pre-existing value of
+                        the measured property. On the contrary, the outcome of a measurement is brought into being by
+                        the act of measurement itself. - David Mermin
+                    </aside>
+                </section>
+
+                <section data-background="images/cern-theory2.jpg">
+                    <div class="column-container centered overlay-style">
+                        <div class="col inset-left">
+                            We refer to $\alpha$ and $\beta$ as <span class="highlight">probability amplitudes</span>.
+                            They can be converted to probabilities using the <span class="highlight">Born rule</span>.
+                        </div>
+
+                        <div class="col inset-right">
+                            <p class="r-fit-text">
+                                $$P(0) = P(\ket{0}) = |\alpha|^2$$
+                                $$P(1) = P(\ket{1}) = |\beta|^2$$
+                            </p>
+                        </div>
+                    </div>
+                    <aside class="notes">
+                        Born rule is not derived, it is an axiom in quantum mechanics, confirmed experimentally, or
+                        rather never violated by any experiment.
+                    </aside>
+                </section>
+
+                <section data-background="images/einstein.jpg">
+                    <div class="column-container">
+                        <div class="col overlay-style">
+                            <blockquote>I am convinced that God does not play dice
+                            </blockquote>
+                            <p>
+                            <footer>- <em>Albert Einstein</em></footer>
+                            </p>
+                        </div>
+
+                        <div class="col">
+                        </div>
+                    </div>
+                    <aside class="notes">
+                        Apparently, Niels Bohr responded "Einstein, don't tell God what to do."
                     </aside>
                 </section>
             </section>
@@ -655,54 +706,20 @@
 
                 <section data-background="images/atlas-nsw.jpg">
                     <div class="overlay-style">
-                        <p>$$\ket{\psi_1} = \alpha_1\ket{0} + \beta_1\ket{1} \;\;\;\
+                        <p>In $\mathbf{Z}$ basis:</p>
+                        <p>$$\ket{\psi_1} = \alpha_1\ket{0} + \beta_1\ket{1} \;\;\;
                             \ket{\psi_2} = \alpha_2\ket{0} + \beta_2\ket{1}$$</p>
-                            <p>⬇️</p>
-                        <p class="r-fit-text">$$\ket{\psi_1} \otimes \ket{\psi_2}  = \alpha_1\alpha_2\ket{00} + \alpha_1\beta_2\ket{01} +
+                        <p class="r-fit-text">$$\ket{\psi_{12}} = \alpha_1\alpha_2\ket{00} + \alpha_1\beta_2\ket{01}
+                            +
                             \beta_1\alpha_2\ket{10} + \beta_1\beta_2\ket{11}$$</p>
                     </div>
                 </section>
 
                 <!-- <section data-background="images/atlas-nsw.jpg">
                     <div class="overlay-style">
-                        <p>$$\ket{\psi_1} = \alpha_1\ket{0} + \beta_1\ket{1} \;\;\;\
-                            \ket{\psi_2} = \alpha_2\ket{0} + \beta_2\ket{1}$$</p>
-                            <p>⬇️</p>
-                        <p class="r-fit-text">$$\ket{\psi_1} \otimes \ket{\psi_2}  = \alpha_1\alpha_2\ket{00} + \alpha_1\beta_2\ket{01} +
-                            \beta_1\alpha_2\ket{10} + \beta_1\beta_2\ket{11}$$</p>
-                    </div>
-                </section>
-
-                <section data-background="images/atlas-nsw.jpg">
-                    <div class="overlay-style">
-                        <p>Quantum state of a qubit system of size $n$ is described by <span class="highlight">$2^n$
-                                amplitudes</span>. For example,
-                            for a 260 qubit computer:</p>
-                        <h2 class="r-fit-text">$2^{260} \approx 10^{80}$</h2>
-                        <p> which roughly equals of atoms in observable universe</p>
-                    </div>
-                    <aside class="notes">
-                        The way we can think of it: whatever algorithm you run on a quantum computer, the answer is
-                        already there, and the art of writing a quantum algorithm is to amplify the probability of the
-                        correct result, and reduce the probability of the wrong result.
-                    </aside>
-                </section> -->
-
-                <!-- <section data-background="images/cern-theory2.jpg">
-                    <div class="overlay-style">
-                        <p>However we can only read a <span class="highlight">single</span> classical bit out of every qubit, meaning that for a 256
-                            qubit computer we can only extract:</p>
-                        <h2 class="r-fit-text">256 bits = 32 bytes</h2>
-                    </div>
-                    <aside class="notes">
-                        This means that, at least initially, algorithms have resticted input and output. But you know what is like that? Nature, e.g. representing 95 energy states of an atom
-                    </aside>
-                </section> -->
-                <section data-background="images/atlas-nsw.jpg">
-                    <div class="overlay-style">
                         <p>This works well for independent qubits but breaks down for <span class="highlight">entangled
                                 states</span>.</p>
-                </section>
+                </section> -->
 
                 <section data-background="images/atlas-nsw.jpg">
                     <div class="overlay-style">
@@ -716,12 +733,15 @@
 
                 <section data-background="images/atlas-nsw.jpg">
                     <div class="overlay-style">
-                        <p>We <span class="highlight">cannot decompose</span> an entangled quantum state into a tensor
+                        <p>Entangled states
+                        <h2 class="r-fit-text">cannot be decomposed</h2>
+                        <p>into a tensor
                             product of the individual quantum states.</p>
                     </div>
                     <aside class="notes">
                         This tells us, at the quantum level, the smallest possible unit of reality is the composite
-                        system consisting of those two entangled objects. They cannot be treated as independent anymore.
+                        system consisting of those two entangled objects. They cannot be treated as independent
+                        anymore.
                         The problem is they can physically be separate from each other.
                     </aside>
                 </section>
@@ -730,18 +750,27 @@
                     <div class="overlay-style">
                         <p>A single quantum state can span across multiple <span class="highlight">spatially
                                 separated</span> quantum objects, which
-                            seem to affect each other
-                            <span class="highlight">instantly</span>.
+                            seem to influence each other <span class="highlight">instantly</span>.
                         </p>
-                        <p>
-                            Einstein called it
-                        </p>
-                        <h3 class="r-fit-text">
-                            "spooky action at a distance"
-                        </h3>
+                    </div>
+                </section>
+
+                <section data-background="images/einstein.jpg">
+                    <div class="column-container">
+                        <div class="col overlay-style">
+                            <blockquote>Spooky action at a distance
+                            </blockquote>
+                            <p>
+                            <footer>- <em>Albert Einstein</em></footer>
+                            </p>
+                        </div>
+
+                        <div class="col">
+                        </div>
                     </div>
                     <aside class="notes">
-                        There is a theorem + an experiment called Bell's test (Bell's inequalities) that prove that this
+                        There is a theorem + an experiment called Bell's test (Bell's inequalities) that prove that
+                        this
                         cannot be explained with classical local physics.
                     </aside>
                 </section>
@@ -750,6 +779,7 @@
                     <div class="overlay-style">
                         <p> We call this</p>
                         <h2 class="r-fit-text">non-locality</h2>
+                        <p>It is based on the Bell's theorem from 1964.</p>
                 </section>
 
                 <section data-background="images/atlas-nsw.jpg">
@@ -866,24 +896,6 @@
                     <aside class="notes">
                         For sequential measurements e.g. Z-X-Z, the previous results in Z get destroyed by X
                         measurement!
-                    </aside>
-                </section>
-
-                <section data-background="images/einstein.jpg">
-                    <div class="column-container">
-                        <div class="col overlay-style">
-                            <blockquote>I am convinced that God does not play dice
-                            </blockquote>
-                            <p>
-                            <footer>- <em>Albert Einstein</em></footer>
-                            </p>
-                        </div>
-
-                        <div class="col">
-                        </div>
-                    </div>
-                    <aside class="notes">
-                        Apparently, Niels Bohr responded "Einstein, don't tell God what to do."
                     </aside>
                 </section>
 

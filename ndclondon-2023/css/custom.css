@@ -319,6 +319,7 @@ span.highlight/*, span.mjx-math*/ {
   background: #000;
   max-height: none;
   padding: 1% 2%;
+  background: rgba(0, 0, 0, 0.75);
 }
 
 .reveal .overlay-style pre code {
