@@ -314,9 +314,8 @@
 
                 <section data-background="images/cms2.jpg">
                     <div class="overlay-style">
-                        <p>A quantum state of a system of size $n$ is described by</p>
-                        <h2 class="r-fit-text">$2^n$</h2>
-                        <p>complex numbers.</p>
+                        <p>A quantum state vector for $n$ qubits has</p>
+                        <h2 class="r-fit-text">$2^n$ dimensions</h2>
                     </div>
                 </section>
 
@@ -394,15 +393,17 @@
                     <div class="overlay-style">
                         <p>Any quantum state can be expressed as a <span class="highlight">linear combination</span> of
                             the $\mathbf{Z}$ basis states</p>
-                        <h2 class="r-fit-text">$$\ket{\psi} = \alpha\ket{0} + \beta\ket{1}$$</h2>
+                        <!-- <h2 class="r-fit-text">$$\ket{\psi} = \alpha\ket{0} + \beta\ket{1}$$</h2> -->
+                        <h2 class="r-fit-text">$$\begin{bmatrix} \alpha \cr \beta \end{bmatrix} = \alpha\begin{bmatrix} 1 \cr 0 \end{bmatrix} + \beta\begin{bmatrix} 0 \cr 1 \end{bmatrix}$$</h2>
                     </div>
                 </section>
 
                 <section data-background="images/cms2.jpg">
                     <div class="column-container centered">
                         <div class="col overlay-style">
-                            <p>If both $\alpha$ and $\beta$ are non-zero, the system is in a</p>
-                            <h2 class="r-fit-text">superposition</h2>
+                            <h2 class="r-fit-text">$$\ket{\psi} = \alpha\ket{0} + \beta\ket{1}$$</h2>
+                            <p>If both $\alpha$ and $\beta$ are non-zero, the system is in a <span
+                                    class="highlight">superposition</span>.</p>
                         </div>
                         <div class="col inset-right">
                             <img src="images/bloch-superposition.jpeg" />
@@ -587,7 +588,16 @@
                     </div>
                 </section> -->
 
-                <section data-background="images/cern-theory2.jpg">
+            </section>
+            <!-- end circuits -->
+
+            <!-- Entanglement -->
+            <section>
+                <section data-background="images/compass.jpg">
+                    <h1>Entanglement</h1>
+                </section>
+
+                <section data-background="images/atlas-nsw.jpg">
                     <div class="overlay-style">
                         <h2>CNOT Gate</h2>
                         <div class="column-container centered">
@@ -607,7 +617,7 @@
                     </div>
                 </section>
 
-                <section data-background="images/cern-theory2.jpg">
+                <section data-background="images/atlas-nsw.jpg">
                     <div class="overlay-style">
                         <p>When the control qubit is in placed in a superposition, a <span class="highlight">maximally
                                 entangled state</span> is created.</p>
@@ -624,16 +634,7 @@
                     </aside>
                 </section>
 
-            </section>
-            <!-- end circuits -->
-
-            <!-- Entanglement -->
-            <section>
-                <section data-background="images/compass.jpg">
-                    <h1>Entanglement</h1>
-                </section>
-
-                <section data-background="images/atlas-nsw.jpg">
+                <!-- <section data-background="images/atlas-nsw.jpg">
 
                     <div class="column-container centered overlay-style">
 
@@ -649,6 +650,16 @@
                                 \begin{bmatrix}a_1a_2 \\ a_1b_2 \\ b_1a_2 \\ b_1b_2 \end{bmatrix}
                                 $$</p>
                         </div>
+                    </div>
+                </section> -->
+
+                <section data-background="images/atlas-nsw.jpg">
+                    <div class="overlay-style">
+                        <p>$$\ket{\psi_1} = \alpha_1\ket{0} + \beta_1\ket{1} \;\;\;\
+                            \ket{\psi_2} = \alpha_2\ket{0} + \beta_2\ket{1}$$</p>
+                            <p>⬇️</p>
+                        <p class="r-fit-text">$$\ket{\psi_1} \otimes \ket{\psi_2}  = \alpha_1\alpha_2\ket{00} + \alpha_1\beta_2\ket{01} +
+                            \beta_1\alpha_2\ket{10} + \beta_1\beta_2\ket{11}$$</p>
                     </div>
                 </section>
 
