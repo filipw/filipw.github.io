@@ -440,7 +440,6 @@ operation Run() : Int {
                         </div>
                         <div class="col inset-right">
                             <img src="images/bloch-superposition.jpeg" />
-                            <!-- <img src="images/arbitrary-state.png" /> -->
                         </div>
                     </div>
                 </section>
@@ -639,6 +638,97 @@ operation Run() : Int {
                     </div>
                 </section> -->
 
+                <!-- 
+                <section data-background="images/cern-alice.jpg">
+                    <div class="overlay-style">
+                        <h2>Deutsch's problem</h2>
+
+                        <p>
+                            Given an unknown (blackbox) function that takes a single bit as an input, and produces a
+                            single
+                            bit as an ouput $f : \{0,1\} \rightarrow \{0,1\}$, determine if the function is <span
+                                class="highlight">constant</span> or <span class="highlight">balanced</span>.
+                        </p>
+                </section>
+
+                <section data-background="images/cern-alice.jpg">
+                    <div class="overlay-style">
+                        <h2>Deutsch's problem - functions</h2>
+
+                        <div class="column-container centered">
+                            <div class="col">
+                                <ul>
+                                    <li>$f_0$ is constant $0$</li>
+                                    <li>$f_1$ is constant $1$</li>
+                                    <li>$f_2$ is "balanced same"</li>
+                                    <li>$f_3$ is "balanced flipped"</li>
+                                </ul>
+                            </div>
+                            <div class="col">
+                                <ul>
+                                    <li>$f(0) = f(1) = 0$</li>
+                                    <li>$f(0) = f(1) = 1$</li>
+                                    <li>$f(0) = 0, f(1) = 1$</li>
+                                    <li>$f(0) = 1, f(1) = 0$</li>
+                                </ul>
+                            </div>
+                </section>
+
+                <section data-background="images/cern-alice.jpg">
+                    <div class="column-container centered">
+                        <div class="col overlay-style">
+                            <p>Classically, <span class="highlight">two</span> function evaluations are needed. After
+                                the first execution, we still cannot say if the function is balanced or constant.</p>
+                        </div>
+                        <div class="col inset">
+                            <img src="images/deutsch-classical.png" />
+                        </div>
+                    </div>
+                </section>
+
+                <section data-background="images/cern-alice.jpg">
+                    <div class="column-container centered">
+                        <div class="col overlay-style">
+                            <p>On a quantum computer, the answer can be obtained in just <span
+                                    class="highlight">one</span> oracle call.</p>
+                        </div>
+                        <div class="col inset">
+                            <img src="images/deutsch.png" />
+                        </div>
+                    </div>
+                </section>
+
+                <section data-background="images/quantumcomputationandinformation.jpg" data-state="bg-auto-width-08">
+                    <div class="column-container">
+                        <div class="col overlay-style">
+                            <blockquote>Heuristically, and at the risk of over-simplifying, quantum parallelism allows
+                                quantum computers to evaluate a function $f(x)$ for many different values of x
+                                simultaneously.
+                            </blockquote>
+                            <p>
+                            <footer>- <em>Nielsen and Chuang</em></footer>
+                            </p>
+                        </div>
+                        <div class="col">
+                        </div>
+                    </div>
+                </section>
+
+                <section data-background="images/cern-alice.jpg">
+                    <div class="overlay-style">
+                        <p>The linear algebra for the circuit produces</p>
+                        <h3 class="r-fit-text">
+                            $$\ket{\Psi} =
+                            \begin{cases}
+                            \pm\ket{0}\frac{1}{\sqrt{2}}(\ket{0} - \ket{1}) \; \text{if f(0) = f(1)} \\
+                            \pm\ket{1}\frac{1}{\sqrt{2}}(\ket{0} - \ket{1}) \; \text{if f(0)} \neq \text{f(1)} \\
+                            \end{cases}
+                            $$
+                        </h3>
+                        <p>This solves the problem in a single shot.</p>
+                    </div>
+                </section> -->
+
             </section>
             <!-- end circuits -->
 
@@ -684,25 +774,6 @@ operation Run() : Int {
                         The results are truly random.
                     </aside>
                 </section>
-
-                <!-- <section data-background="images/atlas-nsw.jpg">
-
-                    <div class="column-container centered overlay-style">
-
-                        <div class="col">
-                            <p>To describe the state of a multi-qubit system, we use a <span class="highlight">tensor
-                                    product</span> of the individual states.</p>
-                        </div>
-
-                        <div class="col">
-                            <p>$$
-                                \begin{bmatrix}a_1 \\ b_1 \end{bmatrix} \otimes \begin{bmatrix}a_2 \\ b_2
-                                \end{bmatrix} =
-                                \begin{bmatrix}a_1a_2 \\ a_1b_2 \\ b_1a_2 \\ b_1b_2 \end{bmatrix}
-                                $$</p>
-                        </div>
-                    </div>
-                </section> -->
 
                 <section data-background="images/atlas-nsw.jpg">
                     <div class="overlay-style">
@@ -789,6 +860,29 @@ operation Run() : Int {
                     </div>
                     <aside class="notes">
                     </aside>
+                </section>
+
+                <section data-background="images/atlas-nsw.jpg">
+                    <h2 class="overlay-style">Q# Entanglement</h2>
+                    <pre>
+                <code class="cs">
+operation EntanglementExample() : Unit {
+    use (control, target) = (Qubit(), Qubit());
+
+    H(control);
+    CNOT(control, target);
+    
+    let resultControl = MResetZ(control) == One ? "1" | "0";
+    let resultTarget = MResetZ(target) == One ? "1" | "0";
+
+    Message($"Result: |{resultControl}{resultTarget}>");
+}
+                </code>
+            </pre>
+                    <p class="fragment" data-code-focus="3"></p>
+                    <p class="fragment" data-code-focus="5-6"></p>
+                    <p class="fragment" data-code-focus="8-9"></p>
+                    <p class="fragment" data-code-focus="11"></p>
                 </section>
 
             </section>
@@ -1023,7 +1117,7 @@ operation Run() : Int {
                                 <td>❌</td>
                             </tr>
                         </table>
-                        <p class="fragment">Shared key: <span class="highlight">0 1 0 1 0 1 1 1</span></p>
+                        <p class="fragment">Shared key: <span class="highlight">1 0 1 0 1 0 1 1 1</span></p>
                     </div>
                 </section>
 
@@ -1031,311 +1125,21 @@ operation Run() : Int {
                     <div class="overlay-style">
                         <p>Because arbitrary quantum states <span class="highlight">cannot be cloned</span>, an
                             attacker, 🦹‍♀️ Eve, would need to measure the qubits to steal information.</p>
-                        <p>She <span class="highlight">must guess</span> between $\mathbf{Z}$ and $\mathbf{X}$ bases.
+                        <p>She <span class="highlight">must guess</span> between $\mathbf{Z}$ and $\mathbf{X}$
+                            bases.
                         </p>
                 </section>
 
                 <section data-background="images/cms-beam.jpg">
                     <div class="overlay-style">
-                        <p>👧🏻 👦🏼 Alice and Bob should compare half of their resulting bits to perform an <span
-                                class="highlight">eavesdropper check</span>.</p>
-                </section>
-
-                <section data-background="images/cms-beam.jpg">
-                    <div class="overlay-style">
-                        <p>If 👧🏻 👦🏼 Alice and Bob find <span class="highlight">mismatches</span> between the bits
-                            for which their bases agreed, they <span class="highlight">detected</span> an attacker.</p>
-                        <aside class="notes">Otherwise the remaining half of the bits make up the shared key.</aside>
+                        <p>👧🏻 👦🏼 Alice and Bob need to compare half of their resulting bits. If there are <span
+                                class="highlight">mismatches</span>, they <span class="highlight">detected</span> an
+                            attacker.</p>
+                        <aside class="notes">Otherwise the remaining half of the bits make up the shared key.
+                        </aside>
                 </section>
             </section>
             <!-- end uncertainty -->
-
-            <!-- Q# -->
-            <section>
-                <section data-background="images/cern-dc.jpg">
-                    <h1>Q# and QDK</h1>
-                </section>
-
-                <section data-background="images/cern-alice.jpg">
-                    <div class="column-container centered">
-                        <div class="col overlay-style">
-                            <ul>
-                                <li class="fragment">💻
-                                    Q# programming language
-                                    <br />
-                                    <small>Standalone, C# and Python interop</small>
-                                </li>
-
-                                <li class="fragment">📦
-                                    .NET ecosystem integration
-                                    <br />
-                                    <small>VS Code and Visual Studio support, Nuget, csproj</small>
-                                </li>
-
-                                <li class="fragment">📚
-                                    Rich family of libraries
-                                    <br />
-                                    <small>Math, machine learning, chemistry</small>
-                                </li>
-
-                                <li class="fragment">🔬
-                                    Simulator + Azure Quantum
-                                    <br />
-                                    <small>Simulate locally, run on hardware in Azure</small>
-                                </li>
-
-                            </ul>
-                        </div>
-                        <div class="col inset-right">
-                            <img src="images/QDK3.png" />
-                        </div>
-                    </div>
-                </section>
-
-                <section data-background="images/cern-alice.jpg">
-                    <div class="column-container centered">
-                        <div class="col">
-                            <img src="images/repo1.png" />
-                        </div>
-                        <div class="col">
-                            <img src="images/repo2.png" />
-                        </div>
-                    </div>
-                    <div class="overlay-style">Q# and QDK are entirely <span class="highlight">open source</span>.</div>
-                </section>
-
-                <section data-background="images/cern-alice.jpg">
-                    <h2 class="overlay-style">Getting started with the QDK</h2>
-                    <pre>
-                <code class="cs">
-> dotnet new console -lang Q#
-The template "Console Application" was created successfully.
-> dotnet run
-Hello quantum world!
-                </code>
-            </pre>
-                    <p class="fragment" data-code-focus="2-3"></p>
-                    <p class="fragment" data-code-focus="4-5"></p>
-                </section>
-
-                <section data-background="images/cern-alice.jpg">
-                    <h2 class="overlay-style">Simple Q# program</h2>
-                    <pre>
-                <code class="cs">
-@EntryPoint()
-operation Start() : Int {
-    use qubits = Qubit[8];
-    ApplyToEach(H, qubits);
-
-    // create a QPU register
-    let register = LittleEndian(qubits);
-
-    // measure the entire register to retrieve the integer
-    let randomNumber = MeasureInteger(register);
-    
-    return randomNumber;
-}
-                </code>
-            </pre>
-                    <p class="fragment" data-code-focus="3"></p>
-                    <p class="fragment" data-code-focus="4"></p>
-                    <p class="fragment" data-code-focus="5"></p>
-                    <p class="fragment" data-code-focus="7-8"></p>
-                    <p class="fragment" data-code-focus="10-11"></p>
-                </section>
-
-                <section data-background="images/cern-alice.jpg">
-                    <h2 class="overlay-style">Q# Entanglement</h2>
-                    <pre>
-                <code class="cs">
-operation EntanglementExample() : Unit {
-    use (control, target) = (Qubit(), Qubit());
-
-    H(control);
-    CNOT(control, target);
-    
-    let resultControl = MResetZ(control) == One ? "1" | "0";
-    let resultTarget = MResetZ(target) == One ? "1" | "0";
-
-    Message($"Result: |{resultControl}{resultTarget}>");
-}
-                </code>
-            </pre>
-                    <p class="fragment" data-code-focus="3"></p>
-                    <p class="fragment" data-code-focus="5-6"></p>
-                    <p class="fragment" data-code-focus="8-9"></p>
-                    <p class="fragment" data-code-focus="11"></p>
-                </section>
-                <!-- 
-                <section data-background="images/cern-alice.jpg">
-                    <div class="overlay-style">
-                        <h2>Deutsch's problem</h2>
-
-                        <p>
-                            Given an unknown (blackbox) function that takes a single bit as an input, and produces a
-                            single
-                            bit as an ouput $f : \{0,1\} \rightarrow \{0,1\}$, determine if the function is <span
-                                class="highlight">constant</span> or <span class="highlight">balanced</span>.
-                        </p>
-                </section>
-
-                <section data-background="images/cern-alice.jpg">
-                    <div class="overlay-style">
-                        <h2>Deutsch's problem - functions</h2>
-
-                        <div class="column-container centered">
-                            <div class="col">
-                                <ul>
-                                    <li>$f_0$ is constant $0$</li>
-                                    <li>$f_1$ is constant $1$</li>
-                                    <li>$f_2$ is "balanced same"</li>
-                                    <li>$f_3$ is "balanced flipped"</li>
-                                </ul>
-                            </div>
-                            <div class="col">
-                                <ul>
-                                    <li>$f(0) = f(1) = 0$</li>
-                                    <li>$f(0) = f(1) = 1$</li>
-                                    <li>$f(0) = 0, f(1) = 1$</li>
-                                    <li>$f(0) = 1, f(1) = 0$</li>
-                                </ul>
-                            </div>
-                </section>
-
-                <section data-background="images/cern-alice.jpg">
-                    <div class="column-container centered">
-                        <div class="col overlay-style">
-                            <p>Classically, <span class="highlight">two</span> function evaluations are needed. After
-                                the first execution, we still cannot say if the function is balanced or constant.</p>
-                        </div>
-                        <div class="col inset">
-                            <img src="images/deutsch-classical.png" />
-                        </div>
-                    </div>
-                </section>
-
-                <section data-background="images/cern-alice.jpg">
-                    <div class="column-container centered">
-                        <div class="col overlay-style">
-                            <p>On a quantum computer, the answer can be obtained in just <span
-                                    class="highlight">one</span> oracle call.</p>
-                        </div>
-                        <div class="col inset">
-                            <img src="images/deutsch.png" />
-                        </div>
-                    </div>
-                </section>
-
-                <section data-background="images/quantumcomputationandinformation.jpg" data-state="bg-auto-width-08">
-                    <div class="column-container">
-                        <div class="col overlay-style">
-                            <blockquote>Heuristically, and at the risk of over-simplifying, quantum parallelism allows
-                                quantum computers to evaluate a function $f(x)$ for many different values of x
-                                simultaneously.
-                            </blockquote>
-                            <p>
-                            <footer>- <em>Nielsen and Chuang</em></footer>
-                            </p>
-                        </div>
-                        <div class="col">
-                        </div>
-                    </div>
-                </section>
-
-                <section data-background="images/cern-alice.jpg">
-                    <div class="overlay-style">
-                        <p>The linear algebra for the circuit produces</p>
-                        <h3 class="r-fit-text">
-                            $$\ket{\Psi} =
-                            \begin{cases}
-                            \pm\ket{0}\frac{1}{\sqrt{2}}(\ket{0} - \ket{1}) \; \text{if f(0) = f(1)} \\
-                            \pm\ket{1}\frac{1}{\sqrt{2}}(\ket{0} - \ket{1}) \; \text{if f(0)} \neq \text{f(1)} \\
-                            \end{cases}
-                            $$
-                        </h3>
-                        <p>This solves the problem in a single shot.</p>
-                    </div>
-                </section> -->
-            </section>
-            <!-- end Q# -->
-
-            <!-- Azure Quantum-->
-            <section>
-                <section data-background="images/azure-quantum.png">
-                    <h1>Azure Quantum</h1>
-                </section>
-
-                <section data-background="images/cern-network2.jpg">
-                    <div class="column-container centered">
-                        <div class="col overlay-style">
-                            <ul>
-                                <li class="fragment">💻
-                                    Run Q# programs
-                                    <br />
-                                    <small>High level code with QDK</small>
-                                </li>
-
-                                <li class="fragment">🤖
-                                    Simulators
-                                    <br />
-                                    <small>Simulate quantum jobs</small>
-                                </li>
-
-                                <li class="fragment">⚛️
-                                    Quantum Hardware
-                                    <br />
-                                    <small>Run programs on variety of real quantum hardware</small>
-                                </li>
-
-                                <li class="fragment">📈
-                                    Quantum Optimisation
-                                    <br />
-                                    <small>Accelerated compute resources for QIO</small>
-                                </li>
-
-                            </ul>
-                        </div>
-                        <div class="col inset-right">
-                            <img src="images/azure-quantum-overview.gif" />
-                        </div>
-                    </div>
-                </section>
-
-                <section data-background="images/cern-alice.jpg">
-                    <h2 class="overlay-style">Azure Quantum Execution</h2>
-                    <pre>
-                <code class="cs">
-// queue job
-az quantum job submit --target-id {target} --job-name {name}
-
-// check job status
-az quantum job show --job-id {id}
-
-// fetch job output
-az quantum job output --job-id {id}
-
-Result     Frequency
----------  -----------  ----------------------
-[0,0,1,1]  1.00000000   |████████████████████|
-                </code>
-            </pre>
-                    <p class="fragment" data-code-focus="2-3"></p>
-                    <p class="fragment" data-code-focus="5-6"></p>
-                    <p class="fragment" data-code-focus="8-9"></p>
-                    <p class="fragment" data-code-focus="11-13"></p>
-                </section>
-
-                <section data-background="images/cern-network2.jpg">
-                    <h2 class="overlay-style">Azure Quantum Execution</h2>
-                    <img class="normal" src="images/azure-quantum-flow-diagram.png" />
-                </section>
-
-                <section data-background="images/cern-network2.jpg">
-                    <img src="images/quantum-pricing1.png" />
-                </section>
-
-            </section>
-
 
             <section data-background="images/all.jpg">
             </section>
