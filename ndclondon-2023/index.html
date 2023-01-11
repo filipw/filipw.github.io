@@ -742,6 +742,29 @@ operation Run() : Int {
                     <h1>Entanglement</h1>
                 </section>
 
+                <section data-background="images/cern-theory2.jpg">
+                    <h2 class="overlay-style">Q# Entanglement</h2>
+                    <pre>
+                <code class="cs">
+operation EntanglementExample() : Unit {
+    use (control, target) = (Qubit(), Qubit());
+
+    H(control);
+    CNOT(control, target);
+    
+    let resultControl = MResetZ(control) == One ? "1" | "0";
+    let resultTarget = MResetZ(target) == One ? "1" | "0";
+
+    Message($"Result: |{resultControl}{resultTarget}>");
+}
+                </code>
+            </pre>
+                    <p class="fragment" data-code-focus="3"></p>
+                    <p class="fragment" data-code-focus="5-6"></p>
+                    <p class="fragment" data-code-focus="8-9"></p>
+                    <p class="fragment" data-code-focus="11"></p>
+                </section>
+
                 <section data-background="images/atlas-ibl.jpg">
                     <div class="overlay-style">
                         <h2>CNOT Gate</h2>
@@ -762,14 +785,19 @@ operation Run() : Int {
                     </div>
                 </section>
 
+                <section data-background="images/uv.jpg">
+                    <div class="overlay-style">
+                        <p>But what if the control qubit was in a</p>
+                        <h2 class="r-fit-text">superposition?</h2>
+                </section>
+
                 <section data-background="images/atlas-ibl.jpg">
                     <div class="overlay-style">
-                        <p>When the control qubit is in placed in a superposition, a <span class="highlight">maximally
-                                entangled state</span> is created.</p>
-                        <p class="r-fit-text">
+                        <p>Then we have an <span class="highlight">entangled</span> state.</p>
+                        <h2 class="r-fit-text limited-size">
                             $$CNOT(H\ket{0} \otimes \ket{0}) = \frac{1}{\sqrt{2}}\ket{00} + \frac{1}{\sqrt{2}}\ket{11}$$
-                        </p>
-                        <p>Upon measurement, there is a <span class="highlight">50% probability</span> of reading out a
+                        </h2>
+                        <p>There is a <span class="highlight">50% probability</span> of reading out a
                             classical 00 or a classical 11.</p>
                     </div>
                     <aside class="notes">
@@ -781,7 +809,7 @@ operation Run() : Int {
 
                 <section data-background="images/atlas-ibl.jpg">
                     <div class="overlay-style">
-                        <p>In $\mathbf{Z}$ basis:</p>
+                        <p>Two qubits in $\mathbf{Z}$ basis:</p>
                         <p>$$\ket{\psi_1} = \alpha_1\ket{0} + \beta_1\ket{1} \;\;\;
                             \ket{\psi_2} = \alpha_2\ket{0} + \beta_2\ket{1}$$</p>
                         <p class="r-fit-text">$$\ket{\psi_{12}} = \alpha_1\alpha_2\ket{00} + \alpha_1\beta_2\ket{01}
@@ -789,12 +817,6 @@ operation Run() : Int {
                             \beta_1\alpha_2\ket{10} + \beta_1\beta_2\ket{11}$$</p>
                     </div>
                 </section>
-
-                <!-- <section data-background="images/atlas-nsw.jpg">
-                    <div class="overlay-style">
-                        <p>This works well for independent qubits but breaks down for <span class="highlight">entangled
-                                states</span>.</p>
-                </section> -->
 
                 <section data-background="images/atlas-ibl.jpg">
                     <div class="overlay-style">
@@ -823,10 +845,9 @@ operation Run() : Int {
 
                 <section data-background="images/uv.jpg">
                     <div class="overlay-style">
-                        <p>A single quantum state can span across multiple <span class="highlight">spatially
-                                separated</span> quantum objects, which
-                            seem to influence each other <span class="highlight">instantly</span>.
-                        </p>
+                        <p>A <span class="highlight">single</span> quantum state can span <span class="highlight">multiple</span>  quantum objects which are</p>
+                        <h2 class="r-fit-text">spatially separated</h2>
+
                     </div>
                 </section>
 
@@ -857,6 +878,9 @@ operation Run() : Int {
                         <p>It is based on the Bell's theorem from 1964.</p>
                 </section>
 
+                <section data-background="images/nobel-2022.png" data-state="bg-top-left">
+                </section>
+
                 <section data-background="images/atlas-ibl.jpg">
                     <div class="overlay-style">
                         <p>Exploring entanglement in algorithms is a critical factor contributing to <span
@@ -864,29 +888,6 @@ operation Run() : Int {
                     </div>
                     <aside class="notes">
                     </aside>
-                </section>
-
-                <section data-background="images/cern-theory2.jpg">
-                    <h2 class="overlay-style">Q# Entanglement</h2>
-                    <pre>
-                <code class="cs">
-operation EntanglementExample() : Unit {
-    use (control, target) = (Qubit(), Qubit());
-
-    H(control);
-    CNOT(control, target);
-    
-    let resultControl = MResetZ(control) == One ? "1" | "0";
-    let resultTarget = MResetZ(target) == One ? "1" | "0";
-
-    Message($"Result: |{resultControl}{resultTarget}>");
-}
-                </code>
-            </pre>
-                    <p class="fragment" data-code-focus="3"></p>
-                    <p class="fragment" data-code-focus="5-6"></p>
-                    <p class="fragment" data-code-focus="8-9"></p>
-                    <p class="fragment" data-code-focus="11"></p>
                 </section>
 
             </section>
