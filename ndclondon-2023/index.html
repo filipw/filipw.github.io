@@ -274,7 +274,7 @@
                     <h1>Basic Theory</h1>
                 </section>
 
-                <section data-background="images/cern-theory3.jpg">
+                <section data-background="images/cern-theory2.jpg">
                     <h2 class="overlay-style">Sample Q# program</h2>
                     <pre>
                 <code class="cs">
@@ -300,14 +300,14 @@ operation Run() : Int {
                     <p class="fragment" data-code-focus="10-11"></p>
                 </section>
 
-                <section data-background="images/cern-theory2.jpg">
+                <section data-background="images/irpc-demonstrator.jpg">
                     <div class="overlay-style">
                         <p>In classical computing a bit can have only two discrete values</p>
                         <h2 class="r-fit-text">0 or 1</h2>
                     </div>
                 </section>
 
-                <section data-background="images/cern-theory2.jpg">
+                <section data-background="images/irpc-demonstrator.jpg">
                     <div class="column-container centered overlay-style">
 
                         <div class="col">
@@ -326,7 +326,7 @@ operation Run() : Int {
                     </div>
                 </section>
 
-                <section data-background="images/cern-theory2.jpg">
+                <section data-background="images/irpc-demonstrator.jpg">
 
                     <div class="column-container centered overlay-style">
 
@@ -345,22 +345,26 @@ operation Run() : Int {
                     </div>
                 </section>
 
-                <section data-background="images/cern-theory2.jpg">
+                <section data-background="images/irpc-demonstrator.jpg">
                     <div class="overlay-style">
                         <p>A quantum state vector for $n$ qubits has</p>
                         <h2 class="r-fit-text">$2^n$ dimensions</h2>
                     </div>
                 </section>
 
-                <section data-background="images/cern-theory2.jpg">
-                    <div class="overlay-style">
-                        <p>To simulate a molecule of <span class="highlight">penicillin</span> we need</p>
-                        <h2 class="r-fit-text">$10^{86}$ classical bits</h2>
+                <section data-background="images/irpc-demonstrator.jpg">
+                    <div class="column-container centered overlay-style">
+                        <div class="col">
+                            <p>To simulate a molecule of <span class="highlight">penicillin</span> we need</p>
+                        <h2 class="r-fit-text">$10^{86}$ bits</h2>
                         <p>which exceeds the amount of atoms in the universe</p>
-                    </div>
+                        </div>
+                        <div class="col inset-right">
+                            <img src="images/penicillin.png" />
+                        </div>
                 </section>
 
-                <section data-background="images/cern-theory2.jpg">
+                <section data-background="images/irpc-demonstrator.jpg">
                     <div class="overlay-style">
                         <p>The same simulation can in principle be done on a </p>
                         <h2 class="r-fit-text">286 qubit</h2>
@@ -393,7 +397,7 @@ operation Run() : Int {
                     </aside>
                 </section> -->
 
-                <section data-background="images/cern-theory2.jpg">
+                <section data-background="images/irpc-demonstrator.jpg">
                     <div class="column-container centered overlay-style">
                         <div class="col">
                             <h2>$\mathbf{Z}$ basis</h2>
@@ -414,7 +418,7 @@ operation Run() : Int {
                         </aside>
                 </section>
 
-                <section data-background="images/cern-theory2.jpg">
+                <section data-background="images/irpc-demonstrator.jpg">
                     <div class="overlay-style">
                         <p>The choice of basis is a way to</p>
                         <h2 class="r-fit-text">encode and decode</h2>
@@ -422,21 +426,21 @@ operation Run() : Int {
                     </div>
                 </section>
 
-                <section data-background="images/cern-theory2.jpg">
+                <section data-background="images/irpc-demonstrator.jpg">
                     <div class="overlay-style">
-                        <p>Any state can be expressed as a <span class="highlight">linear combination</span> of
-                             $\mathbf{Z}$ basis states</p>
-                        <!-- <h2 class="r-fit-text">$$\ket{\psi} = \alpha\ket{0} + \beta\ket{1}$$</h2> -->
-                        <h2 class="r-fit-text">$$\begin{bmatrix} \alpha \cr \beta \end{bmatrix} = \alpha\begin{bmatrix} 1 \cr 0 \end{bmatrix} + \beta\begin{bmatrix} 0 \cr 1 \end{bmatrix}$$</h2>
+                        <p>Any state can be expressed as a <span class="highlight">linear combination</span></p>
+                        <h2 class="r-fit-text limited-size">$$\begin{bmatrix} \alpha \cr \beta \end{bmatrix} = \alpha\begin{bmatrix} 1 \cr 0 \end{bmatrix} + \beta\begin{bmatrix} 0 \cr 1 \end{bmatrix}$$</h2>
+                        <p> of the $\mathbf{Z}$ basis states</p>
                     </div>
                 </section>
 
-                <section data-background="images/cern-theory2.jpg">
-                    <div class="column-container centered">
-                        <div class="col overlay-style">
-                            <h2 class="r-fit-text">$$\ket{\psi} = \alpha\ket{0} + \beta\ket{1}$$</h2>
+                <section data-background="images/irpc-demonstrator.jpg">
+                    <div class="column-container centered overlay-style">
+                        <div class="col">
                             <p>If both $\alpha$ and $\beta$ are non-zero, the system is in a <span
                                     class="highlight">superposition</span>.</p>
+                            <h2 class="r-fit-text">$$\ket{\psi} = \alpha\ket{0} + \beta\ket{1}$$</h2>
+
                         </div>
                         <div class="col inset-right">
                             <img src="images/bloch-superposition.jpeg" />
@@ -444,7 +448,7 @@ operation Run() : Int {
                     </div>
                 </section>
 
-                <section data-background="images/cern-theory2.jpg">
+                <section data-background="images/irpc-demonstrator.jpg">
                     <div class="overlay-style">
                         <p>The strength of quantum computers is that they are able to take algorithmic advantage of <span
                                 class="highlight">superposition</span>. This is called</p>
@@ -472,7 +476,7 @@ operation Run() : Int {
                     </aside>
                 </section>
 
-                <section data-background="images/cern-theory2.jpg">
+                <section data-background="images/irpc-demonstrator.jpg">
                     <div class="overlay-style">
                         <p>Quantum state is not directly observable. It must be</p>
                         <h2 class="r-fit-text">measured in a specific basis</h2>
@@ -482,7 +486,7 @@ operation Run() : Int {
                     </aside>
                 </section>
 
-                <section data-background="images/cern-theory2.jpg">
+                <section data-background="images/irpc-demonstrator.jpg">
                     <div class="overlay-style">
                         <p>Upon measurement, quantum superposition state <span class="highlight">collapses</span> to one of the
                             observable states</p>
@@ -495,7 +499,7 @@ operation Run() : Int {
                     </aside>
                 </section>
 
-                <section data-background="images/cern-theory2.jpg">
+                <section data-background="images/irpc-demonstrator.jpg">
                     <div class="column-container centered overlay-style">
                         <div class="col inset-left">
                             We refer to $\alpha$ and $\beta$ as <span class="highlight">probability amplitudes</span>.
@@ -610,7 +614,7 @@ operation Run() : Int {
                     </div>
                 </section>
 
-                <!-- <section data-background="images/cern-theory2.jpg">
+                <!-- <section data-background="images/irpc-demonstrator.jpg">
                     <div class="overlay-style">
                         <h2>X Gate</h2>
                         <div class="column-container">
@@ -627,7 +631,7 @@ operation Run() : Int {
                     </div>
                 </section>
 
-                <section data-background="images/cern-theory2.jpg">
+                <section data-background="images/irpc-demonstrator.jpg">
                     <div class="overlay-style">
                         <p>$$X(\alpha\ket{0} + \beta\ket{1}) = \begin{bmatrix} 0 &amp; 1 \\ 1 &amp; 0
                             \end{bmatrix}(\alpha\ket{0} + \beta\ket{1}) = \beta\ket{0} + \alpha\ket{1}$$</p>
@@ -862,7 +866,7 @@ operation Run() : Int {
                     </aside>
                 </section>
 
-                <section data-background="images/cern-theory3.jpg">
+                <section data-background="images/cern-theory2.jpg">
                     <h2 class="overlay-style">Q# Entanglement</h2>
                     <pre>
                 <code class="cs">
@@ -894,7 +898,7 @@ operation EntanglementExample() : Unit {
                     <h1>Uncertainty principle</h1>
                 </section>
 
-                <section data-background="images/cms-beam.jpg">
+                <section data-background="images/alice_9104.jpg">
                     <div class="overlay-style">
                         <p>In quantum mechanics we cannot simultaneously know values of</p>
                         <h2 class="r-fit-text">conjugate variables</h2>
@@ -902,7 +906,7 @@ operation EntanglementExample() : Unit {
                     </div>
                 </section>
 
-                <section data-background="images/cms-beam.jpg">
+                <section data-background="images/alice_9104.jpg">
                     <div class="column-container centered overlay-style">
                         <div class="col">
                             <h2>$\mathbf{X}$ basis</h2>
@@ -960,7 +964,7 @@ operation EntanglementExample() : Unit {
                     </div>
                 </section> -->
 
-                <section data-background="images/cms-beam.jpg">
+                <section data-background="images/alice_9104.jpg">
                     <div class="overlay-style">
                         <p>In quantum computing, the measurements in the $\mathbf{Z}$ and $\mathbf{X}$ bases <span
                                 class="highlight">do not commute</span>.
@@ -981,7 +985,7 @@ operation EntanglementExample() : Unit {
                     </div>
                 </section> -->
 
-                <section data-background="images/cms-beam.jpg">
+                <section data-background="images/alice_9104.jpg">
                     <div class="overlay-style">
                         <p>Measurement in the $\mathbf{Z}$ basis creates</p>
                         <h2 class="r-fit-text">maximum uncertainty</h2>
@@ -993,7 +997,7 @@ operation EntanglementExample() : Unit {
                     </aside>
                 </section>
 
-                <section data-background="images/cms-beam.jpg">
+                <section data-background="images/alice_9104.jpg">
                     <div class="column-container centered overlay-style">
                         <div class="col inset">
                             <h2>$\mathbf{Z}$ basis</h2>
@@ -1006,7 +1010,7 @@ operation EntanglementExample() : Unit {
                     </div>
                 </section>
 
-                <section data-background="images/cms-beam.jpg">
+                <section data-background="images/alice_9104.jpg">
                     <div class="overlay-style">
                         <p>Superposition is <span class="highlight">basis dependent</span>.</p>
                     </div>
@@ -1033,7 +1037,7 @@ operation EntanglementExample() : Unit {
                     </div>
                 </section> -->
 
-                <section data-background="images/cms-beam.jpg">
+                <section data-background="images/alice_9104.jpg">
                     <div class="overlay-style">
                         <h2>BB84</h2>
                         <table>
@@ -1121,7 +1125,7 @@ operation EntanglementExample() : Unit {
                     </div>
                 </section>
 
-                <section data-background="images/cms-beam.jpg">
+                <section data-background="images/alice_9104.jpg">
                     <div class="overlay-style">
                         <p>Because arbitrary quantum states <span class="highlight">cannot be cloned</span>, an
                             attacker, 🦹‍♀️ Eve, would need to measure the qubits to steal information.</p>
@@ -1130,7 +1134,7 @@ operation EntanglementExample() : Unit {
                         </p>
                 </section>
 
-                <section data-background="images/cms-beam.jpg">
+                <section data-background="images/alice_9104.jpg">
                     <div class="overlay-style">
                         <p>👧🏻 👦🏼 Alice and Bob need to compare half of their resulting bits. If there are <span
                                 class="highlight">mismatches</span>, they <span class="highlight">detected</span> an

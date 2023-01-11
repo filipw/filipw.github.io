@@ -237,6 +237,10 @@ h3.overlay-style {
   padding: 2% !important;
 }
 
+h2.limited-size {
+  font-size: 1.51em;
+}
+
 .left {
   left: -8.33%;
   text-align: left;
