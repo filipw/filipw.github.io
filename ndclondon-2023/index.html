@@ -567,11 +567,9 @@ operation Run() : Int {
                         <h2>Quantum circuits</h2>
                         <div class="column-container centered">
                             <div class="col">
-                                Quantum computation models are realized by <span class="highlight">reversible linear
-                                    operators</span>
-                                (e.g. X, CNOT, H, Y, Z). They are also referred to as <span
-                                    class="highlight">gates</span> and composed into
-                                <span class="highlight">circuits</span>.
+                                Quantum computation <span class="highlight">circuits</span> are composed of algebraic <span class="highlight">reversible linear
+                                    operators</span>. They are also referred to as <span
+                                    class="highlight">gates</span>.
                             </div>
 
                             <div class="col">
@@ -611,6 +609,20 @@ operation Run() : Int {
                             \frac{1}{\sqrt{2}}\ket{1}$$</p>
                         <p>Upon measurement, there is a <span class="highlight">50% probability</span> of reading out a
                             classical 0 or a classical 1.</p>
+                    </div>
+                </section>
+
+                <section data-background="images/alice-door.jpeg">
+                    <div class="overlay-style">
+                        <p>$$H \times H =
+                            \begin{bmatrix} \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} &
+                            -\frac{1}{\sqrt{2}} \end{bmatrix} \times \begin{bmatrix} \frac{1}{\sqrt{2}} &
+                            \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} &
+                            -\frac{1}{\sqrt{2}} \end{bmatrix} =
+                            \begin{bmatrix} 1 & 0 \\ 0 &
+                            1 \end{bmatrix} = I $$</p>
+                        <p>H is its own <span class="highlight">inverse</span>, so applying it the second time will
+                            <span class="highlight">undo</span> the earlier effect.
                     </div>
                 </section>
 
@@ -1012,17 +1024,26 @@ operation EntanglementExample() : Unit {
                 </section>
 
                 <section data-background="images/alice_9104.jpg">
-                    <div class="overlay-style">
-                        <p>Superposition is <span class="highlight">basis dependent</span>.</p>
-                    </div>
-                    <aside class="notes">
-                        Because of this, the choice of basis allows us to encode information in a qubit in a specific
-                        way. The information can only be accurately read, if you know the basis you should use upon
-                        measurement, otherwise the result will be random.
-                        <br />
-                        This concept underpins quantum cryptography.
-                    </aside>
-                </section>
+                        <div class="overlay-style">
+                            <p>Superposition is</p>
+                            <h2 class="r-fit-text">basis dependent</h2>
+                        </div>
+                        <aside class="notes">
+                            Because of this, the choice of basis allows us to encode information in a qubit in a
+                            specific
+                            way. The information can only be accurately read, if you know the basis you should use upon
+                            measurement, otherwise the result will be random.
+                            <br /><br />
+                            This concept underpins quantum cryptography.
+                        </aside>
+                    </section>
+
+                    <section data-background="images/alice_9104.jpg">
+                        <div class="overlay-style">
+                            <p>Unknown quantum state</p>
+                            <h2 class="r-fit-text">cannot be cloned</h2>
+                        </div>
+                    </section>
 
                 <!-- <section data-background="images/cms-beam.jpg">
                     <div class="overlay-style">
