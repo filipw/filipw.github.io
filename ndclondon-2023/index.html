@@ -418,7 +418,7 @@
                         </div>
                         <div class="col overlay-style">
                             <h3>Chemistry</h3>
-                            <p>subatomic modeling, molecular simulations, material science</p>
+                            <p>subatomic modeling, molecular simulations, material science, drug discovery</p>
                         </div>
                     </div>
                 </section>
@@ -550,7 +550,11 @@ operation Run() : Int {
                     <div class="overlay-style">
                         <p>A quantum state vector for $n$ qubits has</p>
                         <h2 class="r-fit-text">$2^n$ dimensions</h2>
+                        <p>which makes quantum simulations on classical devices almost <span class="highlight">impossible</span></p>
                     </div>
+                    <aside class="notes">
+                        The same applies to all of quantum mechanical systems.
+                    </aside>
                 </section>
 
                 <section data-background="images/irpc-demonstrator.jpg">
@@ -671,10 +675,13 @@ operation Run() : Int {
                     </aside>
                 </section>
 
+                <!-- measurement -->
+
                 <section data-background="images/irpc-demonstrator.jpg">
                     <div class="overlay-style">
-                        <p>Quantum state is not directly observable. It must be</p>
-                        <h2 class="r-fit-text">measured in a specific basis</h2>
+                        <p>An arbitrary quantum state is</p>
+                        <h2 class="r-fit-text">not directly observable</h2>
+                        <p>Only the basis states can be observed in the measurement process</p>
                     </div>
                     <aside class="notes">
                         This produces a classical 0 or 1.
@@ -685,7 +692,7 @@ operation Run() : Int {
                     <div class="overlay-style">
                         <p>Upon measurement, quantum superposition state <span class="highlight">collapses</span> to one
                             of the
-                            observable states</p>
+                            observable states (e.g. $\ket{0}$ or $\ket{1}$).</p>
                         <h2 class="r-fit-text">outcome is probabilistic</h2>
                     </div>
                     <aside class="notes">
