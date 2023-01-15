@@ -105,19 +105,14 @@
 
                 <section data-background="images/heisenberg.png" data-state="bg-top-left">
                     <div class="overlay-style">
-                        <p>Quantum mechanics dates back to 1925 - the breakthrough paper by Werner
+                        <p>Modern quantum mechanics was born in 1925 - with the breakthrough paper by Werner
                             Heisenberg.</p>
                         <p>It is the foundation of all quantum physics and allows for probabilistic prediction of <span
                                 class="highlight">atomic and subatomic phenonomena</span>.</p>
                     </div>
 
                     <aside class="notes">
-                        Heisenberg introduced some key foundational ideas in the paper:
-                        <ul>
-                            <li>the concept of observables (restricted what we can know)</li>
-                            <li>the fact that observables do not always commute, namely P*Q != Q*P</li>
-                            <li>he used was a form of matrices (matrix mechanics) later reformulated as mathematically
-                                equivalent wave mechanics. this nicely ties into QC</li>
+                        Heisenberg abandonded trying to describe motion of electrons with classical physics, and introduced a completely <span class="highlight">abstract</span>, matrix-like approach (the concept of observables (restricted what we can know)).
                         </ul>
                     </aside>
                 </section>
@@ -174,7 +169,7 @@
                                     <li class="fragment">❓
                                         Superposition
                                         <br />
-                                        <small>Quantum objects have no definite state</small>
+                                        <small>Quantum objects be in multiple different "superposed" states</small>
                                     </li>
 
                                     <li class="fragment">🧶
@@ -190,7 +185,7 @@
                                     <li class="fragment">📡
                                         Wave-particle duality
                                         <br />
-                                        <small>Interference, all possible paths</small>
+                                        <small>Quantum objects behave both as waves and point-like objects</small>
                                     </li>
 
                                     <li class="fragment">🎟
@@ -476,7 +471,7 @@
                 </section>
 
                 <section data-background="images/cern-theory2.jpg">
-                    <h2 class="overlay-style">Sample Q# program</h2>
+                    <h2 class="overlay-style">Q# random number generator</h2>
                     <pre>
                 <code class="cs">
 @EntryPoint()
@@ -653,6 +648,12 @@ operation Run() : Int {
                             <span class="highlight">superposition</span>. This is called</p>
                         <h2 class="r-fit-text">quantum parallelism</h2>
                     </div>
+                    <aside class="notes">
+                        <ol>
+                            <li>Create a superposition of all possible results</li>
+                            <li>Use interference to amplify correct result, and cancel out bad results</li>
+                        </ol>
+                    </aside>
                 </section>
 
                 <section data-background="images/atlas-nsw.jpg">
@@ -957,29 +958,6 @@ operation Run() : Int {
                     <h1>Entanglement</h1>
                 </section>
 
-                <section data-background="images/cern-theory2.jpg">
-                    <h2 class="overlay-style">Q# Entanglement</h2>
-                    <pre>
-                <code class="cs">
-@EntryPoint()
-operation Run() : (Result, Result) {
-    use (control, target) = (Qubit(), Qubit());
-
-    H(control);
-    CNOT(control, target);
-    
-    let resultControl = M(control);
-    let resultTarget = M(target);
-    return (resultControl, resultTarget);
-}
-                </code>
-            </pre>
-                    <p class="fragment" data-code-focus="4"></p>
-                    <p class="fragment" data-code-focus="6-7"></p>
-                    <p class="fragment" data-code-focus="9-10"></p>
-                    <p class="fragment" data-code-focus="11"></p>
-                </section>
-
                 <section data-background="images/atlas-ibl.jpg">
                     <div class="overlay-style">
                         <h2>CNOT Gate</h2>
@@ -1011,6 +989,29 @@ operation Run() : (Result, Result) {
                     <div class="overlay-style">
                         <p>But what if the control qubit was in a</p>
                         <h2 class="r-fit-text">superposition?</h2>
+                </section>
+
+                <section data-background="images/cern-theory2.jpg">
+                    <h2 class="overlay-style">Q# Entanglement</h2>
+                    <pre>
+                <code class="cs">
+@EntryPoint()
+operation Run() : (Result, Result) {
+    use (control, target) = (Qubit(), Qubit());
+
+    H(control);
+    CNOT(control, target);
+    
+    let resultControl = M(control);
+    let resultTarget = M(target);
+    return (resultControl, resultTarget);
+}
+                </code>
+            </pre>
+                    <p class="fragment" data-code-focus="4"></p>
+                    <p class="fragment" data-code-focus="6-7"></p>
+                    <p class="fragment" data-code-focus="9-10"></p>
+                    <p class="fragment" data-code-focus="11"></p>
                 </section>
 
                 <section data-background="images/atlas-ibl.jpg">
@@ -1089,9 +1090,7 @@ operation Run() : (Result, Result) {
                         </div>
                     </div>
                     <aside class="notes">
-                        There is a theorem + an experiment called Bell's test (Bell's inequalities) that prove that
-                        this
-                        cannot be explained with classical local physics.
+                        
                     </aside>
                 </section>
 
