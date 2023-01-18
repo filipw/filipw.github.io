@@ -553,7 +553,7 @@ operation Run() : Int {
                     </aside>
                 </section>
 
-                <section data-background="images/irpc-demonstrator.jpg">
+                <section data-background="images/CarinaNebula.jpg">
                     <div class="column-container centered overlay-style">
                         <div class="col">
                             <p>To simulate a molecule of <span class="highlight">penicillin</span> we need</p>
@@ -611,11 +611,10 @@ operation Run() : Int {
                             </p>
                         </div>
                         <div class="col inset">
-                            <!-- <img src="images/z-basis.png" style="max-width: 60%;" /> -->
                             <img src="images/bloch-z-axis.jpeg" />
                         </div>
                         <aside class="notes">
-                            In quantum computing, basis vectors map to classical bits.
+                            Even though there can be inifnitely many quantum states for a qubit, we can only observe two of them at once.
                         </aside>
                 </section>
 
@@ -647,12 +646,12 @@ operation Run() : Int {
 
                 <section data-background="images/irpc-demonstrator.jpg">
                     <div class="overlay-style">
-                        <p>An arbitrary quantum state is</p>
+                        <p>A superposition state is</p>
                         <h2 class="r-fit-text">not directly observable</h2>
                         <p>Only the basis states can be observed in the measurement process</p>
                     </div>
                     <aside class="notes">
-                        This produces a classical 0 or 1.
+                        In this case Z basis states - this produces a classical 0 or 1.
                     </aside>
                 </section>
 
@@ -755,10 +754,8 @@ operation Run() : Int {
                         <h2>H Gate</h2>
                         <div class="column-container">
                             <div class="col">
-                                <span class="highlight">Hadamard gate</span> is used to create a uniform <span
-                                    class="highlight">superposition</span>. It has fundamental importance in <span
-                                    class="highlight">quantum
-                                    parallelism</span>.
+                                Hadamard gate is used to create a <span
+                                    class="highlight">uniform superposition</span> from a state $\ket{0}$ or $\ket{1}$.
                             </div>
                             <div class="col">
                                 <p>$$
@@ -778,8 +775,7 @@ operation Run() : Int {
                         <p>$$H\ket{1} = \frac{1}{\sqrt{2}}\begin{bmatrix} 1 & 1 \\ 1 &
                             -1 \end{bmatrix}\begin{bmatrix} 0 \\ 1 \end{bmatrix} = \frac{1}{\sqrt{2}}\ket{0} -
                             \frac{1}{\sqrt{2}}\ket{1}$$</p>
-                        <p>Upon measurement, there is a <span class="highlight">50% probability</span> of reading out a
-                            classical 0 or a classical 1.</p>
+                        <p>Upon measurement, there is an equal <span class="highlight">50% probability</span> of a collapse to $\ket{0}$ or a $\ket{1}$.</p>
                     </div>
                 </section>
 
@@ -792,8 +788,7 @@ operation Run() : Int {
                             -\frac{1}{\sqrt{2}} \end{bmatrix} =
                             \begin{bmatrix} 1 & 0 \\ 0 &
                             1 \end{bmatrix} = I $$</p>
-                        <p>H is its own <span class="highlight">inverse</span>, so applying it the second time will
-                            <span class="highlight">undo</span> the earlier effect.
+                        <p>Applying $H$ a second time, without a measurement, will return the qubit to its earlier state due to <span class="highlight">interference</span>. This results in the randomness disappearing again.
                     </div>
                     <aside class="notes">
                         This is an example of interference.
@@ -921,38 +916,6 @@ operation Run() : Int {
                         </div>
                     </div>
                 </section>
-                <!--
-
-                <section data-background="images/quantumcomputationandinformation.jpg" data-state="bg-auto-width-08">
-                    <div class="column-container">
-                        <div class="col overlay-style">
-                            <blockquote>Heuristically, and at the risk of over-simplifying, quantum parallelism allows
-                                quantum computers to evaluate a function $f(x)$ for many different values of x
-                                simultaneously.
-                            </blockquote>
-                            <p>
-                            <footer>- <em>Nielsen and Chuang</em></footer>
-                            </p>
-                        </div>
-                        <div class="col">
-                        </div>
-                    </div>
-                </section>
-
-                <section data-background="images/cern-alice.jpg">
-                    <div class="overlay-style">
-                        <p>The linear algebra for the circuit produces</p>
-                        <h3 class="r-fit-text">
-                            $$\ket{\Psi} =
-                            \begin{cases}
-                            \pm\ket{0}\frac{1}{\sqrt{2}}(\ket{0} - \ket{1}) \; \text{if f(0) = f(1)} \\
-                            \pm\ket{1}\frac{1}{\sqrt{2}}(\ket{0} - \ket{1}) \; \text{if f(0)} \neq \text{f(1)} \\
-                            \end{cases}
-                            $$
-                        </h3>
-                        <p>This solves the problem in a single shot.</p>
-                    </div>
-                </section> -->
 
             </section>
             <!-- end circuits -->
@@ -995,39 +958,13 @@ operation Run() : Int {
                         <p>But what if the control qubit was in a</p>
                         <h2 class="r-fit-text">superposition?</h2>
                 </section>
-<!-- 
-                <section data-background="images/cern-theory2.jpg">
-                    <h2 class="overlay-style">Q# Entanglement</h2>
-                    <pre>
-                <code class="cs">
-@EntryPoint()
-operation Run() : (Result, Result) {
-    use (control, target) = (Qubit(), Qubit());
-
-    H(control);
-    CNOT(control, target);
-    
-    let resultControl = M(control);
-    let resultTarget = M(target);
-    return (resultControl, resultTarget);
-}
-                </code>
-            </pre>
-                    <p class="fragment" data-code-focus="4"></p>
-                    <p class="fragment" data-code-focus="6-7"></p>
-                    <p class="fragment" data-code-focus="9-10"></p>
-                    <p class="fragment" data-code-focus="11"></p>
-                </section> -->
 
                 <section data-background="images/atlas-ibl.jpg">
                     <div class="overlay-style">
                         <p>Then we have an <span class="highlight">entangled</span> state.</p>
-                        <!-- <h2 class="r-fit-text limited-size"> -->
                             <p>
                             $$CNOT(H\ket{0} \otimes \ket{0}) = \frac{1}{\sqrt{2}}\ket{00} + \frac{1}{\sqrt{2}}\ket{11}$$</p>
-                        <!-- </h2> -->
-                        <p>There is a <span class="highlight">50% probability</span> of reading out a
-                            classical 00 or a classical 11.</p>
+                        <p>Upon measurement of either qubit, there is an equal <span class="highlight">50% probability</span> of a state collapse to $\ket{00}$ or $\ket{11}$.</p>
                     </div>
                     <aside class="notes">
                         Superposition is "contagious", it spills into the overall system state until it collapses via
@@ -1081,7 +1018,7 @@ operation Run() : (Result, Result) {
                     </div>
                 </section>
 
-                <section data-background="images/einstein.jpg">
+                <section data-background="images/albert-einstein-invent.jpg">
                     <div class="column-container">
                         <div class="col overlay-style">
                             <blockquote>Spooky action at a distance
@@ -1382,7 +1319,7 @@ operation Run() : (Result, Result) {
             <section data-background="images/all.jpg">
             </section>
 
-            <section data-background="images/gold-chain-collective-695929-unsplash.jpg">
+            <section data-background="images/cms-detector.jpg">
                 <div class="overlay-style">
                     <h2>Thank you</h2>
                     <div class="column-container centered">
