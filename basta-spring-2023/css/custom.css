@@ -1,0 +1,460 @@
+/* @import url('https://fonts.googleapis.com/css?family=Roboto:wght@300'); */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+section {
+  font-family: 'Roboto', sans-serif !important;
+}
+
+.reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5 {
+  font-family: 'Roboto', sans-serif !important;
+  text-transform: inherit !important;
+  line-height: 0.9;
+}
+
+.MathJax_CHTML {
+  font-size: 117% !important;
+}
+
+    /* .MJXc-TeX-unknown-R {font-family: monospace; font-style: normal; font-weight: normal}
+    .MJXc-TeX-unknown-I {font-family: monospace; font-style: italic; font-weight: normal}
+    .MJXc-TeX-unknown-B {font-family: monospace; font-style: normal; font-weight: bold}
+    .MJXc-TeX-unknown-BI {font-family: monospace; font-style: italic; font-weight: bold}
+    .MJXc-TeX-ams-R {font-family: MJXc-TeX-ams-R,MJXc-TeX-ams-Rw !important}
+    .MJXc-TeX-cal-B {font-family: MJXc-TeX-cal-B,MJXc-TeX-cal-Bx,MJXc-TeX-cal-Bw !important}
+    .MJXc-TeX-frak-R {font-family: MJXc-TeX-frak-R,MJXc-TeX-frak-Rw !important}
+    .MJXc-TeX-frak-B {font-family: MJXc-TeX-frak-B,MJXc-TeX-frak-Bx,MJXc-TeX-frak-Bw !important}
+    .MJXc-TeX-math-BI {font-family: MJXc-TeX-math-BI,MJXc-TeX-math-BIx,MJXc-TeX-math-BIw !important}
+    .MJXc-TeX-sans-R {font-family: MJXc-TeX-sans-R,MJXc-TeX-sans-Rw !important}
+    .MJXc-TeX-sans-B {font-family: MJXc-TeX-sans-B,MJXc-TeX-sans-Bx,MJXc-TeX-sans-Bw !important}
+    .MJXc-TeX-sans-I {font-family: MJXc-TeX-sans-I,MJXc-TeX-sans-Ix,MJXc-TeX-sans-Iw !important}
+    .MJXc-TeX-script-R {font-family: MJXc-TeX-script-R,MJXc-TeX-script-Rw !important}
+    .MJXc-TeX-type-R {font-family: MJXc-TeX-type-R,MJXc-TeX-type-Rw !important}
+    .MJXc-TeX-cal-R {font-family: MJXc-TeX-cal-R,MJXc-TeX-cal-Rw !important}
+    .MJXc-TeX-main-B {font-family: MJXc-TeX-main-B,MJXc-TeX-main-Bx,MJXc-TeX-main-Bw !important}
+    .MJXc-TeX-main-I {font-family: MJXc-TeX-main-I,MJXc-TeX-main-Ix,MJXc-TeX-main-Iw !important}
+    .MJXc-TeX-main-R {font-family: MJXc-TeX-main-R,MJXc-TeX-main-Rw !important}
+    .MJXc-TeX-math-I {font-family: MJXc-TeX-math-I,MJXc-TeX-math-Ix,MJXc-TeX-math-Iw !important}
+    .MJXc-TeX-size1-R {font-family: MJXc-TeX-size1-R,MJXc-TeX-size1-Rw !important}
+    .MJXc-TeX-size2-R {font-family: MJXc-TeX-size2-R,MJXc-TeX-size2-Rw !important}
+    .MJXc-TeX-size3-R {font-family: MJXc-TeX-size3-R,MJXc-TeX-size3-Rw !important}
+    .MJXc-TeX-size4-R {font-family: MJXc-TeX-size4-R,MJXc-TeX-size4-Rw !important}
+    .MJXc-TeX-vec-R {font-family: MJXc-TeX-vec-R,MJXc-TeX-vec-Rw !important}
+    .MJXc-TeX-vec-B {font-family: MJXc-TeX-vec-B,MJXc-TeX-vec-Bx,MJXc-TeX-vec-Bw !important} */
+
+/* .reveal .mjx-chtml span {
+  font-family: MJXc-TeX-math-BI !important;
+} */
+
+ul ul {
+  font-size: 0.75em !important;
+}
+
+.column-container {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+}
+
+.column-container.centered {
+  align-items: center;
+}
+
+.reveal section .column-container.centered img {
+  min-height: auto;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+.col {
+  flex: 1;
+}
+
+.col.auto {
+  flex: auto;
+}
+
+minor {
+  color: grey;
+}
+
+minor:before {
+  content: '(';
+}
+
+minor:after {
+  content: ')';
+}
+
+.left-align {
+  text-align: left;
+}
+
+.footnote {
+  width: 100%;
+  text-align: left;
+  color: grey;
+}
+
+.reveal section img {
+  margin: 15px 0px;
+  background: rgba(255, 255, 255, 0.12);
+  border: none;
+  box-shadow: none;
+  min-height: 500px;
+  max-height: 600px;
+}
+
+
+.reveal section img.normal {
+  min-height: auto;
+}
+
+.reveal ul {
+  list-style-type: none;
+  margin: 0 0 0 0.5em;
+}
+
+.reveal ul li {
+  margin-bottom: 0.5em;
+}
+
+.reveal ul li:first-child {
+  margin-top: 0.5em;
+}
+
+.reveal ul li:last-child {
+  margin-bottom: 0;
+}
+
+.reveal .slides section .fragment.current-only {
+  opacity: 1;
+  visibility: visible;
+  display: none;
+}
+
+.reveal .slides section .fragment.current-only.current-fragment {
+  display: block;
+}
+
+/* Solarized Light theme */
+
+.line {
+  display: block;
+  padding: 1px 10px !important;
+}
+
+.line.focus {
+  background: #fff;
+  color: #657b83;
+}
+
+.line.focus .hljs-comment,
+.line.focus .hljs-quote {
+  color: #93a1a1;
+}
+
+.line.focus .hljs-keyword,
+.line.focus .hljs-selector-tag,
+.line.focus .hljs-addition {
+  color: #859900;
+}
+
+.line.focus .hljs-number,
+.line.focus .hljs-string,
+.line.focus .hljs-meta .hljs-meta-string,
+.line.focus .hljs-literal,
+.line.focus .hljs-doctag,
+.line.focus .hljs-regexp {
+  color: #2aa198;
+}
+
+.line.focus .hljs-title,
+.line.focus .hljs-section,
+.line.focus .hljs-name,
+.line.focus .hljs-selector-id,
+.line.focus .hljs-selector-class {
+  color: #268bd2;
+}
+
+.line.focus .hljs-attribute,
+.line.focus .hljs-attr,
+.line.focus .hljs-variable,
+.line.focus .hljs-template-variable,
+.line.focus .hljs-class .hljs-title,
+.line.focus .hljs-type {
+  color: #b58900;
+}
+
+.line.focus .hljs-symbol,
+.line.focus .hljs-bullet,
+.line.focus .hljs-subst,
+.line.focus .hljs-meta,
+.line.focus .hljs-meta .hljs-keyword,
+.line.focus .hljs-selector-attr,
+.line.focus .hljs-selector-pseudo,
+.line.focus .hljs-link {
+  color: #cb4b16;
+}
+
+.line.focus .hljs-built_in,
+.line.focus .hljs-deletion {
+  color: #dc322f;
+}
+
+.line.focus .hljs-formula {
+  background: #eee8d5;
+}
+
+.line.focus .hljs-emphasis {
+  font-style: italic;
+}
+
+.line.focus .hljs-strong {
+  font-weight: bold;
+}
+
+.yellow-slide .line.focus:nth-child(2) {
+  background: yellow;
+}
+
+.fragment.current-visible.visible:not(.current-fragment) {
+  display: none;
+  height: 0px;
+  line-height: 0px;
+  font-size: 0px;
+}
+
+h1,
+.overlay-style {
+  background: rgba(0, 0, 0, 0.75);
+  color: #fff !important;
+  padding: 5% !important;
+  border-radius: 25px;
+}
+
+h2.overlay-style,
+h3.overlay-style {
+  padding: 2% !important;
+}
+
+h2.limited-size {
+  font-size: 1.51em;
+}
+
+.left {
+  left: -8.33%;
+  text-align: left;
+  float: left;
+  width: 50%;
+  z-index: -10;
+  padding: 0 !important;
+}
+
+.right {
+  left: 31.25%;
+  top: 75px;
+  float: right;
+  text-align: left;
+  z-index: -10;
+  width: 50%;
+  padding: 0 !important;
+}
+
+.reveal pre.medium, .reveal p.medium {
+  font-size: 0.6em;
+}
+
+.reveal pre.small, .reveal p.small {
+  font-size: 0.45em;
+}
+
+.reveal pre.very-small {
+  font-size: 0.35em;
+}
+
+html.bg-auto-height div.slide-background.present {
+  background-size: auto 100%;
+}
+
+html.bg-auto-width div.slide-background.present {
+  background-size: 100% auto;
+}
+
+html.bg-top-left div.slide-background.present {
+  background-position: 0 0;
+}
+
+html.bg-auto-width-08 div.slide-background.present {
+  opacity: 0.8;
+  background-size: 100% auto;
+}
+
+span.highlight/*, span.mjx-math*/ {
+  background: #de4747;
+  display: inline-block;
+  padding: 0 5px;
+  line-height: 1.2em;
+}
+
+/* .reveal em {
+  color: #f18683;
+  font-style: normal;
+} */
+
+.overlay-style h2,
+.overlay-style h3,
+.overlay-style a {
+  color: #fff !important;
+}
+
+.reveal table td {
+  text-align: center;
+}
+
+.reveal table.left-aligned td, .reveal table.left-aligned th {
+  text-align: left;
+}
+
+.reveal section img.icon {
+  margin: 0;
+  border: 0;
+  min-height: auto;
+  max-height: auto;
+}
+
+.reveal pre code {
+  background: #000;
+  max-height: none;
+  padding: 1% 2%;
+  background: rgba(0, 0, 0, 0.75);
+}
+
+.reveal .overlay-style pre code {
+  background: none;
+  text-align: center;
+}
+
+.reveal pre {
+  background: none;
+  box-shadow: none;
+  font-size: 0.65em;
+}
+
+blockquote:before {
+  display: block;
+  height: 0;
+  content: "“";
+  margin-left: -.6em;
+  font: italic 400%/1 Cochin, Georgia, "Times New Roman", serif;
+  color: #999;
+  text-align: left;
+}
+
+.reveal blockquote {
+  background: none;
+  text-align: left;
+}
+
+.reveal p.footnote {
+  line-height: 1;
+  margin: 0;
+  font-size: 0.5em;
+}
+
+.reveal table {
+  margin-top: 20px;
+}
+
+table.simple td {
+  font-size: 0.5em !important; 
+  text-align: left !important;
+}
+
+table.medium td {
+  font-size: 0.7em !important; 
+  text-align: left !important;
+}
+
+.reveal table tr.noborder td {
+  border-bottom: none;
+}
+
+table td.footnote {
+  line-height: 1em;
+  padding-bottom: 0;
+  font-size: 0.4em !important; 
+  text-align: center !important;
+}
+
+.reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5 {
+  margin-top: 0.4em;
+  margin-bottom: 0.4em;
+} 
+
+.reveal section h2:first-child {
+  margin-top: 0;
+}
+
+table td.center {
+  text-align: center !important;
+}
+
+table.align-left td {
+  text-align: left;
+}
+
+table.large th {
+  text-align: center !important;
+}
+
+table.large td {
+  font-size: 3.5em;
+}
+
+.reveal table th {
+  font-size: 80%;
+  color: #a7a7a7;
+}
+
+.hljs-section {
+  color: #798800;
+}
+
+.reveal kbd {
+  display: inline-block;
+  margin: 0 .1em;
+  padding: .1em .6em;
+  font-family: Arial,"Helvetica Neue",Helvetica,sans-serif;
+  font-size: 11px;
+  line-height: 1.4;
+  color: #242729;
+  text-shadow: 0 1px 0 #fff;
+  background-color: #e1e3e5;
+  border: 1px solid #adb3b8;
+  border-radius: 3px;
+  box-shadow: 0 1px 0 rgba(12,13,14,0.2), 0 0 0 2px #fff inset;
+  white-space: nowrap;
+}
+
+.reveal p.footnote {
+  line-height: 1;
+  margin: 0;
+  font-size: 0.5em;
+}
+
+.mjx-char {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.reveal .inset-right {
+  padding: 1em 0 1em 1em;
+}
+
+.reveal .inset-left {
+  padding: 1em 1em 1em 0;
+}
+
+.reveal .slides > section, .reveal .slides > section > section {
+  padding: 0;
+}
