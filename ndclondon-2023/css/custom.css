@@ -232,6 +232,10 @@ h1,
   border-radius: 25px;
 }
 
+.black-overlay-style {
+  background: rgba(0, 0, 0) !important;
+}
+
 h2.overlay-style,
 h3.overlay-style {
   padding: 2% !important;
