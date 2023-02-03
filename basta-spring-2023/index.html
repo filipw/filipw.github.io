@@ -1031,6 +1031,27 @@
                     <h1>Quantum threats</h1>
                 </section>
 
+                <section data-background="images/alice-door.jpeg">
+                    <div class="overlay-style">
+                        <p>The most widely used public-private cryptosystem is RSA (Rivest–Shamir–Adleman), whose security relies on <span class="highlight">factoring problem</span> of large prime numbers. 
+                        </p>
+                    </div>
+                </section>
+
+                <section data-background="images/alice-door.jpeg">
+                    <div class="overlay-style">
+                        <h2>RSA</h2>
+                        <ol>
+                            <li>Pick two huge prime numbers $p$ and $q$</li>
+                            <li>Pick $e$ that is relatively prime to $(p - 1) \times (q - 1)$</li>
+                            <li>Publish $N = p \times q$ and $e$</li>
+                            <li>Encrypt: <br/>$C = M^e (mod\;\;N)$  &nbsp;&nbsp;&nbsp; (private key based on $N$ and $e$)</li>
+                            <li>Decrypt: <br/>
+                                $M = C^{\frac{1 (mod (p-1) \times (q-1))}{e}} (mod\;\;N)$&nbsp;&nbsp;&nbsp; (private key based on $p$, $q$ and $e$)</li>
+                        </ol>
+                    </div>
+                </section>
+
                 <section data-background="images/shor.png">
                     <div class="overlay-style fragment black-overlay-style">
                         <p>In 1994, Peter Shor developed an integer factorization algorithm for quantum computers that
@@ -1093,18 +1114,6 @@
                             Shor's algorithm is a hybrid classical-quantum method - gcd is still done classically. 
                         </aside>
                 </section>
-
-                <!-- <section data-background="images/alice-door.jpeg">
-                    <div class="overlay-style">
-                        <p>Shor's alogrithm is a hybrid classical-quantum method, which relies on inverse <span
-                                class="highlight">Quantum Fourier Transform</span> used for function order finding. QFT
-                            is exponentially faster than any classical alternative.
-                        </p>
-                    </div>
-                    <aside class="notes">
-                        FFT is a common technique in all kinds of signal processing.
-                    </aside>
-                </section> -->
 
                 <section data-background="images/alice-door.jpeg">
                     <div class="overlay-style">
