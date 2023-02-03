@@ -300,6 +300,14 @@ span.highlight/*, span.mjx-math*/ {
   line-height: 1.2em;
 }
 
+.reveal .slides section .fragment.highlight-current-red.current-fragment {
+  background: #de4747;
+  color: #fff;
+  display: inline-block;
+  padding: 0 5px;
+  /* line-height: 1.2em; */
+}
+
 /* .reveal em {
   color: #f18683;
   font-style: normal;

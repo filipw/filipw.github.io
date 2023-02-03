@@ -1041,14 +1041,14 @@
                 <section data-background="images/alice-door.jpeg">
                     <div class="overlay-style">
                         <h2>RSA</h2>
-                        <ol>
-                            <li>Pick two huge prime numbers $p$ and $q$</li>
-                            <li>Pick $e$ that is relatively prime to $(p - 1) \times (q - 1)$</li>
-                            <li>Publish $N = p \times q$ and $e$</li>
-                            <li>Encrypt: <br/>$C = M^e (mod\;\;N)$  &nbsp;&nbsp;&nbsp; (private key based on $N$ and $e$)</li>
-                            <li>Decrypt: <br/>
+                        <ul>
+                            <li class="fragment highlight-current-red">1. Pick two huge prime numbers $p$ and $q$</li>
+                            <li class="fragment highlight-current-red">2. Pick $e$ that is relatively prime to $(p - 1) \times (q - 1)$</li>
+                            <li class="fragment highlight-current-red">3. Publish $N = p \times q$ and $e$</li>
+                            <li class="fragment highlight-current-red">4. Encrypt: <br/>$C = M^e (mod\;\;N)$  &nbsp;&nbsp;&nbsp; (public key based on $N$ and $e$)</li>
+                            <li class="fragment highlight-current-red">5. Decrypt: <br/>
                                 $M = C^{\frac{1 (mod (p-1) \times (q-1))}{e}} (mod\;\;N)$&nbsp;&nbsp;&nbsp; (private key based on $p$, $q$ and $e$)</li>
-                        </ol>
+                            </ul>
                     </div>
                 </section>
 
@@ -1064,14 +1064,14 @@
                 <section data-background="images/alice-door.jpeg">
                     <div class="overlay-style">
                         <h2>Factoring a number $N$</h2>
-                        <ol>
-                            <li>Pick a relatively prime $a$ such that $a < N$</li>
-                            <li>Find the period $r$ of a function $f(x) = a^x (mod\;\;N)$</li>
-                            <li>Calculate: <br />
+                        <ul>
+                            <li class="fragment highlight-current-red">1. Pick a relatively prime $a$ such that $a < N$</li>
+                            <li class="fragment highlight-current-red">2. Find the period $r$ of a function $f(x) = a^x (mod\;\;N)$</li>
+                            <li class="fragment highlight-current-red">3. Calculate: <br />
                                 $p = gcd(a^{\frac{r}{2}} + 1, N)$ and
                                 $q = gcd(a^{\frac{r}{2}} - 1, N)$
                             </li>
-                        </ol>
+                        </ul>
                     </div>
                 </section>
 
