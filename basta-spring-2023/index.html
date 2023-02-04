@@ -151,6 +151,82 @@
                         </div>
                     </div>
                 </section>
+
+                <section data-background="images/atlas2.jpg">
+                    <div class="overlay-style">
+                        <p>Is it possible to have</p>
+                        <h2 class="r-fit-text">unbreakable</h2>
+                        <p>encryption scheme?</p>
+                    </div>
+                </section>
+
+                <section data-background="images/atlas2.jpg">
+                    <div class="overlay-style">
+                        <h2>One-time pad</h2>
+                        <div class="column-container">
+                            <div class="col">
+                                </br>
+                                message $\oplus$ key = ciphertext </br></br>
+                                ciphertext $\oplus$ key = </br> (message $\oplus$ key) $\oplus$ key = message
+                            </div>
+                            <div class="col">
+                                <table>
+                                    <tr class="">
+                                        <td>✉️</td>
+                                        <td>0</td>
+                                        <td>1</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>1</td>
+                                        <td>1</td>
+                                        <td>0</td>
+                                    </tr>
+                                    <tr class="">
+                                        <td>🔑</td>
+                                        <td>0</td>
+                                        <td>1</td>
+                                        <td>1</td>
+                                        <td>1</td>
+                                        <td>1</td>
+                                        <td>1</td>
+                                        <td>1</td>
+                                        <td>0</td>
+                                    </tr>
+                                    <tr class="">
+                                        <td colspan="9">$\oplus$</td>
+                                    </tr>
+                                    <tr class="">
+                                        <td>🔓</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>1</td>
+                                        <td>1</td>
+                                        <td>1</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <aside class="notes">
+                        If the attacker, Eve, intercepts the ciphertext on its way from Alice to Bob, she would gain no information about the original message at all
+                    </aside>
+                </section>
+
+                <section data-background="images/atlas2.jpg">
+                    <div class="overlay-style">
+                        <h2>Prerequisites</h2>
+                        <ul>
+                           <li class="fragment">1. the key must be <span class="highlight">completely random</span></li>
+                           <li class="fragment">2. the key must be at least the <span class="highlight">length of the message</span> to encrypt</li>
+                           <li class="fragment">3. the key must <span class="highlight">not be reused</span> and must be kept secret (especially when sharing)</li>
+                            </ul>
+                    </div>
+                </section>
+
             </section>
             <!-- end QM-->
 
@@ -1033,7 +1109,8 @@
 
                 <section data-background="images/alice-door.jpeg">
                     <div class="overlay-style">
-                        <p>The most widely used public-private cryptosystem is RSA (Rivest–Shamir–Adleman), whose security relies on <span class="highlight">factoring problem</span> of large prime numbers. 
+                        <p>The most widely used public-private cryptosystem is RSA (Rivest–Shamir–Adleman), whose
+                            security relies on <span class="highlight">factoring problem</span> of large prime numbers.
                         </p>
                     </div>
                 </section>
@@ -1043,12 +1120,15 @@
                         <h2>RSA</h2>
                         <ul>
                             <li class="fragment highlight-current-red">1. Pick two huge prime numbers $p$ and $q$</li>
-                            <li class="fragment highlight-current-red">2. Pick $e$ that is relatively prime to $(p - 1) \times (q - 1)$</li>
+                            <li class="fragment highlight-current-red">2. Pick $e$ that is relatively prime to $(p - 1)
+                                \times (q - 1)$</li>
                             <li class="fragment highlight-current-red">3. Publish $N = p \times q$ and $e$</li>
-                            <li class="fragment highlight-current-red">4. Encrypt: <br/>$C = M^e (mod\;\;N)$  &nbsp;&nbsp;&nbsp; (public key based on $N$ and $e$)</li>
-                            <li class="fragment highlight-current-red">5. Decrypt: <br/>
-                                $M = C^{\frac{1 (mod (p-1) \times (q-1))}{e}} (mod\;\;N)$&nbsp;&nbsp;&nbsp; (private key based on $p$, $q$ and $e$)</li>
-                            </ul>
+                            <li class="fragment highlight-current-red">4. Encrypt: <br />$C = M^e (mod\;\;N)$
+                                &nbsp;&nbsp;&nbsp; (public key based on $N$ and $e$)</li>
+                            <li class="fragment highlight-current-red">5. Decrypt: <br />
+                                $M = C^{\frac{1 (mod (p-1) \times (q-1))}{e}} (mod\;\;N)$&nbsp;&nbsp;&nbsp; (private key
+                                based on $p$, $q$ and $e$)</li>
+                        </ul>
                     </div>
                 </section>
 
@@ -1065,8 +1145,10 @@
                     <div class="overlay-style">
                         <h2>Factoring a number $N$</h2>
                         <ul>
-                            <li class="fragment highlight-current-red">1. Pick a relatively prime $a$ such that $a < N$</li>
-                            <li class="fragment highlight-current-red">2. Find the period $r$ of a function $f(x) = a^x (mod\;\;N)$</li>
+                            <li class="fragment highlight-current-red">1. Pick a relatively prime $a$ such that $a <
+                                    N$</li>
+                            <li class="fragment highlight-current-red">2. Find the period $r$ of a function $f(x) = a^x
+                                (mod\;\;N)$</li>
                             <li class="fragment highlight-current-red">3. Calculate: <br />
                                 $p = gcd(a^{\frac{r}{2}} + 1, N)$ and
                                 $q = gcd(a^{\frac{r}{2}} - 1, N)$
@@ -1100,10 +1182,10 @@
                     <div class="overlay-style">
                         <div class="column-container">
                             <div class="col">
-                                <p>Shor's algorithm relies on inverse <span
-                                    class="highlight">Quantum Fourier Transform</span> used for function order finding. QFT
-                                is exponentially faster than any classical alternative.
-                            </p>
+                                <p>Shor's algorithm relies on inverse <span class="highlight">Quantum Fourier
+                                        Transform</span> used for function order finding. QFT
+                                    is exponentially faster than any classical alternative.
+                                </p>
                             </div>
                             <div class="col inset">
                                 <img src="images/shor-circuit.png" style="min-height: auto;" />
@@ -1111,7 +1193,7 @@
 
                         </div>
                         <aside class="notes">
-                            Shor's algorithm is a hybrid classical-quantum method - gcd is still done classically. 
+                            Shor's algorithm is a hybrid classical-quantum method - gcd is still done classically.
                         </aside>
                 </section>
 
