@@ -100,8 +100,8 @@ minor:after {
   background: rgba(255, 255, 255, 0.12);
   border: none;
   box-shadow: none;
-  min-height: 500px;
-  max-height: 600px;
+  min-height: 400px;
+  max-height: 500px;
 }
 
 

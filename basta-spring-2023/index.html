@@ -99,58 +99,9 @@
 
             <!-- QM-->
             <section>
-                <section data-background="images/atlas1.jpg">
+                <!-- <section data-background="images/atlas1.jpg">
                     <h1>Quantum Hype</h1>
-                </section>
-
-                <section data-background="images/atlas2.jpg">
-                    <div class="overlay-style">
-                        <p>tbd</p>
-                    </div>
-                </section>
-
-                <section data-background="images/TIM230213_Quantum-CoverFINAL.jpg" data-state="bg-top-left">
-                    <div class="column-container">
-
-                        <div class="col">
-                        </div>
-
-                        <div class="col overlay-style">
-                            <blockquote>This machine can solve problems in seconds, that used to take years
-                            </blockquote>
-                        </div>
-
-                    </div>
-                </section>
-
-                <section data-background="images/atlas2.jpg">
-                    <div class="overlay-style">
-                        <h2>Impact on security</h2>
-                        <div class="column-container">
-                            <div class="col">
-                                <ul>
-                                    <li class="fragment">🔒
-                                        information-theoretic security
-                                        <br />
-                                        <small>Quantum cryptography can provide unconditional security, but may not be
-                                            practical due to hardware and throughput limitations</small>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="col">
-                                <ul>
-                                    <li class="fragment">⚠️
-                                        possible threats
-                                        <br />
-                                        <small>Quantum computers can in theory break some established crypto schemes,
-                                            but we are not sure if we will have hardware that is large and stable enough
-                                            to do so</small>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                </section> -->
 
                 <section data-background="images/atlas2.jpg">
                     <div class="overlay-style">
@@ -224,6 +175,70 @@
                            <li class="fragment">2. the key must be at least the <span class="highlight">length of the message</span> to encrypt</li>
                            <li class="fragment">3. the key must <span class="highlight">not be reused</span> and must be kept secret (especially when sharing)</li>
                             </ul>
+                    </div>
+                    <aside class="notes">
+                        This is not really practical, so that is why we have modern encryption schemes.
+                    </aside>
+                </section>
+
+                <section data-background="images/atlas2.jpg">
+                    <h2 class="overlay-style">Symmetric encryption</h2>
+                    <img src="images/crypto-symmetric.png" />
+                </section>
+
+                <section data-background="images/atlas2.jpg">
+                    <h2 class="overlay-style">Asymmetric encryption</h2>
+                    <img src="images/crypto-asymmetric.png" />
+                </section>
+
+                <section data-background="images/atlas2.jpg">
+                    <div class="overlay-style">
+                        <p>Overall, symmetric encryption is easier to implement, quicker and can be considered safer when done right. However, <span class="highlight">key distribution</span> is a big weakness.</p>
+                    </div>
+                    <aside class="notes">
+                        Many protocols - for example TLS/SSL - start with an asymmetric handshake, and then switch to symmetric.
+                    </aside>
+                </section>
+
+                <section data-background="images/TIM230213_Quantum-CoverFINAL.jpg" data-state="bg-top-left">
+                    <div class="column-container">
+
+                        <div class="col">
+                        </div>
+
+                        <div class="col overlay-style">
+                            <blockquote>This machine can solve problems in seconds, that used to take years
+                            </blockquote>
+                        </div>
+
+                    </div>
+                </section>
+
+                <section data-background="images/quantum-computer.jpg">
+                    <div class="overlay-style">
+                        <h2>Impact on security</h2>
+                        <div class="column-container">
+                            <div class="col">
+                                <ul>
+                                    <li class="fragment">🔒
+                                        information-theoretic security
+                                        <br />
+                                        <small>Quantum cryptography can support key distribution with unconditional security<br/><br/>⚠️ ...but may not be practical due to hardware and throughput limitations</small>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col">
+                                <ul>
+                                    <li class="fragment">☢️
+                                        possible threats
+                                        <br />
+                                        <small>Quantum computers can in theory break some established crypto schemes<br/><br/>⚠️ ...
+                                            but we are not sure if we will have hardware that is large and stable enough
+                                            to do so</small>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </section>
 
