@@ -118,7 +118,7 @@
                             <div class="col">
                                 </br>
                                 message $\oplus$ key = ciphertext </br></br>
-                                ciphertext $\oplus$ key = </br> (message $\oplus$ key) $\oplus$ key = message
+                                ciphertext $\oplus$ key = message
                             </div>
                             <div class="col">
                                 <table>
@@ -163,7 +163,7 @@
                         </div>
                     </div>
                     <aside class="notes">
-                        If the attacker, Eve, intercepts the ciphertext on its way from Alice to Bob, she would gain no information about the original message at all
+                        If the key is random then the attacker, Eve, intercepts the ciphertext on its way from Alice to Bob, she would gain no information about the original message at all as there is no pattern to spot.
                     </aside>
                 </section>
 
@@ -177,7 +177,7 @@
                             </ul>
                     </div>
                     <aside class="notes">
-                        This is not really practical, so that is why we have modern encryption schemes.
+                        This is not really practical, so that is why we have other encryption schemes. Complete randomness (no patterns) is difficult to achieve.
                     </aside>
                 </section>
 
@@ -193,7 +193,7 @@
 
                 <section data-background="images/atlas2.jpg">
                     <div class="overlay-style">
-                        <p>Overall, symmetric encryption is easier to implement, quicker and can be considered safer when done right. However, <span class="highlight">key distribution</span> is a big weakness.</p>
+                        <p>Overall, symmetric encryption is easier to implement, quicker and can be considered safer when done right compared to asymmetric encryption.</p><p> However, secure <span class="highlight">key distribution</span> is a big challenge.</p>
                     </div>
                     <aside class="notes">
                         Many protocols - for example TLS/SSL - start with an asymmetric handshake, and then switch to symmetric.
@@ -223,7 +223,7 @@
                                     <li class="fragment">🔒
                                         information-theoretic security
                                         <br />
-                                        <small>Quantum cryptography can support key distribution with unconditional security<br/><br/>⚠️ ...but may not be practical due to hardware and throughput limitations</small>
+                                        <small>Quantum cryptography can be used to distribute keys with unconditional security and generate perfectly random keys<br/><br/>⚠️ ...but may not be practical due to hardware and throughput limitations</small>
                                     </li>
                                 </ul>
                             </div>
@@ -232,7 +232,7 @@
                                     <li class="fragment">☢️
                                         possible threats
                                         <br />
-                                        <small>Quantum computers can in theory break some established crypto schemes<br/><br/>⚠️ ...
+                                        <small>Quantum computers can in theory break some established crypto schemes<br/><br/><br/>⚠️ ...
                                             but we are not sure if we will have hardware that is large and stable enough
                                             to do so</small>
                                     </li>
