@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>God really plays dice - Introduction to Quantum Computing</title>
+    <title>Quantum Computing and the future of cryptography</title>
     <meta name="description" content="">
     <meta name="author" content="Filip W">
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -341,83 +341,6 @@
                     </div>
                 </section>
 
-                <!-- <section data-background="images/irpc-demonstrator.jpg">
-
-                    <div class="column-container centered overlay-style">
-
-                        <div class="col">
-                            <p>To describe the state of a multi-qubit system, we use a <span class="highlight">tensor
-                                    product</span> of the individual states.</p>
-                        </div>
-
-                        <div class="col">
-                            <p>$$
-                                \begin{bmatrix}\alpha_1 \\ \beta_1 \end{bmatrix} \otimes \begin{bmatrix}\alpha_2 \\
-                                \beta_2
-                                \end{bmatrix} =
-                                \begin{bmatrix}\alpha_1\alpha_2 \\ \alpha_1\beta_2 \\ \beta_1\alpha_2 \\ \beta_1\beta_2
-                                \end{bmatrix}
-                                $$</p>
-                        </div>
-                    </div>
-                </section> -->
-
-                <!-- <section data-background="images/irpc-demonstrator.jpg">
-                    <div class="overlay-style">
-                        <p>A quantum state vector for $n$ qubits has</p>
-                        <h2 class="r-fit-text">$2^n$ dimensions</h2>
-                        <p>which makes quantum simulations on classical devices almost <span class="highlight">impossible</span></p>
-                    </div>
-                    <aside class="notes">
-                        The same applies to all of quantum mechanical systems.
-                    </aside>
-                </section>
-
-                <section data-background="images/CarinaNebula.jpg">
-                    <div class="column-container centered overlay-style">
-                        <div class="col">
-                            <p>To simulate a molecule of <span class="highlight">penicillin</span> we need</p>
-                            <h2 class="r-fit-text">$10^{86}$ bits</h2>
-                            <p>which exceeds the amount of atoms in the universe</p>
-                        </div>
-                        <div class="col inset-right">
-                            <img src="images/penicillin.png" />
-                        </div>
-                </section> -->
-                <!-- 
-                <section data-background="images/irpc-demonstrator.jpg">
-                    <div class="overlay-style">
-                        <p>The same simulation can in principle be done on a </p>
-                        <h2 class="r-fit-text">286 qubit</h2>
-                        <p>error-free quantum computer.</p>
-                    </div>
-                    <aside class="notes">
-                        The way we can think of it: whatever algorithm you run on a quantum computer, the answer is
-                        already there, and the art of writing a quantum algorithm is to amplify the probability of the
-                        correct result, and reduce the probability of the wrong result.
-                    </aside>
-                </section> -->
-
-                <!-- <section data-background="images/cms2.jpg">
-                    <div class="overlay-style">
-                        <p>According to quantum mechanics, information about quantum systems is available only via <span
-                                class="highlight">observables</span>.</p>
-                    </div>
-                    <aside class="notes">
-                        Observables are matrices.
-                    </aside>
-                </section>
-
-                <section data-background="images/cms2.jpg">
-                    <div class="overlay-style">
-                        <p>For two-state systems an observable has two vectors that form</p>
-                        <h2 class="r-fit-text">measurement basis</h2>
-                    </div>
-                    <aside class="notes">
-                        These are the so-called eigenvectors or eigenstates.
-                    </aside>
-                </section> -->
-
                 <section data-background="images/irpc-demonstrator.jpg">
                     <div class="column-container centered overlay-style">
                         <div class="col">
@@ -438,16 +361,6 @@
                             of them at once.
                         </aside>
                 </section>
-
-                <!-- <section data-background="images/irpc-demonstrator.jpg">
-                    <div class="overlay-style">
-                        <p>Any state can be expressed as a <span class="highlight">linear combination</span></p>
-                        <h2 class="r-fit-text limited-size">$$\begin{bmatrix} \alpha \cr \beta \end{bmatrix} =
-                            \alpha\begin{bmatrix} 1 \cr 0 \end{bmatrix} + \beta\begin{bmatrix} 0 \cr 1 \end{bmatrix}$$
-                        </h2>
-                        <p> of the $\mathbf{Z}$ basis states</p>
-                    </div>
-                </section> -->
 
                 <section data-background="images/irpc-demonstrator.jpg">
                     <div class="column-container centered overlay-style">
@@ -594,7 +507,7 @@
                     </div>
                 </section>
 
-                <section data-background="images/atlas-ibl.jpg">
+                <section data-background="images/irpc-demonstrator.jpg">
                     <div class="overlay-style">
                         <p>However, an <span class="highlight">entangled</span> state can take the following form:</p>
                         <h2 class="r-fit-text limited-size">
@@ -1311,28 +1224,20 @@
                     </div>
                 </section>
 
-                <section data-background="images/alice-door.jpeg">
-                    <div class="overlay-style">
-                        <p>In 2016 NIST (National Institute of Standards and Technology) announced a post-quantum cryptography competition, with the aim to provide a standardized crypto scheme <span class="highlight">resistent to quantum threats</span>.</p>
+                <section data-background="images/grover.png" data-state="bg-top-left">
+                    <div class="overlay-style fragment black-overlay-style">
+                        <p>In 1996, Lov Grover developed a quantum search algorithm through an unsorted data set - finding $x$ for $f(x) = y$, when $y$ is known.</p><p>It provides <span class="highlight">quadratic speedup </span> over the classical counterparts.</p>
+                        </p>
                     </div>
                 </section>
 
                 <section data-background="images/alice-door.jpeg">
                     <div class="overlay-style">
-                        <p>In 2022 the winners have been announced (primarily lattice-based) <span class="highlight">CRYSTALS-Kyber</span> for asymmetric encryption and CRYSTALS-Dilithium, FALCON and SPHINCS+ for signature computation.</p>
+                        <p>Because of that it can be used to <span class="highlight">attack symmetric encryption</span> schemes such as AES, however that can be easily countered by doubling the key size.
+                        </p>
                     </div>
                 </section>
 
-                <section data-background="images/quantum-law.png" data-state="bg-top-left">
-                    <div class="overlay-style fragment">
-                        <p>In December 2022, Joe Biden signed into law the <span class="highlight">Quantum Computing Cybersecurity Preparedness Act</span>, which encourages federal agencies to:</p>
-                        <ul style="text-align: center;">
-                            <li>🔐 migrate systems to post-quantum cryptography</li>
-                            <li>⚠️ adopt technology that will protect against quantum computing attacks</li>
-                        </ul>
-                    </div>
-                    <aside class="notes">Plans should be drafted by May 2023.</aside>
-                </section>
 <!-- 
                 <section data-background="images/alice-door.jpeg">
                     <div class="overlay-style">
@@ -1386,7 +1291,37 @@
 
 
             </section>
-            <!-- end circuits -->
+            <!-- end quantum threats -->
+
+            <!-- what's next -->
+            <section>
+                <section data-background="images/compass.jpg">
+                    <h1>What's next?</h1>
+                </section>
+
+                <section data-background="images/atlas-ibl.jpg">
+                    <div class="overlay-style">
+                        <p>In 2016 NIST (National Institute of Standards and Technology) announced a post-quantum cryptography competition, with the aim to provide a standardized crypto scheme <span class="highlight">resistent to quantum threats</span>.</p>
+                    </div>
+                </section>
+
+                <section data-background="images/atlas-ibl.jpg">
+                    <div class="overlay-style">
+                        <p>In 2022 the winners have been announced (primarily lattice-based) <span class="highlight">CRYSTALS-Kyber</span> for asymmetric encryption and CRYSTALS-Dilithium, FALCON and SPHINCS+ for signature computation.</p>
+                    </div>
+                </section>
+
+                <section data-background="images/quantum-law.png">
+                    <div class="overlay-style fragment">
+                        <p>In December 2022, Joe Biden signed into law the <span class="highlight">Quantum Computing Cybersecurity Preparedness Act</span>, which encourages federal agencies to:</p>
+                        <ul style="text-align: center;">
+                            <li>🔐 migrate systems to post-quantum cryptography</li>
+                            <li>⚠️ adopt technology that will protect against quantum computing attacks</li>
+                        </ul>
+                    </div>
+                    <aside class="notes">Plans should be drafted by May 2023.</aside>
+                </section>
+            </section>
 
             <section data-background="images/all.jpg">
             </section>
