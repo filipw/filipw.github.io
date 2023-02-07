@@ -319,8 +319,9 @@ span.highlight/*, span.mjx-math*/ {
   color: #fff !important;
 }
 
-.reveal table td {
+.reveal table td, .reveal table th {
   text-align: center;
+  vertical-align: middle;
 }
 
 .reveal table.left-aligned td, .reveal table.left-aligned th {
