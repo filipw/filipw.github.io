@@ -77,26 +77,6 @@
                     style="min-height: auto; border: 3px solid black !important;box-shadow: 5px 2px 2px black;" />
             </section>
 
-            <!-- <section data-background-color="#fff">
-                <img src="images/sonova.png" style="min-height: auto" />
-            </section> -->
-
-            <!-- <section data-background="images/heisenberg.png" data-state="bg-top-left">
-                <div class="column-container">
-
-                    <div class="col">
-                    </div>
-
-                    <div class="col overlay-style">
-                        <blockquote>Can Nature possibly be so absurd?
-                        </blockquote>
-                        <p>
-                        <footer>- <em>Werner Heisenberg</em></footer>
-                        </p>
-                    </div>
-                </div>
-            </section> -->
-
             <!-- QM-->
             <section>
                 <!-- <section data-background="images/atlas1.jpg">
@@ -206,7 +186,7 @@
 
                 <section data-background="images/atlas2.jpg">
                     <div class="overlay-style">
-                    <p>Asymmetric encryption is based on difficult mathematical problems such as factorizing large prime numbers <span class="highlight">(RSA)</span> or the discrete logarithm problem - <span class="highlight">(Diffie-Hellman or Elliptic Curve Cryptography)</span>.</p>
+                    <p>Asymmetric encryption is based on difficult mathematical problems such as factorizing large prime numbers <span class="highlight">(RSA)</span> or the discrete logarithm problem <span class="highlight">(Elliptic Curve Cryptography)</span>.</p>
                     </div>
                 </section>
 
@@ -1192,11 +1172,11 @@
 
                 <section data-background="images/alice-door.jpeg">
                     <div class="overlay-style">
-                        <p>In TLS 1.3, RSA is no longer used, in favor of ephemeral Diffie-Hellman handshakes but Shor's algorithm can also be used to compute discrete logarithms on elliptic curves over prime fields, thus is <span class="highlight">equally capable of attacking it</span>.
+                        <p>In TLS 1.3, RSA is no longer used, in favor of Ephemeral Elliptic-Curve Diffie-Hellman (ECDHE) handshake.</p><p>However, Shor's algorithm can also be used to compute discrete logarithms on elliptic curves over prime fields, thus is <span class="highlight">equally capable of attacking it</span>.
                         </p>
                     </div>
                     <aside class="notes">
-                        Forward secrecy means using new keys all the time, so intercepting and breaking one message would not reveal the whole session.
+                        Forward secrecy means using new (ephemeral) keys all the time, so intercepting and breaking one message would not reveal the whole session. ECDH is also used in tools like Signal or Skype.
                     </aside>
                 </section>
 
