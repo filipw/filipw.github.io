@@ -71,14 +71,14 @@
                 </div>
 
             </section>
-
-            <section data-background="images/TIM230213_Quantum-CoverFINAL.jpg" data-state="bg-top-left">
+            <!-- #ee1e27 -->
+            <section data-background="images/TIM230213_Quantum-CoverFINAL.jpg">
                 <div class="column-container">
 
                     <div class="col">
                     </div>
 
-                    <div class="col overlay-style">
+                    <div class="col overlay-style fragment">
                         <blockquote>Every day that you don’t convert to a quantum-safe protocol, there’s no recovery plan
                         </blockquote>
                         <p>
@@ -330,6 +330,16 @@
 
                 <section data-background="images/irpc-demonstrator.jpg">
                     <div class="overlay-style">
+                        <p>A qubit is a</p>
+                        <h2 class="r-fit-text">two-level quantum system</h2>
+                    </div>
+                    <aside class="notes">
+                        Despite the fact that a system might be in mathematically infinitely many states, we can only observe and distinguish two of them.
+                    </aside>
+                </section>
+
+                <section data-background="images/irpc-demonstrator.jpg">
+                    <div class="overlay-style">
                         <h2>$\mathbf{Z}$ basis</h2>
                         <p>
                             $$
@@ -378,7 +388,24 @@
                         <p>Only the basis states can be observed in the measurement process</p>
                     </div>
                     <aside class="notes">
+                        So what happens when we observe a system in superposition?
+                    </aside>
+                    <!-- <aside class="notes">
                         The fact that it's not directly observable leads to paradoxes, such as the famous Schrödinger cat.
+                    </aside> -->
+                </section>
+
+                <section data-background="images/irpc-demonstrator.jpg">
+                    <div class="overlay-style">
+                        <p>Upon observation, superposition state <span class="highlight">collapses</span> to one
+                            of the
+                            observable states (e.g. $\ket{0}$ or $\ket{1}$).</p>
+                        <h2 class="r-fit-text">outcome is probabilistic</h2>
+                    </div>
+                    <aside class="notes">
+                        It is a fundamental quantum doctrine that a measurement does not reveal a pre-existing value of
+                        the measured property. On the contrary, the outcome of a measurement is brought into being by
+                        the act of measurement itself. - David Mermin
                     </aside>
                 </section>
 
@@ -401,20 +428,6 @@
                         <p>For $\mathbf{Z}$ basis we can only ask</p>
                         <h2 class="r-fit-text">Are you $\ket{0}$ or are you $\ket{1}$?</h2>
                     </div>
-                </section>
-
-                <section data-background="images/irpc-demonstrator.jpg">
-                    <div class="overlay-style">
-                        <p>Upon measurement, quantum superposition state <span class="highlight">collapses</span> to one
-                            of the
-                            observable states (e.g. $\ket{0}$ or $\ket{1}$).</p>
-                        <h2 class="r-fit-text">outcome is probabilistic</h2>
-                    </div>
-                    <aside class="notes">
-                        It is a fundamental quantum doctrine that a measurement does not reveal a pre-existing value of
-                        the measured property. On the contrary, the outcome of a measurement is brought into being by
-                        the act of measurement itself. - David Mermin
-                    </aside>
                 </section>
 
                 <section data-background="images/irpc-demonstrator.jpg">
@@ -629,41 +642,6 @@
                         <p>information into and out of qubits</p>
                     </div>
                 </section>
-
-                <!-- <section data-background="images/cms-beam.jpg">
-                    <div class="column-container centered overlay-style">
-
-                        <div class="col">
-                            <p>Those are for example <span class="highlight">position & momentum</span> or <span
-                                    class="highlight">energy & time</span>.</p>
-                        </div>
-
-                        <div class="col">
-                            <p class="r-fit-text">$\Delta x \Delta p \geq \frac{\hbar}{2}$</p>
-                            <p class="r-fit-text">$\Delta E \Delta t \geq \frac{\hbar}{2}$</p>
-                        </div>
-                    </div>
-                </section>
-
-                <section data-background="images/cms-beam.jpg">
-                    <img src="images/Quantum_Fluctuations.gif" />
-                    <div class="overlay-style" style="padding: 1% !important;">
-                        <div style="clear:both;">
-                            <p class="footnote" style="text-align: center;">By Ahmed Neutron - Own work, CC BY-SA 4.0,
-                                <a
-                                    href="https://commons.wikimedia.org/w/index.php?curid=69715938">https://commons.wikimedia.org/w/index.php?curid=69715938</a>
-                            </p>
-                        </div>
-                    </div>
-                </section> -->
-                <!-- 
-                <section data-background="images/cms-beam.jpg">
-                    <div class="overlay-style">
-                        <p>In linear algebra, the two operators $\mathbf{A}$ and $\mathbf{B}$ commute when:
-                        </p>
-                        <p>$\mathbf{A}\mathbf{B} - \mathbf{B}\mathbf{A} = 0$</p>
-                    </div>
-                </section> -->
 
                 <section data-background="images/alice_9104.jpg">
                     <div class="overlay-style">
@@ -1085,10 +1063,10 @@
                                 \times (q - 1)$</li>
                             <li class="fragment highlight-current-red">3. Publish $N = p \times q$ and $e$</li>
                             <li class="fragment highlight-current-red">4. Encrypt: <br />$C = M^e (mod\;\;N)$
-                                &nbsp;&nbsp;&nbsp; (public key based on $N$ and $e$)</li>
+                                &nbsp;&nbsp;&nbsp; (public key based on $N$)</li>
                             <li class="fragment highlight-current-red">5. Decrypt: <br />
                                 $M = C^{\frac{1 (mod (p-1) \times (q-1))}{e}} (mod\;\;N)$&nbsp;&nbsp;&nbsp; (private key
-                                based on $p$, $q$ and $e$)</li>
+                                based on $p$, $q$)</li>
                         </ul>
                     </div>
                 </section>
@@ -1124,13 +1102,13 @@
                         <h2>Example: factoring 15</h2>
                         <div class="column-container">
                             <div class="col">
-                                <ol>
-                                    <li>Set $a = 13$</li>
-                                    <li>Find order $r = 4$</li>
-                                    <li>Calculate: <br />$p = gcd(170, 15) = 5$ <br />
+                                <ul>
+                                    <li class="fragment highlight-current-red">1. Set $a = 13$</li>
+                                    <li class="fragment highlight-current-red">2. Find order $r = 4$</li>
+                                    <li class="fragment highlight-current-red">3. Calculate: <br />$p = gcd(170, 15) = 5$ <br />
                                         $q = gcd(168, 15) = 3$
                                     </li>
-                                </ol>
+                                </ul>
                             </div>
                             <div class="col inset">
                                 <img src="images/factoring-order-finding.png" style="min-height: auto;" />
@@ -1173,12 +1151,19 @@
 
                 <section data-background="images/alice-door.jpeg">
                     <div class="overlay-style">
+                    <img src="images/qubit-estimations.png" />
+                    <div style="clear:both;">
+                        <p class="footnote" style="text-align: center;">Beverland, Michael E., et al. "Assessing requirements to scale to practical quantum advantage." arXiv preprint arXiv:2211.07629 (2022).
+                        </p>
+                    </div>
+                    </div>
+                </section>
+
+                <section data-background="images/alice-door.jpeg">
+                    <div class="overlay-style">
                         <p>In TLS 1.3, RSA is no longer used, in favor of Ephemeral Elliptic-Curve Diffie-Hellman (ECDHE) handshake.</p><p>However, Shor's algorithm can also be used to compute discrete logarithms on elliptic curves over prime fields, thus is <span class="highlight">equally capable of attacking it</span>.
                         </p>
                     </div>
-                    <aside class="notes">
-                        Forward secrecy means using new (ephemeral) keys all the time, so intercepting and breaking one message would not reveal the whole session. ECDH is also used in tools like Signal or Skype.
-                    </aside>
                 </section>
 
                 <section data-background="images/ellipticcurve.png">
@@ -1193,16 +1178,9 @@
                         </div>
 
                     </div>
-                </section>
-
-                <section data-background="images/alice-door.jpeg">
-                    <div class="overlay-style">
-                    <img src="images/qubit-estimations.png" />
-                    <div style="clear:both;">
-                        <p class="footnote" style="text-align: center;">Beverland, Michael E., et al. "Assessing requirements to scale to practical quantum advantage." arXiv preprint arXiv:2211.07629 (2022).
-                        </p>
-                    </div>
-                    </div>
+                    <aside class="notes">
+                        Forward secrecy means using new (ephemeral) keys all the time, so intercepting and breaking one message would not reveal the whole session. ECDH is also used in tools like Signal or Skype.
+                    </aside>
                 </section>
 
                 <section data-background="images/grover.png" data-state="bg-top-left">
