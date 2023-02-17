@@ -71,9 +71,13 @@
                 </div>
 
             </section>
-            <!-- #ee1e27 -->
-            <section data-background="images/TIM230213_Quantum-CoverFINAL.jpg">
-                <div class="column-container">
+
+            <section data-background="images/D810_NEF_3483.jpg">
+                <img src="images/TIM230213_Quantum-CoverFINAL.jpg" 
+                style="max-height: 666px; border: 3px solid black !important;box-shadow: 5px 2px 2px black;" />
+                <img src="images/fe-quantum-cover.jpg" 
+                style="max-height: 666px; border: 3px solid black !important;box-shadow: 5px 2px 2px black;" />
+                <!-- <div class="column-container">
 
                     <div class="col">
                     </div>
@@ -86,7 +90,7 @@
                             </p>
                     </div>
 
-                </div>
+                </div> -->
                 <aside class="notes">
                     However, as it is usually the case with popular media, certain things get easily misrepresented or taken out of the context - and the goal of this session is to provide you the technical background and enable you to judge the future impact of quantum technologies yourselves. 
                 </aside>
@@ -94,7 +98,7 @@
 
             <section data-background="images/D810_NEF_3483.jpg">
                 <img src="images/filip-book.jpg"
-                    style="min-height: auto; border: 3px solid black !important;box-shadow: 5px 2px 2px black;" />
+                    style="max-height: 666px; border: 3px solid black !important;box-shadow: 5px 2px 2px black;" />
             </section>
 
             <!-- QM-->
@@ -178,8 +182,8 @@
                         <h2>Prerequisites</h2>
                         <ul>
                            <li class="fragment">1. the key must be <span class="highlight">completely random</span></li>
-                           <li class="fragment">2. the key must be at least the <span class="highlight">length of the message</span> to encrypt</li>
-                           <li class="fragment">3. the key must <span class="highlight">not be reused</span> and must be kept secret (especially when sharing)</li>
+                           <li class="fragment">2. the key must <span class="highlight">not be reused</span> and must be kept secret (especially when sharing)</li>
+                           <li class="fragment">3. the key must be at least the <span class="highlight">length of the message</span> to encrypt</li>
                             </ul>
                     </div>
                     <aside class="notes">
@@ -594,7 +598,7 @@
                     <div class="column-container">
                         <div class="col">
                         </div>
-                        <div class="col black-overlay-style overlay-style">
+                        <div class="col black-overlay-style overlay-style fragment">
                             <blockquote>It is impossible to determine accurately both the position and the direction and
                                 speed of a particle at the same instant.
                             </blockquote>
@@ -628,11 +632,6 @@
                         <div class="col inset">
                             <img src="images/bloch-x-axis.jpeg" />
                         </div>
-                        <aside class="notes">
-                            A state |+> is a definite state in basis X, and maps to a classical 0 with 100% probability.
-                            However, in Z basis, it has a 50% probability of collapsing to |0> or |1>, so classical 0 or
-                            1.
-                        </aside>
                 </section>
 
                 <section data-background="images/alice_9104.jpg">
@@ -1144,11 +1143,6 @@
                     <aside class="notes">Latest publications (e.g. Kudelski Security) estimate about 6k logical qubits for RSA-2048 and 23k logical qubits for RSA-7680.</aside>
                 </section>
 
-                <section data-background="#161616">
-                    <img src="images/PR_body_ibm-quantum-development-roadmap-2022_52476203722_o.jpg" style="max-height: 100%;" />
-                    <aside class="notes">We are still off by a factor of 20k, but at the same time, the size grew by a factor of 500 since 2019. Just 10 years ago we estimated about 1 billion physical qubits to be needed to break RSA.</aside>
-                </section>
-
                 <section data-background="images/alice-door.jpeg">
                     <div class="overlay-style">
                     <img src="images/qubit-estimations.png" />
@@ -1157,6 +1151,11 @@
                         </p>
                     </div>
                     </div>
+                </section>
+
+                <section data-background="#161616">
+                    <img src="images/PR_body_ibm-quantum-development-roadmap-2022_52476203722_o.jpg" style="max-height: 100%;" />
+                    <aside class="notes">We are still off by a factor of 20k, but at the same time, the size grew by a factor of 500 since 2019. Just 10 years ago we estimated about 1 billion physical qubits to be needed to break RSA.</aside>
                 </section>
 
                 <section data-background="images/alice-door.jpeg">
@@ -1228,52 +1227,53 @@
                                         <th>type</th>
                                         <th>algorithm</th>
                                         <th>key size</th>
-                                        <!-- <th>strength<br/>against classical</th> -->
+                                        <th>strength<br/>against classical</th>
                                         <th>effective strength<br/>against quantum</th>
                                     </thead>
                                     <tr class="">
                                         <td rowspan="2">symmetric</td>
                                         <td rowspan="2">AES</td>
                                         <td>256</td>
-                                        <!-- <td>256</td> -->
-                                        <td>128</td>
+                                        <td style="background: green;">256</td>
+                                        <td style="background: green;">128</td>
                                     </tr>
                                     <tr class="">
                                         <td>128</td>
-                                        <!-- <td>128</td> -->
-                                        <td>64</td>
+                                        <td style="background: green;">128</td>
+                                        <td style="background: red;">64</td>
                                     </tr>
                                     <tr class="">
                                         <td rowspan="4" style="border-bottom: none;">asymmetric</td>
                                         <td rowspan="2">RSA</td>
-                                        <td>1024</td>
-                                        <!-- <td>80</td> -->
-                                        <td>0</td>
+                                        <td>2048</td>
+                                        <td style="background: orange;">112</td>
+                                        <td style="background: red;">0</td>
                                     </tr>
                                     <tr class="">
-                                        <td>2048</td>
-                                        <!-- <td>112</td> -->
-                                        <td>0</td>
+                                        <td>3072</td>
+                                        <td style="background: green;">128</td>
+                                        <td style="background: red;">0</td>
                                     </tr>
                                     <tr class="">
                                         <td rowspan="2" style="border-bottom: none;">ECC</td>
                                         <td>256</td>
-                                        <!-- <td>128</td> -->
-                                        <td>0</td>
+                                        <td style="background: green;">128</td>
+                                        <td style="background: red;">0</td>
                                     </tr>
                                     <tr class="">
                                         <td>384</td>
-                                        <!-- <td>256</td> -->
-                                        <td>0</td>
+                                        <td style="background: green;">256</td>
+                                        <td style="background: red;">0</td>
                                     </tr>
                                 </table>
                                 <div style="clear:both;">
                                     <p class="footnote" style="text-align: center;">
-                                        Vasileios Mavroeidis, Kamer Vishi, Mateusz D. Zych, Audun Jøsang. "The Impact of Quantum Computing on Present Cryptography" (IJACSA) International Journal of Advanced Computer Science and Applications, Vol. 9, No. 3, 2018                                        .
+                                        Vasileios Mavroeidis, Kamer Vishi, Mateusz D. Zych, Audun Jøsang. "The Impact of Quantum Computing on Present Cryptography" (IJACSA) International Journal of Advanced Computer Science and Applications, Vol. 9, No. 3, 2018.
                                     </p>
                                 </div>
                     </div>
                     <aside class="notes">
+                        As a general rule, encryption strength of 128 bits or more are currently considered strong enough.
                     </aside>
                 </section>
 
@@ -1331,13 +1331,33 @@
 
                 <section data-background="images/atlas-ibl.jpg">
                     <div class="overlay-style">
+
+                        <div class="column-container centered">
+                            <div class="col auto">
+                        <img src="images/aws1.png" />
+                            </div>
+                            <div class="col auto">
+                                <img src="images/aws2.png" />
+
+                            </div>
+                        </div>
+                        <div style="clear:both;">
+                            <p class="footnote" style="text-align: center;">
+                                <a href="https://aws.amazon.com/de/blogs/security/how-to-tune-tls-for-hybrid-post-quantum-cryptography-with-kyber/">https://aws.amazon.com/de/blogs/security/how-to-tune-tls-for-hybrid-post-quantum-cryptography-with-kyber/</a>
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-background="images/atlas-ibl.jpg">
+                    <div class="overlay-style">
                         <p>Post quantum cryptography has implementations in all major programming languages now - including in the popular BouncyCastle library, through which it is available for <span class="highlight">C#</span>.</p>
                     </div>
                 </section>
 
                 <section data-background="images/quantum-law.png">
                     <div class="overlay-style fragment">
-                        <p>In December 2022, Joe Biden signed into law the <span class="highlight">Quantum Computing Cybersecurity Preparedness Act</span>, which encourages federal agencies to:</p>
+                        <p>In December 2022, Joe Biden signed into law the <span class="highlight">Quantum Computing Cybersecurity Preparedness Act</span>, which requires federal agencies to develop plans to:</p>
                         <ul style="text-align: center;">
                             <li>🔐 migrate systems to post-quantum cryptography</li>
                             <li>⚠️ adopt technology that will protect against quantum computing attacks</li>
