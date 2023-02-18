@@ -220,7 +220,7 @@
 
                 <section data-background="images/atlas2.jpg">
                     <div class="overlay-style">
-                        <p>Overall, symmetric encryption is easier to implement, quicker and can be considered safer when done right compared to asymmetric encryption.</p><p> However, secure <span class="highlight">key distribution</span> is a big challenge.</p>
+                        <p>Symmetric encryption is faster and easier to implement, but requires a secure method for <span class="highlight">key distribution</span>, which is a big challenge.</p>
                     </div>
                     <aside class="notes">
                         Many protocols - for example TLS/SSL - use a hybrid model - start with an asymmetric handshake, and then switch to symmetric.
@@ -491,8 +491,8 @@
 
                 <section data-background="images/irpc-demonstrator.jpg">
                     <div class="overlay-style">
-                        <p>In $\mathbf{Z}$ basis:</p>
-                        <p>$$\ket{\psi_1} = \alpha_1\ket{0} + \beta_1\ket{1} \;\;\;
+                        <h2>In $\mathbf{Z}$ basis</h2>
+                        <p>$$\ket{\psi_1} = \alpha_1\ket{0} + \beta_1\ket{1} \;\;\;\;\;\;\;\;\;\;\;\;\;\;\;
                             \ket{\psi_2} = \alpha_2\ket{0} + \beta_2\ket{1}$$</p>
                         <p class="r-fit-text">$$\ket{\psi_{12}} = \alpha_1\alpha_2\ket{00} + \alpha_1\beta_2\ket{01}
                             +
@@ -1047,10 +1047,13 @@
 
                 <section data-background="images/alice-door.jpeg">
                     <div class="overlay-style">
-                        <p>The most widely used public-private cryptosystem is RSA (Rivest–Shamir–Adleman), whose
+                        <p>One of most widely used public-private cryptosystems is RSA (Rivest–Shamir–Adleman), whose
                             security relies on <span class="highlight">factoring problem</span> of large prime numbers.
                         </p>
                     </div>
+                    <aside class="notes">
+                        RSA is considered to be partly legacy, but still it makes a good example to illustrate certain concepts - because they are applicable to the alternative algorithms as well.
+                    </aside>
                 </section>
 
                 <section data-background="images/alice-door.jpeg">
@@ -1163,6 +1166,7 @@
                         <p>In TLS 1.3, RSA is no longer used, in favor of Ephemeral Elliptic-Curve Diffie-Hellman (ECDHE) handshake.</p><p>However, Shor's algorithm can also be used to compute discrete logarithms on elliptic curves over prime fields, thus is <span class="highlight">equally capable of attacking it</span>.
                         </p>
                     </div>
+                    <aside class="notes">Even without TLS 1.3, ECDSA should be used over RSA.</aside>
                 </section>
 
                 <section data-background="images/ellipticcurve.png">
