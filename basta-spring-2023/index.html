@@ -137,7 +137,7 @@
                                         <td>0</td>
                                         <td>1</td>
                                         <td>0</td>
-                                        <td>0</td>
+                                        <td>1</td>
                                         <td>0</td>
                                         <td>1</td>
                                         <td>1</td>
@@ -148,7 +148,7 @@
                                         <td>0</td>
                                         <td>1</td>
                                         <td>1</td>
-                                        <td>1</td>
+                                        <td>0</td>
                                         <td>1</td>
                                         <td>1</td>
                                         <td>1</td>
@@ -172,9 +172,9 @@
                             </div>
                         </div>
                     </div>
-                    <aside class="notes">
+                    <!-- <aside class="notes">
                         If the key is random then the attacker, Eve, intercepts the ciphertext on its way from Alice to Bob, she would gain no information about the original message at all as there is no pattern to spot.
-                    </aside>
+                    </aside> -->
                 </section>
 
                 <section data-background="images/atlas3.jpg">
@@ -210,7 +210,7 @@
 
                 <section data-background="images/atlas3.jpg">
                     <div class="overlay-style">
-                    <p>Asymmetric encryption is based on difficult mathematical problems:</p>
+                    <p>Asymmetric cryptography is based on difficult mathematical problems:</p>
                     <ul>
                         <li>🧮 factorizing large prime numbers - <span class="highlight">RSA</span></li> 
                         <li>🧮 discrete logarithm problem - <span class="highlight">Elliptic Curve Cryptography</span></li>
@@ -429,7 +429,8 @@
 
                 <section data-background="images/irpc-demonstrator.jpg">
 
-                    <div class="column-container centered overlay-style">
+                    <div class="overlay-style">
+                    <div class="column-container centered">
 
                         <div class="col">
                             <p>To describe the state of a multi-qubit system, we use a <span class="highlight">tensor
@@ -437,24 +438,13 @@
                         </div>
 
                         <div class="col">
-                            <p>$$
-                                \begin{bmatrix}a_1 \\ b_1 \end{bmatrix} \otimes \begin{bmatrix}a_2 \\ b_2
-                                \end{bmatrix} =
-                                \begin{bmatrix}a_1a_2 \\ a_1b_2 \\ b_1a_2 \\ b_1b_2 \end{bmatrix}
-                                $$</p>
+                            <p>$$\ket{\psi_1} = \alpha_1\ket{0} + \beta_1\ket{1}$$</p>
+                            <p>$$\ket{\psi_2} = \alpha_2\ket{0} + \beta_2\ket{1}$$</p>
                         </div>
                     </div>
-                </section>
-
-
-                <section data-background="images/irpc-demonstrator.jpg">
-                    <div class="overlay-style">
-                        <h2>In $\mathbf{Z}$ basis</h2>
-                        <p>$$\ket{\psi_1} = \alpha_1\ket{0} + \beta_1\ket{1} \;\;\;\;\;\;\;\;\;\;\;\;\;\;\;
-                            \ket{\psi_2} = \alpha_2\ket{0} + \beta_2\ket{1}$$</p>
-                        <p class="r-fit-text">$$\ket{\psi_{12}} = \alpha_1\alpha_2\ket{00} + \alpha_1\beta_2\ket{01}
-                            +
-                            \beta_1\alpha_2\ket{10} + \beta_1\beta_2\ket{11}$$</p>
+                    <div style="clear: both;">$$\ket{\psi_{12}} = \alpha_1\alpha_2\ket{00} + \alpha_1\beta_2\ket{01}
+                        +
+                        \beta_1\alpha_2\ket{10} + \beta_1\beta_2\ket{11}$$</div>
                     </div>
                 </section>
 
