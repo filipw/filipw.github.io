@@ -462,3 +462,13 @@ table.large td {
 .reveal .slides > section, .reveal .slides > section > section {
   padding: 0;
 }
+
+.reveal section img.vertically-centered {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.reveal section img.no-min-height {
+  min-height: auto;
+}
