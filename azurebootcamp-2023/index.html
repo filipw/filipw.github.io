@@ -558,7 +558,7 @@ Result     Frequency
                     <h1>Basic Theory</h1>
                 </section>
 
-                <section data-background="images/cern-theory2.jpg">
+                <!-- <section data-background="images/cern-theory2.jpg">
                     <h2 class="overlay-style">Q# random number generator</h2>
                     <pre>
                 <code class="cs">
@@ -580,7 +580,7 @@ operation Run() : Int {
                     <p class="fragment" data-code-focus="5"></p>
                     <p class="fragment" data-code-focus="7-8"></p>
                     <p class="fragment" data-code-focus="10-11"></p>
-                </section>
+                </section> -->
 
                 <section data-background="images/irpc-demonstrator.jpg">
                     <div class="overlay-style">
@@ -696,7 +696,7 @@ operation Run() : Int {
                         </p>
                         <p>Together, we call them the $\mathbf{Z}$ basis</p>
                     </div>
-                    <aside class="notes">Using just them, we effectively reconstruct classical computing.</aside>
+                    <aside class="notes">Using just them, we effectively reconstruct classical computing. You can think of them as "quantum encoded bits".</aside>
                 </section>
 <!-- 
                 <section data-background="images/irpc-demonstrator.jpg">
@@ -798,7 +798,7 @@ operation Run() : Int {
 
                 <section data-background="images/irpc-demonstrator.jpg">
                     <div class="overlay-style">
-                        <h2>Algorithm evolution</h2>
+                        <h2>Program evolution</h2>
                         <table>
                             <thead>
                                 <th>type</th>
@@ -812,20 +812,20 @@ operation Run() : Int {
                             <tr class="fragment">
                                 <td>Classical</td>
                                 <td></td>
-                                <td>01001010</td>
+                                <td>010</td>
                                 <td>$\rightarrow$</td>
-                                <td>01110100</td>
+                                <td>110</td>
                                 <td>$\rightarrow$</td>
-                                <td>10100000</td>
+                                <td>001</td>
                             </tr>
                             <tr class="fragment">
                                 <td>Quantum</td>
                                 <td></td>
-                                <td>$\ket{10110101}$</td>
+                                <td>$\ket{1}\ket{0}\ket{0}$</td>
                                 <td>$\rightarrow$</td>
                                 <td>$\ket{\psi}$</td>
                                 <td>$\rightarrow$</td>
-                                <td>$\ket{11010100}$</td>
+                                <td>$\ket{0}\ket{1}\ket{0}$</td>
                             </tr>
                         </table>
                     </div>
