@@ -1059,6 +1059,21 @@ operation Run() : Int {
                     </div>
                 </section>
 
+                <section data-background="images/alice-door.jpeg">
+                    <div class="overlay-style">
+                        <p>The linear algebra for the circuit produces</p>
+                        <p>
+                            $$\ket{\psi} =
+                            \begin{cases}
+                            \pm\ket{0}\frac{1}{\sqrt{2}}(\ket{0} - \ket{1}) \;\;\;\; \text{when    f(0) = f(1)} \\
+                            \pm\ket{1}\frac{1}{\sqrt{2}}(\ket{0} - \ket{1}) \;\;\;\; \text{when    f(0)} \neq \text{f(1)} \\
+                            \end{cases}
+                            $$
+                        <p>
+                        <p>This solves the problem in a single shot.</p>
+                    </div>
+                </section> 
+
             </section>
             <!-- end circuits -->
 
@@ -1094,10 +1109,10 @@ operation Run() : Int {
                                 <p>$\mathbf{CNOT}$ flips the target qubit if the control qubit is in state $\ket{1}$</p>
                             </div>
                             <div class="col inset">
-                        <p>$$\ket{0} \otimes \ket{0} \rightarrow \ket{0} \otimes \ket{0}$$</p>
-                        <p>$$\ket{1} \otimes \ket{0} \rightarrow \ket{1} \otimes \ket{1}$$ </p>
-                        <p>$$\ket{0} \otimes \ket{1} \rightarrow \ket{0} \otimes \ket{1}$$</p>
-                        <p>$$\ket{1} \otimes \ket{1} \rightarrow \ket{1} \otimes \ket{0}$$</p>
+                        <p>$$\mathbf{CNOT}(\ket{0}\ket{0}) = \ket{0}\ket{0}$$</p>
+                        <p>$$\mathbf{CNOT}(\ket{0}\ket{1}) = \ket{0}\ket{1}$$</p>
+                        <p>$$\mathbf{CNOT}(\ket{1}\ket{0}) = \ket{1}\ket{1}$$</p>
+                        <p>$$\mathbf{CNOT}(\ket{1}\ket{1}) = \ket{1}\ket{0}$$</p>
                         </div>
 
                             </div>
@@ -1114,7 +1129,8 @@ operation Run() : Int {
                     <div class="overlay-style">
                         <p>Then we have an <span class="highlight">entangled</span> state.</p>
                             <p>
-                            $$\mathbf{CNOT}(\mathbf{H}\ket{0} \otimes \ket{0}) = \frac{1}{\sqrt{2}}\ket{00} + \frac{1}{\sqrt{2}}\ket{11}$$</p>
+                            $$\mathbf{CNOT}
+                        \biggl(\mathbf{H}\ket{0}\ket{0}\biggr) = \frac{1}{\sqrt{2}}\ket{0}\ket{0} + \frac{1}{\sqrt{2}}\ket{1}\ket{1}$$</p>
                         <p>Upon measurement of either qubit, there is an equal <span class="highlight">50% probability</span> of a state collapse to $\ket{00}$ or $\ket{11}$.</p>
                     </div>
                     <aside class="notes">
