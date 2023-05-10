@@ -887,7 +887,7 @@ operation Run() : Int {
 
                 <section data-background="images/alice-door.jpeg">
                     <div class="overlay-style">
-                        <h2>H Gate</h2>
+                        <h2>$\mathbf{H}$ Gate</h2>
                         <div class="column-container">
                             <div class="col">
                                 Hadamard gate is used to create a <span
@@ -895,7 +895,7 @@ operation Run() : Int {
                             </div>
                             <div class="col">
                                 <p>$$
-                                    H=\frac{1}{\sqrt{2}}\begin{bmatrix} 1 & 1 \\ 1 &
+                                    \mathbf{H}=\frac{1}{\sqrt{2}}\begin{bmatrix} 1 & 1 \\ 1 &
                                     -1 \end{bmatrix}$$
                                 </p>
                             </div>
@@ -905,10 +905,10 @@ operation Run() : Int {
 
                 <section data-background="images/alice-door.jpeg">
                     <div class="overlay-style">
-                        <p>$$H\ket{0} = \frac{1}{\sqrt{2}}\begin{bmatrix} 1 & 1 \\ 1 &
+                        <p>$$\mathbf{H}\ket{0} = \frac{1}{\sqrt{2}}\begin{bmatrix} 1 & 1 \\ 1 &
                             -1 \end{bmatrix}\begin{bmatrix} 1 \\ 0 \end{bmatrix} =
                             \frac{1}{\sqrt{2}}\ket{0} + \frac{1}{\sqrt{2}}\ket{1}$$</p>
-                        <p>$$H\ket{1} = \frac{1}{\sqrt{2}}\begin{bmatrix} 1 & 1 \\ 1 &
+                        <p>$$\mathbf{H}\ket{1} = \frac{1}{\sqrt{2}}\begin{bmatrix} 1 & 1 \\ 1 &
                             -1 \end{bmatrix}\begin{bmatrix} 0 \\ 1 \end{bmatrix} = \frac{1}{\sqrt{2}}\ket{0} -
                             \frac{1}{\sqrt{2}}\ket{1}$$</p>
                         <p>Upon measurement, there is an equal <span class="highlight">50% probability</span> of a collapse to $\ket{0}$ or a $\ket{1}$.</p>
@@ -917,7 +917,7 @@ operation Run() : Int {
 
                 <section data-background="images/alice-door.jpeg">
                     <div class="overlay-style">
-                        <p>$$H \times H =
+                        <p>$$\mathbf{H} \times \mathbf{H} =
                             \begin{bmatrix} \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} &
                             -\frac{1}{\sqrt{2}} \end{bmatrix} \times \begin{bmatrix} \frac{1}{\sqrt{2}} &
                             \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} &
@@ -1013,18 +1013,18 @@ operation Run() : Int {
                         <div class="column-container centered">
                             <div class="col">
                                 <ul>
-                                    <li>$f_0$ is constant $0$</li>
-                                    <li>$f_1$ is constant $1$</li>
-                                    <li>$f_2$ is "balanced same"</li>
-                                    <li>$f_3$ is "balanced flipped"</li>
+                                    <li>$f_0$ is constant</li>
+                                    <li>$f_1$ is constant</li>
+                                    <li>$f_2$ is balanced</li>
+                                    <li>$f_3$ is balanced</li>
                                 </ul>
                             </div>
                             <div class="col">
                                 <ul>
-                                    <li>$f(0) = f(1) = 0$</li>
-                                    <li>$f(0) = f(1) = 1$</li>
-                                    <li>$f(0) = 0 \;\;\; f(1) = 1$</li>
-                                    <li>$f(0) = 1 \;\;\; f(1) = 0$</li>
+                                    <li>$f_0(0) = f_0(1) = 0$</li>
+                                    <li>$f_1(0) = f_1(1) = 1$</li>
+                                    <li>$f_2(0) = 0 \;\;\; f_2(1) = 1$</li>
+                                    <li>$f_3(0) = 1 \;\;\; f_3(1) = 0$</li>
                                 </ul>
                             </div>
                 </section>
@@ -1055,12 +1055,12 @@ operation Run() : Int {
 
                 <section data-background="images/alice-door.jpeg">
                     <div class="overlay-style">
-                        <p>The linear algebra for the circuit produces</p>
+                        <p>The linear algebra for the circuit produces (for the measured qubit)</p>
                         <p>
                             $$\ket{\psi} =
                             \begin{cases}
-                            \pm\ket{0}\frac{1}{\sqrt{2}}(\ket{0} - \ket{1}) \;\;\;\; \text{when    f(0) = f(1)} \\
-                            \pm\ket{1}\frac{1}{\sqrt{2}}(\ket{0} - \ket{1}) \;\;\;\; \text{when    f(0)} \neq \text{f(1)} \\
+                            \; \ket{0} \;\;\;\; \text{when    f(0) = f(1)} \\
+                            \; \ket{1} \;\;\;\; \text{when    f(0)} \neq \text{f(1)} \\
                             \end{cases}
                             $$
                         <p>
