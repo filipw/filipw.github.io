@@ -376,7 +376,7 @@
                         </div>
                         <div class="col overlay-style">
                             <h3>Chemistry</h3>
-                            <p>subatomic modeling, molecular simulations, drug discovery</p>
+                            <p>molecular simulations, drug discovery, material science</p>
                         </div>
                     </div>
                 </section>
@@ -386,8 +386,8 @@
                         <div class="col">
                         </div>
                         <div class="col overlay-style">
-                            <h3>Materials science</h3>
-                            <p>problem optimization, energy research, simulation and discovery</p>
+                            <h3>Climate and energy</h3>
+                            <p>energy research, climate modeling</p>
                         </div>
                     </div>
                 </section>
@@ -419,8 +419,8 @@
                         <div class="col">
                         </div>
                         <div class="col overlay-style">
-                            <h3>Financial Services</h3>
-                            <p>risk analysis, complex simulations, portfolio optimization</p>
+                            <h3>Optimization</h3>
+                            <p>risk analysis, logistics, financial modeling</p>
                         </div>
                     </div>
                 </section>
@@ -778,8 +778,8 @@ operation Run() : Int {
 
                         <div class="col inset-right">
                             <p class="r-fit-text">
-                                $$P(0) = P(\ket{0}) = |\alpha|^2$$
-                                $$P(1) = P(\ket{1}) = |\beta|^2$$
+                                $$P(\ket{0}) = |\alpha|^2$$
+                                $$P(\ket{1}) = |\beta|^2$$
                             </p>
                             <p>$$|\alpha|^2 + |\beta|^2 = 1$$</p>
                         </div>
@@ -879,7 +879,7 @@ operation Run() : Int {
                             </div>
 
                             <div class="col">
-                                <img src="images/quantum-circuit.png" />
+                                <img src="images/teleportation.png" />
                             </div>
                         </div>
                     </div>
@@ -895,8 +895,8 @@ operation Run() : Int {
                             </div>
                             <div class="col">
                                 <p>$$
-                                    \mathbf{H}=\frac{1}{\sqrt{2}}\begin{bmatrix} 1 & 1 \\ 1 &
-                                    -1 \end{bmatrix}$$
+                                    \mathbf{H}=\begin{bmatrix} \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} &
+                                    -\frac{1}{\sqrt{2}} \end{bmatrix}$$
                                 </p>
                             </div>
                         </div>
@@ -905,12 +905,9 @@ operation Run() : Int {
 
                 <section data-background="images/alice-door.jpeg">
                     <div class="overlay-style">
-                        <p>$$\mathbf{H}\ket{0} = \frac{1}{\sqrt{2}}\begin{bmatrix} 1 & 1 \\ 1 &
-                            -1 \end{bmatrix}\begin{bmatrix} 1 \\ 0 \end{bmatrix} =
+                        <p>$$\mathbf{H}\ket{0} = \begin{bmatrix} \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} &
+                            -\frac{1}{\sqrt{2}} \end{bmatrix}\begin{bmatrix} 1 \\ 0 \end{bmatrix} =  \begin{bmatrix} \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \end{bmatrix} =
                             \frac{1}{\sqrt{2}}\ket{0} + \frac{1}{\sqrt{2}}\ket{1}$$</p>
-                        <p>$$\mathbf{H}\ket{1} = \frac{1}{\sqrt{2}}\begin{bmatrix} 1 & 1 \\ 1 &
-                            -1 \end{bmatrix}\begin{bmatrix} 0 \\ 1 \end{bmatrix} = \frac{1}{\sqrt{2}}\ket{0} -
-                            \frac{1}{\sqrt{2}}\ket{1}$$</p>
                         <p>Upon measurement, there is an equal <span class="highlight">50% probability</span> of a collapse to $\ket{0}$ or a $\ket{1}$.</p>
                     </div>
                 </section>
@@ -932,58 +929,15 @@ operation Run() : Int {
 
                 <section data-background="images/alice-door.jpeg">
                     <div class="overlay-style">
-                        <p>$$\mathbf{H}\biggl(\frac{1}{\sqrt{2}}\ket{0} + \frac{1}{\sqrt{2}}\ket{1}\biggr) = \begin{bmatrix} 1 \\ 0 \end{bmatrix} = \ket{0}$$</p>
-                        <p>$$\mathbf{H}\biggl(\frac{1}{\sqrt{2}}\ket{0} - \frac{1}{\sqrt{2}}\ket{1}\biggr) = \begin{bmatrix} 0 \\ 1 \end{bmatrix} = \ket{1}$$</p>
+                        <p>$$\mathbf{H}\biggl(\frac{1}{\sqrt{2}}\ket{0} + \frac{1}{\sqrt{2}}\ket{1}\biggr) = \begin{bmatrix} \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} &
+                            -\frac{1}{\sqrt{2}} \end{bmatrix}\begin{bmatrix} \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \end{bmatrix} = \begin{bmatrix} 1 \\ 0 \end{bmatrix} = \ket{0}$$</p>
+                        <!-- <p>$$\mathbf{H}\biggl(\frac{1}{\sqrt{2}}\ket{0} - \frac{1}{\sqrt{2}}\ket{1}\biggr) = \begin{bmatrix} 0 \\ 1 \end{bmatrix} = \ket{1}$$</p> -->
                         <p>If we apply $\mathbf{H}$ again, due to constructive and destructive <span class="highlight">interference</span>, the qubit goes back to original state.</p>
                     </div>
                     <aside class="notes">
                         Probability amplitudes for one outcome get amplified, and for the other cancel each other out.
                     </aside>
                 </section>
-
-                <section data-background="images/alice-door.jpeg">
-                    <div class="overlay-style">
-                        <p>$$\mathbf{H} \times \mathbf{H} =
-                            \begin{bmatrix} \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} &
-                            -\frac{1}{\sqrt{2}} \end{bmatrix} \times \begin{bmatrix} \frac{1}{\sqrt{2}} &
-                            \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} &
-                            -\frac{1}{\sqrt{2}} \end{bmatrix} =
-                            \begin{bmatrix} 1 & 0 \\ 0 &
-                            1 \end{bmatrix} = I $$</p>
-                        <p>Applying $\mathbf{H}$ twice in a row is mathematically equivalent to multiplying by identity.</p>
-                    </div>
-                    <aside class="notes">
-                        This is an example of interference.
-                    </aside>
-                </section>
-
-                <!-- <section data-background="images/irpc-demonstrator.jpg">
-                    <div class="overlay-style">
-                        <h2>X Gate</h2>
-                        <div class="column-container">
-                            <div class="col">
-                                <span class="highlight">X gate</span> is one of the Pauli spin matrices. It <span
-                                    class="highlight">swaps</span> the probability amplitudes $\alpha$ and $\beta$.
-                            </div>
-                            <div class="col">
-                                <p>$$
-                                    X=\begin{bmatrix} 0 & 1 \\ 1 & 0 \end{bmatrix}$$
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <section data-background="images/irpc-demonstrator.jpg">
-                    <div class="overlay-style">
-                        <p>$$X(\alpha\ket{0} + \beta\ket{1}) = \begin{bmatrix} 0 &amp; 1 \\ 1 &amp; 0
-                            \end{bmatrix}(\alpha\ket{0} + \beta\ket{1}) = \beta\ket{0} + \alpha\ket{1}$$</p>
-                        <p>$$X\ket{0} = \begin{bmatrix} 0 &amp; 1 \\ 1 &amp; 0
-                            \end{bmatrix}\begin{bmatrix} 1 \\ 0 \end{bmatrix} = \ket{1}$$</p>
-                        <p>$$X\ket{1} = \begin{bmatrix} 0 &amp; 1 \\ 1 &amp; 0
-                            \end{bmatrix}\begin{bmatrix} 0 \\ 1 \end{bmatrix} = \ket{0}$$</p>
-                    </div>
-                </section> -->
 
                 <section data-background="images/alice-door.jpeg">
                     <div class="overlay-style">
@@ -1056,8 +1010,8 @@ operation Run() : Int {
                 </section>
 
                 <section data-background="images/alice-door.jpeg">
-                    <div class="column-container centered">
-                        <div class="col overlay-style">
+                    <div class="column-container centered overlay-style">
+                        <div class="col">
                             <p>Classically, <span class="highlight">two</span> function evaluations are needed.</p><p> After
                                 the first execution, we still cannot say if the function is balanced or constant.</p>
                         </div>
@@ -1068,13 +1022,13 @@ operation Run() : Int {
                 </section>
 
                 <section data-background="images/alice-door.jpeg">
-                    <div class="column-container centered">
-                        <div class="col overlay-style">
+                    <div class="column-container centered overlay-style">
+                        <div class="col">
                             <p>On a quantum computer, thanks to <span class="highlight">interference</span>, the answer can be obtained in just <span
                                     class="highlight">one</span> call.</p>
                         </div>
                         <div class="col inset">
-                            <img src="images/deutsch.png" />
+                            <img src="images/deutsch-tex.png" />
                         </div>
                     </div>
                 </section>
@@ -1082,28 +1036,28 @@ operation Run() : Int {
                 <section data-background="images/irpc-demonstrator.jpg">
                     <div class="overlay-style">
                         <h3>Siblings analogy</h3>
-                        <table class="fragment">
+                        <table class="fragment" data-fragment-index="1">
                             <tr>
                                 <td></td>
                                 <td>👧🏻</td>
                                 <td style="border-right: 1px solid">👧🏻</td>
-                                <td>👧🏻</td>
-                                <td>👦🏼</td>
+                                <td>👧🏽</td>
+                                <td>👦🏽</td>
                             </tr>
-                            <tr class="fragment">
+                            <tr class="fragment" data-fragment-index="2">
                                 <td rowspan="3">How are you doing?</td>
                             </tr>
-                            <tr class="fragment">
-                                <td>good</td>
-                                <td style="border-right: 1px solid">good</td>
-                                <td>good</td>
-                                <td>bad</td>
+                            <tr class="fragment" data-fragment-index="3">
+                                <td class="fragment" data-fragment-index="3">good</td>
+                                <td class="fragment" data-fragment-index="3" style="border-right: 1px solid">good</td>
+                                <td class="fragment" data-fragment-index="6">good</td>
+                                <td class="fragment" data-fragment-index="6">bad</td>
                             </tr>
-                            <tr class="fragment">
-                                <td>bad</td>
-                                <td style="border-right: 1px solid">bad</td>
-                                <td>bad</td>
-                                <td>good</td>
+                            <tr class="fragment" data-fragment-index="3">
+                                <td class="fragment" data-fragment-index="5">bad</td>
+                                <td class="fragment" data-fragment-index="5" style="border-right: 1px solid">bad</td>
+                                <td class="fragment" data-fragment-index="7">bad</td>
+                                <td class="fragment" data-fragment-index="7">good</td>
                             </tr>
                             <tr class="fragment">
                             </tr>
@@ -1123,7 +1077,7 @@ operation Run() : Int {
                     <div class="overlay-style">
                     <h3><span class="fragment">How are you doing?</span>&nbsp;&nbsp;&nbsp;<span class="fragment">🔊 bad</span></h3>
                     <h3><span class="fragment">How are you doing?</span>&nbsp;&nbsp;&nbsp;<span class="fragment">🔊 good</span></h3>
-                    <h1 class="fragment">👦🏼&nbsp;&nbsp;&nbsp;👧🏻</h3>
+                    <h1 class="fragment">👦🏽&nbsp;&nbsp;&nbsp;👧🏽</h3>
                     </div>
                 </section>
 
@@ -1136,8 +1090,8 @@ operation Run() : Int {
 
                 <section data-background-color="#000">
                     <div class="overlay-style">
-                    <h3><span class="fragment">How are you doing?</span>&nbsp;&nbsp;&nbsp;<span class="fragment">🔊 GBDGBG</span></h3>
-                    <h1 class="fragment">👦🏼&nbsp;&nbsp;&nbsp;👧🏻</h3>
+                    <h3><span class="fragment">How are you doing?</span>&nbsp;&nbsp;&nbsp;<span class="fragment">🔊 gbdgbd</span></h3>
+                    <h1 class="fragment">👦🏽&nbsp;&nbsp;&nbsp;👧🏽</h3>
                     </div>
                 </section>
 
@@ -1212,7 +1166,7 @@ operation Run() : Int {
                         <p>Then we have an <span class="highlight">entangled</span> state.</p>
                             <p>
                             $$\mathbf{CNOT}
-                        \biggl(\mathbf{H}\ket{0}\ket{0}\biggr) = \frac{1}{\sqrt{2}}\ket{0}\ket{0} + \frac{1}{\sqrt{2}}\ket{1}\ket{1}$$</p>
+                        \biggl(\mathbf{H}\ket{0}\ket{0}\biggr) = \frac{1}{\sqrt{2}}\biggl(\ket{0}\ket{0}\biggr) + \frac{1}{\sqrt{2}}\biggl(\ket{1}\ket{1}\biggr)$$</p>
                         <p>Upon measurement of either qubit, there is an equal <span class="highlight">50% probability</span> of a state collapse to $\ket{00}$ or $\ket{11}$.</p>
                     </div>
                     <aside class="notes">
