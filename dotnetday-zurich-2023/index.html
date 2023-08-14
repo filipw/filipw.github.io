@@ -259,7 +259,7 @@
             <!-- end QM-->
 
             <!-- Theory -->
-            <section>
+            <!-- <section>
                 <section data-background="images/cern-theory.jpg">
                     <h1>Quantum Theory</h1>
                 </section>
@@ -533,7 +533,7 @@
                     <aside class="notes">
                     </aside>
                 </section>
-            </section>
+            </section> -->
             <!-- end basic theory -->
 
             <!-- Quantum security -->
@@ -541,6 +541,121 @@
                 <section data-background="images/atlas-barrel.jpg">
                     <h1>Quantum security</h1>
                 </section>
+
+                <section data-background="images/irpc-demonstrator.jpg">
+                    <div class="overlay-style">
+                        <p>In classical information theory a bit can have only two discrete values</p>
+                        <h2 class="r-fit-text">0 or 1</h2>
+                    </div>
+                </section>
+
+                <section data-background="images/irpc-demonstrator.jpg">
+                    <div class="overlay-style">
+                        <p>In quantum theory a basic unit of information is called a</p>
+                        <h2 class="r-fit-text">qubit</h2>
+                    </div>
+                </section>
+
+                <section data-background="images/irpc-demonstrator.jpg">
+                    <div class="overlay-style">
+                        <p>Just like a bit, qubit has only two <span
+                            class="highlight">observable</span> (basis) states</p><p>However, during computation can additionally be in a <span
+                            class="highlight">superposition</span> state (a mix of both of them).</p>
+                    </div>
+                    <aside class="notes">
+                        Mathematically, a qubit state is described by a vector.
+                    </aside>
+                </section>
+
+                <section data-background="images/irpc-demonstrator.jpg">
+                    <div class="overlay-style">
+                        <p>A superposition state is</p>
+                        <h2 class="r-fit-text">not directly observable</h2>
+                        <p>Only the basis states can be observed in the measurement process</p>
+                    </div>
+                    <aside class="notes">
+                        So what happens when we observe a system in superposition?
+                    </aside>
+                </section>
+
+                <section data-background="images/schroedinger-cat2.png">
+                    <aside class="notes">
+                        Schrödinger's cat was both dead and alive at the same time. It's NOT that he was dead or alive and Schrödinger simply did not know.
+                        Only once Schrödinger opened the box, because of "observation", would the cat's fate be decided.
+                    </aside>
+                </section>
+
+                <section data-background="images/alice_9104.jpg">
+                    <div class="column-container centered overlay-style">
+                        <div class="col">
+                            <h2>$\mathbf{Z}$ basis</h2>
+                            <p>
+                                $
+                            \begin{bmatrix} 1 \cr 0 \end{bmatrix} = \ket{0} \rightarrow
+                            $ maps to bit 0<br/><br/>
+                            $
+                            \begin{bmatrix} 0 \cr 1 \end{bmatrix} = \ket{1}  \rightarrow
+                            $ maps to bit 1<br/><br/>
+                            $\alpha\ket{0} + \beta\ket{1} \rightarrow
+                            $ superposition
+                            </p>
+                        </div>
+                        <div class="col inset">
+                            <img src="images/bloch-z-axis.jpeg" />
+                        </div>
+                    <aside class="notes">
+                        Qubit state can be visualized on a Bloch sphere 
+                    </aside>
+                </section>
+
+                <section data-background="images/alice_9104.jpg">
+                    <div class="column-container centered overlay-style">
+                        <div class="col">
+                            <h2>$\mathbf{X}$ basis</h2>
+                            <p>
+                                $
+                                \begin{bmatrix} \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \end{bmatrix} = \ket{+} \rightarrow
+                            $ maps to bit 0<br/><br/>
+                            $
+                            \begin{bmatrix} \frac{1}{\sqrt{2}} \\ -\frac{1}{\sqrt{2}} \end{bmatrix} = \ket{-}  \rightarrow
+                            $ maps to bit 1<br/><br/>
+                            $\alpha\ket{+} + \beta\ket{-} \rightarrow
+                            $ superposition
+                            </p>
+                        </div>
+                        <div class="col inset">
+                            <img src="images/bloch-x-axis.jpeg" />
+                        </div>
+                    <aside class="notes">
+                        We can map bit 0 and bit 1 to any to antipodal points on the Bloch sphere, thus we have infinitely many vectors to choose from.
+                    </aside>
+                </section>
+
+                <section data-background="images/alice_9104.jpg">
+                    <div class="overlay-style">
+                        <p>The choice of basis is a way to</p>
+                        <h2 class="r-fit-text">encode and decode</h2>
+                        <p>information into and out of qubits</p>
+                    </div>
+                </section>
+
+<!-- 
+                <section data-background="images/alice_9104.jpg">
+                    <div class="column-container centered overlay-style">
+                        <div class="col">
+                            <h2>$\mathbf{X}$ basis</h2>
+                            <p class="r-fit-text">
+                                $$
+                                0 = \frac{1}{\sqrt{2}}\begin{bmatrix} 1 \\ 1 \end{bmatrix} = \ket{+}$$
+                                $$
+                                1 = \frac{1}{\sqrt{2}}\begin{bmatrix} 1 \\ -1 \end{bmatrix} = \ket{-}
+                                $$
+                            </p>
+                        </div>
+                        <div class="col inset">
+                            <img src="images/bloch-x-axis.jpeg" />
+                        </div>
+                </section> -->
 
                 <section data-background="images/heisenberg-uncertainty.png" data-state="bg-top-left">
                     <div class="column-container">
@@ -564,33 +679,16 @@
                         <p>with arbitrary precision.</p>
                     </div>
                 </section>
-
-                <section data-background="images/alice_9104.jpg">
-                    <div class="column-container centered overlay-style">
-                        <div class="col">
-                            <h2>$\mathbf{X}$ basis</h2>
-                            <p class="r-fit-text">
-                                $$
-                                0 = \frac{1}{\sqrt{2}}\begin{bmatrix} 1 \\ 1 \end{bmatrix} = \ket{+}$$
-                                $$
-                                1 = \frac{1}{\sqrt{2}}\begin{bmatrix} 1 \\ -1 \end{bmatrix} = \ket{-}
-                                $$
-                            </p>
-                        </div>
-                        <div class="col inset">
-                            <img src="images/bloch-x-axis.jpeg" />
-                        </div>
-                </section>
-
+<!-- 
                 <section data-background="images/alice_9104.jpg">
                     <div class="overlay-style">
                         <p>The choice of basis is a way to</p>
                         <h2 class="r-fit-text">encode and decode</h2>
                         <p>information into and out of qubits</p>
                     </div>
-                </section>
+                </section> -->
 
-                <section data-background="images/alice_9104.jpg">
+                <!-- <section data-background="images/alice_9104.jpg">
                     <div class="overlay-style">
                         <p>In quantum physics, the measurements in the $\mathbf{Z}$ and $\mathbf{X}$ bases <span
                                 class="highlight">do not commute</span>.
@@ -598,7 +696,7 @@
                     <aside class="notes">
                         $X \cdot Z - Z \cdot X \neq 0$ which means the order of measurements matters!
                     </aside>
-                </section>
+                </section> -->
 
 
                 <section data-background="images/alice_9104.jpg">
@@ -651,6 +749,7 @@
                         This concept underpins quantum cryptography.
                     </aside>
                 </section>
+
 
                 <section data-background="images/alice_9104.jpg">
                     <div class="overlay-style">
@@ -869,7 +968,7 @@
                         </div>
                     </div>
                 </section>
-
+<!-- 
                 <section data-background="images/e91.png">
                     <div class="overlay-style fragment">
                         <p>In 1991, Artur Ekert developed the first <span class="highlight">quantum key
@@ -983,7 +1082,7 @@
                             </p>
                         </div>
                     </div>
-                </section>
+                </section> -->
             </section>
             <!-- end quantum security -->
 
