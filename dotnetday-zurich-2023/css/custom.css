@@ -303,8 +303,8 @@ span.highlight/*, span.mjx-math*/ {
 .reveal .slides section .fragment.highlight-current-red.current-fragment {
   background: #de4747;
   color: #fff;
-  display: inline-block;
-  padding: 0 5px;
+  /* display: inline-block; */
+  /* padding: 0 5px; */
   /* line-height: 1.2em; */
 }
 
