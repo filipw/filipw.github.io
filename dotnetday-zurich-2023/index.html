@@ -181,9 +181,9 @@
                     <div class="overlay-style">
                         <h2>Prerequisites</h2>
                         <ul>
-                           <li class="fragment">1. the key must be <span class="highlight">completely random</span></li>
-                           <li class="fragment">2. the key must <span class="highlight">not be reused</span> and must be kept secret (especially when sharing)</li>
-                           <li class="fragment">3. the key must be at least the <span class="highlight">length of the message</span> to encrypt</li>
+                            <li class="fragment">1. the key must be at least the <span class="highlight">length of the message</span> to encrypt</li>
+                           <li class="fragment">2. the key must be <span class="highlight">completely random</span></li>
+                           <li class="fragment">3. the key must <span class="highlight">not be reused</span> and must be distributed safely</li>
                             </ul>
                     </div>
                     <aside class="notes">
@@ -198,8 +198,21 @@
 
                 <section data-background="images/atlas3.jpg">
                     <div class="overlay-style">
-                    <p>Most popular symmetric algorithms is the <span class="highlight">Advanced Encryption Standard (AES)</span>.</p><p>Another commonly used one, the Triple Data Encryption Standard (3DES) is now deprecated and should no longer be used.</p>
+                    <p>Most popular symmetric algorithms is the <span class="highlight">Advanced Encryption Standard (AES)</span>.</p><p>AES with 256 bit key length is approved by NSA for top secret information.</p>
                     </div>
+                    <aside class="notes">
+                        Another commonly used one, the Triple Data Encryption Standard (3DES) is now deprecated and should no longer be used
+                        
+                    </aside>
+                </section>
+
+                <section data-background="images/atlas3.jpg">
+                    <div class="overlay-style">
+                        <p>Symmetric encryption is fast and relatively simple, but requires a secure method for <span class="highlight">key distribution</span>, which is a big challenge, especially when parties do not know or trust each other.</p>
+                    </div>
+                    <aside class="notes">
+                        Many protocols - for example TLS/SSL - use a hybrid model - start with an asymmetric handshake, and then switch to symmetric.
+                    </aside>
                 </section>
 
                 <section data-background="images/atlas3.jpg">
@@ -216,15 +229,6 @@
                         <li>🧮 discrete logarithm problem - <span class="highlight">Elliptic Curve Cryptography</span></li>
                     </ul>
                     </div>
-                </section>
-
-                <section data-background="images/atlas3.jpg">
-                    <div class="overlay-style">
-                        <p>Symmetric encryption is faster and easier to implement, but requires a secure method for <span class="highlight">key distribution</span>, which is a big challenge.</p>
-                    </div>
-                    <aside class="notes">
-                        Many protocols - for example TLS/SSL - use a hybrid model - start with an asymmetric handshake, and then switch to symmetric.
-                    </aside>
                 </section>
 
                 <section data-background="images/quantum-computer.jpg">
