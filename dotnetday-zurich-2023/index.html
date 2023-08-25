@@ -943,10 +943,10 @@
 
                 <section data-background="images/alice-door.jpeg">
                     <div class="overlay-style">
-                        <p>In TLS 1.3, RSA is no longer used, in favor of Ephemeral Elliptic-Curve Diffie-Hellman (ECDHE) handshake.</p><p>However, Shor's algorithm can also be used to compute discrete logarithms on elliptic curves over prime fields, thus is <span class="highlight">equally capable of attacking it</span>.
+                        <p>Shor's algorithm can also be used to compute discrete logarithms on elliptic curves over prime fields, thus is <span class="highlight">equally capable of attacking it</span>.
                         </p>
                     </div>
-                    <aside class="notes">Even without TLS 1.3, ECDSA should be used over RSA.</aside>
+                    <aside class="notes">In TLS 1.3, RSA is no longer used for key exchange, in favor of methods like Ephemeral Elliptic-Curve Diffie-Hellman (ECDHE). Even without TLS 1.3, ECDSA should be used over RSA.</aside>
                 </section>
 
                 <section data-background="images/ellipticcurve.png">
