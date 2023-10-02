@@ -1,0 +1,1775 @@
+﻿<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Quantum Computing and the future of cryptography</title>
+    <meta name="description" content="">
+    <meta name="author" content="Filip W">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <script src="//code.jquery.com/jquery-1.8.0.js"></script>
+    <script src="//code.jquery.com/ui/1.8.23/jquery-ui.js"></script>
+    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/js/bootstrap.min.js"></script>
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/css/bootstrap-combined.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/default.min.css">
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/simple.css" id="theme">
+    <link rel="stylesheet" href="css/monokai_sublime.css" />
+    <link rel="stylesheet" href="css/custom.css" />
+    <script src="fsharp.formatting/styles/tips.js" type="text/javascript"></script>
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+    <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+
+    <script>
+        if (window.location.search.match(/print-pdf/gi)) {
+            var link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = 'css/print/pdf.css';
+            document.getElementsByTagName('head')[0].appendChild(link);
+        }
+    </script>
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+    <style type="text/css">
+    </style>
+</head>
+
+<body>
+    <div class="reveal">
+        <header
+            style="position: absolute;top: 50px; left: 100px; z-index:500; font-size:100px;background-color: rgba(0,0,0,0.5)">
+        </header>
+        <!-- Any section element inside of this container is displayed as a slide -->
+        <div class="slides">
+
+            <section data-background="images/NaturePhysics_cover_notracks_bleed_CMYK.jpeg">
+
+                <div class="col overlay-style" style="padding: 0 !important">
+
+                    <h1 style="font-size: 2em; background: none; margin-bottom: 0;">
+                        Quantum Computing<br />
+                        <small style="font-size: 0.5em; line-height: 2em;">and the future of cryptography</small>
+                    </h1>
+                    <p style="margin-top: 0; padding-bottom: 20px;">
+                        <small>
+                            <a href="https://strathweb.com" class="roll">
+                                <span>strathweb.com</span>
+                            </a> •
+                            <a href="https://mathstodon.xyz/filipw" class="roll">
+                                <span data-title="@filip_woj">@filipw@mathstodon.xyz</span>
+                            </a> •
+                            <a href="https://github.com/filipw" class="roll">
+                                <span data-title="github.com/filipw">Filip W</span>
+                            </a>
+                        </small>
+                    </p>
+                </div>
+
+            </section>
+
+            <section data-background="images/D810_NEF_3483.jpg">
+                <img src="images/TIM230213_Quantum-CoverFINAL.jpg" 
+                style="max-height: 666px; border: 3px solid black !important;box-shadow: 5px 2px 2px black;" />
+                <img src="images/fe-quantum-cover.jpg" 
+                style="max-height: 666px; border: 3px solid black !important;box-shadow: 5px 2px 2px black;" />
+                <!-- <div class="column-container">
+
+                    <div class="col">
+                    </div>
+
+                    <div class="col overlay-style fragment">
+                        <blockquote>Every day that you don’t convert to a quantum-safe protocol, there’s no recovery plan
+                        </blockquote>
+                        <p>
+                            <footer>- <em>Dario Gil, IBM senior VP</em></footer>
+                            </p>
+                    </div>
+
+                </div> -->
+                <aside class="notes">
+                    However, as it is usually the case with popular media, certain things get easily misrepresented or taken out of the context - and the goal of this session is to provide you the technical background and enable you to judge the future impact of quantum technologies yourselves. 
+                </aside>
+            </section>
+
+            <section data-background="images/D810_NEF_3483.jpg">
+                <img src="images/filip-book.jpg"
+                    style="max-height: 666px; border: 3px solid black !important;box-shadow: 5px 2px 2px black;" />
+            </section>
+
+            <!-- QM-->
+            <section>
+                <!-- <section data-background="images/atlas1.jpg">
+                    <h1>Quantum Hype</h1>
+                </section> -->
+
+                <section data-background="images/atlas3.jpg">
+                    <div class="overlay-style">
+                        <p>Is it possible to have an</p>
+                        <h2 class="r-fit-text">unbreakable encryption?</h2>
+                    </div>
+                </section>
+
+                <section data-background="images/atlas3.jpg">
+                    <div class="overlay-style">
+                        <p>The answer is</p>
+                        <h2 class="r-fit-text">yes!</h2>
+                    </div>
+                </section>
+
+                <section data-background="images/atlas3.jpg">
+                    <div class="overlay-style">
+                        <h2>One-time pad</h2>
+                        <div class="column-container">
+                            <div class="col">
+                                </br>
+                                message $\oplus$ key = ciphertext </br></br>
+                                ciphertext $\oplus$ key = message
+                            </div>
+                            <div class="col">
+                                <table>
+                                    <tr class="">
+                                        <td>✉️</td>
+                                        <td>0</td>
+                                        <td>1</td>
+                                        <td>0</td>
+                                        <td>1</td>
+                                        <td>0</td>
+                                        <td>1</td>
+                                        <td>1</td>
+                                        <td>0</td>
+                                    </tr>
+                                    <tr class="">
+                                        <td>🔑</td>
+                                        <td>0</td>
+                                        <td>1</td>
+                                        <td>1</td>
+                                        <td>0</td>
+                                        <td>1</td>
+                                        <td>1</td>
+                                        <td>1</td>
+                                        <td>0</td>
+                                    </tr>
+                                    <tr class="">
+                                        <td colspan="9">=</td>
+                                    </tr>
+                                    <tr class="">
+                                        <td>🔓</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>1</td>
+                                        <td>1</td>
+                                        <td>1</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <aside class="notes">
+                        If the key is random then the attacker, Eve, intercepts the ciphertext on its way from Alice to Bob, she would gain no information about the original message at all as there is no pattern to spot.
+                    </aside> -->
+                </section>
+
+                <section data-background="images/atlas3.jpg">
+                    <div class="overlay-style">
+                        <h2>Prerequisites</h2>
+                        <ul>
+                            <li class="fragment">1. the key must be at least the <span class="highlight">length of the message</span> to encrypt</li>
+                           <li class="fragment">2. the key must be <span class="highlight">completely random</span></li>
+                           <li class="fragment">3. the key must <span class="highlight">not be reused</span> and must be distributed safely</li>
+                            </ul>
+                    </div>
+                    <aside class="notes">
+                        This is not really practical, so that is why we have other encryption schemes. Complete randomness (no patterns) is difficult to achieve.
+                    </aside>
+                </section>
+
+                <section data-background="images/atlas3.jpg">
+                    <h2 class="overlay-style">Symmetric encryption</h2>
+                    <img src="images/crypto-symmetric.png" />
+                </section>
+
+                <section data-background="images/atlas3.jpg">
+                    <div class="overlay-style">
+                    <p>The most popular symmetric algorithm is the <span class="highlight">Advanced Encryption Standard (AES)</span>.</p><p>AES with 256 bit key length is approved by NSA for top secret information.</p>
+                    </div>
+                    <aside class="notes">
+                        Another commonly used one, the Triple Data Encryption Standard (3DES) is now deprecated and should no longer be used
+                        
+                    </aside>
+                </section>
+
+                <section data-background="images/atlas3.jpg">
+                    <div class="overlay-style">
+                        <p>Symmetric encryption is fast and relatively simple, but requires a secure method for <span class="highlight">key distribution</span>, which is a big challenge, especially when parties do not know or trust each other.</p>
+                    </div>
+                    <aside class="notes">
+                        Many protocols - for example TLS/SSL - use a hybrid model - start with an asymmetric handshake, and then switch to symmetric.
+                    </aside>
+                </section>
+
+                <section data-background="images/atlas3.jpg">
+                    <h2 class="overlay-style">Asymmetric encryption</h2>
+                    <img src="images/crypto-asymmetric.png" />
+                    <aside class="notes">Also known as Public Key Cryptography. It is also used for digital signatures.</aside>
+                </section>
+
+                <section data-background="images/atlas3.jpg">
+                    <div class="overlay-style">
+                    <p>Asymmetric cryptography is based on difficult mathematical problems:</p>
+                    <ul>
+                        <li>🧮 factorizing large prime numbers - <span class="highlight">RSA</span></li> 
+                        <li>🧮 discrete logarithm problem - <span class="highlight">Elliptic Curve Cryptography</span></li>
+                    </ul>
+                    </div>
+                </section>
+
+                <section data-background="images/quantum-computer.jpg">
+                    <div class="overlay-style">
+                        <h2>Quantum technology impact</h2>
+                        <div class="column-container">
+                            <div class="col">
+                                <ul>
+                                    <li class="fragment">🚨
+                                        threats
+                                        <br />
+                                        <small>Quantum computers can in theory break some established crypto schemes<br/><br/><br/>⚠️ ...
+                                            but we are not sure if we will have hardware that is large and stable enough
+                                            to do so</small>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col">
+                                <ul>
+                                    <li class="fragment">🔒
+                                        opportunities
+                                        <br />
+                                        <small>Quantum cryptography can be used to distribute keys with unconditional security and generate perfectly random keys<br/><br/>⚠️ ...but may not be practical due to hardware and throughput limitations</small>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-background="images/quantum-law.png">
+                    <div class="overlay-style fragment">
+                        <p>In December 2022, Joe Biden signed into law the <span class="highlight">Quantum Computing Cybersecurity Preparedness Act</span>, which requires federal agencies to develop plans to:</p>
+                        <ul style="text-align: center;">
+                            <li>🔐 migrate systems to post-quantum cryptography</li>
+                            <li>⚠️ adopt technology that will protect against quantum computing attacks</li>
+                        </ul>
+                    </div>
+                    <aside class="notes">Plans should be drafted in 2023.</aside>
+                </section>
+
+            </section>
+            <!-- end QM-->
+
+            <!-- Theory -->
+            <!-- <section>
+                <section data-background="images/cern-theory.jpg">
+                    <h1>Quantum Theory</h1>
+                </section>
+
+                <section data-background="images/irpc-demonstrator.jpg">
+                    <div class="overlay-style">
+                        <p>In classical computing a bit can have only two discrete values</p>
+                        <h2 class="r-fit-text">0 or 1</h2>
+                    </div>
+                </section>
+
+                <section data-background="images/irpc-demonstrator.jpg">
+                    <div class="column-container centered overlay-style">
+
+                        <div class="col">
+                            <p>In quantum information theory an information unit is called a <span
+                                    class="highlight">qubit</span>.
+                            </p>
+                            <p>The qubit is described by a two dimensional <span class="highlight">state vector</span>,
+                                where $\alpha$ and $\beta$ are
+                                complex numbers.</p>
+                        </div>
+
+                        <div class="col">
+                            <h2 class="r-fit-text">$\begin{bmatrix} \alpha \cr \beta \end{bmatrix}$</h2>
+                            <p>$$|\alpha|^2 + |\beta|^2 = 1$$</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-background="images/irpc-demonstrator.jpg">
+                    <div class="overlay-style">
+                        <p>A qubit is a</p>
+                        <h2 class="r-fit-text">two-level quantum system</h2>
+                    </div>
+                    <aside class="notes">
+                        Despite the fact that a system might be in mathematically infinitely many states, we can only observe and distinguish two of them.
+                    </aside>
+                </section>
+
+                <section data-background="images/irpc-demonstrator.jpg">
+                    <div class="overlay-style">
+                        <h2>$\mathbf{Z}$ basis</h2>
+                        <p>
+                            $$
+                            \begin{bmatrix} 1 \cr 0 \end{bmatrix} = \ket{0} = 0 \;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;
+                            \begin{bmatrix} 0 \cr 1 \end{bmatrix} = \ket{1} = 1
+                            $$
+                        </p>
+                    </div>
+                </section>
+
+                <section data-background="images/irpc-demonstrator.jpg">
+                    <div class="column-container centered overlay-style">
+                        <div class="col">
+                            <p>Qubit state can be visualized using a <span class="highlight">Bloch sphere</span>, where $\ket{0}$ and $\ket{1}$ are vectors starting at the center and pointing to "north pole" and "south pole".</p>
+                        </div>
+                        <div class="col inset">
+                            <img src="images/bloch-z-axis.jpeg" />
+                        </div>
+                        <aside class="notes">
+                            What about the other states then?
+                        </aside>
+                </section>
+
+                <section data-background="images/irpc-demonstrator.jpg">
+                    <div class="column-container centered overlay-style">
+                        <div class="col">
+                            <p>All other states are a linear combination of $\ket{0}$ and $\ket{1}$.
+                                This is a <span class="highlight">superposition</span>.</p>
+                            <h2 class="r-fit-text">$$\ket{\psi} = \alpha\ket{0} + \beta\ket{1}$$</h2>
+
+                        </div>
+                        <div class="col inset-right">
+                            <img src="images/bloch-superposition.jpeg" />
+                        </div>
+                    </div>
+                    <aside class="notes">
+                        A superposition is a troubling concept because there exists no macroscopic counterpart concept.
+                        It effectively means that a system is in ALL of its possible states simultaneously.
+                    </aside>
+                </section>
+
+                <section data-background="images/irpc-demonstrator.jpg">
+                    <div class="overlay-style">
+                        <p>A superposition state is</p>
+                        <h2 class="r-fit-text">not directly observable</h2>
+                        <p>Only the basis states can be observed in the measurement process</p>
+                    </div>
+                    <aside class="notes">
+                        So what happens when we observe a system in superposition?
+                    </aside>
+                </section>
+
+                <section data-background="images/irpc-demonstrator.jpg">
+                    <div class="overlay-style">
+                        <p>Upon observation, superposition state <span class="highlight">collapses</span> to one
+                            of the
+                            observable states (e.g. $\ket{0}$ or $\ket{1}$).</p>
+                        <h2 class="r-fit-text">outcome is probabilistic</h2>
+                    </div>
+                    <aside class="notes">
+                        It is a fundamental quantum doctrine that a measurement does not reveal a pre-existing value of
+                        the measured property. On the contrary, the outcome of a measurement is brought into being by
+                        the act of measurement itself. - David Mermin
+                    </aside>
+                </section>
+
+                <section data-background="images/schroedinger-cat2.png">
+                    <aside class="notes">
+                        Schrödinger's cat was both dead and alive at the same time. It's NOT that he was dead or live and Schrödinger simply did not know.
+                        Only once Schrödinger opened the box, because of "observation", would the cat's fate be decided.
+                    </aside>
+                </section>
+
+                <section data-background="images/irpc-demonstrator.jpg">
+                    <div class="overlay-style">
+                        <p>We cannot ask a quantum system</p>
+                        <h2 class="r-fit-text">what state are you in?</h2>
+                    </div>
+                    <aside class="notes">
+                        You can think of a superposition as a form of a quantum coin toss.
+                    </aside>
+                </section>
+
+                <section data-background="images/irpc-demonstrator.jpg">
+                    <div class="overlay-style">
+                        <p>For $\mathbf{Z}$ basis we can only ask</p>
+                        <h2 class="r-fit-text">Are you $\ket{0}$ or are you $\ket{1}$?</h2>
+                    </div>
+                </section>
+
+                <section data-background="images/irpc-demonstrator.jpg">
+                    <div class="overlay-style">
+                        <p>The strength of quantum computers is that they are able to take algorithmic advantage of
+                            <span class="highlight">superposition</span>. This is called
+                        </p>
+                        <h2 class="r-fit-text">quantum parallelism</h2>
+                    </div>
+                    <aside class="notes">
+                        <ol>
+                            <li>Create a superposition of all possible results</li>
+                            <li>Use interference to amplify correct result, and cancel out bad results</li>
+                        </ol>
+                    </aside>
+                </section>
+
+                <section data-background="images/quantum-computer.jpg">
+                    <div class="column-container">
+                        <div class="col overlay-style">
+                            <blockquote>...quantum parallelism allows
+                                quantum computers to evaluate a function $f(x)$ for many different values of x
+                                simultaneously.
+                            </blockquote>
+                            <p>
+                            <footer>- <em>Nielsen and Chuang</em></footer>
+                            </p>
+                        </div>
+                        <div class="col">
+                        </div>
+                    </div>
+                    <aside class="notes">
+                        For example, instead of evaluating a function many times with all possible inputs, we can
+                        evaluate once with superposition of inputs.
+                    </aside>
+                </section>
+
+                <section data-background="images/irpc-demonstrator.jpg">
+
+                    <div class="overlay-style">
+                    <div class="column-container centered">
+
+                        <div class="col">
+                            <p>To describe the state of a multi-qubit system, we use a <span class="highlight">tensor
+                                    product</span> of the individual states.</p>
+                        </div>
+
+                        <div class="col">
+                            <p>$$\ket{\psi_1} = \alpha_1\ket{0} + \beta_1\ket{1}$$</p>
+                            <p>$$\ket{\psi_2} = \alpha_2\ket{0} + \beta_2\ket{1}$$</p>
+                        </div>
+                    </div>
+                    <div style="clear: both;">$$\ket{\psi_{12}} = \alpha_1\alpha_2\ket{00} + \alpha_1\beta_2\ket{01}
+                        +
+                        \beta_1\alpha_2\ket{10} + \beta_1\beta_2\ket{11}$$</div>
+                    </div>
+                </section>
+
+                <section data-background="images/irpc-demonstrator.jpg">
+                    <div class="overlay-style">
+                        <p>However, an <span class="highlight">entangled</span> state can take the following form:</p>
+                        <h2 class="r-fit-text limited-size">
+
+                            $$\ket{\psi} = \frac{1}{\sqrt{2}}\ket{00} + \frac{1}{\sqrt{2}}\ket{11}$$</h2>
+                    </div>
+                    <aside class="notes">
+                        Superposition is "contagious", it spills into the overall system state until it collapses via
+                        the act of measurement.
+                        The results are truly random.
+                    </aside>
+                </section>
+
+                <section data-background="images/irpc-demonstrator.jpg">
+                    <div class="overlay-style">
+                        <p>We <span class="highlight">cannot find</span> $\alpha_1$, $\alpha_2$, $\beta_1$ and
+                            $\beta_2$
+                            to satisfy</p>
+                        <p>$\alpha_1\alpha_2\ket{00} + \alpha_1\beta_2\ket{01} + \beta_1\alpha_2\ket{10} +
+                            \beta_1\beta_2\ket{11} = \frac{1}{\sqrt{2}}(\ket{00} + \ket{11})$</p>
+
+                    </div>
+                </section>
+
+                <section data-background="images/irpc-demonstrator.jpg">
+                    <div class="overlay-style">
+                        <p>Entangled states
+                        <h2 class="r-fit-text">cannot be decomposed</h2>
+                        <p>into a tensor
+                            product of the individual quantum states.</p>
+                    </div>
+                    <aside class="notes">
+                        This tells us, at the quantum level, the smallest possible unit of reality is the composite
+                        system consisting of those two entangled objects. They cannot be treated as independent
+                        anymore.
+                        The problem is they can physically be separate from each other.
+                    </aside>
+                </section>
+
+                <section data-background="images/uv.jpg">
+                    <div class="overlay-style">
+                        <p>A <span class="highlight">single</span> quantum state can span <span
+                                class="highlight">multiple</span> quantum objects which are</p>
+                        <h2 class="r-fit-text">spatially separated</h2>
+
+                    </div>
+                </section>
+
+                <section data-background="images/albert-einstein-invent.jpg">
+                    <div class="column-container">
+                        <div class="col overlay-style">
+                            <blockquote>...spukhafte Fernwirkung...
+                            </blockquote>
+                            <p>
+                            <footer>- <em>Albert Einstein</em></footer>
+                            </p>
+                        </div>
+
+                        <div class="col">
+                        </div>
+                    </div>
+                    <aside class="notes">
+
+                    </aside>
+                </section>
+
+                <section data-background="images/uv.jpg">
+                    <div class="overlay-style">
+                        <p> We call this</p>
+                        <h2 class="r-fit-text">non-locality</h2>
+                        <p>It is based on the Bell's theorem from 1964.</p>
+                </section>
+
+                <section data-background="images/nobel-2022.png" data-state="bg-top-left">
+                </section>
+
+                <section data-background="images/irpc-demonstrator.jpg">
+                    <div class="overlay-style">
+                        <p>Exploring entanglement in algorithms is a critical factor contributing to <span
+                                class="highlight">computational advantage</span> of quantum computing.</p>
+                    </div>
+                    <aside class="notes">
+                    </aside>
+                </section>
+            </section> -->
+            <!-- end basic theory -->
+
+
+            <!-- Quantum threats -->
+            <section>
+                <section data-background="images/compass.jpg">
+                    <h1>Quantum threats</h1>
+                </section>
+
+
+                <!-- <section data-background="images/irpc-demonstrator.jpg">
+                    <div class="overlay-style">
+                        <p>In classical information theory a bit can have only two discrete values</p>
+                        <h2 class="r-fit-text">0 or 1</h2>
+                    </div>
+                </section> -->
+
+                <section data-background="images/irpc-demonstrator.jpg">
+                    <div class="overlay-style">
+                        <p>In quantum theory a basic unit of information is called a</p>
+                        <h2 class="r-fit-text">qubit</h2>
+                    </div>
+                </section>
+
+                <section data-background="images/irpc-demonstrator.jpg">
+                    <div class="overlay-style">
+                        <p>Just like a bit, qubit has only two <span
+                            class="highlight">observable</span> (basis) states</p><p>However, during computation can additionally be in a <span
+                            class="highlight">superposition</span> state (a mix of both of them).</p>
+                    </div>
+                    <aside class="notes">
+                        Mathematically, a qubit state is described by a vector.
+                    </aside>
+                </section>
+
+                <section data-background="images/schroedinger-cat2.png">
+                    <aside class="notes">
+                        Schrödinger's cat was both dead and alive at the same time. It's NOT that he was dead or alive and Schrödinger simply did not know.
+                        Only once Schrödinger opened the box, because of "observation", would the cat's fate be decided.
+                    </aside>
+                </section>
+
+                <section data-background="images/irpc-demonstrator.jpg">
+                    <div class="column-container centered overlay-style">
+                        <div class="col">
+                            <h2>$\mathbf{Z}$ basis</h2>
+                            <p>
+                                $
+                            \begin{bmatrix} 1 \cr 0 \end{bmatrix} = \ket{0} \rightarrow
+                            $ maps to bit 0<br/><br/>
+                            $
+                            \begin{bmatrix} 0 \cr 1 \end{bmatrix} = \ket{1}  \rightarrow
+                            $ maps to bit 1<br/><br/>
+                            $\alpha\ket{0} + \beta\ket{1} \rightarrow
+                            $ superposition
+                            </p>
+                        </div>
+                        <div class="col inset">
+                            <img src="images/bloch-z-axis.jpeg" />
+                        </div>
+                    <aside class="notes">
+                        Qubit state can be visualized on a Bloch sphere 
+                    </aside>
+                </section>
+
+                <section data-background="images/irpc-demonstrator.jpg">
+                    <div class="overlay-style">
+                        <p>A superposition state is</p>
+                        <h2 class="r-fit-text">not directly observable</h2>
+                        <p>Only the basis states can be observed in the measurement process</p>
+                    </div>
+                    <aside class="notes">
+                        So what happens when we observe a system in superposition?
+                    </aside>
+                </section>
+
+                <section data-background="images/irpc-demonstrator.jpg">
+                    <div class="overlay-style">
+                        <h2>Program evolution</h2>
+                        <table>
+                            <thead>
+                                <th>type</th>
+                                <th></th>
+                                <th>input</th>
+                                <th></th>
+                                <th>execution</th>
+                                <th></th>
+                                <th>output</th>
+                            </thead>
+                            <tr class="fragment">
+                                <td>Classical</td>
+                                <td></td>
+                                <td>010</td>
+                                <td>$\rightarrow$</td>
+                                <td>110</td>
+                                <td>$\rightarrow$</td>
+                                <td>001</td>
+                            </tr>
+                            <tr class="fragment">
+                                <td>Quantum</td>
+                                <td></td>
+                                <td>$\ket{1}\ket{0}\ket{0}$</td>
+                                <td>$\rightarrow$</td>
+                                <td>$\ket{\psi}$</td>
+                                <td>$\rightarrow$</td>
+                                <td>$\ket{0}\ket{1}\ket{0}$</td>
+                            </tr>
+                        </table>
+                    </div>
+                </section>
+
+                <section data-background="images/irpc-demonstrator.jpg">
+                    <div class="overlay-style">
+                        <p>The strength of quantum computers is that they are able to take algorithmic advantage of
+                            <span class="highlight">superposition</span>. This is called</p>
+                        <h2 class="r-fit-text">quantum parallelism</h2>
+                    </div>
+                    <aside class="notes">
+                        <ol>
+                            <li>Create a superposition of all possible results</li>
+                            <li>Use interference to amplify correct result, and cancel out bad results</li>
+                        </ol>
+                    </aside>
+                </section>
+
+                <section data-background="images/atlas-nsw.jpg">
+                    <div class="column-container">
+                        <div class="col overlay-style">
+                            <blockquote>...quantum parallelism allows
+                                quantum computers to evaluate a function $f(x)$ for many different values of x
+                                simultaneously.
+                            </blockquote>
+                            <p>
+                            <footer>- <em>Nielsen and Chuang</em></footer>
+                            </p>
+                        </div>
+                        <div class="col">
+                        </div>
+                    </div>
+                    <aside class="notes">
+                        For example, instead of evaluating a function many times with all possible inputs, we can
+                        evaluate once with superposition of inputs.
+                    </aside>
+                </section>
+<!--                 
+                <section data-background="images/alice-door.jpeg">
+                    <div class="overlay-style">
+                        <p>
+                            <span class="highlight">Deutsch's problem</span> - given an unknown function
+                        </p>
+                        <h2 class="r-fit-text">$f : \{0,1\} \rightarrow \{0,1\}$</h2>
+                        <p>
+                            determine if the function is <span
+                            class="highlight">constant</span> or <span class="highlight">balanced</span>
+                        </p>
+                </section>
+
+                <section data-background="images/alice-door.jpeg">
+                    <div class="overlay-style">
+                        <div class="column-container centered">
+                            <div class="col">
+                                <ul>
+                                    <li>$f_0$ is constant</li>
+                                    <li>$f_1$ is constant</li>
+                                    <li>$f_2$ is balanced</li>
+                                    <li>$f_3$ is balanced</li>
+                                </ul>
+                            </div>
+                            <div class="col">
+                                <ul>
+                                    <li>$f_0(0) = f_0(1) = 0$</li>
+                                    <li>$f_1(0) = f_1(1) = 1$</li>
+                                    <li>$f_2(0) = 0 \;\;\; f_2(1) = 1$</li>
+                                    <li>$f_3(0) = 1 \;\;\; f_3(1) = 0$</li>
+                                </ul>
+                            </div>
+                </section>
+
+                <section data-background="images/alice-door.jpeg">
+                    <div class="column-container centered overlay-style">
+                        <div class="col">
+                            <p>Classically, <span class="highlight">two</span> function evaluations are needed.</p><p> After
+                                the first execution, we still cannot say if the function is balanced or constant.</p>
+                        </div>
+                        <div class="col inset">
+                            <img src="images/deutsch-classical.png" />
+                        </div>
+                    </div>
+                </section>
+
+                <section data-background="images/alice-door.jpeg">
+                    <div class="column-container centered overlay-style">
+                        <div class="col">
+                            <p>On a quantum computer, thanks to <span class="highlight">interference</span>, the answer can be obtained in just <span
+                                    class="highlight">one</span> call.</p>
+                        </div>
+                        <div class="col inset">
+                            <img src="images/deutsch-tex.png" />
+                        </div>
+                    </div>
+                </section>
+
+                <section data-background="images/irpc-demonstrator.jpg">
+                    <div class="overlay-style">
+                        <h3>Siblings analogy</h3>
+                        <table class="fragment" data-fragment-index="1">
+                            <tr>
+                                <td></td>
+                                <td>👧🏻</td>
+                                <td style="border-right: 1px solid">👧🏻</td>
+                                <td>👧🏽</td>
+                                <td>👦🏽</td>
+                            </tr>
+                            <tr class="fragment" data-fragment-index="2">
+                                <td rowspan="3">How are you doing?</td>
+                            </tr>
+                            <tr class="fragment" data-fragment-index="3">
+                                <td class="fragment" data-fragment-index="3">good</td>
+                                <td class="fragment" data-fragment-index="3" style="border-right: 1px solid">good</td>
+                                <td class="fragment" data-fragment-index="6">good</td>
+                                <td class="fragment" data-fragment-index="6">bad</td>
+                            </tr>
+                            <tr class="fragment" data-fragment-index="3">
+                                <td class="fragment" data-fragment-index="5">bad</td>
+                                <td class="fragment" data-fragment-index="5" style="border-right: 1px solid">bad</td>
+                                <td class="fragment" data-fragment-index="7">bad</td>
+                                <td class="fragment" data-fragment-index="7">good</td>
+                            </tr>
+                            <tr class="fragment">
+                            </tr>
+                        </table>
+                    </div>
+                </section>
+
+                <section data-background-color="#000">
+                    <div class="overlay-style">
+                    <h3><span class="fragment">How are you doing?</span>&nbsp;&nbsp;&nbsp;<span class="fragment">🔊 good</span></h3>
+                    <h3><span class="fragment">How are you doing?</span>&nbsp;&nbsp;&nbsp;<span class="fragment">🔊 good</span></h3>
+                    <h1 class="fragment">👧🏻&nbsp;&nbsp;&nbsp;👧🏻</h1>
+                    </div>
+                </section>
+
+                <section data-background-color="#000">
+                    <div class="overlay-style">
+                    <h3><span class="fragment">How are you doing?</span>&nbsp;&nbsp;&nbsp;<span class="fragment">🔊 bad</span></h3>
+                    <h3><span class="fragment">How are you doing?</span>&nbsp;&nbsp;&nbsp;<span class="fragment">🔊 good</span></h3>
+                    <h1 class="fragment">👦🏽&nbsp;&nbsp;&nbsp;👧🏽</h3>
+                    </div>
+                </section>
+
+                <section data-background-color="#000">
+                    <div class="overlay-style">
+                    <h3><span class="fragment">How are you doing?</span>&nbsp;&nbsp;&nbsp;<span class="fragment">🔊 GOOD</span></h3>
+                    <h1 class="fragment">👧🏻&nbsp;&nbsp;&nbsp;👧🏻</h3>
+                    </div>
+                </section>
+
+                <section data-background-color="#000">
+                    <div class="overlay-style">
+                    <h3><span class="fragment">How are you doing?</span>&nbsp;&nbsp;&nbsp;<span class="fragment">🔊 gbdgbd</span></h3>
+                    <h1 class="fragment">👦🏽&nbsp;&nbsp;&nbsp;👧🏽</h3>
+                    </div>
+                </section> -->
+
+                <section data-background="images/alice-door.jpeg">
+                    <div class="overlay-style">
+                        <p>One of most widely used public-private cryptosystems is RSA (Rivest–Shamir–Adleman), whose
+                            security relies on <span class="highlight">factoring problem</span> of large prime numbers.
+                        </p>
+                    </div>
+                    <aside class="notes">
+                        RSA is considered to be partly legacy, but still it makes a good example to illustrate certain concepts - because they are applicable to the alternative algorithms as well.
+                    </aside>
+                </section>
+
+                <section data-background="images/alice-door.jpeg">
+                    <div class="overlay-style">
+                        <h2>RSA</h2>
+                        <ul>
+                            <li class="fragment highlight-current-red">1. Pick two huge prime numbers $p$ and $q$</li>
+                            <li class="fragment highlight-current-red">2. Pick exponent $e$</li>
+                            <li class="fragment highlight-current-red">3. Publish $N = p \times q$ and $e$</li>
+                            <li class="fragment highlight-current-red">4. Encrypt: <br />$C = M^e (mod\;N)$
+                                &nbsp;&nbsp;&nbsp; (public key based on $N$)</li>
+                            <li class="fragment highlight-current-red">5. Decrypt: <br />
+                                $M = C^{1 (mod\;(p-1) \times (q-1))e^{-1}} (mod\;\;N)$&nbsp;&nbsp;&nbsp; (private key
+                                based on $p$, $q$)</li>
+                        </ul>
+                    </div>
+                    <aside class="notes">
+                        The value of e is almost always fixed to 65537.
+                    </aside>
+                </section>
+
+                <section data-background="images/google-certs.png" data-state="bg-top-left">
+                    <div class="overlay-style fragment">
+                        <p>Effectively, the security of RSA boils to the fact that
+                        </p>
+                        <h3 class="r-fit-text">finding $p$ and $q$ is impossible</h3>
+                        <p>if you only know $N$.</p>
+                    </div>
+                </section>
+
+                <section data-background="images/shor.png">
+                    <div class="overlay-style fragment black-overlay-style">
+                        <p>In 1994, Peter Shor developed an integer factorization algorithm for quantum computers that
+                            achieves <span class="highlight">exponential speed up</span> over the fastest known
+                            classical alternative.
+                        </p>
+                    </div>
+                </section>
+
+
+                <section data-background="images/alice-door.jpeg">
+                    <div class="overlay-style">
+                        <h2>Factoring a number $N$</h2>
+                        <ul>
+                            <li class="fragment highlight-current-red">1. Pick $a$ such that $a <
+                                    N$ and that it is relatively prime to $N$</li>
+                            <li class="fragment highlight-current-red">2. Find the period $r$ of a function $f(x) = a^x
+                                (mod\;\;N)$</li>
+                            <li class="fragment highlight-current-red">3. Calculate: <br />
+                                $p = gcd(a^{\frac{r}{2}} + 1, N)$ and
+                                $q = gcd(a^{\frac{r}{2}} - 1, N)$
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section data-background="images/alice-door.jpeg">
+                    <div class="overlay-style">
+                        <h2>Example: factoring 15</h2>
+                        <div class="column-container">
+                            <div class="col">
+                                <ul>
+                                    <li class="fragment highlight-current-red">1. Set $a = 13$</li>
+                                    <li class="fragment highlight-current-red">2. Find order $r = 4$</li>
+                                    <li class="fragment highlight-current-red">3. Calculate: <br />$p = gcd(170, 15) = 5$ <br />
+                                        $q = gcd(168, 15) = 3$
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col inset">
+                                <img src="images/factoring-order-finding.png" style="min-height: auto;" />
+                            </div>
+
+                        </div>
+                        <p>5 and 3 are factors of 15.</p>
+                </section>
+
+                <section data-background="images/alice-door.jpeg">
+                    <div class="overlay-style">
+                        <div class="column-container">
+                            <div class="col">
+                                <p>Shor's algorithm relies on inverse <span class="highlight">Quantum Fourier
+                                        Transform</span> used for function order finding. QFT
+                                    is exponentially faster than any classical alternative.
+                                </p>
+                            </div>
+                            <div class="col inset">
+                                <img src="images/shor-circuit.png" style="min-height: auto;" />
+                            </div>
+
+                        </div>
+                        <aside class="notes">
+                            Shor's algorithm is a hybrid classical-quantum method - gcd is still done classically.
+                        </aside>
+                </section>
+
+                <section data-background="images/gidney.png" data-state="bg-top-left">
+                    <div class="overlay-style fragment">
+                        <p>However, those are physical qubits - including the ones needed for error correction. The estimation for <span class="highlight">logical qubits</span> was 14,238.</p>
+                    </div>
+                    <aside class="notes">Latest publications (e.g. Kudelski Security) estimate about 6k logical qubits for RSA-2048 and 23k logical qubits for RSA-7680.</aside>
+                </section>
+
+                <!-- <section data-background="images/alice-door.jpeg">
+                    <div class="overlay-style">
+                    <img src="images/qubit-estimations.png" />
+                    <div style="clear:both;">
+                        <p class="footnote" style="text-align: center;">Beverland, Michael E., et al. "Assessing requirements to scale to practical quantum advantage." arXiv preprint arXiv:2211.07629 (2022).
+                        </p>
+                    </div>
+                    </div>
+                    <aside class="notes">We are still off by a factor of 20k, but at the same time, the size grew by a factor of 500 since 2019. Just 10 years ago we estimated about 1 billion physical qubits to be needed to break RSA.</aside>
+                </section> -->
+
+                <!-- <section data-background="#161616">
+                    <img src="images/PR_body_ibm-quantum-development-roadmap-2022_52476203722_o.jpg" style="max-height: 100%;" />
+                    <aside class="notes">We are still off by a factor of 20k, but at the same time, the size grew by a factor of 500 since 2019. Just 10 years ago we estimated about 1 billion physical qubits to be needed to break RSA.</aside>
+                </section> -->
+
+                <section data-background="images/alice-door.jpeg">
+                    <div class="overlay-style">
+                        <p>Shor's algorithm can also be used to compute discrete logarithms on elliptic curves over prime fields, thus is <span class="highlight">equally capable of attacking it</span>.
+                        </p>
+                    </div>
+                    <aside class="notes">In TLS 1.3, RSA is no longer used for key exchange, in favor of methods like Ephemeral Elliptic-Curve Diffie-Hellman (ECDHE). Even without TLS 1.3, ECDSA should be used over RSA.</aside>
+                </section>
+
+                <section data-background="images/ellipticcurve.png">
+                    <div class="column-container">
+
+                        <div class="col">
+                        </div>
+
+                        <div class="col overlay-style black-overlay-style">
+                            <blockquote>(...) attacking elliptic curve cryptography is indeed easier than attacking RSA (...)
+                            </blockquote>
+                        </div>
+
+                    </div>
+                    <aside class="notes">
+                        Forward secrecy means using new (ephemeral) keys all the time, so intercepting and breaking one message would not reveal the whole session. ECDH is also used in tools like Signal or Skype.
+                    </aside>
+                </section>
+
+                <section data-background="images/grover.png" data-state="bg-top-left">
+                    <div class="overlay-style fragment black-overlay-style">
+                        <p>In 1996, Lov Grover developed a quantum search algorithm through an unsorted data set - finding $x$ for $f(x) = y$, when $y$ is known.</p><p>It provides <span class="highlight">quadratic speedup </span> over the classical counterparts.</p>
+                        </p>
+                    </div>
+                </section>
+
+                <section data-background="images/alice-door.jpeg">
+                    <div class="overlay-style">
+                        <div class="column-container">
+                            <div class="col">
+                                <p>Probability of finding a result in a 4-bit data set with executions of steps on a quantum computer.</p><p>Classically we need 8 steps, on quantum computer ~2.8 steps.
+                                </p>
+                            </div>
+                            <div class="col inset">
+                                <img src="images/grover-iterations.png" style="min-height: auto;" />
+                            </div>
+
+                        </div>
+                </section>
+
+                <section data-background="images/alice-door.jpeg">
+                    <div class="overlay-style">
+                        <p>Because of that it can be used to <span class="highlight">attack symmetric encryption</span> schemes such as AES, however that can be easily countered by increasing the key size.
+                        </p>
+                    </div>
+                </section>
+
+            </section>
+            <!-- end quantum threats -->
+
+            <!-- what's next -->
+            <section>
+                <section data-background="images/compass.jpg">
+                    <h1>What's next?</h1>
+                </section>
+
+
+                <section data-background="images/atlas-ibl.jpg">
+                    <div class="overlay-style">
+                                <table>
+                                    <thead>
+                                        <th>type</th>
+                                        <th>algorithm</th>
+                                        <th>key size</th>
+                                        <th>strength<br/>against classical</th>
+                                        <th>effective strength<br/>against quantum</th>
+                                    </thead>
+                                    <tr class="">
+                                        <td rowspan="2">symmetric</td>
+                                        <td rowspan="2">AES</td>
+                                        <td>256</td>
+                                        <td style="background: green;">256</td>
+                                        <td style="background: green;">128</td>
+                                    </tr>
+                                    <tr class="">
+                                        <td>128</td>
+                                        <td style="background: green;">128</td>
+                                        <td style="background: red;">64</td>
+                                    </tr>
+                                    <tr class="">
+                                        <td rowspan="4" style="border-bottom: none;">asymmetric</td>
+                                        <td rowspan="2">RSA</td>
+                                        <td>2048</td>
+                                        <td style="background: orange;">112</td>
+                                        <td style="background: red;">0</td>
+                                    </tr>
+                                    <tr class="">
+                                        <td>3072</td>
+                                        <td style="background: green;">128</td>
+                                        <td style="background: red;">0</td>
+                                    </tr>
+                                    <tr class="">
+                                        <td rowspan="2" style="border-bottom: none;">ECC</td>
+                                        <td>256</td>
+                                        <td style="background: green;">128</td>
+                                        <td style="background: red;">0</td>
+                                    </tr>
+                                    <tr class="">
+                                        <td>384</td>
+                                        <td style="background: green;">256</td>
+                                        <td style="background: red;">0</td>
+                                    </tr>
+                                </table>
+                                <div style="clear:both;">
+                                    <p class="footnote" style="text-align: center;">
+                                        Vasileios Mavroeidis, Kamer Vishi, Mateusz D. Zych, Audun Jøsang. "The Impact of Quantum Computing on Present Cryptography" (IJACSA) International Journal of Advanced Computer Science and Applications, Vol. 9, No. 3, 2018.
+                                    </p>
+                                </div>
+                    </div>
+                    <aside class="notes">
+                        As a general rule, encryption strength of 128 bits or more are currently considered strong enough.
+                    </aside>
+                </section>
+
+                <section data-background="images/atlas-ibl.jpg">
+                    <div class="overlay-style">
+                        <p>In 2016 NIST (National Institute of Standards and Technology) announced a post-quantum cryptography competition, with the aim to provide a standardized crypto scheme <span class="highlight">resistent to quantum threats</span>.</p>
+                    </div>
+                </section>
+
+                <section data-background="images/quantum-computer.jpg">
+                    <div class="overlay-style">
+                        <p>In 2022 the four winners have been announced.</p>
+                        <div class="column-container">
+                            <div class="col">
+                                <ul>
+                                    <li class="">🔐
+                                        CRYSTALS-Kyber
+                                        <br />
+                                        <small>asymmetric encryption, lattice-based</small>
+                                    </li>
+
+                                    <li class="">✍️
+                                        CRYSTALS-Dilithium
+                                        <br />
+                                        <small>signature, lattice-based</small>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col">
+                                <ul>
+                                    <li class="">✍️
+                                        FALCON
+                                        <br />
+                                        <small>signature, lattice-based</small>
+                                    </li>
+                                    <li class="">✍️
+                                        SPHINCS+
+                                        <br />
+                                        <small>signature, hash-based</small>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-background="images/atlas-ibl.jpg">
+                    <div class="overlay-style">
+                        <p>Amazon now offers <span class="highlight">TLS with CRYSTALS-Kyber</span> for connecting to AWS Key Management Service (AWS KMS), AWS Secrets Manager, and AWS Certificate Manager (ACM).</p>
+                    </div>
+                </section>
+
+                <section data-background="images/atlas-ibl.jpg">
+                    <div class="overlay-style">
+
+                        <div class="column-container centered">
+                            <div class="col auto">
+                        <img src="images/aws1.png" />
+                            </div>
+                            <div class="col auto">
+                                <img src="images/aws2.png" />
+
+                            </div>
+                        </div>
+                        <div style="clear:both;">
+                            <p class="footnote" style="text-align: center;">
+                                <a href="https://aws.amazon.com/de/blogs/security/how-to-tune-tls-for-hybrid-post-quantum-cryptography-with-kyber/">https://aws.amazon.com/de/blogs/security/how-to-tune-tls-for-hybrid-post-quantum-cryptography-with-kyber/</a>
+                            </p>
+                        </div>
+                    </div>
+                    <aside class="notes">
+                        The scheme has a small overhead (~25%) in terms of TLS handshake time and bandwidth overhead - though in absolute terms it's still less than 1ms and about 2kB of extra data.
+                    </aside>
+                </section>
+
+                <section data-background="images/atlas-ibl.jpg">
+                    <div class="overlay-style">
+                        <p>Post quantum cryptography has implementations in all major programming languages now - including in the popular BouncyCastle library, through which it is available for <span class="highlight">.NET</span>.</p>
+                    </div>
+                </section>
+
+
+            </section>
+
+            <!-- Quantum security -->
+            <section>
+                <section data-background="images/atlas-barrel.jpg">
+                    <h1>Quantum security</h1>
+                </section>
+
+                <!-- <section data-background="images/irpc-demonstrator.jpg">
+                    <div class="overlay-style">
+                        <p>We cannot ask a quantum system</p>
+                        <h2 class="r-fit-text">what state are you in?</h2>
+                    </div>
+                    <aside class="notes">
+                        You can think of a superposition as a form of a quantum coin toss.
+                    </aside>
+                </section>
+
+                <section data-background="images/irpc-demonstrator.jpg">
+                    <div class="overlay-style">
+                        <p>For $\mathbf{Z}$ basis we can only ask</p>
+                        <h2 class="r-fit-text">Are you $\ket{0}$ or are you $\ket{1}$?</h2>
+                    </div>
+                </section> -->
+
+                <!-- <section data-background="images/irpc-demonstrator.jpg">
+                    <div class="overlay-style">
+                        <p>Upon observation, superposition state <span class="highlight">collapses</span> to one
+                            of the
+                            observable states (e.g. $\ket{0}$ or $\ket{1}$).</p>
+                        <h2 class="r-fit-text">outcome is probabilistic</h2>
+                    </div>
+                    <aside class="notes">
+                        It is a fundamental quantum doctrine that a measurement does not reveal a pre-existing value of
+                        the measured property. On the contrary, the outcome of a measurement is brought into being by
+                        the act of measurement itself. - David Mermin
+                    </aside>
+                </section> -->
+
+                <section data-background="images/alice_9104.jpg">
+                    <div class="column-container centered overlay-style">
+                        <div class="col">
+                            <h2>$\mathbf{X}$ basis</h2>
+                            <p>
+                                $
+                                \begin{bmatrix} \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \end{bmatrix} = \ket{+} \rightarrow
+                            $ maps to bit 0<br/><br/>
+                            $
+                            \begin{bmatrix} \frac{1}{\sqrt{2}} \\ -\frac{1}{\sqrt{2}} \end{bmatrix} = \ket{-}  \rightarrow
+                            $ maps to bit 1<br/><br/>
+                            $\alpha\ket{+} + \beta\ket{-} \rightarrow
+                            $ superposition
+                            </p>
+                        </div>
+                        <div class="col inset">
+                            <img src="images/bloch-x-axis.jpeg" />
+                        </div>
+                    <aside class="notes">
+                        We can map bit 0 and bit 1 to any to antipodal points on the Bloch sphere, thus we have infinitely many vectors to choose from.
+                    </aside>
+                </section>
+
+                <section data-background="images/alice_9104.jpg">
+                    <div class="overlay-style">
+                        <p>The choice of basis is a way to</p>
+                        <h2 class="r-fit-text">encode and decode</h2>
+                        <p>information into and out of qubits</p>
+                    </div>
+                </section>
+
+<!-- 
+                <section data-background="images/alice_9104.jpg">
+                    <div class="column-container centered overlay-style">
+                        <div class="col">
+                            <h2>$\mathbf{X}$ basis</h2>
+                            <p class="r-fit-text">
+                                $$
+                                0 = \frac{1}{\sqrt{2}}\begin{bmatrix} 1 \\ 1 \end{bmatrix} = \ket{+}$$
+                                $$
+                                1 = \frac{1}{\sqrt{2}}\begin{bmatrix} 1 \\ -1 \end{bmatrix} = \ket{-}
+                                $$
+                            </p>
+                        </div>
+                        <div class="col inset">
+                            <img src="images/bloch-x-axis.jpeg" />
+                        </div>
+                </section> -->
+
+                <!-- <section data-background="images/heisenberg-uncertainty.png" data-state="bg-top-left">
+                    <div class="column-container">
+                        <div class="col">
+                        </div>
+                        <div class="col black-overlay-style overlay-style fragment">
+                            <blockquote>It is impossible to determine accurately both the position and the direction and
+                                speed of a particle at the same instant.
+                            </blockquote>
+                            <p>
+                            <footer>- <em>Werner Heisenberg</em></footer>
+                            </p>
+                        </div>
+                    </div>
+                </section> -->
+
+                <!-- <section data-background="images/alice_9104.jpg">
+                    <div class="overlay-style">
+                        <p>In quantum mechanics we cannot simultaneously know values of</p>
+                        <h2 class="r-fit-text">conjugate variables</h2>
+                        <p>with arbitrary precision.</p>
+                    </div>
+                </section> -->
+<!-- 
+                <section data-background="images/alice_9104.jpg">
+                    <div class="overlay-style">
+                        <p>The choice of basis is a way to</p>
+                        <h2 class="r-fit-text">encode and decode</h2>
+                        <p>information into and out of qubits</p>
+                    </div>
+                </section> -->
+
+                <!-- <section data-background="images/alice_9104.jpg">
+                    <div class="overlay-style">
+                        <p>In quantum physics, the measurements in the $\mathbf{Z}$ and $\mathbf{X}$ bases <span
+                                class="highlight">do not commute</span>.
+                    </div>
+                    <aside class="notes">
+                        $X \cdot Z - Z \cdot X \neq 0$ which means the order of measurements matters!
+                    </aside>
+                </section> -->
+
+
+                <section data-background="images/alice_9104.jpg">
+                    <div class="column-container centered overlay-style">
+                        <div class="col inset">
+                            <h2>$\mathbf{Z}$ basis</h2>
+                            <img src="images/bloch-z-axis.jpeg" />
+                        </div>
+                        <div class="col inset">
+                            <h2>$\mathbf{X}$ basis</h2>
+                            <img src="images/bloch-x-axis.jpeg" />
+                        </div>
+                    </div>
+                </section>
+
+                <!-- <section data-background="images/cms-beam.jpg">
+                    <div class="overlay-style">
+                        <h3>For X and Z bases:</h3>
+                        <p>$X \cdot Z =\begin{bmatrix} 0 & 1 \\ 1 & 0 \end{bmatrix}\begin{bmatrix} 1 & 0 \\ 0 & -1
+                            \end{bmatrix} = \begin{bmatrix} 0 & -1 \\ 1 & 0 \end{bmatrix}$</p>
+                        <p>$Z \cdot X =\begin{bmatrix} 1 & 0 \\ 0 & -1 \end{bmatrix}\begin{bmatrix} 0 & 1 \\ 1 & 0
+                            \end{bmatrix} = \begin{bmatrix} 0 & 1 \\ -1 & 0 \end{bmatrix}$</p>
+                        <p>$X \cdot Z - Z \cdot X \neq 0$</p>
+                    </div>
+                </section> -->
+
+                <section data-background="images/alice_9104.jpg">
+                    <div class="overlay-style">
+                        <p>Measurement in the $\mathbf{Z}$ basis</p>
+                        <h2 class="r-fit-text">destroys information</h2>
+                        <p>encoded in the $\mathbf{X}$ the basis, and vice versa.</p>
+                    </div>
+                    <aside class="notes">
+                        The choice of basis allows us to encode information in a qubit in a
+                        specific
+                        way. The information can only be accurately read, if you know the basis you should use upon
+                        measurement, otherwise the result will be random.
+                        <br /><br />
+                        This concept underpins quantum cryptography and is known as entropic uncertainty relation.
+                    </aside>
+                </section>
+
+                <!-- <section data-background="images/alice_9104.jpg">
+                    <div class="overlay-style">
+                        <p>Superposition is</p>
+                        <h2 class="r-fit-text">basis dependent</h2>
+                    </div>
+                    <aside class="notes">
+                        Because of this, the choice of basis allows us to encode information in a qubit in a
+                        specific
+                        way. The information can only be accurately read, if you know the basis you should use upon
+                        measurement, otherwise the result will be random.
+                        <br /><br />
+                        This concept underpins quantum cryptography.
+                    </aside>
+                </section> -->
+
+
+                <section data-background="images/alice_9104.jpg">
+                    <div class="overlay-style">
+                        <p>Unknown quantum state</p>
+                        <h2 class="r-fit-text">cannot be cloned</h2>
+                    </div>
+                </section>
+<!-- 
+                <section data-background="images/alice_9104.jpg">
+                    <div class="overlay-style">
+                        <p>In 1969, Stephen Weisner proposed the concept of "quantum money" - utilizing the uncertainty
+                            principle and quantum no-cloning theorem to create <span
+                                class="highlight">unforgeable</span> physical objects.
+                        </p>
+                </section>
+
+                <section data-background="images/alice_9104.jpg">
+                    <div class="overlay-style">
+                        <h2>Quantum money</h2>
+                        <table>
+                            <tr class="fragment">
+                                <td colspan="12">🏦</td>
+                            </tr>
+                            <tr class="fragment">
+                                <td>0</td>
+                                <td>0</td>
+                                <td>1</td>
+                                <td>0</td>
+                                <td>1</td>
+                                <td>0</td>
+                                <td>1</td>
+                                <td>0</td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+                            <tr class="fragment">
+                                <td>X</td>
+                                <td>Z</td>
+                                <td>Z</td>
+                                <td>Z</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>Z</td>
+                                <td>Z</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>Z</td>
+                                <td>Z</td>
+                            </tr>
+                            <tr class="fragment">
+                                <td>$\ket{+}$</td>
+                                <td>$\ket{0}$</td>
+                                <td>$\ket{1}$</td>
+                                <td>$\ket{0}$</td>
+                                <td>$\ket{-}$</td>
+                                <td>$\ket{+}$</td>
+                                <td>$\ket{1}$</td>
+                                <td>$\ket{0}$</td>
+                                <td>$\ket{-}$</td>
+                                <td>$\ket{-}$</td>
+                                <td>$\ket{0}$</td>
+                                <td>$\ket{0}$</td>
+                            </tr>
+                        </table>
+                        <p class="fragment">Embedded into the 💵 note - unknown ❓ quantum states.</p>
+                    </div>
+                </section>
+
+                <section data-background="images/alice_9104.jpg">
+                    <div class="overlay-style">
+                        <p>Because arbitrary quantum states <span class="highlight">cannot be cloned</span>, an
+                            attacker 🦹‍♀️ cannot copy the note.</p>
+                        <p>She <span class="highlight">must guess</span> between $\mathbf{Z}$ and $\mathbf{X}$
+                            bases.
+                        </p>
+                </section>
+
+                <section data-background="images/alice_9104.jpg">
+                    <div class="overlay-style">
+                        <p>Only the bank knows the combination of bases, with which it can verify the <span
+                                class="highlight">authenticity</span> of the note.
+                        </p>
+                </section> -->
+
+                <section data-background="images/bb84.png">
+                    <div class="overlay-style fragment">
+                        <p>In 1984, Charlie Bennett and Gilles Brassard published the first <span
+                                class="highlight">quantum key distribution</span> protocol, which became known as BB84.
+                        </p>
+                        <p>This is considered to be the birth of the field of <span class="highlight">quantum cryptography</span>.</p>
+                </section>
+
+                <section data-background="images/alice_9104.jpg">
+                    <div class="overlay-style">
+                        <p>Quantum key distribution allows two actors to use an</p>
+                        <h2 class="r-fit-text">insecure communication channel</h2>
+                        <p>to securely exchange a secret.</p>
+                    </div>
+                </section>
+
+                <section data-background="images/alice_9104.jpg">
+                    <div class="overlay-style">
+                        <h2>BB84 key distribution</h2>
+                        <table>
+                            <tr class="fragment">
+                                <td>👧🏻</td>
+                                <td>1</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>1</td>
+                                <td>0</td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>0</td>
+                                <td>1</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>1</td>
+                                <td>0</td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>0</td>
+                            </tr>
+                            <tr class="fragment">
+                                <td></td>
+                                <td>Z</td>
+                                <td>Z</td>
+                                <td>X</td>
+                                <td>Z</td>
+                                <td>Z</td>
+                                <td>X</td>
+                                <td>Z</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>Z</td>
+                                <td>X</td>
+                                <td>Z</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>Z</td>
+                            </tr>
+                            <tr class="fragment">
+                                <td colspan="17">💌</td>
+                            </tr>
+                            <tr class="fragment">
+                                <td>👦🏼</td>
+                                <td>Z</td>
+                                <td>Z</td>
+                                <td>Z</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>Z</td>
+                                <td>Z</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>Z</td>
+                                <td>Z</td>
+                                <td>Z</td>
+                                <td>Z</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>X</td>
+                            </tr>
+                            <tr class="fragment">
+                                <td></td>
+                                <td>1</td>
+                                <td>0</td>
+                                <td>❌</td>
+                                <td>❌</td>
+                                <td>❌</td>
+                                <td>❌</td>
+                                <td>1</td>
+                                <td>0</td>
+                                <td>1</td>
+                                <td>0</td>
+                                <td>❌</td>
+                                <td>1</td>
+                                <td>❌</td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>❌</td>
+                            </tr>
+                        </table>
+                        <p class="fragment">Shared key: <span class="highlight">1 0 1 0 1 0 1 1 1</span></p>
+                    </div>
+                </section>
+
+                <section data-background="images/alice_9104.jpg">
+                    <div class="overlay-style">
+                        <p>Because arbitrary quantum states <span class="highlight">cannot be cloned</span>, an
+                            attacker, 🦹‍♀️ Eve, would need to observe the qubits.</p>
+                        <p>She must guess between $\mathbf{Z}$ and $\mathbf{X}$
+                            bases, which <span class="highlight">destroys</span> some of the original information.
+                        </p>
+                </section>
+
+                <section data-background="images/alice_9104.jpg">
+                    <div class="overlay-style">
+                        <p>👧🏻 👦🏼 Alice and Bob need to compare half of their resulting bits. If there are <span
+                                class="highlight">mismatches</span>, they <span class="highlight">detected</span> an
+                            attacker.</p>
+                        <aside class="notes">Otherwise the remaining half of the bits make up the shared key.
+                        </aside>
+                </section>
+
+                <section data-background="images/idq.png">
+                    <div class="overlay-style fragment">
+                        <p>ID Quantique has been providing <span class="highlight">BB84-based</span> quantum key
+                            distribution solution to government and defense agencies.</p>
+                        <div style="clear:both;">
+                            <p class="footnote" style="text-align: center;">source: ID Quantique, idquantique.com
+                            </p>
+                        </div>
+                    </div>
+                    <aside class="notes">In 2022, they deployed the world's largest QKD network outside of China for government agencies in South Korea.</aside>
+                </section>
+
+                <section data-background="images/entanglement-qkd.png">
+                    <div class="overlay-style fragment">
+                        <p>In 2017, a Chinese research team executed a <span
+                                class="highlight">BB84-based</span> quantum key distribution between a low-orbit
+                            quantum satellite and a ground station.</p>
+                        <div style="clear:both;">
+                            <p class="footnote" style="text-align: center;">Liao, SK., Cai, WQ., Liu, WY. et al. Satellite-to-ground quantum key distribution. Nature 549, 43–47 (2017). https://doi.org/10.1038/nature23655. (image from the paper)
+                            </p>
+                        </div>
+                    </div>
+                </section> -->
+<!-- 
+                <section data-background="images/e91.png">
+                    <div class="overlay-style fragment">
+                        <p>In 1991, Artur Ekert developed the first <span class="highlight">quantum key
+                                distribution</span> protocol based on <span class="highglight">entanglement</span>. It
+                            became known as E91 protocol.
+                        </p>
+                </section>
+
+                <section data-background="images/alice_9104.jpg">
+                    <div class="overlay-style">
+                        <h2>E91 key distribution</h2>
+                        <table>
+                            <tr class="fragment" data-fragment-index="1">
+                                <td>👧🏻</td>
+                                <td>⚛️</td>
+                                <td>⚛️</td>
+                                <td>⚛️</td>
+                                <td>⚛️</td>
+                                <td>⚛️</td>
+                                <td>⚛️</td>
+                                <td>⚛️</td>
+                                <td>⚛️</td>
+                                <td>⚛️</td>
+                                <td>⚛️</td>
+                                <td>⚛️</td>
+                                <td>⚛️</td>
+                                <td>⚛️</td>
+                                <td>⚛️</td>
+                                <td>⚛️</td>
+                            </tr>
+                            <tr class="fragment" data-fragment-index="3">
+                                <td></td>
+                                <td>1</td>
+                                <td>0</td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>0</td>
+                                <td>1</td>
+                                <td>0</td>
+                                <td>1</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>1</td>
+                                <td>0</td>
+                                <td>1</td>
+                                <td>1</td>
+                            </tr>
+                            <tr class="fragment" data-fragment-index="6">
+                                <td colspan="16">🦄</td>
+                            </tr>
+                            <tr class="fragment" data-fragment-index="2">
+                                <td>👦🏼</td>
+                                <td>⚛️</td>
+                                <td>⚛️</td>
+                                <td>⚛️</td>
+                                <td>⚛️</td>
+                                <td>⚛️</td>
+                                <td>⚛️</td>
+                                <td>⚛️</td>
+                                <td>⚛️</td>
+                                <td>⚛️</td>
+                                <td>⚛️</td>
+                                <td>⚛️</td>
+                                <td>⚛️</td>
+                                <td>⚛️</td>
+                                <td>⚛️</td>
+                                <td>⚛️</td>
+                            </tr>
+                            <tr class="fragment" data-fragment-index="4">
+                                <td></td>
+                                <td>1</td>
+                                <td>0</td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>0</td>
+                                <td>1</td>
+                                <td>0</td>
+                                <td>1</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>1</td>
+                                <td>0</td>
+                                <td>1</td>
+                                <td>1</td>
+                            </tr>
+                        </table>
+                        <p class="fragment" data-fragment-index="5">Shared key: <span class="highlight">1 0 1 1 0 1 0 1
+                                0 0 0 1 0 1 1</span></p>
+                    </div>
+                </section>
+
+                <section data-background="images/alice_9104.jpg">
+                    <div class="overlay-style">
+                        <p>Entangled based key distribution does not have</p>
+                        <h2 class="r-fit-text">an element of reality</h2>
+                        <p>associated with it.</p>
+                    </div>
+                </section>
+
+                <section data-background="images/entanglement-qkd.png">
+                    <div class="overlay-style fragment">
+                        <p>In 2020, a Chinese research team executed an <span
+                                class="highlight">entanglement-based</span> quantum key distribution via a low-orbit
+                            quantum satellite, between ground stations 1120km apart.</p>
+                        <div style="clear:both;">
+                            <p class="footnote" style="text-align: center;">Yin, J., Li, YH., Liao, SK. et al.
+                                Entanglement-based secure quantum cryptography over 1,120 kilometres. Nature 582,
+                                501–505 (2020). (image from the paper)
+                            </p>
+                        </div>
+                    </div>
+                </section> -->
+            </section>
+            <!-- end quantum security -->
+
+            <section data-background="images/all.jpg">
+            </section>
+
+            <section data-background="images/cms-detector.jpg">
+                <div class="overlay-style">
+                    <h2>Thank you</h2>
+                    <div class="column-container centered">
+                        <div class="col auto">
+                            <img class="small" src="images/thankyou.gif" style="min-height: auto; margin:0" />
+                        </div>
+                        <div class="col auto">
+                            <ul style="font-size: 0.9em;">
+                                <li>📝 <a
+                                        href="https://filipw.github.io/ndcporto-2023">filipw.github.io/ndcporto-2023</a>
+                                </li>
+                                <li>🖥️ <a href="https://github.com/filipw/2023-ndcporto-demos">github.com/filipw/2023-ndcporto-demos</a></li>
+                                <li>📚 <a href="https://link.springer.com/book/10.1007/978-3-030-99379-5">Intro to Quantum
+                                    Computing book</a>
+                            </li>
+
+                                <li>📸 <a href="https://cds.cern.ch/collection/Multimedia%20%26%20Outreach?ln=en">Photos
+                                        credit: CERN</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section data-background-color="#000">
+                <img src="images/bye.gif" />
+            </section>
+
+        </div>
+    </div>
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']]
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+        </script>
+    <script>
+        // Full list of configuration options available here:
+        // https://github.com/hakimel/reveal.js#configuration
+
+        Reveal.initialize({
+            viewDistance: 30,
+            controls: true,
+            progress: true,
+            history: true,
+            center: true,
+            keyboard: {
+                39: 'next', // Right Arrow
+                37: 'prev'  // Left Arrow
+            },
+            transition: 'slide', // default/cube/page/concave/zoom/linear/fade/none
+
+            // Parallax scrolling
+            // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+            // parallaxBackgroundSize: '2100px 900px',
+
+            // Optional libraries used to extend on reveal.js
+            dependencies: [
+                { src: 'lib/js/classList.js', condition: function () { return !document.body.classList; } },
+                { src: 'plugin/markdown/marked.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+                { src: 'plugin/markdown/markdown.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+                { src: 'plugin/highlight.js/highlight.pack.js', async: true, callback: function () { /*hljs.initHighlightingOnLoad();*/ } },
+                { src: 'plugin/zoom-js/zoom.js', async: true, condition: function () { return !!document.body.classList; } },
+                { src: 'plugin/notes/notes.js', async: true, condition: function () { return !!document.body.classList; } },
+                { src: 'plugin/alt-arrows/alt-arrows.js' },
+                {
+                    src: 'plugin/reveal-code-focus.js',
+                    async: true,
+                    callback: function () {
+                        RevealCodeFocus();
+                    }
+                }
+            ]
+        });
+
+        // Reveal.configure({
+        //     keyboard: {
+        //         39: 'next', // Right Arrow
+        //         37: 'prev'  // Left Arrow
+        //     }
+        // });
+
+    </script>
+</body>
+
+</html>
