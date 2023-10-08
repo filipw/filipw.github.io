@@ -210,15 +210,32 @@
                     <div class="overlay-style">
                         <p>Symmetric encryption is fast and relatively simple, but requires a secure method for <span class="highlight">key distribution</span>, which is a big challenge, especially when parties do not know or trust each other.</p>
                     </div>
-                    <aside class="notes">
-                        Many protocols - for example TLS/SSL - use a hybrid model - start with an asymmetric handshake, and then switch to symmetric.
-                    </aside>
                 </section>
 
                 <section data-background="images/atlas3.jpg">
                     <h2 class="overlay-style">Asymmetric encryption</h2>
                     <img src="images/crypto-asymmetric.png" />
                     <aside class="notes">Also known as Public Key Cryptography. It is also used for digital signatures.</aside>
+                </section>
+
+                <section data-background="images/atlas3.jpg">
+                    <div class="overlay-style">
+                        <div class="column-container">
+                            <div class="col">
+                                <br/>
+                    <h3>Hybrid model</h2>
+                                <p>
+                                Many protocols, for example <span class="highlight">TLS</span>, start with an asymmetric handshake, and then switch to symmetric encryption.
+                            </p>
+                            </div>
+                            <div class="col inset">
+                                <img src="images/tls.png" style="min-height: auto;" />
+                            </div>
+
+                        </div>
+                        <aside class="notes">
+                            Many protocols - for example TLS/SSL - use a hybrid model - start with an asymmetric handshake, and then switch to symmetric.
+                        </aside>
                 </section>
 
                 <section data-background="images/atlas3.jpg">
@@ -918,12 +935,22 @@
                         </aside>
                 </section>
 
-                <section data-background="images/gidney.png" data-state="bg-top-left">
+                <section>
+                    <div>
+                        <img src="images/globalrisk.png" />
+                        </div>
+                        <div style="clear:both; margin-top: 20px;">
+                            <p class="footnote" style="text-align: center;">source: Global Risk Institute, "2022 Quantum Threat Timeline Report"
+                            </p>
+                        </div>
+                </section>
+
+                <!-- <section data-background="images/gidney.png" data-state="bg-top-left">
                     <div class="overlay-style fragment">
                         <p>However, those are physical qubits - including the ones needed for error correction. The estimation for <span class="highlight">logical qubits</span> was 14,238.</p>
                     </div>
                     <aside class="notes">Latest publications (e.g. Kudelski Security) estimate about 6k logical qubits for RSA-2048 and 23k logical qubits for RSA-7680.</aside>
-                </section>
+                </section> -->
 
                 <!-- <section data-background="images/alice-door.jpeg">
                     <div class="overlay-style">
