@@ -933,16 +933,6 @@
                         </aside>
                 </section>
 
-                <section data-background-color="white">
-                    <div>
-                        <img src="images/globalrisk.png" style="max-height: 600px;" />
-                        </div>
-                        <div style="clear:both; margin-top: 20px;">
-                            <p class="footnote" style="text-align: center;">source: Global Risk Institute, "2022 Quantum Threat Timeline Report"
-                            </p>
-                        </div>
-                </section>
-
                 <section data-background="images/alice-door.jpeg">
                     <div class="overlay-style">
                         <p>Shor's algorithm can also be used to compute discrete logarithms on elliptic curves over prime fields, thus is <span class="highlight">equally capable of attacking it</span>.
@@ -966,6 +956,25 @@
                     <aside class="notes">
                         Forward secrecy means using new (ephemeral) keys all the time, so intercepting and breaking one message would not reveal the whole session. ECDH is also used in tools like Signal or Skype.
                     </aside>
+                </section>
+
+                <section data-background-color="white">
+                    <div>
+                        <img src="images/globalrisk.png" style="max-height: 600px;" />
+                        </div>
+                        <div style="clear:both; margin-top: 20px;">
+                            <p class="footnote" style="text-align: center;">source: Global Risk Institute, "2022 Quantum Threat Timeline Report"
+                            </p>
+                        </div>
+                </section>
+
+                <section data-background="images/alice-door.jpeg">
+                    <div class="overlay-style">
+                        <p>So we have a lot of time?
+                        </p>
+                        <h3 class="fragment r-fit-text">No, it is already too late</h3>
+                    </div>
+                    <aside class="notes">In TLS 1.3, RSA is no longer used for key exchange, in favor of methods like Ephemeral Elliptic-Curve Diffie-Hellman (ECDHE). Even without TLS 1.3, ECDSA should be used over RSA.</aside>
                 </section>
 
                 <section data-background="images/grover.png" data-state="bg-top-left">
@@ -1358,9 +1367,9 @@
 
                 <section data-background="images/alice_9104.jpg">
                     <div class="overlay-style">
-                        <p>Measurement in the $\mathbf{Z}$ basis</p>
+                        <p>Measurement in the $\mathbf{X}$ basis</p>
                         <h2 class="r-fit-text">destroys information</h2>
-                        <p>encoded in the $\mathbf{X}$ the basis, and vice versa.</p>
+                        <p>encoded in the $\mathbf{Z}$ the basis, and vice versa.</p>
                     </div>
                     <aside class="notes">
                         The choice of basis allows us to encode information in a qubit in a
