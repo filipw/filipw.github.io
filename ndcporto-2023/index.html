@@ -849,7 +849,7 @@
                             <li class="fragment highlight-current-red">4. Encrypt: <br />$C = M^e (mod\;N)$
                                 &nbsp;&nbsp;&nbsp; (public key based on $N$)</li>
                             <li class="fragment highlight-current-red">5. Decrypt: <br />
-                                $M = C^{1 (mod\;(p-1) \times (q-1))e^{-1}} (mod\;\;N)$&nbsp;&nbsp;&nbsp; (private key
+                                $M = C^{e^{-1} (mod\;(p-1) \times (q-1))} (mod\;\;N)$&nbsp;&nbsp;&nbsp; (private key
                                 based on $p$, $q$)</li>
                         </ul>
                     </div>
