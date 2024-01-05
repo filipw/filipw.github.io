@@ -83,12 +83,9 @@
                     <h1>Background</h1>
                 </section>
 
-                <section data-background="images/hao-wang-pVq6YhmDPtk-unsplash.jpg">
-                    <div class="overlay-style">
-                        <p>Foo</p>
-                        <h2 class="r-fit-text">bar?</h2>
-                    </div>
-                </section>
+                <!-- <section data-background="images/hao-wang-pVq6YhmDPtk-unsplash.jpg"> -->
+
+
             </section>
             <!-- end Background-->
 
@@ -97,6 +94,95 @@
                 <section data-background="images/growtika-nGoCBxiaRO0-unsplash.jpg">
                     <h1>Large Language Models</h1>
                 </section>
+
+                <section data-background="images/maxime-valcarce-mAj8xn5zXsk-unsplash.jpg">
+                    <div class="overlay-style">
+                        <p><strong>Prompt:</strong> &nbsp;I gave him a</p>
+                        <p><strong>Completion:</strong> 
+                            <span class="fragment step-fade-in-then-out">gift</span>
+                            <span class="fragment step-fade-in-then-out">chance to explain himself</span>
+                            <span class="fragment step-fade-in-then-out">comprehensive tutorial on digital photography, including lessons on lighting, composition, and post-processing</span>
+                        </p>
+                    </div>
+                </section>
+
+                <section data-background="images/maxime-valcarce-mAj8xn5zXsk-unsplash.jpg">
+                    <div class="overlay-style">
+                        <p>Input is</p>
+                        <h2 class="r-fit-text">tokenized</h2>
+                        <p>before being passed into LLMs</p>
+                    </div>
+                </section>
+
+                <section data-background="images/maxime-valcarce-mAj8xn5zXsk-unsplash.jpg">
+                    <div class="overlay-style">
+                        <div class="column-container">
+                            <div class="col">
+                        <img src="images/tokenization1.png" style="min-height: auto;" />
+                                
+                            </div>
+                            <div class="col">
+                                <br/>
+                        <img src="images/tokenization2.png" style="min-height: auto;" />
+                            </div>
+
+                        </div>
+                        <p>Tokens are then mapped to a vector of token IDs.</p>
+                    </div>
+                </section>
+
+                <section data-background="images/maxime-valcarce-mAj8xn5zXsk-unsplash.jpg">
+                    <div class="overlay-style">
+                        <div class="column-container">
+                            <div class="col">
+                        <p>Given a vector of tokens, the model <span class="highlight">predicts</span> the next token and outputs it. That token is then incorporated into the original input, and another token gets predicted.</p>
+                        <p>This continues <span class="highlight">iteratively</span>.</p>
+                        </div>
+                        <div class="col">
+                            <table>
+                                <tr>
+                                    <td>I gave him a</td>
+                                    <td>→</td>
+                                    <td>g</td>
+                                </tr>
+                                <tr>
+                                    <td>I gave him a g</td>
+                                    <td>→</td>
+    
+                                    <td>i</td>
+                                </tr>
+                                <tr>
+                                    <td>I gave him a gi</td>
+                                    <td>→</td>
+    
+                                    <td>f</td>
+                                </tr>
+                                <tr>
+                                    <td>I gave him a gif</td>
+                                    <td>→</td>
+    
+                                    <td>t</td>
+                                </tr>
+                                <tr>
+                                    <td>I gave him a gift</td>
+                                    <td>→</td>
+    
+                                    <td>[STOP]</td>
+                                </tr>
+                            </table>
+                        </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-background="images/maxime-valcarce-mAj8xn5zXsk-unsplash.jpg">
+                    <div class="overlay-style">
+                        <p>The model predicts the next token based on the <span class="highlight">probability distribution</span> of all possible tokens, influenced by its training. Randomness is added so outputs are <span class="highlight">non-deterministic</span> - they vary even with identical inputs.</p>
+                    </div>
+                    <aside class="notes">
+                        <p>The output token is chosen by the model according to its probability of occurring after the current text sequence. This is because the model predicts a probability distribution over all possible ‘next tokens’, calculated based on its training. However, not always the token with the highest probability is chosen from the resulting distribution. A degree of randomness is added to this choice, in a way that the model acts in a non-deterministic fashion - we do not get the exact same output for the same input. This degree of randomness is added to simulate the process of creative thinking and it can be tuned using a model parameter called temperature.</p>
+                </section>
+
 
                 <section data-background="images/maxime-valcarce-mAj8xn5zXsk-unsplash.jpg">
                     <div class="overlay-style">
@@ -157,6 +243,62 @@
                 </section>
             </section>
             <!-- end LLMs-->
+
+                        <!-- AOI-->
+                        <section>
+                            <section data-background="images/maria-teneva-7FmSYQ3Z7fg-unsplash.jpg">
+                                <h1>Azure OpenAI</h1>
+                            </section>
+
+                            <section data-background="images/michael-dziedzic-nbW-kaz2BlE-unsplash.jpg">
+                                <div class="overlay-style">
+                                    <h2>Azure OpenAI</h2>
+                                    <div class="column-container">
+                                        <div class="col">
+                                            <ul>
+                                                <li class="fragment">🧠
+                                                    OpenAI models
+                                                    <br />
+                                                    <small>GPT-4, GPT-3.5-Turbo and Embedding series</small>
+                                                </li>
+            
+                                                <li class="fragment">🔒
+                                                    Data privacy
+                                                    <br />
+                                                    <small>No data loopback to OpenAI or Microsoft</small>
+                                                </li>
+            
+                                            </ul>
+                                        </div>
+                                        <div class="col">
+                                            <ul>
+                                                <li class="fragment">🏢
+                                                    Enterprise compliance
+                                                    <br />
+                                                    <small>SLAs, customer keys, private networking, RBAC...</small>
+                                                </li>
+            
+                                                <li class="fragment">🔗
+                                                    Additional integrations
+                                                    <br />
+                                                    <small>Bring your own data, content filters, low code designers</small>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <section data-background="images/michael-dziedzic-nbW-kaz2BlE-unsplash.jpg">
+                                <div class="overlay-style">
+                                    <p>Azure OpenAI comes with</p>
+                                    <h2 class="r-fit-text">Customer Copyright Commitment</h2>
+                                    <p>Microsoft will indemnify customers in case of copyright claims</p>
+                                </div>
+                            </section>
+
+                        </section>
+                        <!-- end AOI-->
 
             <section data-background="images/all.jpg">
             </section>
