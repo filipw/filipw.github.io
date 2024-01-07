@@ -105,9 +105,9 @@
 
                 <section data-background="images/maxime-valcarce-mAj8xn5zXsk-unsplash.jpg">
                     <div class="overlay-style">
-                        <p>Input is</p>
+                        <p>The input provided via the prompt is</p>
                         <h2 class="r-fit-text">tokenized</h2>
-                        <p>before being passed into LLMs</p>
+                        <p>before being passed into large language model. Each model has a specific token limit it can handle (4k, 16k, 32k, 128k).</p>
                     </div>
                 </section>
 
@@ -125,6 +125,14 @@
 
                         </div>
                         <p>Tokens are then mapped to a vector of token IDs.</p>
+                    </div>
+                </section>
+
+                <section data-background="images/maxime-valcarce-mAj8xn5zXsk-unsplash.jpg">
+                    <div class="overlay-style">
+                        <p>Large language models are</p>
+                        <h2 class="r-fit-text">stateless</h2>
+                        <p>This means that the entire interaction history has to be provided on each subsequent query, and will grow indefinitely unless trimmed.</p>
                     </div>
                 </section>
 
@@ -303,11 +311,11 @@
 
                 <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
                     <div class="overlay-style">
-                        <p><span class="highlight">Prompt Engineering</span> relies on the model's pre-existing knowledge and capabilities.</p>
+                        <p><span class="highlight">Prompt Engineering</span> relies on the model's pre-existing knowledge and capabilities and provides in-context learning for the model.</p>
                         <p>By crafting the input prompts, we can guide the language model in generating the desired output and control its behavior without altering its underlying structure.</p>
                         <hr/>
                         <p>Input Prompt + Model's Knowledge → Desired Output</p>
-                        <aside class="notes">In prompt engineering, the design of the input prompt is crucial as it influences the quality and relevance of the output. The prompt is crafted to leverage the model's learned patterns and data to produce a specific desired outcome.</aside>
+                        <aside class="notes">The prompt is crafted to leverage the model's learned patterns and data to produce a specific desired outcome.</aside>
                 </section>
 
                 <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
@@ -415,6 +423,59 @@
                         </div>
                     </div>
                 </section>
+
+                <section data-background="images/michael-dziedzic-nbW-kaz2BlE-unsplash.jpg">
+                    <div class="overlay-style">
+                        <h3>Available GPT models</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Model ID</th>
+                                    <th>Max tokens</th>
+                                    <th>Training data (up to)</th>
+                                </tr>
+                            <tr>
+                                <td>gpt-4</td>
+                                <td>8192</td>
+                                <td>09/2021</td>
+                            </tr>
+                            <tr>
+                                <td>gpt-4-32k</td>
+                                <td>32,768</td>
+                                <td>09/2021</td>
+                            </tr>
+                            <tr>
+                                <td>gpt-4 (1106-preview)</td>
+                                <td>128,000</td>
+                                <td>04/2023</td>
+                            </tr>
+                            <tr>
+                                <td>gpt-4 (vision-preview)</td>
+                                <td>128,000</td>
+                                <td>04/2023</td>
+                            </tr>
+                            <tr>
+                                <td>gpt-35-turbo</td>
+                                <td>4,096</td>
+                                <td>09/2021</td>
+                            </tr>
+                            <tr>
+                                <td>gpt-35-turbo-16k</td>
+                                <td>16,384</td>
+                                <td>09/2021</td>
+                            </tr>
+                        </table>
+                    </div>
+                </section>
+
+                <section data-background-color="#fff">
+                    <img src="images/aoi-flow.png" style="min-height: auto;" />
+                    <div style="clear:both;">
+                        <p class="footnote" style="text-align: center;">source: Microsoft, learn.microsoft.com
+                        </p>
+                    </div>
+                </section>
+
 
                 <section data-background="images/michael-dziedzic-nbW-kaz2BlE-unsplash.jpg">
                     <div class="overlay-style">
