@@ -82,10 +82,6 @@
                 <section data-background="images/growtika-nGoCBxiaRO0-unsplash.jpg">
                     <h1>Background</h1>
                 </section>
-
-                <!-- <section data-background="images/hao-wang-pVq6YhmDPtk-unsplash.jpg"> -->
-
-
             </section>
             <!-- end Background-->
 
@@ -252,7 +248,7 @@
                                     <li>📖 Additional context can help them, but they will still lack the detailed
                                         domain knowledge</li>
                                     <li>🛠️ They can be constrained and guided by <span class="highlight">prompt
-                                            engineering</span> though the process is not deterministic</li>
+                                            engineering</span></li>
                                 </ul>
                             </div>
                             <div class="col inset">
@@ -270,7 +266,7 @@
                         <div class="column-container">
                             <div class="col">
                                 <ul>
-                                    <li>💭 The more detailed the conversation, the more likely the models are to <span
+                                    <li>💭 The deeper we go into a specific domain, the more likely the models are to <span
                                             class="highlight">hallucinate</span></li>
                                     <li>🌐 They are very good at generating plausible sounding content, but not
                                         necessarily grounded in facts</li>
@@ -293,7 +289,7 @@
 
                 <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
                     <div class="overlay-style">
-                        <p>There are three primary techniques for grounding LLMs in data:</p>
+                        <p>There are three primary techniques for customizing LLMs:</p>
                         <ul>
                             <li class="fragment">🗣️ <span class="highlight">Prompt engineering</span>: tailoring inputs
                                 for desired output patterns</li>
@@ -302,6 +298,37 @@
                             <li class="fragment">🔍 <span class="highlight">Retrieval-augmented generation</span>:
                                 enhancing output with external data sources</li>
                         </ul>
+                </section>
+
+
+                <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
+                    <div class="overlay-style">
+                        <p><span class="highlight">Prompt Engineering</span> relies on the model's pre-existing knowledge and capabilities.</p>
+                        <p>By crafting the input prompts, we can guide the language model in generating the desired output and control its behavior without altering its underlying structure.</p>
+                        <hr/>
+                        <p>Input Prompt + Model's Knowledge → Desired Output</p>
+                        <aside class="notes">In prompt engineering, the design of the input prompt is crucial as it influences the quality and relevance of the output. The prompt is crafted to leverage the model's learned patterns and data to produce a specific desired outcome.</aside>
+                </section>
+
+                <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
+                    <div class="overlay-style">
+                        <p><span class="highlight">Fine-Tuning the Model</span> involves additional training on specific data after the initial training phase.</p>
+                        <p>This process teaches the model new skills or improves its performance on tasks that are similar to the ones it was originally trained on.</p>
+                        <hr/>
+                        <p>Pre-Trained Model + Fine-Tuning Data → Specialized Model</p>
+                        <aside class="notes">This is adapting the model to specialized tasks or domains.</aside>
+                </section>
+
+                <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
+                    <div class="overlay-style">
+                        <p><span class="highlight">Retrieval-Augmented Generation (RAG)</span> enhances the language model with the ability to access external information.</p>
+                        <p>It combines the language model with a retrieval system, which fetches relevant data that the model uses to generate informed responses.</p>
+                        <hr/>
+                        <p>Query → Retrieval System → Relevant Data + Language Model → Informed Output
+                        </p>
+                        <aside class="notes">Responses are also contextually relevant</aside>
+                    </div>
+
                 </section>
 
                 <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
