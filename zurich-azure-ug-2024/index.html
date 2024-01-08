@@ -393,22 +393,10 @@
                         </div>
                 </section>
 
-                <section data-background-color="#fff">
-                    <img src="graphics/rag1.drawio.png" style="min-height: auto;" />
-                </section>
-
-                <section data-background-color="#fff">
-                    <img src="graphics/rag2.drawio.png" style="min-height: auto;" />
-                </section>
-
                 <section data-background="images/gpts.png" data-state="bg-top-left">
                     <div class="overlay-style">
                         <p>OpenAI's GPTs are at their core RAG-pattern applications as well.</p>
                     </div>
-                </section>
-
-                <section data-background-color="#fff">
-                    <img src="graphics/rag.embeddings.drawio.png" style="min-height: auto;" />
                 </section>
             </section>
 
@@ -460,7 +448,7 @@
                 <section data-background="images/michael-dziedzic-nbW-kaz2BlE-unsplash.jpg">
                     <div class="overlay-style">
                         <p>OpenAI models are available <span class="highlight">exclusively</span> in Azure.</p>
-                        <img src="images/openai-msft.png" style="min-height: auto;" />
+                        <img src="images/oai-azure.png" style="min-height: auto; max-width: 75%;" />
                     </div>
                     <aside class="notes">Microsoft owns 50% of OpenAI.
                         </aside>
@@ -473,39 +461,61 @@
                             <thead>
                                 <tr>
                                     <th>Model ID</th>
+                                    <th></th>
                                     <th>Max tokens</th>
+                                    <th></th>
                                     <th>Training data (up to)</th>
                                 </tr>
-                            <tr>
-                                <td>gpt-4</td>
-                                <td>8192</td>
-                                <td>09/2021</td>
-                            </tr>
+                                <tr>
+                                    <td>gpt-4 (1106-preview)</td>
+                                    <td></td>
+                                    <td>128,000</td>
+                                    <td></td>
+                                    <td>04/2023</td>
+                                </tr>
+                                <tr>
+                                    <td>gpt-4 (vision-preview)</td>
+                                    <td></td>
+                                    <td>128,000</td>
+                                    <td></td>
+                                    <td>04/2023</td>
+                                </tr>
                             <tr>
                                 <td>gpt-4-32k</td>
+                                <td></td>
                                 <td>32,768</td>
+                                <td></td>
                                 <td>09/2021</td>
                             </tr>
                             <tr>
-                                <td>gpt-4 (1106-preview)</td>
-                                <td>128,000</td>
-                                <td>04/2023</td>
-                            </tr>
-                            <tr>
-                                <td>gpt-4 (vision-preview)</td>
-                                <td>128,000</td>
-                                <td>04/2023</td>
-                            </tr>
-                            <tr>
-                                <td>gpt-35-turbo</td>
-                                <td>4,096</td>
+                                <td>gpt-4</td>
+                                <td></td>
+                                <td>8192</td>
+                                <td></td>
                                 <td>09/2021</td>
                             </tr>
                             <tr>
                                 <td>gpt-35-turbo-16k</td>
+                                <td></td>
                                 <td>16,384</td>
+                                <td></td>
                                 <td>09/2021</td>
                             </tr>
+                            <tr>
+                                <td>gpt-3.5-turbo-instruct</td>
+                                <td></td>
+                                <td>4,096</td>
+                                <td></td>
+                                <td>09/2021</td>
+                            </tr>
+                            <tr>
+                                <td>gpt-35-turbo</td>
+                                <td></td>
+                                <td>4,096</td>
+                                <td></td>
+                                <td>09/2021</td>
+                            </tr>
+                            
                         </table>
                     </div>
                 </section>
@@ -526,10 +536,24 @@
                             </div>
 
                         </div>
-                    </div>
-
-                    
+                    </div>                    
                 </section>
+
+                <section data-background-color="#fff">
+                    <img src="graphics/rag1.drawio.png" style="min-height: auto;" />
+                </section>
+
+                <section data-background-color="#fff">
+                    <img src="graphics/rag2.drawio.png" style="min-height: auto;" />
+                </section>
+
+                <!-- TODO VECTORS -->
+
+                <section data-background-color="#fff">
+                    <img src="graphics/rag.embeddings.drawio.png" style="min-height: auto;" />
+                </section>
+
+                <!-- TODO CONTENT FILTERING -->
 
 
                 <section data-background-color="#fff">
@@ -552,6 +576,10 @@
                 <section data-background="images/michael-dziedzic-nbW-kaz2BlE-unsplash.jpg">
                     <div class="overlay-style">
                         <p>As part of Microsoft's commitment to responsible AI, Azure OpenAI is only available to <span class="highlight">approved enterprise customers and partners</span>. Customers who wish to use Azure OpenAI are required to submit a registration form.</p>
+                        <div style="clear:both;">
+                            <p class="footnote" style="text-align: center;">aka.ms/oai/access
+                            </p>
+                        </div>
                     </div>
                 </section>
 
