@@ -247,7 +247,7 @@
                 </section>
 
                 <section data-background="images/foundation-models.png">
-                    <div class="overlay-style" style="background: rgba(0, 0, 0, 0.9);">
+                    <div class="overlay-style fragment" style="background: rgba(0, 0, 0, 0.9);">
                         <h3>Foundation models</h3>
                         <hr/>
                        <ol>
@@ -347,7 +347,7 @@
                         <p><span class="highlight">Prompt Engineering</span> relies on the model's pre-existing knowledge and capabilities and provides in-context information for the model.</p>
                         <p>By crafting the input prompts, we can guide the language model in generating the desired output and control its behavior without altering its underlying structure.</p>
                         <hr/>
-                        <p>Input Prompt + Model's Knowledge → Desired Output</p>
+                        <p>Query + System Prompt + Language Model → Desired Output</p>
                         <aside class="notes">The prompt is crafted to leverage the model's learned patterns and data to produce a specific desired outcome.</aside>
                 </section>
 
@@ -365,7 +365,7 @@
                         <p><span class="highlight">Retrieval-Augmented Generation (RAG)</span> enhances the language model with the ability to access external information.</p>
                         <p>It combines the language model with a retrieval system, which fetches relevant data that the model uses to generate informed responses.</p>
                         <hr/>
-                        <p>Query → Retrieval System → Relevant Data + Language Model → Informed Output
+                        <p>Query → Retrieval System → Query + Relevant Data + System Prompt + Language Model → Informed Output
                         </p>
                         <aside class="notes">Responses are also contextually relevant</aside>
                     </div>
@@ -379,9 +379,9 @@
                         <div class="column-container">
                             <div class="col">
                                 <ul>
-                                    <li>🔍 First query for relevant data in a relevant source</li>
-                                    <li>🧠 Then the data is fed into LLM, which generates output based on that</li>
-                                    <li>🌐 With this pattern, the model is “grounded” in trustworthy, up-to-date, data
+                                    <li>🔍 first query for relevant data in a relevant source</li>
+                                    <li>🧠 then the data is fed into LLM, which generates output based on that</li>
+                                    <li>🌐 with this pattern, the model is “grounded” in trustworthy, up-to-date, data
                                     </li>
                                 </ul>
                             </div>
@@ -391,10 +391,17 @@
                             </div>
 
                         </div>
-                </section>
+                    </section>
+
+
+                    <section data-background="images/copilot.png" data-state="bg-top-left">
+                        <div class="overlay-style" style="background: rgba(0, 0, 0, 0.9);">
+                            <p>Microsoft's Copilots are at their core RAG-pattern applications as well.</p>
+                        </div>
+                    </section>
 
                 <section data-background="images/gpts.png" data-state="bg-top-left">
-                    <div class="overlay-style">
+                    <div class="overlay-style" style="background: rgba(0, 0, 0, 0.9);">
                         <p>OpenAI's GPTs are at their core RAG-pattern applications as well.</p>
                     </div>
                 </section>
@@ -404,6 +411,16 @@
             <section>
                 <section data-background="images/maria-teneva-7FmSYQ3Z7fg-unsplash.jpg">
                     <h1>Azure OpenAI</h1>
+                </section>
+
+
+                <section data-background="images/michael-dziedzic-nbW-kaz2BlE-unsplash.jpg">
+                    <div class="overlay-style">
+                        <p>OpenAI models are available <span class="highlight">exclusively</span> in Azure.</p>
+                        <img src="images/oai-azure.png" style="min-height: auto; max-width: 75%;" />
+                    </div>
+                    <aside class="notes">Microsoft owns 50% of OpenAI.
+                        </aside>
                 </section>
 
                 <section data-background="images/michael-dziedzic-nbW-kaz2BlE-unsplash.jpg">
@@ -445,14 +462,6 @@
                     </div>
                 </section>
 
-                <section data-background="images/michael-dziedzic-nbW-kaz2BlE-unsplash.jpg">
-                    <div class="overlay-style">
-                        <p>OpenAI models are available <span class="highlight">exclusively</span> in Azure.</p>
-                        <img src="images/oai-azure.png" style="min-height: auto; max-width: 75%;" />
-                    </div>
-                    <aside class="notes">Microsoft owns 50% of OpenAI.
-                        </aside>
-                </section>
 
                 <section data-background="images/michael-dziedzic-nbW-kaz2BlE-unsplash.jpg">
                     <div class="overlay-style">
@@ -539,19 +548,35 @@
                     </div>                    
                 </section>
 
-                <section data-background-color="#fff">
+                <section data-background="images/michael-dziedzic-nbW-kaz2BlE-unsplash.jpg">
+                        <div class="overlay-style">
+                            <h3>Sample RAG Architecture<br/>&nbsp;</h3>
+                            <div style="background-color: #fff;">
                     <img src="graphics/rag1.drawio.png" style="min-height: auto;" />
+                </div>
+                </div>
                 </section>
 
-                <section data-background-color="#fff">
-                    <img src="graphics/rag2.drawio.png" style="min-height: auto;" />
-                </section>
+                <section data-background="images/michael-dziedzic-nbW-kaz2BlE-unsplash.jpg">
+                    <div class="overlay-style">
+                        <h3>Sample RAG Architecture v2</h3>
+                        <div style="background-color: #fff;">
+                <img src="graphics/rag2.drawio.png" style="min-height: auto; max-height: 450px;" />
+            </div>
+            </div>
+            </section>
 
                 <!-- TODO VECTORS -->
 
-                <section data-background-color="#fff">
-                    <img src="graphics/rag.embeddings.drawio.png" style="min-height: auto;" />
-                </section>
+                <section data-background="images/michael-dziedzic-nbW-kaz2BlE-unsplash.jpg">
+                    <div class="overlay-style">
+                        <h3>Sample RAG Architecture with Embeddings</h3>
+                        <div style="background-color: #fff;">
+                <img src="graphics/rag.embeddings.drawio.png" style="max-height: auto;" />
+            </div>
+            </div>
+            </section>
+
 
                 <!-- TODO CONTENT FILTERING -->
 
@@ -589,7 +614,7 @@
             <section data-background="images/all.jpg">
             </section>
 
-            <section data-background="images/cms-detector.jpg">
+            <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
                 <div class="overlay-style">
                     <h2>Thank you</h2>
                     <div class="column-container centered">
