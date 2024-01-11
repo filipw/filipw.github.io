@@ -94,14 +94,23 @@
                 <section data-background="images/maxime-valcarce-mAj8xn5zXsk-unsplash.jpg">
                     <div class="overlay-style">
                         <ul>
-                            <li class="fragment">📖 Large Language Models<br/>
-                            <small>specialize in understanding and generating text. They are trained on vast amounts of textual data and can perform tasks like writing, translating, summarizing, answering questions, following instructions or orchestrating workflows</small></li>
-                            <li class="fragment">🎨 Image generation<br/>
-                            <small>generate visual content, often from textual descriptions</small></li>
-                            <li class="fragment">🎬 Audio/video generation<br/>
-                            <small>generate or manipulate audio and video content. Audio generation might include models that synthesize speech, music, or sound effects, while video generation could involve creating new video clips or altering existing ones.</small></li>
-                            <li class="fragment">🧠 Multimodal Models<br/>
-                                <small>can understand and generate content across multiple types of data, like text, images, and sometimes audio</small></li>
+                            <li class="fragment">📖 Large Language Models<br />
+                                <small>specialize in understanding and generating text. They are trained on vast amounts
+                                    of textual data and can perform tasks like writing, translating, summarizing,
+                                    answering questions, following instructions or orchestrating workflows</small>
+                            </li>
+                            <li class="fragment">🎨 Image generation<br />
+                                <small>generate visual content, often from textual descriptions</small>
+                            </li>
+                            <li class="fragment">🎬 Audio/video generation<br />
+                                <small>generate or manipulate audio and video content. Audio generation might include
+                                    models that synthesize speech, music, or sound effects, while video generation could
+                                    involve creating new video clips or altering existing ones.</small>
+                            </li>
+                            <li class="fragment">🧠 Multimodal Models<br />
+                                <small>can understand and generate content across multiple types of data, like text,
+                                    images, and sometimes audio</small>
+                            </li>
                         </ul>
                     </div>
                 </section>
@@ -109,7 +118,7 @@
                 <section data-background="images/maxime-valcarce-mAj8xn5zXsk-unsplash.jpg">
                     <div class="overlay-style">
                         <h3>Large Language Models</h3>
-                        <hr/>
+                        <hr />
                         <p><strong>Prompt:</strong> &nbsp;&nbsp;I gave him a</p>
                         <p><strong>Completion:</strong> &nbsp;&nbsp;
                             <span class="fragment step-fade-in-then-out">gift</span>
@@ -124,7 +133,8 @@
                     <div class="overlay-style">
                         <p>The textual input provided via the prompt is</p>
                         <h2 class="r-fit-text">tokenized</h2>
-                        <p>before being passed into a large language model. Each model has a specific token limit it can handle (4k, 16k, 32k, 128k).</p>
+                        <p>before being passed into a large language model. Each model has a specific token limit it can
+                            handle (4k, 16k, 32k, 128k).</p>
                     </div>
                 </section>
 
@@ -238,22 +248,27 @@
                     <div class="overlay-style">
                         <p>Most AI models (particularly GPT series) are designed to be</p>
                         <h2 class="r-fit-text">stateless</h2>
-                        <p>They do not retain memory of past interactions. To maintain context in a series of interactions, the entire relevant history must be included with each subsequent query.</p>
+                        <p>They do not retain memory of past interactions. To maintain context in a series of
+                            interactions, the entire relevant history must be included with each subsequent query.</p>
                     </div>
                     <aside class="notes">
-                        Each query is processed independently, without any inherent knowledge of previous queries. 
-                        This approach simplifies the model's design but requires careful management of interaction history to prevent unmanageable growth and ensure relevance
+                        Each query is processed independently, without any inherent knowledge of previous queries.
+                        This approach simplifies the model's design but requires careful management of interaction
+                        history to prevent unmanageable growth and ensure relevance
                     </aside>
                 </section>
 
                 <section data-background="images/foundation-models.png">
                     <div class="overlay-style fragment" style="background: rgba(0, 0, 0, 0.9);">
                         <h3>Foundation models</h3>
-                        <hr/>
-                       <ol>
-                            <li>trained using <span class="highlight">unsupervised</span> or self-supervised learning techniques</li>
-                            <li><span class="highlight">extremely large</span>, deep neural networks with billions of parameters.</li>
-                            <li>serve as a <span class="highlight">foundational base</span> for further model development and specialization through fine-tuning.</li>
+                        <hr />
+                        <ol>
+                            <li>trained using <span class="highlight">unsupervised</span> or self-supervised learning
+                                techniques</li>
+                            <li><span class="highlight">extremely large</span>, deep neural networks with billions of
+                                parameters.</li>
+                            <li>serve as a <span class="highlight">foundational base</span> for further model
+                                development and specialization through fine-tuning.</li>
                         </ol>
                         <aside class="notes">This leads to the so called "foundation models"</aside>
                 </section>
@@ -263,7 +278,7 @@
                 <section data-background="images/maxime-valcarce-mAj8xn5zXsk-unsplash.jpg">
                     <div class="overlay-style">
                         <h3>GPT models</h3>
-                        <hr/>
+                        <hr />
 
                         <div class="column-container">
                             <div class="col">
@@ -275,7 +290,7 @@
                                 </ul>
                             </div>
                             <div class="col inset">
-                                <br/>
+                                <br />
                                 <img src="images/LLM1.png" style="min-height: auto;" />
                             </div>
 
@@ -285,7 +300,7 @@
                 <section data-background="images/maxime-valcarce-mAj8xn5zXsk-unsplash.jpg">
                     <div class="overlay-style">
                         <h3>GPT models</h3>
-                        <hr/>
+                        <hr />
 
                         <div class="column-container">
                             <div class="col">
@@ -306,13 +321,13 @@
                 <section data-background="images/maxime-valcarce-mAj8xn5zXsk-unsplash.jpg">
                     <div class="overlay-style">
                         <h3>Hallucination</h3>
-                        <hr/>
+                        <hr />
 
                         <div class="column-container">
                             <div class="col">
                                 <ul>
-                                    <li>💭 the deeper we go into a specific domain, the more likely the models are to <span
-                                            class="highlight">hallucinate</span></li>
+                                    <li>💭 the deeper we go into a specific domain, the more likely the models are to
+                                        <span class="highlight">hallucinate</span></li>
                                     <li>🌐 very good at generating plausible sounding content, but not
                                         necessarily grounded in facts</li>
                                 </ul>
@@ -348,38 +363,47 @@
 
                 <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
                     <div class="overlay-style">
-                        <p><span class="highlight">Prompt Engineering</span> relies on the model's pre-existing knowledge and capabilities and provides in-context information for the model.</p>
-                        <p>By crafting the input prompts, we can guide the language model in generating the desired output and control its behavior without altering its underlying structure.</p>
-                        <aside class="notes">The prompt is crafted to leverage the model's learned patterns and data to produce a specific desired outcome.</aside>
+                        <p><span class="highlight">Prompt Engineering</span> relies on the model's pre-existing
+                            knowledge and capabilities and provides in-context information for the model.</p>
+                        <p>By crafting the input prompts, we can guide the language model in generating the desired
+                            output and control its behavior without altering its underlying structure.</p>
+                        <aside class="notes">The prompt is crafted to leverage the model's learned patterns and data to
+                            produce a specific desired outcome.</aside>
                 </section>
 
                 <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
                     <div class="overlay-style">
-                    <img src="graphics/customization1.drawio.png" style="min-height: auto; background-color: #fff; padding: 20px;" />
-                    <hr/>
-                    <p>Query + System Prompt + Language Model → Desired Output</p>
-            </section>
+                        <img src="graphics/customization1.drawio.png"
+                            style="min-height: auto; background-color: #fff; padding: 20px;" />
+                        <hr />
+                        <p>Query + System Prompt + Language Model → Desired Output</p>
+                </section>
 
-                
+
                 <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
                     <div class="overlay-style">
-                        <p><span class="highlight">Fine-Tuning the Model</span> involves additional training on specific data after the initial training phase.</p>
-                        <p>This process teaches the model new skills or improves its performance on tasks that are similar to the ones it was originally trained on.</p>
+                        <p><span class="highlight">Fine-Tuning the Model</span> involves additional training on specific
+                            data after the initial training phase.</p>
+                        <p>This process teaches the model new skills or improves its performance on tasks that are
+                            similar to the ones it was originally trained on.</p>
                         <aside class="notes">This is adapting the model to specialized tasks or domains.</aside>
                 </section>
 
                 <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
                     <div class="overlay-style">
-                    <img src="graphics/customization2.drawio.png" style="max-height: 400px; background-color: #fff; padding: 20px;" />
-                    <hr/>
-                    <p>Fine-Tuning Data + Pre-Trained Model → Specialized Model</p>
-            </section>
+                        <img src="graphics/customization2.drawio.png"
+                            style="max-height: 400px; background-color: #fff; padding: 20px;" />
+                        <hr />
+                        <p>Fine-Tuning Data + Pre-Trained Model → Specialized Model</p>
+                </section>
 
 
                 <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
                     <div class="overlay-style">
-                        <p><span class="highlight">Retrieval-Augmented Generation (RAG)</span> enhances the language model with the ability to access external information.</p>
-                        <p>It combines the language model with a retrieval system, which fetches relevant data that the model uses to generate informed responses.</p>
+                        <p><span class="highlight">Retrieval-Augmented Generation (RAG)</span> enhances the language
+                            model with the ability to access external information.</p>
+                        <p>It combines the language model with a retrieval system, which fetches relevant data that the
+                            model uses to generate informed responses.</p>
 
                         <aside class="notes">Responses are also contextually relevant</aside>
                     </div>
@@ -387,11 +411,13 @@
                 </section>
                 <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
                     <div class="overlay-style">
-                        <img src="graphics/customization3.drawio.png" style="max-height: 300px; background-color: #fff; padding: 20px;" />
-                        <hr/>
-                        <p>Query → Retrieval System → Query + Relevant Data + System Prompt + Language Model → Informed Output
+                        <img src="graphics/customization3.drawio.png"
+                            style="max-height: 300px; background-color: #fff; padding: 20px;" />
+                        <hr />
+                        <p>Query → Retrieval System → Query + Relevant Data + System Prompt + Language Model → Informed
+                            Output
                         </p>
-            </section>
+                </section>
 
 
                 <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
@@ -413,14 +439,14 @@
                             </div>
 
                         </div>
-                    </section>
+                </section>
 
 
-                    <section data-background="images/copilot.png" data-state="bg-top-left">
-                        <div class="overlay-style" style="background: rgba(0, 0, 0, 0.9);">
-                            <p>Microsoft's Copilots are at their core RAG-pattern applications as well.</p>
-                        </div>
-                    </section>
+                <section data-background="images/copilot.png" data-state="bg-top-left">
+                    <div class="overlay-style" style="background: rgba(0, 0, 0, 0.9);">
+                        <p>Microsoft's Copilots are at their core RAG-pattern applications as well.</p>
+                    </div>
+                </section>
 
                 <section data-background="images/gpts.png" data-state="bg-top-left">
                     <div class="overlay-style" style="background: rgba(0, 0, 0, 0.9);">
@@ -442,7 +468,7 @@
                         <img src="images/oai-azure.png" style="min-height: auto; max-width: 75%;" />
                     </div>
                     <aside class="notes">Microsoft owns 50% of OpenAI.
-                        </aside>
+                    </aside>
                 </section>
 
                 <section data-background="images/michael-dziedzic-nbW-kaz2BlE-unsplash.jpg">
@@ -511,42 +537,42 @@
                                     <td></td>
                                     <td>04/2023</td>
                                 </tr>
-                            <tr>
-                                <td>gpt-4-32k</td>
-                                <td></td>
-                                <td>32,768</td>
-                                <td></td>
-                                <td>09/2021</td>
-                            </tr>
-                            <tr>
-                                <td>gpt-4</td>
-                                <td></td>
-                                <td>8192</td>
-                                <td></td>
-                                <td>09/2021</td>
-                            </tr>
-                            <tr>
-                                <td>gpt-35-turbo-16k</td>
-                                <td></td>
-                                <td>16,384</td>
-                                <td></td>
-                                <td>09/2021</td>
-                            </tr>
-                            <tr>
-                                <td>gpt-3.5-turbo-instruct</td>
-                                <td></td>
-                                <td>4,096</td>
-                                <td></td>
-                                <td>09/2021</td>
-                            </tr>
-                            <tr>
-                                <td>gpt-35-turbo</td>
-                                <td></td>
-                                <td>4,096</td>
-                                <td></td>
-                                <td>09/2021</td>
-                            </tr>
-                            
+                                <tr>
+                                    <td>gpt-4-32k</td>
+                                    <td></td>
+                                    <td>32,768</td>
+                                    <td></td>
+                                    <td>09/2021</td>
+                                </tr>
+                                <tr>
+                                    <td>gpt-4</td>
+                                    <td></td>
+                                    <td>8192</td>
+                                    <td></td>
+                                    <td>09/2021</td>
+                                </tr>
+                                <tr>
+                                    <td>gpt-35-turbo-16k</td>
+                                    <td></td>
+                                    <td>16,384</td>
+                                    <td></td>
+                                    <td>09/2021</td>
+                                </tr>
+                                <tr>
+                                    <td>gpt-3.5-turbo-instruct</td>
+                                    <td></td>
+                                    <td>4,096</td>
+                                    <td></td>
+                                    <td>09/2021</td>
+                                </tr>
+                                <tr>
+                                    <td>gpt-35-turbo</td>
+                                    <td></td>
+                                    <td>4,096</td>
+                                    <td></td>
+                                    <td>09/2021</td>
+                                </tr>
+
                         </table>
                     </div>
                 </section>
@@ -556,37 +582,37 @@
                         <div class="column-container">
                             <div class="col">
                                 <p>Azure OpenAI provides a</p>
-                        <h2 class="r-fit-text">built-in integration</h2>
-                        <p>with Azure AI Search for building RAG-pattern applications.</p>
+                                <h2 class="r-fit-text">built-in integration</h2>
+                                <p>with Azure AI Search for building RAG-pattern applications.</p>
                             </div>
                             <div class="col inset">
                                 <br />
                                 <div style="background-color: #fff;">
-                                <img src="images/ai-search.png" style="min-height: auto;" />
+                                    <img src="images/ai-search.png" style="min-height: auto;" />
                                 </div>
                             </div>
 
                         </div>
-                    </div>                    
+                    </div>
                 </section>
 
                 <section data-background="images/michael-dziedzic-nbW-kaz2BlE-unsplash.jpg">
-                        <div class="overlay-style">
-                            <h3>Sample RAG Architecture<br/>&nbsp;</h3>
-                            <div style="background-color: #fff;">
-                    <img src="graphics/rag1.drawio.png" style="min-height: auto;" />
-                </div>
-                </div>
+                    <div class="overlay-style">
+                        <h3>Sample RAG Architecture<br />&nbsp;</h3>
+                        <div style="background-color: #fff;">
+                            <img src="graphics/rag1.drawio.png" style="min-height: auto;" />
+                        </div>
+                    </div>
                 </section>
 
                 <section data-background="images/michael-dziedzic-nbW-kaz2BlE-unsplash.jpg">
                     <div class="overlay-style">
                         <h3>Sample RAG Architecture v2</h3>
                         <div style="background-color: #fff;">
-                <img src="graphics/rag2.drawio.png" style="min-height: auto; max-height: 450px;" />
-            </div>
-            </div>
-            </section>
+                            <img src="graphics/rag2.drawio.png" style="min-height: auto; max-height: 450px;" />
+                        </div>
+                    </div>
+                </section>
 
                 <!-- TODO slide about vectors in AI Search -->
 
@@ -594,10 +620,10 @@
                     <div class="overlay-style">
                         <h3>Sample RAG Architecture with Embeddings</h3>
                         <div style="background-color: #fff;">
-                <img src="graphics/rag.embeddings.drawio.png" style="max-height: auto;" />
-            </div>
-            </div>
-            </section>
+                            <img src="graphics/rag.embeddings.drawio.png" style="max-height: auto;" />
+                        </div>
+                    </div>
+                </section>
 
 
                 <!-- TODO slide about content filtering -->
@@ -622,7 +648,9 @@
 
                 <section data-background="images/michael-dziedzic-nbW-kaz2BlE-unsplash.jpg">
                     <div class="overlay-style">
-                        <p>As part of Microsoft's commitment to responsible AI, Azure OpenAI is only available to <span class="highlight">approved enterprise customers and partners</span>. Customers who wish to use Azure OpenAI are required to submit a registration form.</p>
+                        <p>As part of Microsoft's commitment to responsible AI, Azure OpenAI is only available to <span
+                                class="highlight">approved enterprise customers and partners</span>. Customers who wish
+                            to use Azure OpenAI are required to submit a registration form.</p>
                         <div style="clear:both;">
                             <p class="footnote" style="text-align: center;">aka.ms/oai/access
                             </p>
@@ -633,7 +661,7 @@
             </section>
             <!-- end AOI-->
 
-                <!-- TODO slides about demos -->
+            <!-- TODO slides about demos -->
 
 
             <section data-background="images/all.jpg">
