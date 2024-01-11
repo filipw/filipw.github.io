@@ -255,8 +255,10 @@
                             <li><span class="highlight">extremely large</span>, deep neural networks with billions of parameters.</li>
                             <li>serve as a <span class="highlight">foundational base</span> for further model development and specialization through fine-tuning.</li>
                         </ol>
-
+                        <aside class="notes">This leads to the so called "foundation models"</aside>
                 </section>
+
+                <!-- todo: slide about classical machine learning vs foundation models-->
 
                 <section data-background="images/maxime-valcarce-mAj8xn5zXsk-unsplash.jpg">
                     <div class="overlay-style">
@@ -267,11 +269,13 @@
                             <div class="col">
                                 <ul>
                                     <li>🔨 classic example of <span class="highlight">foundation models</span></li>
+                                    <li>🔨 can excel at just about any task</li>
                                     <li>⏳ frozen in time at training</li>
                                     <li>📷 <span class="highlight">blurry JPEG</span> of their training data</li>
                                 </ul>
                             </div>
                             <div class="col inset">
+                                <br/>
                                 <img src="images/LLM1.png" style="min-height: auto;" />
                             </div>
 
@@ -346,31 +350,49 @@
                     <div class="overlay-style">
                         <p><span class="highlight">Prompt Engineering</span> relies on the model's pre-existing knowledge and capabilities and provides in-context information for the model.</p>
                         <p>By crafting the input prompts, we can guide the language model in generating the desired output and control its behavior without altering its underlying structure.</p>
-                        <hr/>
-                        <p>Query + System Prompt + Language Model → Desired Output</p>
                         <aside class="notes">The prompt is crafted to leverage the model's learned patterns and data to produce a specific desired outcome.</aside>
                 </section>
 
                 <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
                     <div class="overlay-style">
+                    <img src="graphics/customization1.drawio.png" style="min-height: auto; background-color: #fff; padding: 20px;" />
+                    <hr/>
+                    <p>Query + System Prompt + Language Model → Desired Output</p>
+            </section>
+
+                
+                <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
+                    <div class="overlay-style">
                         <p><span class="highlight">Fine-Tuning the Model</span> involves additional training on specific data after the initial training phase.</p>
                         <p>This process teaches the model new skills or improves its performance on tasks that are similar to the ones it was originally trained on.</p>
-                        <hr/>
-                        <p>Pre-Trained Model + Fine-Tuning Data → Specialized Model</p>
                         <aside class="notes">This is adapting the model to specialized tasks or domains.</aside>
                 </section>
 
                 <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
                     <div class="overlay-style">
+                    <img src="graphics/customization2.drawio.png" style="max-height: 400px; background-color: #fff; padding: 20px;" />
+                    <hr/>
+                    <p>Fine-Tuning Data + Pre-Trained Model → Specialized Model</p>
+            </section>
+
+
+                <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
+                    <div class="overlay-style">
                         <p><span class="highlight">Retrieval-Augmented Generation (RAG)</span> enhances the language model with the ability to access external information.</p>
                         <p>It combines the language model with a retrieval system, which fetches relevant data that the model uses to generate informed responses.</p>
-                        <hr/>
-                        <p>Query → Retrieval System → Query + Relevant Data + System Prompt + Language Model → Informed Output
-                        </p>
+
                         <aside class="notes">Responses are also contextually relevant</aside>
                     </div>
 
                 </section>
+                <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
+                    <div class="overlay-style">
+                        <img src="graphics/customization3.drawio.png" style="max-height: 300px; background-color: #fff; padding: 20px;" />
+                        <hr/>
+                        <p>Query → Retrieval System → Query + Relevant Data + System Prompt + Language Model → Informed Output
+                        </p>
+            </section>
+
 
                 <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
                     <div class="overlay-style">
@@ -566,7 +588,7 @@
             </div>
             </section>
 
-                <!-- TODO VECTORS -->
+                <!-- TODO slide about vectors in AI Search -->
 
                 <section data-background="images/michael-dziedzic-nbW-kaz2BlE-unsplash.jpg">
                     <div class="overlay-style">
@@ -578,7 +600,7 @@
             </section>
 
 
-                <!-- TODO CONTENT FILTERING -->
+                <!-- TODO slide about content filtering -->
 
 
                 <section data-background-color="#fff">
@@ -610,6 +632,9 @@
 
             </section>
             <!-- end AOI-->
+
+                <!-- TODO slides about demos -->
+
 
             <section data-background="images/all.jpg">
             </section>
