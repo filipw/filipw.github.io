@@ -201,13 +201,8 @@
                             identical inputs.</p>
                     </div>
                     <aside class="notes">
-                        <p>The output token is chosen by the model according to its probability of occurring after the
-                            current text sequence. This is because the model predicts a probability distribution over
-                            all possible ‘next tokens’, calculated based on its training. However, not always the token
-                            with the highest probability is chosen from the resulting distribution. A degree of
-                            randomness is added to this choice, in a way that the model acts in a non-deterministic
-                            fashion - we do not get the exact same output for the same input. This degree of randomness
-                            is added to simulate the process of creative thinking and it can be tuned using a model
+                        <p>Not always the token with the highest probability is chosen from the resulting distribution. This degree of randomness
+                            is added to simulate the process of creative thinking and can be tuned using a model
                             parameter called temperature.</p>
                 </section>
 
@@ -225,8 +220,7 @@
                                 <p><br /><br /><strong>Prompt:</strong><br />
                                     Explain cloud computing in Azure in a short song written in German in the style of
                                     Rammstein. Make sure the word "verschlimmbessern" is used exactly 3 times and that
-                                    Roger Federer and is mentioned
-
+                                    Roger Federer is mentioned
                                 </p>
                             </div>
                             <div class="col inset">
@@ -244,9 +238,8 @@
                             interactions, the entire relevant history must be included with each subsequent query.</p>
                     </div>
                     <aside class="notes">
-                        Each query is processed independently, without any inherent knowledge of previous queries.
                         This approach simplifies the model's design but requires careful management of interaction
-                        history to prevent unmanageable growth and ensure relevance
+                        history.
                     </aside>
                 </section>
 
@@ -358,8 +351,7 @@
                             knowledge and capabilities and provides in-context information for the model.</p>
                         <p>Using prompt engineering we can guide the model in generating the desired
                             output and control its behavior without altering its underlying structure.</p>
-                        <aside class="notes">The prompt is crafted to leverage the model's learned patterns and data to
-                            produce a specific desired outcome.</aside>
+                        <aside class="notes">Prompt can also be used to provide examples in what we call "few shot learning".</aside>
                 </section>
 
                 <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
@@ -612,10 +604,10 @@
                         <h3>AI Search Capabilities</h3>
 
                                 <ul>
-                                    <li><span class="highlight">keyword</span> - traditional full-text search method </li>
-                                    <li><span class="highlight">vector</span> - documents are converted from text to vector representations using an embedding model. Retrieval is performed by generating a query embedding and finding the vectors that are closest to the query's</li>
-                                    <li><span class="highlight">hybrid</span> - both keyword and vector retrieval with a fusion step</li>
-                                    <li><span class="highlight">hybrid + semantic ranker</span> - utilizes multi-lingual, deep learning models adapted from Bing to compute higher quality relevance scores</li>
+                                    <li>📚 <span class="highlight">keyword</span> - traditional full-text search method </li>
+                                    <li>🧬 <span class="highlight">vector</span> - documents are converted from text to vector representations using an embedding model. Retrieval is performed by generating a query embedding and finding the vectors that are closest to the query's</li>
+                                    <li>🔄 <span class="highlight">hybrid</span> - both keyword and vector retrieval with a fusion step</li>
+                                    <li>🧠 <span class="highlight">hybrid + semantic ranker</span> - utilizes multi-lingual, deep learning models adapted from Bing to compute higher quality relevance scores</li>
                                 </ul>
                 </section>
 
