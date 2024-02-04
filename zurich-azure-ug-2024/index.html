@@ -154,35 +154,35 @@
                                 <p>Given a vector of tokens, the model <span class="highlight">predicts</span> the next
                                     token and outputs it. That token is then incorporated into the original input, and
                                     another token gets predicted.</p>
-                                <p>This continues <span class="highlight">iteratively</span>.</p>
+                                <p>This continues <span class="highlight">recursively</span>.</p>
                             </div>
-                            <div class="col">
-                                <table>
+                            <div class="col inset" style=" padding-left: 20px;">
+                                <table style="font-size: 0.85em;">
                                     <tr>
                                         <td>I gave him a</td>
                                         <td>→</td>
-                                        <td>g</td>
+                                        <td>ch</td>
                                     </tr>
                                     <tr>
-                                        <td>I gave him a g</td>
+                                        <td>I gave him a ch</td>
                                         <td>→</td>
 
-                                        <td>i</td>
+                                        <td>ance</td>
                                     </tr>
                                     <tr>
-                                        <td>I gave him a gi</td>
+                                        <td>I gave him a chance</td>
                                         <td>→</td>
 
-                                        <td>f</td>
+                                        <td> to</td>
                                     </tr>
                                     <tr>
-                                        <td>I gave him a gif</td>
+                                        <td>I gave him a chance to</td>
                                         <td>→</td>
 
-                                        <td>t</td>
+                                        <td> explain</td>
                                     </tr>
                                     <tr>
-                                        <td>I gave him a gift</td>
+                                        <td>I gave him a chance to explain</td>
                                         <td>→</td>
 
                                         <td>[STOP]</td>
@@ -248,10 +248,10 @@
                         <h3>Foundation models</h3>
                         <hr />
                         <ol>
-                            <li>trained using <span class="highlight">unsupervised</span> or self-supervised learning
-                                techniques</li>
                             <li><span class="highlight">extremely large</span>, deep neural networks with billions of
                                 parameters.</li>
+                            <li>trained using <span class="highlight">unsupervised</span> or self-supervised learning
+                                    techniques</li>
                             <li>serve as a <span class="highlight">foundational base</span> for further model
                                 development and specialization through fine-tuning.</li>
                         </ol>
@@ -268,14 +268,14 @@
                         <div class="column-container">
                             <div class="col">
                                 <ul>
-                                    <li>🔨 classic example of <span class="highlight">foundation models</span></li>
+                                    <li>🧱 example of <span class="highlight">foundation models</span></li>
                                     <li>🔨 can excel at just about any task</li>
-                                    <li>⏳ frozen in time at training</li>
-                                    <li>📷 <span class="highlight">blurry JPEG</span> of their training data</li>
+                                    <!-- <li>⏳ frozen in time at training</li> -->
+                                    <li>📷 BUT! they are a <span class="highlight">blurry JPEG</span> of their training data</li>
                                 </ul>
                             </div>
                             <div class="col inset">
-                                <br />
+                                <!-- <br /> -->
                                 <img src="images/LLM1.png" style="min-height: auto;" />
                             </div>
 
@@ -290,10 +290,10 @@
                         <div class="column-container">
                             <div class="col">
                                 <ul>
+                                    <li>🛠️ can be constrained and guided by <span class="highlight">prompt
+                                        engineering</span></li>
                                     <li>📖 additional context helps, but they lack the detailed
                                         domain knowledge</li>
-                                    <li>🛠️ can be constrained and guided by <span class="highlight">prompt
-                                            engineering</span></li>
                                 </ul>
                             </div>
                             <div class="col inset">
@@ -334,21 +334,20 @@
 
                 <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
                     <div class="overlay-style">
-                        <p>There are three primary techniques for customizing LLMs:</p>
+                        <p>There are three primary techniques for customizing LLM behavior:</p>
                         <ul>
                             <li class="fragment">🗣️ <span class="highlight">Prompt engineering</span>: provide context information to the model</li>
                             <li class="fragment">🛠️ <span class="highlight">Fine-tuning the model</span>: teach the
                                 model new skills</li>
                             <li class="fragment">🔍 <span class="highlight">Retrieval-augmented generation</span>:
-                                enhance input into the model with a retrieval system</li>
+                                combine the model with a retrieval system</li>
                         </ul>
                 </section>
 
 
                 <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
                     <div class="overlay-style">
-                        <p><span class="highlight">Prompt Engineering</span> relies on the model's pre-existing
-                            knowledge and capabilities and provides in-context information for the model.</p>
+                        <p><span class="highlight">Prompt Engineering</span> relies on the model's pre-existing capabilities and provides in-context information for the model.</p>
                         <p>Using prompt engineering we can guide the model in generating the desired
                             output and control its behavior without altering its underlying structure.</p>
                         <aside class="notes">Prompt can also be used to provide examples in what we call "few shot learning".</aside>
