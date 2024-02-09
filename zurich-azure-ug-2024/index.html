@@ -194,16 +194,26 @@
                 </section>
 
                 <section data-background="images/maxime-valcarce-mAj8xn5zXsk-unsplash.jpg">
+
                     <div class="overlay-style">
+
+                <div class="column-container">
+                    <div class="col">
                         <p>The model predicts the next token based on the <span class="highlight">probability
-                                distribution</span> of all possible tokens, influenced by its training. Randomness is
-                            added so outputs are <span class="highlight">non-deterministic</span> - they vary even with
-                            identical inputs.</p>
+                            distribution</span> of all possible tokens, influenced by its training. Randomness is
+                        added so outputs are <span class="highlight">non-deterministic</span>.</p>
+                    </div>
+                    <div class="col inset">
+                        <img src="images/distribution.png" style="min-height: auto;" />
                     </div>
                     <aside class="notes">
                         <p>Not always the token with the highest probability is chosen from the resulting distribution. This degree of randomness
                             is added to simulate the process of creative thinking and can be tuned using a model
                             parameter called temperature.</p>
+                            </aside>
+                </div>
+                    </div>
+
                 </section>
 
                 <section data-background="images/maxime-valcarce-mAj8xn5zXsk-unsplash.jpg">
@@ -242,7 +252,12 @@
                         history.
                     </aside>
                 </section>
+            </section> <!-- end LLMs -->
 
+            <section>
+                <section data-background="images/victor-c53HvA-blYQ-unsplash.jpg">
+                    <h1>Foundation models</h1>
+                </section>
                 <section data-background="images/foundation-models.png">
                     <div class="overlay-style fragment" style="background: rgba(0, 0, 0, 0.9);">
                         <h3>Foundation models</h3>
@@ -255,45 +270,50 @@
                             <li>serve as a <span class="highlight">foundational base</span> for further model
                                 development and specialization through fine-tuning.</li>
                         </ol>
-                        <aside class="notes">This leads to the so called "foundation models"</aside>
                 </section>
 
-                <!-- todo: slide about classical machine learning vs foundation models-->
 
-                <section data-background="images/maxime-valcarce-mAj8xn5zXsk-unsplash.jpg">
+                <section data-background="images/hao-wang-pVq6YhmDPtk-unsplash.jpg">
+                        <div class="overlay-style" style="background: rgba(0, 0, 0, 0.8);">
+                                <p>
+                                Foundation models are AI Swiss Army knives - versatile and powerful for a broad range of applications. They excel in tasks that are <span class="highlight">general and broad</span>, leveraging their vast training data.
+                            </p>
+                            <aside class="notes">Foundation models have revolutionized what's possible with AI, yet they also have considerable limitations.</aside>
+                        </div>
+                    </section>
+                    
+
+                <section data-background="images/hao-wang-pVq6YhmDPtk-unsplash.jpg">
                     <div class="overlay-style">
-                        <h3>GPT models</h3>
+                        <h3>Challenges</h3>
                         <hr />
 
                         <div class="column-container">
                             <div class="col">
                                 <ul>
-                                    <li>🧱 example of <span class="highlight">foundation models</span></li>
-                                    <li>🔨 can excel at just about any task</li>
-                                    <!-- <li>⏳ frozen in time at training</li> -->
-                                    <li>📷 BUT! they are a <span class="highlight">blurry JPEG</span> of their training data</li>
+                                    <li>❓ foundation models will struggle with <span class="highlight">specialized</span> domains</li>
+                                    <li>📷 they are a <span class="highlight">blurry JPEG</span> of their training data</li>
                                 </ul>
                             </div>
                             <div class="col inset">
-                                <!-- <br /> -->
                                 <img src="images/LLM1.png" style="min-height: auto;" />
                             </div>
+                            <aside class="notes">Models are of course "frozen" at the time of training so they have no access to real time information or data.</aside>
 
                         </div>
                 </section>
 
-                <section data-background="images/maxime-valcarce-mAj8xn5zXsk-unsplash.jpg">
+                <section data-background="images/hao-wang-pVq6YhmDPtk-unsplash.jpg">
                     <div class="overlay-style">
-                        <h3>GPT models</h3>
+                        <h3>Guiding the model</h3>
                         <hr />
 
                         <div class="column-container">
                             <div class="col">
                                 <ul>
-                                    <li>🛠️ can be constrained and guided by <span class="highlight">prompt
-                                        engineering</span></li>
-                                    <li>📖 additional context helps, but they lack the detailed
-                                        domain knowledge</li>
+                                    <li>🛠️ can be constrained and guided by instructions</li>
+                                    <li>📖 additional context helps, but they have <span class="highlight">
+                                        no intrinsic knowledge</span></li>
                                 </ul>
                             </div>
                             <div class="col inset">
@@ -303,7 +323,7 @@
                         </div>
                 </section>
 
-                <section data-background="images/maxime-valcarce-mAj8xn5zXsk-unsplash.jpg">
+                <section data-background="images/hao-wang-pVq6YhmDPtk-unsplash.jpg">
                     <div class="overlay-style">
                         <h3>Hallucination</h3>
                         <hr />
@@ -324,7 +344,7 @@
                         </div>
                 </section>
             </section>
-            <!-- end LLMs-->
+            <!-- end Foundation Models-->
 
             <!-- Grounding in Data-->
             <section>
@@ -353,12 +373,17 @@
                         <aside class="notes">Prompt can also be used to provide examples in what we call "few shot learning".</aside>
                 </section>
 
+
                 <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
                     <div class="overlay-style">
+                        <div class="column-container">
+                            <div class="col">
                         <img src="graphics/customization1.drawio.png"
                             style="min-height: auto; background-color: #fff; padding: 20px;" />
-                        <hr />
-                        <p>Query + System Prompt + Language Model → Desired Output</p>
+                            </div>
+                            <div class="col">
+                                <p>📝 User Prompt + <br/>🛠️ System Instructions <br/>↓<br/> 🤖 LLM <br/>↓<br/> 🎯 Desired Output</p>
+                                </div>
                 </section>
 
 
@@ -373,12 +398,15 @@
 
                 <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
                     <div class="overlay-style">
+                        <div class="column-container">
+                            <div class="col">
                         <img src="graphics/customization2.drawio.png"
-                            style="max-height: 400px; background-color: #fff; padding: 20px;" />
-                        <hr />
-                        <p>Fine-Tuning Data + Pre-Trained Model → Specialized Model</p>
+                            style="min-height: auto; background-color: #fff; padding: 20px;" />
+                            </div>
+                            <div class="col">
+                                <p><br/><br/>📊 Fine-Tuning Data + <br/>🤖 Pre-Trained LLM <br/>↓<br/> 🤖 Specialized Model</p>
+                                </div>
                 </section>
-
 
                 <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
                     <div class="overlay-style">
@@ -391,16 +419,19 @@
                     </div>
 
                 </section>
+
                 <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
                     <div class="overlay-style">
-                        <img src="graphics/customization3.drawio.png"
-                            style="max-height: 300px; background-color: #fff; padding: 20px;" />
-                        <hr />
-                        <p>Query → Retrieval System → Query + Relevant Data + System Prompt + Language Model → Informed
-                            Output
-                        </p>
+                        <div class="column-container">
+                            <div class="col">
+                                <Br/>
+                                <img src="graphics/customization3.drawio.png"
+                                style="min-height: auto; background-color: #fff; padding: 20px;" />
+                            </div>
+                            <div class="col">
+                        <p>📝 User Prompt <br/>↓<br/> 📚 Retrieval System <br/>↓<br/> 📝 User Prompt + 🛠️ System Instructions + 📊 Relevant Data <br/>↓<br/> 🤖 LLM → <br/>↓<br/>🎯 Informed Output</p>
+                                </div>
                 </section>
-
 
                 <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
                     <div class="overlay-style">
