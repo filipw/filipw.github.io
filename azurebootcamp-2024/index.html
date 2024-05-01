@@ -1,0 +1,818 @@
+﻿<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>GPT models with your own data using Azure OpenAI</title>
+    <meta name="description" content="">
+    <meta name="author" content="Filip W">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <script src="//code.jquery.com/jquery-1.8.0.js"></script>
+    <script src="//code.jquery.com/ui/1.8.23/jquery-ui.js"></script>
+    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/js/bootstrap.min.js"></script>
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/css/bootstrap-combined.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/default.min.css">
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/simple.css" id="theme">
+    <link rel="stylesheet" href="css/monokai_sublime.css" />
+    <link rel="stylesheet" href="css/custom.css" />
+    <script src="fsharp.formatting/styles/tips.js" type="text/javascript"></script>
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+    <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+
+    <script>
+        if (window.location.search.match(/print-pdf/gi)) {
+            var link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = 'css/print/pdf.css';
+            document.getElementsByTagName('head')[0].appendChild(link);
+        }
+    </script>
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+    <style type="text/css">
+    </style>
+</head>
+
+<body>
+    <div class="reveal">
+        <header
+            style="position: absolute;top: 50px; left: 100px; z-index:500; font-size:100px;background-color: rgba(0,0,0,0.5)">
+        </header>
+        <!-- Any section element inside of this container is displayed as a slide -->
+        <div class="slides">
+
+            <section data-background="images/greg-rakozy-oMpAz-DN-9I-unsplash.jpg">
+
+                <div class="col overlay-style" style="padding: 0 !important">
+
+                    <h1 style="font-size: 2em; background: none; margin-bottom: 0;">
+                        GPT models with your own data<br />
+                        <small style="font-size: 0.5em; line-height: 2em;">using Azure OpenAI</small>
+                    </h1>
+                    <p style="margin-top: 0; padding-bottom: 20px;">
+                        <small>
+                            <a href="https://strathweb.com" class="roll">
+                                <span>strathweb.com</span>
+                            </a> •
+                            <a href="https://mathstodon.xyz/filipw" class="roll">
+                                <span data-title="@filip_woj">@filipw@mathstodon.xyz</span>
+                            </a> •
+                            <a href="https://github.com/filipw" class="roll">
+                                <span data-title="github.com/filipw">Filip W</span>
+                            </a>
+                        </small>
+                    </p>
+                </div>
+
+            </section>
+
+            <section data-background-color="#fff">
+                <img src="images/sonova.png" style="min-height: auto" />
+            </section>
+
+
+            <!-- LLMs -->
+            <section>
+                <section data-background="images/growtika-nGoCBxiaRO0-unsplash.jpg">
+                    <h1>Generative AI</h1>
+                </section>
+
+                <section data-background="images/maxime-valcarce-mAj8xn5zXsk-unsplash.jpg">
+                    <div class="overlay-style">
+                        <ul>
+                            <li class="fragment">📖 Large Language Models<br />
+                                <small>specialize in understanding and generating text. They are trained on vast amounts
+                                    of textual data and can perform tasks like writing, translating, summarizing,
+                                    answering questions, following instructions or orchestrating workflows</small>
+                            </li>
+                            <li class="fragment">🎨 Image generation<br />
+                                <small>generate visual content, often from textual descriptions</small>
+                            </li>
+                            <li class="fragment">🎬 Audio/video generation<br />
+                                <small>generate or manipulate audio and video content. Audio generation might include
+                                    models that synthesize speech, music, or sound effects, while video generation could
+                                    involve creating new video clips or altering existing ones.</small>
+                            </li>
+                            <li class="fragment">🧠 Multimodal Models<br />
+                                <small>can understand and generate content across multiple types of data, like text,
+                                    images, and sometimes audio</small>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section data-background="images/maxime-valcarce-mAj8xn5zXsk-unsplash.jpg">
+                    <div class="overlay-style">
+                        <h3>Large Language Models</h3>
+                        <hr />
+                        <p><strong>Prompt:</strong> &nbsp;&nbsp;I gave him a</p>
+                        <p><strong>Completion:</strong> &nbsp;&nbsp;
+                            <span class="fragment step-fade-in-then-out">gift</span>
+                            <span class="fragment step-fade-in-then-out">chance to explain himself</span>
+                            <span class="fragment step-fade-in-then-out">comprehensive tutorial on digital photography,
+                                including lessons on lighting, composition, and post-processing</span>
+                        </p>
+                    </div>
+                </section>
+
+                <section data-background="images/maxime-valcarce-mAj8xn5zXsk-unsplash.jpg">
+                    <div class="overlay-style">
+                        <p>The textual input provided via the prompt is</p>
+                        <h2 class="r-fit-text">tokenized</h2>
+                        <p>before being passed into a large language model. Each model has a specific token limit it can
+                            handle (4k, 16k, 32k, 128k).</p>
+                    </div>
+                </section>
+
+                <section data-background="images/maxime-valcarce-mAj8xn5zXsk-unsplash.jpg">
+                    <div class="overlay-style">
+                        <div class="column-container">
+                            <div class="col">
+                                <img src="images/tokenization1.png" style="min-height: auto;" />
+
+                            </div>
+                            <div class="col">
+                                <br />
+                                <img src="images/tokenization2.png" style="min-height: auto;" />
+                            </div>
+
+                        </div>
+                        <p>Tokens are then mapped to a vector of token IDs.</p>
+                    </div>
+                </section>
+
+                <section data-background="images/maxime-valcarce-mAj8xn5zXsk-unsplash.jpg">
+                    <div class="overlay-style">
+                        <div class="column-container">
+                            <div class="col">
+                                <p>Given a vector of tokens, the model <span class="highlight">predicts</span> the next
+                                    token and outputs it. That token is then incorporated into the original input, and
+                                    another token gets predicted.</p>
+                                <p>This continues <span class="highlight">recursively</span>.</p>
+                            </div>
+                            <div class="col inset" style=" padding-left: 20px;">
+                                <table style="font-size: 0.85em;">
+                                    <tr>
+                                        <td>I gave him a</td>
+                                        <td>→</td>
+                                        <td>ch</td>
+                                    </tr>
+                                    <tr>
+                                        <td>I gave him a ch</td>
+                                        <td>→</td>
+
+                                        <td>ance</td>
+                                    </tr>
+                                    <tr>
+                                        <td>I gave him a chance</td>
+                                        <td>→</td>
+
+                                        <td> to</td>
+                                    </tr>
+                                    <tr>
+                                        <td>I gave him a chance to</td>
+                                        <td>→</td>
+
+                                        <td> explain</td>
+                                    </tr>
+                                    <tr>
+                                        <td>I gave him a chance to explain</td>
+                                        <td>→</td>
+
+                                        <td>[STOP]</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-background="images/maxime-valcarce-mAj8xn5zXsk-unsplash.jpg">
+
+                    <div class="overlay-style">
+
+                <div class="column-container">
+                    <div class="col">
+                        <p>The model predicts the next token based on the <span class="highlight">probability
+                            distribution</span> of all possible tokens, influenced by its training. Randomness is
+                        added so outputs are <span class="highlight">non-deterministic</span>.</p>
+                    </div>
+                    <div class="col inset">
+                        <img src="images/distribution.png" style="min-height: auto;" />
+                    </div>
+                    <aside class="notes">
+                        <p>Not always the token with the highest probability is chosen from the resulting distribution. This degree of randomness
+                            is added to simulate the process of creative thinking and can be tuned using a model
+                            parameter called temperature.</p>
+                            </aside>
+                </div>
+                    </div>
+
+                </section>
+
+                <section data-background="images/maxime-valcarce-mAj8xn5zXsk-unsplash.jpg">
+                    <div class="overlay-style">
+                        <p>This process leads to almost infinite, varied, and unpredictable</p>
+                        <h2 class="r-fit-text">creativity</h2>
+                    </div>
+                </section>
+
+                <section data-background="images/maxime-valcarce-mAj8xn5zXsk-unsplash.jpg">
+                    <div class="overlay-style">
+                        <div class="column-container">
+                            <div class="col">
+                                <p><br /><br /><strong>Prompt:</strong><br />
+                                    Explain cloud computing in Azure in a short song written in German in the style of
+                                    Rammstein. Make sure the word "verschlimmbessern" is used exactly 3 times and that
+                                    Roger Federer is mentioned
+                                </p>
+                            </div>
+                            <div class="col inset">
+                                <img src="images/rammstein.png" />
+                            </div>
+
+                        </div>
+                </section>
+
+                <section data-background="images/maxime-valcarce-mAj8xn5zXsk-unsplash.jpg">
+                    <div class="overlay-style">
+                        <p>Most AI models (particularly GPT series) are designed to be</p>
+                        <h2 class="r-fit-text">stateless</h2>
+                        <p>They do not retain memory of past interactions. To maintain context in a series of
+                            interactions, the entire relevant history must be included with each subsequent query.</p>
+                    </div>
+                    <aside class="notes">
+                        This approach simplifies the model's design but requires careful management of interaction
+                        history.
+                    </aside>
+                </section>
+            </section> <!-- end LLMs -->
+
+            <section>
+                <section data-background="images/victor-c53HvA-blYQ-unsplash.jpg">
+                    <h1>Foundation models</h1>
+                </section>
+                <section data-background="images/foundation-models.png">
+                    <div class="overlay-style fragment" style="background: rgba(0, 0, 0, 0.9);">
+                        <h3>Foundation models</h3>
+                        <hr />
+                        <ol>
+                            <li><span class="highlight">extremely large</span>, deep neural networks with billions of
+                                parameters.</li>
+                            <li>trained using <span class="highlight">unsupervised</span> or self-supervised learning
+                                    techniques</li>
+                            <li>not directly usable - but serve as a <span class="highlight">foundational base</span> for further model
+                                development and specialization through fine-tuning.</li>
+                        </ol>
+                </section>
+
+
+                <section data-background="images/hao-wang-pVq6YhmDPtk-unsplash.jpg">
+                        <div class="overlay-style" style="background: rgba(0, 0, 0, 0.8);">
+                                <p>
+                                Foundation models are AI Swiss Army knives - versatile and powerful for a broad range of applications. After fine-tuning, they excel in tasks that are <span class="highlight">general and broad</span>, leveraging their vast training data.
+                            </p>
+                            <aside class="notes">Foundation models have revolutionized what's possible with AI, yet they also have considerable limitations.</aside>
+                        </div>
+                    </section>
+                    
+
+                <section data-background="images/hao-wang-pVq6YhmDPtk-unsplash.jpg">
+                    <div class="overlay-style">
+                        <h3>Challenges</h3>
+                        <hr />
+
+                        <div class="column-container">
+                            <div class="col">
+                                <ul>
+                                    <li>❓ foundation models will struggle with <span class="highlight">specialized</span> domains</li>
+                                    <li>📷 they are a <span class="highlight">blurry JPEG</span> of their training data</li>
+                                </ul>
+                            </div>
+                            <div class="col inset">
+                                <img src="images/LLM1.png" style="min-height: auto;" />
+                            </div>
+                            <aside class="notes">ChatGPT is trained in two phases - pre training (unsupervised) and fine tuning (to obtain the assistant model). Models are of course "frozen" at the time of training so they have no access to real time information or data.</aside>
+
+                        </div>
+                </section>
+
+                <section data-background="images/hao-wang-pVq6YhmDPtk-unsplash.jpg">
+                    <div class="overlay-style">
+                        <h3>Guiding the model</h3>
+                        <hr />
+
+                        <div class="column-container">
+                            <div class="col">
+                                <ul>
+                                    <li>🛠️ can be constrained and guided by instructions</li>
+                                    <li>📖 additional context helps, but they have <span class="highlight">
+                                        no "traditional" knowledge</span></li>
+                                </ul>
+                            </div>
+                            <div class="col inset">
+                                <img src="images/LLM2.png" style="min-height: auto;" />
+                            </div>
+
+                        </div>
+                </section>
+
+                <section data-background="images/hao-wang-pVq6YhmDPtk-unsplash.jpg">
+                    <div class="overlay-style">
+                        <h3>Hallucination</h3>
+                        <hr />
+
+                        <div class="column-container">
+                            <div class="col">
+                                <ul>
+                                    <li>💭 the deeper we go into a specific domain, the more likely the models are to
+                                        <span class="highlight">hallucinate</span></li>
+                                    <li>🌐 very good at generating plausible sounding content, but not
+                                        necessarily grounded in facts</li>
+                                </ul>
+                            </div>
+                            <div class="col inset">
+                                <img src="images/LLM3.png" style="min-height: auto;" />
+                            </div>
+
+                        </div>
+                </section>
+            </section>
+            <!-- end Foundation Models-->
+
+            <!-- Grounding in Data-->
+            <section>
+                <section data-background="images/max-langelott-wWQ760meyWI-unsplash.jpg">
+                    <h1>Grounding in Data</h1>
+                </section>
+
+                <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
+                    <div class="overlay-style">
+                        <p>There are three primary techniques for customizing LLM behavior:</p>
+                        <ul>
+                            <li class="fragment">🗣️ <span class="highlight">Prompt engineering</span>: provide context information to the model</li>
+                            <li class="fragment">🛠️ <span class="highlight">Fine-tuning the model</span>: teach the
+                                model new skills</li>
+                            <li class="fragment">🔍 <span class="highlight">Retrieval-augmented generation</span>:
+                                combine the model with a retrieval system</li>
+                        </ul>
+                </section>
+
+
+                <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
+                    <div class="overlay-style">
+                        <p><span class="highlight">Prompt Engineering</span> relies on the model's pre-existing capabilities and provides in-context information for the model.</p>
+                        <p>Using prompt engineering we can guide the model in generating the desired
+                            output and control its behavior without altering its underlying structure.</p>
+                        <aside class="notes">Prompt can also be used to provide examples in what we call "few shot learning".</aside>
+                </section>
+
+
+                <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
+                    <div class="overlay-style">
+                        <div class="column-container">
+                            <div class="col">
+                        <img src="graphics/customization1.drawio.png"
+                            style="min-height: auto; background-color: #fff; padding: 20px;" />
+                            </div>
+                            <div class="col">
+                                <p>📝 User Prompt + <br/>🛠️ System Instructions <br/>↓<br/> 🤖 LLM <br/>↓<br/> 🎯 Desired Output</p>
+                                </div>
+                </section>
+
+
+                <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
+                    <div class="overlay-style">
+                        <p><span class="highlight">Fine-Tuning the Model</span> involves additional training on specific
+                            data after the initial training phase.</p>
+                        <p>This process teaches the model new skills or improves its performance on tasks that are
+                            similar to the ones it was originally trained on.</p>
+                        <aside class="notes">This is adapting the model to specialized tasks or domains.</aside>
+                </section>
+
+                <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
+                    <div class="overlay-style">
+                        <div class="column-container">
+                            <div class="col">
+                        <img src="graphics/customization2.drawio.png"
+                            style="min-height: auto; background-color: #fff; padding: 20px;" />
+                            </div>
+                            <div class="col">
+                                <p><br/><br/>📊 Fine-Tuning Data + <br/>🤖 Pre-Trained LLM <br/>↓<br/> 🤖 Specialized Model</p>
+                                </div>
+                </section>
+
+                <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
+                    <div class="overlay-style">
+                        <p><span class="highlight">Retrieval-Augmented Generation (RAG)</span> enhances the language
+                            model with the ability to access external information.</p>
+                        <p>It combines the language model with a retrieval system, which fetches relevant data that the
+                            model uses to generate informed responses.</p>
+
+                        <aside class="notes">Responses are also contextually relevant</aside>
+                    </div>
+
+                </section>
+
+                <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
+                    <div class="overlay-style">
+                        <div class="column-container">
+                            <div class="col">
+                                <Br/>
+                                <img src="graphics/customization3.drawio.png"
+                                style="min-height: auto; background-color: #fff; padding: 20px;" />
+                            </div>
+                            <div class="col">
+                        <p>📝 User Prompt <br/>↓<br/> 📚 Retrieval System <br/>↓<br/> 📝 User Prompt + 🛠️ System Instructions + 📊 Relevant Data <br/>↓<br/> 🤖 LLM<br/>↓<br/>🎯 Informed Output</p>
+                                </div>
+                </section>
+
+                <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
+                    <div class="overlay-style">
+                        <h3>Retrieval-augmented generation</h3>
+
+                        <div class="column-container">
+                            <div class="col">
+                                <ul>
+                                    <li>🔍 first query for relevant data in a relevant source</li>
+                                    <li>🧠 then the data is fed into LLM, which generates output based on that</li>
+                                    <li>🌐 with this pattern, the model is “grounded” in trustworthy, up-to-date, data
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col inset">
+                                <br />
+                                <img src="images/LLM4.png" style="min-height: auto;" />
+                            </div>
+
+                        </div>
+                </section>
+
+
+                <section data-background="images/copilot.png" data-state="bg-top-left">
+                    <div class="overlay-style" style="background: rgba(0, 0, 0, 0.9);">
+                        <p>Microsoft's Copilots are at their core RAG-pattern applications as well.</p>
+                    </div>
+                </section>
+
+                <section data-background="images/gpts.png" data-state="bg-top-left">
+                    <div class="overlay-style" style="background: rgba(0, 0, 0, 0.9);">
+                        <p>OpenAI's GPTs are at their core RAG-pattern applications as well.</p>
+                    </div>
+                    <aside class="notes">
+                        A good example of RAG is https://chat.nyc.gov
+                    </aside>
+                </section>
+            </section>
+
+            <!-- AOI-->
+            <section>
+                <section data-background="images/maria-teneva-7FmSYQ3Z7fg-unsplash.jpg">
+                    <h1>Azure OpenAI</h1>
+                </section>
+
+                <section data-background="images/michael-dziedzic-nbW-kaz2BlE-unsplash.jpg">
+                    <div class="overlay-style">
+                        <p>OpenAI models are available <span class="highlight">exclusively</span> in Azure.</p>
+                        <div style="background-color: #fff;">
+                            <img src="images/oai-azure.png" style="min-height: auto; max-width: 75%;" />
+                    </div>
+                    <aside class="notes">Microsoft owns 50% of OpenAI.
+                    </aside>
+                </section>
+
+                <section data-background="images/michael-dziedzic-nbW-kaz2BlE-unsplash.jpg">
+                    <div class="overlay-style">
+                        <h2>Azure OpenAI</h2>
+                        <div class="column-container">
+                            <div class="col">
+                                <ul>
+                                    <li class="fragment">🧠
+                                        OpenAI models
+                                        <br />
+                                        <small>GPT series, embeddings, DALL-E, Codex</small>
+                                    </li>
+
+                                    <li class="fragment">🏢
+                                        Enterprise compliance
+                                        <br />
+                                        <small>SLAs, geo residency, customer-managed keys, private networking, RBAC...</small>
+                                    </li>
+
+                                </ul>
+                            </div>
+                            <div class="col">
+                                <ul>
+                                    <li class="fragment">🔒
+                                        Data privacy
+                                        <br />
+                                        <small>No data loopback to OpenAI or Microsoft</small>
+                                    </li>
+
+                                    <li class="fragment">🔗
+                                        Additional integrations
+                                        <br />
+                                        <small>RAG-applications, content filters, low code designers</small>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+
+                <section data-background="images/michael-dziedzic-nbW-kaz2BlE-unsplash.jpg">
+                    <div class="overlay-style">
+                        <h3>Available GPT models</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Model ID</th>
+                                    <th></th>
+                                    <th>Max tokens</th>
+                                    <th></th>
+                                    <th>Training data (up to)</th>
+                                </tr>
+                                <tr>
+                                    <td>gpt-4 (1106-preview)</td>
+                                    <td></td>
+                                    <td>128,000</td>
+                                    <td></td>
+                                    <td>04/2023</td>
+                                </tr>
+                                <tr>
+                                    <td>gpt-4 (vision-preview)</td>
+                                    <td></td>
+                                    <td>128,000</td>
+                                    <td></td>
+                                    <td>04/2023</td>
+                                </tr>
+                                <tr>
+                                    <td>gpt-4-32k</td>
+                                    <td></td>
+                                    <td>32,768</td>
+                                    <td></td>
+                                    <td>09/2021</td>
+                                </tr>
+                                <tr>
+                                    <td>gpt-4</td>
+                                    <td></td>
+                                    <td>8192</td>
+                                    <td></td>
+                                    <td>09/2021</td>
+                                </tr>
+                                <tr>
+                                    <td>gpt-35-turbo-16k</td>
+                                    <td></td>
+                                    <td>16,384</td>
+                                    <td></td>
+                                    <td>09/2021</td>
+                                </tr>
+                                <tr>
+                                    <td>gpt-3.5-turbo-instruct</td>
+                                    <td></td>
+                                    <td>4,096</td>
+                                    <td></td>
+                                    <td>09/2021</td>
+                                </tr>
+                                <tr>
+                                    <td>gpt-35-turbo</td>
+                                    <td></td>
+                                    <td>4,096</td>
+                                    <td></td>
+                                    <td>09/2021</td>
+                                </tr>
+
+                        </table>
+                    </div>
+                </section>
+
+                <section data-background="images/michael-dziedzic-nbW-kaz2BlE-unsplash.jpg">
+                    <div class="overlay-style">
+                        <div class="column-container">
+                            <div class="col">
+                                <p>Azure OpenAI provides a</p>
+                                <h2 class="r-fit-text">built-in integration</h2>
+                                <p>with Azure AI Search for building RAG-pattern applications.</p>
+                            </div>
+                            <div class="col inset">
+                                <br />
+                                <div style="background-color: #fff;">
+                                    <img src="images/ai-search.png" style="min-height: auto;" />
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </section>
+
+                <section data-background="images/michael-dziedzic-nbW-kaz2BlE-unsplash.jpg">
+                    <div class="overlay-style">
+                        <h3>Sample RAG Architecture<br />&nbsp;</h3>
+                        <div style="background-color: #fff;">
+                            <img src="graphics/rag1.drawio.png" style="min-height: auto;" />
+                        </div>
+                    </div>
+                </section>
+
+                <section data-background="images/michael-dziedzic-nbW-kaz2BlE-unsplash.jpg">
+                    <div class="overlay-style">
+                        <h3>Sample RAG Architecture v2</h3>
+                        <div style="background-color: #fff;">
+                            <img src="graphics/rag2.drawio.png" style="min-height: auto; max-height: 450px;" />
+                        </div>
+                    </div>
+                </section>
+
+                <section data-background="images/maxime-valcarce-mAj8xn5zXsk-unsplash.jpg">
+                    <div class="overlay-style">
+                        <h3>Azure AI Search modes</h3>
+
+                                <ul>
+                                    <li>📚 <span class="highlight">keyword</span> - traditional full-text search method </li>
+                                    <li>🧬 <span class="highlight">vector</span> - documents are converted from text to vector representations using an embedding model. Retrieval is performed by generating a query embedding and finding the vectors that are closest to the query's</li>
+                                    <li>🔄 <span class="highlight">hybrid</span> - both keyword and vector retrieval with a fusion step</li>
+                                    <li>🧠 <span class="highlight">hybrid + semantic ranker</span> - utilizes multi-lingual, deep learning models adapted from Bing to compute higher quality relevance scores</li>
+                                </ul>
+                </section>
+
+
+                <section data-background="images/michael-dziedzic-nbW-kaz2BlE-unsplash.jpg">
+                    <div class="overlay-style">
+                        <h3>Sample RAG Architecture with Embeddings</h3>
+                        <div style="background-color: #fff;">
+                            <img src="graphics/rag.embeddings.drawio.png" style="max-height: auto;" />
+                        </div>
+                    </div>
+                </section>
+
+
+                <section data-background="images/maxime-valcarce-mAj8xn5zXsk-unsplash.jpg">
+                    <div class="overlay-style">
+                        <h3>Azure AI Content Safety</h3>
+                        <hr />
+
+                        <div class="column-container">
+                            <div class="col">
+                                <ul>
+                                    <li>🛡️ all interactions with Azure OpenAI models go through content safety filters</li>
+                                    <li>⚠️ it can detect hateful, violent, sexual, and self-harm content and assign it a severity score</li>
+                                    <li>🚦 severity score is then actionable</li>
+                                </ul>
+                            </div>
+                            <div class="col inset">
+                                <img src="images/aoi-content-safety.png" style="max-height: 400px;" />
+                            </div>
+
+                        </div>
+                </section>
+
+
+                <section data-background-color="#fff">
+                    <img src="images/aoi-flow.png" style="min-height: auto;" />
+                    <div style="clear:both;">
+                        <p class="footnote" style="text-align: center;">source: Microsoft, learn.microsoft.com
+                        </p>
+                    </div>
+                </section>
+
+
+                <section data-background="images/michael-dziedzic-nbW-kaz2BlE-unsplash.jpg">
+                    <div class="overlay-style">
+                        <p>Azure OpenAI comes with</p>
+                        <h2 class="r-fit-text">Customer Copyright Commitment</h2>
+                        <p>Microsoft will indemnify customers in case of copyright claims</p>
+                    </div>
+                </section>
+
+                <section data-background="images/michael-dziedzic-nbW-kaz2BlE-unsplash.jpg">
+                    <div class="overlay-style">
+                        <p>As part of Microsoft's commitment to responsible AI, Azure OpenAI is only available to <span
+                                class="highlight">approved enterprise customers and partners</span>. Customers who wish
+                            to use Azure OpenAI are required to submit a registration form.</p>
+                        <div style="clear:both;">
+                            <p class="footnote" style="text-align: center;">aka.ms/oai/access
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+            </section>
+            <!-- end AOI-->
+
+            <section>
+                <section data-background="images/growtika-nGoCBxiaRO0-unsplash.jpg">
+                    <h1>Demos</h1>
+                </section>
+            </section>
+
+            <!-- TODO slides about demos -->
+
+
+            <section data-background="images/all.jpg">
+            </section>
+
+            <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
+                <div class="overlay-style">
+                    <h2>Thank you</h2>
+                    <div class="column-container centered">
+                        <div class="col auto">
+                            <img class="small" src="images/thankyou.gif" style="min-height: auto; margin:0" />
+                        </div>
+                        <div class="col auto">
+                            <ul style="font-size: 0.9em;">
+                                <li>📝 <a
+                                        href="https://filipw.github.io/zurich-azure-ug-2024">filipw.github.io/zurich-azure-ug-2024</a>
+                                </li>
+                                <li>🖥️ <a
+                                        href="https://github.com/filipw/2023-ndcporto-demos">github.com/filipw/2024-zurich-azure-ug-demos</a>
+                                </li>
+                                <li>📚 <a href="https://link.springer.com/book/10.1007/978-3-030-99379-5">Intro to
+                                        Quantum
+                                        Computing book</a>
+                                </li>
+
+                                <li>📸 <a href="http://unsplash.com">Photos credit: Unsplash</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section data-background-color="#000">
+                <img src="images/bye.gif" />
+            </section>
+
+        </div>
+    </div>
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']]
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+        </script>
+    <script>
+        // Full list of configuration options available here:
+        // https://github.com/hakimel/reveal.js#configuration
+
+        Reveal.initialize({
+            viewDistance: 30,
+            controls: true,
+            progress: true,
+            history: true,
+            center: true,
+            keyboard: {
+                39: 'next', // Right Arrow
+                37: 'prev'  // Left Arrow
+            },
+            transition: 'slide', // default/cube/page/concave/zoom/linear/fade/none
+
+            // Parallax scrolling
+            // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+            // parallaxBackgroundSize: '2100px 900px',
+
+            // Optional libraries used to extend on reveal.js
+            dependencies: [
+                { src: 'lib/js/classList.js', condition: function () { return !document.body.classList; } },
+                { src: 'plugin/markdown/marked.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+                { src: 'plugin/markdown/markdown.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+                { src: 'plugin/highlight.js/highlight.pack.js', async: true, callback: function () { /*hljs.initHighlightingOnLoad();*/ } },
+                { src: 'plugin/zoom-js/zoom.js', async: true, condition: function () { return !!document.body.classList; } },
+                { src: 'plugin/notes/notes.js', async: true, condition: function () { return !!document.body.classList; } },
+                { src: 'plugin/alt-arrows/alt-arrows.js' },
+                {
+                    src: 'plugin/reveal-code-focus.js',
+                    async: true,
+                    callback: function () {
+                        RevealCodeFocus();
+                    }
+                }
+            ]
+        });
+
+        // Reveal.configure({
+        //     keyboard: {
+        //         39: 'next', // Right Arrow
+        //         37: 'prev'  // Left Arrow
+        //     }
+        // });
+
+    </script>
+</body>
+
+</html>
