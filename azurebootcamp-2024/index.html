@@ -52,7 +52,7 @@
                 <div class="col overlay-style" style="padding: 0 !important">
 
                     <h1 style="font-size: 2em; background: none; margin-bottom: 0;">
-                        GPT models with your own data<br />
+                        OpenAI models with your own data<br />
                         <small style="font-size: 0.5em; line-height: 2em;">using Azure OpenAI</small>
                     </h1>
                     <p style="margin-top: 0; padding-bottom: 20px;">
@@ -134,12 +134,12 @@
                     <div class="overlay-style">
                         <div class="column-container">
                             <div class="col">
-                                <img src="images/tokenization1.png" style="min-height: auto;" />
+                                <img src="images/tokenization1.png" class="standard" />
 
                             </div>
                             <div class="col">
                                 <br />
-                                <img src="images/tokenization2.png" style="min-height: auto;" />
+                                <img src="images/tokenization2.png" class="standard" />
                             </div>
 
                         </div>
@@ -204,7 +204,7 @@
                         added so outputs are <span class="highlight">non-deterministic</span>.</p>
                     </div>
                     <div class="col inset">
-                        <img src="images/distribution.png" style="min-height: auto;" />
+                        <img src="images/distribution.png" class="standard" />
                     </div>
                     <aside class="notes">
                         <p>Not always the token with the highest probability is chosen from the resulting distribution. This degree of randomness
@@ -226,15 +226,15 @@
                 <section data-background="images/maxime-valcarce-mAj8xn5zXsk-unsplash.jpg">
                     <div class="overlay-style">
                         <div class="column-container">
-                            <div class="col">
+                            <div class="col-66">
                                 <p><br /><br /><strong>Prompt:</strong><br />
                                     Explain cloud computing in Azure in a short song written in German in the style of
                                     Rammstein. Make sure the word "verschlimmbessern" is used exactly 3 times and that
                                     Roger Federer is mentioned
                                 </p>
                             </div>
-                            <div class="col inset">
-                                <img src="images/rammstein.png" />
+                            <div class="col-33 inset">
+                                <img src="images/rammstein.png"  class="standard" />
                             </div>
 
                         </div>
@@ -254,7 +254,7 @@
                 </section>
             </section> <!-- end LLMs -->
 
-            <section>
+            <!-- <section>
                 <section data-background="images/victor-c53HvA-blYQ-unsplash.jpg">
                     <h1>Foundation models</h1>
                 </section>
@@ -343,7 +343,7 @@
 
                         </div>
                 </section>
-            </section>
+            </section> -->
             <!-- end Foundation Models-->
 
             <!-- Grounding in Data-->
@@ -354,7 +354,7 @@
 
                 <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
                     <div class="overlay-style">
-                        <p>There are three primary techniques for customizing LLM behavior:</p>
+                        <p>There are three primary techniques for adapting LLMs to our data:</p>
                         <ul>
                             <li class="fragment">🗣️ <span class="highlight">Prompt engineering</span>: provide context information to the model</li>
                             <li class="fragment">🛠️ <span class="highlight">Fine-tuning the model</span>: teach the
@@ -365,50 +365,54 @@
                 </section>
 
 
-                <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
+                <!-- <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
                     <div class="overlay-style">
                         <p><span class="highlight">Prompt Engineering</span> relies on the model's pre-existing capabilities and provides in-context information for the model.</p>
                         <p>Using prompt engineering we can guide the model in generating the desired
                             output and control its behavior without altering its underlying structure.</p>
                         <aside class="notes">Prompt can also be used to provide examples in what we call "few shot learning".</aside>
-                </section>
+                </section> -->
 
 
                 <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
                     <div class="overlay-style">
                         <div class="column-container">
-                            <div class="col">
+                            <div class="col-66">
+                                <div class="img-backdrop">
                         <img src="graphics/customization1.drawio.png"
-                            style="min-height: auto; background-color: #fff; padding: 20px;" />
+                            style="min-height: auto;" />
+                        </div>
                             </div>
-                            <div class="col">
-                                <p>📝 User Prompt + <br/>🛠️ System Instructions <br/>↓<br/> 🤖 LLM <br/>↓<br/> 🎯 Desired Output</p>
+                            <div class="col-33" style="font-size: 28px; padding: 20px;">
+                                <p><br/>🛠️ System Instructions<br/>📝 User Prompt<br/>↓<br/> 🤖 LLM <br/>↓<br/> 🎯 Output</p>
                                 </div>
                 </section>
 
 
-                <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
+                <!-- <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
                     <div class="overlay-style">
                         <p><span class="highlight">Fine-Tuning the Model</span> involves additional training on specific
                             data after the initial training phase.</p>
                         <p>This process teaches the model new skills or improves its performance on tasks that are
                             similar to the ones it was originally trained on.</p>
                         <aside class="notes">This is adapting the model to specialized tasks or domains.</aside>
-                </section>
+                </section> -->
 
                 <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
                     <div class="overlay-style">
                         <div class="column-container">
-                            <div class="col">
+                            <div class="col-66">
+                                <div class="img-backdrop">
                         <img src="graphics/customization2.drawio.png"
-                            style="min-height: auto; background-color: #fff; padding: 20px;" />
+                            style="min-height: auto;" />
+                                </div>
                             </div>
-                            <div class="col">
-                                <p><br/><br/>📊 Fine-Tuning Data + <br/>🤖 Pre-Trained LLM <br/>↓<br/> 🤖 Specialized Model</p>
+                            <div class="col-33" style="font-size: 28px; padding: 20px;">
+                                <p><br/><br/>📊 Fine-Tuning Data<br/>↓<br/>🤖 Foundation LLM <br/>↓<br/> 🤖 Specialized Model</p>
                                 </div>
                 </section>
 
-                <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
+                <!-- <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
                     <div class="overlay-style">
                         <p><span class="highlight">Retrieval-Augmented Generation (RAG)</span> enhances the language
                             model with the ability to access external information.</p>
@@ -418,19 +422,69 @@
                         <aside class="notes">Responses are also contextually relevant</aside>
                     </div>
 
-                </section>
+                </section> -->
 
                 <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
                     <div class="overlay-style">
                         <div class="column-container">
-                            <div class="col">
-                                <Br/>
+                            <div class="col-66">
+                                <div class="img-backdrop">
                                 <img src="graphics/customization3.drawio.png"
-                                style="min-height: auto; background-color: #fff; padding: 20px;" />
-                            </div>
-                            <div class="col">
-                        <p>📝 User Prompt <br/>↓<br/> 📚 Retrieval System <br/>↓<br/> 📝 User Prompt + 🛠️ System Instructions + 📊 Relevant Data <br/>↓<br/> 🤖 LLM<br/>↓<br/>🎯 Informed Output</p>
+                                style="min-height: auto;" />
                                 </div>
+                            </div>
+                            <div class="col-33" style="font-size: 28px; padding: 20px;">
+                        <p>📝 User Prompt <br/>↓<br/> 📚 Retrieval System <br/>↓<br/> 🛠️ System Instructions<br/>📝 User Prompt<br/>📊 Retrieved Data <br/>↓<br/> 🤖 LLM<br/>↓<br/>🎯 Informed Output</p>
+                                </div>
+                </section>
+
+                <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
+                    <pre>
+                <code>
+<|system|>
+You are a helpful assistant for Filip's Sports Store. User is called Lara. You answer questions briefly and in a personable manner. The following product documentation should be used in the response:
+ - Beach Vibes Basketball, $55, example.com/beach-vibes-basketball
+ - Rainbow Unicorn Basketball, $50, example.com/rainbow-unicorn-basketball 
+ - Flamingo Pattern Football, $55, example.com/flamingo-pattern-football
+<|end|>
+
+<|user|>
+Hello!
+<|end|>
+<|assistant|>
+Hi Lara! How can I help you with our store?
+<|end|>
+<|user|>
+I am looking for a cool and funny ball!
+<|end|>
+<|assistant|>
+                </code>
+            </pre>
+                </section>
+
+                <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
+                    <pre>
+                <code>
+<|system|>
+You are a helpful assistant for Filip's Sports Store. User is called {{username}}. You answer questions briefly and in a personable manner. The following product documentation should be used in the response:
+{% for item in documentation %}
+ - {{item.description}}
+{% endfor %}
+<|end|>
+{% for item in chat_history %}
+<|user|>
+{{item.inputs.question}}
+<|end|>
+<|assistant|>
+{{item.outputs.answer}}
+<|end|>
+{% endfor %}
+<|user|>
+{{question}}
+<|end|>
+<|assistant|>
+                </code>
+            </pre>
                 </section>
 
                 <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
@@ -448,22 +502,15 @@
                             </div>
                             <div class="col inset">
                                 <br />
-                                <img src="images/LLM4.png" style="min-height: auto;" />
+                                <img src="images/LLM4.png"  class="standard" />
                             </div>
 
                         </div>
                 </section>
 
-
                 <section data-background="images/copilot.png" data-state="bg-top-left">
                     <div class="overlay-style" style="background: rgba(0, 0, 0, 0.9);">
                         <p>Microsoft's Copilots are at their core RAG-pattern applications as well.</p>
-                    </div>
-                </section>
-
-                <section data-background="images/gpts.png" data-state="bg-top-left">
-                    <div class="overlay-style" style="background: rgba(0, 0, 0, 0.9);">
-                        <p>OpenAI's GPTs are at their core RAG-pattern applications as well.</p>
                     </div>
                     <aside class="notes">
                         A good example of RAG is https://chat.nyc.gov
@@ -474,10 +521,10 @@
             <!-- AOI-->
             <section>
                 <section data-background="images/maria-teneva-7FmSYQ3Z7fg-unsplash.jpg">
-                    <h1>Azure OpenAI</h1>
+                    <h1>Implementing RAG</h1>
                 </section>
 
-                <section data-background="images/michael-dziedzic-nbW-kaz2BlE-unsplash.jpg">
+                <!-- <section data-background="images/michael-dziedzic-nbW-kaz2BlE-unsplash.jpg">
                     <div class="overlay-style">
                         <p>OpenAI models are available <span class="highlight">exclusively</span> in Azure.</p>
                         <div style="background-color: #fff;">
@@ -524,9 +571,9 @@
                             </div>
                         </div>
                     </div>
-                </section>
+                </section> -->
 
-
+<!-- 
                 <section data-background="images/michael-dziedzic-nbW-kaz2BlE-unsplash.jpg">
                     <div class="overlay-style">
                         <h3>Available GPT models</h3>
@@ -591,17 +638,17 @@
 
                         </table>
                     </div>
-                </section>
+                </section> -->
 
                 <section data-background="images/michael-dziedzic-nbW-kaz2BlE-unsplash.jpg">
                     <div class="overlay-style">
                         <div class="column-container">
-                            <div class="col">
-                                <p>Azure OpenAI provides a</p>
+                            <div class="col-75">
+                                <p>For basic use cases, Azure OpenAI provides a</p>
                                 <h2 class="r-fit-text">built-in integration</h2>
                                 <p>with Azure AI Search for building RAG-pattern applications.</p>
                             </div>
-                            <div class="col inset">
+                            <div class="col-25">
                                 <br />
                                 <div style="background-color: #fff;">
                                     <img src="images/ai-search.png" style="min-height: auto;" />
@@ -614,8 +661,8 @@
 
                 <section data-background="images/michael-dziedzic-nbW-kaz2BlE-unsplash.jpg">
                     <div class="overlay-style">
-                        <h3>Sample RAG Architecture<br />&nbsp;</h3>
-                        <div style="background-color: #fff;">
+                        <h3>Sample RAG with Azure OpenAI<br />&nbsp;</h3>
+                        <div class="img-backdrop">
                             <img src="graphics/rag1.drawio.png" style="min-height: auto;" />
                         </div>
                     </div>
@@ -623,11 +670,68 @@
 
                 <section data-background="images/michael-dziedzic-nbW-kaz2BlE-unsplash.jpg">
                     <div class="overlay-style">
-                        <h3>Sample RAG Architecture v2</h3>
-                        <div style="background-color: #fff;">
-                            <img src="graphics/rag2.drawio.png" style="min-height: auto; max-height: 450px;" />
+                        <div class="column-container">
+                            <div class="col-50">
+                                <div class="img-backdrop">
+                                    <img src="images/promptflow.png" style="min-height: auto;" />
+                                </div>
+                            </div>
+                            <div class="col-50" style="padding: 3%;">
+                                <p>For more advanced use cases, there are plenty of</p>
+                                <h2 class="r-fit-text">AI orchestration</h2>
+                                <p>libraries like PromptFlow, Langchain or Semantic Kernel.</p>
+                            </div>
                         </div>
                     </div>
+                </section>
+
+                <section data-background="images/michael-dziedzic-nbW-kaz2BlE-unsplash.jpg">
+                    <div class="overlay-style">
+                        <h3>Sample RAG with Orchestrator</h3>
+                        <div class="img-backdrop">
+                            <img src="graphics/rag2.drawio.png" style="min-height: auto; max-height: 420px;" />
+                        </div>
+                    </div>
+                </section>
+
+                <section data-background="images/michael-dziedzic-nbW-kaz2BlE-unsplash.jpg">
+                    <div class="overlay-style">
+                        <div class="column-container">
+                            <div class="col-66" style="padding: 3%;">
+                                <p><br/>Concepts can be encoded into highly dimensional vectors called <span class="highlight">embeddings</span>.</p> <p>Related ones can then be found by performing mathematical operations between the vectors, such as cosine similarity or dot product.</p>
+                            </div>
+                            <div class="col-33">
+                                <div class="img-backdrop">
+                                    <img src="graphics/vector.drawio.png" style="min-height: auto;" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-background="images/maxime-valcarce-mAj8xn5zXsk-unsplash.jpg">
+                    <div class="overlay-style">
+<p>Embeddings can be used to represent any type of data!</p>
+<hr />
+<p>
+    <span class="emoji">🏞️</span> image <span class="arrow">→</span> <span class="emoji">🧠</span> image model <span class="arrow">→</span> <span class="emoji">🔢</span> float vector <br/>
+    <span class="emoji">🎧</span> audio <span class="arrow">→</span> <span class="emoji">🧠</span> audio model <span class="arrow">→</span> <span class="emoji">🔢</span> float vector <br/>
+    <span class="emoji">📝</span> text <span class="arrow">→</span> <span class="emoji">🧠</span> text model <span class="arrow">→</span> <span class="emoji">🔢</span> float vector <br/>
+</p>
+<style>
+    .emoji {
+        display: inline-block;
+        width: 50px;
+        text-align: left;
+        margin-top: 20px;
+    }
+    .arrow {
+        display: inline-block;
+        width: 100px;
+        text-align: center;
+    }
+</style>
+                               </div>
                 </section>
 
                 <section data-background="images/maxime-valcarce-mAj8xn5zXsk-unsplash.jpg">
@@ -645,14 +749,20 @@
 
                 <section data-background="images/michael-dziedzic-nbW-kaz2BlE-unsplash.jpg">
                     <div class="overlay-style">
-                        <h3>Sample RAG Architecture with Embeddings</h3>
-                        <div style="background-color: #fff;">
+                        <h3>Sample RAG with Embeddings</h3>
+                        <div class="img-backdrop">
                             <img src="graphics/rag.embeddings.drawio.png" style="max-height: auto;" />
                         </div>
                     </div>
                 </section>
 
+                <section data-background="images/gpts.png" data-state="bg-top-left">
+                    <div class="overlay-style" style="background: rgba(0, 0, 0, 0.9);">
+                        <p>OpenAI's GPTs and Assistants are at their core RAG-pattern applications as well, with vector search.</p>
+                    </div>
+                </section>
 
+<!-- 
                 <section data-background="images/maxime-valcarce-mAj8xn5zXsk-unsplash.jpg">
                     <div class="overlay-style">
                         <h3>Azure AI Content Safety</h3>
@@ -701,7 +811,7 @@
                             </p>
                         </div>
                     </div>
-                </section>
+                </section> -->
 
             </section>
             <!-- end AOI-->
@@ -728,16 +838,11 @@
                         <div class="col auto">
                             <ul style="font-size: 0.9em;">
                                 <li>📝 <a
-                                        href="https://filipw.github.io/zurich-azure-ug-2024">filipw.github.io/zurich-azure-ug-2024</a>
+                                        href="https://filipw.github.io/azurebootcamp-2024">filipw.github.io/azurebootcamp-2024</a>
                                 </li>
                                 <li>🖥️ <a
-                                        href="https://github.com/filipw/2023-ndcporto-demos">github.com/filipw/2024-zurich-azure-ug-demos</a>
+                                        href="https://github.com/filipw/2024-azure-bootcamp-demos">github.com/filipw/2024-azure-bootcamp-demos</a>
                                 </li>
-                                <li>📚 <a href="https://link.springer.com/book/10.1007/978-3-030-99379-5">Intro to
-                                        Quantum
-                                        Computing book</a>
-                                </li>
-
                                 <li>📸 <a href="http://unsplash.com">Photos credit: Unsplash</a></li>
                             </ul>
                         </div>

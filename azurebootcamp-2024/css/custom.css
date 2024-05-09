@@ -73,6 +73,22 @@ ul ul {
   flex: auto;
 }
 
+.col-75 {
+  flex: 3; 
+}
+
+.col-25 {
+  flex: 1; 
+}
+
+.col-66 {
+  flex: 2; 
+}
+
+.col-33 {
+  flex: 1; 
+}
+
 minor {
   color: grey;
 }
@@ -478,3 +494,21 @@ table.large td {
 .reveal .slides section .fragment.step-fade-in-then-out.current-fragment {
 	opacity: 1;
 	display: inline; }
+
+.rounded {
+  border-radius: 10px;
+}
+
+.white-bg {
+  background-color: #fff;
+}
+
+.img-backdrop {
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+.standard {
+  min-height: auto !important;
+  border-radius: 10px;
+}
