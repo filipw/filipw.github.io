@@ -125,7 +125,7 @@
                     <div class="overlay-style">
                         <p>The textual input provided via the prompt is</p>
                         <h2 class="r-fit-text">tokenized</h2>
-                        <p>before being passed into a large language model. Each model has a specific token limit it can
+                        <p>before being passed into a large language model. Each model has a specific context window (token) size it can
                             handle (4k, 16k, 32k, 128k).</p>
                     </div>
                 </section>
@@ -242,15 +242,26 @@
 
                 <section data-background="images/maxime-valcarce-mAj8xn5zXsk-unsplash.jpg">
                     <div class="overlay-style">
-                        <p>Most AI models (particularly GPT series) are designed to be</p>
+                        <p>LLMs are designed to be</p>
                         <h2 class="r-fit-text">stateless</h2>
-                        <p>They do not retain memory of past interactions. To maintain context in a series of
+                        <p>They do not retain <span class="highlight">memory</span> of past interactions. To maintain context in a series of
                             interactions, the entire relevant history must be included with each subsequent query.</p>
                     </div>
                     <aside class="notes">
                         This approach simplifies the model's design but requires careful management of interaction
                         history.
                     </aside>
+                </section>
+
+                <section data-background="images/maxime-valcarce-mAj8xn5zXsk-unsplash.jpg">
+                    <div class="overlay-style">
+                        <p>
+                            LLMs can be thought of as being purely functional
+                        </p>
+                        <h2 class="r-fit-text">$f : \{in: str\} \rightarrow \{out: str\}$</h2>
+                        <!-- <p>
+                            they take a single input string and produce a single output string
+                        </p> -->
                 </section>
             </section> <!-- end LLMs -->
 
@@ -442,30 +453,6 @@
                     <pre>
                 <code>
 <|system|>
-You are a helpful assistant for Filip's Sports Store. User is called Lara. You answer questions briefly and in a personable manner. The following product documentation should be used in the response:
- - Beach Vibes Basketball, $55, example.com/beach-vibes-basketball
- - Rainbow Unicorn Basketball, $50, example.com/rainbow-unicorn-basketball 
- - Flamingo Pattern Football, $55, example.com/flamingo-pattern-football
-<|end|>
-
-<|user|>
-Hello!
-<|end|>
-<|assistant|>
-Hi Lara! How can I help you with our store?
-<|end|>
-<|user|>
-I am looking for a cool and funny ball!
-<|end|>
-<|assistant|>
-                </code>
-            </pre>
-                </section>
-
-                <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
-                    <pre>
-                <code>
-<|system|>
 You are a helpful assistant for Filip's Sports Store. User is called {{username}}. You answer questions briefly and in a personable manner. The following product documentation should be used in the response:
 {% for item in documentation %}
  - {{item.description}}
@@ -481,6 +468,44 @@ You are a helpful assistant for Filip's Sports Store. User is called {{username}
 {% endfor %}
 <|user|>
 {{question}}
+<|end|>
+<|assistant|>
+                </code>
+            </pre>
+                </section>
+
+                <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
+                    <div class="overlay-style">
+                        <p>There is an emerging technique called <span
+                                class="highlight">RAFT</span> (retrieval-augmented fine tuning), which is based on the idea of teaching the model how to use documentation.</p>
+                                <p>
+                                    <img src="images/raft.png" class="standard" style="min-height: auto;" />
+                                </p>
+                        <div style="clear:both;">
+                            <p class="footnote" style="text-align: center;">Tianjun Zhang, Shishir G. Patil, Naman Jain, Sheng Shen, Matei Zaharia, Ion Stoica, Joseph E. Gonzalez - "RAFT: Adapting Language Model to Domain Specific RAG" (2023). https://doi.org/10.48550/arXiv.2403.10131. (image from the paper)
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
+                    <pre>
+                <code>
+<|system|>
+You are a helpful assistant for Filip's Sports Store. User is called Lara. You answer questions briefly and in a personable manner. The following product documentation should be used in the response:
+ - Beach Vibes Basketball, $55, example.com/beach-vibes-basketball
+ - Rainbow Unicorn Basketball, $50, example.com/rainbow-unicorn-basketball 
+ - Flamingo Pattern Football, $55, example.com/flamingo-pattern-football
+<|end|>
+
+<|user|>
+Hello!
+<|end|>
+<|assistant|>
+Hi Lara! How can I help you with our store?
+<|end|>
+<|user|>
+I am looking for a cool and funny ball!
 <|end|>
 <|assistant|>
                 </code>
