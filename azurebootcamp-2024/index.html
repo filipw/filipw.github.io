@@ -260,6 +260,23 @@
                         </p>
                         <h2 class="r-fit-text">$f : \{in: str\} \rightarrow \{out: str\}$</h2>
                 </section>
+
+                <section data-background="images/maxime-valcarce-mAj8xn5zXsk-unsplash.jpg">
+                    <div class="overlay-style">
+                        <div class="column-container" style="align-items: flex-end;">
+                            <div class="col">
+                                <img src="images/books-hi.png" class="standard" />
+
+                            </div>
+                            <div class="col">
+                                <br />
+                                <img src="images/books-lo.png" class="standard" />
+                            </div>
+
+                        </div>
+                        <p>LLMs are a "blurry jpeg" of their training data.</p>
+                    </div>
+                </section>
             </section> <!-- end LLMs -->
 
             <!-- <section>
@@ -472,30 +489,31 @@
                 </section>
 
                 <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
-                    <h3 class="overlay-style">RAG Prompt Template
-                        </h3>
+                    <h3 class="overlay-style">RAG Prompt Template</h3>
                     <pre>
                 <code>
 <|system|>
-You are a helpful assistant for Filip's Sports Store. User is called {{username}}. You answer questions briefly and in a personable manner. The following product documentation should be used in the response:
-{% for item in documentation %}
- - {{item.description}}
-{% endfor %}
+You are a helpful assistant for Filip's Sports Store. User is called {{username}}. Use the attached documentation in the response.
 <|end|>
 
 {% for item in chat_history %}
-<|user|>{{item.question}}<|end|>
+<|user|>{{item.question}}. Documentation:
+{% for doc in item.documentation %}{{doc.description}}{% endfor %}
+<|end|>
 <|assistant|>{{item.answer}}<|end|>
 {% endfor %}
 
-<|user|>{{question}}<|end|>
+<|user|>{{question}}. Documentation:
+{% for doc in documentation %}{{doc.description}}{% endfor %}
+<|end|>
 <|assistant|>
                 </code>
             </pre>
-            <p class="fragment" data-code-focus="2-7"></p>
-            <p class="fragment" data-code-focus="9-12"></p>
-            <p class="fragment" data-code-focus="14"></p>
-            <p class="fragment" data-code-focus="15"></p>
+            <p class="fragment" data-code-focus="2-4"></p>
+            <p class="fragment" data-code-focus="6-11"></p>
+            <p class="fragment" data-code-focus="8"></p>
+            <p class="fragment" data-code-focus="13-15"></p>
+            <p class="fragment" data-code-focus="16"></p>
                 </section>
 
                 <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
@@ -504,23 +522,24 @@ You are a helpful assistant for Filip's Sports Store. User is called {{username}
                     <pre>
                 <code>
 <|system|>
-You are a helpful assistant for Filip's Sports Store. User is called Lara. You answer questions briefly and in a personable manner. The following product documentation should be used in the response:
- - Beach Vibes Basketball, $55, example.com/beach-vibes-basketball
- - Rainbow Unicorn Basketball, $50, example.com/rainbow-unicorn-basketball 
- - Flamingo Pattern Football, $55, example.com/flamingo-pattern-football
+You are a helpful assistant for Filip's Sports Store. User is called Lara. Use the attached documentation in the response.
 <|end|>
 
 <|user|>Hello!<|end|>
 <|assistant|>Hi Lara! How can I help you with our store?<|end|>
 
-<|user|>I am looking for a cool and funny ball!<|end|>
+<|user|>I am looking for a cool and funny ball! Documentation:
+- Beach Vibes Basketball, $55, example.com/beach-vibes-basketball
+- Rainbow Unicorn Basketball, $50, example.com/rainbow-unicorn-basketball 
+- Flamingo Pattern Football, $55, example.com/flamingo-pattern-football
+<|end|>
 <|assistant|>
                 </code>
             </pre>
-            <p class="fragment" data-code-focus="2-7"></p>
-            <p class="fragment" data-code-focus="9-10"></p>
-            <p class="fragment" data-code-focus="12"></p>
-            <p class="fragment" data-code-focus="13"></p>
+            <p class="fragment" data-code-focus="2-4"></p>
+            <p class="fragment" data-code-focus="6-7"></p>
+            <p class="fragment" data-code-focus="9-13"></p>
+            <p class="fragment" data-code-focus="14"></p>
                 </section>
 
                 <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
