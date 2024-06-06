@@ -435,6 +435,33 @@
                 </section>
 
                 <section data-background="images/cern-network1.jpg">
+                    <h2 class="overlay-style">Simple Q# program<a target="_blank" href="https://microsoft.github.io/qsharp/?code=H4sIAAAAAAAAE22QT0sDMRDF7%2FspHvSyBXGvRSkoWLSHSkt7Ew%2FT7bgNbP44mShF%2Bt3N7rbFgiGEyeTNb16mqiqMsCYbWi6qfHlmVeMaRCVR3nW5Pj%2FCE8daTFDjXZ%2FZ7E1E3gRrnLHUYjVCEN8IWeieFDU5bBkp8g7qByS%2BxfQNsrj2O74tHFmOgWrG4rBK5DTZ5YnyUxTI62HmVA5Lb5yW4z7jAwt1TrDuoOUYd5g7zQU4rWywFiZlZBMTfKat0Xz2eAg3JirLRZ0tDpKIKVZd8DZ5vy%2F%2BoyE58%2BHFIqZsIvho%2BomclY8htIeNn1G9L19uTtDxNcoyxSSch8RgpyaHZ0fdnIRVDH8N7%2FnP3Pxx2rJCyO28fU12mwumWAy4%2BaAsLy3PJZcgg5O4q%2FJBdSyOxS%2FfC%2F4nCgIAAA%3D%3D&profile=unrestricted" style="font-size: 0.2em; display: block; margin-top: 1em;">(Open in Playground)</a></h2>
+                    <pre>
+                <code class="cs">
+@EntryPoint()
+operation Start() : Int {
+    // create an 8 qubit quantum register
+    use qubits = Qubit[8];
+
+    // create a uniform superposition
+    ApplyToEach(H, qubits);
+
+    // measure the entire register to retrieve the integer
+    let randomNumber = MeasureInteger(qubits);
+    
+    return randomNumber;
+}
+                </code>
+            </pre>
+                    <p class="fragment" data-code-focus="3"></p>
+                    <p class="fragment" data-code-focus="5"></p>
+                    <p class="fragment" data-code-focus="8"></p>
+                    <p class="fragment" data-code-focus="11"></p>
+                    <p class="fragment" data-code-focus="13"></p>
+                </section>
+                
+
+                <section data-background="images/cern-network1.jpg">
                     <div class="overlay-style">
                     <div class="column-container">
                         <div class="col">
