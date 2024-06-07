@@ -473,22 +473,22 @@ operation Start() : Int {
                                     <small>Use a quantum-specific or a popular language</small>
                                 </li>
 
-                                <li class="fragment">📦
-                                    Familiar to .NET developers
-                                    <br />
-                                    <small>VS Code and VS support, dotnet CLI, Nuget, MSBuild</small>
-                                </li>
-
                                 <li class="fragment">📚
-                                    Rich family of libraries
+                                    Very versatile
                                     <br />
-                                    <small>Math, machine learning, chemistry</small>
+                                    <small>Rust-based toolchain, QIR/LLVM compilation</small>
                                 </li>
 
                                 <li class="fragment">🔬
                                     Standalone & Jupyter support
                                     <br />
-                                    <small>Simulate locally, develop in IDE or Jupyter Notebooks</small>
+                                    <small>Simulate locally, in WASM, develop in the browser, IDE or Jupyter Notebooks</small>
+                                </li>
+
+                                <li class="fragment">☁️
+                                    Azure Quantum integration
+                                    <br />
+                                    <small>Quantum hardware</small>
                                 </li>
 
                             </ul>
@@ -778,9 +778,27 @@ operation Run() : Int {
                         <p>Only the basis states can be observed in the measurement process</p>
                     </div>
                     <aside class="notes">
+                        We cannot ask a quantum system what state it is in. 
                         So what happens when we observe a system in superposition?
                     </aside>
                 </section>
+
+                <!-- <section data-background="images/irpc-demonstrator.jpg">
+                    <div class="overlay-style">
+                        <p>We cannot ask a quantum system</p>
+                        <h2 class="r-fit-text">what state are you in?</h2>
+                    </div>
+                    <aside class="notes">
+                        You can think of a superposition as a form of a quantum coin toss.
+                    </aside>
+                </section>
+
+                <section data-background="images/irpc-demonstrator.jpg">
+                    <div class="overlay-style">
+                        <p>For $\mathbf{Z}$ basis we can only ask</p>
+                        <h2 class="r-fit-text">Are you $\ket{0}$ or are you $\ket{1}$?</h2>
+                    </div>
+                </section> -->
 
                 <section data-background="images/irpc-demonstrator.jpg">
                     <div class="overlay-style">
@@ -939,6 +957,32 @@ operation Run() : Int {
                     </div>
                 </section>
 
+                <section data-background="images/cern-network1.jpg">
+                    <h2 class="overlay-style">H Gate<a target="_blank" href="https://microsoft.github.io/qsharp/?code=H4sIAAAAAAAAE2WQyWoDMQyG7%2FMUglwml8y9pdCV9jKQpD31pjhqIvAyleSUUPLu9SwpoRUGY%2Fn%2FPy1N08AMXjF0nqqmPJ7JjOMO1FCMtn1uyM%2FgkdQJd8YpDpm3PSuUgxA4ckAPqxl0knaCAWyPBg4jbAiy0hYsjUj4Eh4KFLFLW1pUEQNph46gPa4yRsthOVG%2BqwpKpI4itOwkafqwxSRaPKR4ILHrQXP7FE2Oy8TR6vnZJdh3Cy1yrOdwBfcp%2BQKFKcoQ6H1yaFSm%2BMwbtt%2B%2F0vSYgRtY9Xc9Hwtdup3Q6M2RP5IE0FyKdkl52NJZ%2BVIPpAnwFxIINQuVlREImTAdeqTzqMqurPWyLU9WRJp931e7JiV7%2F0cvlCwR1oPuTvup69E0iU7V6Qfkvoy4%2BQEAAA%3D%3D&profile=unrestricted" style="font-size: 0.2em; display: block; margin-top: 1em;">(Open in Playground)</a></h2>
+                    <pre>
+                <code class="cs">
+@EntryPoint()
+operation Main() : Bool {
+    // allocate a qubit
+    use qubit = Qubit();
+
+    // create a uniform superposition
+    H(qubit);
+    
+    // measure the retrieve a classical bit
+    let result = MResetZ(qubit);
+
+    return ResultAsBool(result);
+}
+                </code>
+            </pre>
+                    <p class="fragment" data-code-focus="3"></p>
+                    <p class="fragment" data-code-focus="5"></p>
+                    <p class="fragment" data-code-focus="8"></p>
+                    <p class="fragment" data-code-focus="11"></p>
+                    <p class="fragment" data-code-focus="13"></p>
+                </section>
+
                 <section data-background="images/alice-door.jpeg">
                     <div class="column-container centered overlay-style">
                         <div class="col">
@@ -964,6 +1008,29 @@ operation Run() : Int {
                     <aside class="notes">
                         Probability amplitudes for one outcome get amplified, and for the other cancel each other out.
                     </aside>
+                </section>
+
+                <section data-background="images/cern-network1.jpg">
+                    <h2 class="overlay-style">H Gate<a target="_blank" href="https://microsoft.github.io/qsharp/?code=H4sIAAAAAAAAE22QS2tCMRCF9%2FdXHHBz3Xj3lUKf1I2gtqvupnGqA7lJOplYRPrfy41apG02gTPnO%2FPoug4jPFOfPDdd1%2BGJzSRskI3UeD1oVR%2FhgbNTSSYxVOVlKxmSQeglSE8eyxGSxo1SD9uSwVHAG6NkXsPiMRKfKrXBcgQX1zxpAvWcEznGfL8sFKz0i1PKoWkAICYOmIvTmOO7TU6myX0MO1abVs%2FNYzDdL6IEa8dnSmmYFnOS0I5xhbsYPQ61OryuA3kfHRmD8FHexH5qJfNRwTWWw9%2BOp80l6ZSPXAnyHrVHLok1xSz1QmfnrK0pv2BKye8xw6ZGbEj%2BA87KJdgz5aIM2zKUTYV3wwzOU87iyONyB88G5Vz8sMR8xZnt9U%2B6shUNWFXfbR5O1B6hk%2Bmr%2BfoG5BW0XSYCAAA%3D&profile=unrestricted" style="font-size: 0.2em; display: block; margin-top: 1em;">(Open in Playground)</a></h2>
+                    <pre>
+                <code class="cs">
+@EntryPoint()
+operation Main() : Bool {
+    use qubit = Qubit();
+
+    // create a uniform superposition
+    H(qubit);
+
+    // apply H gate again
+    H(qubit);
+    
+    let result = MResetZ(qubit);
+    return ResultAsBool(result);
+}
+                </code>
+            </pre>
+                    <p class="fragment" data-code-focus="7"></p>
+                    <p class="fragment" data-code-focus="10"></p>
                 </section>
 
                 <section data-background="images/alice-door.jpeg">
