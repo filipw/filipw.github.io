@@ -1270,6 +1270,32 @@ operation Main() : Bool {
                     </aside>
                 </section>
 
+                <section data-background="images/cern-network1.jpg">
+                    <h2 class="overlay-style">Entanglement<a target="_blank" href="https://microsoft.github.io/qsharp/?code=H4sIAAAAAAAAE12PT0sDMRDF7%2Fsp3jGBhbI9WgRBBC%2F1T%2FXkqbGOayCZZJMJItLvLmnq2ppLMvPy3vyGjacczY7wZHx0hO8OAK5uWNLXQ7AsSh86IVIyYgNjbSwrjQuoDeXipEe79dFbz2IB41zYGSHIZ8BUXq3kWS6ZoKahx7TUuIR6rLLSPY4PvepOo6KrgPJBeLcpS0uDZeQSKcWQbQU7G85vIBbDo2vGPwiUbHk8NLfXd%2FfPW4xGaDbfqmnQq7msP35Jz6E8mVxSS%2F%2B3niOB8kMP39ZbbyiTvNTkHnOx1CdzEklJPLuasO%2F2P4fAPfigAQAA&profile=unrestricted" style="font-size: 0.2em; display: block; margin-top: 1em;">(Open in Playground)</a></h2>
+                    <pre>
+                <code class="cs">
+@EntryPoint()
+operation Main() : (Result, Result) {
+    // allocate two qubits
+    use (q1, q2) = (Qubit(), Qubit());
+
+    // place the first qubit in superposition
+    // and entangle the two qubits using the `CNOT` gate
+    H(q1);
+    CNOT(q1, q2);
+
+    // measure the qubits
+    let (m1, m2) = (MResetZ(q1), MResetZ(q2));
+    return (m1, m2);
+}
+                </code>
+            </pre>
+                    <p class="fragment" data-code-focus="4-5"></p>
+                    <p class="fragment" data-code-focus="7-10"></p>
+                    <p class="fragment" data-code-focus="12-14"></p>
+                </section>
+
+
                 <!-- <section data-background="images/atlas-ibl.jpg">
                     <div class="overlay-style">
                         <p>Two qubits in $\mathbf{Z}$ basis:</p>
