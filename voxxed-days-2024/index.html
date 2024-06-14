@@ -1192,7 +1192,7 @@ operation Main() : Bool {
                     </div>
                 </section>
 
-                <section data-background="images/alice-door.jpeg">
+                <!-- <section data-background="images/alice-door.jpeg">
                     <div class="overlay-style">
                         <p>The linear algebra for the circuit produces (for the measured qubit)</p>
                         <p>
@@ -1205,7 +1205,7 @@ operation Main() : Bool {
                         <p>
                         <p>This solves the problem in a single shot.</p>
                     </div>
-                </section> 
+                </section>  -->
 
             </section>
             <!-- end circuits -->
@@ -1280,15 +1280,15 @@ operation Main() : Bool {
 @EntryPoint()
 operation Main() : (Result, Result) {
     // allocate two qubits
-    use (q1, q2) = (Qubit(), Qubit());
+    use (control, target) = (Qubit(), Qubit());
 
-    // place the first qubit in superposition
+    // place the control qubit in superposition
     // and entangle the two qubits using the `CNOT` gate
-    H(q1);
-    CNOT(q1, q2);
+    H(control);
+    CNOT(control, target);
 
     // measure the qubits
-    let (m1, m2) = (MResetZ(q1), MResetZ(q2));
+    let (m1, m2) = (MResetZ(control), MResetZ(target));
     return (m1, m2);
 }
                 </code>
