@@ -704,7 +704,7 @@ Result     Frequency
                         <div class="col">
                             <p>All other states are a linear combination of $\ket{0}$ and $\ket{1}$.
                                 This is a <span class="highlight">superposition</span>.</p>
-                            <h2 class="r-fit-text">$$\ket{\psi} = \alpha\ket{0} + \beta\ket{1}$$</h2>
+                            <h3 class="r-fit-text">$$\begin{bmatrix} \alpha \cr \beta \end{bmatrix} = \alpha\ket{0} + \beta\ket{1}$$</h3>
 
                         </div>
                         <div class="col inset-right">
@@ -979,11 +979,9 @@ operation Main() : Bool {
 }
                 </code>
             </pre>
-                    <p class="fragment" data-code-focus="3"></p>
-                    <p class="fragment" data-code-focus="5"></p>
-                    <p class="fragment" data-code-focus="8"></p>
-                    <p class="fragment" data-code-focus="11"></p>
-                    <p class="fragment" data-code-focus="13"></p>
+                    <p class="fragment" data-code-focus="4-5"></p>
+                    <p class="fragment" data-code-focus="7-8"></p>
+                    <p class="fragment" data-code-focus="10-11"></p>
                 </section>
 
                 <section data-background="images/alice-door.jpeg">
@@ -1032,8 +1030,8 @@ operation Main() : Bool {
 }
                 </code>
             </pre>
-                    <p class="fragment" data-code-focus="7"></p>
-                    <p class="fragment" data-code-focus="10"></p>
+                    <p class="fragment" data-code-focus="6-7"></p>
+                    <p class="fragment" data-code-focus="9-10"></p>
                 </section>
 
                 <section data-background="images/alice-door.jpeg">
@@ -1092,6 +1090,10 @@ operation Main() : Bool {
                                 <ul>
                                     <li>$f_0$ is constant</li>
                                     <li>$f_1$ is constant</li>
+                                </ul>
+                        <hr />
+
+                                <ul>
                                     <li>$f_2$ is balanced</li>
                                     <li>$f_3$ is balanced</li>
                                 </ul>
@@ -1100,6 +1102,10 @@ operation Main() : Bool {
                                 <ul>
                                     <li>$f_0(0) = f_0(1) = 0$</li>
                                     <li>$f_1(0) = f_1(1) = 1$</li>
+                                </ul>
+                                <hr />
+        
+                                        <ul>
                                     <li>$f_2(0) = 0 \;\;\; f_2(1) = 1$</li>
                                     <li>$f_3(0) = 1 \;\;\; f_3(1) = 0$</li>
                                 </ul>
@@ -1391,26 +1397,9 @@ operation Main() : (Result, Result) {
 
                 <section data-background="images/alice_9104.jpg">
                     <div class="overlay-style">
-                        <h2>E91 key distribution</h2>
+                        <h2>E91 key distribution<a target="_blank" href="https://microsoft.github.io/qsharp/?code=H4sIAAAAAAAAE32RwUrDQBCG732KoXhIIARvSkNBW0VzSLXirfSwG6dhoJktu7OClLy7pI3Npkjm%2Bn%2Fzzb8sqxrdQZUIH6sXOE4mAADmgAwFldY4s5N07RWLr9OlYsPZKGH4G62MMk%2BkKjZOqHSjXM5iiR2Vo1SBynmLNbJk5%2FIPzyz2590QSxT%2FrVolZBgKRRzFMIMoZ0kgZ4nheGLa8Q5B7alEmMPaa5LN%2FTYbpNroQXYJd8YCATHcpuldoGznNTpJN7SNs0GwXL19XrKklQ%2BZpvfvUYB9rdE%2BdgW7h%2BcsWKE9a4LdfmFx6nyFa6PjoH6BzqkKo5vpWW%2FR%2Bb3M4BjcbBJoVVfRwuhmGtztTcHPOFCVRfwaCmE%2Bh%2F8lFsVbhiiAkx7twGbS%2FALjUkKMvQIAAA%3D%3D&profile=unrestricted" style="font-size: 0.2em; display: block; margin-top: 1em;">(Open in Playground)</a></h2>
+                        
                         <table>
-                            <tr class="fragment" data-fragment-index="1">
-                                <td>👧🏻</td>
-                                <td>⚛️</td>
-                                <td>⚛️</td>
-                                <td>⚛️</td>
-                                <td>⚛️</td>
-                                <td>⚛️</td>
-                                <td>⚛️</td>
-                                <td>⚛️</td>
-                                <td>⚛️</td>
-                                <td>⚛️</td>
-                                <td>⚛️</td>
-                                <td>⚛️</td>
-                                <td>⚛️</td>
-                                <td>⚛️</td>
-                                <td>⚛️</td>
-                                <td>⚛️</td>
-                            </tr>
                             <tr class="fragment" data-fragment-index="4">
                                 <td></td>
                                 <td>1</td>
@@ -1429,8 +1418,41 @@ operation Main() : (Result, Result) {
                                 <td>1</td>
                                 <td>1</td>
                             </tr>
+                            <tr class="fragment" data-fragment-index="1">
+                                <td>👧🏻</td>
+                                <td>⚛️</td>
+                                <td>⚛️</td>
+                                <td>⚛️</td>
+                                <td>⚛️</td>
+                                <td>⚛️</td>
+                                <td>⚛️</td>
+                                <td>⚛️</td>
+                                <td>⚛️</td>
+                                <td>⚛️</td>
+                                <td>⚛️</td>
+                                <td>⚛️</td>
+                                <td>⚛️</td>
+                                <td>⚛️</td>
+                                <td>⚛️</td>
+                                <td>⚛️</td>
+                            </tr>
                             <tr class="fragment" data-fragment-index="3">
-                                <td colspan="16">🔀</td>
+                                <td></td>
+                                    <td>🔗</td>
+                                    <td>🔗</td>
+                                    <td>🔗</td>
+                                    <td>🔗</td>
+                                    <td>🔗</td>
+                                    <td>🔗</td>
+                                    <td>🔗</td>
+                                    <td>🔗</td>
+                                    <td>🔗</td>
+                                    <td>🔗</td>
+                                    <td>🔗</td>
+                                    <td>🔗</td>
+                                    <td>🔗</td>
+                                    <td>🔗</td>
+                                    <td>🔗</td>
                             </tr>
                             <tr class="fragment" data-fragment-index="2">
                                 <td>👦🏼</td>
