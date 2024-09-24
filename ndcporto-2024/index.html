@@ -298,22 +298,6 @@ You are a pirate, designed to assist with a wide variety of tasks. You are helpf
                     </div>
                 </section>
 
-                <section data-background="images/maxime-valcarce-mAj8xn5zXsk-unsplash.jpg">
-                    <div class="overlay-style">
-                        <div class="column-container" style="align-items: flex-end;">
-                            <div class="col">
-                                <img src="images/books-hi.png" class="standard" />
-
-                            </div>
-                            <div class="col">
-                                <br />
-                                <img src="images/books-lo.png" class="standard" />
-                            </div>
-
-                        </div>
-                        <p>LLMs are a "blurry JPEG" of their training data.</p>
-                    </div>
-                </section>
             </section> <!-- end LLMs -->
 
             <!-- <section>
@@ -411,10 +395,40 @@ You are a pirate, designed to assist with a wide variety of tasks. You are helpf
             <!-- Grounding in Data-->
             <section>
                 <section data-background="images/max-langelott-wWQ760meyWI-unsplash.jpg">
-                    <h1>Grounding in your data</h1>
+                    <h1>Grounding in data</h1>
                 </section>
 
-                <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
+                <section data-background="images/maxime-valcarce-mAj8xn5zXsk-unsplash.jpg">
+                    <div class="overlay-style">
+                        <div class="column-container" style="align-items: flex-end;">
+                            <div class="col">
+                                <img src="images/books-hi.png" class="standard" />
+
+                            </div>
+                            <div class="col">
+                                <br />
+                                <img src="images/books-lo.png" class="standard" />
+                            </div>
+
+                        </div>
+                        <p>LLMs are a "blurry JPEG" of their training data.</p>
+                    </div>
+                </section>
+
+
+                <section data-background="images/maxime-valcarce-mAj8xn5zXsk-unsplash.jpg">
+                    <div class="overlay-style">
+                        <div>
+                            Given that we can describe the model as $f : \{in: str\} \rightarrow \{out: str\}$, there are only two options to get our data into the model.</div>
+                            <hr />
+                            <ul>
+                                <li class="fragment">🛠️ insert our data into the internals of the model</li>
+                                <li class="fragment">🗣️ find creative ways of generating the input string</li>
+                            </ul>
+                    </div>
+                </section>
+
+                <!-- <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
                     <div class="overlay-style">
                         <p>There are three primary techniques for adapting LLMs to our data:</p>
                         <ul>
@@ -424,7 +438,7 @@ You are a pirate, designed to assist with a wide variety of tasks. You are helpf
                             <li class="fragment">🔍 <span class="highlight">Retrieval-augmented generation</span>:
                                 combine the model with a retrieval system</li>
                         </ul>
-                </section>
+                </section> -->
 
 
                 <!-- <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
@@ -435,8 +449,32 @@ You are a pirate, designed to assist with a wide variety of tasks. You are helpf
                         <aside class="notes">Prompt can also be used to provide examples in what we call "few shot learning".</aside>
                 </section> -->
 
+                <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
+                    <h2 class="overlay-style">Zero-shot learning</h2>
+                        <img src="images/flows-regular.png" class="standard" />
+                </section>
 
                 <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
+                    <h2 class="overlay-style">Few-shot learning</h2>
+                        <img src="images/flows-fewshot.png" class="standard" />
+                </section>
+
+                <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
+                    <h2 class="overlay-style">Fine Tuning</h2>
+                        <img src="images/flows-finetuning.png" class="standard" />
+                </section>
+
+                <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
+                    <h2 class="overlay-style">Retrieval Augmented Generation</h2>
+                        <img src="images/flows-rag.png" class="standard" />
+                </section>
+
+                <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
+                    <h2 class="overlay-style">RAG with Query Rewrite</h2>
+                        <img src="images/flows-rag-rewrite.png" class="standard" />
+                </section>
+
+                <!-- <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
                     <div class="overlay-style">
                         <div class="column-container">
                             <div class="col-66">
@@ -449,7 +487,7 @@ You are a pirate, designed to assist with a wide variety of tasks. You are helpf
                                 <h3>Prompt Engineering</h3>
                                 <p><br/>🛠️ System Instructions<br/>📝 User Prompt<br/>↓<br/> 🤖 LLM <br/>↓<br/> 🎯 Output</p>
                                 </div>
-                </section>
+                </section> -->
 
 
                 <!-- <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
@@ -461,7 +499,7 @@ You are a pirate, designed to assist with a wide variety of tasks. You are helpf
                         <aside class="notes">This is adapting the model to specialized tasks or domains.</aside>
                 </section> -->
 
-                <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
+                <!-- <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
                     <div class="overlay-style">
                         <div class="column-container">
                             <div class="col-66">
@@ -474,7 +512,7 @@ You are a pirate, designed to assist with a wide variety of tasks. You are helpf
                                 <h3>Fine Tuning</h3>
                                 <p><br/><br/>📊 Fine-Tuning Data<br/>↓<br/>🤖 Foundation LLM <br/>↓<br/> 🤖 Specialized Model</p>
                                 </div>
-                </section>
+                </section> -->
 
                 <!-- <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
                     <div class="overlay-style">
@@ -488,7 +526,7 @@ You are a pirate, designed to assist with a wide variety of tasks. You are helpf
 
                 </section> -->
 
-                <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
+                <!-- <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
                     <div class="overlay-style">
                         <div class="column-container">
                             <div class="col-66">
@@ -501,7 +539,7 @@ You are a pirate, designed to assist with a wide variety of tasks. You are helpf
                                 <h3>RAG</h3>
                         <p>📝 User Prompt <br/>↓<br/> 📚 Retrieval System <br/>↓<br/> 🛠️ System Instructions<br/>📝 User Prompt<br/>📊 Retrieved Data <br/>↓<br/> 🤖 LLM<br/>↓<br/>🎯 Informed Output</p>
                                 </div>
-                </section>
+                </section> -->
 
                 <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
                     <div class="overlay-style">
