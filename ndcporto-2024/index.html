@@ -555,66 +555,63 @@ You are a pirate, designed to assist with a wide variety of tasks. You are helpf
                     </div>
                 </section>
 
-                <section data-background="images/maxime-valcarce-mAj8xn5zXsk-unsplash.jpg">
+                <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
+                    <h3 class="overlay-style">PromptFlow RAG Prompt Example
+                    </h3>
+                    <pre>
+                <code>
+system:
+You are a helpful assistant for Filip's Sports Store. User is called Lara. Use the attached documentation in the response.
+
+user:
+Hello!
+assistant:
+Hi Lara! How can I help you with our store?
+
+user:
+I am looking for a cool and funny ball!
+- Beach Vibes Basketball, $55, example.com/beach-vibes-basketball
+- Rainbow Unicorn Basketball, $50, example.com/rainbow-unicorn-basketball 
+- Flamingo Pattern Football, $55, example.com/flamingo-pattern-football
+                </code>
+            </pre>
+            <p class="fragment" data-code-focus="2-3"></p>
+            <p class="fragment" data-code-focus="5-8"></p>
+            <p class="fragment" data-code-focus="10-14"></p>
+                </section>
+
+                <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
+                    <h3 class="overlay-style">PromptFlow RAG Prompt Template</h3>
+                    <pre>
+                <code>
+system:
+You are a helpful assistant for Filip's Sports Store. User is called {{username}}. Use the attached documentation in the response.
+
+{% for item in chat_history %}
+user:
+{{item.question}}
+{% for doc in item.documentation %}{{doc.description}}{% endfor %}
+assistant:
+{{item.answer}}
+{% endfor %}
+
+user:
+{{question}}
+{% for doc in documentation %}{{doc.description}}{% endfor %}
+                </code>
+            </pre>
+            <p class="fragment" data-code-focus="2-3"></p>
+            <p class="fragment" data-code-focus="5-11"></p>
+            <p class="fragment" data-code-focus="8"></p>
+            <p class="fragment" data-code-focus="13-15"></p>
+                </section>
+
+                <!-- <section data-background="images/maxime-valcarce-mAj8xn5zXsk-unsplash.jpg">
                     <div class="overlay-style">
                         <p>
                             At the <span class="highlight">model level</span>, prompt engineering and RAG
                         </p>
                         <h2 class="r-fit-text">is really the same thing</h2>
-                </section>
-
-                <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
-                    <h3 class="overlay-style">RAG Prompt Template</h3>
-                    <pre>
-                <code>
-<|system|>
-You are a helpful assistant for Filip's Sports Store. User is called {{username}}. Use the attached documentation in the response.
-<|end|>
-
-{% for item in chat_history %}
-<|user|>{{item.question}}. Documentation:
-{% for doc in item.documentation %}{{doc.description}}{% endfor %}
-<|end|>
-<|assistant|>{{item.answer}}<|end|>
-{% endfor %}
-
-<|user|>{{question}}. Documentation:
-{% for doc in documentation %}{{doc.description}}{% endfor %}
-<|end|>
-<|assistant|>
-                </code>
-            </pre>
-            <p class="fragment" data-code-focus="2-4"></p>
-            <p class="fragment" data-code-focus="6-11"></p>
-            <p class="fragment" data-code-focus="8"></p>
-            <p class="fragment" data-code-focus="13-15"></p>
-            <p class="fragment" data-code-focus="16"></p>
-                </section>
-
-                <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
-                    <h3 class="overlay-style">RAG Prompt Example
-                    </h3>
-                    <pre>
-                <code>
-<|system|>
-You are a helpful assistant for Filip's Sports Store. User is called Lara. Use the attached documentation in the response.
-<|end|>
-
-<|user|>Hello!<|end|>
-<|assistant|>Hi Lara! How can I help you with our store?<|end|>
-
-<|user|>I am looking for a cool and funny ball! Documentation:
-- Beach Vibes Basketball, $55, example.com/beach-vibes-basketball
-- Rainbow Unicorn Basketball, $50, example.com/rainbow-unicorn-basketball 
-- Flamingo Pattern Football, $55, example.com/flamingo-pattern-football
-<|end|>
-<|assistant|>
-                </code>
-            </pre>
-            <p class="fragment" data-code-focus="2-4"></p>
-            <p class="fragment" data-code-focus="6-7"></p>
-            <p class="fragment" data-code-focus="9-13"></p>
-            <p class="fragment" data-code-focus="14"></p>
                 </section>
 
                 <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
@@ -636,7 +633,7 @@ You are a helpful assistant for Filip's Sports Store. User is called Lara. Use t
                             </div>
 
                         </div>
-                </section>
+                </section> -->
 
                 <section data-background="images/copilot.png" data-state="bg-top-left">
                     <div class="overlay-style" style="background: rgba(0, 0, 0, 0.9);">
