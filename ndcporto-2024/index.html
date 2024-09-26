@@ -395,7 +395,7 @@ You are a pirate, designed to assist with a wide variety of tasks. You are helpf
             <!-- Grounding in Data-->
             <section>
                 <section data-background="images/max-langelott-wWQ760meyWI-unsplash.jpg">
-                    <h1>Grounding in data</h1>
+                    <h1>Where does my data go in?</h1>
                 </section>
 
                 <section data-background="images/maxime-valcarce-mAj8xn5zXsk-unsplash.jpg">
@@ -555,57 +555,6 @@ You are a pirate, designed to assist with a wide variety of tasks. You are helpf
                     </div>
                 </section>
 
-                <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
-                    <h3 class="overlay-style">PromptFlow RAG Prompt Example
-                    </h3>
-                    <pre>
-                <code>
-system:
-You are a helpful assistant for Filip's Sports Store. User is called Lara. Use the attached documentation in the response.
-
-user:
-Hello!
-assistant:
-Hi Lara! How can I help you with our store?
-
-user:
-I am looking for a cool and funny ball!
-- Beach Vibes Basketball, $55, example.com/beach-vibes-basketball
-- Rainbow Unicorn Basketball, $50, example.com/rainbow-unicorn-basketball 
-- Flamingo Pattern Football, $55, example.com/flamingo-pattern-football
-                </code>
-            </pre>
-            <p class="fragment" data-code-focus="2-3"></p>
-            <p class="fragment" data-code-focus="5-8"></p>
-            <p class="fragment" data-code-focus="10-14"></p>
-                </section>
-
-                <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
-                    <h3 class="overlay-style">PromptFlow RAG Prompt Template</h3>
-                    <pre>
-                <code>
-system:
-You are a helpful assistant for Filip's Sports Store. User is called {{username}}. Use the attached documentation in the response.
-
-{% for item in chat_history %}
-user:
-{{item.question}}
-{% for doc in item.documentation %}{{doc.description}}{% endfor %}
-assistant:
-{{item.answer}}
-{% endfor %}
-
-user:
-{{question}}
-{% for doc in documentation %}{{doc.description}}{% endfor %}
-                </code>
-            </pre>
-            <p class="fragment" data-code-focus="2-3"></p>
-            <p class="fragment" data-code-focus="5-11"></p>
-            <p class="fragment" data-code-focus="8"></p>
-            <p class="fragment" data-code-focus="13-15"></p>
-                </section>
-
                 <!-- <section data-background="images/maxime-valcarce-mAj8xn5zXsk-unsplash.jpg">
                     <div class="overlay-style">
                         <p>
@@ -649,6 +598,48 @@ user:
             <section>
                 <section data-background="images/maria-teneva-7FmSYQ3Z7fg-unsplash.jpg">
                     <h1>Implementing RAG</h1>
+                </section>
+
+                <section data-background="images/michael-dziedzic-nbW-kaz2BlE-unsplash.jpg">
+                    <div class="overlay-style">
+                        <div class="column-container">
+                            <div class="col-66" style="padding: 3%;">
+                                <h3>Chat Completions API</h3>
+                                <ul>
+                                    <li>⚖️ stateless</li>
+                                    <li>🔄 single turn (request -> response)</li>
+                                    <li>🔗 single API endpoint</li>
+                                    <li>📝 manual context management</li>
+                                    <li>📊 On Your Data integration</li>
+                                </ul>
+                            </div>
+                            <div class="col-33">
+                                <br/>
+                                    <img class="rounded" src="images/api-completions.png" style="min-height: auto;" />
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-background="images/michael-dziedzic-nbW-kaz2BlE-unsplash.jpg">
+                    <div class="overlay-style">
+                        <div class="column-container">
+                            <div class="col-66" style="padding: 3%;">
+                                <h3>Assistants API</h3>
+                                <ul>
+                                    <li>💾 stateful</li>
+                                    <li>🔁 multi turn</li>
+                                    <li>🔌 multiple API endpoints</li>
+                                    <li>🚀 supercharged context management</li>
+                                    <li>📂 built-in file support</li>
+                                </ul>
+                            </div>
+                            <div class="col-33">
+                                <br/>
+                                    <img class="rounded" src="images/api-assistants.png" style="min-height: auto;" />
+                            </div>
+                        </div>
+                    </div>
                 </section>
 
                 <!-- <section data-background="images/michael-dziedzic-nbW-kaz2BlE-unsplash.jpg">
@@ -810,6 +801,58 @@ user:
                             </div>
                         </div>
                     </div>
+                </section>
+
+
+                <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
+                    <h3 class="overlay-style">PromptFlow RAG Prompt Example
+                    </h3>
+                    <pre>
+                <code>
+system:
+You are a helpful assistant for Filip's Sports Store. User is called Lara. Use the attached documentation in the response.
+
+user:
+Hello!
+assistant:
+Hi Lara! How can I help you with our store?
+
+user:
+I am looking for a cool and funny ball!
+- Beach Vibes Basketball, $55, example.com/beach-vibes-basketball
+- Rainbow Unicorn Basketball, $50, example.com/rainbow-unicorn-basketball 
+- Flamingo Pattern Football, $55, example.com/flamingo-pattern-football
+                </code>
+            </pre>
+            <p class="fragment" data-code-focus="2-3"></p>
+            <p class="fragment" data-code-focus="5-8"></p>
+            <p class="fragment" data-code-focus="10-14"></p>
+                </section>
+
+                <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
+                    <h3 class="overlay-style">PromptFlow RAG Prompt Template</h3>
+                    <pre>
+                <code>
+system:
+You are a helpful assistant for Filip's Sports Store. User is called {{username}}. Use the attached documentation in the response.
+
+{% for item in chat_history %}
+user:
+{{item.question}}
+{% for doc in item.documentation %}{{doc.description}}{% endfor %}
+assistant:
+{{item.answer}}
+{% endfor %}
+
+user:
+{{question}}
+{% for doc in documentation %}{{doc.description}}{% endfor %}
+                </code>
+            </pre>
+            <p class="fragment" data-code-focus="2-3"></p>
+            <p class="fragment" data-code-focus="5-11"></p>
+            <p class="fragment" data-code-focus="8"></p>
+            <p class="fragment" data-code-focus="13-15"></p>
                 </section>
 
                 <section data-background="images/michael-dziedzic-nbW-kaz2BlE-unsplash.jpg">
