@@ -901,9 +901,72 @@ Aye, Filip! What be yer next question, matey? 🏴‍☠️<|end|>
 
                 <section data-background="images/michael-dziedzic-nbW-kaz2BlE-unsplash.jpg">
                     <div class="overlay-style">
-                        <h3>Basic RAG with Azure OpenAI<br />&nbsp;</h3>
+                        <h3>Basic RAG with Azure OpenAI On Your Data<br />&nbsp;</h3>
                         <div class="img-backdrop">
                             <img src="graphics/rag1.drawio.png" style="min-height: auto;" />
+                        </div>
+                    </div>
+                </section>
+
+                <section data-background="images/michael-dziedzic-nbW-kaz2BlE-unsplash.jpg">
+                    <div class="overlay-style">
+                        <div class="column-container">
+                            <div class="col-66" style="padding: 3%;">
+                                <h3>Embeddings</h3>
+                                <p>Information can be encoded into <span class="highlight">highly dimensional vectors</span> called embeddings.</p> <p>Related ones can then be found by performing mathematical operations between the vectors, such as cosine similarity or dot product.</p>
+                            </div>
+                            <div class="col-33">
+                                <div class="img-backdrop">
+                                    <img src="graphics/vector.drawio.png" style="min-height: auto;" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-background="images/maxime-valcarce-mAj8xn5zXsk-unsplash.jpg">
+                    <div class="overlay-style">
+<p>Embeddings can be used to represent any type of data!</p>
+<hr />
+<p>
+    <span class="emoji">🏞️</span> image <span class="arrow">→</span> <span class="emoji">🧠</span> image model <span class="arrow">→</span> <span class="emoji">🔢</span> float vector <br/>
+    <span class="emoji">🎧</span> audio <span class="arrow">→</span> <span class="emoji">🧠</span> audio model <span class="arrow">→</span> <span class="emoji">🔢</span> float vector <br/>
+    <span class="emoji">📝</span> text <span class="arrow">→</span> <span class="emoji">🧠</span> text model <span class="arrow">→</span> <span class="emoji">🔢</span> float vector <br/>
+</p>
+<style>
+    .emoji {
+        display: inline-block;
+        width: 50px;
+        text-align: left;
+        margin-top: 20px;
+    }
+    .arrow {
+        display: inline-block;
+        width: 100px;
+        text-align: center;
+    }
+</style>
+                               </div>
+                </section>
+
+                <section data-background="images/maxime-valcarce-mAj8xn5zXsk-unsplash.jpg">
+                    <div class="overlay-style">
+                        <h3>Azure AI Search modes</h3>
+
+                                <ul>
+                                    <li>📚 <span class="highlight">keyword</span> - traditional full-text search method </li>
+                                    <li>🧬 <span class="highlight">vector</span> - documents are converted from text to vector representations using an embedding model. Retrieval is performed by generating a query embedding and finding the vectors that are closest to the query's</li>
+                                    <li>🔄 <span class="highlight">hybrid</span> - both keyword and vector retrieval with a fusion step</li>
+                                    <li>🧠 <span class="highlight">hybrid + semantic ranker</span> - utilizes multi-lingual, deep learning models adapted from Bing to compute higher quality relevance scores</li>
+                                </ul>
+                </section>
+
+
+                <section data-background="images/michael-dziedzic-nbW-kaz2BlE-unsplash.jpg">
+                    <div class="overlay-style">
+                        <h3>Sample RAG with Embeddings</h3>
+                        <div class="img-backdrop">
+                            <img src="graphics/rag.embeddings.drawio.png" style="max-height: auto;" />
                         </div>
                     </div>
                 </section>
@@ -988,66 +1051,20 @@ user:
             <p class="fragment" data-code-focus="13-15"></p>
                 </section>
 
-                <section data-background="images/michael-dziedzic-nbW-kaz2BlE-unsplash.jpg">
-                    <div class="overlay-style">
-                        <div class="column-container">
-                            <div class="col-66" style="padding: 3%;">
-                                <h3>Embeddings</h3>
-                                <p>Information can be encoded into <span class="highlight">highly dimensional vectors</span> called embeddings.</p> <p>Related ones can then be found by performing mathematical operations between the vectors, such as cosine similarity or dot product.</p>
-                            </div>
-                            <div class="col-33">
-                                <div class="img-backdrop">
-                                    <img src="graphics/vector.drawio.png" style="min-height: auto;" />
-                                </div>
-                            </div>
+                <section data-background="images/promptflow-runs.png">
+                    <div class="column-container fragment fade-out">
+                        <div class="col-33 overlay-style "><br/>
+                        Promptflow provides powerful methods for <span class=highlight>running, tracing and evaluating</span> the same flow for various inputs.
                         </div>
-                    </div>
-                </section>
+                        <div class="col-66">
+                        <pre>
+                    <code style="text-align: left;">
+{"user_id": "2", "question": "I need something Miami themed", "chat_history": []}
 
-                <section data-background="images/maxime-valcarce-mAj8xn5zXsk-unsplash.jpg">
-                    <div class="overlay-style">
-<p>Embeddings can be used to represent any type of data!</p>
-<hr />
-<p>
-    <span class="emoji">🏞️</span> image <span class="arrow">→</span> <span class="emoji">🧠</span> image model <span class="arrow">→</span> <span class="emoji">🔢</span> float vector <br/>
-    <span class="emoji">🎧</span> audio <span class="arrow">→</span> <span class="emoji">🧠</span> audio model <span class="arrow">→</span> <span class="emoji">🔢</span> float vector <br/>
-    <span class="emoji">📝</span> text <span class="arrow">→</span> <span class="emoji">🧠</span> text model <span class="arrow">→</span> <span class="emoji">🔢</span> float vector <br/>
-</p>
-<style>
-    .emoji {
-        display: inline-block;
-        width: 50px;
-        text-align: left;
-        margin-top: 20px;
-    }
-    .arrow {
-        display: inline-block;
-        width: 100px;
-        text-align: center;
-    }
-</style>
-                               </div>
-                </section>
-
-                <section data-background="images/maxime-valcarce-mAj8xn5zXsk-unsplash.jpg">
-                    <div class="overlay-style">
-                        <h3>Azure AI Search modes</h3>
-
-                                <ul>
-                                    <li>📚 <span class="highlight">keyword</span> - traditional full-text search method </li>
-                                    <li>🧬 <span class="highlight">vector</span> - documents are converted from text to vector representations using an embedding model. Retrieval is performed by generating a query embedding and finding the vectors that are closest to the query's</li>
-                                    <li>🔄 <span class="highlight">hybrid</span> - both keyword and vector retrieval with a fusion step</li>
-                                    <li>🧠 <span class="highlight">hybrid + semantic ranker</span> - utilizes multi-lingual, deep learning models adapted from Bing to compute higher quality relevance scores</li>
-                                </ul>
-                </section>
-
-
-                <section data-background="images/michael-dziedzic-nbW-kaz2BlE-unsplash.jpg">
-                    <div class="overlay-style">
-                        <h3>Sample RAG with Embeddings</h3>
-                        <div class="img-backdrop">
-                            <img src="graphics/rag.embeddings.drawio.png" style="max-height: auto;" />
-                        </div>
+{"user_id": "1", "question": "I need something locally themed", "chat_history": [{"inputs": {"question": "hi i am in miami"},"outputs": {"answer": "Hi Filip! How's it going in Miami? If you need any help with sports gear or have questions, just let me know!"}}]}
+                    </code>
+                </pre>
+            </div>
                     </div>
                 </section>
 
@@ -1115,8 +1132,8 @@ user:
                 <section data-background="images/growtika-nGoCBxiaRO0-unsplash.jpg">
                 <div class="col overlay-style" style="padding: 0 !important">
 
-                    <h1 style="font-size: 2em; background: none; margin-bottom: 0;">Demo
-                    <small style="font-size: 0.5em; line-height: 2em;">RAG with images: PromptFlow, Azure AI Vision, Azure AI Search and GPT-4 Turbo with Vision</small>
+                    <h1 style="font-size: 2em; background: none; margin-bottom: 0;">Demos
+                    <!-- <small style="font-size: 0.5em; line-height: 2em;">RAG with images: PromptFlow, Azure AI Vision, Azure AI Search and GPT-4 Turbo with Vision</small> -->
                     </h1>
                 </div>
                 </section>
