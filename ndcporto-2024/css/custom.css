@@ -512,3 +512,15 @@ table.large td {
   min-height: auto !important;
   border-radius: 10px;
 }
+
+.emoji {
+  display: inline-block;
+  width: 50px;
+  text-align: left;
+  margin-top: 20px;
+}
+.arrow {
+  display: inline-block;
+  width: 100px;
+  text-align: center;
+}
