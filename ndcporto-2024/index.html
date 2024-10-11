@@ -330,37 +330,39 @@ Aye, Filip! What be yer next question, matey? 🏴‍☠️<|end|>
                         <div class="column-container">
                             <div class="col">
                                 <ul>
-                                    <li class="fragment">🛠️ Optimize for Specific Tasks
-                                        <br />
-                                        <small>* teach the model specific skills</br>
-                                            * introduce deeply specific, complex domain data
-                                        </small>
-                                        <br />
-                                        <br />
-
-                                    </li>
-
                                     <li class="fragment">🎯 Enhance Quality & Relevancy
                                         <br />
                                         <small>* provide accurate references<br/>
                                             * use specific references</small>
+                                        <br />
+                                        <br />
+
                                     </li>
 
+                                    <li class="fragment">🔐 Utilize Proprietary Data
+                                        <br />
+                                        <small>* incorporate data that the model couldn't have accessed during training (e.g. company internal)</small>
+                                    </li>
                                 </ul>
                             </div>
                             <div class="col">
                                 <ul>
-                                    <li class="fragment">🔐 Utilize Proprietary Data
-                                        <br />
-                                        <small>* incorporate data that the model couldn't have accessed during training (e.g. company internal)</small>
-                                        <br />
-                                        <br />
-                                    </li>
 
                                     <li class="fragment">📊 Current/Dynamic Information
                                         <br />
                                         <small>* up-to-date (post-training) information<br/>
                                             * inject dynamic application data</small>
+                                        <br />
+                                        <br />
+
+                                    </li>
+
+                                    <li class="fragment">🛠️ Optimize for Specific Tasks
+                                        <br />
+                                        <small>* teach the model specific skills</br>
+                                            * introduce deeply specific, complex domain data
+                                        </small>
+
                                     </li>
                                 </ul>
                             </div>
@@ -375,7 +377,7 @@ Aye, Filip! What be yer next question, matey? 🏴‍☠️<|end|>
                             Given that we can describe the model as $f : \{in: str\} \rightarrow \{out: str\}$, there are only two options to get our data into the model.</div>
                             <hr />
                             <ul>
-                                <li class="fragment">🛠️ insert our data into the internals of the model</li>
+                                <li class="fragment">🛠️ inject our information into the internals of the model</li>
                                 <li class="fragment">🗣️ find creative ways of generating the input string</li>
                             </ul>
                     </div>
@@ -383,40 +385,40 @@ Aye, Filip! What be yer next question, matey? 🏴‍☠️<|end|>
 
                 <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
                     <h2 class="overlay-style">Zero-shot learning</h2>
-                        <img src="images/flows-regular.png" class="standard" />
+                        <img src="images/flows-zeroshot-v3.png" class="standard" />
                 </section>
 
                 <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
                     <h2 class="overlay-style">Few-shot learning</h2>
-                        <img src="images/flows-fewshot.png" class="standard" />
+                        <img src="images/flows-fewshot-v3.png" class="standard" />
                 </section>
 
                 <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
                     <h2 class="overlay-style">Fine Tuning</h2>
-                        <img src="images/flows-finetuning.png" class="standard" />
+                        <img src="images/flows-finetuning-v3.png" class="standard" />
                 </section>
 
                 <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
                     <h2 class="overlay-style">Retrieval Augmented Generation</h2>
-                        <img src="images/flows-rag2.png" class="standard" style="max-height: 600px;" />
+                        <img src="images/flows-rag-v3.png" class="standard" style="max-height: 600px;" />
                 </section>
 
                 <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
                     <h2 class="overlay-style">RAG with Query Rewrite</h2>
-                        <img src="images/flows-rag-rewrite2.png" class="standard" style="max-height: 600px;" />
+                        <img src="images/flows-rag-rewrite-v3.png" class="standard" style="max-height: 600px;" />
                 </section>
 
                 <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
                     <div class="overlay-style">
+                        <h3>Embeddings</h3>
+
                         <div class="column-container">
-                            <div class="col-66" style="padding: 3%;">
-                                <h3>Embeddings</h3>
+                            <div class="col-66" style="padding: 3%; padding-top: 0;">
                                 <p>Information can be encoded into <span class="highlight">highly dimensional vectors</span> called embeddings.</p> <p>Related ones can then be found by performing mathematical operations between the vectors, such as cosine similarity or dot product.</p>
                             </div>
                             <div class="col-33">
-                                <div class="img-backdrop">
-                                    <img src="graphics/vector.drawio.png" style="min-height: auto;" />
-                                </div>
+                                <br/>
+                                    <img src="images/vectors.png" class="standard" />
                             </div>
                         </div>
                     </div>
@@ -436,7 +438,7 @@ Aye, Filip! What be yer next question, matey? 🏴‍☠️<|end|>
 
                 <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
                     <h3 class="overlay-style">RAG with Query Rewrite and Embeddings</h3>
-                        <img src="images/flows-rag-embeddings.png" class="standard" style="max-height: 600px;" />
+                        <img src="images/flows-rag-embeddings-v3.png" class="standard" style="max-height: 600px;" />
                 </section>
 
                 <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
@@ -546,15 +548,15 @@ Aye, Filip! What be yer next question, matey? 🏴‍☠️<|end|>
                             <div class="col">
                                 <ul>
                                     <li class="fragment">📝
-                                        Chat Completions
+                                        Chat Completions API
                                         <br />
-                                        <small>Default endpoint</small>
+                                        <small>Default way of interacting with the models</small>
                                     </li>
 
                                     <li class="fragment">👨‍⚕️
                                         Assistants API
                                         <br />
-                                        <small>Stateful</small>
+                                        <small>New stateful API for managed assistants</small>
                                     </li>
 
                                 </ul>
