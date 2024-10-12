@@ -402,6 +402,7 @@ table.simple td {
 table.medium td {
   font-size: 0.7em !important; 
   text-align: left !important;
+  padding: 2%;
 }
 
 .reveal table tr.noborder td {
@@ -445,6 +446,10 @@ table.large td {
   color: #a7a7a7;
 }
 
+.reveal table.medium td:first-child {
+  color: #a7a7a7;
+}
+
 .hljs-section {
   color: #798800;
 }
@@ -463,6 +468,10 @@ table.large td {
   border-radius: 3px;
   box-shadow: 0 1px 0 rgba(12,13,14,0.2), 0 0 0 2px #fff inset;
   white-space: nowrap;
+}
+
+.reveal table td {
+  border-bottom: 1px solid #fff;
 }
 
 .reveal p.footnote {

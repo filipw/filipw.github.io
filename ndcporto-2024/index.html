@@ -97,14 +97,14 @@
                     </div>
                 </section>
 
-                <section data-background="images/maxime-valcarce-mAj8xn5zXsk-unsplash.jpg">
+                <!-- <section data-background="images/maxime-valcarce-mAj8xn5zXsk-unsplash.jpg">
                     <div class="overlay-style">
                         <p>The textual input provided via the prompt is</p>
                         <h2 class="r-fit-text">tokenized</h2>
                         <p>before being passed into a large language model. Each model has a specific context window (token) size it can
                             handle (4k, 128k etc).</p>
                     </div>
-                </section>
+                </section> -->
 
                 <section data-background="images/maxime-valcarce-mAj8xn5zXsk-unsplash.jpg">
                     <div class="overlay-style">
@@ -119,7 +119,7 @@
                             </div>
 
                         </div>
-                        <p>Tokens are then mapped to a vector of token IDs.</p>
+                        <p>Input is tokenized and mapped to a vector of token IDs.</p>
                     </div>
                 </section>
 
@@ -384,28 +384,28 @@ Aye, Filip! What be yer next question, matey? 🏴‍☠️<|end|>
                 </section>
 
                 <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
-                    <h2 class="overlay-style">Zero-shot learning</h2>
-                        <img src="images/flows-zeroshot-v3.png" class="standard" />
+                    <img src="images/flows-zeroshot-v3.png" class="standard" style="max-height: none;" />
+                    <p class="overlay-style" style="padding: 1% !important;">Zero-shot learning</p>
                 </section>
 
                 <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
-                    <h2 class="overlay-style">Few-shot learning</h2>
-                        <img src="images/flows-fewshot-v3.png" class="standard" />
+                    <img src="images/flows-fewshot-v3.png" class="standard" style="max-height: none;" />
+                    <p class="overlay-style" style="padding: 1% !important;">Few-shot learning</p>
                 </section>
 
                 <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
-                    <h2 class="overlay-style">Fine Tuning</h2>
-                        <img src="images/flows-finetuning-v3.png" class="standard" />
+                    <img src="images/flows-finetuning-v3.png" class="standard" style="max-height: none;" />
+                    <p class="overlay-style" style="padding: 1% !important;">Fine tuning</p>
                 </section>
 
                 <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
-                    <h2 class="overlay-style">Retrieval Augmented Generation</h2>
-                        <img src="images/flows-rag-v3.png" class="standard" style="max-height: 600px;" />
+                    <img src="images/flows-rag-v3.png" class="standard" style="max-height: none;" />
+                    <p class="overlay-style" style="padding: 1% !important;">Retrieval Augmented Generation</p>
                 </section>
 
                 <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
-                    <h2 class="overlay-style">RAG with Query Rewrite</h2>
-                        <img src="images/flows-rag-rewrite-v3.png" class="standard" style="max-height: 600px;" />
+                    <img src="images/flows-rag-rewrite-v3.png" class="standard" style="max-height: 600px;" />
+                    <p class="overlay-style" style="padding: 1% !important;">RAG with Query Rewrite</p>
                 </section>
 
                 <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
@@ -437,8 +437,13 @@ Aye, Filip! What be yer next question, matey? 🏴‍☠️<|end|>
                 </section>
 
                 <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
-                    <h3 class="overlay-style">RAG with Query Rewrite and Embeddings</h3>
-                        <img src="images/flows-rag-embeddings-v3.png" class="standard" style="max-height: 600px;" />
+                    <img src="images/flows-rag-embeddings-v3.png" class="standard" style="max-height: 600px;" />
+                    <p class="overlay-style" style="padding: 1% !important;">RAG with Query Rewrite & Embeddings</p>
+                </section>
+                
+                <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
+                    <img src="images/flows-rag-embeddings-function-v3.png" class="standard" style="max-height: 600px;" />
+                    <p class="overlay-style" style="padding: 1% !important;">RAG with Query Rewrite, Embeddings & Functions</p>
                 </section>
 
                 <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
@@ -464,9 +469,6 @@ Aye, Filip! What be yer next question, matey? 🏴‍☠️<|end|>
                                 </div>
                             </div>
                             <div class="col-66">
-                                <!-- <p>Active areas of research involve building up hierarchical</p>
-                                <h2 class="r-fit-text">knowledge graphs</h2>
-                                <p>as opposed to naive semantic-search approaches.</p> -->
                                 <p><br/>GraphRAG allows extracting a <span class="highlight">knowledge graph</span> out of a corpus of data, building a hierarchy, generating summaries for them, and then leveraging these structures when performing RAG.</p>
                             </div>
                         </div>
@@ -481,6 +483,17 @@ Aye, Filip! What be yer next question, matey? 🏴‍☠️<|end|>
                     <h2 class="overlay-style">Knowledge graph RAG</h2>
                     <img src="images/graphrag-diagram.png" class="standard" />
                 </section>
+                
+                <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
+                    <div class="overlay-style">
+                        <p>The new <span
+                                class="highlight">realtime audio models</span> can also be used with RAG-patterns, allowing for audio conversations grounded in data.</p>
+                                <div class="img-backdrop">
+                                    <img src="images/voicerag.png" class="standard" style="max-height: 300px;" />
+                                </div>
+                    </div>
+                </section>
+
 
                 <!-- <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
                     <div class="overlay-style">
@@ -540,7 +553,7 @@ Aye, Filip! What be yer next question, matey? 🏴‍☠️<|end|>
                 <section data-background="images/maria-teneva-7FmSYQ3Z7fg-unsplash.jpg">
                     <h1>Implementing RAG</h1>
                 </section>
-
+<!-- 
                 <section data-background="images/michael-dziedzic-nbW-kaz2BlE-unsplash.jpg">
                     <div class="overlay-style">
                         <h2>Azure OpenAI</h2>
@@ -578,9 +591,47 @@ Aye, Filip! What be yer next question, matey? 🏴‍☠️<|end|>
                             </div>
                         </div>
                     </div>
-                </section>
+                </section> -->
 
                 <section data-background="images/michael-dziedzic-nbW-kaz2BlE-unsplash.jpg">
+                    <div class="overlay-style">
+                        <h2>Azure OpenAI</h2>
+                    <table class="medium">
+                        <thead>
+                            <th></th>
+                            <th>Chat Completions API</th>
+                            <th>Assistants API</th>
+                        </thead>
+                        <tr class="">
+                            <td>Status</td>
+                            <td>🟢 stable/standard</td>
+                            <td>🟡 beta/preview</td>
+                        </tr>
+                        <tr class="">
+                            <td>Availability</td>
+                            <td>✅ all regions</td>
+                            <td>⚠️ limited regions</td>
+                        </tr>
+                        <tr class="">
+                            <td>Context management</td>
+                            <td>☁️ stateless (manual management)</td>
+                            <td>💾 stateful (automatic management)</td>
+                        </tr>
+                        <tr class="">
+                            <td>Turns</td>
+                            <td>🔂 turn-by-turn</td>
+                            <td>🔀 multi-step turns</td>
+                        </tr>
+                        <tr class="">
+                            <td>Data features</td>
+                            <td>📊 On Your Data (Azure exclusive)</td>
+                            <td>📂 built-in file support</td>
+                        </tr>
+                    </table>
+                    </div>
+                </section>
+
+                <!-- <section data-background="images/michael-dziedzic-nbW-kaz2BlE-unsplash.jpg">
                     <div class="overlay-style">
                         <div class="column-container">
                             <div class="col-66" style="padding: 3%;">
@@ -618,7 +669,7 @@ Aye, Filip! What be yer next question, matey? 🏴‍☠️<|end|>
                             </div>
                         </div>
                     </div>
-                </section>
+                </section> -->
 
             <!-- <section data-background="images/michael-dziedzic-nbW-kaz2BlE-unsplash.jpg"></section>
                 <div class="overlay-style">
