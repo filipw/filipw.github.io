@@ -1,0 +1,267 @@
+﻿<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>LLMs with your own data using Azure OpenAI</title>
+    <meta name="description" content="">
+    <meta name="author" content="Filip W">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <script src="//code.jquery.com/jquery-1.8.0.js"></script>
+    <script src="//code.jquery.com/ui/1.8.23/jquery-ui.js"></script>
+    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/js/bootstrap.min.js"></script>
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/css/bootstrap-combined.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/default.min.css">
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/simple.css" id="theme">
+    <link rel="stylesheet" href="css/monokai_sublime.css" />
+    <link rel="stylesheet" href="css/custom.css" />
+    <script src="fsharp.formatting/styles/tips.js" type="text/javascript"></script>
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+    <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+
+    <script>
+        if (window.location.search.match(/print-pdf/gi)) {
+            var link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = 'css/print/pdf.css';
+            document.getElementsByTagName('head')[0].appendChild(link);
+        }
+    </script>
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+    <style type="text/css">
+    </style>
+</head>
+
+<body>
+    <div class="reveal">
+        <header
+            style="position: absolute;top: 50px; left: 100px; z-index:500; font-size:100px;background-color: rgba(0,0,0,0.5)">
+        </header>
+        <!-- Any section element inside of this container is displayed as a slide -->
+        <div class="slides">
+            <section data-background="images/p11730_v_h10_sk.jpg" data-state="bg-auto-width" data-background-color="#fff">
+                
+            </section>
+
+            <!-- <section data-background-color="#fff">
+                <img src="images/sonova.png" style="min-height: auto" />
+            </section> -->
+
+            <!-- LLMs -->
+            <section>
+                <section data-background="images/growtika-nGoCBxiaRO0-unsplash.jpg">
+                    <h1>The Case for Going Small</h1>
+                </section>
+
+                <section data-background="images/michael-dziedzic-nbW-kaz2BlE-unsplash.jpg">
+                    <div class="overlay-style">
+                        <h2>Model Comparison</h2>
+                        <table class="medium">
+                            <thead>
+                                <th></th>
+                                <th>Small Language Models</th>
+                                <th>Large Language Models</th>
+                            </thead>
+                            <tr class="">
+                                <td>Parameters</td>
+                                <td>🔹 up to a few billions</td>
+                                <td>🔸 hundreds of billions</td>
+                            </tr>
+                            <tr class="">
+                                <td>Compute</td>
+                                <td>💡 low</td>
+                                <td>⚙️ high</td>
+                            </tr>
+                            <tr class="">
+                                <td>Versatility</td>
+                                <td>⚡ very customizable</td>
+                                <td>📈 superior results</td>
+                            </tr>
+                            <tr class="">
+                                <td>Deployment&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                <td>📦 edge-friendly</td>
+                                <td>☁️ cloud-centric</td>
+                            </tr>
+                            <tr class="">
+                                <td>Source</td>
+                                <td>📝 open-source</td>
+                                <td>🔒 typically closed-source</td>
+                            </tr>
+                            <tr class="">
+                                <td>Costs</td>
+                                <td>🍃 low</td>
+                                <td>💰 high</td>
+                            </tr>
+                        </table>
+                        <div style="clear:both;">
+                            <p class="footnote" style="text-align: center;">SLMs offer flexibility and efficiency, while LLMs provide extensive, high-powered capabilities.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+                
+
+                <!-- <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
+                    <div class="overlay-style">
+                        <div class="column-container">
+                            <div class="col">
+                                <h2>SLMs</h2>
+                                <ul>
+                                    <li class="fragment">🚀 Efficient</li>
+                                    <li class="fragment">💡 Low-compute</li>
+                                    <li class="fragment">🔍 More domain-specific</li>
+                                </ul>
+                            </div>
+                            <div class="col">
+                                <h2>LLMs</h2>
+                                <ul>
+                                    <li class="fragment">🧰 Versatile</li>
+                                    <li class="fragment">⚙️ High compute</li>
+                                    <li class="fragment">🌐 Generally applicable</li>
+                                </ul>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </section> -->
+
+                <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
+                    <div class="overlay-style">
+                        <div class="column-container">
+                            <div class="col-33">
+                                <div class="img-backdrop">
+                                    <img src="graphics/slm.excalidraw.png" style="min-height: auto;" />
+                                </div>
+                            </div>
+                            <div class="col-66" style="padding: 3%; padding-top: 0;">
+                                <p>Small Language Models can <span class="highlight">securely</span> process data locally, act as <span class="highlight">offline</span> backup to a cloud-based LLM, improve processing <span class="highlight">latency</span> and help <span class="highlight">reduce costs</span> by offloading compute to users' devices.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+                <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
+                    <div class="img-backdrop">
+
+                    <img src="images/phi.png" class="standard" style="max-height: 600px;" />
+                    </div>
+                    <p class="overlay-style" style="padding: 1% !important;">Phi can ran on a wide range of host runtimes</p>
+                </section>
+
+            </section> <!-- end LLMs -->
+
+            <section>
+                <section data-background="images/hao-wang-pVq6YhmDPtk-unsplash.jpg">
+                <div class="col overlay-style" style="padding: 0 !important">
+
+                    <h1>Demos
+                    </h1>
+                </div>
+                </section>
+            </section>
+
+
+            <section data-background="images/all.png">
+            </section>
+
+            <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
+                <div class="overlay-style">
+                    <h2>Thank you</h2>
+                    <div class="column-container centered">
+                        <div class="col auto">
+                            <img class="small" src="images/thankyou.gif" style="min-height: auto; margin:0" />
+                        </div>
+                        <div class="col auto">
+                            <ul style="font-size: 0.9em;">
+                                <li>📝 <a
+                                        href="https://filipw.github.io/zurich-azure-ug-2024-2">filipw.github.io/zurich-azure-ug-2024-2</a>
+                                </li>
+                                <li>🖥️ <a
+                                        href="https://github.com/filipw/2024-ndcporto-demos">github.com/filipw/2024-ndcporto-demos</a>
+                                </li>
+                                <li>📸 <a href="http://unsplash.com">Photos credit: Unsplash</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section data-background-color="#000">
+                <img src="images/bye.gif" />
+            </section>
+
+        </div>
+    </div>
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']]
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+        </script>
+    <script>
+        // Full list of configuration options available here:
+        // https://github.com/hakimel/reveal.js#configuration
+
+        Reveal.initialize({
+            viewDistance: 30,
+            controls: true,
+            progress: true,
+            history: true,
+            center: true,
+            keyboard: {
+                39: 'next', // Right Arrow
+                37: 'prev'  // Left Arrow
+            },
+            transition: 'slide', // default/cube/page/concave/zoom/linear/fade/none
+
+            // Parallax scrolling
+            // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+            // parallaxBackgroundSize: '2100px 900px',
+
+            // Optional libraries used to extend on reveal.js
+            dependencies: [
+                { src: 'lib/js/classList.js', condition: function () { return !document.body.classList; } },
+                { src: 'plugin/markdown/marked.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+                { src: 'plugin/markdown/markdown.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+                { src: 'plugin/highlight.js/highlight.pack.js', async: true, callback: function () { /*hljs.initHighlightingOnLoad();*/ } },
+                { src: 'plugin/zoom-js/zoom.js', async: true, condition: function () { return !!document.body.classList; } },
+                { src: 'plugin/notes/notes.js', async: true, condition: function () { return !!document.body.classList; } },
+                { src: 'plugin/alt-arrows/alt-arrows.js' },
+                {
+                    src: 'plugin/reveal-code-focus.js',
+                    async: true,
+                    callback: function () {
+                        RevealCodeFocus();
+                    }
+                }
+            ]
+        });
+
+        // Reveal.configure({
+        //     keyboard: {
+        //         39: 'next', // Right Arrow
+        //         37: 'prev'  // Left Arrow
+        //     }
+        // });
+
+    </script>
+</body>
+
+</html>
