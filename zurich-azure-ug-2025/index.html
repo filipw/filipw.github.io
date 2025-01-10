@@ -47,54 +47,58 @@
         <!-- Any section element inside of this container is displayed as a slide -->
         <div class="slides">
 
-<section>
-    <section data-background="images/greg-rakozy-oMpAz-DN-9I-unsplash.jpg">
+            <section data-background="images/greg-rakozy-oMpAz-DN-9I-unsplash.jpg">
 
-        <div class="col overlay-style" style="padding: 0 !important">
+                <div class="col overlay-style" style="padding: 0 !important">
 
-            <h1 style="font-size: 2em; background: none; margin-bottom: 0;">
-                Small is beautiful
-                <small style="font-size: 0.5em; line-height: 2em;">Small Language Models for Efficient AI Solutions</small>
-            </h1>
-            <p style="margin-top: 0; padding-bottom: 20px;">
-                <small>
-                    <a href="https://strathweb.com" class="roll">
-                        <span>strathweb.com</span>
-                    </a> •
-                    <a href="https://bsky.app/profile/@filipw.strathweb.com" class="roll">
-                        <span data-title="@filip_woj">@filipw.strathweb.com</span>
-                    </a> •
-                    <a href="https://mathstodon.xyz/filipw" class="roll">
-                        <span data-title="@filip_woj">@filipw@mathstodon.xyz</span>
-                    </a> •
-                    <a href="https://github.com/filipw" class="roll">
-                        <span data-title="github.com/filipw">github.com/filipw</span>
-                    </a> •
-                        <span data-title="github.com/filipw">Filip W</span>
-                </small>
-            </p>
-        </div>
+                    <h1 style="font-size: 2em; background: none; margin-bottom: 0;">
+                        Small is beautiful
+                        <small style="font-size: 0.5em; line-height: 2em;">Small Language Models for Efficient AI
+                            Solutions</small>
+                    </h1>
+                    <p style="margin-top: 0; padding-bottom: 20px;">
+                        <small>
+                            <a href="https://strathweb.com" class="roll">
+                                <span>strathweb.com</span>
+                            </a> •
+                            <a href="https://bsky.app/profile/@filipw.strathweb.com" class="roll">
+                                <span data-title="@filip_woj">@filipw.strathweb.com</span>
+                            </a> •
+                            <a href="https://mathstodon.xyz/filipw" class="roll">
+                                <span data-title="@filip_woj">@filipw@mathstodon.xyz</span>
+                            </a> •
+                            <a href="https://github.com/filipw" class="roll">
+                                <span data-title="github.com/filipw">github.com/filipw</span>
+                            </a> •
+                            <span data-title="github.com/filipw">Filip W</span>
+                        </small>
+                    </p>
+                </div>
 
-    </section>
+            </section>
             <section data-background-color="#fff">
                 <img src="images/sonova.png" style="min-height: auto" />
             </section>
 
-            </section>
-
             <section>
+                <section data-background="images/growtika-nGoCBxiaRO0-unsplash.jpg">
+                    <h1>SLMs?</h1>
+                </section>
+
                 <section data-background="images/hunter-harritt-Ype9sdOPdYc-unsplash.jpg">
                     <div class="img-backdrop">
-    
-                    <img src="graphics/inference-loop.excalidraw.png" class="standard" style="max-height: 600px;" />
+
+                        <img src="graphics/inference-loop.excalidraw.png" class="standard" style="max-height: 600px;" />
                     </div>
-                    <p class="overlay-style" style="padding: 1% !important;">The heart of a language model is the <span class="highlight">inference loop</span>.</p>
+                    <p class="overlay-style" style="padding: 1% !important;">The heart of a language model is the <span
+                            class="highlight">inference loop</span>.</p>
                 </section>
 
                 <section data-background="images/hunter-harritt-Ype9sdOPdYc-unsplash.jpg">
                     <div class="overlay-style">
 
-                    <p>The performance of the model is measured by how many times this loop can be executed per second - this tells us how many</p>
+                        <p>The performance of the model is measured by how many times this loop can be executed per
+                            second - this tells us how many</p>
                         <h2 class="r-fit-text">tokens per second</h2>
                         <p>the model can produce.</p>
                     </div>
@@ -103,7 +107,7 @@
                 <section data-background="images/hunter-harritt-Ype9sdOPdYc-unsplash.jpg">
                     <div class="overlay-style">
 
-                    <p>Human reading speed is normally</p>
+                        <p>Human reading speed is normally</p>
                         <h2 class="r-fit-text">5-7 tokens per second</h2>
                         <p>so anything slower than that is unacceptable.</p>
                     </div>
@@ -113,9 +117,9 @@
                     <div class="overlay-style">
                         <div class="column-container">
                             <div class="col-50">
-                                <br/>
                                 <p>There is really no formal definition of what an SLM actually is.</p>
-                                <p>Typically we consider an SLM to be a language model with <span class="highlight">up to a few billion</span> parameters.</p>
+                                <p>Typically we consider an SLM to be a language model with <span class="highlight">up
+                                        to a few billion</span> parameters.</p>
                             </div>
 
                             <div class="col-50" style="padding: 3%; padding-top: 0;">
@@ -131,15 +135,14 @@
                     <div class="overlay-style">
                         <h2>Compute platforms</h2>
                         <div class="column-container">
-                            <div class="col-50">
+                            <div class="col-33">
                                 <div class="img-backdrop">
-                                    <img src="graphics/execution-environments.excalidraw.png" style="min-height: auto;" />
+                                    <img src="graphics/execution-environments.excalidraw.png"
+                                        style="min-height: auto;" />
                                 </div>
                             </div>
 
-                            <div class="col-50" style="padding: 3%; padding-top: 0;">
-                                <br />
-
+                            <div class="col-66" style="padding: 3%; padding-top: 0;">
                                 <ul>
                                     <li>🖥️ language models can run on various hardware accelerators</li>
                                     <li>⚡ the larger the model, the more compute power it needs</li>
@@ -148,151 +151,6 @@
                             </div>
                         </div>
 
-                    </div>
-                </section>
-
-                <section data-background="images/pietro-jeng-n6B49lTx7NM-unsplash.jpg">
-                    <div class="overlay-style">
-                        <h2>Running Language Models</h2>
-                        <div class="column-container">
-                            <div class="col">
-                                <ul>
-                                    <li class="fragment">🎮
-                                        Standalone Orchestrators
-                                        <br />
-                                        <small>e.g. LM Studio or Ollama (can be exposed as HTTP Server)</small>
-                                    </li>
-
-                                    <li class="fragment">💻
-                                        OS Integration
-                                        <br />
-                                        <small>e.g. Phi Silica (Copilot PC) or Gemini Nano (Android)</small>
-                                    </li>
-
-                                </ul>
-                            </div>
-                            <div class="col">
-                                <ul>
-                                    <li class="fragment">⚙️
-                                        Low level Frameworks
-                                        <br />
-                                        <small>e.g. ONNX Runtime, Candle, llama.cpp</small>
-                                    </li>
-
-                                    <li class="fragment">📚
-                                        High level library
-                                        <br />
-                                        <small>e.g. Strathweb Phi Engine with APIs for C#/Swift/Kotlin/Python</small>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <section data-background="images/hunter-harritt-Ype9sdOPdYc-unsplash.jpg">
-                    <div class="overlay-style">
-
-                    <p>For most tasks, foundational LLMs can be ran out of the box. SLMs on the other hand, require</p>
-                        <h2 class="r-fit-text">fine tuning to a specific task</h2>
-                        <p>to provide best results.</p>
-                    </div>
-                </section>
-
-                <section data-background="images/pietro-jeng-n6B49lTx7NM-unsplash.jpg">
-                    <div class="overlay-style">
-                        <h2>Fine tuning</h2>
-                        <div class="column-container">
-                            <div class="col-50">
-                                <div class="img-backdrop">
-                                    <img src="graphics/slm-fine-tuning-chart.excalidraw.png" style="min-height: auto;" />
-                                </div>
-                            </div>
-
-                            <div class="col-50" style="padding: 3%; padding-top: 0;">
-                                <br />
-                                <ul>
-                                <li>🔧 Fine-tuning can allow SLMs to match quality of LLMs</li>
-                                <li>📈 Domain-specific fine-tuning significantly improves performance on targeted tasks</li>
-                                <li>⚡ Fine-tuned SLMs maintain their efficiency advantage over larger models</li>
-                                </ul>
-                                </div>
-                        </div>
-
-                    </div>
-                </section>
-
-                <section data-background="images/pietro-jeng-n6B49lTx7NM-unsplash.jpg">
-                    <div class="overlay-style">
-                    <h2>Fine-tuning SLMs</h2>
-                    <div class="column-container">
-                    <div class="col">
-                    <ul>
-                    <li class="fragment">⚡
-                    Resource Efficiency
-                    <br />
-                    <small>Get faster results with lower compute requirements</small>
-                    </li>
-                    <li class="fragment">🧠
-                        Prompt Efficiency
-                        <br />
-                        <small>Teach the model to internalize system instructions</small>
-                        </li>
-                    </ul>
-                    </div>
-                    <div class="col">
-                    <ul>
-                    <li class="fragment">🔍
-                    Precision Control
-                    <br />
-                    <small>Reduce hallucinations through focused training scope</small>
-                    </li>
-                    <li class="fragment">📊
-                    Domain Expertise
-                    <br />
-                    <small>Achieve LLM-level performance in specific tasks</small>
-                    </li>
-                    </ul>
-                    </div>
-                    </div>
-                    </div>
-                    </section>
-    
-
-                <section data-background="images/hunter-harritt-Ype9sdOPdYc-unsplash.jpg">
-                    <div class="overlay-style">
-                        <p>The computing power required for AI is estimated to be</p>
-                        <h2 class="r-fit-text">doubling every 100 days</h2>
-                        <div style="clear:both;">
-                            <p class="footnote" style="text-align: center;">
-                                Shiqiang Zhu, Ting Yu, Tao Xu, Hongyang Chen, Schahram Dustdar, Sylvain Gigan, Deniz Gunduz, Ekram Hossain, Yaochu Jin, Feng Lin, et al. "Intelligent Computing: The Latest Advances, Challenges, and Future" (2023) 2:0006.DOI:10.34133/icomputing.0006
-                            </p>
-                        </div>
-                    </div>
-                </section>
-
-                <section data-background="images/maxime-valcarce-mAj8xn5zXsk-unsplash.jpg">
-                    <div class="overlay-style">
-                        <p>A generative AI system may use</p>
-                        <h2 class="r-fit-text">33x more energy</h2>
-                        <p>to complete a task than it would take with traditional software.</p>
-                        <div style="clear:both;">
-                            <p class="footnote" style="text-align: center;">
-                                Luccioni, Sasha and Jernite, Yacine and Strubell, Emma, "Power Hungry Processing: Watts Driving the Cost of AI Deployment?", 2024 ACM Conference on Fairness, Accountability, and Transparency (2024) x.doi.org/10.1145/3630106.3658542
-                            </p>
-                        </div>
-                    </div>
-                </section>
-
-            <section data-background="images/anton-filatov-O_5SJuSOxZA-unsplash.jpg">
-                    <div class="overlay-style">
-                        <h2>Skyrocketing CO2 emissions</h2>
-                            <ul>
-                                <li>🖥️ Microsoft &nbsp;&nbsp;&nbsp;+40% between 2020 and 2023</li>
-                                <li>🌐 Meta &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+65% between 2020 and 2022</li>
-                                <li>🔍 Google &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+50% from 2019 to 2023</li>
-                            </ul>
-                            <p>They all pledged carbon-neutrality by 2030.</p>
                     </div>
                 </section>
 
@@ -337,7 +195,8 @@
                             </tr>
                         </table>
                         <div style="clear:both;">
-                            <p class="footnote" style="text-align: center;">SLMs offer flexibility and efficiency, while LLMs provide extensive, high-powered capabilities.
+                            <p class="footnote" style="text-align: center;">SLMs offer flexibility and efficiency, while
+                                LLMs provide extensive, high-powered capabilities.
                             </p>
                         </div>
                     </div>
@@ -368,48 +227,226 @@
 
                 <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
                     <img src="graphics/apple.excalidraw.png" class="standard" />
-        <p class="overlay-style" style="padding: 1% !important;">In Apple's case, the work split between SLM and LLM is seamless and transparent to the user. It only becomes obvious once you go offline.</p>
-</section>
+                    <p class="overlay-style" style="padding: 1% !important;">In Apple's case, the work split between SLM and
+                        LLM is seamless and transparent to the user. It only becomes obvious once you go offline.</p>
+                </section>
 
-            <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
-                            <div class="img-backdrop">
-                                <img src="graphics/rag-basic.excalidraw.png" class="standard" />
+            </section>
+
+            <section>
+                <section data-background="images/growtika-nGoCBxiaRO0-unsplash.jpg">
+                    <h1>Running SLMs</h1>
+                </section>
+
+                <section data-background="images/pietro-jeng-n6B49lTx7NM-unsplash.jpg">
+                    <div class="overlay-style">
+                        <h2>Running Language Models</h2>
+                        <div class="column-container">
+                            <div class="col">
+                                <ul>
+                                    <li class="fragment">🎮
+                                        Standalone Orchestrators
+                                        <br />
+                                        <small>e.g. LM Studio or Ollama (can be exposed as HTTP Server)</small>
+                                    </li>
+
+                                    <li class="fragment">💻
+                                        OS Integration
+                                        <br />
+                                        <small>e.g. Phi Silica (Copilot PC) or Gemini Nano (Android)</small>
+                                    </li>
+
+                                </ul>
                             </div>
-                    <p class="overlay-style" style="padding: 1% !important;">A basic RAG relies on interaction with a single LLM.</p>
+                            <div class="col">
+                                <ul>
+                                    <li class="fragment">⚙️
+                                        Low level Frameworks
+                                        <br />
+                                        <small>e.g. ONNX Runtime, Candle, llama.cpp</small>
+                                    </li>
 
-            </section>
-
-            <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
-                            <div class="img-backdrop">
-                                <img src="graphics/rag-with-qrw.excalidraw.png" class="standard" />
+                                    <li class="fragment">📚
+                                        High level library
+                                        <br />
+                                        <small>e.g. Strathweb Phi Engine with APIs for C#/Swift/Kotlin/Python</small>
+                                    </li>
+                                </ul>
                             </div>
-                    <p class="overlay-style" style="padding: 1% !important;">SLM can act as a fast pre-processor, improving the quality of information fed into the LLM.</p>
-            </section>
+                        </div>
+                    </div>
+                </section>
 
-            <section data-background="images/maria-teneva-7FmSYQ3Z7fg-unsplash.jpg">
-                <div class="img-backdrop">
+                <section data-background="images/maria-teneva-7FmSYQ3Z7fg-unsplash.jpg">
+                    <div class="img-backdrop">
 
-                <img src="images/phi.png" class="standard" style="max-height: 600px;" />
-                </div>
-                <p class="overlay-style" style="padding: 1% !important;">Phi can ran on a wide range of host runtimes</p>
-            </section>
+                        <img src="images/phi.png" class="standard" style="max-height: 600px;" />
+                    </div>
+                    <p class="overlay-style" style="padding: 1% !important;">Phi can ran on a wide range of host
+                        runtimes
+                    </p>
+                </section>
 
-            <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
-                <div class="overlay-style">
-                    <p>Consider the following classification problem.</p>
-                            <div class="img-backdrop">
-                                <img src="graphics/toy_problem.excalidraw.png" class="standard" style="max-height: 300px;" />
+                <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
+                    <div class="overlay-style">
+                        <p>Consider the following classification problem.</p>
+                        <div class="img-backdrop">
+                            <img src="graphics/toy_problem.excalidraw.png" class="standard"
+                                style="max-height: 300px;" />
+                        </div>
+                    </div>
+                </section>
+    
+                <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
+                    <div class="img-backdrop">
+                        <img src="graphics/rag-basic.excalidraw.png" class="standard" />
+                    </div>
+                    <p class="overlay-style" style="padding: 1% !important;">A basic RAG relies on interaction with a single
+                        LLM.</p>
+    
+                </section>
+    
+                <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
+                    <div class="img-backdrop">
+                        <img src="graphics/rag-with-qrw.excalidraw.png" class="standard" />
+                    </div>
+                    <p class="overlay-style" style="padding: 1% !important;">SLM can act as a fast pre-processor, improving
+                        the quality of information fed into the LLM.</p>
+                </section>
+    
+                <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
+                    <div class="img-backdrop">
+                        <img src="images/gen-query-rewriting.png" class="standard" />
+                    </div>
+                </section>
+    
+                <section data-background="images/pietro-jeng-n6B49lTx7NM-unsplash.jpg">
+                    <div class="overlay-style">
+                        <div class="column-container">
+                            <div class="col-66">
+                                <div class="img-backdrop">
+                                    <img src="images/gen-query-rewriting.png" style="min-height: auto;" />
+                                </div>
                             </div>
-                </div>
+    
+                            <div class="col-33" style="padding: 3%; padding-top: 0;">
+                                <p>SLM query rewriting is now an integral part of Azure AI Search</p>
+                            </div>
+                        </div>
+    
+                    </div>
+                </section>
+
+                <section data-background="images/maria-teneva-7FmSYQ3Z7fg-unsplash.jpg">
+                    <div class="img-backdrop">
+
+                        <img src="graphics/strathweb-phi-engine.excalidraw.png" class="standard"
+                            style="max-height: 600px;" />
+                    </div>
+                    <p class="overlay-style" style="padding: 1% !important;">Open source case study: Strathweb Phi
+                        Engine
+                    </p>
+                </section>
             </section>
 
-            <section data-background="images/maria-teneva-7FmSYQ3Z7fg-unsplash.jpg">
-                <div class="img-backdrop">
+            <section>
+                <section data-background="images/growtika-nGoCBxiaRO0-unsplash.jpg">
+                    <h1>SLM Customization</h1>
+                </section>
 
-                <img src="graphics/strathweb-phi-engine.excalidraw.png" class="standard" style="max-height: 600px;" />
-                </div>
-                <p class="overlay-style" style="padding: 1% !important;">Open source case study: Strathweb Phi Engine</p>
+                <section data-background="images/hunter-harritt-Ype9sdOPdYc-unsplash.jpg">
+                    <div class="overlay-style">
+
+                        <p>For most tasks, foundational LLMs can be ran out of the box. SLMs on the other hand, require
+                        </p>
+                        <h2 class="r-fit-text">fine tuning to a specific task</h2>
+                        <p>to provide best results.</p>
+                    </div>
+                </section>
+
+                <section data-background="images/pietro-jeng-n6B49lTx7NM-unsplash.jpg">
+                    <div class="overlay-style">
+                        <h2>Fine tuning</h2>
+                        <div class="column-container">
+                            <div class="col-33">
+                                <div class="img-backdrop">
+                                    <img src="graphics/slm-fine-tuning-chart.excalidraw.png"
+                                        style="min-height: auto;" />
+                                </div>
+                            </div>
+
+                            <div class="col-66" style="padding: 3%; padding-top: 0;">
+                                <br />
+                                <ul>
+                                    <li>🔧 Fine-tuning can allow SLMs to match quality of LLMs</li>
+                                    <li>📈 Domain-specific fine-tuning significantly improves performance on targeted
+                                        tasks
+                                    </li>
+                                    <li>⚡ Fine-tuned SLMs maintain their efficiency advantage over larger models</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+                <section data-background="images/pietro-jeng-n6B49lTx7NM-unsplash.jpg">
+                    <div class="overlay-style">
+                        <h2>Fine-tuning SLMs</h2>
+                        <div class="column-container">
+                            <div class="col">
+                                <ul>
+                                    <li class="fragment">⚡
+                                        Resource Efficiency
+                                        <br />
+                                        <small>Get faster results with lower compute requirements</small>
+                                    </li>
+                                    <li class="fragment">🧠
+                                        Prompt Efficiency
+                                        <br />
+                                        <small>Teach the model to internalize system instructions</small>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col">
+                                <ul>
+                                    <li class="fragment">🔍
+                                        Precision Control
+                                        <br />
+                                        <small>Reduce hallucinations through focused training scope</small>
+                                    </li>
+                                    <li class="fragment">📊
+                                        Domain Expertise
+                                        <br />
+                                        <small>Achieve LLM-level performance in specific tasks</small>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
+                    <div class="img-backdrop">
+                        <img src="graphics/ft-basic.excalidraw.png" class="standard" />
+                    </div>
+                    <p class="overlay-style" style="padding: 1% !important;"><span class="highlight">Fine tuning</span>
+                        requires preparing a set of inference samples and running them past the model.</p>
+
+                </section>
+
+                <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
+                    <div class="img-backdrop">
+                        <img src="graphics/ft-distillation.excalidraw.png" class="standard" />
+                    </div>
+                    <p class="overlay-style" style="padding: 1% !important;"><span class="highlight">Distillation</span>
+                        is
+                        a variant of fine tuning where inference samples come from a "teacher" LLM.</p>
+
+                </section>
+
             </section>
+
 
 
             <section data-background="images/all.png">
