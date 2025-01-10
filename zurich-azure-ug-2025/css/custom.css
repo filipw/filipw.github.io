@@ -77,6 +77,10 @@ ul ul {
   flex: 3; 
 }
 
+.col-50 {
+  flex: 2; 
+}
+
 .col-25 {
   flex: 1; 
 }
