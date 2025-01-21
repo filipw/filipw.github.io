@@ -80,20 +80,6 @@
                 style="max-height: 666px; border: 3px solid black !important;box-shadow: 5px 2px 2px black;" />
                 <img src="images/fe-quantum-cover.jpg" 
                 style="max-height: 666px; border: 3px solid black !important;box-shadow: 5px 2px 2px black;" />
-                <!-- <div class="column-container">
-
-                    <div class="col">
-                    </div>
-
-                    <div class="col overlay-style fragment">
-                        <blockquote>Every day that you don’t convert to a quantum-safe protocol, there’s no recovery plan
-                        </blockquote>
-                        <p>
-                            <footer>- <em>Dario Gil, IBM senior VP</em></footer>
-                            </p>
-                    </div>
-
-                </div> -->
                 <aside class="notes">
                     However, as it is usually the case with popular media, certain things get easily misrepresented or taken out of the context - and the goal of this session is to provide you the technical background and enable you to judge the future impact of quantum technologies yourselves. 
                 </aside>
@@ -980,6 +966,27 @@
                     <aside class="notes">In TLS 1.3, RSA is no longer used for key exchange, in favor of methods like Ephemeral Elliptic-Curve Diffie-Hellman (ECDHE). Even without TLS 1.3, ECDSA should be used over RSA.</aside>
                 </section>
 
+
+                <section data-background="images/alice-door.jpeg">
+                                <div class="column-container overlay-style">
+
+                    <div class="col-50">
+                        With a <span class="highlight">harvest-now-decrypt-later</span> approach, a threat actor can store encrypted data now and decrypt it later when quantum computers are available.
+                    </div>
+
+                    <div class="col-50" style="padding-left: 1em;">
+                        <blockquote>Every day that you don't convert to a quantum-safe protocol, there's no recovery plan
+                        </blockquote>
+                        <p>
+                            <footer>- <em>Dario Gil, IBM senior VP</em></footer>
+                            </p>
+                    </div>
+
+                </div>
+                </section>
+
+
+
                 <section data-background="images/grover.png" data-state="bg-top-left">
                     <div class="overlay-style fragment black-overlay-style">
                         <p>In 1996, Lov Grover developed a quantum search algorithm through an unsorted data set - finding $x$ for $f(x) = y$, when $y$ is known.</p><p>It provides <span class="highlight">quadratic speedup </span> over the classical counterparts.</p>
@@ -1173,7 +1180,45 @@
                     </aside>
                 </section> -->
 
-                <section data-background="images/irpc-demonstrator.jpg">
+
+                <section data-background="images/quantum-computer.jpg">
+                    <div class="overlay-style">
+                        <p>In 2024 the first three PQC standards were formalized.</p>
+                        <div class="column-container">
+                            <div class="col">
+                                <ul>
+                                    <li class="">🔐
+                                        FIPS-203 (Kyber)
+                                        <br />
+                                        <small>Module-Lattice-Based Key-Encapsulation Mechanism Standard</small>
+                                    </li>
+
+                                    <li class="">✍️
+                                        FIPS-204 (Dilithium)
+                                        <br />
+                                        <small>Module-Lattice-Based Digital Signature Standard</small>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col">
+                                <ul>
+                                    <li class="">✍️
+                                        FIPS-205 (SPHINCS+)
+                                        <br />
+                                        <small>Stateless Hash-Based Digital Signature Standard</small>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <aside class="notes">
+                        Kyber & Dilithium were selected to be primary general-purpose protocols for key encapsulation and digital signatures. 
+                        FALCON was recommended for applications requiring smaller digital signatures. 
+                        SPHINCS+ was chosen as a backup option to the lattice-based approaches.
+                    </aside>
+                </section>
+
+                <!-- <section data-background="images/irpc-demonstrator.jpg">
                     <div class="overlay-style">
                         <h2>Ongoing Standardization</h2>
                         <ul>
@@ -1182,7 +1227,7 @@
                         </ul>
                         
                     </div>
-                </section>
+                </section> -->
 
                 <section data-background="images/atlas-ibl.jpg">
                     <div class="overlay-style">
@@ -1214,8 +1259,20 @@
 
                 <section data-background="images/atlas-ibl.jpg">
                     <div class="overlay-style">
-                        <p>Post quantum cryptography has implementations in all major programming languages now - including in the popular BouncyCastle library, through which it is available for <span class="highlight">.NET</span>.</p>
+                        
+                    <div class="column-container">
+                        <div class="col-50">
+                            <p>Post quantum cryptography has implementations in all major programming languages now. Through <span class="highlight">BouncyCastle</span> library, it is available for <span class="highlight">.NET</span>.</p> <p>There is no built-in official PQC support in .NET yet.</p>
+                        </div>
+                        <div class="col-50" style="padding-left: 1em;">
+                            <div class="img-backdrop">
+                            <img src="images/legion-of-the-bouncy-castle-small-png.webp" class="standard" style="min-height: auto;" />
+                        </div>
+                        </div>
+
                     </div>
+                </div>
+
                 </section>
 
                 <section data-background="images/open-quantum-safe.png">
@@ -1231,41 +1288,10 @@
             </section>
 
             <!-- Quantum security -->
-            <section>
+            <!-- <section>
                 <section data-background="images/atlas-barrel.jpg">
                     <h1>Quantum security</h1>
                 </section>
-
-                <!-- <section data-background="images/irpc-demonstrator.jpg">
-                    <div class="overlay-style">
-                        <p>We cannot ask a quantum system</p>
-                        <h2 class="r-fit-text">what state are you in?</h2>
-                    </div>
-                    <aside class="notes">
-                        You can think of a superposition as a form of a quantum coin toss.
-                    </aside>
-                </section>
-
-                <section data-background="images/irpc-demonstrator.jpg">
-                    <div class="overlay-style">
-                        <p>For $\mathbf{Z}$ basis we can only ask</p>
-                        <h2 class="r-fit-text">Are you $\ket{0}$ or are you $\ket{1}$?</h2>
-                    </div>
-                </section> -->
-
-                <!-- <section data-background="images/irpc-demonstrator.jpg">
-                    <div class="overlay-style">
-                        <p>Upon observation, superposition state <span class="highlight">collapses</span> to one
-                            of the
-                            observable states (e.g. $\ket{0}$ or $\ket{1}$).</p>
-                        <h2 class="r-fit-text">outcome is probabilistic</h2>
-                    </div>
-                    <aside class="notes">
-                        It is a fundamental quantum doctrine that a measurement does not reveal a pre-existing value of
-                        the measured property. On the contrary, the outcome of a measurement is brought into being by
-                        the act of measurement itself. - David Mermin
-                    </aside>
-                </section> -->
 
                 <section data-background="images/alice_9104.jpg">
                     <div class="column-container centered overlay-style">
@@ -1298,66 +1324,6 @@
                     </div>
                 </section>
 
-<!-- 
-                <section data-background="images/alice_9104.jpg">
-                    <div class="column-container centered overlay-style">
-                        <div class="col">
-                            <h2>$\mathbf{X}$ basis</h2>
-                            <p class="r-fit-text">
-                                $$
-                                0 = \frac{1}{\sqrt{2}}\begin{bmatrix} 1 \\ 1 \end{bmatrix} = \ket{+}$$
-                                $$
-                                1 = \frac{1}{\sqrt{2}}\begin{bmatrix} 1 \\ -1 \end{bmatrix} = \ket{-}
-                                $$
-                            </p>
-                        </div>
-                        <div class="col inset">
-                            <img src="images/bloch-x-axis.jpeg" />
-                        </div>
-                </section> -->
-
-                <!-- <section data-background="images/heisenberg-uncertainty.png" data-state="bg-top-left">
-                    <div class="column-container">
-                        <div class="col">
-                        </div>
-                        <div class="col black-overlay-style overlay-style fragment">
-                            <blockquote>It is impossible to determine accurately both the position and the direction and
-                                speed of a particle at the same instant.
-                            </blockquote>
-                            <p>
-                            <footer>- <em>Werner Heisenberg</em></footer>
-                            </p>
-                        </div>
-                    </div>
-                </section> -->
-
-                <!-- <section data-background="images/alice_9104.jpg">
-                    <div class="overlay-style">
-                        <p>In quantum mechanics we cannot simultaneously know values of</p>
-                        <h2 class="r-fit-text">conjugate variables</h2>
-                        <p>with arbitrary precision.</p>
-                    </div>
-                </section> -->
-<!-- 
-                <section data-background="images/alice_9104.jpg">
-                    <div class="overlay-style">
-                        <p>The choice of basis is a way to</p>
-                        <h2 class="r-fit-text">encode and decode</h2>
-                        <p>information into and out of qubits</p>
-                    </div>
-                </section> -->
-
-                <!-- <section data-background="images/alice_9104.jpg">
-                    <div class="overlay-style">
-                        <p>In quantum physics, the measurements in the $\mathbf{Z}$ and $\mathbf{X}$ bases <span
-                                class="highlight">do not commute</span>.
-                    </div>
-                    <aside class="notes">
-                        $X \cdot Z - Z \cdot X \neq 0$ which means the order of measurements matters!
-                    </aside>
-                </section> -->
-
-
                 <section data-background="images/alice_9104.jpg">
                     <div class="column-container centered overlay-style">
                         <div class="col inset">
@@ -1370,17 +1336,6 @@
                         </div>
                     </div>
                 </section>
-
-                <!-- <section data-background="images/cms-beam.jpg">
-                    <div class="overlay-style">
-                        <h3>For X and Z bases:</h3>
-                        <p>$X \cdot Z =\begin{bmatrix} 0 & 1 \\ 1 & 0 \end{bmatrix}\begin{bmatrix} 1 & 0 \\ 0 & -1
-                            \end{bmatrix} = \begin{bmatrix} 0 & -1 \\ 1 & 0 \end{bmatrix}$</p>
-                        <p>$Z \cdot X =\begin{bmatrix} 1 & 0 \\ 0 & -1 \end{bmatrix}\begin{bmatrix} 0 & 1 \\ 1 & 0
-                            \end{bmatrix} = \begin{bmatrix} 0 & 1 \\ -1 & 0 \end{bmatrix}$</p>
-                        <p>$X \cdot Z - Z \cdot X \neq 0$</p>
-                    </div>
-                </section> -->
 
                 <section data-background="images/alice_9104.jpg">
                     <div class="overlay-style">
@@ -1398,106 +1353,13 @@
                     </aside>
                 </section>
 
-                <!-- <section data-background="images/alice_9104.jpg">
-                    <div class="overlay-style">
-                        <p>Superposition is</p>
-                        <h2 class="r-fit-text">basis dependent</h2>
-                    </div>
-                    <aside class="notes">
-                        Because of this, the choice of basis allows us to encode information in a qubit in a
-                        specific
-                        way. The information can only be accurately read, if you know the basis you should use upon
-                        measurement, otherwise the result will be random.
-                        <br /><br />
-                        This concept underpins quantum cryptography.
-                    </aside>
-                </section> -->
-
-
                 <section data-background="images/alice_9104.jpg">
                     <div class="overlay-style">
                         <p>Unknown quantum state</p>
                         <h2 class="r-fit-text">cannot be cloned</h2>
                     </div>
                 </section>
-<!-- 
-                <section data-background="images/alice_9104.jpg">
-                    <div class="overlay-style">
-                        <p>In 1969, Stephen Weisner proposed the concept of "quantum money" - utilizing the uncertainty
-                            principle and quantum no-cloning theorem to create <span
-                                class="highlight">unforgeable</span> physical objects.
-                        </p>
-                </section>
 
-                <section data-background="images/alice_9104.jpg">
-                    <div class="overlay-style">
-                        <h2>Quantum money</h2>
-                        <table>
-                            <tr class="fragment">
-                                <td colspan="12">🏦</td>
-                            </tr>
-                            <tr class="fragment">
-                                <td>0</td>
-                                <td>0</td>
-                                <td>1</td>
-                                <td>0</td>
-                                <td>1</td>
-                                <td>0</td>
-                                <td>1</td>
-                                <td>0</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>0</td>
-                                <td>0</td>
-                            </tr>
-                            <tr class="fragment">
-                                <td>X</td>
-                                <td>Z</td>
-                                <td>Z</td>
-                                <td>Z</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>Z</td>
-                                <td>Z</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>Z</td>
-                                <td>Z</td>
-                            </tr>
-                            <tr class="fragment">
-                                <td>$\ket{+}$</td>
-                                <td>$\ket{0}$</td>
-                                <td>$\ket{1}$</td>
-                                <td>$\ket{0}$</td>
-                                <td>$\ket{-}$</td>
-                                <td>$\ket{+}$</td>
-                                <td>$\ket{1}$</td>
-                                <td>$\ket{0}$</td>
-                                <td>$\ket{-}$</td>
-                                <td>$\ket{-}$</td>
-                                <td>$\ket{0}$</td>
-                                <td>$\ket{0}$</td>
-                            </tr>
-                        </table>
-                        <p class="fragment">Embedded into the 💵 note - unknown ❓ quantum states.</p>
-                    </div>
-                </section>
-
-                <section data-background="images/alice_9104.jpg">
-                    <div class="overlay-style">
-                        <p>Because arbitrary quantum states <span class="highlight">cannot be cloned</span>, an
-                            attacker 🦹‍♀️ cannot copy the note.</p>
-                        <p>She <span class="highlight">must guess</span> between $\mathbf{Z}$ and $\mathbf{X}$
-                            bases.
-                        </p>
-                </section>
-
-                <section data-background="images/alice_9104.jpg">
-                    <div class="overlay-style">
-                        <p>Only the bank knows the combination of bases, with which it can verify the <span
-                                class="highlight">authenticity</span> of the note.
-                        </p>
-                </section> -->
 
                 <section data-background="images/bb84.png">
                     <div class="overlay-style fragment">
@@ -1643,123 +1505,8 @@
                             </p>
                         </div>
                     </div>
-                </section> -->
-<!-- 
-                <section data-background="images/e91.png">
-                    <div class="overlay-style fragment">
-                        <p>In 1991, Artur Ekert developed the first <span class="highlight">quantum key
-                                distribution</span> protocol based on <span class="highlight">entanglement</span>. It
-                            became known as E91 protocol.
-                        </p>
                 </section>
-
-                <section data-background="images/alice_9104.jpg">
-                    <div class="overlay-style">
-                        <h2>E91 key distribution</h2>
-                        <table>
-                            <tr class="fragment" data-fragment-index="1">
-                                <td>👧🏻</td>
-                                <td>⚛️</td>
-                                <td>⚛️</td>
-                                <td>⚛️</td>
-                                <td>⚛️</td>
-                                <td>⚛️</td>
-                                <td>⚛️</td>
-                                <td>⚛️</td>
-                                <td>⚛️</td>
-                                <td>⚛️</td>
-                                <td>⚛️</td>
-                                <td>⚛️</td>
-                                <td>⚛️</td>
-                                <td>⚛️</td>
-                                <td>⚛️</td>
-                                <td>⚛️</td>
-                            </tr>
-                            <tr class="fragment" data-fragment-index="3">
-                                <td></td>
-                                <td>1</td>
-                                <td>0</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>0</td>
-                                <td>1</td>
-                                <td>0</td>
-                                <td>1</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>1</td>
-                                <td>0</td>
-                                <td>1</td>
-                                <td>1</td>
-                            </tr>
-                            <tr class="fragment" data-fragment-index="6">
-                                <td colspan="16">🦄</td>
-                            </tr>
-                            <tr class="fragment" data-fragment-index="2">
-                                <td>👦🏼</td>
-                                <td>⚛️</td>
-                                <td>⚛️</td>
-                                <td>⚛️</td>
-                                <td>⚛️</td>
-                                <td>⚛️</td>
-                                <td>⚛️</td>
-                                <td>⚛️</td>
-                                <td>⚛️</td>
-                                <td>⚛️</td>
-                                <td>⚛️</td>
-                                <td>⚛️</td>
-                                <td>⚛️</td>
-                                <td>⚛️</td>
-                                <td>⚛️</td>
-                                <td>⚛️</td>
-                            </tr>
-                            <tr class="fragment" data-fragment-index="4">
-                                <td></td>
-                                <td>1</td>
-                                <td>0</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>0</td>
-                                <td>1</td>
-                                <td>0</td>
-                                <td>1</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>1</td>
-                                <td>0</td>
-                                <td>1</td>
-                                <td>1</td>
-                            </tr>
-                        </table>
-                        <p class="fragment" data-fragment-index="5">Shared key: <span class="highlight">1 0 1 1 0 1 0 1
-                                0 0 0 1 0 1 1</span></p>
-                    </div>
-                </section>
-
-                <section data-background="images/alice_9104.jpg">
-                    <div class="overlay-style">
-                        <p>Entangled based key distribution does not have</p>
-                        <h2 class="r-fit-text">an element of reality</h2>
-                        <p>associated with it.</p>
-                    </div>
-                </section>
-
-                <section data-background="images/entanglement-qkd.png">
-                    <div class="overlay-style fragment">
-                        <p>In 2020, a Chinese research team executed an <span
-                                class="highlight">entanglement-based</span> quantum key distribution via a low-orbit
-                            quantum satellite, between ground stations 1120km apart.</p>
-                        <div style="clear:both;">
-                            <p class="footnote" style="text-align: center;">Yin, J., Li, YH., Liao, SK. et al.
-                                Entanglement-based secure quantum cryptography over 1,120 kilometres. Nature 582,
-                                501–505 (2020). (image from the paper)
-                            </p>
-                        </div>
-                    </div>
-                </section> -->
-            </section>
+            </section> -->
             <!-- end quantum security -->
 
             <section data-background="images/all.jpg">
@@ -1775,9 +1522,9 @@
                         <div class="col auto">
                             <ul style="font-size: 0.9em;">
                                 <li>📝 <a
-                                        href="https://filipw.github.io/ndcporto-2023">filipw.github.io/ndclondon-2025</a>
+                                        href="https://filipw.github.io/ndclondon-2025">filipw.github.io/ndclondon-2025</a>
                                 </li>
-                                <li>🖥️ <a href="https://github.com/filipw/2023-ndcporto-demos">github.com/filipw/2025-ndclondon-demos</a></li>
+                                <li>🖥️ <a href="https://github.com/filipw/2025-ndclondon-demos">github.com/filipw/2025-ndclondon-demos</a></li>
                                 <li>📚 <a href="https://link.springer.com/book/10.1007/978-3-030-99379-5">Intro to Quantum
                                     Computing book</a>
                             </li>
