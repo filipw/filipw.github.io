@@ -628,18 +628,62 @@
                     <div class="overlay-style">
                         <p>In quantum theory a basic unit of information is called a</p>
                         <h2 class="r-fit-text">qubit</h2>
+                        <p></p>
+                    </div>
+                </section>
+
+                <section data-background="images/atlas-ibl.jpg">
+                    <div class="overlay-style">
+
+                        <div class="column-container">
+                            <div class="col-50">
+                                <!-- <p>Qubit is described by a two dimensional complex vector</p> -->
+                                <p>Just like a bit, qubit has only two <span class="highlight">observable</span> (basis) states
+                                </p>
+                            </div>
+                            <div class="col-50" style="padding-left: 1em;">
+                                <p>
+                                    $
+                                    \ket{0} \rightarrow
+                                    $ maps to bit 0<br /><br />
+                                    $
+                                    \ket{1} \rightarrow
+                                    $ maps to bit 1<br />
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <aside class="notes">
+                        Mathematically, a qubit state is described by a vector.
+                    </aside>
+                </section>
+
+                <section data-background="images/atlas-ibl.jpg">
+                    <div class="overlay-style">
+
+                        <div class="column-container">
+                            <div class="col-50">
+                                <p>However, during computation can additionally be in a <span
+                                    class="highlight">superposition</span> state (a mix of both of them).</p>
+                                    <p>$\alpha\ket{0} + \beta\ket{1} \rightarrow
+                                        $ superposition</p>
+                            </div>
+                            <div class="col-50" style="padding-left: 1em;">
+                                <img class="standard" src="images/bloch-z-axis.jpeg" />
+
+                            </div>
+                        </div>
                     </div>
                 </section>
 
                 <section data-background="images/irpc-demonstrator.jpg">
                     <div class="overlay-style">
-                        <p>Just like a bit, qubit has only two <span class="highlight">observable</span> (basis) states
-                        </p>
-                        <p>However, during computation can additionally be in a <span
-                                class="highlight">superposition</span> state (a mix of both of them).</p>
+                        <p>A superposition state is</p>
+                        <h2 class="r-fit-text">not directly observable</h2>
+                        <p>Only the basis states can be observed in the measurement process</p>
                     </div>
                     <aside class="notes">
-                        Mathematically, a qubit state is described by a vector.
+                        So what happens when we observe a system in superposition?
                     </aside>
                 </section>
 
@@ -651,7 +695,7 @@
                     </aside>
                 </section>
 
-                <section data-background="images/irpc-demonstrator.jpg">
+                <!-- <section data-background="images/irpc-demonstrator.jpg">
                     <div class="column-container centered overlay-style">
                         <div class="col">
                             <h2>$\mathbf{Z}$ basis</h2>
@@ -672,18 +716,7 @@
                         <aside class="notes">
                             Qubit state can be visualized on a Bloch sphere
                         </aside>
-                </section>
-
-                <section data-background="images/irpc-demonstrator.jpg">
-                    <div class="overlay-style">
-                        <p>A superposition state is</p>
-                        <h2 class="r-fit-text">not directly observable</h2>
-                        <p>Only the basis states can be observed in the measurement process</p>
-                    </div>
-                    <aside class="notes">
-                        So what happens when we observe a system in superposition?
-                    </aside>
-                </section>
+                </section> -->
 
                 <section data-background="images/irpc-demonstrator.jpg">
                     <div class="overlay-style">
@@ -876,9 +909,15 @@
 
                 <section data-background="images/alice-door.jpeg">
                     <div class="overlay-style">
-                        <p>One of most widely used public-private cryptosystems is RSA (Rivest–Shamir–Adleman), whose
-                            security relies on <span class="highlight">factoring problem</span> of large prime numbers.
-                        </p>
+                        <div class="column-container">
+                            <div class="col-50">
+                                <p>One of most widely used public-private cryptosystems is RSA (Rivest–Shamir–Adleman)</p> <p>Its
+                                    security relies on the <span class="highlight">factoring problem</span> of large prime numbers.
+                                </p>
+                            </div>
+                            <div class="col-50">
+                                <img class="standard" src="images/rsa.png" />
+                            </div>
                     </div>
                     <aside class="notes">
                         RSA is considered to be partly legacy, but still it makes a good example to illustrate certain
@@ -1270,29 +1309,36 @@
                     <div class="overlay-style">
                         <p>In 2024 the first three PQC standards were formalized.</p>
                         <div class="column-container">
-                            <div class="col">
+                            <div class="col-50">
                                 <ul>
-                                    <li class="">🔐
-                                        FIPS-203 (Kyber)
+                                    <li class="fragment">🔐
+                                        ML-KEM (Kyber)
                                         <br />
-                                        <small>Module-Lattice-Based Key-Encapsulation Mechanism Standard</small>
+                                        <small>
+                                            → Module-Lattice-Based Key-Encapsulation Mechanism Standard<br/>
+                                            → FIPS-203</small>
                                     </li>
 
-                                    <li class="">✍️
-                                        FIPS-204 (Dilithium)
+                                    <li class="fragment">✍️
+                                        ML-DSA (Dilithium)
                                         <br />
-                                        <small>Module-Lattice-Based Digital Signature Standard</small>
+                                        <small>→ Module-Lattice-Based Digital Signature Standard <br/>
+                                            → FIPS-204</small>
+                                    </li>
+
+                                    <li class="fragment">✍️
+                                        SLH-DSA (SPHINCS+)
+                                        <br />
+                                        <small>→ Stateless Hash-Based Digital Signature Standard<br/>
+                                            → FIPS-205</small>
                                     </li>
                                 </ul>
                             </div>
-                            <div class="col">
-                                <ul>
-                                    <li class="">✍️
-                                        FIPS-205 (SPHINCS+)
-                                        <br />
-                                        <small>Stateless Hash-Based Digital Signature Standard</small>
-                                    </li>
-                                </ul>
+                            <div class="col-50">
+                                <img class="standard" src="images/Crypto-rev1.png" />
+                                <div>
+                                <p class="footnote">Credit: N. Hanacek/NIST</small>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1357,6 +1403,73 @@
                     </div>
                 </section>
 
+                <section data-background="images/atlas-ibl.jpg">
+                    <div class="overlay-style">
+                      <table class="medium">
+                        <colgroup>
+                          <col style="width: 28%;">
+                          <col style="width: 18%;">
+                          <col style="width: 18%;">
+                          <col style="width: 18%;">
+                          <col style="width: 18%;">
+                        </colgroup>
+                        <thead>
+                          <tr>
+                            <th></th>
+                            <th>Public Key (bytes)</th>
+                            <th>Secret Key (bytes)</th>
+                            <th>Ciphertext (bytes)</th>
+                            <th>Shared Secret (bytes)</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>ML-KEM-512</td>
+                            <td>800</td>
+                            <td>1632</td>
+                            <td>768</td>
+                            <td>32</td>
+                          </tr>
+                          <tr>
+                            <td>ML-KEM-768</td>
+                            <td>1184</td>
+                            <td>2400</td>
+                            <td>1088</td>
+                            <td>32</td>
+                          </tr>
+                          <tr>
+                            <td>ML-KEM-1024</td>
+                            <td>1568</td>
+                            <td>3168</td>
+                            <td>1568</td>
+                            <td>32</td>
+                          </tr>
+                          <tr>
+                            <td>ECDH (X25519)</td>
+                            <td>32</td>
+                            <td>32</td>
+                            <td>–</td>
+                            <td>32</td>
+                          </tr>
+                          <tr>
+                            <td>RSA 2048<sup>*</sup></td>
+                            <td>~256</td>
+                            <td>~256</td>
+                            <td>256</td>
+                            <td>32</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                  
+                      <div style="clear:both;">
+                        <p class="footnote" style="text-align: center;">
+                          <sup>*</sup> For RSA 2048, the public key “~256 bytes” typically refers to a raw 2048-bit modulus alone (plus a small exponent). The fully encoded public/private keys may be larger when stored in common formats (e.g., PKCS#1 or X.509).
+                        </p>
+                      </div>
+                    </div>
+                  </section>
+                                
+
 
                 <section data-background="images/atlas-ibl.jpg">
                     <div class="img-backdrop">
@@ -1374,9 +1487,24 @@
 
                 </section>
 
+
+                <section data-background="images/atlas-ibl.jpg">
+                    <div class="img-backdrop">
+                        <img src="images/apple-pq3.png" class="standard" />
+                    </div>
+                    <div class="bottom-panel">In 2024 Apple updated iMessages with PQ3, the strongest PQC protocol, with support for regular rekeying.<br />
+                        <div style="clear:both;">
+                            <p class="footnote" style="text-align: center; margin-top: 1em;">
+                                Source: Apple, https://security.apple.com/blog/imessage-pq3/
+                            </p>
+                        </div>
+                    </div>
+
+                </section>   
+
                 <section data-background="images/signal.png" data-state="bg-top-left">
                     <div class="overlay-style fragment black-overlay-style">
-                        <p>In September 2023 <span class="highlight">Signal</span> announced moving to their own 
+                        <p>In September 2023 <span class="highlight">Signal</span> was the first messaging app to move to PQC - their own 
                             <span class="highlight">Post-Quantum Extended Diffie-Hellman</span> (PQXDH) protocol based on Kyber.
                         </p>
                     </div>

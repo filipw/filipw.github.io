@@ -122,7 +122,7 @@ minor:after {
 
 .footnote {
   width: 100%;
-  text-align: left;
+  text-align: center;
   color: grey;
 }
 
@@ -403,6 +403,7 @@ blockquote:before {
   line-height: 1;
   margin: 0;
   font-size: 0.5em;
+  text-align: center;
 }
 
 .reveal table {
@@ -416,8 +417,14 @@ table.simple td {
 
 table.medium td {
   font-size: 0.7em !important; 
-  text-align: left !important;
-  padding: 2%;
+  text-align: center !important;
+  padding: 1%;
+}
+
+table.medium th {
+  font-size: 0.7em !important; 
+  text-align: center !important;
+  padding: 1%;
 }
 
 .reveal table tr.noborder td {
