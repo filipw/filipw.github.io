@@ -76,12 +76,14 @@
             </section>
 
             <section data-background="images/D810_NEF_3483.jpg">
-                <img src="images/TIM230213_Quantum-CoverFINAL.jpg" 
-                style="max-height: 666px; border: 3px solid black !important;box-shadow: 5px 2px 2px black;" />
-                <img src="images/fe-quantum-cover.jpg" 
-                style="max-height: 666px; border: 3px solid black !important;box-shadow: 5px 2px 2px black;" />
+                <img src="images/TIM230213_Quantum-CoverFINAL.jpg"
+                    style="max-height: 666px; border: 3px solid black !important;box-shadow: 5px 2px 2px black;" />
+                <img src="images/fe-quantum-cover.jpg"
+                    style="max-height: 666px; border: 3px solid black !important;box-shadow: 5px 2px 2px black;" />
                 <aside class="notes">
-                    However, as it is usually the case with popular media, certain things get easily misrepresented or taken out of the context - and the goal of this session is to provide you the technical background and enable you to judge the future impact of quantum technologies yourselves. 
+                    However, as it is usually the case with popular media, certain things get easily misrepresented or
+                    taken out of the context - and the goal of this session is to provide you the technical background
+                    and enable you to judge the future impact of quantum technologies yourselves.
                 </aside>
             </section>
 
@@ -170,13 +172,17 @@
                     <div class="overlay-style">
                         <h2>Prerequisites</h2>
                         <ul>
-                            <li class="fragment">1. the key must be at least the <span class="highlight">length of the message</span> to encrypt</li>
-                           <li class="fragment">2. the key must be <span class="highlight">completely random</span></li>
-                           <li class="fragment">3. the key must <span class="highlight">not be reused</span> and must be distributed safely</li>
-                            </ul>
+                            <li class="fragment">1. the key must be at least the <span class="highlight">length of the
+                                    message</span> to encrypt</li>
+                            <li class="fragment">2. the key must be <span class="highlight">completely random</span>
+                            </li>
+                            <li class="fragment">3. the key must <span class="highlight">not be reused</span> and must
+                                be distributed safely</li>
+                        </ul>
                     </div>
                     <aside class="notes">
-                        This is not really practical, so that is why we have other encryption schemes. Complete randomness (no patterns) is difficult to achieve.
+                        This is not really practical, so that is why we have other encryption schemes. Complete
+                        randomness (no patterns) is difficult to achieve.
                     </aside>
                 </section>
 
@@ -187,35 +193,42 @@
 
                 <section data-background="images/atlas3.jpg">
                     <div class="overlay-style">
-                    <p>The most popular symmetric algorithm is the <span class="highlight">Advanced Encryption Standard (AES)</span>.</p><p>AES with 256 bit key length is approved by NSA for top secret information.</p>
+                        <p>The most popular symmetric algorithm is the <span class="highlight">Advanced Encryption
+                                Standard (AES)</span>.</p>
+                        <p>AES with 256 bit key length is approved by NSA for top secret information.</p>
                     </div>
                     <aside class="notes">
-                        Another commonly used one, the Triple Data Encryption Standard (3DES) is now deprecated and should no longer be used
-                        
+                        Another commonly used one, the Triple Data Encryption Standard (3DES) is now deprecated and
+                        should no longer be used
+
                     </aside>
                 </section>
 
                 <section data-background="images/atlas3.jpg">
                     <div class="overlay-style">
-                        <p>Symmetric encryption is fast and relatively simple, but requires a secure method for <span class="highlight">key distribution</span>, which is a big challenge, especially when parties do not know or trust each other.</p>
+                        <p>Symmetric encryption is fast and relatively simple, but requires a secure method for <span
+                                class="highlight">key distribution</span>, which is a big challenge, especially when
+                            parties do not know or trust each other.</p>
                     </div>
                 </section>
 
                 <section data-background="images/atlas3.jpg">
                     <h2 class="overlay-style">Asymmetric encryption</h2>
                     <img src="images/crypto-asymmetric.png" />
-                    <aside class="notes">Also known as Public Key Cryptography. It is also used for digital signatures.</aside>
+                    <aside class="notes">Also known as Public Key Cryptography. It is also used for digital signatures.
+                    </aside>
                 </section>
 
-                <section data-background="images/atlas3.jpg">
+                <!-- <section data-background="images/atlas3.jpg">
                     <div class="overlay-style">
                         <div class="column-container">
                             <div class="col">
-                                <br/>
-                    <h3>Hybrid model</h2>
-                                <p>
-                                Many protocols, for example <span class="highlight">TLS</span>, start with an asymmetric handshake, and then switch to symmetric encryption.
-                            </p>
+                                <br />
+                                <h3>Hybrid model</h2>
+                                    <p>
+                                        Many protocols, for example <span class="highlight">TLS</span>, start with an
+                                        asymmetric handshake, and then switch to symmetric encryption.
+                                    </p>
                             </div>
                             <div class="col inset">
                                 <img src="images/tls.png" style="min-height: auto;" />
@@ -223,21 +236,58 @@
 
                         </div>
                         <aside class="notes">
-                            Many protocols - for example TLS/SSL - use a hybrid model - start with an asymmetric handshake, and then switch to symmetric.
+                            Many protocols - for example TLS/SSL - use a hybrid model - start with an asymmetric
+                            handshake, and then switch to symmetric.
+                        </aside>
+                </section> -->
+
+                <section data-background="images/atlas3.jpg">
+                    <div class="overlay-style">
+                        <div class="column-container">
+                            <div class="col-50">
+                                <ul>
+                                    <li>🔒
+                                        Key exchange/establishment
+                                        <br />
+                                        <small>→ establishing a secure communication channel<br/>
+                                            → then hand over to symmetric encryption for efficiency</small>
+                                    </li>
+                                </ul>
+                                <img class="standard" src="images/tls.png" style="max-width: 500px;" />
+                                
+                            </div>
+                            <div class="col-50">
+                                <ul>
+                                    <li>✍️
+                                        Digital signatures
+                                        <br />
+                                        <small>→ create and verify signatures <br/>
+                                            → serve as proof of digital content authenticity and integrity</small>
+                                    </li>
+                                </ul>
+                                <img class="standard" src="images/jwt.png" style="max-width: 500px;" />
+
+                            </div>
+
+                        </div>
+                        <aside class="notes">
+                            Many protocols - for example TLS/SSL - use a hybrid model - start with an asymmetric
+                            handshake, and then switch to symmetric.
                         </aside>
                 </section>
 
                 <section data-background="images/atlas3.jpg">
                     <div class="overlay-style">
-                    <p>Asymmetric cryptography is based on difficult mathematical problems:</p>
-                    <ul>
-                        <li>🧮 factorizing large prime numbers - <span class="highlight">RSA</span></li> 
-                        <li>🧮 discrete logarithm problem - <span class="highlight">Elliptic Curve Cryptography</span></li>
-                    </ul>
+                        <p>Asymmetric cryptography is based on difficult mathematical problems:</p>
+                        <ul>
+                            <li>🧮 factorizing large prime numbers - <span class="highlight">RSA</span></li>
+                            <li>🧮 discrete logarithm problem - <span class="highlight">Elliptic Curve
+                                    Cryptography</span></li>
+                        </ul>
                     </div>
                 </section>
 
-                <section data-background="images/quantum-computer.jpg">
+                <!-- <section data-background="images/quantum-computer.jpg">
                     <div class="overlay-style">
                         <h2>Quantum technology impact</h2>
                         <div class="column-container">
@@ -246,7 +296,8 @@
                                     <li class="fragment">🚨
                                         threats
                                         <br />
-                                        <small>Quantum computers will be able to break some established crypto schemes</small>
+                                        <small>Quantum computers will be able to break some established crypto
+                                            schemes</small>
                                     </li>
                                 </ul>
                             </div>
@@ -255,17 +306,20 @@
                                     <li class="fragment">🔒
                                         opportunities
                                         <br />
-                                        <small>Quantum technology can be used to distribute keys with unconditional security</small>
+                                        <small>Quantum technology can be used to distribute keys with unconditional
+                                            security</small>
                                     </li>
                                 </ul>
                             </div>
                         </div>
                     </div>
-                </section>
+                </section> -->
 
                 <section data-background="images/quantum-law.png">
                     <div class="overlay-style fragment">
-                        <p>In December 2022, Joe Biden signed into law the <span class="highlight">Quantum Computing Cybersecurity Preparedness Act</span>, which requires federal agencies to develop plans to:</p>
+                        <p>In December 2022, Joe Biden signed into law the <span class="highlight">Quantum Computing
+                                Cybersecurity Preparedness Act</span>, which requires federal agencies to develop plans
+                            to:</p>
                         <ul style="text-align: center;">
                             <li>🔐 migrate systems to post-quantum cryptography</li>
                             <li>⚠️ adopt technology that will protect against quantum computing attacks</li>
@@ -579,9 +633,10 @@
 
                 <section data-background="images/irpc-demonstrator.jpg">
                     <div class="overlay-style">
-                        <p>Just like a bit, qubit has only two <span
-                            class="highlight">observable</span> (basis) states</p><p>However, during computation can additionally be in a <span
-                            class="highlight">superposition</span> state (a mix of both of them).</p>
+                        <p>Just like a bit, qubit has only two <span class="highlight">observable</span> (basis) states
+                        </p>
+                        <p>However, during computation can additionally be in a <span
+                                class="highlight">superposition</span> state (a mix of both of them).</p>
                     </div>
                     <aside class="notes">
                         Mathematically, a qubit state is described by a vector.
@@ -590,7 +645,8 @@
 
                 <section data-background="images/schroedinger-cat2.png">
                     <aside class="notes">
-                        Schrödinger's cat was both dead and alive at the same time. It's NOT that he was dead or alive and Schrödinger simply did not know.
+                        Schrödinger's cat was both dead and alive at the same time. It's NOT that he was dead or alive
+                        and Schrödinger simply did not know.
                         Only once Schrödinger opened the box, because of "observation", would the cat's fate be decided.
                     </aside>
                 </section>
@@ -601,21 +657,21 @@
                             <h2>$\mathbf{Z}$ basis</h2>
                             <p>
                                 $
-                            \begin{bmatrix} 1 \cr 0 \end{bmatrix} = \ket{0} \rightarrow
-                            $ maps to bit 0<br/><br/>
-                            $
-                            \begin{bmatrix} 0 \cr 1 \end{bmatrix} = \ket{1}  \rightarrow
-                            $ maps to bit 1<br/><br/>
-                            $\alpha\ket{0} + \beta\ket{1} \rightarrow
-                            $ superposition
+                                \begin{bmatrix} 1 \cr 0 \end{bmatrix} = \ket{0} \rightarrow
+                                $ maps to bit 0<br /><br />
+                                $
+                                \begin{bmatrix} 0 \cr 1 \end{bmatrix} = \ket{1} \rightarrow
+                                $ maps to bit 1<br /><br />
+                                $\alpha\ket{0} + \beta\ket{1} \rightarrow
+                                $ superposition
                             </p>
                         </div>
                         <div class="col inset">
                             <img src="images/bloch-z-axis.jpeg" />
                         </div>
-                    <aside class="notes">
-                        Qubit state can be visualized on a Bloch sphere 
-                    </aside>
+                        <aside class="notes">
+                            Qubit state can be visualized on a Bloch sphere
+                        </aside>
                 </section>
 
                 <section data-background="images/irpc-demonstrator.jpg">
@@ -667,7 +723,8 @@
                 <section data-background="images/irpc-demonstrator.jpg">
                     <div class="overlay-style">
                         <p>The strength of quantum computers is that they are able to take algorithmic advantage of
-                            <span class="highlight">superposition</span>. This is called</p>
+                            <span class="highlight">superposition</span>. This is called
+                        </p>
                         <h2 class="r-fit-text">quantum parallelism</h2>
                     </div>
                     <aside class="notes">
@@ -697,7 +754,7 @@
                         evaluate once with superposition of inputs.
                     </aside>
                 </section>
-<!--                 
+                <!--                 
                 <section data-background="images/alice-door.jpeg">
                     <div class="overlay-style">
                         <p>
@@ -824,7 +881,8 @@
                         </p>
                     </div>
                     <aside class="notes">
-                        RSA is considered to be partly legacy, but still it makes a good example to illustrate certain concepts - because they are applicable to the alternative algorithms as well.
+                        RSA is considered to be partly legacy, but still it makes a good example to illustrate certain
+                        concepts - because they are applicable to the alternative algorithms as well.
                     </aside>
                 </section>
 
@@ -870,8 +928,8 @@
                     <div class="overlay-style">
                         <h2>Factoring a number $N$</h2>
                         <ul>
-                            <li class="fragment highlight-current-red">1. Pick $a$ such that $a <
-                                    N$ and that it is relatively prime to $N$</li>
+                            <li class="fragment highlight-current-red">1. Pick $a$ such that $a < N$ and that it is
+                                    relatively prime to $N$</li>
                             <li class="fragment highlight-current-red">2. Find the period $r$ of a function $f(x) = a^x
                                 (mod\;\;N)$</li>
                             <li class="fragment highlight-current-red">3. Calculate: <br />
@@ -890,7 +948,8 @@
                                 <ul>
                                     <li class="fragment highlight-current-red">1. Set $a = 13$</li>
                                     <li class="fragment highlight-current-red">2. Find order $r = 4$</li>
-                                    <li class="fragment highlight-current-red">3. Calculate: <br />$p = gcd(170, 15) = 5$ <br />
+                                    <li class="fragment highlight-current-red">3. Calculate: <br />$p = gcd(170, 15) =
+                                        5$ <br />
                                         $q = gcd(168, 15) = 3$
                                     </li>
                                 </ul>
@@ -924,10 +983,13 @@
 
                 <section data-background="images/alice-door.jpeg">
                     <div class="overlay-style">
-                        <p>Shor's algorithm can also be used to compute discrete logarithms on elliptic curves over prime fields, thus is <span class="highlight">equally capable of attacking it</span>.
+                        <p>Shor's algorithm can also be used to compute discrete logarithms on elliptic curves over
+                            prime fields, thus is <span class="highlight">equally capable of attacking it</span>.
                         </p>
                     </div>
-                    <aside class="notes">In TLS 1.3, RSA is no longer used for key exchange, in favor of methods like Ephemeral Elliptic-Curve Diffie-Hellman (ECDHE). Even without TLS 1.3, ECDSA should be used over RSA.</aside>
+                    <aside class="notes">In TLS 1.3, RSA is no longer used for key exchange, in favor of methods like
+                        Ephemeral Elliptic-Curve Diffie-Hellman (ECDHE). Even without TLS 1.3, ECDSA should be used over
+                        RSA.</aside>
                 </section>
 
                 <section data-background="images/ellipticcurve.png">
@@ -937,24 +999,27 @@
                         </div>
 
                         <div class="col overlay-style black-overlay-style">
-                            <blockquote>(...) attacking elliptic curve cryptography is indeed easier than attacking RSA (...)
+                            <blockquote>(...) attacking elliptic curve cryptography is indeed easier than attacking RSA
+                                (...)
                             </blockquote>
                         </div>
 
                     </div>
                     <aside class="notes">
-                        Forward secrecy means using new (ephemeral) keys all the time, so intercepting and breaking one message would not reveal the whole session. ECDH is also used in tools like Signal or Skype.
+                        Forward secrecy means using new (ephemeral) keys all the time, so intercepting and breaking one
+                        message would not reveal the whole session. ECDH is also used in tools like Signal or Skype.
                     </aside>
                 </section>
 
                 <section data-background-color="white">
                     <div>
                         <img src="images/globalrisk2024.png" style="max-height: 600px;" />
-                        </div>
-                        <div style="clear:both; margin-top: 20px;">
-                            <p class="footnote" style="text-align: center;">source: Global Risk Institute, "2024 Quantum Threat Timeline Report"
-                            </p>
-                        </div>
+                    </div>
+                    <div style="clear:both; margin-top: 20px;">
+                        <p class="footnote" style="text-align: center;">source: Global Risk Institute, "2024 Quantum
+                            Threat Timeline Report"
+                        </p>
+                    </div>
                 </section>
 
                 <section data-background="images/alice-door.jpeg">
@@ -963,33 +1028,40 @@
                         </p>
                         <h3 class="fragment r-fit-text">No, it is already too late</h3>
                     </div>
-                    <aside class="notes">In TLS 1.3, RSA is no longer used for key exchange, in favor of methods like Ephemeral Elliptic-Curve Diffie-Hellman (ECDHE). Even without TLS 1.3, ECDSA should be used over RSA.</aside>
+                    <aside class="notes">In TLS 1.3, RSA is no longer used for key exchange, in favor of methods like
+                        Ephemeral Elliptic-Curve Diffie-Hellman (ECDHE). Even without TLS 1.3, ECDSA should be used over
+                        RSA.</aside>
                 </section>
 
 
                 <section data-background="images/alice-door.jpeg">
-                                <div class="column-container overlay-style">
+                    <div class="column-container overlay-style">
 
-                    <div class="col-50">
-                        With a <span class="highlight">harvest-now-decrypt-later</span> approach, a threat actor can store encrypted data now and decrypt it later when quantum computers are available.
-                    </div>
+                        <div class="col-50">
+                            With a <span class="highlight">harvest-now-decrypt-later</span> approach, a threat actor can
+                            store encrypted data now and decrypt it later when quantum computers are available.
+                        </div>
 
-                    <div class="col-50" style="padding-left: 1em;">
-                        <blockquote>Every day that you don't convert to a quantum-safe protocol, there's no recovery plan
-                        </blockquote>
-                        <p>
+                        <div class="col-50" style="padding-left: 1em;">
+                            <blockquote>Every day that you don't convert to a quantum-safe protocol, there's no recovery
+                                plan
+                            </blockquote>
+                            <p>
                             <footer>- <em>Dario Gil, IBM senior VP</em></footer>
                             </p>
-                    </div>
+                        </div>
 
-                </div>
+                    </div>
                 </section>
 
 
 
                 <section data-background="images/grover.png" data-state="bg-top-left">
                     <div class="overlay-style fragment black-overlay-style">
-                        <p>In 1996, Lov Grover developed a quantum search algorithm through an unsorted data set - finding $x$ for $f(x) = y$, when $y$ is known.</p><p>It provides <span class="highlight">quadratic speedup </span> over the classical counterparts.</p>
+                        <p>In 1996, Lov Grover developed a quantum search algorithm through an unsorted data set -
+                            finding $x$ for $f(x) = y$, when $y$ is known.</p>
+                        <p>It provides <span class="highlight">quadratic speedup </span> over the classical
+                            counterparts.</p>
                         </p>
                     </div>
                 </section>
@@ -998,7 +1070,9 @@
                     <div class="overlay-style">
                         <div class="column-container">
                             <div class="col">
-                                <p>Probability of finding a result in a 4-bit data set with executions of steps on a quantum computer.</p><p>Classically we need 8 steps, on quantum computer ~2.8 steps.
+                                <p>Probability of finding a result in a 4-bit data set with executions of steps on a
+                                    quantum computer.</p>
+                                <p>Classically we need 8 steps, on quantum computer ~2.8 steps.
                                 </p>
                             </div>
                             <div class="col inset">
@@ -1010,7 +1084,8 @@
 
                 <section data-background="images/alice-door.jpeg">
                     <div class="overlay-style">
-                        <p>Because of that it can be used to <span class="highlight">attack symmetric encryption</span> schemes such as AES, however that can be easily countered by increasing the key size.
+                        <p>Because of that it can be used to <span class="highlight">attack symmetric encryption</span>
+                            schemes such as AES, however that can be easily countered by increasing the key size.
                         </p>
                     </div>
                 </section>
@@ -1021,70 +1096,75 @@
             <!-- what's next -->
             <section>
                 <section data-background="images/compass.jpg">
-                    <h1>What's next?</h1>
+                    <h1>Post quantum cryptography?</h1>
                 </section>
 
 
                 <section data-background="images/atlas-ibl.jpg">
                     <div class="overlay-style">
-                                <table>
-                                    <thead>
-                                        <th>type</th>
-                                        <th>algorithm</th>
-                                        <th>key size</th>
-                                        <th>strength<br/>against classical</th>
-                                        <th>effective strength<br/>against quantum</th>
-                                    </thead>
-                                    <tr class="">
-                                        <td rowspan="2">symmetric</td>
-                                        <td rowspan="2">AES</td>
-                                        <td>256</td>
-                                        <td style="background: green;">256</td>
-                                        <td style="background: green;">128</td>
-                                    </tr>
-                                    <tr class="">
-                                        <td>128</td>
-                                        <td style="background: green;">128</td>
-                                        <td style="background: red;">64</td>
-                                    </tr>
-                                    <tr class="">
-                                        <td rowspan="4" style="border-bottom: none;">asymmetric</td>
-                                        <td rowspan="2">RSA</td>
-                                        <td>2048</td>
-                                        <td style="background: green;">112</td>
-                                        <td style="background: red;">0</td>
-                                    </tr>
-                                    <tr class="">
-                                        <td>3072</td>
-                                        <td style="background: green;">128</td>
-                                        <td style="background: red;">0</td>
-                                    </tr>
-                                    <tr class="">
-                                        <td rowspan="2" style="border-bottom: none;">ECC</td>
-                                        <td>256</td>
-                                        <td style="background: green;">128</td>
-                                        <td style="background: red;">0</td>
-                                    </tr>
-                                    <tr class="">
-                                        <td>384</td>
-                                        <td style="background: green;">256</td>
-                                        <td style="background: red;">0</td>
-                                    </tr>
-                                </table>
-                                <div style="clear:both;">
-                                    <p class="footnote" style="text-align: center;">
-                                        Vasileios Mavroeidis, Kamer Vishi, Mateusz D. Zych, Audun Jøsang. "The Impact of Quantum Computing on Present Cryptography" (IJACSA) International Journal of Advanced Computer Science and Applications, Vol. 9, No. 3, 2018.
-                                    </p>
-                                </div>
+                        <table>
+                            <thead>
+                                <th>type</th>
+                                <th>algorithm</th>
+                                <th>key size</th>
+                                <th>strength<br />against classical</th>
+                                <th>effective strength<br />against quantum</th>
+                            </thead>
+                            <tr class="">
+                                <td rowspan="2">symmetric</td>
+                                <td rowspan="2">AES</td>
+                                <td>256</td>
+                                <td style="background: green;">256</td>
+                                <td style="background: green;">128</td>
+                            </tr>
+                            <tr class="">
+                                <td>128</td>
+                                <td style="background: green;">128</td>
+                                <td style="background: red;">64</td>
+                            </tr>
+                            <tr class="">
+                                <td rowspan="4" style="border-bottom: none;">asymmetric</td>
+                                <td rowspan="2">RSA</td>
+                                <td>2048</td>
+                                <td style="background: green;">112</td>
+                                <td style="background: red;">0</td>
+                            </tr>
+                            <tr class="">
+                                <td>3072</td>
+                                <td style="background: green;">128</td>
+                                <td style="background: red;">0</td>
+                            </tr>
+                            <tr class="">
+                                <td rowspan="2" style="border-bottom: none;">ECC</td>
+                                <td>256</td>
+                                <td style="background: green;">128</td>
+                                <td style="background: red;">0</td>
+                            </tr>
+                            <tr class="">
+                                <td>384</td>
+                                <td style="background: green;">256</td>
+                                <td style="background: red;">0</td>
+                            </tr>
+                        </table>
+                        <div style="clear:both;">
+                            <p class="footnote" style="text-align: center;">
+                                Vasileios Mavroeidis, Kamer Vishi, Mateusz D. Zych, Audun Jøsang. "The Impact of Quantum
+                                Computing on Present Cryptography" (IJACSA) International Journal of Advanced Computer
+                                Science and Applications, Vol. 9, No. 3, 2018.
+                            </p>
+                        </div>
                     </div>
                     <aside class="notes">
-                        As a general rule, encryption strength of 128 bits or more are currently considered strong enough.
+                        As a general rule, encryption strength of 128 bits or more are currently considered strong
+                        enough.
                     </aside>
                 </section>
 
                 <section data-background="images/atlas-ibl.jpg">
                     <div class="overlay-style">
-                        <p>In 2016 NIST (National Institute of Standards and Technology) announced a post-quantum cryptography competition, with the aim to provide a standardized crypto scheme <span class="highlight">resistent to quantum threats</span>.</p>
+                        <p>In 2016 NIST (National Institute of Standards and Technology) announced a post-quantum
+                            cryptography competition, with the aim to provide a standardized crypto scheme <span
+                                class="highlight">resistent to quantum threats</span>.</p>
                     </div>
                 </section>
 
@@ -1124,30 +1204,35 @@
                         </div>
                     </div>
                     <aside class="notes">
-                        Kyber & Dilithium were selected to be primary general-purpose protocols for key encapsulation and digital signatures. 
-                        FALCON was recommended for applications requiring smaller digital signatures. 
+                        Kyber & Dilithium were selected to be primary general-purpose protocols for key encapsulation
+                        and digital signatures.
+                        FALCON was recommended for applications requiring smaller digital signatures.
                         SPHINCS+ was chosen as a backup option to the lattice-based approaches.
                     </aside>
                 </section>
 
                 <section data-background="images/quantum-computer.jpg">
                     <div class="overlay-style">
-                <h2 class="r-fit-text">
-                    $t = \braket{\mathbf{a}, \mathbf{s}} /q + \varepsilon$
-                </h2>
-                    <ul>
-                        <li> · $\braket{\mathbf{a}, \mathbf{s}}$ is the dot (inner) product</li>
-                        <li> · $q$ is the modulus for the arithmetic</li>
-                        <li> · $\varepsilon$ is the error term, chosen from a specific distribution</li>
-                        <li> · $t$, $q$ and $\mathbf{a}$ are published, but $\mathbf{s}$ and $\varepsilon$ are kept secret</li>
-                    </ul>
-                    <div style="clear:both; margin-top: 20px;">
-                        <p class="footnote" style="text-align: center;">note: this is a simplified picture of LWE, for illustrative purposes only
-                        </p>
-                    </div>
+                        <h2 class="r-fit-text">
+                            $t = \braket{\mathbf{a}, \mathbf{s}} /q + \varepsilon$
+                        </h2>
+                        <ul>
+                            <li> · $\braket{\mathbf{a}, \mathbf{s}}$ is the dot (inner) product</li>
+                            <li> · $q$ is the modulus for the arithmetic</li>
+                            <li> · $\varepsilon$ is the error term, chosen from a specific distribution</li>
+                            <li> · $t$, $q$ and $\mathbf{a}$ are published, but $\mathbf{s}$ and $\varepsilon$ are kept
+                                secret</li>
+                        </ul>
+                        <div style="clear:both; margin-top: 20px;">
+                            <p class="footnote" style="text-align: center;">note: this is a simplified picture of LWE,
+                                for illustrative purposes only
+                            </p>
+                        </div>
                     </div>
                     <aside class="notes">
-                        The security in LWE comes from the fact that, while it's easy to compute t given a, s, q and ϵ but it's hard to go in the reverse direction: computing s given a, t and q because of the error ϵ that's been added. 
+                        The security in LWE comes from the fact that, while it's easy to compute t given a, s, q and ϵ
+                        but it's hard to go in the reverse direction: computing s given a, t and q because of the error
+                        ϵ that's been added.
                     </aside>
                 </section>
 
@@ -1212,8 +1297,9 @@
                         </div>
                     </div>
                     <aside class="notes">
-                        Kyber & Dilithium were selected to be primary general-purpose protocols for key encapsulation and digital signatures. 
-                        FALCON was recommended for applications requiring smaller digital signatures. 
+                        Kyber & Dilithium were selected to be primary general-purpose protocols for key encapsulation
+                        and digital signatures.
+                        FALCON was recommended for applications requiring smaller digital signatures.
                         SPHINCS+ was chosen as a backup option to the lattice-based approaches.
                     </aside>
                 </section>
@@ -1229,11 +1315,13 @@
                     </div>
                 </section> -->
 
-                <section data-background="images/atlas-ibl.jpg">
+                <!-- <section data-background="images/atlas-ibl.jpg">
                     <div class="overlay-style">
                         <div class="column-container">
                             <div class="col">
-                                <p><span class="highlight">Google Chrome</span> supports Kyber768 key agreement based on an IETF standard as preview. This can be enabled via Chrome Flags and will ship publicly soon.
+                                <p><span class="highlight">Google Chrome</span> supports Kyber768 key agreement based on
+                                    an IETF standard as preview. This can be enabled via Chrome Flags and will ship
+                                    publicly soon.
                                 </p>
                             </div>
                             <div class="col inset">
@@ -1241,47 +1329,91 @@
                             </div>
 
                         </div>
-                </section>
+                </section> -->
 
-                <section data-background="images/cloudflare.png" data-state="bg-top-left">
+                <!-- <section data-background="images/cloudflare.png" data-state="bg-top-left">
                     <div class="overlay-style fragment black-overlay-style">
                         <p>Since 2022, <span class="highlight">Cloudflare</span> offers post-quantum cryptography for TLS 1.3 connections on all of its endpoints.
                         </p>
                     </div>
+                </section> -->
+
+                <section data-background="images/atlas-ibl.jpg">
+                    <div class="overlay-style">
+
+                        <div class="column-container">
+                            <div class="col-50">
+                                <p>PQC is being standardized for TLS 1.3 as hybrid ECDHE-MLKEM mechanism <span
+                                        class="highlight">X25519MLKEM768</span></p> <p>It is supported by default in Chrome,
+                                    Edge, Firefox, Brave and Opera already.</p>
+                            </div>
+                            <div class="col-50" style="padding-left: 1em;">
+                                <div class="img-backdrop">
+                                    <img src="images/X25519MLKEM768.png" class="standard" style="min-height: auto;" />
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+
+                <section data-background="images/atlas-ibl.jpg">
+                    <div class="img-backdrop">
+                        <img src="images/pqc-adoption.png" class="standard" />
+                    </div>
+                    <div class="bottom-panel">The adoption of PQC in Internet
+                        traffic has already reached 31%. <br />
+                        <div style="clear:both;">
+                            <p class="footnote" style="text-align: center; margin-top: 1em;">
+                                Source: Cloudflare Radar,
+                                https://radar.cloudflare.com/adoption-and-usage#post-quantum-encryption-adoption
+                            </p>
+                        </div>
+                    </div>
+
                 </section>
 
                 <section data-background="images/signal.png" data-state="bg-top-left">
                     <div class="overlay-style fragment black-overlay-style">
-                        <p>In September 2023 <span class="highlight">Signal</span> announced moving to post quantum cryptography based on Kyber.
+                        <p>In September 2023 <span class="highlight">Signal</span> announced moving to their own 
+                            <span class="highlight">Post-Quantum Extended Diffie-Hellman</span> (PQXDH) protocol based on Kyber.
                         </p>
                     </div>
                 </section>
 
                 <section data-background="images/atlas-ibl.jpg">
                     <div class="overlay-style">
-                        
-                    <div class="column-container">
-                        <div class="col-50">
-                            <p>Post quantum cryptography has implementations in all major programming languages now. Through <span class="highlight">BouncyCastle</span> library, it is available for <span class="highlight">.NET</span>.</p> <p>There is no built-in official PQC support in .NET yet.</p>
-                        </div>
-                        <div class="col-50" style="padding-left: 1em;">
-                            <div class="img-backdrop">
-                            <img src="images/legion-of-the-bouncy-castle-small-png.webp" class="standard" style="min-height: auto;" />
-                        </div>
-                        </div>
 
+                        <div class="column-container">
+                            <div class="col-50">
+                                <p>Post quantum cryptography has implementations in all major programming
+                                    languages now. Through <span class="highlight">BouncyCastle</span> library,
+                                    it is available for <span class="highlight">.NET</span>.</p>
+                                <p>There is no built-in official PQC support in .NET yet.</p>
+                            </div>
+                            <div class="col-50" style="padding-left: 1em;">
+                                <div class="img-backdrop">
+                                    <img src="images/legion-of-the-bouncy-castle-small-png.webp" class="standard"
+                                        style="min-height: auto;" />
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
-                </div>
 
                 </section>
 
                 <section data-background="images/open-quantum-safe.png">
                     <div class="overlay-style fragment black-overlay-style">
-                        <p>Open Quantum Safe project provides quantum-resistant crypto algorithms implementations in C, as well as integration into various protocols and applications, such as <span class="highlight">OpenSSL</span>.
+                        <p>Open Quantum Safe project provides quantum-resistant crypto algorithms
+                            implementations in C, as well as integration into various protocols and
+                            applications, such as <span class="highlight">OpenSSL</span>.
                         </p>
                     </div>
                     <aside class="notes">
-                        OQS provides post-quantum enabled forks of both BoringSSL and OpenSSL 1.1.1, as well as a provider for OpenSSL 3.
+                        OQS provides post-quantum enabled forks of both BoringSSL and OpenSSL 1.1.1, as well as
+                        a provider for OpenSSL 3.
                     </aside>
                 </section>
 
@@ -1524,10 +1656,13 @@
                                 <li>📝 <a
                                         href="https://filipw.github.io/ndclondon-2025">filipw.github.io/ndclondon-2025</a>
                                 </li>
-                                <li>🖥️ <a href="https://github.com/filipw/2025-ndclondon-demos">github.com/filipw/2025-ndclondon-demos</a></li>
-                                <li>📚 <a href="https://link.springer.com/book/10.1007/978-3-030-99379-5">Intro to Quantum
-                                    Computing book</a>
-                            </li>
+                                <li>🖥️ <a
+                                        href="https://github.com/filipw/2025-ndclondon-demos">github.com/filipw/2025-ndclondon-demos</a>
+                                </li>
+                                <li>📚 <a href="https://link.springer.com/book/10.1007/978-3-030-99379-5">Intro to
+                                        Quantum
+                                        Computing book</a>
+                                </li>
 
                                 <li>📸 <a href="https://cds.cern.ch/collection/Multimedia%20%26%20Outreach?ln=en">Photos
                                         credit: CERN</a></li>
