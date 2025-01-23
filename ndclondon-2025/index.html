@@ -75,7 +75,7 @@
 
             </section>
 
-            <section data-background="images/D810_NEF_3483.jpg">
+            <!-- <section data-background="images/D810_NEF_3483.jpg">
                 <img src="images/TIM230213_Quantum-CoverFINAL.jpg"
                     style="max-height: 666px; border: 3px solid black !important;box-shadow: 5px 2px 2px black;" />
                 <img src="images/fe-quantum-cover.jpg"
@@ -85,7 +85,7 @@
                     taken out of the context - and the goal of this session is to provide you the technical background
                     and enable you to judge the future impact of quantum technologies yourselves.
                 </aside>
-            </section>
+            </section> -->
 
             <section data-background="images/D810_NEF_3483.jpg">
                 <img src="images/filip-book.jpg"
@@ -191,16 +191,22 @@
                     <img src="images/crypto-symmetric.png" />
                 </section>
 
-                <section data-background="images/atlas3.jpg">
+                <section data-background="images/alice-door.jpeg">
                     <div class="overlay-style">
-                        <p>The most popular symmetric algorithm is the <span class="highlight">Advanced Encryption
-                                Standard (AES)</span>.</p>
-                        <p>AES with 256 bit key length is approved by NSA for top secret information.</p>
+                        <div class="column-container">
+                            <div class="col-50" style="margin-right: 1em;">
+                                <img class="standard" src="images/aes.png" />
+                            </div>
+                            <div class="col-50">
+                                <p>The most popular symmetric algorithm is the <span class="highlight">Advanced Encryption
+                                    Standard (AES)</span></p>
+                            <p>AES with 256 bit key length is approved by NSA for top secret information.</p>
+                                
+                            </div>
                     </div>
                     <aside class="notes">
-                        Another commonly used one, the Triple Data Encryption Standard (3DES) is now deprecated and
-                        should no longer be used
-
+                        RSA is considered to be partly legacy, but still it makes a good example to illustrate certain
+                        concepts - because they are applicable to the alternative algorithms as well.
                     </aside>
                 </section>
 
@@ -210,7 +216,19 @@
                                 class="highlight">key distribution</span>, which is a big challenge, especially when
                             parties do not know or trust each other.</p>
                     </div>
+
                 </section>
+
+                <section data-background="images/atlas-ibl.jpg">
+                    <div class="img-backdrop">
+                        <img src="graphics/key-distribution.excalidraw.png" class="standard" />
+                    </div>
+                    <div class="bottom-panel">Symmetric encryption is fast and relatively simple, but requires a secure method for <span
+                        class="highlight">key distribution</span>, which is a big challenge.
+                    </div>
+
+                </section>
+
 
                 <section data-background="images/atlas3.jpg">
                     <h2 class="overlay-style">Asymmetric encryption</h2>
@@ -218,28 +236,6 @@
                     <aside class="notes">Also known as Public Key Cryptography. It is also used for digital signatures.
                     </aside>
                 </section>
-
-                <!-- <section data-background="images/atlas3.jpg">
-                    <div class="overlay-style">
-                        <div class="column-container">
-                            <div class="col">
-                                <br />
-                                <h3>Hybrid model</h2>
-                                    <p>
-                                        Many protocols, for example <span class="highlight">TLS</span>, start with an
-                                        asymmetric handshake, and then switch to symmetric encryption.
-                                    </p>
-                            </div>
-                            <div class="col inset">
-                                <img src="images/tls.png" style="min-height: auto;" />
-                            </div>
-
-                        </div>
-                        <aside class="notes">
-                            Many protocols - for example TLS/SSL - use a hybrid model - start with an asymmetric
-                            handshake, and then switch to symmetric.
-                        </aside>
-                </section> -->
 
                 <section data-background="images/atlas3.jpg">
                     <div class="overlay-style">
@@ -287,342 +283,14 @@
                     </div>
                 </section>
 
-                <!-- <section data-background="images/quantum-computer.jpg">
-                    <div class="overlay-style">
-                        <h2>Quantum technology impact</h2>
-                        <div class="column-container">
-                            <div class="col">
-                                <ul>
-                                    <li class="fragment">🚨
-                                        threats
-                                        <br />
-                                        <small>Quantum computers will be able to break some established crypto
-                                            schemes</small>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="col">
-                                <ul>
-                                    <li class="fragment">🔒
-                                        opportunities
-                                        <br />
-                                        <small>Quantum technology can be used to distribute keys with unconditional
-                                            security</small>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </section> -->
-
-                <section data-background="images/quantum-law.png">
-                    <div class="overlay-style fragment">
-                        <p>In December 2022, Joe Biden signed into law the <span class="highlight">Quantum Computing
-                                Cybersecurity Preparedness Act</span>, which requires federal agencies to develop plans
-                            to:</p>
-                        <ul style="text-align: center;">
-                            <li>🔐 migrate systems to post-quantum cryptography</li>
-                            <li>⚠️ adopt technology that will protect against quantum computing attacks</li>
-                        </ul>
-                    </div>
-                    <aside class="notes">Plans should be drafted in 2023.</aside>
-                </section>
-
             </section>
             <!-- end QM-->
-
-            <!-- Theory -->
-            <!-- <section>
-                <section data-background="images/cern-theory.jpg">
-                    <h1>Quantum Theory</h1>
-                </section>
-
-                <section data-background="images/irpc-demonstrator.jpg">
-                    <div class="overlay-style">
-                        <p>In classical computing a bit can have only two discrete values</p>
-                        <h2 class="r-fit-text">0 or 1</h2>
-                    </div>
-                </section>
-
-                <section data-background="images/irpc-demonstrator.jpg">
-                    <div class="column-container centered overlay-style">
-
-                        <div class="col">
-                            <p>In quantum information theory an information unit is called a <span
-                                    class="highlight">qubit</span>.
-                            </p>
-                            <p>The qubit is described by a two dimensional <span class="highlight">state vector</span>,
-                                where $\alpha$ and $\beta$ are
-                                complex numbers.</p>
-                        </div>
-
-                        <div class="col">
-                            <h2 class="r-fit-text">$\begin{bmatrix} \alpha \cr \beta \end{bmatrix}$</h2>
-                            <p>$$|\alpha|^2 + |\beta|^2 = 1$$</p>
-                        </div>
-                    </div>
-                </section>
-
-                <section data-background="images/irpc-demonstrator.jpg">
-                    <div class="overlay-style">
-                        <p>A qubit is a</p>
-                        <h2 class="r-fit-text">two-level quantum system</h2>
-                    </div>
-                    <aside class="notes">
-                        Despite the fact that a system might be in mathematically infinitely many states, we can only observe and distinguish two of them.
-                    </aside>
-                </section>
-
-                <section data-background="images/irpc-demonstrator.jpg">
-                    <div class="overlay-style">
-                        <h2>$\mathbf{Z}$ basis</h2>
-                        <p>
-                            $$
-                            \begin{bmatrix} 1 \cr 0 \end{bmatrix} = \ket{0} = 0 \;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;
-                            \begin{bmatrix} 0 \cr 1 \end{bmatrix} = \ket{1} = 1
-                            $$
-                        </p>
-                    </div>
-                </section>
-
-                <section data-background="images/irpc-demonstrator.jpg">
-                    <div class="column-container centered overlay-style">
-                        <div class="col">
-                            <p>Qubit state can be visualized using a <span class="highlight">Bloch sphere</span>, where $\ket{0}$ and $\ket{1}$ are vectors starting at the center and pointing to "north pole" and "south pole".</p>
-                        </div>
-                        <div class="col inset">
-                            <img src="images/bloch-z-axis.jpeg" />
-                        </div>
-                        <aside class="notes">
-                            What about the other states then?
-                        </aside>
-                </section>
-
-                <section data-background="images/irpc-demonstrator.jpg">
-                    <div class="column-container centered overlay-style">
-                        <div class="col">
-                            <p>All other states are a linear combination of $\ket{0}$ and $\ket{1}$.
-                                This is a <span class="highlight">superposition</span>.</p>
-                            <h2 class="r-fit-text">$$\ket{\psi} = \alpha\ket{0} + \beta\ket{1}$$</h2>
-
-                        </div>
-                        <div class="col inset-right">
-                            <img src="images/bloch-superposition.jpeg" />
-                        </div>
-                    </div>
-                    <aside class="notes">
-                        A superposition is a troubling concept because there exists no macroscopic counterpart concept.
-                        It effectively means that a system is in ALL of its possible states simultaneously.
-                    </aside>
-                </section>
-
-                <section data-background="images/irpc-demonstrator.jpg">
-                    <div class="overlay-style">
-                        <p>A superposition state is</p>
-                        <h2 class="r-fit-text">not directly observable</h2>
-                        <p>Only the basis states can be observed in the measurement process</p>
-                    </div>
-                    <aside class="notes">
-                        So what happens when we observe a system in superposition?
-                    </aside>
-                </section>
-
-                <section data-background="images/irpc-demonstrator.jpg">
-                    <div class="overlay-style">
-                        <p>Upon observation, superposition state <span class="highlight">collapses</span> to one
-                            of the
-                            observable states (e.g. $\ket{0}$ or $\ket{1}$).</p>
-                        <h2 class="r-fit-text">outcome is probabilistic</h2>
-                    </div>
-                    <aside class="notes">
-                        It is a fundamental quantum doctrine that a measurement does not reveal a pre-existing value of
-                        the measured property. On the contrary, the outcome of a measurement is brought into being by
-                        the act of measurement itself. - David Mermin
-                    </aside>
-                </section>
-
-                <section data-background="images/schroedinger-cat2.png">
-                    <aside class="notes">
-                        Schrödinger's cat was both dead and alive at the same time. It's NOT that he was dead or live and Schrödinger simply did not know.
-                        Only once Schrödinger opened the box, because of "observation", would the cat's fate be decided.
-                    </aside>
-                </section>
-
-                <section data-background="images/irpc-demonstrator.jpg">
-                    <div class="overlay-style">
-                        <p>We cannot ask a quantum system</p>
-                        <h2 class="r-fit-text">what state are you in?</h2>
-                    </div>
-                    <aside class="notes">
-                        You can think of a superposition as a form of a quantum coin toss.
-                    </aside>
-                </section>
-
-                <section data-background="images/irpc-demonstrator.jpg">
-                    <div class="overlay-style">
-                        <p>For $\mathbf{Z}$ basis we can only ask</p>
-                        <h2 class="r-fit-text">Are you $\ket{0}$ or are you $\ket{1}$?</h2>
-                    </div>
-                </section>
-
-                <section data-background="images/irpc-demonstrator.jpg">
-                    <div class="overlay-style">
-                        <p>The strength of quantum computers is that they are able to take algorithmic advantage of
-                            <span class="highlight">superposition</span>. This is called
-                        </p>
-                        <h2 class="r-fit-text">quantum parallelism</h2>
-                    </div>
-                    <aside class="notes">
-                        <ol>
-                            <li>Create a superposition of all possible results</li>
-                            <li>Use interference to amplify correct result, and cancel out bad results</li>
-                        </ol>
-                    </aside>
-                </section>
-
-                <section data-background="images/quantum-computer.jpg">
-                    <div class="column-container">
-                        <div class="col overlay-style">
-                            <blockquote>...quantum parallelism allows
-                                quantum computers to evaluate a function $f(x)$ for many different values of x
-                                simultaneously.
-                            </blockquote>
-                            <p>
-                            <footer>- <em>Nielsen and Chuang</em></footer>
-                            </p>
-                        </div>
-                        <div class="col">
-                        </div>
-                    </div>
-                    <aside class="notes">
-                        For example, instead of evaluating a function many times with all possible inputs, we can
-                        evaluate once with superposition of inputs.
-                    </aside>
-                </section>
-
-                <section data-background="images/irpc-demonstrator.jpg">
-
-                    <div class="overlay-style">
-                    <div class="column-container centered">
-
-                        <div class="col">
-                            <p>To describe the state of a multi-qubit system, we use a <span class="highlight">tensor
-                                    product</span> of the individual states.</p>
-                        </div>
-
-                        <div class="col">
-                            <p>$$\ket{\psi_1} = \alpha_1\ket{0} + \beta_1\ket{1}$$</p>
-                            <p>$$\ket{\psi_2} = \alpha_2\ket{0} + \beta_2\ket{1}$$</p>
-                        </div>
-                    </div>
-                    <div style="clear: both;">$$\ket{\psi_{12}} = \alpha_1\alpha_2\ket{00} + \alpha_1\beta_2\ket{01}
-                        +
-                        \beta_1\alpha_2\ket{10} + \beta_1\beta_2\ket{11}$$</div>
-                    </div>
-                </section>
-
-                <section data-background="images/irpc-demonstrator.jpg">
-                    <div class="overlay-style">
-                        <p>However, an <span class="highlight">entangled</span> state can take the following form:</p>
-                        <h2 class="r-fit-text limited-size">
-
-                            $$\ket{\psi} = \frac{1}{\sqrt{2}}\ket{00} + \frac{1}{\sqrt{2}}\ket{11}$$</h2>
-                    </div>
-                    <aside class="notes">
-                        Superposition is "contagious", it spills into the overall system state until it collapses via
-                        the act of measurement.
-                        The results are truly random.
-                    </aside>
-                </section>
-
-                <section data-background="images/irpc-demonstrator.jpg">
-                    <div class="overlay-style">
-                        <p>We <span class="highlight">cannot find</span> $\alpha_1$, $\alpha_2$, $\beta_1$ and
-                            $\beta_2$
-                            to satisfy</p>
-                        <p>$\alpha_1\alpha_2\ket{00} + \alpha_1\beta_2\ket{01} + \beta_1\alpha_2\ket{10} +
-                            \beta_1\beta_2\ket{11} = \frac{1}{\sqrt{2}}(\ket{00} + \ket{11})$</p>
-
-                    </div>
-                </section>
-
-                <section data-background="images/irpc-demonstrator.jpg">
-                    <div class="overlay-style">
-                        <p>Entangled states
-                        <h2 class="r-fit-text">cannot be decomposed</h2>
-                        <p>into a tensor
-                            product of the individual quantum states.</p>
-                    </div>
-                    <aside class="notes">
-                        This tells us, at the quantum level, the smallest possible unit of reality is the composite
-                        system consisting of those two entangled objects. They cannot be treated as independent
-                        anymore.
-                        The problem is they can physically be separate from each other.
-                    </aside>
-                </section>
-
-                <section data-background="images/uv.jpg">
-                    <div class="overlay-style">
-                        <p>A <span class="highlight">single</span> quantum state can span <span
-                                class="highlight">multiple</span> quantum objects which are</p>
-                        <h2 class="r-fit-text">spatially separated</h2>
-
-                    </div>
-                </section>
-
-                <section data-background="images/albert-einstein-invent.jpg">
-                    <div class="column-container">
-                        <div class="col overlay-style">
-                            <blockquote>...spukhafte Fernwirkung...
-                            </blockquote>
-                            <p>
-                            <footer>- <em>Albert Einstein</em></footer>
-                            </p>
-                        </div>
-
-                        <div class="col">
-                        </div>
-                    </div>
-                    <aside class="notes">
-
-                    </aside>
-                </section>
-
-                <section data-background="images/uv.jpg">
-                    <div class="overlay-style">
-                        <p> We call this</p>
-                        <h2 class="r-fit-text">non-locality</h2>
-                        <p>It is based on the Bell's theorem from 1964.</p>
-                </section>
-
-                <section data-background="images/nobel-2022.png" data-state="bg-top-left">
-                </section>
-
-                <section data-background="images/irpc-demonstrator.jpg">
-                    <div class="overlay-style">
-                        <p>Exploring entanglement in algorithms is a critical factor contributing to <span
-                                class="highlight">computational advantage</span> of quantum computing.</p>
-                    </div>
-                    <aside class="notes">
-                    </aside>
-                </section>
-            </section> -->
-            <!-- end basic theory -->
-
 
             <!-- Quantum threats -->
             <section>
                 <section data-background="images/compass.jpg">
                     <h1>Quantum threats</h1>
                 </section>
-
-
-                <!-- <section data-background="images/irpc-demonstrator.jpg">
-                    <div class="overlay-style">
-                        <p>In classical information theory a bit can have only two discrete values</p>
-                        <h2 class="r-fit-text">0 or 1</h2>
-                    </div>
-                </section> -->
 
                 <section data-background="images/irpc-demonstrator.jpg">
                     <div class="overlay-style">
@@ -665,7 +333,7 @@
                             <div class="col-50">
                                 <p>However, during computation can additionally be in a <span
                                     class="highlight">superposition</span> state (a mix of both of them).</p>
-                                    <p>$\alpha\ket{0} + \beta\ket{1} \rightarrow
+                                    <p>$\ket{\psi} = \alpha\ket{0} + \beta\ket{1} \rightarrow
                                         $ superposition</p>
                             </div>
                             <div class="col-50" style="padding-left: 1em;">
@@ -682,9 +350,6 @@
                         <h2 class="r-fit-text">not directly observable</h2>
                         <p>Only the basis states can be observed in the measurement process</p>
                     </div>
-                    <aside class="notes">
-                        So what happens when we observe a system in superposition?
-                    </aside>
                 </section>
 
                 <section data-background="images/schroedinger-cat2.png">
@@ -1275,6 +940,19 @@
                     </aside>
                 </section>
 
+                <!-- <section data-background="images/quantum-law.png">
+                    <div class="overlay-style fragment">
+                        <p>In December 2022, Joe Biden signed into law the <span class="highlight">Quantum Computing
+                                Cybersecurity Preparedness Act</span>, which requires federal agencies to develop plans
+                            to:</p>
+                        <ul style="text-align: center;">
+                            <li>🔐 migrate systems to post-quantum cryptography</li>
+                            <li>⚠️ adopt technology that will protect against quantum computing attacks</li>
+                        </ul>
+                    </div>
+                    <aside class="notes">Plans should be drafted in 2023.</aside>
+                </section> -->
+
                 <!-- <section data-background="images/atlas-ibl.jpg">
                     <div class="overlay-style">
                         <p>Amazon now offers <span class="highlight">TLS with CRYSTALS-Kyber</span> for connecting to AWS Key Management Service (AWS KMS), AWS Secrets Manager, and AWS Certificate Manager (ACM).</p>
@@ -1475,7 +1153,7 @@
                     <div class="img-backdrop">
                         <img src="images/pqc-adoption.png" class="standard" />
                     </div>
-                    <div class="bottom-panel">The adoption of PQC in Internet
+                    <div class="bottom-panel">The adoption of PQC in Cloudflare
                         traffic has already reached 31%. <br />
                         <div style="clear:both;">
                             <p class="footnote" style="text-align: center; margin-top: 1em;">
@@ -1487,6 +1165,13 @@
 
                 </section>
 
+                <section data-background="images/signal.png" data-state="bg-top-left">
+                    <div class="overlay-style fragment black-overlay-style">
+                        <p>In September 2023 <span class="highlight">Signal</span> was the first messaging app to move to PQC - their own 
+                            <span class="highlight">Post-Quantum Extended Diffie-Hellman</span> (PQXDH) protocol based on Kyber.
+                        </p>
+                    </div>
+                </section>
 
                 <section data-background="images/atlas-ibl.jpg">
                     <div class="img-backdrop">
@@ -1501,14 +1186,6 @@
                     </div>
 
                 </section>   
-
-                <section data-background="images/signal.png" data-state="bg-top-left">
-                    <div class="overlay-style fragment black-overlay-style">
-                        <p>In September 2023 <span class="highlight">Signal</span> was the first messaging app to move to PQC - their own 
-                            <span class="highlight">Post-Quantum Extended Diffie-Hellman</span> (PQXDH) protocol based on Kyber.
-                        </p>
-                    </div>
-                </section>
 
                 <section data-background="images/atlas-ibl.jpg">
                     <div class="overlay-style">
