@@ -916,13 +916,13 @@
                 <section data-background="images/quantum-computer.jpg">
                     <div class="overlay-style">
                         <h2 class="r-fit-text">
-                            $t = \braket{\mathbf{a}, \mathbf{s}} /q + \varepsilon$
+                            $t = (\braket{\mathbf{a}, \mathbf{s}} + \varepsilon) \mod q$
                         </h2>
                         <ul>
-                            <li> · $\braket{\mathbf{a}, \mathbf{s}}$ is the dot (inner) product</li>
-                            <li> · $q$ is the modulus for the arithmetic</li>
+                            <li> · $\braket{\mathbf{a}, \mathbf{s}}$ is the dot (inner) product of two vectors</li>
+                            <li> · $q$ is the modulus, confining the value to a predictable range</li>
                             <li> · $\varepsilon$ is the error term, chosen from a specific distribution</li>
-                            <li> · $t$, $q$ and $\mathbf{a}$ are published, but $\mathbf{s}$ and $\varepsilon$ are kept
+                            <li> · $t$, $q$, and $\mathbf{a}$ are published, but $\mathbf{s}$ and $\varepsilon$ are kept
                                 secret</li>
                         </ul>
                         <div style="clear:both; margin-top: 20px;">
@@ -932,11 +932,10 @@
                         </div>
                     </div>
                     <aside class="notes">
-                        The security in LWE comes from the fact that, while it's easy to compute t given a, s, q and ϵ
-                        but it's hard to go in the reverse direction: computing s given a, t and q because of the error
-                        ϵ that's been added.
+                        The security in LWE comes from the fact that, while it is straightforward to compute $t$ given $\mathbf{a}$, $\mathbf{s}$, $q$, and $\varepsilon$, it is computationally hard to reverse this process. The difficulty arises from the addition of the error term $\varepsilon$, which obscures the relationship between $t$ and $\mathbf{s}$, making it infeasible to recover $\mathbf{s}$ given $t$, $\mathbf{a}$, and $q$.
                     </aside>
                 </section>
+                
 
                 <!-- <section data-background="images/quantum-law.png">
                     <div class="overlay-style fragment">
@@ -1084,16 +1083,16 @@
                       <table class="medium">
                         <colgroup>
                           <col style="width: 28%;">
-                          <col style="width: 18%;">
-                          <col style="width: 18%;">
-                          <col style="width: 18%;">
-                          <col style="width: 18%;">
+                          <col style="width: 24%;">
+                          <!-- <col style="width: 18%;"> -->
+                          <col style="width: 24%;">
+                          <col style="width: 24%;">
                         </colgroup>
                         <thead>
                           <tr>
                             <th></th>
                             <th>Public Key (bytes)</th>
-                            <th>Secret Key (bytes)</th>
+                            <!-- <th>Secret Key (bytes)</th> -->
                             <th>Ciphertext (bytes)</th>
                             <th>Shared Secret (bytes)</th>
                           </tr>
@@ -1102,35 +1101,35 @@
                           <tr>
                             <td>ML-KEM-512</td>
                             <td>800</td>
-                            <td>1632</td>
+                            <!-- <td>1632</td> -->
                             <td>768</td>
                             <td>32</td>
                           </tr>
                           <tr>
                             <td>ML-KEM-768</td>
                             <td>1184</td>
-                            <td>2400</td>
+                            <!-- <td>2400</td> -->
                             <td>1088</td>
                             <td>32</td>
                           </tr>
                           <tr>
                             <td>ML-KEM-1024</td>
                             <td>1568</td>
-                            <td>3168</td>
+                            <!-- <td>3168</td> -->
                             <td>1568</td>
                             <td>32</td>
                           </tr>
                           <tr>
                             <td>ECDH (X25519)</td>
                             <td>32</td>
-                            <td>32</td>
+                            <!-- <td>32</td> -->
                             <td>–</td>
                             <td>32</td>
                           </tr>
                           <tr>
                             <td>RSA 2048<sup>*</sup></td>
                             <td>~256</td>
-                            <td>~256</td>
+                            <!-- <td>~256</td> -->
                             <td>256</td>
                             <td>32</td>
                           </tr>
