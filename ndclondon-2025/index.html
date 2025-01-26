@@ -80,15 +80,23 @@
                     style="max-height: 666px; border: 3px solid black !important;box-shadow: 5px 2px 2px black;" />
             </section>
 
+            <section data-background="images/atlas3.jpg">
+                <h2 class="overlay-style">Agenda</h2>
+                <div class="img-backdrop">
+                <img class="standard" src="graphics/agenda.excalidraw.png" />
+                </div>
+            </section>
+
             <!-- QM-->
             <section>
-                <!-- <section data-background="images/atlas1.jpg">
-                    <h1>Quantum Hype</h1>
-                </section> -->
+                <section data-background="images/atlas1.jpg">
+                    <h1>Warm up</h1>
+                </section>
+
 
                 <section data-background="images/atlas3.jpg">
                     <div class="overlay-style">
-                        <p>Is it possible to have an</p>
+                        <p>Is it possible to have</p>
                         <h2 class="r-fit-text">unbreakable encryption?</h2>
                     </div>
                 </section>
@@ -257,8 +265,8 @@
                     <div class="overlay-style">
                         <p>Asymmetric cryptography is based on difficult mathematical problems:</p>
                         <ul>
-                            <li>🧮 factorizing large prime numbers - <span class="highlight">RSA</span></li>
-                            <li>🧮 discrete logarithm problem - <span class="highlight">Elliptic Curve
+                            <li>🧮 factorizing large composite numbers - <span class="highlight">RSA</span></li>
+                            <li>🧮 elliptic curve discrete logarithm problem - <span class="highlight">EC
                                     Cryptography</span></li>
                         </ul>
                     </div>
@@ -683,15 +691,19 @@
                         </aside>
                 </section>
 
-                <section data-background="images/alice-door.jpeg">
+
+                <section data-background="images/atlas-ibl.jpg">
                     <div class="overlay-style">
-                        <p>Shor's algorithm can also be used to compute discrete logarithms on elliptic curves over
-                            prime fields, thus is <span class="highlight">equally capable of attacking it</span>.
-                        </p>
+                        <div class="column-container">
+                            <div class="col-50" slot="padding-right: 1em;">
+                                <p>Shor's algorithm can also be used to compute discrete logarithms on elliptic curves over
+                                    prime fields.</p><p>As a result, is <span class="highlight">equally capable of attacking it</span>.
+                                </p>
+                            </div>
+                            <div class="col-50">
+                                <img class="standard" src="images/quantum-attack.png" />
+                            </div>
                     </div>
-                    <aside class="notes">In TLS 1.3, RSA is no longer used for key exchange, in favor of methods like
-                        Ephemeral Elliptic-Curve Diffie-Hellman (ECDHE). Even without TLS 1.3, ECDSA should be used over
-                        RSA.</aside>
                 </section>
 
                 <section data-background="images/ellipticcurve.png">
@@ -864,9 +876,15 @@
 
                 <section data-background="images/atlas-ibl.jpg">
                     <div class="overlay-style">
-                        <p>In 2016 NIST (National Institute of Standards and Technology) announced a post-quantum
-                            cryptography competition, with the aim to provide a standardized crypto scheme <span
-                                class="highlight">resistent to quantum threats</span>.</p>
+                        <div class="column-container">
+                            <div class="col-66">
+                                <p>In 2016 NIST (National Institute of Standards and Technology) announced a post-quantum
+                                    cryptography competition, with the aim to provide a standardized crypto scheme <span
+                                        class="highlight">resistent to quantum threats</span>.</p>
+                            </div>
+                            <div class="col-33">
+                                <img class="standard" src="graphics/nist.excalidraw.png" />
+                            </div>
                     </div>
                 </section>
 
