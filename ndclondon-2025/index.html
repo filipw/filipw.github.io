@@ -783,24 +783,18 @@
                 <section data-background="images/alice-door.jpeg">
                     <div class="overlay-style">
                         <div class="column-container">
-                            <div class="col">
-                                <p>Probability of finding a result in a 4-bit data set with executions of steps on a
-                                    quantum computer.</p>
-                                <p>Classically we need 8 steps, on quantum computer ~2.8 steps.
+                            <div class="col-50" slot="padding-right: 1em;">
+                                <p>Because of that it can be used to <span class="highlight">attack symmetric encryption</span>
+                                    schemes such as AES, however that can be easily countered by increasing the key size.
                                 </p>
                             </div>
-                            <div class="col inset">
-                                <img src="images/grover-iterations.png" style="min-height: auto;" />
+                            <div class="col-50">
+                                <p>Brute force AES 256:</p>
+                                <ul>
+                                <li>⚛️ quantum → $2^{128}$ steps </li>
+                                <li>💻 classical → $2^{256}$ steps</li>
+                                </ul>
                             </div>
-
-                        </div>
-                </section>
-
-                <section data-background="images/alice-door.jpeg">
-                    <div class="overlay-style">
-                        <p>Because of that it can be used to <span class="highlight">attack symmetric encryption</span>
-                            schemes such as AES, however that can be easily countered by increasing the key size.
-                        </p>
                     </div>
                 </section>
 
@@ -810,7 +804,7 @@
             <!-- what's next -->
             <section>
                 <section data-background="images/compass.jpg">
-                    <h1>Post quantum cryptography?</h1>
+                    <h1>Post quantum cryptography</h1>
                 </section>
 
 
