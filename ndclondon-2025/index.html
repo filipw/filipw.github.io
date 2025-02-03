@@ -159,9 +159,6 @@
                             </div>
                         </div>
                     </div>
-                    <!-- <aside class="notes">
-                        If the key is random then the attacker, Eve, intercepts the ciphertext on its way from Alice to Bob, she would gain no information about the original message at all as there is no pattern to spot.
-                    </aside> -->
                 </section>
 
                 <section data-background="images/atlas3.jpg">
@@ -294,7 +291,6 @@
 
                         <div class="column-container">
                             <div class="col-50">
-                                <!-- <p>Qubit is described by a two dimensional complex vector</p> -->
                                 <p>Just like a bit, qubit has only two <span class="highlight">observable</span> (basis) states
                                 </p>
                             </div>
@@ -438,145 +434,6 @@
                     </div>
 
                 </section>
-
-                <!-- <section data-background="images/atlas-nsw.jpg">
-                    <div class="column-container">
-                        <div class="col overlay-style">
-                            <blockquote>...quantum parallelism allows
-                                quantum computers to evaluate a function $f(x)$ for many different values of x
-                                simultaneously.
-                            </blockquote>
-                            <p>
-                            <footer>- <em>Nielsen and Chuang</em></footer>
-                            </p>
-                        </div>
-                        <div class="col">
-                        </div>
-                    </div>
-                    <aside class="notes">
-                        For example, instead of evaluating a function many times with all possible inputs, we can
-                        evaluate once with superposition of inputs.
-                    </aside>
-                </section> -->
-                <!--                 
-                <section data-background="images/alice-door.jpeg">
-                    <div class="overlay-style">
-                        <p>
-                            <span class="highlight">Deutsch's problem</span> - given an unknown function
-                        </p>
-                        <h2 class="r-fit-text">$f : \{0,1\} \rightarrow \{0,1\}$</h2>
-                        <p>
-                            determine if the function is <span
-                            class="highlight">constant</span> or <span class="highlight">balanced</span>
-                        </p>
-                </section>
-
-                <section data-background="images/alice-door.jpeg">
-                    <div class="overlay-style">
-                        <div class="column-container centered">
-                            <div class="col">
-                                <ul>
-                                    <li>$f_0$ is constant</li>
-                                    <li>$f_1$ is constant</li>
-                                    <li>$f_2$ is balanced</li>
-                                    <li>$f_3$ is balanced</li>
-                                </ul>
-                            </div>
-                            <div class="col">
-                                <ul>
-                                    <li>$f_0(0) = f_0(1) = 0$</li>
-                                    <li>$f_1(0) = f_1(1) = 1$</li>
-                                    <li>$f_2(0) = 0 \;\;\; f_2(1) = 1$</li>
-                                    <li>$f_3(0) = 1 \;\;\; f_3(1) = 0$</li>
-                                </ul>
-                            </div>
-                </section>
-
-                <section data-background="images/alice-door.jpeg">
-                    <div class="column-container centered overlay-style">
-                        <div class="col">
-                            <p>Classically, <span class="highlight">two</span> function evaluations are needed.</p><p> After
-                                the first execution, we still cannot say if the function is balanced or constant.</p>
-                        </div>
-                        <div class="col inset">
-                            <img src="images/deutsch-classical.png" />
-                        </div>
-                    </div>
-                </section>
-
-                <section data-background="images/alice-door.jpeg">
-                    <div class="column-container centered overlay-style">
-                        <div class="col">
-                            <p>On a quantum computer, thanks to <span class="highlight">interference</span>, the answer can be obtained in just <span
-                                    class="highlight">one</span> call.</p>
-                        </div>
-                        <div class="col inset">
-                            <img src="images/deutsch-tex.png" />
-                        </div>
-                    </div>
-                </section>
-
-                <section data-background="images/irpc-demonstrator.jpg">
-                    <div class="overlay-style">
-                        <h3>Siblings analogy</h3>
-                        <table class="fragment" data-fragment-index="1">
-                            <tr>
-                                <td></td>
-                                <td>👧🏻</td>
-                                <td style="border-right: 1px solid">👧🏻</td>
-                                <td>👧🏽</td>
-                                <td>👦🏽</td>
-                            </tr>
-                            <tr class="fragment" data-fragment-index="2">
-                                <td rowspan="3">How are you doing?</td>
-                            </tr>
-                            <tr class="fragment" data-fragment-index="3">
-                                <td class="fragment" data-fragment-index="3">good</td>
-                                <td class="fragment" data-fragment-index="3" style="border-right: 1px solid">good</td>
-                                <td class="fragment" data-fragment-index="6">good</td>
-                                <td class="fragment" data-fragment-index="6">bad</td>
-                            </tr>
-                            <tr class="fragment" data-fragment-index="3">
-                                <td class="fragment" data-fragment-index="5">bad</td>
-                                <td class="fragment" data-fragment-index="5" style="border-right: 1px solid">bad</td>
-                                <td class="fragment" data-fragment-index="7">bad</td>
-                                <td class="fragment" data-fragment-index="7">good</td>
-                            </tr>
-                            <tr class="fragment">
-                            </tr>
-                        </table>
-                    </div>
-                </section>
-
-                <section data-background-color="#000">
-                    <div class="overlay-style">
-                    <h3><span class="fragment">How are you doing?</span>&nbsp;&nbsp;&nbsp;<span class="fragment">🔊 good</span></h3>
-                    <h3><span class="fragment">How are you doing?</span>&nbsp;&nbsp;&nbsp;<span class="fragment">🔊 good</span></h3>
-                    <h1 class="fragment">👧🏻&nbsp;&nbsp;&nbsp;👧🏻</h1>
-                    </div>
-                </section>
-
-                <section data-background-color="#000">
-                    <div class="overlay-style">
-                    <h3><span class="fragment">How are you doing?</span>&nbsp;&nbsp;&nbsp;<span class="fragment">🔊 bad</span></h3>
-                    <h3><span class="fragment">How are you doing?</span>&nbsp;&nbsp;&nbsp;<span class="fragment">🔊 good</span></h3>
-                    <h1 class="fragment">👦🏽&nbsp;&nbsp;&nbsp;👧🏽</h3>
-                    </div>
-                </section>
-
-                <section data-background-color="#000">
-                    <div class="overlay-style">
-                    <h3><span class="fragment">How are you doing?</span>&nbsp;&nbsp;&nbsp;<span class="fragment">🔊 GOOD</span></h3>
-                    <h1 class="fragment">👧🏻&nbsp;&nbsp;&nbsp;👧🏻</h3>
-                    </div>
-                </section>
-
-                <section data-background-color="#000">
-                    <div class="overlay-style">
-                    <h3><span class="fragment">How are you doing?</span>&nbsp;&nbsp;&nbsp;<span class="fragment">🔊 gbdgbd</span></h3>
-                    <h1 class="fragment">👦🏽&nbsp;&nbsp;&nbsp;👧🏽</h3>
-                    </div>
-                </section> -->
 
                 <section data-background="images/alice-door.jpeg">
                     <div class="overlay-style">
@@ -947,50 +804,6 @@
                         The security in LWE comes from the fact that, while it is straightforward to compute $t$ given $\mathbf{a}$, $\mathbf{s}$, $q$, and $\varepsilon$, it is computationally hard to reverse this process. The difficulty arises from the addition of the error term $\varepsilon$, which obscures the relationship between $t$ and $\mathbf{s}$, making it infeasible to recover $\mathbf{s}$ given $t$, $\mathbf{a}$, and $q$.
                     </aside>
                 </section>
-                
-
-                <!-- <section data-background="images/quantum-law.png">
-                    <div class="overlay-style fragment">
-                        <p>In December 2022, Joe Biden signed into law the <span class="highlight">Quantum Computing
-                                Cybersecurity Preparedness Act</span>, which requires federal agencies to develop plans
-                            to:</p>
-                        <ul style="text-align: center;">
-                            <li>🔐 migrate systems to post-quantum cryptography</li>
-                            <li>⚠️ adopt technology that will protect against quantum computing attacks</li>
-                        </ul>
-                    </div>
-                    <aside class="notes">Plans should be drafted in 2023.</aside>
-                </section> -->
-
-                <!-- <section data-background="images/atlas-ibl.jpg">
-                    <div class="overlay-style">
-                        <p>Amazon now offers <span class="highlight">TLS with CRYSTALS-Kyber</span> for connecting to AWS Key Management Service (AWS KMS), AWS Secrets Manager, and AWS Certificate Manager (ACM).</p>
-                    </div>
-                </section>
-
-                <section data-background="images/atlas-ibl.jpg">
-                    <div class="overlay-style">
-
-                        <div class="column-container centered">
-                            <div class="col auto">
-                        <img src="images/aws1.png" />
-                            </div>
-                            <div class="col auto">
-                                <img src="images/aws2.png" />
-
-                            </div>
-                        </div>
-                        <div style="clear:both;">
-                            <p class="footnote" style="text-align: center;">
-                                <a href="https://aws.amazon.com/de/blogs/security/how-to-tune-tls-for-hybrid-post-quantum-cryptography-with-kyber/">https://aws.amazon.com/de/blogs/security/how-to-tune-tls-for-hybrid-post-quantum-cryptography-with-kyber/</a>
-                            </p>
-                        </div>
-                    </div>
-                    <aside class="notes">
-                        The scheme has a small overhead (~25%) in terms of TLS handshake time and bandwidth overhead - though in absolute terms it's still less than 1ms and about 2kB of extra data.
-                    </aside>
-                </section> -->
-
 
                 <section data-background="images/quantum-computer.jpg">
                     <div class="overlay-style">
