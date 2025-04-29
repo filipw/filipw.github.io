@@ -106,7 +106,7 @@
             </section>
 
             <!-- Q# -->
-            <section>
+            <!-- <section>
                 <section data-background="images/cern-dc.jpg">
                     <h1>Q# and Azure Quantum</h1>
                 </section>
@@ -207,7 +207,7 @@ Result     Frequency
                     <p class="fragment" data-code-focus="7-8"></p>
                     <p class="fragment" data-code-focus="10-14"></p>
                 </section>
-            </section>
+            </section> -->
 
 
             <!-- Superposition-->
@@ -471,12 +471,18 @@ let detectorResult = M(photon) == Zero ? "detector2" | "detector1";
                 </section> -->
 
                 <section data-background="images/cms2.jpg">
+                    <div class="overlay-style">
+                        <p>A quantum system can be in one of the infinitely many states possible as a <span
+                                class="highlight">linear combination</span> of two basis states:</p>
+                        <h2 class="r-fit-text">$$\ket{\psi} = \alpha\ket{0} + \beta\ket{1}$$</h2>
+                    </div>
+                </section>
+
+                <section data-background="images/cms2.jpg">
                     <div class="column-container centered">
                         <div class="col overlay-style">
-                            <h2 class="r-fit-text">$$\ket{\psi} = \alpha\ket{0} + \beta\ket{1}$$</h2>
-                            <p>If both $\alpha$ and $\beta$ are non-zero, the system is in a <span
-                                    class="highlight">superposition</span>.</p>
-
+                            <p>If both $\alpha$ and $\beta$ are non-zero, the system is in a</p>
+                            <h2 class="r-fit-text">superposition</h2>
                         </div>
                         <div class="col inset-right">
                             <img src="images/arbitrary-state.png" />
@@ -645,12 +651,12 @@ let result = Measure([basis], [electron]);
                     <p class="fragment" data-code-focus="8-9"></p>
                 </section>
 
-                <!-- <section data-background="images/monty.jpg">
+                <section data-background="images/monty.jpg">
                     <div class="overlay-style">
                         <p>We witnessed a uniquely quantum phenomenon</p>
                         <h2 class="r-fit-text">uncertainty principle</h2>
                     </div>
-                </section> -->
+                </section>
 
                 <section data-background="images/einstein.jpg">
                     <div class="column-container">
@@ -668,6 +674,41 @@ let result = Measure([basis], [electron]);
                     <aside class="notes">
                         Apparently, Niels Bohr responded "Einstein, don't tell God what to do."
                     </aside>
+                </section>
+
+                <section data-background="images/cms-beam.jpg">
+                    <div class="overlay-style">
+                        <p>In quantum mechanics we cannot simultaneously know values of</p>
+                        <h2 class="r-fit-text">conjugate variables</h2>
+                        <p>with arbitrary precision.</p>
+                    </div>
+                </section>
+
+                <section data-background="images/cms-beam.jpg">
+                    <div class="column-container centered overlay-style">
+
+                        <div class="col">
+                            <p>Those are for example <span class="highlight">position & momentum</span> or <span
+                                    class="highlight">energy & time</span>.</p>
+                        </div>
+
+                        <div class="col">
+                            <p class="r-fit-text">$\Delta x \Delta p \geq \frac{\hbar}{2}$</p>
+                            <p class="r-fit-text">$\Delta E \Delta t \geq \frac{\hbar}{2}$</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-background="images/cms-beam.jpg">
+                    <img src="images/Quantum_Fluctuations.gif" />
+                    <div class="overlay-style" style="padding: 1% !important;">
+                        <div style="clear:both;">
+                            <p class="footnote" style="text-align: center;">By Ahmed Neutron - Own work, CC BY-SA 4.0,
+                                <a
+                                    href="https://commons.wikimedia.org/w/index.php?curid=69715938">https://commons.wikimedia.org/w/index.php?curid=69715938</a>
+                            </p>
+                        </div>
+                    </div>
                 </section>
 
                 <section data-background="images/cms-beam.jpg">
