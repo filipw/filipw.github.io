@@ -414,28 +414,18 @@ Result     Frequency
                 </section>
 
                 <section data-background="images/cms2.jpg">
-                    <p class="overlay-style">Mach-Zehnder interferometer.</p>
-                    <img src="interactive/BeamSplitter-mzi-1.svg" style="min-height: 500px; background-color: white;" />
+                    <img src="graphics/beam-splitter.excalidraw.svg" class="standard" />
+                    <p class="overlay-style" style="padding: 1% !important;">Beam Splitter</p>
                 </section>
 
-                <!-- <section data-background="images/cms2.jpg">
-                    <div class="column-container centered overlay-style">
-                        <div class="col">
-                            <p>Waves can interfere with each other <span class="highlight">constructively</span> or
-                                <span class="highlight">destructively</span>.
-                            </p>
-                        </div>
-                        <div class="col inset-right">
-                            <img src="images/wave-interference.png" style="filter: brightness(0) invert(1);" />
-                        </div>
-                    </div>
-                    <aside class="notes">
-                    </aside>
-                </section> -->
+                <section data-background="images/cms2.jpg">
+                    <img src="graphics/interferometer1.excalidraw.svg" class="standard" />
+                    <p class="overlay-style" style="padding: 1% !important;">Mach-Zehnder Interferometer</p>
+                </section>
 
                 <section data-background="images/cern-alice.jpg">
                     <pre>
-                <code class="cs">
+                <code class="cs rounded">
 // allocate a new qubit in default state
 use photon = Qubit();
 
@@ -463,9 +453,8 @@ let detectorResult = M(photon) == Zero ? "detector2" | "detector1";
                 </section>
 
                 <section data-background="images/cms2.jpg">
-                    <p class="overlay-style">Mach-Zehnder interferometer with QNDs.</p>
-                    <img src="interactive/BeamSplitter-mzi-qnd.svg"
-                        style="min-height: 500px; background-color: white;" />
+                    <img src="graphics/interferometer2.excalidraw.svg" class="standard" />
+                    <p class="overlay-style" style="padding: 1% !important;">Mach-Zehnder Interferometer with QNDs</p>
                 </section>
 
                 <section data-background="images/cms2.jpg">
@@ -477,7 +466,7 @@ let detectorResult = M(photon) == Zero ? "detector2" | "detector1";
 
                 <section data-background="images/cern-alice.jpg">
                     <pre>
-                <code class="cs">
+                <code class="cs rounded">
 // allocate a new qubit in default state
 use photon = Qubit();
 
@@ -795,15 +784,8 @@ let detectorResult = M(photon) == Zero ? "detector2" | "detector1";
                 </section>
 
                 <section data-background="images/cms-beam.jpg">
-                    <p class="overlay-style">Electrons prepared with spin up, measured in the $\mathbf{Z}$ basis.</p>
-                    <iframe width="66%"" height=" 500" scrolling="no"
-                        src="interactive/stern-gerlach-z-up.html"></iframe>
-                </section>
-
-                <section data-background="images/cms-beam.jpg">
-                    <p class="overlay-style">Electrons prepared with spin down, measured in the $\mathbf{Z}$ basis.</p>
-                    <iframe width="80%"" height="600" scrolling="no"
-                        src="interactive/stern-gerlach-z-down.html"></iframe>
+                    <img src="graphics/stern-gerlach-z.excalidraw.svg" class="standard" />
+                    <p class="overlay-style" style="padding: 1% !important;">Electrons prepared with spin up, measured in the $\mathbf{Z}$ basis</p>
                 </section>
 
                 <section data-background="images/cms-beam.jpg">
@@ -825,9 +807,13 @@ let detectorResult = M(photon) == Zero ? "detector2" | "detector1";
                 </section>
 
                 <section data-background="images/cms-beam.jpg">
-                    <p class="overlay-style">Electrons prepared with spin up or down, measured in the $\mathbf{X}$
-                        basis.</p>
-                    <iframe width="80%"" height="600" scrolling="no" src="interactive/stern-gerlach-x.html"></iframe>
+                    <img src="graphics/stern-gerlach-x.excalidraw.svg" class="standard" />
+                    <p class="overlay-style" style="padding: 1% !important;">Electrons prepared with spin +, measured in the $\mathbf{X}$ basis</p>
+                </section>
+
+                <section data-background="images/cms-beam.jpg">
+                    <img src="graphics/stern-gerlach-zx.excalidraw.svg" class="standard" />
+                    <p class="overlay-style" style="padding: 1% !important;">Electrons prepared with spin up, measured in the $\mathbf{X}$ basis</p>
                 </section>
 
                 <section data-background="images/cern-alice.jpg">
@@ -847,6 +833,21 @@ let result = Measure([basis], [electron]);
                     <p class="fragment" data-code-focus="6"></p>
                     <p class="fragment" data-code-focus="8-9"></p>
                 </section>
+
+                <section data-background="images/cms-beam.jpg">
+<div class="overlay-style">
+                <div class="column-container">
+                    <div class="col-33">
+                        <p>Electrons prepared with spin up, measured in the $\mathbf{X}$ and then $\mathbf{Z}$. </p>
+        </div>
+        <div class="col-66">
+            <div class="img-backdrop">
+            <img src="graphics/stern-gerlach-zxz.excalidraw.svg" style="max-height: 600px;" />
+        </div>
+        </div>
+    </div>
+</div>
+</section>
 
                 <section data-background="images/monty.jpg">
                     <div class="overlay-style">
@@ -1086,12 +1087,8 @@ let result = Measure([basis], [electron]);
                 </section>
 
                 <section data-background="images/atlas-nsw.jpg">
-                    <p class="overlay-style">Entangled pair, measured in the $\mathbf{Z}$ basis.</p>
-                    <iframe width="75%"" height="350" scrolling="no" src="interactive/entanglement-z.html"></iframe>
-                </section>
-                <section data-background="images/atlas-nsw.jpg">
-                    <p class="overlay-style">Entangled pair, measured in the $\mathbf{X}$ basis.</p>
-                    <iframe width="75%"" height="350" scrolling="no" src="interactive/entanglement-x.html"></iframe>
+                    <img src="graphics/entanglement2.excalidraw.svg" class="standard" />
+                    <p class="overlay-style" style="padding: 1% !important;">Entangled pair, measured in the $\mathbf{Z}$ basis.</p>
                 </section>
 
                 <section data-background="images/cern-alice.jpg">
@@ -1207,6 +1204,13 @@ let agreement = result1 == result2;
                         </div>
                     </div>
                 </section>
+
+                <section data-background="images/atlas-nsw.jpg">
+                                <div class="img-backdrop">
+                                <img src="graphics/teleportation2.excalidraw.svg" style="max-height: 600px;" />
+                    </div>
+                    <p class="overlay-style" style="padding: 1% !important;">Teleportation of a qubit using an entangled pair.</p>
+                    </section>
 
                 <section data-background="images/nobel-2022.png" data-state="bg-top-left">
                 </section>
