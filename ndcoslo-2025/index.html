@@ -418,6 +418,25 @@ Result     Frequency
                     <p class="overlay-style" style="padding: 1% !important;">Beam Splitter</p>
                 </section>
 
+                <section data-background="images/cern-alice.jpg">
+                    <pre>
+<code class="cs rounded">operation BeamSplitter() : Result {
+    // allocate a new qubit in default state
+    use photon = Qubit();
+
+    // beam splitter
+    H(photon);
+
+    // result is a random Zero or One ("detector1" or "detector2")
+    MResetZ(photon)
+}
+</code>
+            </pre>
+                    <p class="fragment" data-code-focus="2-3"></p>
+                    <p class="fragment" data-code-focus="5-6"></p>
+                    <p class="fragment" data-code-focus="8-9"></p>
+                </section>
+
                 <section data-background="images/cms2.jpg">
                     <img src="graphics/interferometer1.excalidraw.svg" class="standard" />
                     <p class="overlay-style" style="padding: 1% !important;">Mach-Zehnder Interferometer</p>
@@ -425,19 +444,20 @@ Result     Frequency
 
                 <section data-background="images/cern-alice.jpg">
                     <pre>
-                <code class="cs rounded">
-// allocate a new qubit in default state
-use photon = Qubit();
+<code class="cs rounded">operation MachZehnder() : Result {
+    // allocate a new qubit in default state
+    use photon = Qubit();
 
-// beam splitter
-H(photon);
+    // beam splitter
+    H(photon);
 
-// second beam splitter
-H(photon);
+    // second beam splitter
+    H(photon);
 
-// result is a certain "detector2" due to interference
-let detectorResult = M(photon) == Zero ? "detector2" | "detector1";
-                </code>
+    // result is a certain Zero ("detector2") due to interference
+    MResetZ(photon)
+}
+</code>
             </pre>
                     <p class="fragment" data-code-focus="2-3"></p>
                     <p class="fragment" data-code-focus="5-6"></p>
@@ -466,22 +486,25 @@ let detectorResult = M(photon) == Zero ? "detector2" | "detector1";
 
                 <section data-background="images/cern-alice.jpg">
                     <pre>
-                <code class="cs rounded">
-// allocate a new qubit in default state
-use photon = Qubit();
+<code class="cs rounded">operation MachZehnderWithQND() : (Result, Result) {
+    // allocate a new qubit in default state
+    use photon = Qubit();
 
-// beam splitter
-H(photon);
+    // beam splitter
+    H(photon);
 
-// observe using the QND - it is a random Zero or One
-let qndResult = M(photon) == Zero ? "q2" | "q1";
+    // observe using the QND - it is a random Zero or One ("qnd1" or "qnd2")
+    let qndResult = MResetZ(photon);
 
-// second beam splitter
-H(photon);
+    // second beam splitter
+    H(photon);
 
-// result is a random Zero or One - interference disappears
-let detectorResult = M(photon) == Zero ? "detector2" | "detector1";
-                </code>
+    // result is now a random Zero or One (interference disappears)
+    let detectorResult = MResetZ(photon);
+
+    (qndResult, detectorResult)
+}
+</code>
             </pre>
                     <p class="fragment" data-code-focus="2-3"></p>
                     <p class="fragment" data-code-focus="5-6"></p>
@@ -856,20 +879,20 @@ let detectorResult = M(photon) == Zero ? "detector2" | "detector1";
 
                 <section data-background="images/cern-alice.jpg">
                     <pre>
-                <code class="cs">
-// default state is |0⟩
-use electron = Qubit();
+                <code class="cs rounded">operation SpinZ(measurement_basis : Pauli) : Result {
+    // allocate a new qubit in the state |0⟩
+    use electron = Qubit();
 
-// basis may be PauliZ or PauliX
-let result = Measure([basis], [electron]);
-
-// if basis is Z, result is deterministic
-// if basis is X, result is random
-                </code>
+    // measurement result is deterministic in the Z basis
+    // and random in the X basis
+    let result = Measure([measurement_basis], [electron]);
+    Reset(electron);
+    
+    result
+}</code>
             </pre>
                     <p class="fragment" data-code-focus="3"></p>
-                    <p class="fragment" data-code-focus="6"></p>
-                    <p class="fragment" data-code-focus="8-9"></p>
+                    <p class="fragment" data-code-focus="7"></p>
                 </section>
 
                 <section data-background="images/cms-beam.jpg">
@@ -885,6 +908,24 @@ let result = Measure([basis], [electron]);
         </div>
     </div>
 </div>
+</section>
+
+<section data-background="images/cern-alice.jpg">
+    <pre>
+<code class="cs rounded">operation SpinZ(measurement_basis : Pauli, flip : Bool) : Result {
+// allocate a new qubit in the state |0⟩
+use electron = Qubit();
+
+// measurement result is deterministic in the Z basis
+// and random in the X basis
+let result = Measure([measurement_basis], [electron]);
+Reset(electron);
+
+result
+}</code>
+</pre>
+    <p class="fragment" data-code-focus="3"></p>
+    <p class="fragment" data-code-focus="7"></p>
 </section>
 
                 <section data-background="images/monty.jpg">
@@ -992,8 +1033,8 @@ let result = Measure([basis], [electron]);
 
                 <section data-background="images/cms-beam.jpg">
                     <div class="overlay-style">
-                        <h2>BB84</h2>
-                        <table>
+                        <h2>BB84 key distribution</h2>
+                        <table style="table-layout: fixed; width: 100%;">
                             <tr class="fragment">
                                 <td>👧🏻</td>
                                 <td>1</td>
@@ -1081,8 +1122,9 @@ let result = Measure([basis], [electron]);
                 <section data-background="images/cms-beam.jpg">
                     <div class="overlay-style">
                         <p>Because arbitrary quantum states <span class="highlight">cannot be cloned</span>, an
-                            attacker, 🦹‍♀️ Eve, would need to measure the qubits to steal information.</p>
-                        <p>She <span class="highlight">must guess</span> between $\mathbf{Z}$ and $\mathbf{X}$ bases.
+                            attacker, 🦹‍♀️ Eve, would need to observe the qubits.</p>
+                        <p>She must guess between $\mathbf{Z}$ and $\mathbf{X}$
+                            bases, which <span class="highlight">destroys</span> some of the original information.
                         </p>
                 </section>
 
@@ -1091,29 +1133,9 @@ let result = Measure([basis], [electron]);
                         <p>👧🏻 👦🏼 Alice and Bob need to compare half of their resulting bits. If there are <span
                                 class="highlight">mismatches</span>, they <span class="highlight">detected</span> an
                             attacker.</p>
-                        <aside class="notes">Otherwise the remaining half of the bits make up the shared key.</aside>
+                        <aside class="notes">Otherwise the remaining half of the bits make up the shared key.
+                        </aside>
                 </section>
-
-                <!-- <section data-background="images/cms-beam.jpg">
-                    <div class="overlay-style">
-                        <p>If 👧🏻 👦🏼 Alice and Bob find <span class="highlight">mismatches</span> between the bits
-                            for which their bases agreed, they <span class="highlight">detected</span> an attacker.</p>
-                        <aside class="notes">Otherwise the remaining half of the bits make up the shared key.</aside>
-                </section> -->
-
-                <!-- <section data-background="images/cms-beam.jpg">
-                    <div class="overlay-style">
-                        <p>If 👧🏻 👦🏼 Alice and Bob find <span class="highlight">mismatches</span> between the bits
-                            for which their bases agreed, they <span class="highlight">detected</span> an attacker.</p>
-                        <aside class="notes">Otherwise the remaining half of the bits make up the shared key.</aside>
-                </section> -->
-
-                <!-- <section data-background="images/cms-beam.jpg">
-                    <div class="overlay-style">
-                        <p>The efficiency of BB84 is <span class="highlight">25%</span></p>
-                        <p>A total of <span class="highlight">4n</span> qubits is needed for a key of length <span
-                                class="highlight">n</span>.</p>
-                </section> -->
 
             </section>
             <!-- End Uncertainty Principle-->
@@ -1131,25 +1153,26 @@ let result = Measure([basis], [electron]);
 
                 <section data-background="images/cern-alice.jpg">
                     <pre>
-                <code class="cs">
-// create a pair of particles in state |up>, |up>
-use pair = Qubit[2];
-
-// entangle them
-PrepareEntangledState([pair[0]], [pair[1]]);
-
-// measure in PauliZ or PauliX basis
-let result1 = Measure([basis], [pair[0]]);
-let result2 = Measure([basis], [pair[1]]);
-
-// for an entangled pair, the measurement will always agree
-let agreement = result1 == result2;
-                </code>
+                <code class="cs">operation Entangled(measurement_basis : Pauli) : Result[] {
+    use (one, two) = (Qubit(), Qubit());
+    
+    // create entangled state
+    H(one);
+    CNOT(one, two);
+    
+    // measure in any basis, as long as it is the same for both qubits
+    let result_one = Measure([measurement_basis], [one]);
+    let result_two = Measure([measurement_basis], [two]);
+    ResetAll([one, two]);
+    
+    // the measurement results will be perfectly correlated
+    [result_one, result_two]
+}</code>
             </pre>
-                    <p class="fragment" data-code-focus="3"></p>
-                    <p class="fragment" data-code-focus="6"></p>
+                    <p class="fragment" data-code-focus="2"></p>
+                    <p class="fragment" data-code-focus="5-6"></p>
                     <p class="fragment" data-code-focus="9-10"></p>
-                    <p class="fragment" data-code-focus="13"></p>
+                    <p class="fragment" data-code-focus="14"></p>
                 </section>
 
                 <section data-background="images/monty.jpg">
@@ -1176,6 +1199,28 @@ let agreement = result1 == result2;
                         </div>
                     </div>
                 </section>
+
+                
+                <!-- <section data-background="images/atlas-nsw.jpg">
+                    <div class="overlay-style">
+                        <p>Two qubits in $\mathbf{Z}$ basis:</p>
+                        <p>$$\ket{\psi_1} = \alpha_1\ket{0} + \beta_1\ket{1} \;\;\;\;\;\;\;\;\;
+                            \ket{\psi_2} = \alpha_2\ket{0} + \beta_2\ket{1}$$</p>
+                        <p class="r-fit-text">$$\ket{\psi_{12}} = \alpha_1\alpha_2\ket{00} + \alpha_1\beta_2\ket{01}
+                            +
+                            \beta_1\alpha_2\ket{10} + \beta_1\beta_2\ket{11}$$</p>
+                    </div>
+                </section>
+
+                <section data-background="images/atlas-nsw.jpg">
+                    <div class="overlay-style">
+                        <p>We <span class="highlight">cannot find</span> $\alpha_1$, $\alpha_2$, $\beta_1$ and $\beta_2$
+                            to satisfy</p>
+                        <p>$\alpha_1\alpha_2\ket{00} + \alpha_1\beta_2\ket{01} + \beta_1\alpha_2\ket{10} +
+                            \beta_1\beta_2\ket{11} = \frac{1}{\sqrt{2}}(\ket{00} + \ket{11})$</p>
+
+                    </div>
+                </section> -->
 
                 <section data-background="images/atlas-nsw.jpg">
                     <div class="overlay-style">
@@ -1255,7 +1300,7 @@ let agreement = result1 == result2;
             </section>
             <!-- End Entanglement -->
 
-            <section data-background="images/all.jpg">
+            <section data-background="images/all.png">
             </section>
 
             <section data-background="images/atlas5.jpg">
@@ -1268,11 +1313,11 @@ let agreement = result1 == result2;
                         <div class="col auto">
                             <ul style="font-size: 0.9em;">
                                 <li>📝 <a
-                                        href="https://filipw.github.io/dotnetday-zurich-2022">filipw.github.io/dotnetday-zurich-2022</a>
+                                        href="https://filipw.github.io/ndcoslo-2025">filipw.github.io/ndcoslo-2025</a>
                                 </li>
 
                                 <li>💻 <a
-                                        href="https://github.com/filipw/2022-dotnetday-demos">github.com/filipw/2022-dotnetday-demos</a>
+                                        href="https://github.com/filipw/2025-ndcoslo-demos">github.com/filipw/2025-ndcoslo-demos </a>
                                 </li>
 
                                 <li>📚 <a href="https://link.springer.com/book/10.1007/978-3-030-99379-5">My Quantum
