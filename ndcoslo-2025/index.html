@@ -699,22 +699,24 @@ Result     Frequency
                     </div>
                 </section> -->
 
-                <section data-background="images/cms2.jpg">
+                <!-- <section data-background="images/cms2.jpg">
                     <div class="overlay-style">
                         <p>A quantum system can be in one of the infinitely many states possible as a <span
                                 class="highlight">linear combination</span> of two basis states:</p>
                         <h2 class="r-fit-text">$$\ket{\psi} = \alpha\ket{0} + \beta\ket{1}$$</h2>
                     </div>
-                </section>
+                </section> -->
 
                 <section data-background="images/cms2.jpg">
                     <div class="column-container centered">
                         <div class="col overlay-style">
-                            <p>If both $\alpha$ and $\beta$ are non-zero, the system is in a</p>
-                            <h2 class="r-fit-text">superposition</h2>
+                            <!-- <p>If both $\alpha$ and $\beta$ are non-zero, the system is in a</p>
+                            <h2 class="r-fit-text">superposition</h2> -->
+                            <p>If a system is neither $\ket{0}$, nor $\ket{1}$ state, it is in a <span class="highlight">superposition</span>.</p>
+                            <p>Mathematically, superposition is a <span class="highlight">linear combination</span> of the observable states.</p>
                         </div>
                         <div class="col inset-right">
-                            <img src="images/arbitrary-state.png" />
+                            <img class="standard" src="images/arbitrary-state.png" />
                         </div>
                     </div>
                     <aside class="notes">
@@ -752,13 +754,13 @@ Result     Frequency
                     </div>
                 </section>
 
-                <section data-background="images/schroedinger-cat2.png">
+                <!-- <section data-background="images/schroedinger-cat2.png">
                     <aside class="notes">
                         Schrödinger's cat was both dead and alive at the same time. It's NOT that he was dead or alive
                         and Schrödinger simply did not know.
                         Only once Schrödinger opened the box, because of "observation", would the cat's fate be decided.
                     </aside>
-                </section>
+                </section> -->
 
                 <section data-background="images/REV-Schrodinger.jpg">
                     <div class="column-container">
@@ -916,10 +918,11 @@ Result     Frequency
                 </section>
 
                 <section data-background="images/cms-beam.jpg">
-<div class="overlay-style">
                 <div class="column-container">
                     <div class="col-33">
+                        <div class="overlay-style">
                         <p>Electrons prepared with spin up, measured in the $\mathbf{X}$ and then $\mathbf{Z}$. </p>
+                        </div>
         </div>
         <div class="col-66">
             <div class="img-backdrop">
@@ -927,25 +930,25 @@ Result     Frequency
         </div>
         </div>
     </div>
-</div>
 </section>
 
 <section data-background="images/cern-alice.jpg">
     <pre>
-<code class="cs rounded">operation SpinZ(measurement_basis : Pauli, flip : Bool) : Result {
-// allocate a new qubit in the state |0⟩
-use electron = Qubit();
+<code class="cs rounded">operation SpinZMeasuredInXThenZ() : Result {
+    // allocate a new qubit in the state |↓⟩
+    use electron = Qubit();
 
-// measurement result is deterministic in the Z basis
-// and random in the X basis
-let result = Measure([measurement_basis], [electron]);
-Reset(electron);
+    let result_one = Measure([PauliX], [electron]);
+    let result_two = Measure([PauliZ], [electron]);
 
-result
+    Reset(electron);
+    result_two
 }</code>
 </pre>
     <p class="fragment" data-code-focus="3"></p>
-    <p class="fragment" data-code-focus="7"></p>
+    <p class="fragment" data-code-focus="5"></p>
+    <p class="fragment" data-code-focus="6"></p>
+    <p class="fragment" data-code-focus="9"></p>
 </section>
 
                 <section data-background="images/monty.jpg">
@@ -983,33 +986,6 @@ result
 
                 <section data-background="images/cms-beam.jpg">
                     <div class="column-container centered overlay-style">
-
-                        <div class="col">
-                            <p>Those are for example <span class="highlight">position & momentum</span> or <span
-                                    class="highlight">energy & time</span>.</p>
-                        </div>
-
-                        <div class="col">
-                            <p class="r-fit-text">$\Delta x \Delta p \geq \frac{\hbar}{2}$</p>
-                            <p class="r-fit-text">$\Delta E \Delta t \geq \frac{\hbar}{2}$</p>
-                        </div>
-                    </div>
-                </section>
-
-                <section data-background="images/cms-beam.jpg">
-                    <img src="images/Quantum_Fluctuations.gif" />
-                    <div class="overlay-style" style="padding: 1% !important;">
-                        <div style="clear:both;">
-                            <p class="footnote" style="text-align: center;">By Ahmed Neutron - Own work, CC BY-SA 4.0,
-                                <a
-                                    href="https://commons.wikimedia.org/w/index.php?curid=69715938">https://commons.wikimedia.org/w/index.php?curid=69715938</a>
-                            </p>
-                        </div>
-                    </div>
-                </section>
-
-                <section data-background="images/cms-beam.jpg">
-                    <div class="column-container centered overlay-style">
                         <div class="col inset">
                             <h2>$\mathbf{Z}$ basis</h2>
                             <img src="images/z-basis.png" style="max-width: 60%;" />
@@ -1038,6 +1014,33 @@ result
                 </section>
 
                 <section data-background="images/cms-beam.jpg">
+                    <div class="column-container centered overlay-style">
+
+                        <div class="col">
+                            <p>Uncertainty relation applies for example between <span class="highlight">position & momentum</span> or <span
+                                    class="highlight">energy & time</span>.</p>
+                        </div>
+
+                        <div class="col">
+                            <p class="r-fit-text">$\Delta x \Delta p \geq \frac{\hbar}{2}$</p>
+                            <p class="r-fit-text">$\Delta E \Delta t \geq \frac{\hbar}{2}$</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-background="images/cms-beam.jpg">
+                    <img src="images/Quantum_Fluctuations.gif" />
+                    <div class="overlay-style" style="padding: 1% !important;">
+                        <div style="clear:both;">
+                            <p class="footnote" style="text-align: center;">By Ahmed Neutron - Own work, CC BY-SA 4.0,
+                                <a
+                                    href="https://commons.wikimedia.org/w/index.php?curid=69715938">https://commons.wikimedia.org/w/index.php?curid=69715938</a>
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- <section data-background="images/cms-beam.jpg">
                     <div class="overlay-style">
                         <p>Superposition is</p>
                         <h2 class="r-fit-text">basis dependent</h2>
@@ -1049,9 +1052,9 @@ result
                         <br /><br />
                         This concept underpins quantum cryptography.
                     </aside>
-                </section>
+                </section> -->
 
-                <section data-background="images/cms-beam.jpg">
+                <!-- <section data-background="images/cms-beam.jpg">
                     <div class="overlay-style">
                         <h2>BB84 key distribution</h2>
                         <table style="table-layout: fixed; width: 100%;">
@@ -1155,7 +1158,7 @@ result
                             attacker.</p>
                         <aside class="notes">Otherwise the remaining half of the bits make up the shared key.
                         </aside>
-                </section>
+                </section> -->
 
             </section>
             <!-- End Uncertainty Principle-->
@@ -1308,6 +1311,9 @@ result
                     </div>
                 </section>
 
+                <section data-background="images/nobel-2022.png" data-state="bg-top-left">
+                </section>
+
                 <section data-background="images/atlas-nsw.jpg">
                                 <div class="img-backdrop">
                                 <img src="graphics/teleportation2.excalidraw.svg" style="max-height: 600px;" />
@@ -1315,8 +1321,7 @@ result
                     <p class="overlay-style" style="padding: 1% !important;">Teleportation of a qubit using an entangled pair.</p>
                     </section>
 
-                <section data-background="images/nobel-2022.png" data-state="bg-top-left">
-                </section>
+
             </section>
             <!-- End Entanglement -->
 
