@@ -754,15 +754,15 @@ Result     Frequency
                     </div>
                 </section>
 
-                <!-- <section data-background="images/schroedinger-cat2.png">
+                <section data-background="images/schroedinger-cat2.png">
                     <aside class="notes">
                         Schrödinger's cat was both dead and alive at the same time. It's NOT that he was dead or alive
                         and Schrödinger simply did not know.
                         Only once Schrödinger opened the box, because of "observation", would the cat's fate be decided.
                     </aside>
-                </section> -->
+                </section>
 
-                <section data-background="images/REV-Schrodinger.jpg">
+                <!-- <section data-background="images/REV-Schrodinger.jpg">
                     <div class="column-container">
                         <div class="col">
                         </div>
@@ -776,7 +776,7 @@ Result     Frequency
 
 
                     </div>
-                </section>
+                </section> -->
 
                 <section data-background="images/cms2.jpg" data-state="bg-top-left">
                     <div class="img-backdrop">
@@ -867,11 +867,6 @@ Result     Frequency
                 </section>
 
                 <section data-background="images/cms-beam.jpg">
-                    <img src="graphics/stern-gerlach-z.excalidraw.svg" class="standard" />
-                    <p class="overlay-style" style="padding: 1% !important;">Electrons prepared with spin up, measured in the $\mathbf{Z}$ basis</p>
-                </section>
-
-                <section data-background="images/cms-beam.jpg">
                     <div class="overlay-style">
                         <h2>$\mathbf{X}$ basis</h2>
                         <p class="r-fit-text">
@@ -890,6 +885,11 @@ Result     Frequency
                 </section>
 
                 <section data-background="images/cms-beam.jpg">
+                    <img src="graphics/stern-gerlach-z.excalidraw.svg" class="standard" />
+                    <p class="overlay-style" style="padding: 1% !important;">Electrons prepared with spin up, measured in the $\mathbf{Z}$ basis</p>
+                </section>
+
+                <section data-background="images/cms-beam.jpg">
                     <img src="graphics/stern-gerlach-x.excalidraw.svg" class="standard" />
                     <p class="overlay-style" style="padding: 1% !important;">Electrons prepared with spin +, measured in the $\mathbf{X}$ basis</p>
                 </section>
@@ -902,7 +902,7 @@ Result     Frequency
                 <section data-background="images/cern-alice.jpg">
                     <pre>
                 <code class="cs rounded">operation SpinZ(measurement_basis : Pauli) : Result {
-    // allocate a new qubit in the state |0⟩
+    // allocate a new qubit in the state |0⟩ - which is the same as |↓⟩
     use electron = Qubit();
 
     // measurement result is deterministic in the Z basis
@@ -935,7 +935,7 @@ Result     Frequency
 <section data-background="images/cern-alice.jpg">
     <pre>
 <code class="cs rounded">operation SpinZMeasuredInXThenZ() : Result {
-    // allocate a new qubit in the state |↓⟩
+    // allocate a new qubit in the state |0⟩ - which is the same as |↓⟩
     use electron = Qubit();
 
     let result_one = Measure([PauliX], [electron]);
@@ -958,24 +958,6 @@ Result     Frequency
                     </div>
                 </section>
 
-                <section data-background="images/einstein.jpg">
-                    <div class="column-container">
-                        <div class="col overlay-style">
-                            <blockquote>I am convinced that God does not play dice
-                            </blockquote>
-                            <p>
-                            <footer>- <em>Albert Einstein</em></footer>
-                            </p>
-                        </div>
-
-                        <div class="col">
-                        </div>
-                    </div>
-                    <aside class="notes">
-                        Apparently, Niels Bohr responded "Einstein, don't tell God what to do."
-                    </aside>
-                </section>
-
                 <section data-background="images/cms-beam.jpg">
                     <div class="overlay-style">
                         <p>In quantum mechanics we cannot simultaneously know values of</p>
@@ -983,7 +965,7 @@ Result     Frequency
                         <p>with arbitrary precision.</p>
                     </div>
                 </section>
-
+<!-- 
                 <section data-background="images/cms-beam.jpg">
                     <div class="column-container centered overlay-style">
                         <div class="col inset">
@@ -999,17 +981,36 @@ Result     Frequency
                         A state |+> is a definite state in basis X, and maps to a classical 0 with 100% probability.
                         However, in Z basis, it has a 50% probability of collapsing to |0> or |1>.
                     </aside>
-                </section>
+                </section> -->
 
                 <section data-background="images/cms-beam.jpg">
                     <div class="overlay-style">
-                        <p>Measurement in the $\mathbf{Z}$ basis creates</p>
+                        <p>The measurements in the $\mathbf{Z}$ and $\mathbf{X}$ bases <span
+                            class="highlight">do not commute</span>. Measurement in the $\mathbf{Z}$ basis creates</p>
                         <h2 class="r-fit-text">maximum uncertainty</h2>
                         <p>for the measurement in the $\mathbf{X}$ the basis, and vice versa.</p>
                     </div>
                     <aside class="notes">
                         For sequential measurements e.g. Z-X-Z, the previous results in Z get destroyed by X
                         measurement!
+                    </aside>
+                </section>
+
+                <section data-background="images/einstein.jpg">
+                    <div class="column-container">
+                        <div class="col overlay-style">
+                            <blockquote>I am convinced that God does not play dice
+                            </blockquote>
+                            <p>
+                            <footer>- <em>Albert Einstein</em></footer>
+                            </p>
+                        </div>
+
+                        <div class="col">
+                        </div>
+                    </div>
+                    <aside class="notes">
+                        Apparently, Niels Bohr responded "Einstein, don't tell God what to do."
                     </aside>
                 </section>
 
