@@ -928,7 +928,7 @@ Result     Frequency
                 <section data-background="images/cern-alice.jpg">
                     <pre>
                 <code class="cs rounded">operation SpinZ(measurement_basis : Pauli) : Result {
-    // allocate a new qubit in the state |0⟩ - which is the same as |↓⟩
+    // allocate a new qubit in the state |0⟩ - which is the same as |↑⟩
     use electron = Qubit();
 
     // measurement result is deterministic in the Z basis
@@ -961,7 +961,7 @@ Result     Frequency
 <section data-background="images/cern-alice.jpg">
     <pre>
 <code class="cs rounded">operation SpinZMeasuredInXThenZ() : Result {
-    // allocate a new qubit in the state |0⟩ - which is the same as |↓⟩
+    // allocate a new qubit in the state |0⟩ - which is the same as |↑⟩
     use electron = Qubit();
 
     let result_one = Measure([PauliX], [electron]);
