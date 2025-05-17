@@ -1214,20 +1214,20 @@ Result     Frequency
 
                 <section data-background="images/cern-alice.jpg">
                     <pre>
-                <code class="cs">operation Entangled(measurement_basis : Pauli) : Result[] {
-    use (one, two) = (Qubit(), Qubit());
-    
+                <code class="cs rounded">operation Entangled(measurement_basis : Pauli) : Result[] {
+    use (qubit1, qubit2) = (Qubit(), Qubit());
+
     // create entangled state
-    H(one);
-    CNOT(one, two);
-    
+    H(qubit1);
+    CNOT(qubit1, qubit2);
+
     // measure in any basis, as long as it is the same for both qubits
-    let result_one = Measure([measurement_basis], [one]);
-    let result_two = Measure([measurement_basis], [two]);
-    ResetAll([one, two]);
-    
+    let result1 = Measure([measurement_basis], [qubit1]);
+    let result2 = Measure([measurement_basis], [qubit2]);
+    ResetAll([qubit1, qubit2]);
+
     // the measurement results will be perfectly correlated
-    [result_one, result_two]
+    [result1, result2]
 }</code>
             </pre>
                     <p class="fragment" data-code-focus="2"></p>
