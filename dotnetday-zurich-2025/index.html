@@ -1,0 +1,502 @@
+﻿<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Advanced RAG patterns for AI Applications</title>
+    <meta name="description" content="">
+    <meta name="author" content="Filip W">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <script src="//code.jquery.com/jquery-1.8.0.js"></script>
+    <script src="//code.jquery.com/ui/1.8.23/jquery-ui.js"></script>
+    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/js/bootstrap.min.js"></script>
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/css/bootstrap-combined.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/default.min.css">
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/simple.css" id="theme">
+    <link rel="stylesheet" href="css/monokai_sublime.css" />
+    <link rel="stylesheet" href="css/custom.css" />
+    <script src="fsharp.formatting/styles/tips.js" type="text/javascript"></script>
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+    <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+
+    <script>
+        if (window.location.search.match(/print-pdf/gi)) {
+            var link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = 'css/print/pdf.css';
+            document.getElementsByTagName('head')[0].appendChild(link);
+        }
+    </script>
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+    <style type="text/css">
+    </style>
+</head>
+
+<body>
+    <div class="reveal">
+        <header
+            style="position: absolute;top: 50px; left: 100px; z-index:500; font-size:100px;background-color: rgba(0,0,0,0.5)">
+        </header>
+        <!-- Any section element inside of this container is displayed as a slide -->
+        <div class="slides">
+
+            <section data-background="images/greg-rakozy-oMpAz-DN-9I-unsplash.jpg">
+
+                <div class="col overlay-style" style="padding: 0 !important">
+
+                    <h1 style="font-size: 2em; background: none; margin-bottom: 0;">
+                        Advanced RAG patterns<br />
+                        <small style="font-size: 0.5em; line-height: 2em;">for AI Applications</small>
+                    </h1>
+                    <p style="margin-top: 0; padding-bottom: 20px;">
+                        <small>
+                            <a href="https://strathweb.com" class="roll">
+                                <span>strathweb.com</span>
+                            </a> •
+                            <a href="https://mathstodon.xyz/filipw" class="roll">
+                                <span data-title="@filip_woj">@filipw@mathstodon.xyz</span>
+                            </a> •
+                            <a href="https://github.com/filipw" class="roll">
+                                <span data-title="github.com/filipw">Filip W</span>
+                            </a>
+                        </small>
+                    </p>
+                </div>
+
+            </section>
+
+            <section data-background-color="#fff">
+                <img src="images/sonova.png" style="min-height: auto" />
+            </section>
+
+
+            <!-- LLMs -->
+            <section>
+                <section data-background="images/growtika-nGoCBxiaRO0-unsplash.jpg">
+                    <h1>Background</h1>
+                </section>
+                <section data-background="images/maxime-valcarce-mAj8xn5zXsk-unsplash.jpg">
+                    <div class="overlay-style">
+                        <p>
+                            Language models can be thought of as being purely functional
+                        </p>
+                        <h2 class="r-fit-text">$f : \{in: str\} \rightarrow \{out: str\}$</h2>
+                    </div>
+                </section>
+
+                <section data-background="images/maxime-valcarce-mAj8xn5zXsk-unsplash.jpg">
+                    <div class="overlay-style">
+                        <p>
+                                <img src="images/model-assistant.png" class="standard" />
+                            </p>
+                        <p>But how do we arrive at such experience then?</p>
+
+                        </div>
+                </section>
+
+                <section data-background="images/maxime-valcarce-mAj8xn5zXsk-unsplash.jpg">
+                    <div class="overlay-style">
+                        <p>During "assistant fine-tuning", by training on conversation samples, the model learns to</p>
+                        <h2 class="r-fit-text">recognize special tokens</h2>
+                        <p>such as <span class="highlight">&lt;|user|&gt;</span>, <span class="highlight">&lt;|assistant|&gt;</span> or <span class="highlight">&lt;|system|&gt;</span>, enabling role-based interactions and dialogue handling.</p>
+                    </div>
+                </section>
+                
+                <section data-background="images/maxime-valcarce-mAj8xn5zXsk-unsplash.jpg">
+                    <div class="overlay-style">$f : \{in: str\} \rightarrow \{out: str\}$
+                    </div>
+
+                    <div class="column-container">
+                    <div>
+                    <pre>
+                <code class="nohighlight rounded">
+<|system|>
+You are ChatGPT, an AI language model designed to assist with a wide variety of tasks, answering questions, providing explanations, helping with creative projects, technical challenges and user issues. Be friendly and helpful.
+<|end|>
+
+<|user|>Hello! Who are you?<|end|>
+<|assistant|>
+                </code>
+            </pre>
+        </div>
+        <div>
+
+            <pre>
+                <code class="nohighlight rounded">
+Hello! I'm ChatGPT, an AI language model designed to assist with a wide variety of tasks, from answering questions and providing explanations to helping with creative projects and technical challenges. How can I help you today?<|end|>
+                </code>
+            </pre>
+            </div>
+        </div>
+                </section>
+
+                <section data-background="images/maxime-valcarce-mAj8xn5zXsk-unsplash.jpg">
+                    <div class="column-container">
+                    <div class="col-33">
+                        <div class="overlay-style">
+                        <p>LLMs are</p>
+                        <h2 class="r-fit-text">stateless</h2>
+                        <p>They do not retain memory of past interactions. To maintain context in a series of
+                            interactions, the <span class="highlight">entire</span> relevant history must be <span class="highlight">included</span> with each subsequent query.</p>
+                        </div>
+        </div>
+        <div class="col-66">
+
+            <pre>
+                <code class="nohighlight rounded">
+<|system|>
+You are a pirate, designed to assist with a wide variety of tasks. You are helpful.
+<|end|>
+
+<|user|>Hi, who are you?<|end|>
+<|assistant|>
+Arrr! Avast ye, matey! I be ChatGPT the pirate, scourge o' the digital seas. How can I be assistin' ye on this fine day? ☠️🏴‍☠️<|end|>
+<|user|>My name is Filip, refer to me by name.<|end|>
+<|assistant|>
+Aye, Filip! What be yer next question, matey? 🏴‍☠️<|end|>
+<|user|>Write a poem about quantum mechanics.<|end|>
+<|assistant|>
+                </code>
+            </pre>
+            </div>
+        </div>
+            <p class="fragment" data-code-focus="2-7"></p>
+            <p class="fragment" data-code-focus="8"></p>
+            <p class="fragment" data-code-focus="2-10"></p>
+            <p class="fragment" data-code-focus="11"></p>
+            <p class="fragment" data-code-focus="2-14"></p>
+                </section>
+
+                <!-- <section data-background="images/maxime-valcarce-mAj8xn5zXsk-unsplash.jpg">
+                    <div class="overlay-style">
+                        <p>In order not to run out of token count</p>
+                        <h2 class="r-fit-text">context window management</h2>
+                        <p>is required as the conversation continues.</p>
+                    </div>
+                </section> -->
+
+            </section> <!-- end LLMs -->
+
+            <!-- Grounding in Data-->
+            <section>
+                <section data-background="images/max-langelott-wWQ760meyWI-unsplash.jpg">
+                    <h1>Where does my data go in?</h1>
+                </section>
+
+                <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
+                    <div class="overlay-style">
+                        <div class="column-container" style="align-items: flex-end;">
+                            <div class="col">
+                                <img src="images/books-hi.png" class="standard" />
+
+                            </div>
+                            <div class="col">
+                                <br />
+                                <img src="images/books-lo.png" class="standard" />
+                            </div>
+
+                        </div>
+                        <p>LLMs are a "blurry JPEG" of their training data.</p>
+                    </div>
+                </section>
+
+                <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
+                    <div class="overlay-style">
+                        <h2>Extending LLMs with own data</h2>
+                        <div class="column-container">
+                            <div class="col">
+                                <ul>
+                                    <li class="fragment">🎯 Enhance Quality & Relevancy
+                                        <br />
+                                        <small>→ provide accurate references<br/>
+                                            → use specific references</small>
+                                        <br />
+                                        <br />
+
+                                    </li>
+
+                                    <li class="fragment">🔐 Utilize Proprietary Data
+                                        <br />
+                                        <small>→ incorporate data that the model couldn't have accessed during training (e.g. company internal)</small>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col">
+                                <ul>
+
+                                    <li class="fragment">📊 Current/Dynamic Information
+                                        <br />
+                                        <small>→ up-to-date (post-training) information<br/>
+                                            → inject dynamic application data</small>
+                                        <br />
+                                        <br />
+
+                                    </li>
+
+                                    <li class="fragment">🛠️ Optimize for Specific Tasks
+                                        <br />
+                                        <small>→ teach the model specific skills</br>
+                                            → introduce deeply specific, complex domain data
+                                        </small>
+
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+
+                <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
+                    <div class="overlay-style">
+                        <div>
+                            Given that we can describe the model as $f : \{in: str\} \rightarrow \{out: str\}$, there are only two options to get our data into the model.</div>
+                            <hr />
+                            <ul>
+                                <li class="fragment">🛠️ inject our information into the internals of the model</li>
+                                <li class="fragment">🗣️ find creative ways of generating the input string</li>
+                            </ul>
+                    </div>
+                </section>
+
+                <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
+                    <img src="images/flows-zeroshot-v3.png" class="standard" style="max-height: none;" />
+                    <p class="overlay-style" style="padding: 1% !important;">Zero-shot learning</p>
+                </section>
+
+                <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
+                    <img src="images/flows-fewshot-v3.png" class="standard" style="max-height: none;" />
+                    <p class="overlay-style" style="padding: 1% !important;">Few-shot learning</p>
+                </section>
+
+                <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
+                    <img src="images/flows-finetuning-v3.png" class="standard" style="max-height: none;" />
+                    <p class="overlay-style" style="padding: 1% !important;">Fine tuning</p>
+                </section>
+
+                <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
+                    <img src="images/flows-rag-v3.png" class="standard" style="max-height: none;" />
+                    <p class="overlay-style" style="padding: 1% !important;">Retrieval Augmented Generation</p>
+                </section>
+
+                <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
+                    <img src="images/flows-rag-rewrite-v3.png" class="standard" style="max-height: 600px;" />
+                    <p class="overlay-style" style="padding: 1% !important;">RAG with Query Rewrite</p>
+                </section>
+
+                <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
+                    <div class="overlay-style">
+                        <h3>Embeddings</h3>
+
+                        <div class="column-container">
+                            <div class="col-66" style="padding: 3%; padding-top: 0;">
+                                <p>Information can be encoded into <span class="highlight">highly dimensional vectors</span> called embeddings.</p> <p>Related ones can then be found by performing mathematical operations between the vectors, such as cosine similarity or dot product.</p>
+                            </div>
+                            <div class="col-33">
+                                <br/>
+                                    <img src="images/vectors.png" class="standard" />
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
+                    <div class="overlay-style">
+<p>Embeddings can be used to represent any type of data!</p>
+<hr />
+<p>
+    <span class="emoji">🏞️</span> image <span class="arrow">→</span> <span class="emoji">🧠</span> image model <span class="arrow">→</span> <span class="emoji">🔢</span> float vector <br/>
+    <span class="emoji">🎧</span> audio <span class="arrow">→</span> <span class="emoji">🧠</span> audio model <span class="arrow">→</span> <span class="emoji">🔢</span> float vector <br/>
+    <span class="emoji">📝</span> text <span class="arrow">→</span> <span class="emoji">🧠</span> text model <span class="arrow">→</span> <span class="emoji">🔢</span> float vector <br/>
+</p>
+                               </div>
+                </section>
+
+                <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
+                    <img src="images/flows-rag-embeddings-v3.png" class="standard" style="max-height: 600px;" />
+                    <p class="overlay-style" style="padding: 1% !important;">RAG with Query Rewrite & Embeddings</p>
+                </section>
+                
+                <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
+                    <img src="images/flows-rag-embeddings-function-v3.png" class="standard" style="max-height: 600px;" />
+                    <p class="overlay-style" style="padding: 1% !important;">RAG with Query Rewrite, Embeddings & Functions</p>
+                </section>
+
+                <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
+                    <div class="overlay-style">
+                        <p>There is an emerging technique called <span
+                                class="highlight">RAFT</span> (retrieval-augmented fine tuning), which is based on the idea of teaching the model how to use documentation.</p>
+                                <p>
+                                    <img src="images/raft.png" class="standard" style="min-height: auto;" />
+                                </p>
+                        <div style="clear:both;">
+                            <p class="footnote" style="text-align: center;">Tianjun Zhang, Shishir G. Patil, Naman Jain, Sheng Shen, Matei Zaharia, Ion Stoica, Joseph E. Gonzalez - "RAFT: Adapting Language Model to Domain Specific RAG" (2023). https://doi.org/10.48550/arXiv.2403.10131. (image from the paper)
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
+                    <div class="overlay-style">
+                        <div class="column-container">
+                            <div class="col-33">
+                                <div class="img-backdrop">
+                                    <img src="images/graphrag.png" style="min-height: auto;" />
+                                </div>
+                            </div>
+                            <div class="col-66">
+                                <p><br/>GraphRAG allows extracting a <span class="highlight">knowledge graph</span> out of a corpus of data, building a hierarchy, generating summaries for them, and then leveraging these structures when performing RAG.</p>
+                            </div>
+                        </div>
+                        <div style="clear:both;"><br/>
+                            <p class="footnote" style="text-align: center;">Darren Edge and Ha Trinh and Newman Cheng and Joshua Bradley and Alex Chao and Apurva Mody and Steven Truitt and Jonathan Larson - "From Local to Global: A Graph RAG Approach to Query-Focused Summarization. https://arxiv.org/abs/2404.16130.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
+                    <img src="images/graphrag-diagram.png" class="standard" style="max-height: 600px;" />
+                    <p class="overlay-style" style="padding: 1% !important;">Knowledge graph RAG</p>
+                </section>
+                
+                <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
+                    <div class="overlay-style">
+                        <p>The new <span
+                                class="highlight">realtime audio models</span> can also be used with RAG-patterns, allowing for audio conversations grounded in data.</p>
+                                <div class="img-backdrop">
+                                    <img src="images/voicerag.png" class="standard" style="max-height: 300px;" />
+                                </div>
+                    </div>
+                </section>
+
+
+                <!-- <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
+                    <div class="overlay-style">
+                        <p>Projects such as <span
+                                class="highlight">GraphRAG</span> allows for extracting a knowledge graph out of a corpus of data, building a hierarchy, generating summaries for them, and then leveraging these structures when performing RAG.</p>
+                                <p>
+                                    <img src="images/raft.png" class="standard" style="min-height: auto;" />
+                                </p>
+                        <div style="clear:both;">
+                            <p class="footnote" style="text-align: center;">Darren Edge and Ha Trinh and Newman Cheng and Joshua Bradley and Alex Chao and Apurva Mody and Steven Truitt and Jonathan Larson - "From Local to Global: A Graph RAG Approach to Query-Focused Summarization. https://arxiv.org/abs/2404.16130.
+                            </p>
+                        </div>
+                    </div>
+                </section> -->
+            </section>
+
+            <section>
+                <section data-background="images/hao-wang-pVq6YhmDPtk-unsplash.jpg">
+                <div class="col overlay-style" style="padding: 0 !important">
+
+                    <h1>Demos
+                    </h1>
+                </div>
+                </section>
+            </section>
+
+
+            <section data-background="images/all.png">
+            </section>
+
+            <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
+                <div class="overlay-style">
+                    <h2>Thank you</h2>
+                    <div class="column-container centered">
+                        <div class="col auto">
+                            <img class="small" src="images/thankyou.gif" style="min-height: auto; margin:0" />
+                        </div>
+                        <div class="col auto">
+                            <ul style="font-size: 0.9em;">
+                                <li>📝 <a
+                                        href="https://filipw.github.io/dotnetday-zurich-2025">filipw.github.io/dotnetday-zurich-2025</a>
+                                </li>
+                                <li>🖥️ <a
+                                        href="https://github.com/filipw/2025-switzerland-netday-demos">github.com/filipw/2025-switzerland-netday-demos</a>
+                                </li>
+                                <li>📸 <a href="http://unsplash.com">Photos credit: Unsplash</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section data-background-color="#000">
+                <img src="images/bye.gif" />
+            </section>
+
+        </div>
+    </div>
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']]
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+        </script>
+    <script>
+        // Full list of configuration options available here:
+        // https://github.com/hakimel/reveal.js#configuration
+
+        Reveal.initialize({
+            viewDistance: 30,
+            controls: true,
+            progress: true,
+            history: true,
+            center: true,
+            keyboard: {
+                39: 'next', // Right Arrow
+                37: 'prev'  // Left Arrow
+            },
+            transition: 'slide', // default/cube/page/concave/zoom/linear/fade/none
+
+            // Parallax scrolling
+            // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+            // parallaxBackgroundSize: '2100px 900px',
+
+            // Optional libraries used to extend on reveal.js
+            dependencies: [
+                { src: 'lib/js/classList.js', condition: function () { return !document.body.classList; } },
+                { src: 'plugin/markdown/marked.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+                { src: 'plugin/markdown/markdown.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+                { src: 'plugin/highlight.js/highlight.pack.js', async: true, callback: function () { /*hljs.initHighlightingOnLoad();*/ } },
+                { src: 'plugin/zoom-js/zoom.js', async: true, condition: function () { return !!document.body.classList; } },
+                { src: 'plugin/notes/notes.js', async: true, condition: function () { return !!document.body.classList; } },
+                { src: 'plugin/alt-arrows/alt-arrows.js' },
+                {
+                    src: 'plugin/reveal-code-focus.js',
+                    async: true,
+                    callback: function () {
+                        RevealCodeFocus();
+                    }
+                }
+            ]
+        });
+
+        // Reveal.configure({
+        //     keyboard: {
+        //         39: 'next', // Right Arrow
+        //         37: 'prev'  // Left Arrow
+        //     }
+        // });
+
+    </script>
+</body>
+
+</html>
