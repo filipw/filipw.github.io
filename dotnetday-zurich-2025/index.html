@@ -209,9 +209,11 @@ Aye, Filip! What be yer next question, matey? 🏴‍☠️<|end|>
                     </div>
                 </section>
 
-                <section data-background="images/flow-bg.jpg">
-                    <div class="overlay-style">
-                        <h2>Naive RAG: The Starting Point</h2>
+                    <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
+                        <img src="graphics/rag-basic.excalidraw.png" class="standard" style="max-height: 600px;" />
+                        <p class="overlay-style" style="padding: 1% !important;">Naive RAG</p>
+                    </section>
+                        <!-- <h2>Naive RAG: The Starting Point</h2>
                         <div style="text-align: center;">
                             <div
                                 style="display: flex; justify-content: center; align-items: center; font-size: 1.2em; margin: 40px 0;">
@@ -230,8 +232,7 @@ Aye, Filip! What be yer next question, matey? 🏴‍☠️<|end|>
                         </div>
                         <div class="fragment">
                             <p><strong>This session:</strong> How to make each step dramatically better</p>
-                        </div>
-                    </div>
+                        </div> -->
                 </section>
 
                 <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
@@ -242,10 +243,10 @@ Aye, Filip! What be yer next question, matey? 🏴‍☠️<|end|>
                                 <ul>
                                     <li class="fragment">📉 <strong>Low Information Density</strong><br />
                                         <small>→ Product specs, regulatory docs, marketing copy<br />
-                                            → thousands of tokens for basic hearing aid features</small>
+                                            → thousands of irrelevant tokens</small>
                                     </li>
                                     <li class="fragment">🎯 <strong>Query-Document Asymmetry</strong><br />
-                                        <small>→ "What hearing aid helps with tinnitus?"<br />
+                                        <small>→ e.g. "How to get hearing loss help?"<br />
                                             → vs. full technical specification documents</small>
                                     </li>
                                 </ul>
@@ -253,20 +254,24 @@ Aye, Filip! What be yer next question, matey? 🏴‍☠️<|end|>
                             <div class="col">
                                 <ul>
                                     <li class="fragment">🔍 <strong>Poor Retrieval Quality</strong><br />
-                                        <small>→ Gets "hearing loss prevention" instead of "tinnitus relief"<br />
+                                        <small>→ e.g. "hearing loss help" instead of "tinnitus relief"<br />
                                             → Related but irrelevant docs cause 67% accuracy loss¹</small>
                                     </li>
                                     <li class="fragment">💰 <strong>Cost & Latency Issues</strong><br />
-                                        <small>→ Processing irrelevant regulatory content<br />
-                                            → 4x higher token costs from document bloat</small>
+                                        <small>→ Processing irrelevant content<br />
+                                            → Token costs from document bloat</small>
                                     </li>
                                 </ul>
                             </div>
                         </div>
-                        <div class="fragment" style="margin-top: 30px;">
-                            <p><strong>This session:</strong> Advanced patterns that solve each failure mode</p>
-                            <p style="font-size: 0.7em;">¹ Cuconasu et al. "The Power of Noise: Redefining Retrieval for
-                                RAG Systems" (2024)</p>
+                        <div class="fragment">
+                        <hr/>
+
+                            <p>This session → Advanced patterns that solve each failure mode</p>
+                            <p class="footnote" style="text-align: center;">
+                                ¹ Cuconasu et al. "The Power of Noise: Redefining Retrieval for
+                                RAG Systems" (2024)
+                            </p>
                         </div>
                     </div>
                 </section>
@@ -282,6 +287,7 @@ Aye, Filip! What be yer next question, matey? 🏴‍☠️<|end|>
                 <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
                     <div class="overlay-style">
                         <h3>Information Density Optimization</h3>
+                        <hr />
                         <div class="column-container">
                             <div class="col-33">
                                 <p>Raw Product Page</p>
@@ -294,7 +300,6 @@ AI Noise Cancelling Hearing Aid
 Phonak Audéo Sphere™ Infinio
 Dedicated AI Chip | Universal connectivity...
                 </code></pre>
-                                <p class="highlight">~18,000 tokens</p>
                             </div>
                             <div class="col-33">
                                 <p>Stripped Content</p>
@@ -308,7 +313,6 @@ Offering exceptional speech clarity
 from any direction filters out noise
 speech allowing engage friends family...
                 </code></pre>
-                                <p class="highlight">1,400 tokens</p>
                             </div>
                             <div class="col-33">
                                 <p>LLM Processed</p>
@@ -321,12 +325,16 @@ direction with 10dB SNR improvement,
 universal connectivity, and go charging 
 technology for all-day reliability.
                 </code></pre>
-                                <p class="highlight">220 tokens</p>
                             </div>
                         </div>
-                        <p class="fragment" style="text-align: center;">82x reduction in tokens with higher information
-                            density</p>
-                    </div>
+                                                <div class="column-container">
+
+                            <div class="col-33">18 000 tokens</div>
+                            <div class="col-33"> 1 400 tokens</div>
+                            <div class="col-33">   220 tokens</div>
+                         </div>
+                                                 <p class="fragment">82x <span class="highlight">reduction</span> in tokens with higher <span class="highlight">information density</span></p>
+                        </div>
                 </section>
 
                 <!-- TODO: Sample-->
@@ -394,7 +402,7 @@ technology for all-day reliability.
 
 <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
     <div class="overlay-style">
-        <h2>Technique 4: Chunking Strategy - Key Considerations</h2>
+        <h2>Content Chunking</h2>
         <div class="column-container">
             <div class="col">
                 <ul>
