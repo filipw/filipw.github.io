@@ -560,39 +560,28 @@ technology for all-day reliability.
                         </div>
                 </section>
 
-                <section data-background="images/michael-dziedzic-nbW-kaz2BlE-unsplash.jpg">
+                <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
                     <div class="overlay-style">
-                        <h2>RAG Decider Pattern</h2>
+                        <h3>Query Routing</h3>
+                        <hr />
+                                <p>Route query to most appropriate source or skip RAG completely</p>
+
                         <div class="column-container">
-                            <div class="col">
-                                <h3>The Problem</h3>
-                                <p>Not all queries need RAG retrieval!</p>
-                                <ul>
-                                    <li class="fragment"><strong>Simple greetings:</strong><br />
-                                        <small>"Hi, is this customer support?"</small>
-                                    </li>
-                                    <li class="fragment"><strong>Context-based queries:</strong><br />
-                                        <small>"Can you translate that into Spanish?"</small>
-                                    </li>
-                                    <li class="fragment"><strong>Clarification requests:</strong><br />
-                                        <small>"Explain that like I'm five years old"</small>
-                                    </li>
-                                </ul>
+                            <div class="col-66">
+                                <img src="graphics/rag-with-routing2.excalidraw.png" class="standard"
+                                    style="max-height: 600px;" />
+
                             </div>
-                            <div class="col">
-                                <h3>The Solution</h3>
-                                <div style="background: #444; padding: 15px; border-radius: 8px; margin: 10px 0;">
-                                    <strong>LLM Decision Logic:</strong><br />
-                                    Query → RAG Decider → Route to:<br />
-                                    • Direct LLM response<br />
-                                    • Full RAG pipeline<br />
-                                    • Context-only processing
-                                </div>
-                                <p class="fragment highlight">Result: Significant reduction in unnecessary retrievals
-                                </p>
+                            <div class="col-33">
+                                <ul style="font-size: 0.8em">
+                                    <li>❌ Skip Retrieval<br /> <small>→ "Explain that more simply"</small>
+                                    </li>
+                                    <li>✅ Product Spec RAG<br /> <small>→ "What AI chip does it use?"</small></li>
+                                    <li>✅ User Guide RAG<br /> <small>→ "How do I pair my device?"</small></li>
+                                </ul>
+
                             </div>
                         </div>
-                    </div>
                 </section>
 
                 <section data-background="images/michael-dziedzic-nbW-kaz2BlE-unsplash.jpg">
