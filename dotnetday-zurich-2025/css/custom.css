@@ -77,16 +77,31 @@ ul ul {
   flex: 3; 
 }
 
+.col-50 {
+  flex: 2; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .col-25 {
   flex: 1; 
 }
 
 .col-66 {
   flex: 2; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .col-33 {
   flex: 1; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 minor {
@@ -107,7 +122,7 @@ minor:after {
 
 .footnote {
   width: 100%;
-  text-align: left;
+  text-align: center;
   color: grey;
 }
 
@@ -388,6 +403,7 @@ blockquote:before {
   line-height: 1;
   margin: 0;
   font-size: 0.5em;
+  text-align: center;
 }
 
 .reveal table {
@@ -401,8 +417,14 @@ table.simple td {
 
 table.medium td {
   font-size: 0.7em !important; 
-  text-align: left !important;
-  padding: 2%;
+  text-align: center !important;
+  padding: 1%;
+}
+
+table.medium th {
+  font-size: 0.7em !important; 
+  text-align: center !important;
+  padding: 1%;
 }
 
 .reveal table tr.noborder td {
@@ -532,4 +554,13 @@ table.large td {
   display: inline-block;
   width: 100px;
   text-align: center;
+}
+
+.reveal div.bottom-panel {
+  margin: 20px 0;
+  line-height: 1.3;
+  background: rgba(0, 0, 0, 0.75);
+  color: #fff !important;
+  padding: 1%;
+  border-radius: 25px;
 }
