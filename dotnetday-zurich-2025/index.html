@@ -349,33 +349,18 @@ technology for all-day reliability.
                 <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
                     <div class="overlay-style">
                         <h3>Hypothetical Prompt Embeddings (HyPE)</h3>
-                        <div class="column-container">
-                            <div class="col-50">
-                                <p>The Problem</p>
-                                <div>
-                                    <strong>Query:</strong> "Which hearing aid has the best AI noise cancelling?"<br />
-                                    <strong>Document:</strong> Complete technical specifications, DEEPSONIC chip
-                                    details, 53x processing power metrics, connectivity features, compliance
-                                    certifications...
-                                </div>
-                                <p class="highlight">Style gap between queries and document text</p>
-                            </div>
-                            <div class="col-50">
-                                <p>The Solution</p>
-                                <div>
-                                    <strong>Generate hypothetical prompts at indexing time:</strong><br />
-                                    Q: What AI technology does the Phonak Audéo Sphere Infinio use?<br />
-                                    <em>→ Embed chunk "in place of" this question</em><br />
-                                    <strong>Result:</strong> Question-question matching
-                                </div>
-                                <p class="highlight">Up to 42% improvement in retrieval precision¹</p>
-                            </div>
+                        <hr />
+                        <div>
+                            <p>Transforms question-document retrieval into question-question matching.
+                                Up to <span class="highlight">42%</span> improvement in retrieval precision¹.</p>
+
                         </div>
-                        <div class="fragment" style="margin-top: 20px;">
-                            <p style="font-size: 0.8em;"><strong>Key insight:</strong> Transform retrieval into
-                                question-question matching with no runtime overhead</p>
-                            <p style="font-size: 0.7em;">¹ "Bridging the Question-Answer Gap in RAG: Hypothetical Prompt
-                                Embeddings" (2025)</p>
+                        <div>
+                            <img class="standard" src="graphics/hype2.excalidraw.png" />
+                        </div>
+                        <div style="clear:both;">
+                            <p class="footnote" style="text-align: center;">¹ Vake, Domen and Vičič, Jernej and Tošić, Aleksandar, Bridging the Question-Answer Gap in Retrieval-Augmented Generation: Hypothetical Prompt Embeddings. http://dx.doi.org/10.2139/ssrn.5139335
+                            </p>
                         </div>
                     </div>
                 </section>
@@ -513,36 +498,6 @@ technology for all-day reliability.
                             <p class="footnote" style="text-align: center;">Gao, L. et al. "Precise Zero-Shot Dense Retrieval without Relevance Labels" arXiv:2212.10496 (2022)
                             </p>
                         </div>
-                        <!-- <h2>Hypothetical Document Embeddings (HyDE)</h2>
-                        <div class="column-container">
-                            <div class="col">
-                                <p>Traditional Approach</p>
-                                <div>
-                                    Query: "Best AI hearing aid for noisy restaurants?"
-                                    ↓
-                                    Embed Query
-                                    ↓
-                                    Search Documents
-                                </div>
-                                <p class="highlight">Problem: Asymmetry between short query and detailed product specs
-                                </p>
-                            </div>
-                            <div class="col">
-                                <p>HyDE Approach</p>
-                                <div>
-                                    Query: "Best AI hearing aid for noisy restaurants?"
-                                    ↓
-                                    LLM generates hypothetical answer
-                                    ↓
-                                    Embed the hypothetical answer
-                                    ↓
-                                    Search Documents
-                                </div>
-                                <p class="highlight">Solution: Better semantic similarity matching</p>
-                            </div>
-                        </div>
-                        <p style="font-size: 0.7em;">Gao, L. et al. "Precise Zero-Shot Dense Retrieval without Relevance
-                            Labels" arXiv:2212.10496 (2022)</p> -->
                     </div>
                 </section>
                 <!-- TODO: HyDE code? -->
