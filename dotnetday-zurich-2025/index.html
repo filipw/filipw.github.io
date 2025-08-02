@@ -590,40 +590,18 @@ technology for all-day reliability.
 
                 <section data-background="images/michael-dziedzic-nbW-kaz2BlE-unsplash.jpg">
                     <div class="overlay-style">
-                        <h2>Self-RAG</h2>
-                        <div class="column-container">
-                            <div class="col">
-                                <h3>How Self-RAG Works</h3>
-                                <div
-                                    style="background: #333; padding: 15px; border-radius: 8px; margin: 10px 0; font-size: 0.9em;">
-                                    1. <strong>Query Analysis:</strong> "Do I need to retrieve?"<br />
-                                    → [Retrieve] or [No Retrieve]<br /><br />
-                                    2. <strong>Document Evaluation:</strong> "Is this relevant?"<br />
-                                    → [Relevant] [Partially] [Irrelevant]<br /><br />
-                                    3. <strong>Response Generation:</strong> Generate answer<br /><br />
-                                    4. <strong>Self-Critique:</strong> "Is my answer good?"<br />
-                                    → [IsSupported] [IsUseful] [IsRel]
-                                </div>
-                            </div>
-                            <div class="col">
-                                <h3>Special Reflection Tokens</h3>
-                                <pre style="font-size: 0.7em;"><code>
-[Retrieve] The user is asking about 
-specific AI hearing aid technology, I should get 
-current product specifications.
+                        <h3>Self-Reflection RAG</h3>
+                        <hr />
+                        <div>
+                            <p>Self-RAG is a technique in which language models are fine-tuned to generate <span class="highlight">critique tokens</span> alongside responses, enabling them to <span class="highlight">self-assess</span> when to retrieve information and evaluate their own output.</p>
+                        </div>
+                        <div class="img-backdrop" style="margin-bottom: 20px;">
+                            <img class="standard" src="graphics/selfrag2.excalidraw.png" />
+                        </div>
 
-[Relevant] This document contains 
-Phonak Audéo Sphere Infinio DEEPSONIC details.
-
-The Audéo Sphere Infinio features the world's 
-first dedicated AI chip providing 10dB SNR 
-improvement with 53x more processing power.
-
-[IsSupported] This information is 
-directly supported by the retrieved 
-product documentation.
-                </code></pre>
-                            </div>
+                        <div style="clear:both;">
+                            <p class="footnote" style="text-align: center;">Asai, A. et al. "Self-RAG: Learning to Retrieve, Generate, and Critique through Self-Reflection" arXiv:2310.11511 (2023)
+                            </p>
                         </div>
                     </div>
                 </section>
