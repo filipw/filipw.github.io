@@ -276,20 +276,21 @@ Aye, Filip! What be yer next question, matey? 🏴‍☠️<|end|>
                         <div class="column-container">
                             <div class="col">
                                 <ul>
-                                    <li class="fragment">📉 <strong>Low Information Density</strong><br />
-                                        <small>→ Product specs, regulatory docs, marketing copy<br />
-                                            → thousands of irrelevant tokens</small>
-                                    </li>
                                     <li class="fragment">🎯 <strong>Query-Document Asymmetry</strong><br />
                                         <small>→ e.g. "How to get hearing loss help?"<br />
                                             → vs. full technical specification documents</small>
                                     </li>
+                                    <li class="fragment">📉 <strong>Low Information Density</strong><br />
+                                        <small>→ Product specs, regulatory docs, marketing copy<br />
+                                            → thousands of irrelevant tokens</small>
+                                    </li>
+
                                 </ul>
                             </div>
                             <div class="col">
                                 <ul>
                                     <li class="fragment">🔍 <strong>Poor Retrieval Quality</strong><br />
-                                        <small>→ e.g. "hearing loss help" instead of "tinnitus relief"<br />
+                                        <small>→ searching for wrong things<br />
                                             → Related but irrelevant docs cause 67% accuracy loss¹</small>
                                     </li>
                                     <li class="fragment">💰 <strong>Cost & Latency Issues</strong><br />
@@ -302,7 +303,7 @@ Aye, Filip! What be yer next question, matey? 🏴‍☠️<|end|>
                         <div class="fragment">
                             <hr />
 
-                            <p>This session → Advanced patterns that solve each failure mode</p>
+                            <p>This session → patterns that address each of the above</p>
                             <p class="footnote" style="text-align: center;">
                                 ¹ Cuconasu et al. "The Power of Noise: Redefining Retrieval for
                                 RAG Systems" (2024)
@@ -628,7 +629,42 @@ technology for all-day reliability.
                         </div>
                     </div>
                 </section>
-            </section>
+
+<section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
+ <div class="overlay-style">
+ <h3>Self-RAG Reflection Tokens</h3>
+ <div class="column-container">
+ <div class="col">
+ <ul>
+ <li class="fragment">🔄 <strong>Retrieval Control</strong><br />
+ <small><code>[Retrieve]</code> - Fetch external info<br />
+ <code>[No Retrieval]</code> - Continue without sources</small>
+ </li>
+ <li class="fragment">✅ <strong>Relevance Assessment</strong><br />
+ <small><code>[Relevant]</code> - Passage is useful<br />
+ <code>[Irrelevant]</code> - Passage doesn't help</small>
+ </li>
+ </ul>
+ </div>
+ <div class="col">
+ <ul>
+ <li class="fragment">📋 <strong>Support Verification</strong><br />
+ <small><code>[Fully Supported]</code> - Backed by evidence<br />
+ <code>[No Support]</code> - Claims lack backing</small>
+ </li>
+ <li class="fragment">⭐ <strong>Utility Evaluation</strong><br />
+ <small><code>[Utility:5]</code> - Highly useful response<br />
+ <code>[Utility:1]</code> - Low utility response</small>
+ </li>
+ </ul>
+ </div>
+ </div>
+ <div class="fragment">
+ <hr />
+ <p><strong>Important!</strong> Self-RAG requires a fine-tuned model that learns to generate "reflection tokens"!</p>
+ </div>
+ </div>
+</section>
 
             <section>
                 <section data-background="images/maria-teneva-7FmSYQ3Z7fg-unsplash.jpg">
