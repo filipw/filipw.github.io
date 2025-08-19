@@ -206,7 +206,22 @@ Aye, Filip! What be yer next question, matey? 🏴‍☠️<|end|>
                     <p class="fragment" data-code-focus="2-14"></p>
                 </section>
 
+
+
                 <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
+                    <div class="overlay-style">
+                        <div>
+                            Given that we can describe the model as $f : \{in: str\} \rightarrow \{out: str\}$, there
+                            are only two options to get our data into the model.</div>
+                        <hr />
+                        <ul>
+                            <li class="fragment">🛠️ inject our information into the internals of the model</li>
+                            <li class="fragment">🗣️ find creative ways of generating the input string</li>
+                        </ul>
+                    </div>
+                </section>
+
+                                <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
                     <div class="overlay-style">
                         <div class="column-container" style="align-items: flex-end;">
                             <div class="col">
@@ -220,19 +235,6 @@ Aye, Filip! What be yer next question, matey? 🏴‍☠️<|end|>
 
                         </div>
                         <p>LLMs are a "blurry JPEG" of their training data.</p>
-                    </div>
-                </section>
-
-                <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
-                    <div class="overlay-style">
-                        <div>
-                            Given that we can describe the model as $f : \{in: str\} \rightarrow \{out: str\}$, there
-                            are only two options to get our data into the model.</div>
-                        <hr />
-                        <ul>
-                            <li class="fragment">🛠️ inject our information into the internals of the model</li>
-                            <li class="fragment">🗣️ find creative ways of generating the input string</li>
-                        </ul>
                     </div>
                 </section>
 
@@ -612,6 +614,11 @@ technology for all-day reliability.
  <td>Query time (search phase)</td>
  <td>Index time (preprocessing phase)</td>
  </tr>
+  <tr>
+ <td><strong>Semantic Matching</strong></td>
+ <td>Document-to-Document</td>
+ <td>Question-to-Question</td>
+ </tr>
  <tr>
  <td><strong>Process</strong></td>
  <td>Query → Hypothetical response → Embed → Search</td>
@@ -709,6 +716,7 @@ technology for all-day reliability.
  <p><strong>Important!</strong> Self-RAG requires a fine-tuned model that learns to generate "reflection tokens"!</p>
  </div>
  </div>
+</section>
 </section>
 
             <section>
