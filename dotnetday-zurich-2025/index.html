@@ -114,7 +114,17 @@
                         <p>
                             Language models can be thought of as being purely functional
                         </p>
-                        <h2 class="r-fit-text">$f : \{in: str\} \rightarrow \{out: str\}$</h2>
+                        <h3 class="r-fit-text">$f: \{in:[uint]\} \rightarrow \{out:[uint]\}$</h3>
+                        <p>where the input is a sequence of tokens and the output is a sequence of tokens.</p>
+                    </div>
+                </section>
+
+                                <section data-background="images/maxime-valcarce-mAj8xn5zXsk-unsplash.jpg">
+                    <div class="overlay-style">
+                        <p>
+                            Since we can map an array of tokens as a string, we could further simplify this to
+                        </p>
+                        <h3 class="r-fit-text">$f: \{in: str\} \rightarrow \{out: str\}$</h3>
                     </div>
                 </section>
 
@@ -272,47 +282,41 @@ Aye, Filip! What be yer next question, matey? 🏴‍☠️<|end|>
                     <p class="overlay-style" style="padding: 1% !important;">Naive RAG</p>
                 </section>
 
-                <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
-                    <div class="overlay-style">
-                        <h2>Why Naive RAG Fails</h2>
-                        <div class="column-container">
-                            <div class="col">
-                                <ul>
-                                    <li class="fragment">🎯 <strong>Query-Document Asymmetry</strong><br />
-                                        <small>→ e.g. "How to get hearing loss help?"<br />
-                                            → vs. full technical specification documents</small>
-                                    </li>
-                                    <li class="fragment">📉 <strong>Low Information Density</strong><br />
-                                        <small>→ Product specs, regulatory docs, marketing copy<br />
-                                            → thousands of irrelevant tokens</small>
-                                    </li>
-
-                                </ul>
-                            </div>
-                            <div class="col">
-                                <ul>
-                                    <li class="fragment">🔍 <strong>Poor Retrieval Quality</strong><br />
-                                        <small>→ searching for wrong things<br />
-                                            → Related but irrelevant docs cause 67% accuracy loss¹</small>
-                                    </li>
-                                    <li class="fragment">💰 <strong>Cost & Latency Issues</strong><br />
-                                        <small>→ Processing irrelevant content<br />
-                                            → Token costs from document bloat</small>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="fragment">
-                            <hr />
-
-                            <p>This session → patterns that address each of the above</p>
-                            <p class="footnote" style="text-align: center;">
-                                ¹ Cuconasu et al. "The Power of Noise: Redefining Retrieval for
-                                RAG Systems" (2024)
-                            </p>
-                        </div>
-                    </div>
-                </section>
+<section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
+    <div class="overlay-style">
+        <h2>Why Naive RAG Fails</h2>
+        <div class="column-container">
+            <div class="col">
+                <ul>
+                    <li class="fragment">🗂️ <strong>Poor Data Preparation</strong><br />
+                        <small>→ Raw HTML, unstructured content, noise<br />
+                            → No metadata or contextual enrichment</small>
+                    </li>
+                    <li class="fragment">🎯 <strong>Query-Document Mismatch</strong><br />
+                        <small>→ "Best hearing aid?" vs technical specifications<br />
+                            → Semantic similarity breaks down</small>
+                    </li>
+                </ul>
+            </div>
+            <div class="col">
+                <ul>
+                    <li class="fragment">🔍 <strong>Inefficient Retrieval</strong><br />
+                        <small>→ Searches entire corpus every time<br />
+                            → No query optimization or routing logic</small>
+                    </li>
+                    <li class="fragment">💰 <strong>Cost & Performance Issues</strong><br />
+                        <small>→ Processing thousands of irrelevant tokens<br />
+                            → High latency and compute costs</small>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- <div class="fragment">
+            <hr />
+            <p>This session → <strong>Advanced patterns</strong> that systematically address each failure mode</p>
+        </div> -->
+    </div>
+</section>
 
 
 
@@ -370,13 +374,13 @@ Aye, Filip! What be yer next question, matey? 🏴‍☠️<|end|>
 
                                 <section data-background="images/michael-dziedzic-nbW-kaz2BlE-unsplash.jpg">
  <div class="overlay-style">
-        <h3>Content Preprocessing Pipeline</h3>
+        <h3>LLM-Assisted Content Preprocessing Pipeline</h3>
         <hr />
         <div>
             <p>Clean and standardize source content while extracting <span class="highlight">rich metadata</span>. Chunks with contextual information improve retrieval accuracy.</p>
         </div>
- <div>
- <img class="standard" src="graphics/content-processing3.excalidraw.png" style="max-height: 500px;" />
+ <div class="img-backdrop">
+ <img class="standard" src="graphics/content-processing.excalidraw.png" style="max-height: 400px;" />
  </div>
  </div>
 </section>
@@ -445,7 +449,7 @@ technology for all-day reliability.
  <p>Two-stage document filtering: search <span class="highlight">document summaries</span> first, then search chunks from <span class="highlight">relevant documents only</span>. Eliminates noise from irrelevant documents early.</p>
  </div>
  <div>
- <img class="standard" src="graphics/hi3.excalidraw.png" />
+ <img class="standard" src="graphics/hi.excalidraw.png" />
  </div>
  <div style="clear:both;">
  <p class="footnote" style="text-align: center;">Liu, Y. et al. "Dense Hierarchical Retrieval for Open-Domain Question Answering" EMNLP Findings (2021)
