@@ -221,12 +221,17 @@ Aye, Filip! What be yer next question, matey? 🏴‍☠️<|end|>
                 <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
                     <div class="overlay-style">
                         <div>
-                            Given that we can describe the model as $f : \{in: str\} \rightarrow \{out: str\}$, there
+                            Given this functional nature of the models, there
                             are only two options to get our data into the model.</div>
                         <hr />
                         <ul>
-                            <li class="fragment">🛠️ inject our information into the internals of the model</li>
-                            <li class="fragment">🗣️ find creative ways of generating the input string</li>
+                            <li class="fragment" style="margin: 0;">🛠️ inject our information into the internals of the model<br/>
+                                <small>→ fine-tuning</small>
+                            </li>
+                            <li class="fragment" style="margin: 0;">🗣️ find creative ways of generating the input string<br/>
+                                <small>→ RAG</small>
+
+                            </li>
                         </ul>
                     </div>
                 </section>
@@ -724,7 +729,7 @@ technology for all-day reliability.
 
                 <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
                     <div class="overlay-style">
-                        <p>There is an related technique called <span class="highlight">RAFT</span>
+                        <p>There is a related technique called <span class="highlight">RAFT</span>
                             (retrieval-augmented fine tuning), which is based on the idea of teaching the model how
                             to
                             use documentation.</p>
