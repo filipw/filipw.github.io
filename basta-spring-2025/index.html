@@ -94,7 +94,7 @@
                 </section>
 
 
-                <section data-background="images/atlas3.jpg">
+                <!-- <section data-background="images/atlas3.jpg">
                     <div class="overlay-style">
                         <p>Is it possible to have</p>
                         <h2 class="r-fit-text">unbreakable encryption?</h2>
@@ -177,7 +177,7 @@
                         This is not really practical, so that is why we have other encryption schemes. Complete
                         randomness (no patterns) is difficult to achieve.
                     </aside>
-                </section>
+                </section> -->
 
                 <section data-background="images/atlas3.jpg">
                     <h2 class="overlay-style">Symmetric encryption</h2>
@@ -724,6 +724,48 @@
                     <h1>Post quantum cryptography</h1>
                 </section>
 
+                <section data-background="images/atlas-ibl.jpg">
+    <div class="overlay-style">
+        <h2>Cryptography in .NET</h2>
+        <div class="column-container">
+            <div class="col-50">
+                <ul>
+                    <li class="fragment">🧩
+                        One common API surface
+                        <br />
+                        <small>→ System.Security.Cryptography namespace across all platforms</small>
+                    </li>
+                    <li class="fragment">⚙️
+                        Native backends per OS
+                        <br />
+                        <small>→ Windows: CNG / CAPI<br/>
+                               → Linux: OpenSSL<br/>
+                               → macOS/iOS: CommonCrypto<br/>
+                               → Android: JCA / OS crypto</small>
+                    </li>
+                    <li class="fragment">🌐
+                        Third-party managed implementations
+                        <br />
+                        <small>→ Portable across platforms (e.g., BouncyCastle)<br/>
+                               → Can implement algorithms not in OS
+                               → No hardware acceleration/FIPS compliance
+                            </small>
+
+                    </li>
+                </ul>
+            </div>
+            <div class="col-50">
+                <div class="img-backdrop">
+                <img class="standard" src="graphics/netcrypto2.excalidraw.png" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <aside class="notes">
+        The .NET crypto API is unified, but the runtime delegates to the OS crypto stack for performance, compliance, and integration.
+        This means your code looks the same, but the actual implementation varies by platform.
+    </aside>
+</section>
 
                 <section data-background="images/atlas-ibl.jpg">
                     <div class="overlay-style">
