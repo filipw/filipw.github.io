@@ -224,7 +224,7 @@
                     </aside>
                 </section>
 
-                <section data-background="images/atlas-ibl.jpg">
+                <!-- <section data-background="images/atlas-ibl.jpg">
                     <div class="overlay-style">
 
                         <div class="column-container">
@@ -248,7 +248,7 @@
                         <h2 class="r-fit-text">not directly observable</h2>
                         <p>Only the basis states can be observed in the measurement process</p>
                     </div>
-                </section>
+                </section> -->
 
                 <section data-background="images/schroedinger-cat2.png">
                     <aside class="notes">
@@ -480,7 +480,7 @@
                     </aside>
                 </section>
 
-                                <section data-background="images/atlas-ibl.jpg">
+                                <!-- <section data-background="images/atlas-ibl.jpg">
                     <div class="overlay-style">
                         <div class="column-container">
                             <div class="col-50" slot="padding-right: 1em;">
@@ -492,7 +492,7 @@
                                 <img class="standard" src="images/quantum-attack.png" />
                             </div>
                     </div>
-                </section>
+                </section> -->
 
                 <section data-background="images/gidney2.png">
                                         <div class="overlay-style black-overlay-style">
@@ -908,7 +908,7 @@
                                 
 
 
-                <section data-background="images/atlas-ibl.jpg">
+                <!-- <section data-background="images/atlas-ibl.jpg">
                     <div class="img-backdrop">
                         <img src="images/pqc-adoption.png" class="standard" />
                     </div>
@@ -922,7 +922,7 @@
                         </div>
                     </div>
 
-                </section>
+                </section> -->
 
                 <section data-background="images/signal.png" data-state="bg-top-left">
                     <div class="overlay-style fragment black-overlay-style">
@@ -946,12 +946,47 @@
 
                 </section>   
 
+                    <section data-background="images/openssl.png" data-state="bg-top-left">
+                    <div class="overlay-style fragment black-overlay-style">
+                        <p>In April 2025 OpenSSL 3.5 was released, with official support for <span class="highlight">ML-KEM, ML-DSA and SLH-DSA</span>. It's an LTS released and it paves the way for wide adoption of PQC in all Linux-based systems.
+                        </p>
+
+                    </div>
+                </section>      
+                
+                          <section>
+            <img class="standard" src="images/QSP-Roadmap.webp" />
+          </section>
+
                 <section data-background="images/pqc-windows.png" data-state="bg-top-left">
                     <div class="overlay-style fragment black-overlay-style">
                         <p>In May 2025 Microsoft released initial early support of PQC for <span class="highlight">Windows</span> - however currenly only for the Canary Windows Insiders channel.
                         </p>
-                        <p>.NET 10 Preview 6 introduced the first official <span class="highlight">System.Security.Cryptography</span> APIs for PQC.</p>
+
                     </div>
+                </section>
+
+                                <section data-background="images/atlas-ibl.jpg">
+                    <div class="overlay-style">
+
+                        <div class="column-container">
+                            <div class="col-50">
+                                <p>.NET 10 Preview 6 introduced the first official .NET API for PQC into <span class="highlight">System.Security.Cryptography</span>. It currently supports:</p>
+                                <ul>
+                                    <li>→ Windows (CNG): Canary Channel Build 27852+</li>
+                                    <li>→ Linux (OpenSSL): 3.5+</li>
+                         </ul>
+                            </div>
+                            <div class="col-50" style="padding-left: 1em;">
+                                <div class="img-backdrop">
+                                    <img src="images/mlkem-net.png" class="standard"
+                                        style="min-height: auto;" />
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
                 </section>
 
                 <section data-background="images/atlas-ibl.jpg">
@@ -975,16 +1010,80 @@
 
                 <section data-background="images/open-quantum-safe.png">
                     <div class="overlay-style fragment black-overlay-style">
-                        <p>Open Quantum Safe project provides quantum-resistant crypto algorithms
-                            implementations in C, as well as integration into various protocols and
-                            applications, such as <span class="highlight">OpenSSL</span>.
+                        <p><span class="highlight">Open Quantum Safe</span> has been providing verified quantum-resistant crypto algorithms
+                            implementations in C.
                         </p>
+                        <p><span class="highlight">LibQOS.NET</span> is a thin .NET wrapper around the Open Quantum Safe library, providing easy access to post-quantum cryptography features for .NET developers.</p>
                     </div>
-                    <aside class="notes">
-                        OQS provides post-quantum enabled forks of both BoringSSL and OpenSSL 1.1.1, as well as
-                        a provider for OpenSSL 3.
-                    </aside>
                 </section>
+
+                <section data-background="images/atlas-ibl.jpg">
+              <div class="overlay-style">
+                  <h3>Post-Quantum Crypto for .NET</h3>
+                  <hr/>
+                  <table class="medium">
+                      <colgroup>
+                          <col style="width: 22%;">
+                          <col style="width: 26%;">
+                          <col style="width: 26%;">
+                          <col style="width: 26%;">
+                      </colgroup>
+                      <thead>
+                          <tr>
+                              <th></th>
+                              <th>System.Security.Cryptography</th>
+                              <th>BouncyCastle</th>
+                              <th>LibOQS.NET</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr>
+                              <td><strong>Type</strong></td>
+                              <td>.NET System API</td>
+                              <td>Fully Managed</td>
+                              <td>Native Wrapper</td>
+                          </tr>
+                          <tr>
+                              <td><strong>Windows</strong></td>
+                              <td>Win Canary 27852+</td>
+                              <td>✅</td>
+                              <td>✅</td>
+                          </tr>
+                        <tr>
+                              <td><strong>Linux</strong></td>
+                              <td>OpenSSL 3.5+</td>
+                              <td>✅</td>
+                              <td>✅</td>
+                          </tr>
+                            <tr>
+                              <td><strong>Mac</strong></td>
+                              <td>❌</td>
+                              <td>✅</td>
+                              <td>✅</td>
+                          </tr>
+                          <tr>
+                              <td><strong>WASM & others</strong></td>
+                              <td>❌</td>
+                              <td>✅ </td>
+                              <td>❌</td>
+                          </tr>
+                          <tr>
+                              <td><strong>Platform</strong></td>
+                              <td>.NET 10+<br/>(partly experimental)</td>
+                              <td>.NET Standard 2.0</td>
+                              <td>.NET 9</td>
+                          </tr>
+                           <tr>
+                              <td><strong>Key Advantage</strong></td>
+                              <td>Official</td>
+                              <td>Maximum Portability</td>
+                              <td>Uses liboqs</td>
+                          </tr>
+                      </tbody>
+                  </table>
+              </div>
+          </section>
+
 
             </section>
 
