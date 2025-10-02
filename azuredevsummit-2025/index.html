@@ -261,37 +261,48 @@
                     <div class="overlay-style">
                         <h2>Running Language Models</h2>
                         <div class="column-container">
-                            <div class="col">
+                            <div class="col-50">
                                 <ul>
                                     <li class="fragment">🎮
                                         Standalone Orchestrators
-                                        <small>e.g. LM Studio, Ollama or Foundry Local<br/>(can be exposed as HTTP Server)</small>
+                                        <small>→ e.g. LM Studio, Ollama or Foundry Local
+                                            <br/>→ for end-users</small>
                                     </li>
-
-                                    <li class="fragment">💻
-                                        OS Integration
-                                        <br />
-                                        <small>e.g. Phi Silica (Copilot PC) or Gemini Nano (Android)</small>
-                                    </li>
-
-                                </ul>
-                            </div>
-                            <div class="col">
-                                <ul>
-                                    <li class="fragment">⚙️
-                                        Lower level Frameworks
-                                        <br />
-                                        <small>e.g. ONNX Runtime, Candle, llama.cpp, MLX</small>
-                                    </li>
-
                                     <li class="fragment">📚
                                         High level library
                                         <br />
-                                        <small>e.g. HF transformers, LLamaSharp, MLX Swift</small>
+                                        <small>→ e.g. HF transformers, LLamaSharp, MLX Swift<br/>→ for application developers</small>
                                     </li>
+
+                                    <li class="fragment">⚙️
+                                        Execution Runtimes
+                                        <br />
+                                        <small>→ e.g. ONNX Runtime, Candle, llama.cpp, MLX<br/>→ for ML engineers</small>
+                                    </li>
+                                    <!-- <li class="fragment">💻
+                                        OS Integration
+                                        <br />
+                                        <small>e.g. Phi Silica (Copilot PC) or Gemini Nano (Android)</small>
+                                    </li> -->
+
                                 </ul>
                             </div>
+                            <div class="col-50">
+                                                            <div class="img-backdrop">
+                                    <img src="graphics/running-slms2.excalidraw.png"
+                                        style="min-height: auto;" />
+                                </div>
+                            </div>
                         </div>
+                    </div>
+                </section>
+
+                    <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
+                    <div class="overlay-style">
+
+                        <p>An emerging trend are Language Models that are</p>
+                        <h2 class="r-fit-text">built-into the OS</h2>
+                        <p>like Gemini Nano on Android or Phi Silica on Copilot+ PCs.</p>
                     </div>
                 </section>
 
@@ -352,14 +363,14 @@
                     </div>
                 </section>
 
-                <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
+                <!-- <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
                     <div class="img-backdrop">
 
                         <img src="graphics/strathweb-phi-engine.excalidraw.png" class="standard"
                             style="max-height: 550px;" />
                     </div>
                     <p class="overlay-style" style="padding: 1% !important;">Strathweb Phi Engine provides high-level inference API against Phi for a variety of popular languages</p>
-                </section>
+                </section> -->
 
 
                 <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
@@ -376,6 +387,42 @@
                             <p class="footnote" style="text-align: center;">Narayan, A., Biderman, D., Eyuboglu, S., May, A., Linderman, S., Zou, J., & Ré, C. (2025). Minions: Cost-efficient Collaboration Between On-device and Cloud Language Models. arXiv preprint arXiv:2502.15964.
                             </p>
                         </div>
+                    </div>
+                </section>
+
+                                <section data-background="images/maxime-valcarce-mAj8xn5zXsk-unsplash.jpg">
+                    <div class="img-backdrop">
+                        <img src="graphics/rag-basic.excalidraw.png" class="standard" />
+                    </div>
+                    <p class="overlay-style" style="padding: 1% !important;">A basic RAG relies on interaction with a single
+                        LLM.</p>
+                </section>
+    
+                <section data-background="images/maxime-valcarce-mAj8xn5zXsk-unsplash.jpg">
+                    <div class="img-backdrop">
+                        <img src="graphics/rag-with-qrw.excalidraw.png" class="standard" />
+                    </div>
+                    <p class="overlay-style" style="padding: 1% !important;">SLM can act as a fast pre-processor, improving
+                        the quality of information fed into the LLM.</p>
+                </section>
+    
+                <section data-background="images/maxime-valcarce-mAj8xn5zXsk-unsplash.jpg">
+                    <div class="overlay-style">
+                        <div class="column-container">
+                            <div class="col-66">
+                                <div class="img-backdrop">
+                                    <img src="images/gen-query-rewriting.png" style="min-height: auto;" />
+                                </div>
+                            </div>
+    
+                            <div class="col-33" style="padding: 3%; padding-top: 0;">
+                                <div>
+                                <p>SLM query rewriting is now an integral feature of</p>
+                                <h2 class="r-fit-text">Azure AI Search</h2>
+                                </div>
+                            </div>
+                        </div>
+    
                     </div>
                 </section>
 
@@ -553,42 +600,6 @@ I don't like this song
             </div>
             <p class="fragment" data-code-focus="1-3"></p>
         </div>
-                </section>
-
-                <section data-background="images/maxime-valcarce-mAj8xn5zXsk-unsplash.jpg">
-                    <div class="img-backdrop">
-                        <img src="graphics/rag-basic.excalidraw.png" class="standard" />
-                    </div>
-                    <p class="overlay-style" style="padding: 1% !important;">A basic RAG relies on interaction with a single
-                        LLM.</p>
-                </section>
-    
-                <section data-background="images/maxime-valcarce-mAj8xn5zXsk-unsplash.jpg">
-                    <div class="img-backdrop">
-                        <img src="graphics/rag-with-qrw.excalidraw.png" class="standard" />
-                    </div>
-                    <p class="overlay-style" style="padding: 1% !important;">SLM can act as a fast pre-processor, improving
-                        the quality of information fed into the LLM.</p>
-                </section>
-    
-                <section data-background="images/maxime-valcarce-mAj8xn5zXsk-unsplash.jpg">
-                    <div class="overlay-style">
-                        <div class="column-container">
-                            <div class="col-66">
-                                <div class="img-backdrop">
-                                    <img src="images/gen-query-rewriting.png" style="min-height: auto;" />
-                                </div>
-                            </div>
-    
-                            <div class="col-33" style="padding: 3%; padding-top: 0;">
-                                <div>
-                                <p>SLM query rewriting is now an integral feature of</p>
-                                <h2 class="r-fit-text">Azure AI Search</h2>
-                                </div>
-                            </div>
-                        </div>
-    
-                    </div>
                 </section>
 
             </section>
