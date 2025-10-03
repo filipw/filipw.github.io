@@ -522,6 +522,78 @@
 
                 </section>
 
+                <section data-background="images/maxime-valcarce-mAj8xn5zXsk-unsplash.jpg">
+                    <div class="overlay-style">
+                        <h2>Fine-tuning: Hardware</h2>
+                        <div class="column-container">
+                            <div class="col-50">
+                                <ul>
+                                    <li class="fragment">⚡️
+                                        VRAM, VRAM, VRAM!
+                                        <small>→ Even a "small" 7B model can require 14-28GB of GPU memory just to load, before training even starts.</small>
+                                    </li>
+                                    <li class="fragment">⚙️
+                                        LoRA to the rescue
+                                        <br />
+                                        <small>→ Drastically reduces memory by only training small "adapter" layers, enabling use on some high-end consumer hardware.</small>
+                                    </li>
+
+                                    <li class="fragment">⚠️
+                                        The CUDA Bottleneck
+                                        <br />
+                                        <small>→ Most of the AI software ecosystem is optimized for NVIDIA's CUDA platform, creating a significant hurdle for other hardware.</small>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-50">
+                                <div class="img-backdrop">
+                                    <img src="graphics/ft-hardware2.excalidraw.png"
+                                        style="min-height: auto;" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-background="images/maxime-valcarce-mAj8xn5zXsk-unsplash.jpg">
+                    <div class="overlay-style">
+                        <h2>Accelerating with Azure ML</h2>
+                        <div class="column-container">
+                                                        <div class="col-33">
+                                <div class="img-backdrop">
+                                    <img src="graphics/azureml2.excalidraw.png"
+                                        style="min-height: auto;" />
+                                </div>
+                            </div>
+                            <div class="col-66" style="padding-left: 1em;">
+                                <ul>
+                                    <li class="fragment">☁️
+                                        Access Elite Hardware
+                                        <small>→ NVIDIA A100/H100 GPUs, essential for full parameter tuning.</small>
+                                    </li>
+                                    <li class="fragment">🛠️
+                                        Specialized Environments
+                                        <br />
+                                        <small>→ Pre-configured or self-defined environments with CUDA and necessary libraries</small>
+                                    </li>
+
+                                    <li class="fragment">🚀
+                                        Scalability & Reproducibility
+                                        <br />
+                                        <small>→ Easily scale from one GPU to a cluster and track experiments</small>
+                                    </li>
+
+                                    <li class="fragment">🎯
+                                        Model Deployment
+                                        <br />
+                                        <small>→ Deploy models seamlessly as dedicated or batch endpoints</small>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
                 <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
                     <div class="overlay-style">
                         <p>Large models are trained with <span class="highlight">tool calling</span> capabilities and are suitable for such AI orchestration or agentic AI flows. Small models can be fine tuned to imitate that.</p>
