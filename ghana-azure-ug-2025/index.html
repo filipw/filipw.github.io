@@ -1,0 +1,795 @@
+﻿<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Leveraging Small Language Models for Smarter Workflows</title>
+    <meta name="description" content="">
+    <meta name="author" content="Filip W">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <script src="//code.jquery.com/jquery-1.8.0.js"></script>
+    <script src="//code.jquery.com/ui/1.8.23/jquery-ui.js"></script>
+    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/js/bootstrap.min.js"></script>
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/css/bootstrap-combined.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/default.min.css">
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/simple.css" id="theme">
+    <link rel="stylesheet" href="css/monokai_sublime.css" />
+    <link rel="stylesheet" href="css/custom.css" />
+    <script src="fsharp.formatting/styles/tips.js" type="text/javascript"></script>
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+    <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+
+    <script>
+        if (window.location.search.match(/print-pdf/gi)) {
+            var link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = 'css/print/pdf.css';
+            document.getElementsByTagName('head')[0].appendChild(link);
+        }
+    </script>
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+    <style type="text/css">
+    </style>
+</head>
+
+<body>
+    <div class="reveal">
+        <header
+            style="position: absolute;top: 50px; left: 100px; z-index:500; font-size:100px;background-color: rgba(0,0,0,0.5)">
+        </header>
+        <!-- Any section element inside of this container is displayed as a slide -->
+        <div class="slides">
+
+            <section data-background="images/greg-rakozy-oMpAz-DN-9I-unsplash.jpg">
+
+                <div class="col overlay-style" style="padding: 0 !important">
+
+                    <h1 style="font-size: 2em; background: none; margin-bottom: 0;">
+                        Leveraging Small Language Models<br/>
+                        <small style="font-size: 0.5em; line-height: 2em;">for Smarter Workflows</small>
+                    </h1>
+                    <p style="margin-top: 0; padding-bottom: 20px;">
+                        <small>
+                            <a href="https://strathweb.com" class="roll">
+                                <span>strathweb.com</span>
+                            </a> •
+                            <a href="https://bsky.app/profile/@filipw.strathweb.com" class="roll">
+                                <span data-title="@filip_woj">@filipw.strathweb.com</span>
+                            </a> •
+                            <a href="https://mathstodon.xyz/filipw" class="roll">
+                                <span data-title="@filip_woj">@filipw@mathstodon.xyz</span>
+                            </a> •
+                            <a href="https://github.com/filipw" class="roll">
+                                <span data-title="github.com/filipw">github.com/filipw</span>
+                            </a> •
+                            <span data-title="github.com/filipw">Filip W</span>
+                        </small>
+                    </p>
+                </div>
+
+            </section>
+            <section data-background-color="#fff">
+                <img src="images/sonova.png" style="min-height: auto" />
+            </section>
+
+            <section>
+                <section data-background="images/growtika-nGoCBxiaRO0-unsplash.jpg">
+                    <h1>Small Language Models</h1>
+                </section>
+
+                <section data-background="images/michael-dziedzic-nbW-kaz2BlE-unsplash.jpg">
+                    <div class="img-backdrop">
+
+                        <img src="graphics/inference-loop.excalidraw.png" class="standard" style="max-height: 600px;" />
+                    </div>
+                    <p class="overlay-style" style="padding: 1% !important;">The heart of a language model is the <span
+                            class="highlight">inference loop</span>.</p>
+                </section>
+
+                <section data-background="images/michael-dziedzic-nbW-kaz2BlE-unsplash.jpg">
+                    <div class="overlay-style">
+
+                        <p>The performance of the model is measured by how many times this loop can be executed per
+                            second - this tells us how many</p>
+                        <h2 class="r-fit-text">tokens per second</h2>
+                        <p>the model can produce.</p>
+                    </div>
+                </section>
+
+                <section data-background="images/michael-dziedzic-nbW-kaz2BlE-unsplash.jpg">
+                    <div class="overlay-style">
+
+                        <p>Human reading speed is normally</p>
+                        <h2 class="r-fit-text">5-7 tokens per second</h2>
+                        <p>so anything slower than that is unacceptable.</p>
+                    </div>
+                </section>
+
+                <section data-background="images/michael-dziedzic-nbW-kaz2BlE-unsplash.jpg">
+                    <div class="overlay-style">
+                        <div class="column-container">
+                            <div class="col-50">
+                                <p>There is really no formal definition of what an SLM actually is.</p>
+                                <p>Typically we consider an SLM to be a language model with <span class="highlight">up
+                                        to a few billion</span> parameters.</p>
+                            </div>
+
+                            <div class="col-50" style="padding: 3%; padding-top: 0;">
+                                <div class="img-backdrop">
+                                    <img src="images/llm-slm.png" style="min-height: auto;" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-background-color="#fff">
+                    <img src="graphics/slm-pool.excalidraw.png" style="min-height: auto" />
+                </section>
+
+                <section data-background="images/michael-dziedzic-nbW-kaz2BlE-unsplash.jpg">
+                    <div class="img-backdrop">
+
+                        <img src="graphics/slm-run.excalidraw.png" class="standard" style="max-height: 600px;" />
+                    </div>
+                    <p class="overlay-style" style="padding: 1% !important;">SLMs can ran on a wide range of host
+                        runtimes
+                    </p>
+                </section>
+                <!-- <section data-background="images/michael-dziedzic-nbW-kaz2BlE-unsplash.jpg">
+                    <div class="overlay-style">
+                        <h2>SLMs vs LLMs</h2>
+                        <table class="medium">
+                            <colgroup>
+                          <col style="width: 10%;">
+                          <col style="width: 45%;">
+                          <col style="width: 45%;">
+                      </colgroup>
+                            <thead>
+                                <th></th>
+                                <th>Small Language Models</th>
+                                <th>Large Language Models</th>
+                            </thead>
+                            <tr class="">
+                                <td>Parameters</td>
+                                <td>🔹 up to a few billions</td>
+                                <td>🔸 hundreds of billions (+)</td>
+                            </tr>
+                            <tr class="">
+                                <td>Compute</td>
+                                <td>💡 low</td>
+                                <td>⚙️ high</td>
+                            </tr>
+                            <tr class="">
+                                <td>Deployment&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                <td>📦 edge-friendly</td>
+                                <td>☁️ cloud-centric</td>
+                            </tr>
+                            <tr class="">
+                                <td>Source</td>
+                                <td>📝 open-source</td>
+                                <td>🔒 typically closed-source</td>
+                            </tr>
+                            <tr class="">
+                                <td>Versatility</td>
+                                <td>⚡ very customizable</td>
+                                <td>📈 superior results</td>
+                            </tr>
+                            <tr class="">
+                                <td>Costs</td>
+                                <td>🍃 low</td>
+                                <td>💰 high</td>
+                            </tr>
+                        </table>
+                        <div style="clear:both;">
+                            <p class="footnote" style="text-align: center;"><br/>SLMs offer flexibility and efficiency, while
+                                LLMs provide extensive, high-powered capabilities.
+                            </p>
+                        </div>
+                    </div>
+                </section> -->
+
+
+                <section data-background="images/michael-dziedzic-nbW-kaz2BlE-unsplash.jpg">
+                    <div class="overlay-style">
+                        <h2>Benefits of SLMs</h2>
+                        <div class="column-container">
+                            <div class="col-50">
+                                <div class="img-backdrop">
+                                    <img src="graphics/slm.excalidraw.png" style="min-height: auto;" />
+                                </div>
+                            </div>
+
+                            <div class="col-50" style="padding: 3%; padding-top: 0;">
+                                <ul>
+                                    <li>🔒 securely process data locally</li>
+                                    <li>💾 act before engaging cloud LLMs</li>
+                                    <li>⏱️ improve latency & support offline use</li>
+                                    <li>💸 reduce costs by offloading compute</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+                <section data-background="images/michael-dziedzic-nbW-kaz2BlE-unsplash.jpg">
+                    <img src="graphics/apple.excalidraw.png" class="standard" />
+                    <p class="overlay-style" style="padding: 1% !important;">In Apple's case, the work split between SLM and
+                        LLM is seamless and transparent to the user. It only becomes obvious once you go offline.</p>
+                </section>
+
+            </section>
+
+            <section>
+                <section data-background="images/maria-teneva-7FmSYQ3Z7fg-unsplash.jpg">
+                    <h1>Running SLMs</h1>
+                </section>
+
+                    <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
+                    <div class="overlay-style">
+                        <h2>Compute platforms</h2>
+                        <div class="column-container">
+                            <div class="col-33">
+                                <div class="img-backdrop">
+                                    <img src="graphics/execution-environments.excalidraw.png"
+                                        style="min-height: auto;" />
+                                </div>
+                            </div>
+
+                            <div class="col-66" style="padding: 3%; padding-top: 0;">
+                                <ul>
+                                    <li>🖥️ various hardware accelerators (CPU, NPU, GPU)</li>
+                                    <li>⚡ the larger the model, the more compute power it needs</li>
+                                    <li>🔄 larger models can be quantized to run on less powerful hardware, but they lose precision</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+                    <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
+                    <div class="overlay-style">
+                        <h2>Running Language Models</h2>
+                        <div class="column-container">
+                            <div class="col-50">
+                                <ul>
+                                    <li class="fragment">🎮
+                                        Standalone Orchestrators
+                                        <small>→ e.g. LM Studio, Ollama or Foundry Local
+                                            <br/>→ for end-users</small>
+                                    </li>
+                                    <li class="fragment">📚
+                                        High level library
+                                        <br />
+                                        <small>→ e.g. HF transformers, LLamaSharp, MLX Swift<br/>→ for application developers</small>
+                                    </li>
+
+                                    <li class="fragment">⚙️
+                                        Execution Runtimes
+                                        <br />
+                                        <small>→ e.g. ONNX Runtime, Candle, llama.cpp, MLX<br/>→ for ML engineers</small>
+                                    </li>
+                                    <!-- <li class="fragment">💻
+                                        OS Integration
+                                        <br />
+                                        <small>e.g. Phi Silica (Copilot PC) or Gemini Nano (Android)</small>
+                                    </li> -->
+
+                                </ul>
+                            </div>
+                            <div class="col-50">
+                                                            <div class="img-backdrop">
+                                    <img src="graphics/running-slms2.excalidraw.png"
+                                        style="min-height: auto;" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
+                    <div class="overlay-style">
+                        <h2>Foundry Local</h2>
+                        <div class="column-container">
+                            <div class="col-50">
+                                <div class="img-backdrop">
+                                    <img src="images/foundry.png"
+                                        style="min-height: auto;" />
+                                </div>
+                            </div>
+
+                            <div class="col-50" style="padding: 3%; padding-top: 0;">
+                                <ul>
+                                    <li>🧩 ONNX model runner for Windows and MacOS</li>
+                                    <li>⚡️ Supports various hardware accelerators (CPU, NPU, GPU)</li>
+                                    <li>🔗 Exposes an OpenAI-compatible REST API</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+                    <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
+                    <div class="overlay-style">
+
+                        <p>An emerging trend are Language Models that are</p>
+                        <h2 class="r-fit-text">built-into the OS</h2>
+                        <p>like Gemini Nano on Android or Phi Silica on Copilot+ PCs.</p>
+                    </div>
+                </section>
+
+                <!-- <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
+                    <div class="overlay-style">
+                        <h2>Phi Silica</h2>
+                        <div class="column-container">
+
+
+                            <div class="col-50" style="padding: 3%; padding-top: 0;">
+                                <ul>
+                                    <li>🚀 Built into Windows - powers native Windows AI features</li>
+                                    <li>💻 NPU-Optimized for low-power AI on Copilot+ PCs</li>
+                                    <li>🧩 Available for devs via Windows App SDK</li>
+                                </ul>
+                            </div>
+                                                        <div class="col-50">
+                                <div class="img-backdrop">
+                                    <img src="images/phi-silica.png"
+                                        style="min-height: auto;" />
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </section> -->
+
+                <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
+                    <div class="overlay-style">
+                        <p>Consider the following classification problem.</p>
+                        <div class="img-backdrop">
+                            <img src="graphics/toy_problem.excalidraw.png" class="standard"
+                                style="max-height: 300px;" />
+                        </div>
+                    </div>
+                </section>
+
+                <!-- <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
+                    <div class="img-backdrop">
+                        <img src="graphics/rag-basic.excalidraw.png" class="standard" />
+                    </div>
+                    <p class="overlay-style" style="padding: 1% !important;">A basic RAG relies on interaction with a single
+                        LLM.</p>
+                </section>
+    
+                <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
+                    <div class="img-backdrop">
+                        <img src="graphics/rag-with-qrw.excalidraw.png" class="standard" />
+                    </div>
+                    <p class="overlay-style" style="padding: 1% !important;">SLM can act as a fast pre-processor, improving
+                        the quality of information fed into the LLM.</p>
+                </section>
+    
+                <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
+                    <div class="overlay-style">
+                        <div class="column-container">
+                            <div class="col-66">
+                                <div class="img-backdrop">
+                                    <img src="images/gen-query-rewriting.png" style="min-height: auto;" />
+                                </div>
+                            </div>
+    
+                            <div class="col-33" style="padding: 3%; padding-top: 0;">
+                                <div>
+                                <p>SLM query rewriting is now an integral feature of</p>
+                                <h2 class="r-fit-text">Azure AI Search</h2>
+                                </div>
+                            </div>
+                        </div>
+    
+                    </div>
+                </section> -->
+
+                                <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
+                    <div class="overlay-style">
+                        <h3>Minions pattern</h3>
+                        <hr />
+                        <div>
+                            <p>The approach reduces costs by having a powerful remote LLM <span class="highlight">decompose a task</span> into simpler subtasks that a local SLM executes.</p>
+                        </div>
+                        <div>
+                            <img class="standard" src="graphics/minions2.excalidraw.png" />
+                        </div>
+                        <div style="clear:both;">
+                            <p class="footnote" style="text-align: center;">Narayan, A., Biderman, D., Eyuboglu, S., May, A., Linderman, S., Zou, J., & Ré, C. (2025). Minions: Cost-efficient Collaboration Between On-device and Cloud Language Models. arXiv preprint arXiv:2502.15964.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+            </section>
+
+            <section>
+                <section data-background="images/anton-filatov-O_5SJuSOxZA-unsplash.jpg">
+                    <h1>SLM Customization</h1>
+                </section>
+
+                <section data-background="images/maxime-valcarce-mAj8xn5zXsk-unsplash.jpg">
+                    <div class="overlay-style">
+
+                        <p>For most tasks, foundational LLMs can be ran out of the box. SLMs on the other hand, require
+                        </p>
+                        <h2 class="r-fit-text">fine tuning to a specific task</h2>
+                        <p>to provide best results.</p>
+                    </div>
+                </section>
+
+                <section data-background="images/maxime-valcarce-mAj8xn5zXsk-unsplash.jpg">
+                    <div class="overlay-style">
+                        <h2>Fine tuning</h2>
+                        <div class="column-container">
+                            <div class="col-50">
+                                <div class="img-backdrop">
+                                    <img src="graphics/slm-fine-tuning-chart.excalidraw.png"
+                                        style="min-height: auto;" />
+                                </div>
+                            </div>
+
+                            <div class="col-50" style="padding: 3%; padding-top: 0;">
+                                <ul>
+                                    <li>🔧 SLMs may match the quality of LLMs for specific tasks</li>
+                                    <li><br/>⚡ Fine-tuned SLMs maintain their efficiency advantage over larger models</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+                <section data-background="images/maxime-valcarce-mAj8xn5zXsk-unsplash.jpg">
+                    <div class="overlay-style">
+                        <h2>Fine tuned SLM Efficiency</h2>
+                        <div class="column-container">
+                            <div class="col">
+                                <ul>
+                                    <li class="fragment">🔋
+                                        Resource Efficiency
+                                        <br />
+                                        <small>Get similar results with lower compute</small>
+                                    </li>
+                                    <li class="fragment">⚡
+                                        Better Performance
+                                        <br />
+                                        <small>Get faster results with similar compute</small>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="col">
+                                <ul>
+                                    <li class="fragment">🧠
+                                        Prompt Efficiency
+                                        <br />
+                                        <small>Less tokens needed for same tasks</small>
+                                    </li>
+                                    <li class="fragment">🌍
+                                        Energy Efficiency
+                                        <br />
+                                        <small>Reduce environmental impact with optimized workflows</small>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+                </section>
+
+                <section data-background="images/maxime-valcarce-mAj8xn5zXsk-unsplash.jpg">
+                    <div class="img-backdrop">
+                        <img src="graphics/ft-basic2.excalidraw.png" class="standard" />
+                    </div>
+                    <p class="overlay-style" style="padding: 1% !important;"><span class="highlight">Fine tuning</span>
+                        requires preparing a set of inference samples and running them past the model.</p>
+
+                </section>
+
+                <section data-background="images/maxime-valcarce-mAj8xn5zXsk-unsplash.jpg">
+                    <div class="img-backdrop">
+                        <img src="graphics/ft-distillation2.excalidraw.png" class="standard" />
+                    </div>
+                    <p class="overlay-style" style="padding: 1% !important;"><span class="highlight">Distillation</span>
+                        is
+                        a variant of fine tuning where inference samples come from a "teacher" LLM.</p>
+
+                </section>
+
+                <section data-background="images/maxime-valcarce-mAj8xn5zXsk-unsplash.jpg">
+                    <div class="overlay-style">
+                        <p>Large models are trained with <span class="highlight">tool calling</span> capabilities and are suitable for such AI orchestration or agentic AI flows. Small models can be fine tuned to imitate that.</p>
+                        <!-- <p>Consider an example, where the model controls a music system.</p> -->
+                        <div class="img-backdrop">
+                            <img src="graphics/music_controller_problem.excalidraw.png" class="standard"
+                                style="max-height: 250px;" />
+                        </div>
+                    </div>
+                </section>
+
+                <section data-background="images/maxime-valcarce-mAj8xn5zXsk-unsplash.jpg">
+                    <div class="column-container">
+                    <div class="col-33">
+                        <div class="overlay-style">
+                        <p>Without fine tuning, we encode instructions in the system prompt and use few shot learning approach.</p>
+                        <hr/>
+                        <p>182 tokens<br/>with 8 tokens/s</br/> = 22.75 seconds!</p>
+                        </div>
+        </div>
+        <div class="col-66">
+
+            <pre style="font-size: 0.45em;">
+                <code class="nohighlight rounded"><|system|>
+You control a music player. You can use these functions:
+- play_song(title): Play a specific song
+- play_list(title): Play a specific playlist
+- pause: Pause playback
+- stop: Stop playback
+- next: Skip to next track
+- prev: Go to previous track
+- vol_up: Increase volume
+- vol_down: Decrease volume
+- mute: Mute audio
+- unmute: Unmute audio
+You respond with a function call in the format: fn:function_name "parameter" (if needed and in lowercase) or say "Sorry I cannot help with that".
+
+Examples: 
+"Play Bohemian Rhapsody" -> fn:play_song "bohemian rhapsody" 
+"Play workout mix" -> fn:play_list "workout mix"
+"Skip this -> fn:next. 
+<|end|>
+
+<|user|>
+I don't like this song
+<|end|>
+
+<|assistant|>
+                </code>
+            </pre>
+            </div>
+            <p class="fragment" data-code-focus="1-19"></p>
+            <p class="fragment" data-code-focus="21-23"></p>
+        </div>
+                </section>
+
+                <section data-background="images/maxime-valcarce-mAj8xn5zXsk-unsplash.jpg">
+                    <div class="column-container">
+                    <div class="col-50">
+                        <div class="overlay-style">
+                        <p>After fine tuning, we can skip the system prompt altogether.</p>
+                        <hr/>
+                        <p>8 tokens<br/>with 8 tokens/s</br/> = 1 second!</p>
+                        </div>
+        </div>
+        <div class="col-50">
+
+            <pre>
+                <code class="nohighlight rounded"><|user|>
+I don't like this song
+<|end|>
+
+<|assistant|>
+                </code>
+            </pre>
+            </div>
+            <p class="fragment" data-code-focus="1-3"></p>
+        </div>
+                </section>
+
+                                <!-- <section data-background="images/maxime-valcarce-mAj8xn5zXsk-unsplash.jpg">
+                    <div class="overlay-style">
+                        <h2>Fine-tuning: Hardware</h2>
+                        <div class="column-container">
+                            <div class="col-50">
+                                <ul>
+                                    <li class="fragment">⚡️
+                                        VRAM, VRAM, VRAM!
+                                        <small>→ Even a "small" 7B model can require 14-28GB of GPU memory just to load, before training even starts.</small>
+                                    </li>
+                                    <li class="fragment">⚙️
+                                        LoRA to the rescue
+                                        <br />
+                                        <small>→ Reduces memory by only training small "adapter" layers, enabling use on some high-end consumer hardware.</small>
+                                    </li>
+
+                                    <li class="fragment">⚠️
+                                        The CUDA Bottleneck
+                                        <br />
+                                        <small>→ Most of the AI software ecosystem is optimized for NVIDIA's CUDA platform, creating a significant hurdle for other hardware.</small>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-50">
+                                <div class="img-backdrop">
+                                    <img src="graphics/ft-hardware2.excalidraw.png"
+                                        style="min-height: auto;" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-background="images/maxime-valcarce-mAj8xn5zXsk-unsplash.jpg">
+                    <div class="overlay-style">
+                        <h2>Accelerating with Azure ML</h2>
+                        <div class="column-container">
+                                                        <div class="col-33">
+                                <div class="img-backdrop">
+                                    <img src="graphics/azureml2.excalidraw.png"
+                                        style="min-height: auto;" />
+                                </div>
+                            </div>
+                            <div class="col-66" style="padding-left: 1em;">
+                                <ul>
+                                    <li class="fragment">☁️
+                                        Access Elite Hardware
+                                        <small>→ NVIDIA A100/H100 GPUs, essential for full parameter tuning.</small>
+                                    </li>
+                                    <li class="fragment">🛠️
+                                        Specialized Environments
+                                        <br />
+                                        <small>→ Pre-configured or self-defined environments with CUDA and necessary libraries</small>
+                                    </li>
+
+                                    <li class="fragment">🎯
+                                        Model Deployment
+                                        <br />
+                                        <small>→ Deploy models seamlessly as dedicated or batch endpoints</small>
+                                    </li>
+
+                                    <li class="fragment">🚀
+                                        Scalability & Reproducibility
+                                        <br />
+                                        <small>→ Easily scale from one GPU to a cluster and track experiments</small>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                                <section data-background="images/maxime-valcarce-mAj8xn5zXsk-unsplash.jpg">
+                    <div class="overlay-style">
+                        <h2>Example - Fine Tuning Phi-4</h2>
+                        <div class="column-container">
+                                                        <div class="col-33">
+                                <div class="img-backdrop">
+                                    <img src="images/ml-ft.png"
+                                        style="min-height: auto;" />
+                                </div>
+                            </div>
+                            <div class="col-66" style="padding-left: 1em;">
+                                <ul>
+                                    <li class="fragment">☁️
+                                        Standard_NC24ads_A100_v4
+                                        <small>→ 24 cores, 220 GB RAM, 64 GB disk, 80GB VRAM<br/>
+                                        → 1.05$ per hour at <span class="highlight">low priority rate</span></small>
+                                    </li>
+                                    <li class="fragment">🛠️
+                                        Resources
+                                        <br />
+                                        <small>→ peaks at 32GB VRAM<br/>
+                                        → execution time ~15 min</small>
+                                    </li>
+
+                                    <li class="fragment">🎯
+                                        Total: <span class="highlight">0.29$</span>
+                                        <br />
+                                        <small>→ can be covered with Azure Credits<br/>
+                                            → buying such machine would cost at least $20 000</small>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section> -->
+
+            </section>
+
+            <section data-background="images/all.png">
+            </section>
+
+            <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
+                <div class="overlay-style">
+                    <h2>Thank you</h2>
+                    <div class="column-container centered">
+                        <div class="col auto">
+                            <img class="small" src="images/thankyou.gif" style="min-height: auto; margin:0" />
+                        </div>
+                        <div class="col auto">
+                            <ul style="font-size: 0.9em;">
+                                <li>📝 <a
+                                        href="https://filipw.github.io/ghana-azure-ug-2025">filipw.github.io/ghana-azure-ug-2025</a>
+                                </li>
+                                <li>🖥️ <a
+                                        href="https://github.com/filipw/2025-ghana-azure-ug-demos">github.com/filipw/2025-ghana-azure-ug-demos</a>
+                                </li>
+                                <li>📸 <a href="http://unsplash.com">Photos credit: Unsplash</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']]
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+        </script>
+    <script>
+        // Full list of configuration options available here:
+        // https://github.com/hakimel/reveal.js#configuration
+
+        Reveal.initialize({
+            viewDistance: 30,
+            controls: true,
+            progress: true,
+            history: true,
+            center: true,
+            keyboard: {
+                39: 'next', // Right Arrow
+                37: 'prev'  // Left Arrow
+            },
+            transition: 'slide', // default/cube/page/concave/zoom/linear/fade/none
+
+            // Parallax scrolling
+            // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+            // parallaxBackgroundSize: '2100px 900px',
+
+            // Optional libraries used to extend on reveal.js
+            dependencies: [
+                { src: 'lib/js/classList.js', condition: function () { return !document.body.classList; } },
+                { src: 'plugin/markdown/marked.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+                { src: 'plugin/markdown/markdown.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+                { src: 'plugin/highlight.js/highlight.pack.js', async: true, callback: function () { /*hljs.initHighlightingOnLoad();*/ } },
+                { src: 'plugin/zoom-js/zoom.js', async: true, condition: function () { return !!document.body.classList; } },
+                { src: 'plugin/notes/notes.js', async: true, condition: function () { return !!document.body.classList; } },
+                { src: 'plugin/alt-arrows/alt-arrows.js' },
+                {
+                    src: 'plugin/reveal-code-focus.js',
+                    async: true,
+                    callback: function () {
+                        RevealCodeFocus();
+                    }
+                }
+            ]
+        });
+
+        // Reveal.configure({
+        //     keyboard: {
+        //         39: 'next', // Right Arrow
+        //         37: 'prev'  // Left Arrow
+        //     }
+        // });
+
+    </script>
+</body>
+
+</html>
