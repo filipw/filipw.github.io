@@ -96,17 +96,109 @@
 
             <section>
                 <section data-background="images/growtika-nGoCBxiaRO0-unsplash.jpg">
-                    <h1>Small Language Models</h1>
+                    <h1>AI Language Models</h1>
                 </section>
 
                 <section data-background="images/michael-dziedzic-nbW-kaz2BlE-unsplash.jpg">
+                    <div class="overlay-style">
+                        <h3>AI Language Models</h3>
+                        <hr />
+                        <p><strong>Prompt:</strong> &nbsp;&nbsp;I gave him a</p>
+                        <p><strong>Completion:</strong> &nbsp;&nbsp;
+                            <span class="fragment step-fade-in-then-out">gift</span>
+                            <span class="fragment step-fade-in-then-out">chance to explain himself</span>
+                            <span class="fragment step-fade-in-then-out">comprehensive tutorial on digital photography,
+                                including lessons on lighting, composition, and post-processing</span>
+                        </p>
+                    </div>
+                </section>
+
+                <!-- <section data-background="images/maxime-valcarce-mAj8xn5zXsk-unsplash.jpg">
+                    <div class="overlay-style">
+                        <p>The textual input provided via the prompt is</p>
+                        <h2 class="r-fit-text">tokenized</h2>
+                        <p>before being passed into a large language model. Each model has a specific context window (token) size it can
+                            handle (4k, 128k etc).</p>
+                    </div>
+                </section> -->
+
+                <section data-background="images/michael-dziedzic-nbW-kaz2BlE-unsplash.jpg">
+                    <div class="overlay-style">
+                        <div class="column-container">
+                            <div class="col">
+                                <img src="images/tokenization1.png" class="standard" />
+
+                            </div>
+                            <div class="col">
+                                <br />
+                                <img src="images/tokenization2.png" class="standard" />
+                            </div>
+
+                        </div>
+                        <p>Input is tokenized and mapped to a vector of token IDs.</p>
+                    </div>
+                </section>
+
+                <!-- <section data-background="images/maxime-valcarce-mAj8xn5zXsk-unsplash.jpg">
+                    <div class="overlay-style">
+                        <p>During initial training, the core model builds a general understanding of language patterns, grammar, and knowledge and can </p>
+                        <h2 class="r-fit-text">only predict the next token</h2>
+                    </div>
+                </section> -->
+
+                <section data-background="images/michael-dziedzic-nbW-kaz2BlE-unsplash.jpg">
+                    <div class="overlay-style">
+                        <div class="column-container">
+                            <div class="col">
+                                 <p>The heart of a language model is the <span
+                            class="highlight">inference loop</span>.</p>
+                                 <img src="graphics/inference-loop.excalidraw.png" class="standard" style="max-height: 600px;" />
+                            </div>
+                            <div class="col inset" style=" padding-left: 20px;">
+                                <table style="font-size: 0.85em;">
+                                    <tr>
+                                        <td>I gave him a</td>
+                                        <td>→</td>
+                                        <td>ch</td>
+                                    </tr>
+                                    <tr>
+                                        <td>I gave him a ch</td>
+                                        <td>→</td>
+
+                                        <td>ance</td>
+                                    </tr>
+                                    <tr>
+                                        <td>I gave him a chance</td>
+                                        <td>→</td>
+
+                                        <td> to</td>
+                                    </tr>
+                                    <tr>
+                                        <td>I gave him a chance to</td>
+                                        <td>→</td>
+
+                                        <td> explain</td>
+                                    </tr>
+                                    <tr>
+                                        <td>I gave him a chance to explain</td>
+                                        <td>→</td>
+
+                                        <td>[STOP]</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- <section data-background="images/michael-dziedzic-nbW-kaz2BlE-unsplash.jpg">
                     <div class="img-backdrop">
 
                         <img src="graphics/inference-loop.excalidraw.png" class="standard" style="max-height: 600px;" />
                     </div>
                     <p class="overlay-style" style="padding: 1% !important;">The heart of a language model is the <span
                             class="highlight">inference loop</span>.</p>
-                </section>
+                </section> -->
 
                 <section data-background="images/michael-dziedzic-nbW-kaz2BlE-unsplash.jpg">
                     <div class="overlay-style">
