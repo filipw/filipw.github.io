@@ -77,6 +77,22 @@
 
             </section>
 
+                        <section data-background="images/bohr.jpg">
+                <div class="column-container">
+
+                    <div class="col">
+                    </div>
+
+                    <div class="col overlay-style">
+                        <blockquote>Everything we call real is made of things that cannot be regarded as real.
+                        </blockquote>
+                        <p>
+                        <footer>- <em>Niels Bohr</em></footer>
+                        </p>
+                    </div>
+                </div>
+            </section>
+
             <section data-background="images/D810_NEF_3483.jpg">
                 <div class="column-container">
                     <div class="col-50"><img src="images/filip-book.jpg"
@@ -91,22 +107,6 @@
 
             <section data-background-color="#fff">
                 <img src="images/sonova.png" style="min-height: auto" />
-            </section>
-
-            <section data-background="images/bohr.jpg">
-                <div class="column-container">
-
-                    <div class="col">
-                    </div>
-
-                    <div class="col overlay-style">
-                        <blockquote>Everything we call real is made of things that cannot be regarded as real.
-                        </blockquote>
-                        <p>
-                        <footer>- <em>Niels Bohr</em></footer>
-                        </p>
-                    </div>
-                </div>
             </section>
 
             <!-- <section data-background="images/feynman2.jpg">
@@ -631,26 +631,57 @@ Result     Frequency
 
                 <section data-background="images/cms2.jpg">
                     <div class="overlay-style">
-                        <p>An <span class="highlight">observable</span> defines pairs of states that can be observed.</p>
-                        <p>
-                        <p>$$
-                            \sigma_z=\begin{bmatrix} 1 & 0 \\ 0 & -1 \end{bmatrix} \qquad
-                            \sigma_x=\begin{bmatrix} 0 & 1 \\ 1 & 0 \end{bmatrix} \qquad
-                            \sigma_y=\begin{bmatrix} 0 & -i \\ i & 0 \end{bmatrix}
-                            $$</p>
-                        </p>
-                        <p>These are:</p>
-                        <p>$$
-                            \sigma_z \rightarrow \ket{0} \; \ket{1} \qquad
-                            \sigma_x \rightarrow \ket{+} \; \ket{-} \qquad
-                            \sigma_y \rightarrow \ket{+i} \; \ket{-i}
-                            $$
-                        </p>
-                    </div>
-                    <aside class="notes">
-                        Observables are matrices.
-                    </aside>
+    
+    <table class="medium">
+        <thead>
+            <tr>
+                <th>Observable</th>
+                <th>Matrix</th>
+                <th>Vector States</th>
+                <th>Dirac Notation</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>$\sigma_z$</td>
+                <td>$$ \begin{bmatrix} 1 & 0 \\ 0 & -1 \end{bmatrix} $$</td>
+                <td>
+                    $$ 
+                    \begin{bmatrix} 1 \\ 0 \end{bmatrix} \quad 
+                    \begin{bmatrix} 0 \\ 1 \end{bmatrix} 
+                    $$
+                </td>
+                <td>$$ \ket{0} \quad \ket{1} $$</td>
+            </tr>
+            <tr>
+                <td>$\sigma_x$</td>
+                <td>$$ \begin{bmatrix} 0 & 1 \\ 1 & 0 \end{bmatrix} $$</td>
+                <td>
+                    $$ 
+                    \begin{bmatrix} \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \end{bmatrix} \quad 
+                    \begin{bmatrix} \frac{1}{\sqrt{2}} \\ -\frac{1}{\sqrt{2}} \end{bmatrix} 
+                    $$
+                </td>
+                <td>$$ \ket{+} \quad \ket{-} $$</td>
+            </tr>
+            <tr>
+                <td>$\sigma_y$</td>
+                <td>$$ \begin{bmatrix} 0 & -i \\ i & 0 \end{bmatrix} $$</td>
+                <td>
+                    $$ 
+                    \begin{bmatrix} \frac{1}{\sqrt{2}} \\ \frac{i}{\sqrt{2}} \end{bmatrix} \quad 
+                    \begin{bmatrix} \frac{1}{\sqrt{2}} \\ \frac{-i}{\sqrt{2}} \end{bmatrix} 
+                    $$
+                </td>
+                <td>$$ \ket{+i} \quad \ket{-i} $$</td>
+            </tr>
+        </tbody>
+    </table>
+    <p>An <span class="highlight">observable</span> defines pairs of states that can be observed.</p>
+
+</div>
                 </section>
+
 
                 <!-- <section data-background="images/cms2.jpg">
                     <div class="overlay-style">

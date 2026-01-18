@@ -417,7 +417,7 @@ table.simple td {
 table.medium td {
   font-size: 0.7em !important; 
   text-align: left !important;
-  padding: 2%;
+  padding: 0 2em;
 }
 
 .reveal table tr.noborder td {
