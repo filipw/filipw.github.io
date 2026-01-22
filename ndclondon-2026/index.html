@@ -235,7 +235,7 @@ Result     Frequency
                         <!-- QM-->
                         <section>
                             <section data-background="images/atlas1.jpg">
-                                <h1>Quantum Mechanics</h1>
+                                <h1>Historical Background</h1>
                             </section>
 
                             <section data-background="images/planck.png" data-state="bg-top-left">
@@ -268,8 +268,8 @@ Result     Frequency
                             <section data-background="images/heisenberg.png" data-state="bg-top-left">
                                 <div class="overlay-style">
                                     <p>The breakthrough came with the paper by Werner
-                                        Heisenberg in 1925 - <span class="highlight">quantum mechanics was born</span>.</p>
-                                    <p>It is the foundation of all quantum physics and allows for probabilistic prediction of atomic and subatomic phenonomena.</p>
+                                        Heisenberg in 1925 who ditched classical mechanics in favor of a completely abstract model based on observables - <span class="highlight">quantum mechanics was born</span>.</p>
+                                    <!-- <p>It is the foundation of all quantum physics and allows for probabilistic prediction of atomic and subatomic phenonomena.</p> -->
                                 </div>
             
                                 <aside class="notes">
@@ -396,7 +396,7 @@ Result     Frequency
                                   </aside>
                             </section>                
             
-                            <section data-background="images/heisenberg.png" data-state="bg-top-left">
+                            <!-- <section data-background="images/heisenberg.png" data-state="bg-top-left">
                                 <div class="overlay-style">
                                     <p>Quantum mechanical mathematical formalism lacks</p>
                                     <h2 class="r-fit-text">ontological character</h2>
@@ -404,7 +404,7 @@ Result     Frequency
                                 <aside class="notes">
                                     In his 1925 Heisenberg got rid of the idea of trying to explain electrons using classical orbits in favor of a completely abstract description.
                                   </aside>
-                            </section>
+                            </section> -->
             
                             <section data-background="images/bohr.jpg">
                                 <div class="column-container">
@@ -608,7 +608,20 @@ Result     Frequency
                     </div>
                 </section> -->
 
-                <section data-background="images/cms2.jpg">
+                                <section data-background="images/cern-theory2.jpg">
+                    <div class="column-container centered overlay-style">
+
+                        <div class="col">
+                            <p>The state of a most basic quantum system is described by a <span class="highlight">state vector</span>, where $\alpha$ and $\beta$ are complex numbers.</p>
+                        </div>
+
+                        <div class="col">
+                            <h2 class="r-fit-text">$\begin{bmatrix} \alpha \cr \beta \end{bmatrix}$</h2>
+                            <p>$$|\alpha|^2 + |\beta|^2 = 1$$</p>
+                        </div>
+                    </div>
+                </section>
+                <!-- <section data-background="images/cms2.jpg">
                     <div class="column-container centered overlay-style">
 
                         <div class="col">
@@ -620,7 +633,7 @@ Result     Frequency
                             <p>$$|\alpha|^2 + |\beta|^2 = 1$$</p>
                         </div>
                     </div>
-                </section>
+                </section> -->
 
                                 <section data-background="images/cms2.jpg">
                     <div class="overlay-style">
@@ -637,8 +650,8 @@ Result     Frequency
             <tr>
                 <th>Observable</th>
                 <th>Matrix</th>
-                <th>Vector States</th>
-                <th>Dirac Notation</th>
+                <th>Eigenstates</th>
+                <!-- <th>Dirac Notation</th> -->
             </tr>
         </thead>
         <tbody>
@@ -651,7 +664,7 @@ Result     Frequency
                     \begin{bmatrix} 0 \\ 1 \end{bmatrix} 
                     $$
                 </td>
-                <td>$$ \ket{0} \quad \ket{1} $$</td>
+                <!-- <td>$$ \ket{0} \quad \ket{1} $$</td> -->
             </tr>
             <tr>
                 <td>$\sigma_x$</td>
@@ -662,7 +675,7 @@ Result     Frequency
                     \begin{bmatrix} \frac{1}{\sqrt{2}} \\ -\frac{1}{\sqrt{2}} \end{bmatrix} 
                     $$
                 </td>
-                <td>$$ \ket{+} \quad \ket{-} $$</td>
+                <!-- <td>$$ \ket{+} \quad \ket{-} $$</td> -->
             </tr>
             <tr>
                 <td>$\sigma_y$</td>
@@ -673,7 +686,7 @@ Result     Frequency
                     \begin{bmatrix} \frac{1}{\sqrt{2}} \\ \frac{-i}{\sqrt{2}} \end{bmatrix} 
                     $$
                 </td>
-                <td>$$ \ket{+i} \quad \ket{-i} $$</td>
+                <!-- <td>$$ \ket{+i} \quad \ket{-i} $$</td> -->
             </tr>
         </tbody>
     </table>
@@ -733,8 +746,9 @@ Result     Frequency
 
                 <section data-background="images/cms2.jpg">
                     <div class="overlay-style">
-                        <p>For $\mathbf{Z}$ basis measurement, we can only ask</p>
-                        <h2 class="r-fit-text">Are you $\ket{0}$ or are you $\ket{1}$?</h2>
+                        <p>For $\mathbf{Z}$ observable, we can only ask</p>
+                        <h2 class="r-fit-text">Are you $\begin{bmatrix} 1 \\ 0 \end{bmatrix}$ or are you a 
+                    $\begin{bmatrix} 0 \\ 1 \end{bmatrix} $?</h2>
                     </div>
                 </section>
 
@@ -759,11 +773,11 @@ Result     Frequency
                         <div class="col overlay-style">
                             <!-- <p>If both $\alpha$ and $\beta$ are non-zero, the system is in a</p>
                             <h2 class="r-fit-text">superposition</h2> -->
-                            <p>For $\mathbf{Z}$ basis measurement, if a system is neither $\ket{0}$, nor $\ket{1}$ state, it is in a <span class="highlight">superposition</span>.</p>
+                            <p>If a system is neither of the two observable states, it is in a <span class="highlight">superposition</span>.</p>
                             <p>Mathematically, superposition is a <span class="highlight">linear combination</span> of the observable states.</p>
                         </div>
                         <div class="col inset-right">
-                            <img class="standard" src="images/bloch-superposition.jpeg" />
+                            <img class="standard" src="graphics/iceberg2.excalidraw.png" />
                         </div>
                     </div>
                     <aside class="notes">
@@ -1061,17 +1075,7 @@ Result     Frequency
                     </aside>
                 </section> -->
 
-                <section data-background="images/cms-beam.jpg">
-                    <div class="overlay-style">
-                        <p>Measurement in the $\mathbf{Z}$ basis creates</p>
-                        <h2 class="r-fit-text">maximum uncertainty</h2>
-                        <p>for the measurement in the $\mathbf{X}$ the basis, and vice versa.</p>
-                    </div>
-                    <aside class="notes">
-                        For sequential measurements e.g. Z-X-Z, the previous results in Z get destroyed by X
-                        measurement!
-                    </aside>
-                </section>
+s -->
 
                 <section data-background="images/einstein.jpg">
                     <div class="column-container">
@@ -1112,8 +1116,9 @@ Result     Frequency
                 <section data-background="images/cms-beam.jpg">
                     <img src="images/Quantum_Fluctuations.gif" />
                     <div class="overlay-style" style="padding: 1% !important;">
+                        <h3>Quantum Fluctuations</h3>
                         <div style="clear:both;">
-                            <p class="footnote" style="text-align: center;">By Ahmed Neutron - Own work, CC BY-SA 4.0,
+                            <p class="footnote" style="text-align: center;">By Ahmed Neutron - CC BY-SA 4.0,
                                 <a
                                     href="https://commons.wikimedia.org/w/index.php?curid=69715938">https://commons.wikimedia.org/w/index.php?curid=69715938</a>
                             </p>
