@@ -992,7 +992,7 @@ Result     Frequency
                 <section data-background="images/cern-alice.jpg">
                     <pre>
                 <code class="cs rounded">operation SpinZ(measurement_basis : Pauli) : Result {
-    // allocate a new qubit in the state |0⟩ - which is the same as |↑⟩
+    // allocate a new qubit in the state |↑⟩
     use electron = Qubit();
 
     // measurement result is deterministic in the Z basis
@@ -1011,7 +1011,7 @@ Result     Frequency
                 <div class="column-container">
                     <div class="col-33">
                         <div class="overlay-style">
-                        <p>Electrons prepared with spin up, measured in the $\mathbf{X}$ and then $\mathbf{Z}$. </p>
+                        <p>Electrons prepared with spin up, measured in the $\mathbf{X}$ basis and then $\mathbf{Z}$ basis. </p>
                         </div>
         </div>
         <div class="col-66">
@@ -1032,7 +1032,7 @@ Result     Frequency
 <section data-background="images/cern-alice.jpg">
     <pre>
 <code class="cs rounded">operation SpinZMeasuredInXThenZ() : Result {
-    // allocate a new qubit in the state |0⟩ - which is the same as |↑⟩
+    // allocate a new qubit in the state |↑⟩
     use electron = Qubit();
 
     let result_one = Measure([PauliX], [electron]);
@@ -1300,9 +1300,11 @@ Result     Frequency
                         <p>There are two possible explanations here</p> 
                         <div class="column-container">
                             <div class="col inset-left">
+                                <h3>Classical</h3>
                                 <p>🤝 the electrons carried hidden instructions from the start — <span class="highlight">pre-agreement</span> about how to respond to measurements</p>
                                 </div>
                                 <div class="col inset-right">
+                                    <h3>Quantum</h3>
                                     <p>⚡ the electrons are entangled, and their measurement outcomes are <span class="highlight">instantly correlated</span> without any classical signal traveling between them</p>
                                 </div>
                             </div>
