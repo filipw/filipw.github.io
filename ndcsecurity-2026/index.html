@@ -1,0 +1,1196 @@
+﻿<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Post-quantum cryptography for .NET developers</title>
+    <meta name="description" content="">
+    <meta name="author" content="Filip W">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <script src="//code.jquery.com/jquery-1.8.0.js"></script>
+    <script src="//code.jquery.com/ui/1.8.23/jquery-ui.js"></script>
+    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/js/bootstrap.min.js"></script>
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/css/bootstrap-combined.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/default.min.css">
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/simple.css" id="theme">
+    <link rel="stylesheet" href="css/monokai_sublime.css" />
+    <link rel="stylesheet" href="css/custom.css" />
+    <script src="fsharp.formatting/styles/tips.js" type="text/javascript"></script>
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+    <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+
+    <script>
+        if (window.location.search.match(/print-pdf/gi)) {
+            var link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = 'css/print/pdf.css';
+            document.getElementsByTagName('head')[0].appendChild(link);
+        }
+    </script>
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+    <style type="text/css">
+    </style>
+</head>
+
+<body>
+    <div class="reveal">
+        <header
+            style="position: absolute;top: 50px; left: 100px; z-index:500; font-size:100px;background-color: rgba(0,0,0,0.5)">
+        </header>
+        <!-- Any section element inside of this container is displayed as a slide -->
+        <div class="slides">
+
+            <section data-background="images/NaturePhysics_cover_notracks_bleed_CMYK.jpeg">
+
+                <div class="col overlay-style" style="padding: 0 !important">
+
+                    <h1 style="font-size: 2em; background: none; margin-bottom: 0;">
+                        Post-quantum cryptography<br />
+                        <small style="font-size: 0.5em; line-height: 2em;">for .NET developers</small>
+                    </h1>
+                    <p style="margin-top: 0; padding-bottom: 20px;">
+                        <small>
+                            <a href="https://strathweb.com" class="roll">
+                                <span>strathweb.com</span>
+                            </a> •
+                            <a href="https://bsky.app/profile/@filipw.strathweb.com" class="roll">
+                                <span data-title=">@filipw.strathweb.com">@filipw.strathweb.com</span>
+                            </a> •
+                            <a href="https://mathstodon.xyz/filipw" class="roll">
+                                <span data-title="@filipw@mathstodon.xyzupdate">@filipw@mathstodon.xyz</span>
+                            </a> •
+                            <a href="https://github.com/filipw" class="roll">
+                                <span data-title="github.com/filipw">github.com/filipw</span>
+                            </a> •
+                            <span data-title="github.com/filipw">Filip W</span>
+                        </small>
+                    </p>
+                </div>
+
+            </section>
+
+            <section data-background="images/D810_NEF_3483.jpg">
+                <img src="images/filip-book.jpg"
+                    style="max-height: 666px; border: 3px solid black !important;box-shadow: 5px 2px 2px black;" />
+            </section>
+
+            <section data-background="images/atlas3.jpg">
+                <h2 class="overlay-style">Agenda</h2>
+                <div class="img-backdrop">
+                <img class="standard" src="graphics/agenda.excalidraw.png" />
+                </div>
+            </section>
+
+            <!-- QM-->
+            <section>
+                <section data-background="images/atlas1.jpg">
+                    <h1>Warm up</h1>
+                </section>
+
+                <section data-background="images/atlas3.jpg">
+                    <h2 class="overlay-style">Symmetric encryption</h2>
+                    <img class="standard" src="graphics/symmetric.excalidraw.png" />
+                </section>
+
+                <section data-background="images/alice-door.jpeg">
+                    <div class="overlay-style">
+                        <div class="column-container">
+                            <div class="col-50" style="margin-right: 1em;">
+                                <img class="standard" src="images/aes.png" />
+                            </div>
+                            <div class="col-50">
+                                <p>The most popular symmetric algorithm is the <span class="highlight">Advanced Encryption
+                                    Standard (AES)</span></p>
+                            <p>AES with 256 bit key length is approved by NSA for top secret information.</p>
+                                
+                            </div>
+                    </div>
+                    <aside class="notes">
+                        RSA is considered to be partly legacy, but still it makes a good example to illustrate certain
+                        concepts - because they are applicable to the alternative algorithms as well.
+                    </aside>
+                </section>
+
+                <section data-background="images/atlas-ibl.jpg">
+                    <div class="img-backdrop">
+                        <img src="graphics/key-distribution.excalidraw.png" class="standard" />
+                    </div>
+                    <div class="bottom-panel">Symmetric encryption is fast and relatively simple, but requires a secure method for <span
+                        class="highlight">key distribution</span>, which is a big challenge.
+                    </div>
+
+                </section>
+
+
+                <section data-background="images/atlas3.jpg">
+                    <h2 class="overlay-style">Asymmetric encryption</h2>
+                    <img class="standard" src="graphics/asymmetric.excalidraw.png" />
+                    <aside class="notes">Also known as Public Key Cryptography. It is also used for digital signatures.
+                    </aside>
+                </section>
+
+                <section data-background="images/atlas3.jpg">
+                    <div class="overlay-style">
+                        <div class="column-container">
+                            <div class="col-50">
+                                <ul>
+                                    <li>🔒
+                                        Key exchange/establishment
+                                        <br />
+                                        <small>→ establishing a secure communication channel<br/>
+                                            → then hand over to symmetric encryption for efficiency</small>
+                                    </li>
+                                </ul>
+                                <img class="standard" src="images/tls.png" style="max-width: 500px;" />
+                                
+                            </div>
+                            <div class="col-50">
+                                <ul>
+                                    <li>✍️
+                                        Digital signatures
+                                        <br />
+                                        <small>→ create and verify signatures <br/>
+                                            → serve as proof of digital content authenticity and integrity</small>
+                                    </li>
+                                </ul>
+                                <img class="standard" src="images/jwt.png" style="max-width: 500px;" />
+
+                            </div>
+
+                        </div>
+                        <aside class="notes">
+                            Many protocols - for example TLS/SSL - use a hybrid model - start with an asymmetric
+                            handshake, and then switch to symmetric.
+                        </aside>
+                </section>
+
+                <section data-background="images/atlas3.jpg">
+                    <div class="overlay-style">
+                        <p>Asymmetric cryptography is based on difficult mathematical problems:</p>
+                        <ul>
+                            <li>🧮 factorizing large composite numbers - <span class="highlight">RSA</span></li>
+                            <li>🧮 elliptic curve discrete logarithm problem - <span class="highlight">EC
+                                    Cryptography</span></li>
+                        </ul>
+                    </div>
+                </section>
+
+            </section>
+            <!-- end QM-->
+
+            <!-- Quantum threats -->
+            <section>
+                <section data-background="images/compass.jpg">
+                    <h1>Quantum threats</h1>
+                </section>
+
+                <section data-background="images/irpc-demonstrator.jpg">
+                    <div class="overlay-style">
+                        <p>In quantum theory a basic unit of information is called a</p>
+                        <h2 class="r-fit-text">qubit</h2>
+                        <p></p>
+                    </div>
+                </section>
+
+                <section data-background="images/atlas-ibl.jpg">
+                    <div class="overlay-style">
+
+                        <div class="column-container">
+                            <div class="col-50">
+                                <p>Just like a bit, qubit has only two <span class="highlight">observable</span> (basis) states
+                                </p>
+                            </div>
+                            <div class="col-50" style="padding-left: 1em;">
+                                <p>
+                                    $
+                                    \ket{0} \rightarrow
+                                    $ maps to bit 0<br /><br />
+                                    $
+                                    \ket{1} \rightarrow
+                                    $ maps to bit 1<br />
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <aside class="notes">
+                        Mathematically, a qubit state is described by a vector.
+                    </aside>
+                </section>
+
+                <!-- <section data-background="images/atlas-ibl.jpg">
+                    <div class="overlay-style">
+
+                        <div class="column-container">
+                            <div class="col-50">
+                                <p>However, during computation a qubit can also be in a <span
+                                    class="highlight">superposition</span> state (a mix of both of them).</p>
+                                    <p>$\ket{\psi} = \alpha\ket{0} + \beta\ket{1} \rightarrow
+                                        $ superposition</p>
+                            </div>
+                            <div class="col-50" style="padding-left: 1em;">
+                                <img class="standard" src="images/bloch-z-axis.jpeg" />
+
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-background="images/irpc-demonstrator.jpg">
+                    <div class="overlay-style">
+                        <p>A superposition state is</p>
+                        <h2 class="r-fit-text">not directly observable</h2>
+                        <p>Only the basis states can be observed in the measurement process</p>
+                    </div>
+                </section> -->
+
+                <section data-background="images/schroedinger-cat2.png">
+                    <aside class="notes">
+                        Schrödinger's cat was both dead and alive at the same time. It's NOT that he was dead or alive
+                        and Schrödinger simply did not know.
+                        Only once Schrödinger opened the box, because of "observation", would the cat's fate be decided.
+                    </aside>
+                </section>
+
+                <section data-background="images/irpc-demonstrator.jpg">
+                    <div class="overlay-style">
+                        <h2>Program evolution</h2>
+                        <table>
+                            <thead>
+                                <th>type</th>
+                                <th></th>
+                                <th>input</th>
+                                <th></th>
+                                <th>execution</th>
+                                <th></th>
+                                <th>output</th>
+                            </thead>
+                            <tr class="fragment">
+                                <td>Classical</td>
+                                <td></td>
+                                <td>01011</td>
+                                <td>$\rightarrow$</td>
+                                <td>11011</td>
+                                <td>$\rightarrow$</td>
+                                <td>00110</td>
+                            </tr>
+                            <tr class="fragment">
+                                <td>Quantum</td>
+                                <td></td>
+                                <td>$\ket{1}\ket{0}\ket{0}\ket{0}\ket{1}$</td>
+                                <td>$\rightarrow$</td>
+                                <td>$\ket{\psi}$</td>
+                                <td>$\rightarrow$</td>
+                                <td>$\ket{0}\ket{1}\ket{0}\ket{1}\ket{0}$</td>
+                            </tr>
+                        </table>
+                    </div>
+                </section>
+
+                <section data-background="images/irpc-demonstrator.jpg">
+                    <div class="overlay-style">
+                        <p>The strength of quantum computers is that they are able to take algorithmic advantage of
+                            <span class="highlight">superposition</span>. This is called
+                        </p>
+                        <h2 class="r-fit-text">quantum parallelism</h2>
+                    </div>
+                    <aside class="notes">
+                        <ol>
+                            <li>Create a superposition of all possible results</li>
+                            <li>Use interference to amplify correct result, and cancel out bad results</li>
+                        </ol>
+                    </aside>
+                </section>
+
+                <section data-background="images/irpc-demonstrator.jpg">
+                    <div class="img-backdrop">
+                        <img src="images/quantum-parallelism.png" class="standard" style="max-height: 300px;" />
+                        <p class="footnote" style="text-align: center; padding-bottom: 0.5em; font-size: 0.3em;">source: Stefano Markidis, KTH Royal Institute of Technology, https://arxiv.org/abs/2405.07222
+                        </p>
+                    </div>
+                    <div class="bottom-panel"><blockquote>...quantum parallelism allows
+                        quantum computers to evaluate a function $f(x)$ for many different values of x
+                        simultaneously.
+                    </blockquote>
+                    <p>
+                    <footer>- <em>Nielsen and Chuang</em></footer>
+                    </p>
+                    </div>
+
+                </section>
+
+                <section data-background="images/alice-door.jpeg">
+                    <div class="overlay-style">
+                        <div class="column-container">
+                            <div class="col-50">
+                                <p>One of most widely used public-private cryptosystems is RSA (Rivest–Shamir–Adleman)</p> <p>Its
+                                    security relies on the <span class="highlight">factoring problem</span> of large prime numbers.
+                                </p>
+                            </div>
+                            <div class="col-50">
+                                <img class="standard" src="images/rsa.png" />
+                            </div>
+                    </div>
+                    <aside class="notes">
+                        RSA is considered to be partly legacy, but still it makes a good example to illustrate certain
+                        concepts - because they are applicable to the alternative algorithms as well.
+                    </aside>
+                </section>
+
+                <section data-background="images/alice-door.jpeg">
+                    <div class="overlay-style">
+                        <h2>RSA</h2>
+                        <ul>
+                            <li class="fragment highlight-current-red">1. Pick two huge prime numbers $p$ and $q$</li>
+                            <li class="fragment highlight-current-red">2. Pick exponent $e$</li>
+                            <li class="fragment highlight-current-red">3. Publish $N = p \times q$ and $e$</li>
+                            <li class="fragment highlight-current-red">4. Encrypt: <br />$C = M^e (mod\;N)$
+                                &nbsp;&nbsp;&nbsp; (public key based on $N$)</li>
+                            <li class="fragment highlight-current-red">5. Decrypt: <br />
+                                $M = C^{e^{-1} (mod\;(p-1) \times (q-1))} (mod\;\;N)$&nbsp;&nbsp;&nbsp; (private key
+                                based on $p$, $q$)</li>
+                        </ul>
+                    </div>
+                    <aside class="notes">
+                        The value of e is almost always fixed to 65537.
+                    </aside>
+                </section>
+
+                <section data-background="images/google-certs.png" data-state="bg-top-left">
+                    <div class="overlay-style fragment fade-out">
+                        <p>Effectively, the security of RSA boils to the fact that
+                        </p>
+                        <h3 class="r-fit-text">finding $p$ and $q$ is impossible</h3>
+                        <p>if you only know $N$.</p>
+                    </div>
+                </section>
+
+                <section data-background="images/shor.png">
+                    <div class="overlay-style fragment black-overlay-style">
+                        <p>In 1994, Peter Shor developed an integer factorization algorithm for quantum computers that
+                            achieves <span class="highlight">exponential speed up</span> over the fastest known
+                            classical alternative.
+                        </p>
+                    </div>
+                </section>
+
+
+                <section data-background="images/alice-door.jpeg">
+                    <div class="overlay-style">
+                        <h2>Factoring a number $N$</h2>
+                        <ul>
+                            <li class="fragment highlight-current-red">1. Pick $a$ such that $a < N$ and that it is
+                                    relatively prime to $N$</li>
+                            <li class="fragment highlight-current-red">2. Find the period $r$ of a function $f(x) = a^x
+                                (mod\;\;N)$</li>
+                            <li class="fragment highlight-current-red">3. Calculate: <br />
+                                $p = gcd(a^{\frac{r}{2}} + 1, N)$ and
+                                $q = gcd(a^{\frac{r}{2}} - 1, N)$
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section data-background="images/alice-door.jpeg">
+                    <div class="overlay-style">
+                        <h2>Example: factoring 15</h2>
+                        <div class="column-container">
+                            <div class="col">
+                                <ul>
+                                    <li class="fragment highlight-current-red">1. Set $a = 13$</li>
+                                    <li class="fragment highlight-current-red">2. Find order $r = 4$</li>
+                                    <li class="fragment highlight-current-red">3. Calculate: <br />$p = gcd(170, 15) =
+                                        5$ <br />
+                                        $q = gcd(168, 15) = 3$
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col inset">
+                                <img src="images/factoring-order-finding.png" style="min-height: auto;" />
+                            </div>
+
+                        </div>
+                        <p>5 and 3 are factors of 15.</p>
+                </section>
+
+                <section data-background="images/alice-door.jpeg">
+                    <div class="overlay-style">
+                        <div class="column-container">
+                            <div class="col">
+                                <p>Shor's algorithm relies on inverse <span class="highlight">Quantum Fourier
+                                        Transform</span> used for function order finding. QFT
+                                    is exponentially faster than any classical alternative.
+                                </p>
+                            </div>
+                            <div class="col inset">
+                                <img src="images/shor-circuit.png" style="min-height: auto;" />
+                            </div>
+
+                        </div>
+                        <aside class="notes">
+                            Shor's algorithm is a hybrid classical-quantum method - gcd is still done classically.
+                        </aside>
+                </section>
+
+                <section data-background="images/ellipticcurve.png">
+                    <div class="column-container">
+
+                        <div class="col">
+                        </div>
+
+                        <div class="col overlay-style black-overlay-style">
+                            <blockquote>(...) attacking elliptic curve cryptography is indeed easier than attacking RSA
+                                (...)
+                            </blockquote>
+                        </div>
+
+                    </div>
+                    <aside class="notes">
+                        Forward secrecy means using new (ephemeral) keys all the time, so intercepting and breaking one
+                        message would not reveal the whole session. ECDH is also used in tools like Signal or Skype.
+                    </aside>
+                </section>
+
+                <section data-background="images/gidney2.png">
+                                        <div class="overlay-style black-overlay-style fragment">
+                        <p>The best current estimation for Shor's algorithm resource requirements for breaking RSA-2048 are¹:</p>
+                        <ul>
+                            <li>🧮 1,399 logical qubits<br/><small>&nbsp;→ ideal qubits - not physically attainable, suitable for mathemtical calculation only</small></li>
+                            <li>🧮 897,864 physical qubits<br/><small>&nbsp;→ assuming a surface code architecture with a 0.1% physical gate error rate.</small></li>
+                        </ul>
+                                                    <p class="footnote" style="text-align: center;"><br/>¹ C. Gidney, "How to factor 2048 bit RSA integers with less than a million noisy qubits," arXiv:2505.15917 (2025).
+                            </p>
+                    </div>
+                </section>
+
+                                <section data-background="images/alice-door.jpeg">
+                    <div class="overlay-style">
+                        <p>OK, that looks worrying, but thankfully we still have some time, right?
+                        </p>
+                        <h3 class="fragment r-fit-text">No, it is already too late</h3>
+                    </div>
+                    <aside class="notes">In TLS 1.3, RSA is no longer used for key exchange, in favor of methods like
+                        Ephemeral Elliptic-Curve Diffie-Hellman (ECDHE). Even without TLS 1.3, ECDSA should be used over
+                        RSA.</aside>
+                </section>
+
+
+                <section data-background="images/alice-door.jpeg">
+                    <div class="column-container overlay-style">
+
+                        <div class="col-50">
+                            With a <span class="highlight">harvest-now-decrypt-later</span> approach, a threat actor can
+                            store encrypted data now and decrypt it later when quantum computers are available.
+                        </div>
+
+                        <div class="col-50" style="padding-left: 1em;">
+                            <blockquote>Every day that you don't convert to a quantum-safe protocol, there's no recovery
+                                plan
+                            </blockquote>
+                            <p>
+                            <footer>- <em>Dario Gil, IBM senior VP</em></footer>
+                            </p>
+                        </div>
+
+                    </div>
+                </section>
+
+                                                <section data-background="images/ionq_roadmap.png" data-state="bg-top-left">
+                </section>
+
+
+
+
+
+                <section data-background="images/grover.png" data-state="bg-top-left">
+                    <div class="overlay-style fragment black-overlay-style">
+                        <p>In 1996, Lov Grover developed a quantum search algorithm through an unsorted data set -
+                            finding $x$ for $f(x) = y$, when $y$ is known.</p>
+                        <p>It provides <span class="highlight">quadratic speedup </span> over the classical
+                            counterparts.</p>
+                        </p>
+                    </div>
+                </section>
+
+                <section data-background="images/alice-door.jpeg">
+                    <div class="overlay-style">
+                        <div class="column-container">
+                            <div class="col-50" slot="padding-right: 1em;">
+                                <p>Because of that it can be used to <span class="highlight">attack symmetric encryption</span>
+                                    schemes such as AES, however that can be easily countered by increasing the key size.
+                                </p>
+                            </div>
+                            <div class="col-50">
+                                <p>Brute force AES 256:</p>
+                                <ul>
+                                <li>⚛️ quantum → $2^{128}$ steps </li>
+                                <li>💻 classical → $2^{256}$ steps</li>
+                                </ul>
+                            </div>
+                    </div>
+                </section>
+
+                <section data-background="images/atlas-ibl.jpg">
+                    <div class="overlay-style">
+                        <table>
+                            <thead>
+                                <th>type</th>
+                                <th>algorithm</th>
+                                <th>key size</th>
+                                <th>strength<br />against classical</th>
+                                <th>effective strength<br />against quantum</th>
+                            </thead>
+                            <tr class="">
+                                <td rowspan="2">symmetric</td>
+                                <td rowspan="2">AES</td>
+                                <td>256</td>
+                                <td style="background: green;">256</td>
+                                <td style="background: green;">128</td>
+                            </tr>
+                            <tr class="">
+                                <td>128</td>
+                                <td style="background: green;">128</td>
+                                <td style="background: red;">64</td>
+                            </tr>
+                            <tr class="">
+                                <td rowspan="4" style="border-bottom: none;">asymmetric</td>
+                                <td rowspan="2">RSA</td>
+                                <td>2048</td>
+                                <td style="background: green;">112</td>
+                                <td style="background: red;">0</td>
+                            </tr>
+                            <tr class="">
+                                <td>3072</td>
+                                <td style="background: green;">128</td>
+                                <td style="background: red;">0</td>
+                            </tr>
+                            <tr class="">
+                                <td rowspan="2" style="border-bottom: none;">ECC</td>
+                                <td>256</td>
+                                <td style="background: green;">128</td>
+                                <td style="background: red;">0</td>
+                            </tr>
+                            <tr class="">
+                                <td>384</td>
+                                <td style="background: green;">256</td>
+                                <td style="background: red;">0</td>
+                            </tr>
+                        </table>
+                        <div style="clear:both;">
+                            <p class="footnote" style="text-align: center;">
+                                Vasileios Mavroeidis, Kamer Vishi, Mateusz D. Zych, Audun Jøsang. "The Impact of Quantum
+                                Computing on Present Cryptography" (IJACSA) International Journal of Advanced Computer
+                                Science and Applications, Vol. 9, No. 3, 2018.
+                            </p>
+                        </div>
+                    </div>
+                    <aside class="notes">
+                        As a general rule, encryption strength of 128 bits or more are currently considered strong
+                        enough.
+                    </aside>
+                </section>
+
+            </section>
+            <!-- end quantum threats -->
+
+            <!-- what's next -->
+            <section>
+                <section data-background="images/compass.jpg">
+                    <h1>Post quantum cryptography</h1>
+                </section>
+
+                <section data-background="images/atlas-ibl.jpg">
+                    <div class="overlay-style">
+                        <div class="column-container">
+                            <div class="col-66">
+                                <p>In 2016 NIST (National Institute of Standards and Technology) announced a post-quantum
+                                    cryptography competition, with the aim to provide a standardized crypto scheme <span
+                                        class="highlight">resistant to quantum threats</span>.</p>
+                            </div>
+                            <div class="col-33">
+                                <img class="standard" src="graphics/nist.excalidraw.png" />
+                            </div>
+                    </div>
+                </section>
+
+                <section data-background="images/quantum-computer.jpg">
+                    <div class="overlay-style">
+                        <p>In 2022 the four winners have been announced.</p>
+                        <div class="column-container">
+                            <div class="col">
+                                <ul>
+                                    <li class="">🔐
+                                        CRYSTALS-Kyber
+                                        <br />
+                                        <small>key encapsulation, lattice-based</small>
+                                    </li>
+
+                                    <li class="">✍️
+                                        CRYSTALS-Dilithium
+                                        <br />
+                                        <small>signature, lattice-based</small>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col">
+                                <ul>
+                                    <li class="">✍️
+                                        FALCON
+                                        <br />
+                                        <small>signature, lattice-based</small>
+                                    </li>
+                                    <li class="">✍️
+                                        SPHINCS+
+                                        <br />
+                                        <small>signature, hash-based</small>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <aside class="notes">
+                        Kyber & Dilithium were selected to be primary general-purpose protocols for key encapsulation
+                        and digital signatures.
+                        FALCON was recommended for applications requiring smaller digital signatures.
+                        SPHINCS+ was chosen as a backup option to the lattice-based approaches.
+                    </aside>
+                </section>
+
+                <section data-background="images/quantum-computer.jpg">
+                    <div class="overlay-style">
+                        <h2 class="r-fit-text">
+                            $t = (\braket{\mathbf{a}, \mathbf{s}} + \varepsilon) \mod q$
+                        </h2>
+                        <ul>
+                            <li> · $\braket{\mathbf{a}, \mathbf{s}}$ is the dot (inner) product of two vectors</li>
+                            <li> · $\varepsilon$ is the error term, chosen from a specific distribution</li>
+                            <li> · $q$ is the modulus, confining the value to a predictable range</li>
+                            <li> · $t$, $q$, and $\mathbf{a}$ are published, but $\mathbf{s}$ and $\varepsilon$ are kept
+                                secret</li>
+                        </ul>
+                        <div style="clear:both; margin-top: 20px;">
+                            <p class="footnote" style="text-align: center;">note: this is a simplified picture of LWE,
+                                for illustrative purposes only
+                            </p>
+                        </div>
+                    </div>
+                    <aside class="notes">
+                        The security in LWE comes from the fact that, while it is straightforward to compute $t$ given $\mathbf{a}$, $\mathbf{s}$, $q$, and $\varepsilon$, it is computationally hard to reverse this process. The difficulty arises from the addition of the error term $\varepsilon$, which obscures the relationship between $t$ and $\mathbf{s}$, making it infeasible to recover $\mathbf{s}$ given $t$, $\mathbf{a}$, and $q$.
+                    </aside>
+                </section>
+
+                <section data-background="images/quantum-computer.jpg">
+                    <div class="overlay-style">
+                        <p>In 2024 the first three PQC standards were formalized.</p>
+                        <div class="column-container">
+                            <div class="col-50">
+                                <ul>
+                                    <li class="fragment">🔐
+                                        ML-KEM (Kyber)
+                                        <br />
+                                        <small>
+                                            → Module-Lattice-Based Key-Encapsulation Mechanism Standard<br/>
+                                            → FIPS-203</small>
+                                    </li>
+
+                                    <li class="fragment">✍️
+                                        ML-DSA (Dilithium)
+                                        <br />
+                                        <small>→ Module-Lattice-Based Digital Signature Standard <br/>
+                                            → FIPS-204</small>
+                                    </li>
+
+                                    <li class="fragment">✍️
+                                        SLH-DSA (SPHINCS+)
+                                        <br />
+                                        <small>→ Stateless Hash-Based Digital Signature Standard<br/>
+                                            → FIPS-205</small>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-50">
+                                <img class="standard" src="images/Crypto-rev1.png" />
+                                <div>
+                                <p class="footnote">Credit: N. Hanacek/NIST</small></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <aside class="notes">
+                        Kyber & Dilithium were selected to be primary general-purpose protocols for key encapsulation
+                        and digital signatures.
+                        FALCON was recommended for applications requiring smaller digital signatures.
+                        SPHINCS+ was chosen as a backup option to the lattice-based approaches.
+                    </aside>
+                </section>
+
+                                <section data-background="images/quantum-computer.jpg">
+                    <div class="overlay-style">
+                        <p>In late 2024 NIST published the official deprecation timeline</p>
+                        <div class="column-container">
+                            <div class="col-50">
+                                <ul>
+                                    <li class="fragment">⚠️
+                                        2030: Deprecation of 112-bit security algorithms
+                                        <br />
+                                        <small>RSA-2048, ECC P-224 and lower</small>
+                                    </li>
+
+                                    <li class="fragment">⛔
+                                        2035: Disallowing all non-quantum-resistant algorithms
+                                        <br />
+                                        <small>→ All ECC and RSA is disallowed!</small>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-50">
+                                <img class="standard" src="images/nist-ir-8547.png" />
+                                <div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-background="images/atlas-ibl.jpg">
+                    <div class="overlay-style">
+                        <p>There are a number of ongoing IETF standardization efforts for PQC:</p>
+
+                        <div class="column-container">
+                            <div class="col-66">
+                                <ul>
+                                    <li class="fragment">🤝
+                                        draft-ietf-tls-ecdhe-mlkem
+                                        <br />
+                                        <small>→ Hybrid key exchange for TLS 1.3, combining classical and PQC algorithms (X25519MLKEM768). <br/>→ This is supported approach in all major browsers today.</small>
+                                    </li>
+
+                                    <li class="fragment">🚀
+                                        draft-ietf-tls-mlkem
+                                        <br />
+                                        <small>→ Pure post-quantum key exchange for TLS 1.3.<br/>→ This is the long-term goal, not yet widely supported.</small>
+                                    </li>
+
+                                    <li class="fragment">🛠️
+                                        draft-ietf-hpke-pq
+                                        <br />
+                                        <small>→ PQC for a general encryption framework (HPKE). <br/>→ Used in other protocols like Encrypted Client Hello and secure messaging.</small>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-33" style="padding-left: 1em;">
+                                <div class="img-backdrop">
+                                    <img src="images/X25519MLKEM768.png" class="standard" style="min-height: auto;" />
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-background="images/atlas-ibl.jpg">
+                    <div class="overlay-style">
+                      <table class="medium">
+                        <colgroup>
+                          <col style="width: 28%;">
+                          <col style="width: 24%;">
+                          <!-- <col style="width: 18%;"> -->
+                          <col style="width: 24%;">
+                          <col style="width: 24%;">
+                        </colgroup>
+                        <thead>
+                          <tr>
+                            <th></th>
+                            <th>Public Key (bytes)</th>
+                            <!-- <th>Secret Key (bytes)</th> -->
+                            <th>Ciphertext (bytes)</th>
+                            <th>Shared Secret (bytes)</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>ML-KEM-512</td>
+                            <td>800</td>
+                            <!-- <td>1632</td> -->
+                            <td>768</td>
+                            <td>32</td>
+                          </tr>
+                          <tr>
+                            <td>ML-KEM-768</td>
+                            <td>1184</td>
+                            <!-- <td>2400</td> -->
+                            <td>1088</td>
+                            <td>32</td>
+                          </tr>
+                          <tr>
+                            <td>ML-KEM-1024</td>
+                            <td>1568</td>
+                            <!-- <td>3168</td> -->
+                            <td>1568</td>
+                            <td>32</td>
+                          </tr>
+                          <tr>
+                            <td>ECDH (X25519)</td>
+                            <td>32</td>
+                            <!-- <td>32</td> -->
+                            <td>–</td>
+                            <td>32</td>
+                          </tr>
+                          <tr>
+                            <td>RSA 2048<sup>*</sup></td>
+                            <td>~256</td>
+                            <!-- <td>~256</td> -->
+                            <td>256</td>
+                            <td>32</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                  
+                      <div style="clear:both;">
+                        <p class="footnote" style="text-align: center;">
+                          <sup>*</sup> For RSA 2048, the public key “~256 bytes” typically refers to a raw 2048-bit modulus alone (plus a small exponent). The fully encoded public/private keys may be larger when stored in common formats (e.g., PKCS#1 or X.509).
+                        </p>
+                      </div>
+                    </div>
+                  </section>
+                                
+
+
+                <!-- <section data-background="images/atlas-ibl.jpg">
+                    <div class="img-backdrop">
+                        <img src="images/pqc-adoption.png" class="standard" />
+                    </div>
+                    <div class="bottom-panel">The adoption of PQC in Cloudflare
+                        traffic has already reached 40%. <br />
+                        <div style="clear:both;">
+                            <p class="footnote" style="text-align: center; margin-top: 1em;">
+                                Source: Cloudflare Radar,
+                                https://radar.cloudflare.com/adoption-and-usage#post-quantum-encryption-adoption
+                            </p>
+                        </div>
+                    </div>
+
+                </section> -->
+
+                <section data-background="images/signal.png" data-state="bg-top-left">
+                    <div class="overlay-style fragment black-overlay-style">
+                        <p>In September 2023 <span class="highlight">Signal</span> was the first messaging app to move to PQC - their own 
+                            <span class="highlight">Post-Quantum Extended Diffie-Hellman</span> (PQXDH) protocol based on Kyber.
+                        </p>
+                    </div>
+                </section>
+
+                <section data-background="images/atlas-ibl.jpg">
+                    <div class="img-backdrop">
+                        <img src="images/apple-pq3.png" class="standard" />
+                    </div>
+                    <div class="bottom-panel">In 2024 Apple updated iMessages with PQ3, the strongest PQC protocol, with support for regular rekeying.<br />
+                        <div style="clear:both;">
+                            <p class="footnote" style="text-align: center; margin-top: 1em;">
+                                Source: Apple, https://security.apple.com/blog/imessage-pq3/
+                            </p>
+                        </div>
+                    </div>
+
+                </section>   
+
+                    <section data-background="images/openssl.png" data-state="bg-top-left">
+                    <div class="overlay-style fragment black-overlay-style">
+                        <p>In April 2025 OpenSSL 3.5 was released, with official support for <span class="highlight">ML-KEM, ML-DSA and SLH-DSA</span>. It's an LTS released and it paves the way for wide adoption of PQC in all Linux-based systems.
+                        </p>
+
+                    </div>
+                </section>      
+                
+                          <section data-background-color="white">
+            <img class="standard" src="images/QSP-Roadmap.webp" />
+          </section>
+
+                <section data-background="images/pqc-windows.png" data-state="bg-top-left">
+                    <div class="overlay-style fragment black-overlay-style">
+                        <p>In May 2025 Microsoft released initial early support of PQC for <span class="highlight">Windows</span> - however currenly only for the Canary Windows Insiders channel.
+                        </p>
+
+                    </div>
+                </section>
+
+                                                                <section data-background="images/atlas-ibl.jpg">
+    <div class="overlay-style">
+        <h2>Cryptography in .NET</h2>
+        <div class="column-container">
+            <div class="col-50">
+                <ul>
+                    <li class="fragment">🧩
+                        One common API surface
+                        <br />
+                        <small>→ System.Security.Cryptography namespace across all platforms</small>
+                    </li>
+                    <li class="fragment">⚙️
+                        Native backends per OS
+                        <br />
+                        <small>→ Windows: CNG / CAPI<br/>
+                               → Linux: OpenSSL<br/>
+                               → macOS/iOS: CommonCrypto<br/>
+                               → Android: JCA / OS crypto</small>
+                    </li>
+                    <li class="fragment">🌐
+                        Third-party managed implementations
+                        <br />
+                        <small>→ Portable across platforms (e.g., BouncyCastle)<br/>
+                               → Can implement algorithms not in OS
+                               → No hardware acceleration/FIPS compliance
+                            </small>
+
+                    </li>
+                </ul>
+            </div>
+            <div class="col-50">
+                <div class="img-backdrop">
+                <img class="standard" src="graphics/netcrypto2.excalidraw.png" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <aside class="notes">
+        The .NET crypto API is unified, but the runtime delegates to the OS crypto stack for performance, compliance, and integration.
+        This means your code looks the same, but the actual implementation varies by platform.
+    </aside>
+</section>
+
+                                <section data-background="images/atlas-ibl.jpg">
+                    <div class="overlay-style">
+
+                        <div class="column-container">
+                            <div class="col-50">
+                                <p>.NET 10 Preview 6 introduced the first official .NET API for PQC into <span class="highlight">System.Security.Cryptography</span>. It currently supports:</p>
+                                <ul>
+                                    <li>→ Windows (CNG): Canary Channel Build 27852+</li>
+                                    <li>→ Linux (OpenSSL): 3.5+</li>
+                         </ul>
+                            </div>
+                            <div class="col-50" style="padding-left: 1em;">
+                                <div class="img-backdrop">
+                                    <img src="images/mlkem-net.png" class="standard"
+                                        style="min-height: auto;" />
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </section>
+
+                <section data-background="images/atlas-ibl.jpg">
+                    <div class="overlay-style">
+
+                        <div class="column-container">
+                            <div class="col-50">
+                                <p>While the official framework support for PQC in .NET is still limited, <span class="highlight">BouncyCastle</span> has long been providing managed implementations of all NIST PQC algorithms.</p>
+                            </div>
+                            <div class="col-50" style="padding-left: 1em;">
+                                <div class="img-backdrop">
+                                    <img src="images/legion-of-the-bouncy-castle-small-png.webp" class="standard"
+                                        style="min-height: auto;" />
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </section>
+
+                <section data-background="images/open-quantum-safe.png">
+                    <div class="overlay-style fragment black-overlay-style">
+                        <p><span class="highlight">Open Quantum Safe</span> has been providing verified quantum-resistant crypto algorithms
+                            implementations in C.
+                        </p>
+                        <p><span class="highlight">LibOQS.NET</span> is a thin .NET wrapper around the Open Quantum Safe library, providing easy access to post-quantum cryptography features for .NET developers.</p>
+                    </div>
+                </section>
+
+                <section data-background="images/atlas-ibl.jpg">
+              <div class="overlay-style">
+                  <h3>Post-Quantum Crypto for .NET</h3>
+                  <hr/>
+                  <table class="medium">
+                      <colgroup>
+                          <col style="width: 22%;">
+                          <col style="width: 26%;">
+                          <col style="width: 26%;">
+                          <col style="width: 26%;">
+                      </colgroup>
+                      <thead>
+                          <tr>
+                              <th></th>
+                              <th>System.Security.Cryptography</th>
+                              <th>BouncyCastle</th>
+                              <th>LibOQS.NET</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr>
+                              <td><strong>Type</strong></td>
+                              <td>.NET System API</td>
+                              <td>Fully Managed</td>
+                              <td>Native Wrapper</td>
+                          </tr>
+                          <tr>
+                              <td><strong>Windows</strong></td>
+                              <td>Win Canary 27852+</td>
+                              <td>✅</td>
+                              <td>✅</td>
+                          </tr>
+                        <tr>
+                              <td><strong>Linux</strong></td>
+                              <td>OpenSSL 3.5+</td>
+                              <td>✅</td>
+                              <td>✅</td>
+                          </tr>
+                            <tr>
+                              <td><strong>Mac</strong></td>
+                              <td>❌</td>
+                              <td>✅</td>
+                              <td>✅</td>
+                          </tr>
+                          <tr>
+                              <td><strong>WASM & others</strong></td>
+                              <td>❌</td>
+                              <td>✅ </td>
+                              <td>❌</td>
+                          </tr>
+                          <tr>
+                              <td><strong>Platform</strong></td>
+                              <td>.NET 10+<br/>(partly experimental)</td>
+                              <td>.NET Standard 2.0</td>
+                              <td>.NET 9</td>
+                          </tr>
+                           <tr>
+                              <td><strong>Key Advantage</strong></td>
+                              <td>Official</td>
+                              <td>Maximum Portability</td>
+                              <td>Uses liboqs</td>
+                          </tr>
+                      </tbody>
+                  </table>
+              </div>
+          </section>
+
+
+            </section>
+
+            <section>
+                <section data-background="images/cms2.jpg">
+
+                    <h1>Demos
+                    </h1>
+                </section>
+            </section>
+
+            <section data-background="images/all.png">
+            </section>
+
+            <section data-background="images/cms-detector.jpg">
+                <div class="overlay-style">
+                    <h2>Thank you</h2>
+                    <div class="column-container centered">
+                        <div class="col auto">
+                            <img class="small" src="images/thankyou.gif" style="min-height: auto; margin:0" />
+                        </div>
+                        <div class="col auto">
+                            <ul style="font-size: 0.9em;">
+                                <li>📝 <a
+                                        href="https://filipw.github.io/ndcsecurity-2026">filipw.github.io/ndcsecurity-2026</a>
+                                </li>
+                                <li>🖥️ <a
+                                        href="https://github.com/filipw/2026-ndcsecurity-demos">github.com/filipw/2026-ndcsecurity-demos</a>
+                                </li>
+                                <li>📚 <a href="https://link.springer.com/book/10.1007/978-3-030-99379-5">Intro to
+                                        Quantum
+                                        Computing book</a>
+                                </li>
+
+                                <li>📸 <a href="https://cds.cern.ch/collection/Multimedia%20%26%20Outreach?ln=en">Photos
+                                        credit: CERN</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section data-background-color="#000">
+                <img src="images/bye.gif" />
+            </section>
+
+        </div>
+    </div>
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']]
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+        </script>
+    <script>
+        // Full list of configuration options available here:
+        // https://github.com/hakimel/reveal.js#configuration
+
+        Reveal.initialize({
+            viewDistance: 30,
+            controls: true,
+            progress: true,
+            history: true,
+            center: true,
+            keyboard: {
+                39: 'next', // Right Arrow
+                37: 'prev'  // Left Arrow
+            },
+            transition: 'slide', // default/cube/page/concave/zoom/linear/fade/none
+
+            // Parallax scrolling
+            // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+            // parallaxBackgroundSize: '2100px 900px',
+
+            // Optional libraries used to extend on reveal.js
+            dependencies: [
+                { src: 'lib/js/classList.js', condition: function () { return !document.body.classList; } },
+                { src: 'plugin/markdown/marked.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+                { src: 'plugin/markdown/markdown.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+                { src: 'plugin/highlight.js/highlight.pack.js', async: true, callback: function () { /*hljs.initHighlightingOnLoad();*/ } },
+                { src: 'plugin/zoom-js/zoom.js', async: true, condition: function () { return !!document.body.classList; } },
+                { src: 'plugin/notes/notes.js', async: true, condition: function () { return !!document.body.classList; } },
+                { src: 'plugin/alt-arrows/alt-arrows.js' },
+                {
+                    src: 'plugin/reveal-code-focus.js',
+                    async: true,
+                    callback: function () {
+                        RevealCodeFocus();
+                    }
+                }
+            ]
+        });
+
+        // Reveal.configure({
+        //     keyboard: {
+        //         39: 'next', // Right Arrow
+        //         37: 'prev'  // Left Arrow
+        //     }
+        // });
+
+    </script>
+</body>
+
+</html>
