@@ -329,7 +329,7 @@
                     <div class="overlay-style">
                         <div class="column-container">
                             <div class="col-50">
-                                <p>One of most widely used public-private cryptosystems is RSA (Rivest–Shamir–Adleman)</p> <p>Its
+                                <p>One of the most widely used public-private cryptosystems is RSA (Rivest–Shamir–Adleman)</p> <p>Its
                                     security relies on the <span class="highlight">factoring problem</span> of large prime numbers.
                                 </p>
                             </div>
@@ -686,8 +686,8 @@
                 </section>
 
                 <section data-background="images/quantum-computer.jpg">
-                    <div class="overlay-style">
-                        <p>In 2024 the first three PQC standards were formalized.</p>
+<div class="overlay-style">
+                        <p>The first PQC standards have already been formalized.</p>
                         <div class="column-container">
                             <div class="col-50">
                                 <ul>
@@ -695,22 +695,32 @@
                                         ML-KEM (Kyber)
                                         <br />
                                         <small>
-                                            → Module-Lattice-Based Key-Encapsulation Mechanism Standard<br/>
-                                            → FIPS-203</small>
+                                            → Module-Lattice-Based Key-Encapsulation Mechanism<br/>
+                                            → FIPS-203<br/>
+                                            → standardized in 2024</small>
                                     </li>
 
                                     <li class="fragment">✍️
                                         ML-DSA (Dilithium)
                                         <br />
                                         <small>→ Module-Lattice-Based Digital Signature Standard <br/>
-                                            → FIPS-204</small>
+                                            → FIPS-204<br/>
+                                            → standardized in 2024</small>
                                     </li>
 
                                     <li class="fragment">✍️
                                         SLH-DSA (SPHINCS+)
                                         <br />
                                         <small>→ Stateless Hash-Based Digital Signature Standard<br/>
-                                            → FIPS-205</small>
+                                            → FIPS-205<br/>
+                                            → standardized in 2024</small>
+                                    </li>
+
+                                    <li class="fragment">🔐
+                                        HQC
+                                        <br />
+                                        <small>→ Code-Based Key-Encapsulation Mechanism<br/>
+                                            → selected for Standardization in 2026</small>
                                     </li>
                                 </ul>
                             </div>
@@ -878,7 +888,7 @@
 
                 </section> -->
 
-                <section data-background="images/signal.png" data-state="bg-top-left">
+                <!-- <section data-background="images/signal.png" data-state="bg-top-left">
                     <div class="overlay-style fragment black-overlay-style">
                         <p>In September 2023 <span class="highlight">Signal</span> was the first messaging app to move to PQC - their own 
                             <span class="highlight">Post-Quantum Extended Diffie-Hellman</span> (PQXDH) protocol based on Kyber.
@@ -898,15 +908,38 @@
                         </div>
                     </div>
 
-                </section>   
-
+                </section>    --> 
+                
                     <section data-background="images/openssl.png" data-state="bg-top-left">
-                    <div class="overlay-style fragment black-overlay-style">
-                        <p>In April 2025 OpenSSL 3.5 was released, with official support for <span class="highlight">ML-KEM, ML-DSA and SLH-DSA</span>. It's an LTS released and it paves the way for wide adoption of PQC in all Linux-based systems.
+    <div class="overlay-style black-overlay-style">
+        <div class="column-container">
+            <div class="col-50">
+                <p>In April 2025 OpenSSL 3.5 was released, with official support for <span class="highlight">ML-KEM, ML-DSA and SLH-DSA</span>. It's an LTS release and it paves the way for wide adoption of PQC in all Linux-based systems.
                         </p>
+            </div>
+            <div class="col-50">
+                <ul>
+                                        <li>
+                        <small>→ Debian "Trixie" 13</small>
+                    </li>
+                                        <li>
+                        <small>→ Alpine 3.22 and higher</small>
+                    </li>
+                    <li>
+                        <small>→ Ubuntu 25.10 (NOT LTS!)</small>
+                    </li>
+                                        <li>
+                        <small>→ RHEL / Alma 10.1 and higher</small>
+                    </li>
+                    <li>
+                        <small>→ SLES 16 and higher</small>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    </section>
 
-                    </div>
-                </section>      
                 
                           <section data-background-color="white">
             <img class="standard" src="images/QSP-Roadmap.webp" />
@@ -936,7 +969,7 @@
                         <br />
                         <small>→ Windows: CNG / CAPI<br/>
                                → Linux: OpenSSL<br/>
-                               → macOS/iOS: CommonCrypto<br/>
+                               → macOS/iOS: CryptoKit+CommonCrypto<br/>
                                → Android: JCA / OS crypto</small>
                     </li>
                     <li class="fragment">🌐
@@ -985,7 +1018,7 @@
                     </div>
 
                 </section>
-
+<!-- 
                 <section data-background="images/atlas-ibl.jpg">
                     <div class="overlay-style">
 
@@ -1003,7 +1036,7 @@
                         </div>
                     </div>
 
-                </section>
+                </section> -->
 
                 <section data-background="images/open-quantum-safe.png">
                     <div class="overlay-style fragment black-overlay-style">
@@ -1042,7 +1075,7 @@
                           </tr>
                           <tr>
                               <td><strong>Windows</strong></td>
-                              <td>Win Canary 27852+</td>
+                              <td>26100.7171+</td>
                               <td>✅</td>
                               <td>✅</td>
                           </tr>
@@ -1068,7 +1101,7 @@
                               <td><strong>Platform</strong></td>
                               <td>.NET 10+<br/>(partly experimental)</td>
                               <td>.NET Standard 2.0</td>
-                              <td>.NET 9</td>
+                              <td>.NET Standard 2.0</td>
                           </tr>
                            <tr>
                               <td><strong>Key Advantage</strong></td>
