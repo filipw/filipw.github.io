@@ -564,3 +564,7 @@ table.large td {
   padding: 1%;
   border-radius: 25px;
 }
+
+ul.scaled-text {
+  font-size: 0.8em;
+}
