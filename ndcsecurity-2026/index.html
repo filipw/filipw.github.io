@@ -322,14 +322,15 @@
                         <p class="footnote" style="text-align: center; padding-bottom: 0.5em; font-size: 0.3em;">source: Stefano Markidis, KTH Royal Institute of Technology, https://arxiv.org/abs/2405.07222
                         </p>
                     </div>
-                    <div class="bottom-panel"><blockquote>...quantum parallelism allows
-                        quantum computers to evaluate a function $f(x)$ for many different values of x
-                        simultaneously.
+                    <div class="bottom-panel"><blockquote>Heuristically, and at the risk of over-simplifying, quantum parallelism allows quantum computers to evaluate a function $f(x)$ for many different values of $x$ simultaneously.
                     </blockquote>
                     <p>
                     <footer>- <em>Nielsen and Chuang</em></footer>
                     </p>
                     </div>
+                    <aside class="notes">
+                        By using Hadamard gates to create an equal superposition of all possible inputs, a single quantum circuit can compute a function $f(x)$ for every possible value at the exact same time. This single step generates a massive, combined quantum state that holds information about all input-output pairs. However, quantum parallelism alone is not enough to outperform classical computers; because measuring the state forces it to collapse into just one random input-output pair, quantum algorithms must use additional tricks to extract useful, global information from the superposition before making a measurement.
+                    </aside>
 
                 </section>
 
@@ -849,7 +850,7 @@ Too Slow for Confidentiality
                     </div>
                 </section>
 
-                <section data-background="images/atlas-ibl.jpg">
+               <section data-background="images/atlas-ibl.jpg">
                     <div class="overlay-style">
                       <table class="medium">
                         <colgroup>
@@ -862,47 +863,47 @@ Too Slow for Confidentiality
                         <thead>
                           <tr>
                             <th></th>
-                            <th>Public Key (bytes)</th>
+                            <th>Public Key</th>
                             <!-- <th>Secret Key (bytes)</th> -->
-                            <th>Ciphertext (bytes)</th>
-                            <th>Shared Secret (bytes)</th>
+                            <th>Ciphertext</th>
+                            <th>Shared Secret (AES256)</th>
                           </tr>
                         </thead>
                         <tbody>
                           <tr>
                             <td>ML-KEM-512</td>
-                            <td>800</td>
-                            <!-- <td>1632</td> -->
-                            <td>768</td>
-                            <td>32</td>
+                            <td>800 bytes</td>
+                            <!-- <td>1,632</td> -->
+                            <td>768 bytes</td>
+                            <td>32 bytes</td>
                           </tr>
                           <tr>
                             <td>ML-KEM-768</td>
-                            <td>1184</td>
-                            <!-- <td>2400</td> -->
-                            <td>1088</td>
-                            <td>32</td>
+                            <td>1,184 bytes</td>
+                            <!-- <td>2,400</td> -->
+                            <td>1,088 bytes</td>
+                            <td>32 bytes</td>
                           </tr>
                           <tr>
                             <td>ML-KEM-1024</td>
-                            <td>1568</td>
-                            <!-- <td>3168</td> -->
-                            <td>1568</td>
-                            <td>32</td>
+                            <td>1,568 bytes</td>
+                            <!-- <td>3,168</td> -->
+                            <td>1,568 bytes</td>
+                            <td>32 bytes</td>
                           </tr>
                           <tr>
                             <td>ECDH (X25519)</td>
-                            <td>32</td>
+                            <td>32 bytes</td>
                             <!-- <td>32</td> -->
-                            <td>–</td>
-                            <td>32</td>
+                            <td>-</td>
+                            <td>32 bytes</td>
                           </tr>
-                          <tr>
+                          <tr> 
                             <td>RSA 2048<sup>*</sup></td>
-                            <td>~256</td>
+                            <td>~256 bytes</td>
                             <!-- <td>~256</td> -->
-                            <td>256</td>
-                            <td>32</td>
+                            <td>256 bytes</td>
+                            <td>32 bytes</td>
                           </tr>
                         </tbody>
                       </table>
@@ -914,46 +915,44 @@ Too Slow for Confidentiality
                       </div>
                     </div>
                   </section>
-                                
-
-
-                <!-- <section data-background="images/atlas-ibl.jpg">
-                    <div class="img-backdrop">
-                        <img src="images/pqc-adoption.png" class="standard" />
-                    </div>
-                    <div class="bottom-panel">The adoption of PQC in Cloudflare
-                        traffic has already reached 40%. <br />
-                        <div style="clear:both;">
-                            <p class="footnote" style="text-align: center; margin-top: 1em;">
-                                Source: Cloudflare Radar,
-                                https://radar.cloudflare.com/adoption-and-usage#post-quantum-encryption-adoption
-                            </p>
-                        </div>
-                    </div>
-
-                </section> -->
-
-                <!-- <section data-background="images/signal.png" data-state="bg-top-left">
-                    <div class="overlay-style fragment black-overlay-style">
-                        <p>In September 2023 <span class="highlight">Signal</span> was the first messaging app to move to PQC - their own 
-                            <span class="highlight">Post-Quantum Extended Diffie-Hellman</span> (PQXDH) protocol based on Kyber.
-                        </p>
-                    </div>
-                </section>
 
                 <section data-background="images/atlas-ibl.jpg">
-                    <div class="img-backdrop">
-                        <img src="images/apple-pq3.png" class="standard" />
-                    </div>
-                    <div class="bottom-panel">In 2024 Apple updated iMessages with PQ3, the strongest PQC protocol, with support for regular rekeying.<br />
-                        <div style="clear:both;">
-                            <p class="footnote" style="text-align: center; margin-top: 1em;">
-                                Source: Apple, https://security.apple.com/blog/imessage-pq3/
-                            </p>
-                        </div>
-                    </div>
+                    <div class="overlay-style">
+                        <h3>ML-DSA Size Overhead</h3>
 
-                </section>    --> 
+                        <table class="medium">
+  <colgroup>
+    <col style="width: 34%;">
+    <col style="width: 33%;">
+    <col style="width: 33%;">
+  </colgroup>
+  <thead>
+    <tr>
+      <th>Algorithm</th>
+      <th>Raw Signature Size</th>
+      <th>Base64URL Encoded Size (JWT)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>RS256 (RSA-2048)</td>
+      <td>256 bytes</td>
+      <td>~342 bytes</td>
+    </tr>
+    <tr>
+      <td>ML-DSA-65</td>
+      <td>3,309 bytes</td>
+      <td>~4,412 bytes</td>
+    </tr>
+    <tr>
+      <td><strong>The "Premium"</strong></td>
+      <td><strong>+ 3,053 bytes (~3 KB)</strong></td>
+      <td><strong>+ 4,070 bytes (~4 KB)</strong></td>
+    </tr>
+  </tbody>
+</table>
+                    </div>
+                  </section>
                 
                     <section data-background="images/openssl.png" data-state="bg-top-left">
     <div class="overlay-style black-overlay-style">
