@@ -88,6 +88,10 @@
                 </div>
             </section>
 
+                        <section data-background-color="#fff">
+                <img src="images/sonova.png" style="min-height: auto" />
+            </section>
+
             <!-- QM-->
             <section>
                 <section data-background="images/atlas1.jpg">
@@ -357,13 +361,12 @@
                         <h2>RSA</h2>
                         <ul>
                             <li class="fragment highlight-current-red">1. Pick two huge prime numbers $p$ and $q$</li>
-                            <li class="fragment highlight-current-red">2. Pick exponent $e$</li>
-                            <li class="fragment highlight-current-red">3. Publish $N = p \times q$ and $e$</li>
-                            <li class="fragment highlight-current-red">4. Encrypt: <br />$C = M^e (mod\;N)$
-                                &nbsp;&nbsp;&nbsp; (public key based on $N$)</li>
+                            <li class="fragment highlight-current-red">2. Pick public exponent $e$ (usually 65537)</li>
+                            <li class="fragment highlight-current-red">3. Publish public key $N = p \times q$ and $e$</li>
+                            <li class="fragment highlight-current-red">4. Encrypt: <br />$C = M^e (mod\;N)$</li>
                             <li class="fragment highlight-current-red">5. Decrypt: <br />
-                                $M = C^{e^{-1} (mod\;(p-1) \times (q-1))} (mod\;\;N)$&nbsp;&nbsp;&nbsp; (private key
-                                based on $p$, $q$)</li>
+                                Calculate private key $d = e^{-1} \pmod{(p-1) \times (q-1)}$<br />
+        $M = C^d \pmod{N}$</li>
                         </ul>
                     </div>
                     <aside class="notes">
@@ -382,10 +385,10 @@
 
                 <section data-background="images/shor.png">
                     <div class="overlay-style fragment black-overlay-style">
-                        <p>In 1994, Peter Shor developed an integer factorization algorithm for quantum computers that
-                            achieves <span class="highlight">exponential speed up</span> over the fastest known
-                            classical alternative.
-                        </p>
+                        <p>In 1994, Peter Shor developed an integer factorization algorithm for quantum computers that 
+    runs in polynomial time, achieving an <span class="highlight">exponential speed up</span> 
+    over the fastest known classical alternative.
+</p>
                     </div>
                 </section>
 
@@ -394,14 +397,12 @@
                     <div class="overlay-style">
                         <h2>Factoring a number $N$</h2>
                         <ul>
-                            <li class="fragment highlight-current-red">1. Pick $a$ such that $a < N$ and that it is
-                                    relatively prime to $N$</li>
-                            <li class="fragment highlight-current-red">2. Find the period $r$ of a function $f(x) = a^x
-                                (mod\;\;N)$</li>
-                            <li class="fragment highlight-current-red">3. Calculate: <br />
-                                $p = gcd(a^{\frac{r}{2}} + 1, N)$ and
-                                $q = gcd(a^{\frac{r}{2}} - 1, N)$
-                            </li>
+<li class="fragment highlight-current-red">1. Pick random $a < N$ that is relatively prime to $N$</li>
+<li class="fragment highlight-current-red">2. Find the period $r$ of the function $f(x) = a^x \pmod N$</li>
+<li class="fragment highlight-current-red">3. If $r$ is even, calculate candidates for $p$ and $q$: <br />
+    $\gcd(a^{\frac{r}{2}} + 1, N)$ and 
+    $\gcd(a^{\frac{r}{2}} - 1, N)$
+</li>
                         </ul>
                     </div>
                 </section>
@@ -466,14 +467,26 @@
                     </aside>
                 </section>
 
-                <section data-background="images/gidney2.png">
+<section data-background="images/gidney2.png">
                                         <div class="overlay-style black-overlay-style fragment">
-                        <p>The best current estimation for Shor's algorithm resource requirements for breaking RSA-2048 are¹:</p>
+                        <p>Until recently, the best current estimation for Shor's algorithm resource requirements for breaking RSA-2048 are¹:</p>
                         <ul>
-                            <li>🧮 1,399 logical qubits<br/><small>&nbsp;→ ideal qubits - not physically attainable, suitable for mathemtical calculation only</small></li>
-                            <li>🧮 897,864 physical qubits<br/><small>&nbsp;→ assuming a surface code architecture with a 0.1% physical gate error rate.</small></li>
+                            <li>🧮 1,399 logical qubits<br/><small>&nbsp;→ ideal qubits - not physically attainable, suitable for mathematical calculation only.</small></li>
+                            <li>🧮 897,864 physical qubits<br/><small>&nbsp;→ assuming a 2D surface code architecture with a 0.1% physical gate error rate.</small></li>
                         </ul>
                                                     <p class="footnote" style="text-align: center;"><br/>¹ C. Gidney, "How to factor 2048 bit RSA integers with less than a million noisy qubits," arXiv:2505.15917 (2025).
+                            </p>
+                    </div>
+                </section>
+
+<section data-background="images/pinnacle.png" data-state="bg-top-left">
+                                        <div class="overlay-style black-overlay-style fragment">
+                        <p>However, the new (February 2026) Pinnacle Architecture drastically reduces the physical hardware overhead²:</p>
+                        <ul>
+                            <li>🧮 1,399 logical qubits<br/><small>&nbsp;→ building on the same algorithmic foundations and logical requirements.</small></li>
+                            <li>🧮 ~97,000 physical qubits<br/><small>&nbsp;→ assuming a highly-connected QLDPC (Quantum Low-Density Parity Check) architecture with a 0.1% physical gate error rate.</small></li>
+                        </ul>
+                                                    <p class="footnote" style="text-align: center;"><br/>² Webster et al., "The Pinnacle Architecture...", arXiv:2602.11457 (2026).
                             </p>
                     </div>
                 </section>
