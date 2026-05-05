@@ -1,0 +1,154 @@
+/*
+
+Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-license.org/
+
+*/
+
+.reveal pre code {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  background: #23241f;
+  -webkit-text-size-adjust: none;
+}
+
+.reveal pre code,
+.reveal pre .tag,
+.reveal pre .css .rules,
+.reveal pre .css .value,
+.reveal pre .aspectj .function,
+.reveal pre .css .function
+.reveal pre .preprocessor,
+.reveal pre .pragma {
+  color: #f8f8f2;
+}
+
+.reveal pre .strongemphasis,
+.reveal pre .strong,
+.reveal pre .emphasis {
+  color: #a8a8a2;
+}
+
+.reveal pre .bullet,
+.reveal pre .blockquote,
+.reveal pre .horizontal_rule,
+.reveal pre .number,
+.reveal pre .regexp,
+.reveal pre .alias .keyword,
+.reveal pre .literal,
+.reveal pre .hexcolor {
+  color: #ae81ff;
+}
+
+.reveal pre .tag .value,
+.reveal pre .code,
+.reveal pre .title,
+.reveal pre .css .class,
+.reveal pre .class .title:last-child {
+  color: #a6e22e;
+}
+
+.reveal pre .link_url {
+  font-size: 80%;
+}
+
+.reveal pre .strong,
+.reveal pre .strongemphasis {
+  font-weight: bold;
+}
+
+.reveal pre .emphasis,
+.reveal pre .strongemphasis,
+.reveal pre .class .title:last-child,
+.reveal pre .typename {
+  font-style: italic;
+}
+
+.reveal pre .keyword,
+.reveal pre .ruby .class .keyword:first-child,
+.reveal pre .ruby .function .keyword,
+.reveal pre .function,
+.reveal pre .change,
+.reveal pre .winutils,
+.reveal pre .flow,
+.reveal pre .nginx .title,
+.reveal pre .tex .special,
+.reveal pre .header,
+.reveal pre .attribute,
+.reveal pre .symbol,
+.reveal pre .symbol .string,
+.reveal pre .tag .title,
+.reveal pre .value,
+.reveal pre .alias .keyword:first-child,
+.reveal pre .css .tag,
+.reveal pre .css .unit,
+.reveal pre .css .important {
+  color: #f92672;
+}
+
+.reveal pre .function .keyword,
+.reveal pre .class .keyword:first-child,
+.reveal pre .aspect .keyword:first-child,
+.reveal pre .constant,
+.reveal pre .typename,
+.reveal pre .css .attribute {
+  color: #66d9ef;
+}
+
+.reveal pre .variable,
+.reveal pre .params,
+.reveal pre .class .title,
+.reveal pre .aspect .title {
+  color: #f8f8f2;
+}
+
+.reveal pre .string,
+.reveal pre .css .id,
+.reveal pre .subst,
+.reveal pre .type,
+.reveal pre .ruby .class .parent,
+.reveal pre .built_in,
+.reveal pre .django .template_tag,
+.reveal pre .django .variable,
+.reveal pre .smalltalk .class,
+.reveal pre .django .filter .argument,
+.reveal pre .smalltalk .localvars,
+.reveal pre .smalltalk .array,
+.reveal pre .attr_selector,
+.reveal pre .pseudo,
+.reveal pre .addition,
+.reveal pre .stream,
+.reveal pre .envvar,
+.reveal pre .apache .tag,
+.reveal pre .apache .cbracket,
+.reveal pre .tex .command,
+.reveal pre .prompt,
+.reveal pre .link_label,
+.reveal pre .link_url {
+  color: #e6db74;
+}
+
+.reveal pre .comment,
+.reveal pre .javadoc,
+.reveal pre .annotation,
+.reveal pre .decorator,
+.reveal pre .pi,
+.reveal pre .doctype,
+.reveal pre .deletion,
+.reveal pre .shebang,
+.reveal pre .apache .sqbracket,
+.reveal pre .tex .formula {
+  color: #75715e;
+}
+
+.reveal pre .coffeescript .javascript,
+.reveal pre .javascript .xml,
+.reveal pre .tex .formula,
+.reveal pre .xml .javascript,
+.reveal pre .xml .vbscript,
+.reveal pre .xml .css,
+.reveal pre .xml .cdata,
+.reveal pre .xml .php,
+.reveal pre .php .xml {
+  opacity: 0.5;
+}
