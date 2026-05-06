@@ -427,6 +427,18 @@ table.medium th {
   padding: 1%;
 }
 
+table.small td {
+  font-size: 0.6em !important; 
+  text-align: center !important;
+  padding: 1%;
+}
+
+table.small th {
+  font-size: 0.6em !important; 
+  text-align: center !important;
+  padding: 1%;
+}
+
 .reveal table tr.noborder td {
   border-bottom: none;
 }
@@ -498,7 +510,7 @@ table.large td {
 
 .reveal p.footnote {
   line-height: 1;
-  margin: 0;
+  margin: 2em 0 0 0;
   font-size: 0.5em;
 }
 
