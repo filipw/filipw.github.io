@@ -504,16 +504,24 @@
                     </div>
                 </section>
 
-                <!-- SLIDE 21: Reactive vs. Proactive -->
-                <section data-background="images/alice-door.jpeg">
+                <section data-background="images/atlas3.jpg">
                     <div class="overlay-style">
-                        <h3>Two different approaches</h3>
+                        <p>The router's responsibility is <span class="highlight">intent classification</span> and <span class="highlight">complexity assessment</span>. It dynamically routes it to either a local worker or a remote worker based on predefined rules.</p>
+                        <div class="img-backdrop">
+                            <img class="standard" src="graphics/02-router-agent.excalidraw.png" />
+                        </div>
+                    </div>
+                </section>
+
+                                <section data-background="images/alice-door.jpeg">
+                    <div class="overlay-style">
+                        <h3>Router vs Cascade Pattern</h3>
                         <table class="medium">
                             <thead>
                                 <tr>
                                     <th></th>
-                                    <th>Pattern 1 - Reactive</th>
-                                    <th>Pattern 2 - Proactive</th>
+                                    <th>Cascade - Reactive</th>
+                                    <th>Router - Proactive</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -539,62 +547,41 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <div class="fragment">
+                        <div>
                             <hr />
                             Both approaches are complementary - not competing.
                         </div>
                     </div>
                 </section>
 
-                <!-- SLIDE 22: RouteLLM -->
-                <section data-background="images/quantum-computer.jpg">
+                                <section data-background="images/atlas-ibl.jpg">
                     <div class="overlay-style">
-                        <h3>RouteLLM: Learning the routing</h3>
+                        <p>
+                            You do not need a large model to make a
+                        </p>
+                        <h2 class="r-fit-text">smart routing decision</h2>
+                    </div>
+                </section>
+
+<section data-background="images/atlas-ibl.jpg">
+                    <div class="overlay-style">
+                        <h3>Router architecture</h3>
                         <hr />
                         <div class="column-container">
-                            <div class="col-66">
-                                <p>RouteLLM (UC Berkeley + Anyscale, ICLR 2025) trains a <span class="highlight">lightweight router</span> on human preference data to predict query difficulty before generation.¹</p>
-                                <p class="fragment">Router cost: <strong>$3-$40 / million requests</strong>.<br />LLM generation: <strong>$2,000-$15,000 / million</strong>.<br />The savings are structural, not incidental.</p>
+                            <div class="col-50">
+                                <ul>
+                                    <li class="fragment">⚖️ Similarity-Weighted Ranking<br /><small>Computes cosine similarity against historical training queries to determine routing at inference time.</small></li>
+                                    <li class="fragment">📉 Matrix Factorization<br /><small>Learns latent features between queries and models.</small></li>
+                                </ul>
                             </div>
-                            <div class="col-33" style="padding-left: 1em;">
-                                <!-- TODO: Add excalidraw graphic: graphics/routellm-cost-comparison.excalidraw.png -->
-                                <div class="img-backdrop">
-                                    <img class="standard" src="graphics/routellm-cost-comparison.excalidraw.png" />
-                                </div>
+                            <div class="col-50">
+                                <ul>
+                                    <li class="fragment">🤖 BERT Classifier<br /><small>A full-parameter fine-tuned model utilizing human preference data to capture deep contextual intent.</small></li>
+                                    <li class="fragment">🧠 Causal LLM)<br /><small>Highest capacity approach utilizing instruction-following and next-token prediction, but with greater operational overhead.</small></li>
+                                </ul>
                             </div>
                         </div>
-                        <p class="footnote" style="text-align: center;">¹ Ong et al., "RouteLLM: Learning to Route LLMs with Preference Data", arXiv:2406.18665, ICLR 2025</p>
-                    </div>
-                </section>
-
-                <!-- SLIDE 23: Four Router Architectures -->
-                <section data-background="images/atlas-ibl.jpg">
-                    <div class="overlay-style">
-                        <h3>Four router architectures</h3>
-                        <hr />
-                        <ul>
-                            <li class="fragment"><strong>Similarity-Weighted Ranking</strong> - retrieves similar training queries and uses historical outcomes to vote. Fast, CPU-only.</li>
-                            <li class="fragment"><strong>Matrix Factorization</strong> - learns latent features per query category. Achieves 50% fewer GPT-4 calls to reach 80% performance threshold (CPT80%).</li>
-                            <li class="fragment"><strong>BERT Classifier</strong> - fine-tuned on preference data. Strong balance of speed and accuracy.</li>
-                            <li class="fragment"><strong>Causal LLM Classifier</strong> (Llama-3-8B) - most powerful, highest overhead.</li>
-                        </ul>
-                        <div class="fragment">
-                            <hr />
-                            You do not need a large model to make a <span class="highlight">smart routing decision</span>.
-                        </div>
-                    </div>
-                </section>
-
-                <!-- SLIDE 24: RouteLLM in Practice -->
-                <section data-background="images/atlas3.jpg">
-                    <div class="overlay-style">
-                        <h3>RouteLLM in practice</h3>
-                        <hr />
-                        <p>A router node is wired ahead of the agent graph. Use open-source checkpoints - no custom preference dataset required. Combine with Pattern 1 for end-to-end coverage.</p>
-                        <!-- TODO: Add excalidraw graphic: graphics/routellm-architecture.excalidraw.png -->
-                        <div class="img-backdrop">
-                            <img class="standard" src="graphics/routellm-architecture.excalidraw.png" />
-                        </div>
+                        <p class="footnote">¹ Ong et al., "RouteLLM: Learning to Route LLMs with Preference Data", arXiv:2406.18665, ICLR 2025</p>
                     </div>
                 </section>
 
