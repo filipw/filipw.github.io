@@ -74,8 +74,31 @@
             <!-- ============================================================ -->
             <section>
 
+
+
+                <!-- SLIDE 4: Why This Matters (cost at scale) -->
+                <section data-background="images/atlas-ibl.jpg">
+                    <div class="overlay-style">
+                        <h3>The real cost of cloud inference</h3>
+                        <hr />
+                        <div class="column-container">
+                            <div class="col-66">
+                                <ul>
+                                <li>📊 Not all queries are equal </br> <small> → "What is the capital of France?" vs a multi-step reasoning chain.</small></li>
+                                <li>💰 Pricing does not care about query depth </br> <small> → At 1 million (1000 token) queries/day, sending every request to a frontier model costs $10,000+ per day.</small></li>
+                                </ul>
+                            </div>
+                            <div class="col-33">
+                                <div class="img-backdrop">
+                                    <img class="standard" src="graphics/worried.excalidraw.png" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
                 <!-- SLIDE 3: The Painful Tradeoff -->
-                <section data-background="images/atlas3.jpg">
+                                <section data-background="images/atlas3.jpg">
                     <div class="overlay-style">
                         <div class="column-container">
                             <div class="col-50">
@@ -104,27 +127,6 @@
                         <div class="fragment">
                             <hr />
                             No matter what you choose, you lose - right?
-                        </div>
-                    </div>
-                </section>
-
-                <!-- SLIDE 4: Why This Matters (cost at scale) -->
-                <section data-background="images/atlas-ibl.jpg">
-                    <div class="overlay-style">
-                        <h3>The real cost of cloud inference</h3>
-                        <hr />
-                        <div class="column-container">
-                            <div class="col-66">
-                                <ul>
-                                <li>📊 Not all queries are equal </br> <small> → "What is the capital of France?" vs a multi-step reasoning chain.</small></li>
-                                <li>💰 Pricing does not care about query depth </br> <small> → At 1 million (1000 token) queries/day, sending every request to a frontier model costs $10,000+ per day.</small></li>
-                                </ul>
-                            </div>
-                            <div class="col-33">
-                                <div class="img-backdrop">
-                                    <img class="standard" src="graphics/worried.excalidraw.png" />
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </section>
@@ -819,68 +821,56 @@
                         <hr />
                         <div class="column-container">
                             <div class="col-50">
-                                <p>A 1% per-step error rate compounds fast:¹</p>
+                                <p>Even a 1% per-step error rate compounds fast:</p>
                                 <ul>
-                                    <li class="fragment">37% success after <strong>100 steps</strong></li>
-                                    <li class="fragment">~0% success after <strong>1,000 steps</strong></li>
-                                    <li class="fragment">Impossible at <strong>1,000,000 steps</strong></li>
+                                    <li> → 36.6% success after 100 steps</li>
+                                    <li> → 0.004% success after 1,000 steps</li>
+                                    <li> → statistically impossible at 1,000,000 steps</li>
                                 </ul>
                             </div>
-                            <div class="col-50" style="padding-left: 1em;">
-                                <!-- TODO: Add excalidraw graphic: graphics/error-accumulation.excalidraw.png -->
+                            <div class="col-50">
                                 <div class="img-backdrop">
                                     <img class="standard" src="graphics/error-accumulation.excalidraw.png" />
                                 </div>
                             </div>
                         </div>
-                        <p class="footnote" style="text-align: center;">¹ Meyerson et al., "Solving a Million-Step LLM Task with Zero Errors", arXiv:2511.09030 (2025)</p>
+
                     </div>
                 </section>
 
                 <!-- SLIDE 36: MAKER -->
                 <section data-background="images/atlas-ibl.jpg">
                     <div class="overlay-style">
-                        <h3>Extreme decomposition + error correction</h3>
+                        <p>Maximal Agentic decomposition, first-to-ahead-by-K Error correction, and Red-flagging</p>
                         <hr />
-                        <p style="font-size: 0.75em; color: #ccc; margin-bottom: 0.5em;">
-                            <strong>M</strong>aximal agentic decomposition · first-to-ahead-by-<strong>K E</strong>rror correction · <strong>R</strong>ed-flagging
-                        </p>
-                        <p>
-                            <span class="emoji">✂️</span> Decompose <span class="arrow">→</span>
-                            <span class="emoji">💻</span> SLMs ×N vote <span class="arrow">→</span>
-                            <span class="emoji">✅</span> consensus passes
-                        </p>
-                        <p class="fragment">
-                            <span class="arrow" style="opacity:0;">→</span>
-                            <span class="emoji">🚩</span> consensus fails <span class="arrow">→</span>
-                            <span class="emoji">☁️</span> LLM re-runs step
-                        </p>
-                        <div class="fragment">
-                            <hr />
-                            Result: Towers of Hanoi - <span class="highlight">1,000,000+ steps, zero errors</span>.
-                        </div>
+                        <p>The paper shows that the cost of solving a massive task <span class="highlight">scales log-linearly</span> ($\Theta(s \ln s)$) with the number of steps ($s$).</p><p>This means we don't have to wait for LLMs to get inherently smarter to solve complex problems; we can achieve "superintelligence" by splitting the problem into micro pieces and heavily correcting the errors along the way.</p>
+                        <p class="footnote" style="text-align: center;">¹Meyerson et al., "Solving a Million-Step LLM Task with Zero Errors", arXiv:2511.09030 (2025)
+                            </p>
                     </div>
                 </section>
 
-                <!-- SLIDE 37: The Multi-Agent Advantage -->
+                <section data-background="images/atlas-ibl.jpg">
+                    <div class="overlay-style">
+                        <h3>MAKER pattern</h3>
+                        <hr />
+                        <div>
+                            <p><span class="highlight">Extreme decomposition</span> of a task into tiny subtasks for microagents, combined with a voting scheme to catch errors at every single step.</p>
+                        </div>
+                        <div class="img-backdrop">
+                            <img class="standard-small" src="graphics/03-maker.excalidraw.png" />
+                        </div>
+                            <p class="footnote" style="text-align: center;">Meyerson et al., "Solving a Million-Step LLM Task with Zero Errors", arXiv:2511.09030 (2025)
+                            </p>
+                    </div>
+                </section>
+
                 <section data-background="images/atlas3.jpg">
                     <div class="overlay-style">
-                        <h3>The multi-agent advantage</h3>
-                        <hr />
-                        <div class="column-container">
-                            <div class="col-66">
-                                <p>Reliability emerges from <span class="highlight">consensus across many small agents</span>, not from individual model intelligence.</p>
-                                <blockquote class="fragment">
-                                    "Instead of relying on continual improvement of current LLMs, massively decomposed agentic processes may provide a way to efficiently solve problems at the level of organizations and societies."
-                                </blockquote>
-                            </div>
-                            <div class="col-33" style="padding-left: 1em;">
-                                <!-- TODO: Add excalidraw graphic: graphics/maker-multi-agent.excalidraw.png -->
-                                <div class="img-backdrop">
-                                    <img class="standard" src="graphics/maker-multi-agent.excalidraw.png" />
-                                </div>
-                            </div>
-                        </div>
+                        <p>
+                            Reliability emerges from
+                        </p>
+                        <h3 class="r-fit-text">consensus across many small agents</h3>
+                        <p>not from individual model's intelligence.</p>
                     </div>
                 </section>
 
@@ -1029,6 +1019,19 @@
     </div>
     <script src="lib/js/head.min.js"></script>
     <script src="js/reveal.js"></script>
+        <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']]
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+        </script>
     <script>
         Reveal.initialize({
             viewDistance: 30,
