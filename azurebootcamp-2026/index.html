@@ -500,7 +500,7 @@
                 <!-- SLIDE 20: Section Header -->
                 <section data-background="images/compass.jpg">
                     <div class="overlay-style">
-                        <h3>Predictive Router (RouteLLM)</h3>
+                        <h2>Predictive Router (RouteLLM)</h2>
                         <p>Decide before you generate</p>
                         <p class="footnote" style="margin-top: 1em; color: #ccc;">Ong et al., RouteLLM, arXiv:2406.18665, ICLR 2025</p>
                     </div>
@@ -598,9 +598,9 @@
                 <!-- SLIDE 24: Section Header -->
                 <section data-background="images/compass.jpg">
                     <div class="overlay-style">
-                        <h3>Minions</h3>
+                        <h2>Minions</h2>
                         <p>Divide the document. Conquer locally. Synthesize in the cloud.</p>
-                        <p class="footnote" style="margin-top: 1em; color: #ccc;">Narayan et al., arXiv:2502.15964</p>
+                        <p class="footnote">Narayan et al., "Minions: Cost-efficient Collaboration Between On-device and Cloud Language Models", arXiv:2502.15964 (2025)</p>
                     </div>
                 </section>
 
@@ -619,11 +619,7 @@
                             <span class="emoji">💻</span> local SLM <span class="arrow">→</span>
                             <span class="emoji">⚠️</span> hallucination
                         </p>
-                        <div class="fragment">
-                            <hr />
-                            Naive hand-off: 30.4× cheaper but 13% accuracy loss. We need a smarter split.¹
-                        </div>
-                        <p class="footnote" style="text-align: center;">¹ Narayan et al., "Minions: Cost-efficient Collaboration Between On-device and Cloud Language Models", arXiv:2502.15964 (2025)</p>
+                        <p class="footnote">Narayan et al., "Minions: Cost-efficient Collaboration Between On-device and Cloud Language Models", arXiv:2502.15964 (2025)</p>
                     </div>
                 </section>
 
@@ -635,37 +631,11 @@
                         <div>
                             <p>The approach reduces costs by having a powerful remote LLM <span class="highlight">decompose a task</span> into simpler subtasks that a local SLM executes.</p>
                         </div>
-                        <div>
+                        <div class="img-backdrop">
                             <img class="standard" src="graphics/minions2.excalidraw.png" />
-                        </div>
-                        <div style="clear:both;">
-                            <p class="footnote" style="text-align: center;">¹ Narayan et al., "Minions: Cost-efficient Collaboration Between On-device and Cloud Language Models", arXiv:2502.15964 (2025)
-                            </p>
                         </div>
                     </div>
                 </section>
-                <!-- <section data-background="images/atlas-ibl.jpg">
-                    <div class="overlay-style">
-                        <h3>Decompose, Execute, Aggregate</h3>
-                        <hr />
-                        <p>
-                            <span class="emoji">☁️</span> cloud LLM <span class="arrow">→</span>
-                            <span class="emoji">✂️</span> writes subtasks
-                        </p>
-                        <p class="fragment">
-                            <span class="emoji">💻</span> SLMs ×N <span class="arrow">→</span>
-                            <span class="emoji">⚡</span> execute chunks in parallel
-                        </p>
-                        <p class="fragment">
-                            <span class="emoji">☁️</span> cloud LLM <span class="arrow">→</span>
-                            <span class="emoji">🔗</span> aggregates results
-                        </p>
-                        <div class="fragment">
-                            <hr />
-                            The remote model <span class="highlight">never reads the full document</span>.
-                        </div>
-                    </div>
-                </section> -->
 
                 <!-- SLIDE 27: Why This Works -->
                 <section data-background="images/atlas3.jpg">
@@ -673,19 +643,16 @@
                         <h3>Why this works</h3>
                         <hr />
                         <div class="column-container">
-                            <div class="col-66">
+                            <div class="col-50">
                                 <p>Each SLM handles only a single-step instruction on a short chunk. No long-context pressure, and parallelism is free.</p>
-                                <blockquote class="fragment">
+                            </div>
+                            <div class="col-50">
+                                <blockquote>
                                     "Minions with an 8B local LM can recover 97.9% of remote-only performance at 18% of the cloud cost"
                                 </blockquote>
                             </div>
-                            <div class="col-33" style="padding-left: 1em;">
-                                <!-- TODO: Add excalidraw graphic: graphics/minions-cost-chart.excalidraw.png -->
-                                <div class="img-backdrop">
-                                    <img class="standard" src="graphics/minions-cost-chart.excalidraw.png" />
-                                </div>
-                            </div>
                         </div>
+                        <p class="footnote">Narayan et al., "Minions: Cost-efficient Collaboration Between On-device and Cloud Language Models", arXiv:2502.15964 (2025)</p>
                     </div>
                 </section>
 
@@ -703,31 +670,42 @@
             <section>
 
                 <!-- SLIDE 29: Section Header -->
-                <section data-background="images/compass.jpg">
+<section data-background="images/compass.jpg">
                     <div class="overlay-style">
                         <h3>Chain of Agents</h3>
                         <p>Sequential reasoning across document segments</p>
-                        <p class="footnote" style="margin-top: 1em; color: #ccc;">Zhang et al., arXiv:2406.02818</p>
+                        <p class="footnote">Zhang et al., "Chain of Agents: LLMs Collaborating on Long-Context Tasks", arXiv:2406.02818 (2024)</p>
                     </div>
                 </section>
 
-                <!-- SLIDE 30: The Chain Concept -->
+                <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
+                    <div class="overlay-style">
+                        <h3>Chain of Agents</h3>
+                        <hr />
+                        <div>
+                            <p>Small models process chunks sequentially, passing an <span class="highlight">accumulated knowledge</span>. A powerful model synthesizes the final answer from the combined knowledge.</p>
+                        </div>
+                        <div class="img-backdrop">
+                            <img class="standard-small" src="graphics/04-coa.excalidraw.png" />
+                        </div>
+
+                    </div>
+                </section>
+
                 <section data-background="images/alice-door.jpeg">
                     <div class="overlay-style">
-                        <h3>The chain concept</h3>
+                        <h3>Chain of Agents - Computational Efficiency</h3>
                         <hr />
                         <div class="column-container">
                             <div class="col-33">
-                                <!-- TODO: Add excalidraw graphic: graphics/chain-of-agents-flow.excalidraw.png -->
                                 <div class="img-backdrop">
-                                    <img class="standard" src="graphics/chain-of-agents-flow.excalidraw.png" />
+                                    <img class="standard" src="graphics/complexity.excalidraw.png" />
                                 </div>
                             </div>
                             <div class="col-66" style="padding-left: 1em;">
                                 <ul>
-                                    <li class="fragment">Each worker reads its chunk and forwards a running summary to the next.</li>
-                                    <li class="fragment">A manager agent synthesizes all worker outputs into the final answer.</li>
-                                    <li class="fragment">Full document coverage - nothing is discarded, unlike RAG.¹</li>
+                                    <li> → full-context token cost scales quadratically<br/><small>$O(n^2)$, where n is the total number of tokens</small></li>
+                                    <li> → in CoA computation scales in linear-like fashion<br/><small>$O(n \times k)$, where n is the total number of tokens and k is the chunk size</small></li>
                                 </ul>
                             </div>
                         </div>
@@ -735,10 +713,10 @@
                     </div>
                 </section>
 
-                <!-- SLIDE 31: CoA vs Other Approaches -->
                 <section data-background="images/atlas-ibl.jpg">
                     <div class="overlay-style">
                         <h3>CoA vs. other approaches</h3>
+                            <hr />
                         <table class="medium">
                             <thead>
                                 <tr>
@@ -750,45 +728,23 @@
                             <tbody>
                                 <tr>
                                     <td><strong>RAG</strong></td>
-                                    <td>Retrieval has no guarantee of finding relevant info</td>
-                                    <td>Sequential scan = full coverage</td>
+                                    <td>Retrieval misses critical context</td>
+                                    <td>Sequential scan = 100% document coverage</td>
                                 </tr>
                                 <tr>
                                     <td><strong>Full-Context</strong></td>
-                                    <td>Token cost scales with document size</td>
-                                    <td>Each worker sees only its chunk</td>
+                                    <td>Token cost scales quadratically</td>
+                                    <td>Linear-like scaling reduces cost</td>
                                 </tr>
                                 <tr>
                                     <td><strong>Truncation</strong></td>
                                     <td>Drops potentially critical content</td>
-                                    <td>Nothing is discarded</td>
+                                    <td>Nothing is discarded (solves the "lost-in-the-middle" problem)</td>
                                 </tr>
                             </tbody>
                         </table>
-                        <div class="fragment">
-                            <hr />
-                            Up to <span class="highlight">10% improvement</span> over RAG and Full-Context baselines on QA, summarization, and code completion.
-                        </div>
-                    </div>
-                </section>
+                        <p class="footnote">Zhang et al., "Chain of Agents: LLMs Collaborating on Long-Context Tasks", arXiv:2406.02818 (2024)</p>
 
-                <!-- SLIDE 32: Hybrid Twist -->
-                <section data-background="images/atlas3.jpg">
-                    <div class="overlay-style">
-                        <h3>Hybrid twist: SLM workers, LLM manager</h3>
-                        <hr />
-                        <div class="column-container">
-                            <div class="col-66">
-                                <p>SLM workers extract and summarize short chunks. The LLM manager synthesizes and composes the final answer.</p>
-                                <p class="fragment">Each model does exactly what it does best - the split is structural, not ad-hoc.</p>
-                            </div>
-                            <div class="col-33" style="padding-left: 1em;">
-                                <!-- TODO: Add excalidraw graphic: graphics/chain-of-agents.excalidraw.png -->
-                                <div class="img-backdrop">
-                                    <img class="standard" src="graphics/chain-of-agents.excalidraw.png" />
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </section>
 
