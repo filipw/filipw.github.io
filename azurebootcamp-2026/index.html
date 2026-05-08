@@ -88,77 +88,64 @@
                                 <li>💰 Pricing does not care about query depth </br> <small> → At 1 million (1000 token) queries/day, sending every request to a frontier model costs $10,000+ per day.</small></li>
                                 </ul>
                             </div>
-                            <div class="col-33">
-                                <div class="img-backdrop">
+                            <div class="col-33 img-backdrop" style="margin-left: 1em;">
                                     <img class="standard" src="graphics/worried.excalidraw.png" />
-                                </div>
                             </div>
                         </div>
                     </div>
                 </section>
 
-                <!-- SLIDE 3: The Painful Tradeoff -->
-                                <section data-background="images/atlas3.jpg">
+                                                <section data-background="images/atlas3.jpg">
                     <div class="overlay-style">
                         <div class="column-container">
                             <div class="col-50">
                                 <h3>Cloud LLMs</h3>
                                 <ul>
                                     <li>✅ Reasoning, complex tasks</li>
-                                    <li>✅ Broad world knowledge</li>
+                                    <li>✅ Broad knowledge</li>
                                     <li>✅ Long context windows</li>
                                     <li>❌ Expensive at scale</li>
                                     <li>❌ Latency, round-trips</li>
                                     <li>❌ Privacy concerns</li>
                                 </ul>
                             </div>
-                            <div class="col-50" style="padding-left: 1em;">
-                                <h3>On-Device SLMs</h3>
-                                <ul>
-                                    <li>✅ Fast &amp; cheap</li>
-                                    <li>✅ Private, offline</li>
-                                    <li>✅ Low latency</li>
-                                    <li>❌ Limited reasoning</li>
-                                    <li>❌ Smaller context</li>
-                                    <li>❌ Error-prone on hard tasks</li>
-                                </ul>
+                            <div class="col-50 img-backdrop" style="margin-left: 1em;">
+                                <img class="standard" src="graphics/topo1.excalidraw.png" />
                             </div>
-                        </div>
-                        <div class="fragment">
-                            <hr />
-                            No matter what you choose, you lose - right?
                         </div>
                     </div>
                 </section>
 
-                <!-- SLIDE 5: The Alternative We Don't Want -->
-                <!-- <section data-background="images/alice-door.jpeg">
+                                                                <section data-background="images/atlas3.jpg">
                     <div class="overlay-style">
-                                                        <h3>Just use SLMs everywhere?</h3>
-                                <hr />
                         <div class="column-container">
                             <div class="col-66">
-
-                                <hr />
+                                <h3>On-Device SLMs</h3>
                                 <ul>
-                                    <li class="fragment">Cheaper? → Yes.</li>
-                                    <li class="fragment">More private? → Yes.</li>
-                                    <li class="fragment">Reliable enough for production? → No.</li>
-                                    <li class="fragment">1% per-step error → <span class="highlight">failure after 100 steps</span>.¹</li>
+                                    <li>✅ Fast &amp; cheap (for the system owner)</li>
+                                    <li>✅ Private, offline</li>
+                                    <li>✅ Low latency</li>
+                                    <li>❌ Limited reasoning</li>
+                                    <li>❌ Small context window</li>
+                                    <li>❌ Error-prone on complex tasks</li>
                                 </ul>
-                                <p class="footnote" style="text-align: left;">¹ Meyerson et al., arXiv:2511.09030 (2025)</p>
                             </div>
-                            <div class="col-33" style="padding-left: 1em;">
-                                <div class="img-backdrop">
-                                    <img class="standard" src="graphics/error-rate-compounding.excalidraw.png" />
-                                </div>
+                            <div class="col-33 img-backdrop" style="margin-left: 1em;">
+                                <img class="standard" src="graphics/topo2.excalidraw.png" />
                             </div>
                         </div>
                     </div>
-                    <aside class="notes">
-                        This sets up the need for a smarter hybrid approach. We can't just replace everything with SLMs.
-                    </aside>
-                </section> -->
+                </section>
+
+                                <section data-background="images/atlas-ibl.jpg">
+                    <div class="overlay-style">
+                        <p>
+                            No matter what you choose
+                        </p>
+                        <h2 class="r-fit-text">you lose, right?</h2>
+                    </div>
+                </section>
+
 
             </section>
             <!-- END SECTION A -->
@@ -192,12 +179,12 @@
                     <li class="fragment">🤖
                         Agentic Workflows
                         <br />
-                        <small>Ideal for tool use, function calling, and system orchestration</small>
+                        <small> → Ideal for tool use, function calling, and system orchestration</small>
                     </li>
                     <li class="fragment">📝
                         Structured I/O
                         <br />
-                        <small>Highly reliable for data extraction and strict JSON generation</small>
+                        <small> → Highly reliable for data extraction and strict JSON generation</small>
                     </li>
                 </ul>
             </div>
@@ -207,12 +194,12 @@
                     <li class="fragment">🎯
                         Task Specialization
                         <br />
-                        <small>Matches frontier models on specific application-layer workloads</small>
+                        <small> → Matches frontier models on specific application-layer workloads</small>
                     </li>
                     <li class="fragment">📱
                         Edge Deployment
                         <br />
-                        <small>Perfect for local, privacy-preserving, and low-latency environments</small>
+                        <small> → Perfect for local, privacy-preserving, and low-latency environments</small>
                     </li>
                 </ul>
             </div>
@@ -221,7 +208,10 @@
     </div>
 </section>
 
-                <!-- SLIDE 8: Representative SLMs table -->
+                <section data-background-color="#fff">
+                    <img src="graphics/slm-pool.excalidraw.png" style="min-height: auto" />
+                </section>
+
 <section data-background="images/atlas-ibl.jpg">
     <div class="overlay-style">
         <h3>SLM Landscape</h3>
@@ -239,7 +229,7 @@
                     <td>Gemini Nano 4 (Android AICore)</td>
                     <td>E2B & E4B</td>
                     <td>Android</td>
-                    <td>System-level intent routing, native multimodal (OCR/Audio)</td>
+                    <td>System-level intent routing, native multimodal</td>
                 </tr>
                 <tr>
                     <td>Apple Intelligence</td>
@@ -313,13 +303,12 @@
                         <div class="column-container" style="align-items: flex-start;">
                             <div class="col-50">
                                 <h3>Old mindset</h3>
-
                                 <blockquote> Which powerful <span class="highlight">cloud model</span> should I use?</blockquote>
                             </div>
-                            <div class="col-50">
+                            <div class="col-50" style="margin-left: 1em;">
                                 <h3>New mindset</h3>
 
-                                <blockquote>How do I orchestrate the <span class="highlight">right model</span> for the right task?</blockquote>
+                                <blockquote>How do I orchestrate the <span class="highlight">smartest workflow</span> for this task?</blockquote>
                             </div>
                         </div>
                         <div>
@@ -346,7 +335,7 @@
                                 <tr class="fragment">
                                     <td>1</td>
                                     <td>SLM-Default, LLM-Fallback</td>
-                                    <td>reactive cascade with confidence gate</td>
+                                    <td>cascade with confidence gate</td>
                                     <td>arXiv:2510.03847</td>
                                 </tr>
                                 <tr class="fragment">
@@ -412,16 +401,16 @@
                 <!-- SLIDE 14: Section Header -->
                 <section data-background="images/compass.jpg">
                     <div class="overlay-style">
-                    <h3>SLM-Default, LLM-Fallback</h3>
+                    <h2>SLM-Default, LLM-Fallback</h2>
                     <p>Route cheap, escalate smart</p>
-                    <p class="footnote" style="margin-top: 1em; color: #ccc;">Sharma &amp; Mehta, "Small Language Models for Agentic Systems", arXiv:2510.03847</p>
+                    <p class="footnote">Sharma &amp; Mehta, "Small Language Models for Agentic Systems", arXiv:2510.03847</p>
                     </div>
                 </section>
 
                 <!-- SLIDE 15: The Cascade Concept -->
                                  <section data-background="images/michael-dziedzic-nbW-kaz2BlE-unsplash.jpg">
                     <div class="overlay-style">
-                        <h3>The cascade concept</h3>
+                        <h3>The "Cascade" concept</h3>
                         <hr />
                         <div>
                             <p>The query is handled by the SLM first. If it fails to generate a viable answer (e.g, due to complexity or low confidence), the system <span class="highlight">safely falls back to a more capable, remote LLM</span> to fulfill the request.</p>
@@ -477,7 +466,7 @@
                 </section>
 
                 <!-- SLIDE 19: Key Takeaways -->
-                <section data-background="images/atlas-ibl.jpg">
+                <!-- <section data-background="images/atlas-ibl.jpg">
                     <div class="overlay-style">
                         <h3>Key takeaways</h3>
                         <hr />
@@ -487,7 +476,7 @@
                             <li class="fragment">→ Combine self-reported confidence with schema validation.</li>
                         </ul>
                     </div>
-                </section>
+                </section> -->
 
             </section>
             <!-- END SECTION D -->
@@ -605,22 +594,21 @@
                 </section>
 
                 <!-- SLIDE 25: The Long-Context Problem -->
-                <section data-background="images/alice-door.jpeg">
-                    <div class="overlay-style">
+                <!-- <section data-background="images/alice-door.jpeg">
                         <h3>The long-context problem</h3>
                         <hr />
-                        <p>
-                            <span class="emoji">📄</span> Huge document <span class="arrow">→</span>
-                            <span class="emoji">☁️</span> cloud LLM <span class="arrow">→</span>
-                            <span class="emoji">💸</span> high cost
-                        </p>
-                        <p class="fragment">
-                            <span class="emoji">📄</span> Huge document <span class="arrow">→</span>
-                            <span class="emoji">💻</span> local SLM <span class="arrow">→</span>
-                            <span class="emoji">⚠️</span> hallucination
-                        </p>
-                        <p class="footnote">Narayan et al., "Minions: Cost-efficient Collaboration Between On-device and Cloud Language Models", arXiv:2502.15964 (2025)</p>
+                        <div class="img-backdrop">
+                            <img src="graphics/long-context.excalidraw.png" class="standard" />
+                        </div>
+                        
                     </div>
+                </section> -->
+
+                <section data-background="images/alice-door.jpeg">
+                          <div class="img-backdrop">
+                            <img src="graphics/long-context.excalidraw.png" class="standard" />
+                        </div>
+                    <p class="overlay-style" style="padding: 1% !important;">The long-context problem</p>
                 </section>
 
                 <!-- SLIDE 26: Minions -->
@@ -672,7 +660,7 @@
                 <!-- SLIDE 29: Section Header -->
 <section data-background="images/compass.jpg">
                     <div class="overlay-style">
-                        <h3>Chain of Agents</h3>
+                        <h2>Chain of Agents</h2>
                         <p>Sequential reasoning across document segments</p>
                         <p class="footnote">Zhang et al., "Chain of Agents: LLMs Collaborating on Long-Context Tasks", arXiv:2406.02818 (2024)</p>
                     </div>
@@ -764,7 +752,7 @@
                 <!-- SLIDE 34: Section Header -->
                 <section data-background="images/compass.jpg">
                     <div class="overlay-style">
-                        <h3>MAKER</h3>
+                        <h2>MAKER</h2>
                         <p>A million steps. Zero errors.</p>
                         <p class="footnote" style="margin-top: 1em; color: #ccc;">Meyerson et al., arXiv:2511.09030</p>
                     </div>
@@ -898,7 +886,7 @@
                 </section>
 
                 <!-- SLIDE 41: Which Pattern Should I Start With? -->
-                <section data-background="images/alice-door.jpeg">
+                <!-- <section data-background="images/alice-door.jpeg">
                     <div class="overlay-style">
                         <h3>Which pattern to start with?</h3>
                         <hr />
@@ -909,7 +897,26 @@
                             <li class="fragment"><strong>For reliability at scale:</strong> Apply MAKER decomposition principles when correctness is non-negotiable.</li>
                         </ul>
                     </div>
-                </section>
+                </section> -->
+
+                                                 <section data-background="images/maxime-valcarce-mAj8xn5zXsk-unsplash.jpg">
+                                    <div class="overlay-style">
+                                        <h2>Important!</h2>
+                    <div class="column-container">
+                        <div class="col-66">
+<p>
+                            None of the techniques is a one-size-fits-all.
+                        </p>
+                        <!-- <h2 class="r-fit-text">evaluate and measure</h2> -->
+                        <p>Always <span class="highlight">test, evaluate and measure,</span> and choose the ones that are most appropriate and best performing for your use cases.</p>
+                        </div>
+                        <div class="col-33">
+
+                            <img src="images/remember.gif" class="standard" style="min-height: auto;" />
+                        </div>
+                    </div>
+                                    </div>
+                </section> 
 
                 <!-- SLIDE 42: Security and Robustness -->
                 <!-- <section data-background="images/atlas3.jpg">
@@ -956,9 +963,10 @@
                                         href="https://filipw.github.io/azurebootcamp-2026">filipw.github.io/azurebootcamp-2026</a>
                                 </li>
                                 <li>🖥️ <a href="https://github.com/filipw/2026-azure-bootcamp-demos">github.com/filipw/2026-azure-bootcamp-demos</a></li>
-                                </ul>
                                  <li>📸 <a href="https://cds.cern.ch/collection/Multimedia%20%26%20Outreach?ln=en">Photos
                                         credit: CERN</a></li>
+                                </ul>
+
                             </div>
                         </div>
                     </div>
