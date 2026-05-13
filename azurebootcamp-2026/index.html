@@ -85,7 +85,7 @@
                             <div class="col-66">
                                 <ul>
                                 <li>📊 Not all queries are equal </br> <small> → "What is the capital of France?" vs a multi-step reasoning chain.</small></li>
-                                <li>💰 Pricing does not care about query depth </br> <small> → At 1 million (1000 token) queries/day, sending every request to a frontier model costs $10,000+ per day.</small></li>
+                                <li>💰 Long context accumulates fast </br> <small> → At just 1,000 queries/day (1 million tokens each), total cost against a frontier model exceeds $10,000+ per day.</small></li>
                                 </ul>
                             </div>
                             <div class="col-33 img-backdrop" style="margin-left: 1em;">
@@ -179,12 +179,12 @@
                     <li class="fragment">🤖
                         Agentic Workflows
                         <br />
-                        <small> → Ideal for tool use, function calling, and system orchestration</small>
+                        <small> → Ideal for tool calling or simple orchestrations</small>
                     </li>
                     <li class="fragment">📝
-                        Structured I/O
+                        Data Extraction
                         <br />
-                        <small> → Highly reliable for data extraction and strict JSON generation</small>
+                        <small> → Useful for finding information and scanning documents</small>
                     </li>
                 </ul>
             </div>
@@ -194,7 +194,7 @@
                     <li class="fragment">🎯
                         Task Specialization
                         <br />
-                        <small> → Matches frontier models on specific application-layer workloads</small>
+                        <small> → Can match frontier models on specific application-layer workloads, especially after fine-tuning</small>
                     </li>
                     <li class="fragment">📱
                         Edge Deployment
@@ -346,15 +346,15 @@
                                 </tr>
                                 <tr class="fragment">
                                     <td>3</td>
-                                    <td>Minions</td>
-                                    <td>decompose document, execute locally, synthesize in cloud</td>
-                                    <td>arXiv:2502.15964</td>
-                                </tr>
-                                <tr class="fragment">
-                                    <td>4</td>
                                     <td>Chain of Agents</td>
                                     <td>sequential reasoning across document segments</td>
                                     <td>arXiv:2406.02818</td>
+                                </tr>
+                                <tr class="fragment">
+                                    <td>4</td>
+                                    <td>Minions</td>
+                                    <td>decompose document, execute locally, synthesize in cloud</td>
+                                    <td>arXiv:2502.15964</td>
                                 </tr>
                                 <tr class="fragment">
                                     <td>5</td>
@@ -366,29 +366,6 @@
                         </table>
                     </div>
                 </section>
-
-                <!-- SLIDE 13: The Microsoft Agent Framework -->
-                <!-- <section data-background="images/quantum-computer.jpg">
-                    <div class="overlay-style">
-                        <h3>Microsoft Agent Framework</h3>
-                        <div class="column-container">
-                            <div class="col-66">
-                                <ul>
-                                    <li class="fragment">🔓 Open source framework for building, orchestrating, and deploying AI agents</li>
-                                    <li class="fragment">🔗 Declarative workflow graph: agents as nodes, conditions as edges</li>
-                                    <li class="fragment">🔄 Built-in support for multi-agent collaboration and human-in-the-loop</li>
-                                    <li class="fragment">☁️ Works with Azure AI Foundry, GitHub Models, OpenAI, local models</li>
-                                </ul>
-                            </div>
-                            <div class="col-33" style="padding-left: 1em;">
-                                <div class="img-backdrop">
-                                    <img class="standard" src="graphics/agent-framework-flow.excalidraw.png" />
-                                </div>
-                            </div>
-                        </div>
-                        <p class="footnote">github.com/microsoft/agent-framework</p>
-                    </div>
-                </section> -->
 
             </section>
             <!-- END SECTION C -->
@@ -442,15 +419,15 @@
                             <div class="col-50">
                                 <ul>
                                     <li class="fragment">📊 Self-reported score<br /><small>SLM appends CONFIDENCE: N (1-10)</small></li>
-                                    <li class="fragment">🔬 Schema validation<br /><small>check output structure</small></li>
-                                    <li class="fragment">📐 Semantic similarity<br /><small>vs. known-good responses</small></li>
+                                    <li class="fragment">🕵️ Secondary verifier<br /><small>two-stage output adjudication</small></li>
+                                    <li class="fragment">🧑‍💻 Human-in-the-loop<br /><small>manual approve/deny queues</small></li>
                                 </ul>
                             </div>
                             <div class="col-50">
                                 <ul>
+                                    <li class="fragment">🔬 Schema validation<br /><small>check output structure</small></li>
+                                    <li class="fragment">📐 Semantic similarity<br /><small>vs. known-good responses</small></li>
                                     <li class="fragment">🛡️ Policy filters<br /><small>block high policy-risk scores</small></li>
-                                    <li class="fragment">🕵️ Secondary verifier<br /><small>two-stage output adjudication</small></li>
-                                    <li class="fragment">🧑‍💻 Human-in-the-loop<br /><small>manual approve/deny queues</small></li>
                                 </ul>
                             </div>
                         </div>
@@ -464,19 +441,6 @@
                 <section data-background="images/cms2.jpg">
                     <h1>Demo</h1>
                 </section>
-
-                <!-- SLIDE 19: Key Takeaways -->
-                <!-- <section data-background="images/atlas-ibl.jpg">
-                    <div class="overlay-style">
-                        <h3>Key takeaways</h3>
-                        <hr />
-                        <ul>
-                            <li class="fragment">→ Simplest pattern to adopt - no training, drop-in improvement.</li>
-                            <li class="fragment">→ 60-80% query deflection from cloud in typical workloads.</li>
-                            <li class="fragment">→ Combine self-reported confidence with schema validation.</li>
-                        </ul>
-                    </div>
-                </section> -->
 
             </section>
             <!-- END SECTION D -->
@@ -533,15 +497,11 @@
                                 </tr>
                                 <tr>
                                     <td><strong>Training required?</strong></td>
-                                    <td>No - works zero-shot</td>
-                                    <td>Yes - router trained on preference data</td>
+                                    <td>Maybe - but works zero-shot</td>
+                                    <td>Maybe - router trained on preference data</td>
                                 </tr>
                             </tbody>
                         </table>
-                        <div>
-                            <hr />
-                            Both approaches are complementary - not competing.
-                        </div>
                     </div>
                 </section>
 
@@ -561,14 +521,15 @@
                         <div class="column-container">
                             <div class="col-50">
                                 <ul>
-                                    <li class="fragment">⚖️ Similarity-Weighted Ranking<br /><small>Computes cosine similarity against historical training queries to determine routing at inference time.</small></li>
-                                    <li class="fragment">📉 Matrix Factorization<br /><small>Learns latent features between queries and models.</small></li>
+                                    <li class="fragment">🧠 (Small) Language Model<br /><small> → Highest capacity approach but with greater operational overhead.</small></li>
+                                    <li class="fragment">🤖 BERT Classifier<br /><small> → A classifier model utilizing fine tuning data to capture deep contextual intent</small></li>
+                                   
                                 </ul>
                             </div>
                             <div class="col-50">
                                 <ul>
-                                    <li class="fragment">🤖 BERT Classifier<br /><small>A full-parameter fine-tuned model utilizing human preference data to capture deep contextual intent.</small></li>
-                                    <li class="fragment">🧠 Causal LLM)<br /><small>Highest capacity approach utilizing instruction-following and next-token prediction, but with greater operational overhead.</small></li>
+                                     <li class="fragment">⚖️ Similarity-Weighted Ranking<br /><small> → Cosine similarity against historical training queries to determine routing</small></li>
+                                    <li class="fragment">📉 Matrix Factorization<br /><small> → Learns latent features between queries and models</small></li>
                                 </ul>
                             </div>
                         </div>
@@ -576,10 +537,108 @@
                     </div>
                 </section>
 
+                                <section data-background="images/cms2.jpg">
+                    <h1>Demo</h1>
+                </section>
+
             </section>
             <!-- END SECTION E -->
 
+         
+
             <!-- ============================================================ -->
+            <!-- SECTION G: PATTERN 4 - Chain of Agents                      -->
+            <!-- ============================================================ -->
+            <section>
+
+                <!-- SLIDE 29: Section Header -->
+<section data-background="images/compass.jpg">
+                    <div class="overlay-style">
+                        <h2>Chain of Agents</h2>
+                        <p>Sequential reasoning across document segments</p>
+                        <p class="footnote">Zhang et al., "Chain of Agents: LLMs Collaborating on Long-Context Tasks", arXiv:2406.02818 (2024)</p>
+                    </div>
+                </section>
+
+                <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
+                    <div class="overlay-style">
+                        <h3>Chain of Agents</h3>
+                        <hr />
+                        <div>
+                            <p>Small models process chunks sequentially, passing an <span class="highlight">accumulated knowledge</span>. A powerful model synthesizes the final answer from the combined knowledge.</p>
+                        </div>
+                        <div class="img-backdrop">
+                            <img class="standard-small" src="graphics/04-coa.excalidraw.png" />
+                        </div>
+
+                    </div>
+                </section>
+
+                <section data-background="images/alice-door.jpeg">
+                    <div class="overlay-style">
+                        <h3>Chain of Agents - Computational Efficiency</h3>
+                        <hr />
+                        <div class="column-container">
+                            <div class="col-33">
+                                <div class="img-backdrop">
+                                    <img class="standard" src="graphics/complexity.excalidraw.png" />
+                                </div>
+                            </div>
+                            <div class="col-66" style="padding-left: 1em;">
+                                <ul>
+                                    <li> → full-context token cost scales quadratically<br/><small>$O(n^2)$, where n is the total number of tokens</small></li>
+                                    <li> → in CoA computation scales in linear-like fashion<br/><small>$O(n \times k)$, where n is the total number of tokens and k is the chunk size</small></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <p class="footnote" style="text-align: center;">¹ Zhang et al., "Chain of Agents: LLMs Collaborating on Long-Context Tasks", arXiv:2406.02818 (2024)</p>
+                    </div>
+                </section>
+
+                <section data-background="images/atlas-ibl.jpg">
+                    <div class="overlay-style">
+                        <h3>Chain of Agents vs. other approaches</h3>
+                            <hr />
+                        <table class="medium">
+                            <thead>
+                                <tr>
+                                    <th>Approach</th>
+                                    <th>Problem</th>
+                                    <th>CoA Advantage</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>RAG</strong></td>
+                                    <td>Retrieval misses critical context</td>
+                                    <td>Sequential scan = 100% document coverage</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Full-Context</strong></td>
+                                    <td>Token cost scales quadratically</td>
+                                    <td>Linear-like scaling reduces cost</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Truncation</strong></td>
+                                    <td>Drops potentially critical content</td>
+                                    <td>Nothing is discarded (solves the "lost-in-the-middle" problem)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p class="footnote">Zhang et al., "Chain of Agents: LLMs Collaborating on Long-Context Tasks", arXiv:2406.02818 (2024)</p>
+
+                    </div>
+                </section>
+
+                <!-- SLIDE 33: Demo -->
+                <section data-background="images/cms2.jpg">
+                    <h1>Demo</h1>
+                </section>
+
+            </section>
+            <!-- END SECTION G -->
+
+   <!-- ============================================================ -->
             <!-- SECTION F: PATTERN 3 - Minions                              -->
             <!-- ============================================================ -->
             <section>
@@ -653,98 +712,6 @@
             <!-- END SECTION F -->
 
             <!-- ============================================================ -->
-            <!-- SECTION G: PATTERN 4 - Chain of Agents                      -->
-            <!-- ============================================================ -->
-            <section>
-
-                <!-- SLIDE 29: Section Header -->
-<section data-background="images/compass.jpg">
-                    <div class="overlay-style">
-                        <h2>Chain of Agents</h2>
-                        <p>Sequential reasoning across document segments</p>
-                        <p class="footnote">Zhang et al., "Chain of Agents: LLMs Collaborating on Long-Context Tasks", arXiv:2406.02818 (2024)</p>
-                    </div>
-                </section>
-
-                <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
-                    <div class="overlay-style">
-                        <h3>Chain of Agents</h3>
-                        <hr />
-                        <div>
-                            <p>Small models process chunks sequentially, passing an <span class="highlight">accumulated knowledge</span>. A powerful model synthesizes the final answer from the combined knowledge.</p>
-                        </div>
-                        <div class="img-backdrop">
-                            <img class="standard-small" src="graphics/04-coa.excalidraw.png" />
-                        </div>
-
-                    </div>
-                </section>
-
-                <section data-background="images/alice-door.jpeg">
-                    <div class="overlay-style">
-                        <h3>Chain of Agents - Computational Efficiency</h3>
-                        <hr />
-                        <div class="column-container">
-                            <div class="col-33">
-                                <div class="img-backdrop">
-                                    <img class="standard" src="graphics/complexity.excalidraw.png" />
-                                </div>
-                            </div>
-                            <div class="col-66" style="padding-left: 1em;">
-                                <ul>
-                                    <li> → full-context token cost scales quadratically<br/><small>$O(n^2)$, where n is the total number of tokens</small></li>
-                                    <li> → in CoA computation scales in linear-like fashion<br/><small>$O(n \times k)$, where n is the total number of tokens and k is the chunk size</small></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <p class="footnote" style="text-align: center;">¹ Zhang et al., "Chain of Agents: LLMs Collaborating on Long-Context Tasks", arXiv:2406.02818 (2024)</p>
-                    </div>
-                </section>
-
-                <section data-background="images/atlas-ibl.jpg">
-                    <div class="overlay-style">
-                        <h3>CoA vs. other approaches</h3>
-                            <hr />
-                        <table class="medium">
-                            <thead>
-                                <tr>
-                                    <th>Approach</th>
-                                    <th>Problem</th>
-                                    <th>CoA Advantage</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><strong>RAG</strong></td>
-                                    <td>Retrieval misses critical context</td>
-                                    <td>Sequential scan = 100% document coverage</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Full-Context</strong></td>
-                                    <td>Token cost scales quadratically</td>
-                                    <td>Linear-like scaling reduces cost</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Truncation</strong></td>
-                                    <td>Drops potentially critical content</td>
-                                    <td>Nothing is discarded (solves the "lost-in-the-middle" problem)</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <p class="footnote">Zhang et al., "Chain of Agents: LLMs Collaborating on Long-Context Tasks", arXiv:2406.02818 (2024)</p>
-
-                    </div>
-                </section>
-
-                <!-- SLIDE 33: Demo -->
-                <section data-background="images/cms2.jpg">
-                    <h1>Demo</h1>
-                </section>
-
-            </section>
-            <!-- END SECTION G -->
-
-            <!-- ============================================================ -->
             <!-- SECTION H: PATTERN 5 - MAKER                                -->
             <!-- ============================================================ -->
             <section>
@@ -754,7 +721,7 @@
                     <div class="overlay-style">
                         <h2>MAKER</h2>
                         <p>A million steps. Zero errors.</p>
-                        <p class="footnote" style="margin-top: 1em; color: #ccc;">Meyerson et al., arXiv:2511.09030</p>
+                            <p class="footnote">Meyerson et al., "Solving a Million-Step LLM Task with Zero Errors", arXiv:2511.09030 (2025)
                     </div>
                 </section>
 
@@ -788,7 +755,7 @@
                         <p>Maximal Agentic decomposition, first-to-ahead-by-K Error correction, and Red-flagging</p>
                         <hr />
                         <p>The paper shows that the cost of solving a massive task <span class="highlight">scales log-linearly</span> ($\Theta(s \ln s)$) with the number of steps ($s$).</p><p>This means we don't have to wait for LLMs to get inherently smarter to solve complex problems; we can achieve "superintelligence" by splitting the problem into micro pieces and heavily correcting the errors along the way.</p>
-                        <p class="footnote" style="text-align: center;">¹Meyerson et al., "Solving a Million-Step LLM Task with Zero Errors", arXiv:2511.09030 (2025)
+                        <p class="footnote">¹Meyerson et al., "Solving a Million-Step LLM Task with Zero Errors", arXiv:2511.09030 (2025)
                             </p>
                     </div>
                 </section>
@@ -803,7 +770,7 @@
                         <div class="img-backdrop">
                             <img class="standard-small" src="graphics/03-maker.excalidraw.png" />
                         </div>
-                            <p class="footnote" style="text-align: center;">Meyerson et al., "Solving a Million-Step LLM Task with Zero Errors", arXiv:2511.09030 (2025)
+                            <p class="footnote">Meyerson et al., "Solving a Million-Step LLM Task with Zero Errors", arXiv:2511.09030 (2025)
                             </p>
                     </div>
                 </section>
