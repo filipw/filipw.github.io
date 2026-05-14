@@ -163,9 +163,15 @@
                 <!-- SLIDE 7: SLMs Are Better Than You Think -->
                 <section data-background="images/quantum-computer.jpg">
                     <div class="overlay-style">
+                         <div class="column-container">
+                            <div class="col-50">
                         <h3>SLMs are better than you think</h3>
-                        <hr />
-                        <p>The "bigger" is no longer "better". Specialized SLMs now match frontier models on specific agentic tasks, and the bottleneck is <span class="highlight">orchestration and I/O</span> - not raw intelligence.¹</p>
+<p>The "bigger" is no longer "better". Specialized SLMs now match frontier models on specific agentic tasks, and the bottleneck is <span class="highlight">orchestration and I/O</span> - not raw intelligence.¹</p>
+                            </div>
+                            <div class="col-50 img-backdrop" style="margin-left: 1em;">
+                                    <img class="standard" src="graphics/slm-fine-tuning-chart.excalidraw.png" />
+                            </div>
+                        </div>
                         <p class="footnote" style="text-align: center;">¹ Sharma &amp; Mehta, "Small Language Models for Agentic Systems", arXiv:2510.03847 (2025)</p>
                     </div>
                 </section>
@@ -579,12 +585,12 @@
                         <h3>Chain of Agents - Computational Efficiency</h3>
                         <hr />
                         <div class="column-container">
-                            <div class="col-33">
+                            <div class="col-50">
                                 <div class="img-backdrop">
                                     <img class="standard" src="graphics/complexity.excalidraw.png" />
                                 </div>
                             </div>
-                            <div class="col-66" style="padding-left: 1em;">
+                            <div class="col-50" style="padding-left: 1em;">
                                 <ul>
                                     <li> → full-context token cost scales quadratically<br/><small>$O(n^2)$, where n is the total number of tokens</small></li>
                                     <li> → in CoA computation scales in linear-like fashion<br/><small>$O(n \times k)$, where n is the total number of tokens and k is the chunk size</small></li>
