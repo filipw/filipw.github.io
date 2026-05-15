@@ -76,25 +76,6 @@
 
 
 
-                <!-- SLIDE 4: Why This Matters (cost at scale) -->
-                <section data-background="images/atlas-ibl.jpg">
-                    <div class="overlay-style">
-                        <h3>The real cost of cloud inference</h3>
-                        <hr />
-                        <div class="column-container">
-                            <div class="col-66">
-                                <ul>
-                                <li>📊 Not all queries are equal </br> <small> → "What is the capital of France?" vs a multi-step reasoning chain.</small></li>
-                                <li>💰 Long context accumulates fast </br> <small> → At just 1,000 queries/day (1 million tokens each), total cost against a frontier model exceeds $10,000+ per day.</small></li>
-                                </ul>
-                            </div>
-                            <div class="col-33 img-backdrop" style="margin-left: 1em;">
-                                    <img class="standard" src="graphics/worried.excalidraw.png" />
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
                                                 <section data-background="images/atlas3.jpg">
                     <div class="overlay-style">
                         <div class="column-container">
@@ -111,6 +92,24 @@
                             </div>
                             <div class="col-50 img-backdrop" style="margin-left: 1em;">
                                 <img class="standard" src="graphics/topo1.excalidraw.png" />
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                                <section data-background="images/atlas-ibl.jpg">
+                    <div class="overlay-style">
+                        <h3>The real cost of cloud inference</h3>
+                        <hr />
+                        <div class="column-container">
+                            <div class="col-66">
+                                <ul>
+                                <li>📊 Not all queries are equal </br> <small> → "What is the capital of France?" vs a multi-step reasoning chain.</small></li>
+                                <li>💰 Long context accumulates fast </br> <small> → At just 1,000 queries/day (1 million tokens each), total cost against a frontier model exceeds $10,000+ per day.</small></li>
+                                </ul>
+                            </div>
+                            <div class="col-33 img-backdrop" style="margin-left: 1em;">
+                                    <img class="standard" src="graphics/worried.excalidraw.png" />
                             </div>
                         </div>
                     </div>
@@ -566,18 +565,11 @@
                     </div>
                 </section>
 
-                <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
-                    <div class="overlay-style">
-                        <h3>Chain of Agents</h3>
-                        <hr />
-                        <div>
-                            <p>Small models process chunks sequentially, passing an <span class="highlight">accumulated knowledge</span>. A powerful model synthesizes the final answer from the combined knowledge.</p>
+                                <section data-background="images/alice-door.jpeg">
+                          <div class="img-backdrop">
+                            <img src="graphics/long-context.excalidraw.png" class="standard" />
                         </div>
-                        <div class="img-backdrop">
-                            <img class="standard-small" src="graphics/04-coa.excalidraw.png" />
-                        </div>
-
-                    </div>
+                    <p class="overlay-style" style="padding: 1% !important;">The long-context problem</p>
                 </section>
 
                 <section data-background="images/alice-door.jpeg">
@@ -598,6 +590,20 @@
                             </div>
                         </div>
                         <p class="footnote" style="text-align: center;">¹ Zhang et al., "Chain of Agents: LLMs Collaborating on Long-Context Tasks", arXiv:2406.02818 (2024)</p>
+                    </div>
+                </section>
+
+                <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
+                    <div class="overlay-style">
+                        <h3>Chain of Agents</h3>
+                        <hr />
+                        <div>
+                            <p>Small models process chunks sequentially, passing an <span class="highlight">accumulated knowledge</span>. A powerful model synthesizes the final answer from the combined knowledge.</p>
+                        </div>
+                        <div class="img-backdrop">
+                            <img class="standard-small" src="graphics/04-coa.excalidraw.png" />
+                        </div>
+
                     </div>
                 </section>
 
@@ -656,24 +662,6 @@
                         <p>Divide the document. Conquer locally. Synthesize in the cloud.</p>
                         <p class="footnote">Narayan et al., "Minions: Cost-efficient Collaboration Between On-device and Cloud Language Models", arXiv:2502.15964 (2025)</p>
                     </div>
-                </section>
-
-                <!-- SLIDE 25: The Long-Context Problem -->
-                <!-- <section data-background="images/alice-door.jpeg">
-                        <h3>The long-context problem</h3>
-                        <hr />
-                        <div class="img-backdrop">
-                            <img src="graphics/long-context.excalidraw.png" class="standard" />
-                        </div>
-                        
-                    </div>
-                </section> -->
-
-                <section data-background="images/alice-door.jpeg">
-                          <div class="img-backdrop">
-                            <img src="graphics/long-context.excalidraw.png" class="standard" />
-                        </div>
-                    <p class="overlay-style" style="padding: 1% !important;">The long-context problem</p>
                 </section>
 
                 <!-- SLIDE 26: Minions -->
