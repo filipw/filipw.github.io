@@ -585,7 +585,7 @@
                             <div class="col-50" style="padding-left: 1em;">
                                 <ul>
                                     <li> → full-context token cost scales quadratically<br/><small>$O(n^2)$, where n is the total number of tokens</small></li>
-                                    <li> → in CoA computation scales in linear-like fashion<br/><small>$O(m \times k^2)$, where m is the total number of steps and k is the chunk size</small></li>
+                                    <li> → in CoA computation scales in linear-like fashion<br/><small>$O(\frac{n}{k} \times k^2)$, where n is the total number of tokens and k is the chunk size</small></li>
                                 </ul>
                             </div>
                         </div>
@@ -730,7 +730,7 @@
                                 <ul>
                                     <li> → 36.6% success after 100 steps</li>
                                     <li> → 0.004% success after 1,000 steps</li>
-                                    <li> → statistically impossible at 1,000,000 steps</li>
+                                    <li> → statistically impossible beyond that</li>
                                 </ul>
                             </div>
                             <div class="col-50">
