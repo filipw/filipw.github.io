@@ -585,7 +585,7 @@
                             <div class="col-50" style="padding-left: 1em;">
                                 <ul>
                                     <li> → full-context token cost scales quadratically<br/><small>$O(n^2)$, where n is the total number of tokens</small></li>
-                                    <li> → in CoA computation scales in linear-like fashion<br/><small>$O(n \times k)$, where n is the total number of tokens and k is the chunk size</small></li>
+                                    <li> → in CoA computation scales in linear-like fashion<br/><small>$O(m \times k^2)$, where m is the total number of steps and k is the chunk size</small></li>
                                 </ul>
                             </div>
                         </div>
@@ -621,11 +621,6 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td><strong>RAG</strong></td>
-                                    <td>Retrieval misses critical context</td>
-                                    <td>Sequential scan = 100% document coverage</td>
-                                </tr>
-                                <tr>
                                     <td><strong>Full-Context</strong></td>
                                     <td>Token cost scales quadratically</td>
                                     <td>Linear-like scaling reduces cost</td>
@@ -634,6 +629,11 @@
                                     <td><strong>Truncation</strong></td>
                                     <td>Drops potentially critical content</td>
                                     <td>Nothing is discarded (solves the "lost-in-the-middle" problem)</td>
+                                </tr>
+                                                                <tr>
+                                    <td><strong>RAG</strong></td>
+                                    <td>Retrieval misses critical context</td>
+                                    <td>Sequential scan = 100% document coverage</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -824,16 +824,16 @@
                                     <td>Complex queries only</td>
                                 </tr>
                                 <tr>
-                                    <td><strong>Minions</strong></td>
-                                    <td>Large document Q&amp;A</td>
-                                    <td>Chunk executor</td>
-                                    <td>Job writer + aggregator</td>
-                                </tr>
-                                <tr>
                                     <td><strong>Chain of Agents</strong></td>
                                     <td>Sequential document tasks</td>
                                     <td>Sequential workers</td>
                                     <td>Final synthesizer</td>
+                                </tr>
+                                                                <tr>
+                                    <td><strong>Minions</strong></td>
+                                    <td>Large document Q&amp;A</td>
+                                    <td>Chunk executor</td>
+                                    <td>Planner + synthesizer</td>
                                 </tr>
                                 <tr>
                                     <td><strong>MAKER</strong></td>
@@ -878,28 +878,6 @@
                     </div>
                                     </div>
                 </section> 
-
-                <!-- SLIDE 42: Security and Robustness -->
-                <!-- <section data-background="images/atlas3.jpg">
-                    <div class="overlay-style">
-                        <h3>Security &amp; robustness considerations</h3>
-                        <ul>
-                            <li class="fragment">🛡️ Routers can be <span class="highlight">fooled by adversarial inputs</span><br />
-                                <small>→ always include output validation as a backstop</small>
-                            </li>
-                            <li class="fragment">🔐 SLMs running locally reduce <span class="highlight">data exfiltration surface</span><br />
-                                <small>→ sensitive documents never leave the device</small>
-                            </li>
-                            <li class="fragment">✅ Validate SLM outputs before acting on them<br />
-                                <small>→ tool calls, schema adherence, domain sanity checks</small>
-                            </li>
-                            <li class="fragment">🔗 Pattern 1 + Pattern 2 in combination<br />
-                                <small>→ pre-inference and post-inference safety nets</small>
-                            </li>
-                        </ul>
-                    </div>
-                </section> -->
-
             </section>
             <!-- END SECTION I -->
 
