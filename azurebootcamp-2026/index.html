@@ -216,7 +216,7 @@
                 <section data-background-color="#fff">
                     <img src="graphics/slm-pool.excalidraw.png" style="min-height: auto" />
                 </section>
-
+<!-- 
 <section data-background="images/atlas-ibl.jpg">
     <div class="overlay-style">
         <h3>SLM Landscape</h3>
@@ -276,7 +276,7 @@
             </tbody>
         </table>
     </div>
-</section>
+</section> -->
 
                 <section data-background="images/michael-dziedzic-nbW-kaz2BlE-unsplash.jpg">
                     <div class="img-backdrop">
@@ -308,7 +308,7 @@
                         <div class="column-container" style="align-items: flex-start;">
                             <div class="col-50">
                                 <h3>Old mindset</h3>
-                                <blockquote> Which powerful <span class="highlight">cloud model</span> should I use?</blockquote>
+                                <blockquote> What is the <span class="highlight">most powerful model</span> I can use for this task?</blockquote>
                             </div>
                             <div class="col-50" style="margin-left: 1em;">
                                 <h3>New mindset</h3>
@@ -423,16 +423,16 @@
                         <div class="column-container">
                             <div class="col-50">
                                 <ul>
-                                    <li class="fragment">📊 Self-reported score<br /><small>SLM appends CONFIDENCE: N (1-10)</small></li>
-                                    <li class="fragment">🕵️ Secondary verifier<br /><small>two-stage output adjudication</small></li>
-                                    <li class="fragment">🧑‍💻 Human-in-the-loop<br /><small>manual approve/deny queues</small></li>
+                                    <li class="fragment">📊 Uncertainty threshold<br /><small> → could be as simple as a self reported score</small></li>
+                                    <li class="fragment">🕵️ Secondary verifier<br /><small> → additional reviewer agent, typically also an SLM</small></li>
+                                    <li class="fragment">🧑‍💻 Human-in-the-loop<br /><small> → manual approve/deny queues</small></li>
                                 </ul>
                             </div>
                             <div class="col-50">
                                 <ul>
-                                    <li class="fragment">🔬 Schema validation<br /><small>check output structure</small></li>
-                                    <li class="fragment">📐 Semantic similarity<br /><small>vs. known-good responses</small></li>
-                                    <li class="fragment">🛡️ Policy filters<br /><small>block high policy-risk scores</small></li>
+                                    <li class="fragment">🔬 Schema validation<br /><small> → check output structure</small></li>
+                                    <li class="fragment">📐 Semantic similarity<br /><small> → cosine similarity against known-good responses</small></li>
+                                    <li class="fragment">🛡️ Policy filters<br /><small> → multi-stage filtering of high policy-risk scores</small></li>
                                 </ul>
                             </div>
                         </div>
@@ -527,14 +527,14 @@
                             <div class="col-50">
                                 <ul>
                                     <li class="fragment">🧠 (Small) Language Model<br /><small> → Highest capacity approach but with greater operational overhead.</small></li>
-                                    <li class="fragment">🤖 BERT Classifier<br /><small> → A classifier model utilizing fine tuning data to capture deep contextual intent</small></li>
+                                    <li class="fragment">🤖 BERT Classifier<br /><small> → A text classification model utilizing fine tuning data to capture deep contextual intent</small></li>
                                    
                                 </ul>
                             </div>
                             <div class="col-50">
                                 <ul>
-                                     <li class="fragment">⚖️ Similarity-Weighted Ranking<br /><small> → Cosine similarity against historical training queries to determine routing</small></li>
-                                    <li class="fragment">📉 Matrix Factorization<br /><small> → Learns latent features between queries and models</small></li>
+                                     <li class="fragment">⚖️ Similarity-Weighted Ranking<br /><small> → Cosine similarity against historical training queries</small></li>
+                                    <li class="fragment">📉 Matrix Factorization<br /><small> → Similar to classic recommendation algorithms</small></li>
                                 </ul>
                             </div>
                         </div>
@@ -801,7 +801,7 @@
                 <section data-background="images/atlas-ibl.jpg">
                     <div class="overlay-style">
                         <h3>Pattern comparison</h3>
-                        <table class="medium">
+                        <table class="medium left-aligned">
                             <thead>
                                 <tr>
                                     <th>Pattern</th>
@@ -812,53 +812,40 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td><strong>SLM-Default Fallback</strong></td>
+                                    <!-- emoji for each -->
+                                    <td> 🟢 SLM-Default, LLM-Fallback</td>
                                     <td>General queries, cost reduction</td>
                                     <td>Default responder</td>
                                     <td>Fallback for hard queries</td>
                                 </tr>
                                 <tr>
-                                    <td><strong>RouteLLM</strong></td>
+                                    <td> 🔀 RouteLLM</td>
                                     <td>High-volume, predictable traffic</td>
                                     <td>Simple queries only</td>
                                     <td>Complex queries only</td>
                                 </tr>
                                 <tr>
-                                    <td><strong>Chain of Agents</strong></td>
+                                    <td> 🔗 Chain of Agents</td>
                                     <td>Sequential document tasks</td>
                                     <td>Sequential workers</td>
                                     <td>Final synthesizer</td>
                                 </tr>
                                                                 <tr>
-                                    <td><strong>Minions</strong></td>
+                                    <td> 🧑‍🤝‍🧑 Minions</td>
                                     <td>Large document Q&amp;A</td>
-                                    <td>Chunk executor</td>
+                                    <td>Data extractor</td>
                                     <td>Planner + synthesizer</td>
                                 </tr>
                                 <tr>
-                                    <td><strong>MAKER</strong></td>
+                                    <td> 🛠️ MAKER</td>
                                     <td>High-reliability long tasks</td>
                                     <td>Micro-task executors</td>
-                                    <td>Orchestrator + arbitrator</td>
+                                    <td>Task decomposer</td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
                 </section>
-
-                <!-- SLIDE 41: Which Pattern Should I Start With? -->
-                <!-- <section data-background="images/alice-door.jpeg">
-                    <div class="overlay-style">
-                        <h3>Which pattern to start with?</h3>
-                        <hr />
-                        <ul>
-                            <li class="fragment"><strong>Start here:</strong> SLM-Default, LLM-Fallback - drop-in improvement, no training required.</li>
-                            <li class="fragment"><strong>For high-volume workloads:</strong> Add a RouteLLM router for pre-inference routing at predictable, large-scale traffic.</li>
-                            <li class="fragment"><strong>For document-heavy tasks:</strong> Choose Minions (parallel extraction) or Chain of Agents (sequential reasoning) based on task shape.</li>
-                            <li class="fragment"><strong>For reliability at scale:</strong> Apply MAKER decomposition principles when correctness is non-negotiable.</li>
-                        </ul>
-                    </div>
-                </section> -->
 
                                                  <section data-background="images/maxime-valcarce-mAj8xn5zXsk-unsplash.jpg">
                                     <div class="overlay-style">

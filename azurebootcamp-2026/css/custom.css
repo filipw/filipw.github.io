@@ -356,7 +356,7 @@ span.highlight/*, span.mjx-math*/ {
 }
 
 .reveal table.left-aligned td, .reveal table.left-aligned th {
-  text-align: left;
+  text-align: left !important;
 }
 
 .reveal section img.icon {
