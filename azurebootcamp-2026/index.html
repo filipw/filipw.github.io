@@ -97,14 +97,14 @@
                     </div>
                 </section>
 
-                                <section data-background="images/atlas-ibl.jpg">
-                    <div class="overlay-style">
+                <section data-background="images/copilot-pricing.png" data-state="bg-top-left">
+<div class="overlay-style black-overlay-style fragment">
                         <h3>The real cost of cloud inference</h3>
                         <hr />
                         <div class="column-container">
                             <div class="col-66">
                                 <ul>
-                                <li>📊 Not all queries are equal </br> <small> → "What is the capital of France?" vs a multi-step reasoning chain.</small></li>
+                                <li>📊 Not all requests are equal </br> <small> → "What is the capital of France?" vs. a multi-step, agentic reasoning chain.</small></li>
                                 <li>💰 Long context accumulates fast </br> <small> → At just 1,000 queries/day (1 million tokens each), total cost against a frontier model exceeds $10,000+ per day.</small></li>
                                 </ul>
                             </div>
@@ -341,31 +341,31 @@
                                     <td>1</td>
                                     <td>SLM-Default, LLM-Fallback</td>
                                     <td>cascade with confidence gate</td>
-                                    <td>arXiv:2510.03847</td>
+                                    <td><a href="https://arxiv.org/abs/2510.03847" target="_blank">arXiv:2510.03847</a></td>
                                 </tr>
                                 <tr class="fragment">
                                     <td>2</td>
                                     <td>Predictive Router (RouteLLM)</td>
                                     <td>route before generation</td>
-                                    <td>arXiv:2406.18665</td>
+                                    <td><a href="https://arxiv.org/abs/2406.18665" target="_blank">arXiv:2406.18665</a></td>
                                 </tr>
                                 <tr class="fragment">
                                     <td>3</td>
                                     <td>Chain of Agents</td>
                                     <td>sequential reasoning across document segments</td>
-                                    <td>arXiv:2406.02818</td>
+                                    <td><a href="https://arxiv.org/abs/2406.02818" target="_blank">arXiv:2406.02818</a></td>
                                 </tr>
                                 <tr class="fragment">
                                     <td>4</td>
                                     <td>Minions</td>
                                     <td>decompose document, execute locally, synthesize in cloud</td>
-                                    <td>arXiv:2502.15964</td>
+                                    <td><a href="https://arxiv.org/abs/2502.15964" target="_blank">arXiv:2502.15964</a></td>
                                 </tr>
                                 <tr class="fragment">
                                     <td>5</td>
                                     <td>MAKER</td>
                                     <td>massively decomposed processes with error correction</td>
-                                    <td>arXiv:2511.09030</td>
+                                    <td><a href="https://arxiv.org/abs/2511.09030" target="_blank">arXiv:2511.09030</a></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -583,8 +583,8 @@
                             </div>
                             <div class="col-50" style="padding-left: 1em;">
                                 <ul>
-                                    <li> → full-context token cost scales quadratically<br/><small>$O(n^2)$, where n is the total number of tokens</small></li>
-                                    <li> → in CoA computation scales in linear-like fashion<br/><small>$O(\frac{n}{k} \times k^2)$, where n is the total number of tokens and k is the chunk size</small></li>
+                                    <li>💰 full-context token cost scales quadratically<br/><small style="vertical-align: baseline;"> → $O(n^2)$, where n is the total number of tokens</small><br/><small> → in a  transformer model, the self-attention mechanism requires every token to calculate an attention score with every other token.</small></li>
+                                    <li>⚡️ in CoA computation scales in linear-like fashion<br/><small> → $O(\frac{n}{k} \times k^2)$, where n is the total number of tokens and k is the chunk size</small></li>
                                 </ul>
                             </div>
                         </div>
@@ -747,7 +747,7 @@
                     <div class="overlay-style">
                         <p>Maximal Agentic decomposition, first-to-ahead-by-K Error correction, and Red-flagging</p>
                         <hr />
-                        <p>The paper shows that the cost of solving a massive task <span class="highlight">scales log-linearly</span> ($\Theta(s \ln s)$) with the number of steps ($s$).</p><p>This means we don't have to wait for LLMs to get inherently smarter to solve complex problems; we can achieve "superintelligence" by splitting the problem into micro pieces and heavily correcting the errors along the way.</p>
+                        <p>Key insight: we don't have to wait for LLMs to get inherently smarter to solve complex problems.<br/> We can achieve "superintelligence" by <span class="highlight">splitting the problem</span> into micro pieces and <span class="highlight">heavily correcting the errors</span> along the way.</p>
                         <p class="footnote">¹Meyerson et al., "Solving a Million-Step LLM Task with Zero Errors", arXiv:2511.09030 (2025)
                             </p>
                     </div>
