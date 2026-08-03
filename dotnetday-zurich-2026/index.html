@@ -1,0 +1,953 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>.NET Agents & Hybrid AI - Bridging Local and Cloud Models with Agent Framework</title>
+    <meta name="description" content="">
+    <meta name="author" content="Filip W">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <script src="//code.jquery.com/jquery-1.8.0.js"></script>
+    <script src="//code.jquery.com/ui/1.8.23/jquery-ui.js"></script>
+    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/js/bootstrap.min.js"></script>
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/css/bootstrap-combined.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/default.min.css">
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/simple.css" id="theme">
+    <link rel="stylesheet" href="css/monokai_sublime.css" />
+    <link rel="stylesheet" href="css/custom.css" />
+    <script src="fsharp.formatting/styles/tips.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <script>
+        if (window.location.search.match(/print-pdf/gi)) {
+            var link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = 'css/print/pdf.css';
+            document.getElementsByTagName('head')[0].appendChild(link);
+        }
+    </script>
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+    <style type="text/css">
+    </style>
+</head>
+
+<body>
+    <div class="reveal">
+        <header
+            style="position: absolute;top: 50px; left: 100px; z-index:500; font-size:100px;background-color: rgba(0,0,0,0.5)">
+        </header>
+        <div class="slides">
+
+            <!-- ============================================================ -->
+            <!-- SLIDE 1: Title                                                -->
+            <!-- ============================================================ -->
+            <section data-background="images/machinelearning.jpg">
+                <div class="col overlay-style" style="padding: 0 !important">
+                    <h1 style="font-size: 1.8em; background: none; margin-bottom: 0;">
+                        .NET Agents & Hybrid AI<br />
+                        <small style="font-size: 0.45em; line-height: 2em;">Bridging Local and Cloud Models with Agent Framework</small>
+                    </h1>
+                    <p style="margin-top: 0; padding-bottom: 20px;">
+                        <small>
+                            <a href="https://strathweb.com">strathweb.com</a> •
+                            <a href="https://bsky.app/profile/@filipw.strathweb.com">@filipw.strathweb.com</a> •
+                            <a href="https://github.com/filipw">github.com/filipw</a> •
+                            <span>Filip W</span>
+                        </small>
+                    </p>
+                </div>
+            </section>
+
+                        <section data-background-color="#fff">
+                <img src="images/sponsors.png" style="min-height: auto" />
+            </section>
+
+
+            <!-- ============================================================ -->
+            <!-- SECTION A: THE PROBLEM                                        -->
+            <!-- ============================================================ -->
+            <section>
+
+
+
+                                                <section data-background="images/atlas3.jpg">
+                    <div class="overlay-style">
+                        <div class="column-container">
+                            <div class="col-50">
+                                <h3>Cloud LLMs</h3>
+                                <ul>
+                                    <li>✅ Reasoning, complex tasks</li>
+                                    <li>✅ Broad knowledge</li>
+                                    <li>✅ Long context windows</li>
+                                    <li>❌ Expensive at scale</li>
+                                    <li>❌ Latency, round-trips</li>
+                                    <li>❌ Privacy concerns</li>
+                                </ul>
+                            </div>
+                            <div class="col-50 img-backdrop" style="margin-left: 1em;">
+                                <img class="standard" src="graphics/topo1.excalidraw.png" />
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-background="images/copilot-pricing.png" data-state="bg-top-left">
+<div class="overlay-style black-overlay-style fragment">
+                        <h3>The real cost of cloud inference</h3>
+                        <hr />
+                        <div class="column-container">
+                            <div class="col-66">
+                                <ul>
+                                <li>📊 Not all requests are equal </br> <small> → "What is the capital of France?" vs. a multi-step, agentic reasoning chain.</small></li>
+                                <li>💰 Long context accumulates fast </br> <small> → At just 1,000 queries/day (1 million tokens each), total cost against a frontier model exceeds $10,000+ per day.</small></li>
+                                </ul>
+                            </div>
+                            <div class="col-33 img-backdrop" style="margin-left: 1em;">
+                                    <img class="standard" src="graphics/worried.excalidraw.png" />
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                                                                <section data-background="images/atlas3.jpg">
+                    <div class="overlay-style">
+                        <div class="column-container">
+                            <div class="col-66">
+                                <h3>On-Device SLMs</h3>
+                                <ul>
+                                    <li>✅ Fast &amp; cheap (for the system owner)</li>
+                                    <li>✅ Private, offline</li>
+                                    <li>✅ Low latency</li>
+                                    <li>❌ Limited reasoning</li>
+                                    <li>❌ Small context window</li>
+                                    <li>❌ Error-prone on complex tasks</li>
+                                </ul>
+                            </div>
+                            <div class="col-33 img-backdrop" style="margin-left: 1em;">
+                                <img class="standard" src="graphics/topo2.excalidraw.png" />
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                                <section data-background="images/atlas-ibl.jpg">
+                    <div class="overlay-style">
+                        <p>
+                            No matter what you choose
+                        </p>
+                        <h2 class="r-fit-text">you lose, right?</h2>
+                    </div>
+                </section>
+
+
+            </section>
+            <!-- END SECTION A -->
+
+            <!-- ============================================================ -->
+            <!-- SECTION B: THE SLM LANDSCAPE                                 -->
+            <!-- ============================================================ -->
+            <section>
+
+                <!-- SLIDE 6: Section Header -->
+                <section data-background="images/compass.jpg">
+                    <h1>State of SLMs</h1>
+                </section>
+
+                <!-- SLIDE 7: SLMs Are Better Than You Think -->
+                <section data-background="images/quantum-computer.jpg">
+                    <div class="overlay-style">
+                         <div class="column-container">
+                            <div class="col-50">
+                        <h3>SLMs are better than you think</h3>
+<p>The "bigger" is no longer "better". Specialized SLMs now match frontier models on specific agentic tasks, and the bottleneck is <span class="highlight">orchestration and I/O</span> - not raw intelligence.¹</p>
+                            </div>
+                            <div class="col-50 img-backdrop" style="margin-left: 1em;">
+                                    <img class="standard" src="graphics/slm-fine-tuning-chart.excalidraw.png" />
+                            </div>
+                        </div>
+                        <p class="footnote" style="text-align: center;">¹ Sharma &amp; Mehta, "Small Language Models for Agentic Systems", arXiv:2510.03847 (2025)</p>
+                    </div>
+                </section>
+
+                <section data-background="images/maxime-valcarce-mAj8xn5zXsk-unsplash.jpg">
+    <div class="overlay-style">
+        <h2>Where SLMs Excel</h2>
+        <div class="column-container">
+            <div class="col">
+                <ul>
+                    <li class="fragment">🤖
+                        Agentic Workflows
+                        <br />
+                        <small> → Ideal for tool calling or simple orchestrations</small>
+                    </li>
+                    <li class="fragment">📝
+                        Data Extraction
+                        <br />
+                        <small> → Useful for finding information and scanning documents</small>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col">
+                <ul>
+                    <li class="fragment">🎯
+                        Task Specialization
+                        <br />
+                        <small> → Can match frontier models on specific application-layer workloads, especially after fine-tuning</small>
+                    </li>
+                    <li class="fragment">📱
+                        Edge Deployment
+                        <br />
+                        <small> → Perfect for local, privacy-preserving, and low-latency environments</small>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+                <section data-background-color="#fff">
+                    <img src="graphics/slm-pool.excalidraw.png" style="min-height: auto" />
+                </section>
+<!-- 
+<section data-background="images/atlas-ibl.jpg">
+    <div class="overlay-style">
+        <h3>SLM Landscape</h3>
+        <table class="small">
+            <thead>
+                <tr>
+                    <th>Model / Framework</th>
+                    <th>Size</th>
+                    <th>Platform</th>
+                    <th>Strengths</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Gemini Nano 4 (Android AICore)</td>
+                    <td>E2B & E4B</td>
+                    <td>Android</td>
+                    <td>System-level intent routing, native multimodal</td>
+                </tr>
+                <tr>
+                    <td>Apple Intelligence</td>
+                    <td>~3B</td>
+                    <td>iOS/macOS</td>
+                    <td>Semantic indexing, deep app-intent integration</td>
+                </tr>
+                
+                <tr>
+                    <td>Phi-4-mini</td>
+                    <td>3.8B</td>
+                    <td>open</td>
+                    <td>Function calling, advanced logic and math reasoning</td>
+                </tr>
+                <tr>
+                    <td>Qwen 3.5</td>
+                    <td>0.6B-8B</td>
+                    <td>open</td>
+                        <td>Lightweight multimodal, vast multilingual support, coding</td>
+                </tr>
+                <tr>
+                    <td>Llama 4 (Scout Slim)</td>
+                    <td>1B-17B</td>
+                    <td>open</td>
+                    <td>Native multimodality, image/text understanding, tool use</td>
+                </tr>
+                <tr>
+                    <td>Ministral</td>
+                    <td>3B-8B</td>
+                    <td>open</td>
+                    <td>Edge optimized, 128K context, sliding-window attention</td>
+                </tr>
+                <tr>
+                    <td>DeepSeek-R1-Distill</td>
+                    <td>1.5B-8B</td>
+                    <td>open</td>
+                    <td>Reasoning via distillation, agent workflow optimization</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section> -->
+
+                <section data-background="images/michael-dziedzic-nbW-kaz2BlE-unsplash.jpg">
+                    <div class="img-backdrop">
+
+                        <img src="graphics/slm-run.excalidraw.png" class="standard" style="max-height: 600px;" />
+                    </div>
+                    <p class="overlay-style" style="padding: 1% !important;">SLMs can ran on a wide range of host
+                        runtimes
+                    </p>
+                </section>
+
+            </section>
+            <!-- END SECTION B -->
+
+            <!-- ============================================================ -->
+            <!-- SECTION C: INTRODUCING HYBRID AI                             -->
+            <!-- ============================================================ -->
+            <section>
+
+                <!-- SLIDE 10: Section Header -->
+                <section data-background="images/atlas-barrel.jpg">
+                    <h1>Hybrid AI</h1>
+                </section>
+
+                <!-- SLIDE 11: The Paradigm Shift -->
+                <section data-background="images/alice-door.jpeg">
+                    <div class="overlay-style">
+                        
+                        <div class="column-container" style="align-items: flex-start;">
+                            <div class="col-50">
+                                <h3>Old mindset</h3>
+                                <blockquote> What is the <span class="highlight">most powerful model</span> I can use for this task?</blockquote>
+                            </div>
+                            <div class="col-50" style="margin-left: 1em;">
+                                <h3>New mindset</h3>
+
+                                <blockquote>How do I orchestrate the <span class="highlight">smartest workflow</span> for this task?</blockquote>
+                            </div>
+                        </div>
+                        <div>
+                            <hr />
+                            Optimize simultaneously for latency, cost, privacy, and reliability.
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SLIDE 12: Patterns agenda -->
+                <section data-background="images/atlas3.jpg">
+                    <div class="overlay-style">
+                        <h3>Five hybrid AI patterns</h3>
+                        <table class="medium">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Pattern</th>
+                                    <th>Description</th>
+                                    <th>Paper</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="fragment">
+                                    <td>1</td>
+                                    <td>SLM-Default, LLM-Fallback</td>
+                                    <td>cascade with confidence gate</td>
+                                    <td><a href="https://arxiv.org/abs/2510.03847" target="_blank">arXiv:2510.03847</a></td>
+                                </tr>
+                                <tr class="fragment">
+                                    <td>2</td>
+                                    <td>Predictive Router (RouteLLM)</td>
+                                    <td>route before generation</td>
+                                    <td><a href="https://arxiv.org/abs/2406.18665" target="_blank">arXiv:2406.18665</a></td>
+                                </tr>
+                                <tr class="fragment">
+                                    <td>3</td>
+                                    <td>Chain of Agents</td>
+                                    <td>sequential reasoning across document segments</td>
+                                    <td><a href="https://arxiv.org/abs/2406.02818" target="_blank">arXiv:2406.02818</a></td>
+                                </tr>
+                                <tr class="fragment">
+                                    <td>4</td>
+                                    <td>Minions</td>
+                                    <td>decompose document, execute locally, synthesize in cloud</td>
+                                    <td><a href="https://arxiv.org/abs/2502.15964" target="_blank">arXiv:2502.15964</a></td>
+                                </tr>
+                                <tr class="fragment">
+                                    <td>5</td>
+                                    <td>MAKER</td>
+                                    <td>massively decomposed processes with error correction</td>
+                                    <td><a href="https://arxiv.org/abs/2511.09030" target="_blank">arXiv:2511.09030</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+            </section>
+            <!-- END SECTION C -->
+
+            <!-- ============================================================ -->
+            <!-- SECTION D: PATTERN 1 - SLM-Default, LLM-Fallback            -->
+            <!-- ============================================================ -->
+            <section>
+
+                <!-- SLIDE 14: Section Header -->
+                <section data-background="images/compass.jpg">
+                    <div class="overlay-style">
+                    <h2>SLM-Default, LLM-Fallback</h2>
+                    <p>Route cheap, escalate smart</p>
+                    <p class="footnote">Sharma &amp; Mehta, "Small Language Models for Agentic Systems", arXiv:2510.03847</p>
+                    </div>
+                </section>
+
+                <!-- SLIDE 15: The Cascade Concept -->
+                                 <section data-background="images/michael-dziedzic-nbW-kaz2BlE-unsplash.jpg">
+                    <div class="overlay-style">
+                        <h3>The "Cascade" concept</h3>
+                        <hr />
+                        <div>
+                            <p>The query is handled by the SLM first. If it fails to generate a viable answer (e.g, due to complexity or low confidence), the system <span class="highlight">safely falls back to a more capable, remote LLM</span> to fulfill the request.</p>
+                        </div>
+                        <div class="img-backdrop" style="margin-bottom: 20px;">
+                        <img class="standard" src="graphics/01-slm-default-llm-fallback.excalidraw.png" />
+                        </div>
+                        <p class="footnote">Sharma &amp; Mehta, "Small Language Models for Agentic Systems", arXiv:2510.03847</p>
+
+
+                    </div>
+                </section>
+
+                <section data-background="images/atlas-ibl.jpg">
+                    <div class="overlay-style">
+                        <p>
+                            But how do we know when the SLM's answer
+                        </p>
+                        <h2 class="r-fit-text">is not good enough?</h2>
+                    </div>
+                </section>
+
+                <!-- SLIDE 16: The Confidence Gate -->
+<section data-background="images/alice-door.jpeg">
+                    <div class="overlay-style">
+                        <h3>The confidence gate</h3>
+                        <hr />
+                        <div class="column-container">
+                            <div class="col-50">
+                                <ul>
+                                    <li class="fragment">📊 Uncertainty threshold<br /><small> → could be as simple as a self reported score</small></li>
+                                    <li class="fragment">🕵️ Secondary verifier<br /><small> → additional reviewer agent, typically also an SLM</small></li>
+                                    <li class="fragment">🧑‍💻 Human-in-the-loop<br /><small> → manual approve/deny queues</small></li>
+                                </ul>
+                            </div>
+                            <div class="col-50">
+                                <ul>
+                                    <li class="fragment">🔬 Schema validation<br /><small> → check output structure</small></li>
+                                    <li class="fragment">📐 Semantic similarity<br /><small> → cosine similarity against known-good responses</small></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SLIDE 17: Architecture -->
+
+
+                <!-- SLIDE 18: Demo -->
+                <section data-background="images/cms2.jpg">
+                    <h1>Demo</h1>
+                </section>
+
+            </section>
+            <!-- END SECTION D -->
+
+            <!-- ============================================================ -->
+            <!-- SECTION E: PATTERN 2 - RouteLLM (Predictive Router)         -->
+            <!-- ============================================================ -->
+            <section>
+
+                <!-- SLIDE 20: Section Header -->
+                <section data-background="images/compass.jpg">
+                    <div class="overlay-style">
+                        <h2>Predictive Router (RouteLLM)</h2>
+                        <p>Decide before you generate</p>
+                        <p class="footnote" style="margin-top: 1em; color: #ccc;">Ong et al., RouteLLM, arXiv:2406.18665, ICLR 2025</p>
+                    </div>
+                </section>
+
+                <section data-background="images/atlas3.jpg">
+                    <div class="overlay-style">
+                        <p>The router's responsibility is <span class="highlight">intent classification</span> and <span class="highlight">complexity assessment</span>. It dynamically routes it to either a local worker or a remote worker based on predefined rules.</p>
+                        <div class="img-backdrop">
+                            <img class="standard" src="graphics/02-router-agent.excalidraw.png" />
+                        </div>
+                    </div>
+                </section>
+
+                                <section data-background="images/alice-door.jpeg">
+                    <div class="overlay-style">
+                        <h3>Router vs Cascade Pattern</h3>
+                        <table class="medium">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Cascade - Reactive</th>
+                                    <th>Router - Proactive</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Strategy</strong></td>
+                                    <td>Generate, then evaluate</td>
+                                    <td>Predict, then route</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>When routing?</strong></td>
+                                    <td>After SLM responds</td>
+                                    <td>Before any generation</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>SLM always runs?</strong></td>
+                                    <td>Yes (even for hard queries)</td>
+                                    <td>No - skipped if predicted hard</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Training required?</strong></td>
+                                    <td>Maybe - but works zero-shot</td>
+                                    <td>Maybe - router trained on preference data</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                                <section data-background="images/atlas-ibl.jpg">
+                    <div class="overlay-style">
+                        <p>
+                            You do not need a large model to make a
+                        </p>
+                        <h2 class="r-fit-text">smart routing decision</h2>
+                    </div>
+                </section>
+
+<section data-background="images/atlas-ibl.jpg">
+                    <div class="overlay-style">
+                        <h3>Router architecture</h3>
+                        <hr />
+                        <div class="column-container">
+                            <div class="col-50">
+                                <ul>
+                                    <li class="fragment">🧠 (Small) Language Model<br /><small> → Highest capacity approach but with greater operational overhead.</small></li>
+                                    <li class="fragment">🤖 BERT Classifier<br /><small> → A text classification model utilizing fine tuning data to capture deep contextual intent</small></li>
+                                   
+                                </ul>
+                            </div>
+                            <div class="col-50">
+                                <ul>
+                                     <li class="fragment">⚖️ Similarity-Weighted Ranking<br /><small> → Cosine similarity against historical training queries</small></li>
+                                    <li class="fragment">📉 Matrix Factorization<br /><small> → Similar to classic recommendation algorithms</small></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <p class="footnote">¹ Ong et al., "RouteLLM: Learning to Route LLMs with Preference Data", arXiv:2406.18665, ICLR 2025</p>
+                    </div>
+                </section>
+
+                                <section data-background="images/cms2.jpg">
+                    <h1>Demo</h1>
+                </section>
+
+            </section>
+            <!-- END SECTION E -->
+
+         
+
+            <!-- ============================================================ -->
+            <!-- SECTION G: PATTERN 4 - Chain of Agents                      -->
+            <!-- ============================================================ -->
+            <section>
+
+                <!-- SLIDE 29: Section Header -->
+<section data-background="images/compass.jpg">
+                    <div class="overlay-style">
+                        <h2>Chain of Agents</h2>
+                        <p>Sequential reasoning across document segments</p>
+                        <p class="footnote">Zhang et al., "Chain of Agents: LLMs Collaborating on Long-Context Tasks", arXiv:2406.02818 (2024)</p>
+                    </div>
+                </section>
+
+                                <section data-background="images/alice-door.jpeg">
+                          <div class="img-backdrop">
+                            <img src="graphics/long-context.excalidraw.png" class="standard" />
+                        </div>
+                    <p class="overlay-style" style="padding: 1% !important;">The long-context problem</p>
+                </section>
+
+                <section data-background="images/alice-door.jpeg">
+                    <div class="overlay-style">
+                        <h3>Chain of Agents - Computational Efficiency</h3>
+                        <hr />
+                        <div class="column-container">
+                            <div class="col-50">
+                                <div class="img-backdrop">
+                                    <img class="standard" src="graphics/complexity.excalidraw.png" />
+                                </div>
+                            </div>
+                            <div class="col-50" style="padding-left: 1em;">
+                                <ul>
+                                    <li>💰 full-context token cost scales quadratically<br/><small style="vertical-align: baseline;"> → $O(n^2)$, where n is the total number of tokens</small><br/><small> → in a  transformer model, the self-attention mechanism requires every token to calculate an attention score with every other token.</small></li>
+                                    <li>⚡️ in CoA computation scales in linear-like fashion<br/><small> → $O(\frac{n}{k} \times k^2)$, where n is the total number of tokens and k is the chunk size</small></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <p class="footnote" style="text-align: center;">¹ Zhang et al., "Chain of Agents: LLMs Collaborating on Long-Context Tasks", arXiv:2406.02818 (2024)</p>
+                    </div>
+                </section>
+
+                <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
+                    <div class="overlay-style">
+                        <h3>Chain of Agents</h3>
+                        <hr />
+                        <div>
+                            <p>Small models process chunks sequentially, passing an <span class="highlight">accumulated knowledge</span>. A powerful model synthesizes the final answer from the combined knowledge.</p>
+                        </div>
+                        <div class="img-backdrop">
+                            <img class="standard-small" src="graphics/04-coa.excalidraw.png" />
+                        </div>
+
+                    </div>
+                </section>
+
+                <section data-background="images/atlas-ibl.jpg">
+                    <div class="overlay-style">
+                        <h3>Chain of Agents vs. other approaches</h3>
+                            <hr />
+                        <table class="medium">
+                            <thead>
+                                <tr>
+                                    <th>Approach</th>
+                                    <th>Problem</th>
+                                    <th>CoA Advantage</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Full-Context</strong></td>
+                                    <td>Token cost scales quadratically</td>
+                                    <td>Linear-like scaling reduces cost</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Truncation</strong></td>
+                                    <td>Drops potentially critical content</td>
+                                    <td>Nothing is discarded (solves the "lost-in-the-middle" problem)</td>
+                                </tr>
+                                                                <tr>
+                                    <td><strong>RAG</strong></td>
+                                    <td>Retrieval misses critical context</td>
+                                    <td>Sequential scan = 100% document coverage</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p class="footnote">Zhang et al., "Chain of Agents: LLMs Collaborating on Long-Context Tasks", arXiv:2406.02818 (2024)</p>
+
+                    </div>
+                </section>
+
+                <!-- SLIDE 33: Demo -->
+                <section data-background="images/cms2.jpg">
+                    <h1>Demo</h1>
+                </section>
+
+            </section>
+            <!-- END SECTION G -->
+
+   <!-- ============================================================ -->
+            <!-- SECTION F: PATTERN 3 - Minions                              -->
+            <!-- ============================================================ -->
+            <section>
+
+                <!-- SLIDE 24: Section Header -->
+                <section data-background="images/compass.jpg">
+                    <div class="overlay-style">
+                        <h2>Minions</h2>
+                        <p>Divide the document. Conquer locally. Synthesize in the cloud.</p>
+                        <p class="footnote">Narayan et al., "Minions: Cost-efficient Collaboration Between On-device and Cloud Language Models", arXiv:2502.15964 (2025)</p>
+                    </div>
+                </section>
+
+                <!-- SLIDE 26: Minions -->
+                                                 <section data-background="images/and-machines-2yClsTFXIcE-unsplash.jpg">
+                    <div class="overlay-style">
+                        <h3>Minions pattern</h3>
+                        <hr />
+                        <div>
+                            <p>The approach reduces costs by having a powerful remote LLM <span class="highlight">decompose a task</span> into simpler subtasks that a local SLM executes.</p>
+                        </div>
+                        <div class="img-backdrop">
+                            <img class="standard-small" src="graphics/05-minions.excalidraw.png" />
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SLIDE 27: Why This Works -->
+                <section data-background="images/atlas3.jpg">
+                    <div class="overlay-style">
+                        <h3>Why this works</h3>
+                        <hr />
+                        <div class="column-container">
+                            <div class="col-50">
+                                <p>Each SLM handles only a single-step instruction on a short chunk. No long-context pressure, and parallelism is free.</p>
+                            </div>
+                            <div class="col-50">
+                                <blockquote>
+                                    "Minions with an 8B local LM can recover 97.9% of remote-only performance at 18% of the cloud cost"
+                                </blockquote>
+                            </div>
+                        </div>
+                        <p class="footnote">Narayan et al., "Minions: Cost-efficient Collaboration Between On-device and Cloud Language Models", arXiv:2502.15964 (2025)</p>
+                    </div>
+                </section>
+
+                <!-- SLIDE 28: Demo -->
+                <section data-background="images/cms2.jpg">
+                    <h1>Demo</h1>
+                </section>
+
+            </section>
+            <!-- END SECTION F -->
+
+            <!-- ============================================================ -->
+            <!-- SECTION H: PATTERN 5 - MAKER                                -->
+            <!-- ============================================================ -->
+            <section>
+
+                <!-- SLIDE 34: Section Header -->
+                <section data-background="images/compass.jpg">
+                    <div class="overlay-style">
+                        <h2>MAKER</h2>
+                        <p>A million steps. Zero errors.</p>
+                            <p class="footnote">Meyerson et al., "Solving a Million-Step LLM Task with Zero Errors", arXiv:2511.09030 (2025)
+                    </div>
+                </section>
+
+                <!-- SLIDE 35: The Million-Step Problem -->
+                <section data-background="images/alice-door.jpeg">
+                    <div class="overlay-style">
+                        <h3>The million-step problem</h3>
+                        <hr />
+                        <div class="column-container">
+                            <div class="col-50">
+                                <p>Even a 1% per-step error rate compounds fast:</p>
+                                <ul>
+                                    <li> → 36.6% success after 100 steps</li>
+                                    <li> → 0.004% success after 1,000 steps</li>
+                                    <li> → statistically impossible beyond that</li>
+                                </ul>
+                            </div>
+                            <div class="col-50">
+                                <div class="img-backdrop">
+                                    <img class="standard" src="graphics/error-accumulation.excalidraw.png" />
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+                <!-- SLIDE 36: MAKER -->
+                <section data-background="images/atlas-ibl.jpg">
+                    <div class="overlay-style">
+                        <p>Maximal Agentic decomposition, first-to-ahead-by-K Error correction, and Red-flagging</p>
+                        <hr />
+                        <p>Key insight: we don't have to wait for LLMs to get inherently smarter to solve complex problems.<br/> We can achieve "superintelligence" by <span class="highlight">splitting the problem</span> into micro pieces and <span class="highlight">heavily correcting the errors</span> along the way.</p>
+                        <p class="footnote">¹Meyerson et al., "Solving a Million-Step LLM Task with Zero Errors", arXiv:2511.09030 (2025)
+                            </p>
+                    </div>
+                </section>
+
+                <section data-background="images/atlas-ibl.jpg">
+                    <div class="overlay-style">
+                        <h3>MAKER pattern</h3>
+                        <hr />
+                        <div>
+                            <p><span class="highlight">Extreme decomposition</span> of a task into tiny subtasks for microagents, combined with a voting scheme to catch errors at every single step.</p>
+                        </div>
+                        <div class="img-backdrop">
+                            <img class="standard-small" src="graphics/03-maker.excalidraw.png" />
+                        </div>
+                            <p class="footnote">Meyerson et al., "Solving a Million-Step LLM Task with Zero Errors", arXiv:2511.09030 (2025)
+                            </p>
+                    </div>
+                </section>
+
+                <section data-background="images/atlas3.jpg">
+                    <div class="overlay-style">
+                        <p>
+                            Reliability emerges from
+                        </p>
+                        <h3 class="r-fit-text">consensus across many small agents</h3>
+                        <p>not from individual model's intelligence.</p>
+                    </div>
+                </section>
+
+                <!-- SLIDE 38: Demo -->
+                <section data-background="images/cms2.jpg">
+                    <h1>Demo</h1>
+                </section>
+
+            </section>
+            <!-- END SECTION H -->
+
+            <!-- ============================================================ -->
+            <!-- SECTION I: PATTERNS IN CONTEXT                              -->
+            <!-- ============================================================ -->
+            <section>
+
+                <!-- SLIDE 39: Section Header -->
+                <section data-background="images/atlas-barrel.jpg">
+                    <h1>Putting It Together</h1>
+                </section>
+
+                <!-- SLIDE 40: Pattern Comparison Matrix -->
+                <section data-background="images/atlas-ibl.jpg">
+                    <div class="overlay-style">
+                        <h3>Pattern comparison</h3>
+                        <table class="medium left-aligned">
+                            <thead>
+                                <tr>
+                                    <th>Pattern</th>
+                                    <th>Best for</th>
+                                    <th>SLM role</th>
+                                    <th>LLM role</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <!-- emoji for each -->
+                                    <td> 🟢 SLM-Default, LLM-Fallback</td>
+                                    <td>General queries, cost reduction</td>
+                                    <td>Default responder</td>
+                                    <td>Fallback for hard queries</td>
+                                </tr>
+                                <tr>
+                                    <td> 🔀 RouteLLM</td>
+                                    <td>High-volume, predictable traffic</td>
+                                    <td>Simple queries only</td>
+                                    <td>Complex queries only</td>
+                                </tr>
+                                <tr>
+                                    <td> 🔗 Chain of Agents</td>
+                                    <td>Sequential document tasks</td>
+                                    <td>Sequential workers</td>
+                                    <td>Final synthesizer</td>
+                                </tr>
+                                                                <tr>
+                                    <td> 🧑‍🤝‍🧑 Minions</td>
+                                    <td>Large document Q&amp;A</td>
+                                    <td>Data extractor</td>
+                                    <td>Planner + synthesizer</td>
+                                </tr>
+                                <tr>
+                                    <td> 🛠️ MAKER</td>
+                                    <td>High-reliability long tasks</td>
+                                    <td>Micro-task executors</td>
+                                    <td>Task decomposer</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                                                 <section data-background="images/maxime-valcarce-mAj8xn5zXsk-unsplash.jpg">
+                                    <div class="overlay-style">
+                                        <h2>Important!</h2>
+                    <div class="column-container">
+                        <div class="col-66">
+<p>
+                            None of the techniques is a one-size-fits-all.
+                        </p>
+                        <!-- <h2 class="r-fit-text">evaluate and measure</h2> -->
+                        <p>Always <span class="highlight">test, evaluate and measure,</span> and choose the ones that are most appropriate and best performing for your use cases.</p>
+                        </div>
+                        <div class="col-33">
+
+                            <img src="images/remember.gif" class="standard" style="min-height: auto;" />
+                        </div>
+                    </div>
+                                    </div>
+                </section> 
+            </section>
+            <!-- END SECTION I -->
+
+            <!-- ============================================================ -->
+            <!-- SECTION J: WRAP-UP                                           -->
+            <!-- ============================================================ -->
+            <section>
+
+
+
+                <!-- SLIDE 47: Thank you / Q&A -->
+                <section data-background="images/cms-detector.jpg">
+                    <div class="overlay-style">
+                        <h3>Thank you</h3>
+                        <div class="column-container centered">
+                            <div class="col auto">
+                                <img class="small" src="images/thankyou.gif" style="min-height: auto; margin:0" />
+                            </div>
+                            <div class="col auto">
+                                <ul style="font-size: 0.9em;">
+                                                                    <li>📝 <a
+                                        href="https://filipw.github.io/dotnetday-zurich-2026">filipw.github.io/dotnetday-zurich-2026</a>
+                                </li>
+                                <li>🖥️ <a href="https://github.com/filipw/2026-dotnetday-demos">github.com/filipw/2026-dotnetday-demos</a></li>
+                                 <li>📸 <a href="https://cds.cern.ch/collection/Multimedia%20%26%20Outreach?ln=en">Photos
+                                        credit: CERN</a></li>
+                                </ul>
+
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </section>
+            <!-- END SECTION J -->
+
+            <section data-background-color="#000">
+                <img src="images/bye.gif" />
+            </section>
+
+        </div>
+    </div>
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+        <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']]
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+        </script>
+    <script>
+        Reveal.initialize({
+            viewDistance: 30,
+            controls: true,
+            progress: true,
+            history: true,
+            center: true,
+            keyboard: {
+                39: 'next',
+                37: 'prev'
+            },
+            transition: 'slide',
+
+            dependencies: [
+                { src: 'lib/js/classList.js', condition: function () { return !document.body.classList; } },
+                { src: 'plugin/markdown/marked.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+                { src: 'plugin/markdown/markdown.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+                {
+                    src: 'plugin/highlight/highlight.js', async: true, callback: function () {
+                        hljs.initHighlightingOnLoad();
+                    }
+                },
+                { src: 'plugin/zoom-js/zoom.js', async: true, condition: function () { return !!document.body.classList; } },
+                { src: 'plugin/notes/notes.js', async: true, condition: function () { return !!document.body.classList; } }
+            ]
+        });
+    </script>
+</body>
+
+</html>
