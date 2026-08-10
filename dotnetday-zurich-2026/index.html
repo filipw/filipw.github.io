@@ -33,15 +33,10 @@
     <!--[if lt IE 9]>
     <script src="lib/js/html5shiv.js"></script>
     <![endif]-->
-    <style type="text/css">
-    </style>
 </head>
 
 <body>
     <div class="reveal">
-        <header
-            style="position: absolute;top: 50px; left: 100px; z-index:500; font-size:100px;background-color: rgba(0,0,0,0.5)">
-        </header>
         <div class="slides">
 
             <!-- ============================================================ -->
@@ -331,42 +326,42 @@
                         <table class="medium">
                             <thead>
                                 <tr>
-                                    <th>#</th>
                                     <th>Pattern</th>
                                     <th>Description</th>
                                     <th>Paper</th>
+                                    <th>Demo</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr class="fragment">
-                                    <td>1</td>
                                     <td>SLM-Default, LLM-Fallback</td>
                                     <td>cascade with confidence gate</td>
                                     <td><a href="https://arxiv.org/abs/2510.03847" target="_blank">arXiv:2510.03847</a></td>
+                                    <td>01</td>
                                 </tr>
                                 <tr class="fragment">
-                                    <td>2</td>
                                     <td>Predictive Router (RouteLLM)</td>
                                     <td>route before generation</td>
                                     <td><a href="https://arxiv.org/abs/2406.18665" target="_blank">arXiv:2406.18665</a></td>
+                                    <td>02</td>
                                 </tr>
                                 <tr class="fragment">
-                                    <td>3</td>
                                     <td>Chain of Agents</td>
                                     <td>sequential reasoning across document segments</td>
                                     <td><a href="https://arxiv.org/abs/2406.02818" target="_blank">arXiv:2406.02818</a></td>
+                                    <td>05</td>
                                 </tr>
                                 <tr class="fragment">
-                                    <td>4</td>
                                     <td>Minions</td>
                                     <td>decompose document, execute locally, synthesize in cloud</td>
                                     <td><a href="https://arxiv.org/abs/2502.15964" target="_blank">arXiv:2502.15964</a></td>
+                                    <td>04</td>
                                 </tr>
                                 <tr class="fragment">
-                                    <td>5</td>
                                     <td>MAKER</td>
                                     <td>massively decomposed processes with error correction</td>
                                     <td><a href="https://arxiv.org/abs/2511.09030" target="_blank">arXiv:2511.09030</a></td>
+                                    <td>03</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -377,7 +372,117 @@
             <!-- END SECTION C -->
 
             <!-- ============================================================ -->
-            <!-- SECTION D: PATTERN 1 - SLM-Default, LLM-Fallback            -->
+            <!-- SECTION C2: THE TOOLBOX - MICROSOFT AGENT FRAMEWORK          -->
+            <!-- ============================================================ -->
+            <section>
+
+                <!-- The primitives -->
+                <section data-background="images/atlas3.jpg">
+                    <div class="overlay-style">
+                        <h3>Microsoft Agent Framework</h3>
+                        <hr />
+                        <div class="column-container">
+                            <div class="col-50">
+                                <ul>
+                                    <li class="fragment">🔌 <strong>IChatClient</strong><br /><small> → the transport. Foundry Local and Azure OpenAI are the same type</small></li>
+                                    <li class="fragment">🤖 <strong>AIAgent</strong><br /><small> → a model plus instructions, tools and a name - <em>chatClient.AsAIAgent(...)</em></small></li>
+                                </ul>
+                            </div>
+                            <div class="col-50" style="margin-left: 1em;">
+                                <ul>
+                                    <li class="fragment">🎁 <strong>DelegatingAIAgent / AIAgentBuilder</strong><br /><small> → an agent that wraps an agent</small></li>
+                                    <li class="fragment">🕸️ <strong>Workflow</strong><br /><small> → a typed graph of executors and agents</small></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="fragment">
+                        <hr />
+                        <p>Hybrid is not a framework feature - it becomes implicitly supported when <span class="highlight">local and remote are the same abstraction</span>.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Two altitudes of composition -->
+                <section data-background="images/cern-alice.jpg">
+                    <h3 class="overlay-style">Two altitudes of composition</h3>
+                    <div class="column-container" style="align-items: flex-start;">
+                        <div class="col-50">
+                            <p class="small overlay-style" style="margin: 0;">An agent that wraps an agent</p>
+                            <pre class="small"><code class="cs rounded">class CascadingAgent(AIAgent local, AIAgent cloud)
+    : DelegatingAIAgent(local)
+{
+    async Task&lt;AgentResponse&gt; RunCoreAsync(...)
+    {
+        var answer = await local.RunAsync(query);
+
+        return Confident(answer)
+            ? answer
+            : await cloud.RunAsync(query);
+    }
+}</code></pre>
+                        </div>
+                        <div class="col-50" style="margin-left: 1em;">
+                            <p class="small overlay-style" style="margin: 0;">A graph, when the shape really is a graph</p>
+                            <pre class="small"><code class="cs rounded">var workflow = new WorkflowBuilder(dispatch)
+    .AddFanOutEdge(dispatch, minions)
+    .AddFanInBarrierEdge(minions, collect)
+    .AddEdge(collect, synthesize)
+    .WithOutputFrom(synthesize)
+    .Build();</code></pre>
+                        </div>
+                    </div>
+                    <p class="overlay-style">Wrapping → a decorator. Fan-out, barrier, chain → a workflow.<br /><small>Reach for the graph only when you actually have one.</small></p>
+                </section>
+
+                <!-- Pattern to construct: the demo roadmap -->
+                <section data-background="images/atlas-ibl.jpg">
+                    <div class="overlay-style">
+                        <h3>Pattern → Agent Framework construct</h3>
+                        <table class="medium left-aligned">
+                            <thead>
+                                <tr>
+                                    <th>Pattern</th>
+                                    <th>In Agent Framework</th>
+                                    <th>Demo</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>🟢 SLM-Default, LLM-Fallback</td>
+                                    <td>DelegatingAIAgent - run the inner agent, escalate on low confidence</td>
+                                    <td>01-SlmDefaultLlmFallback</td>
+                                </tr>
+                                <tr>
+                                    <td>🔀 RouteLLM</td>
+                                    <td>AgentWorkflowBuilder handoff - the local router calls a handoff_to_* tool</td>
+                                    <td>02-RouterAgent</td>
+                                </tr>
+                                <tr>
+                                    <td>🔗 Chain of Agents</td>
+                                    <td>chained BindAsExecutor stages, one per chunk</td>
+                                    <td>05-ChainOfAgents</td>
+                                </tr>
+                                <tr>
+                                    <td>🧑‍🤝‍🧑 Minions</td>
+                                    <td>AddFanOutEdge + AddFanInBarrierEdge</td>
+                                    <td>04-Minions</td>
+                                </tr>
+                                <tr>
+                                    <td>🛠️ MAKER</td>
+                                    <td>DelegatingAIAgent that samples and votes; plan via RunAsync&lt;T&gt;</td>
+                                    <td>03-Maker</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p class="footnote">AgentWorkflowBuilder also ships sequential, concurrent, group chat and Magentic orchestrations. The handoff in demo 02 routes by tool call - Foundry Local only returns structured tool calls when you force them (foundry-local#874).</p>
+                    </div>
+                </section>
+
+            </section>
+            <!-- END SECTION C2 -->
+
+            <!-- ============================================================ -->
+            <!-- SECTION D: SLM-Default, LLM-Fallback (demo 01)              -->
             <!-- ============================================================ -->
             <section>
 
@@ -439,9 +544,6 @@
                     </div>
                 </section>
 
-                <!-- SLIDE 17: Architecture -->
-
-
                 <!-- SLIDE 18: Demo -->
                 <section data-background="images/cms2.jpg">
                     <h1>Demo</h1>
@@ -451,7 +553,7 @@
             <!-- END SECTION D -->
 
             <!-- ============================================================ -->
-            <!-- SECTION E: PATTERN 2 - RouteLLM (Predictive Router)         -->
+            <!-- SECTION E: Predictive Router / RouteLLM (demo 02)           -->
             <!-- ============================================================ -->
             <section>
 
@@ -460,7 +562,7 @@
                     <div class="overlay-style">
                         <h2>Predictive Router (RouteLLM)</h2>
                         <p>Decide before you generate</p>
-                        <p class="footnote" style="margin-top: 1em; color: #ccc;">Ong et al., RouteLLM, arXiv:2406.18665, ICLR 2025</p>
+                        <p class="footnote" style="margin-top: 1em; color: #ccc;">Ong et al., "RouteLLM: Learning to Route LLMs with Preference Data", arXiv:2406.18665 (2024)</p>
                     </div>
                 </section>
 
@@ -538,7 +640,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <p class="footnote">¹ Ong et al., "RouteLLM: Learning to Route LLMs with Preference Data", arXiv:2406.18665, ICLR 2025</p>
+                        <p class="footnote">Ong et al., "RouteLLM: Learning to Route LLMs with Preference Data", arXiv:2406.18665 (2024)</p>
                     </div>
                 </section>
 
@@ -552,7 +654,7 @@
          
 
             <!-- ============================================================ -->
-            <!-- SECTION G: PATTERN 4 - Chain of Agents                      -->
+            <!-- SECTION G: Chain of Agents (demo 05-ChainOfAgents)          -->
             <!-- ============================================================ -->
             <section>
 
@@ -561,7 +663,7 @@
                     <div class="overlay-style">
                         <h2>Chain of Agents</h2>
                         <p>Sequential reasoning across document segments</p>
-                        <p class="footnote">Zhang et al., "Chain of Agents: LLMs Collaborating on Long-Context Tasks", arXiv:2406.02818 (2024)</p>
+                        <p class="footnote">Zhang et al., "Chain of Agents: Large Language Models Collaborating on Long-Context Tasks", arXiv:2406.02818 (2024)</p>
                     </div>
                 </section>
 
@@ -589,7 +691,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <p class="footnote" style="text-align: center;">¹ Zhang et al., "Chain of Agents: LLMs Collaborating on Long-Context Tasks", arXiv:2406.02818 (2024)</p>
+                        <p class="footnote" style="text-align: center;">Zhang et al., "Chain of Agents: Large Language Models Collaborating on Long-Context Tasks", arXiv:2406.02818 (2024)</p>
                     </div>
                 </section>
 
@@ -601,7 +703,7 @@
                             <p>Small models process chunks sequentially, passing an <span class="highlight">accumulated knowledge</span>. A powerful model synthesizes the final answer from the combined knowledge.</p>
                         </div>
                         <div class="img-backdrop">
-                            <img class="standard-small" src="graphics/04-coa.excalidraw.png" />
+                            <img class="standard-small" src="graphics/05-coa.excalidraw.png" />
                         </div>
 
                     </div>
@@ -637,7 +739,7 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <p class="footnote">Zhang et al., "Chain of Agents: LLMs Collaborating on Long-Context Tasks", arXiv:2406.02818 (2024)</p>
+                        <p class="footnote">Zhang et al., "Chain of Agents: Large Language Models Collaborating on Long-Context Tasks", arXiv:2406.02818 (2024)</p>
 
                     </div>
                 </section>
@@ -651,7 +753,7 @@
             <!-- END SECTION G -->
 
    <!-- ============================================================ -->
-            <!-- SECTION F: PATTERN 3 - Minions                              -->
+            <!-- SECTION F: Minions (demo 04-Minions)                        -->
             <!-- ============================================================ -->
             <section>
 
@@ -673,7 +775,7 @@
                             <p>The approach reduces costs by having a powerful remote LLM <span class="highlight">decompose a task</span> into simpler subtasks that a local SLM executes.</p>
                         </div>
                         <div class="img-backdrop">
-                            <img class="standard-small" src="graphics/05-minions.excalidraw.png" />
+                            <img class="standard-small" src="graphics/04-minions.excalidraw.png" />
                         </div>
                     </div>
                 </section>
@@ -689,8 +791,9 @@
                             </div>
                             <div class="col-50">
                                 <blockquote>
-                                    "Minions with an 8B local LM can recover 97.9% of remote-only performance at 18% of the cloud cost"
+                                    "MinionS reduces costs by 5.7x on average while recovering 97.9% of the performance of the remote model alone"
                                 </blockquote>
+                                <p><small> → roughly 18% of the cloud-only bill, for ~98% of the quality</small></p>
                             </div>
                         </div>
                         <p class="footnote">Narayan et al., "Minions: Cost-efficient Collaboration Between On-device and Cloud Language Models", arXiv:2502.15964 (2025)</p>
@@ -706,7 +809,7 @@
             <!-- END SECTION F -->
 
             <!-- ============================================================ -->
-            <!-- SECTION H: PATTERN 5 - MAKER                                -->
+            <!-- SECTION H: MAKER (demo 03-Maker)                            -->
             <!-- ============================================================ -->
             <section>
 
@@ -715,7 +818,7 @@
                     <div class="overlay-style">
                         <h2>MAKER</h2>
                         <p>A million steps. Zero errors.</p>
-                            <p class="footnote">Meyerson et al., "Solving a Million-Step LLM Task with Zero Errors", arXiv:2511.09030 (2025)
+                        <p class="footnote">Meyerson et al., "Solving a Million-Step LLM Task with Zero Errors", arXiv:2511.09030 (2025)</p>
                     </div>
                 </section>
 
@@ -749,8 +852,7 @@
                         <p>Maximal Agentic decomposition, first-to-ahead-by-K Error correction, and Red-flagging</p>
                         <hr />
                         <p>Key insight: we don't have to wait for LLMs to get inherently smarter to solve complex problems.<br/> We can achieve "superintelligence" by <span class="highlight">splitting the problem</span> into micro pieces and <span class="highlight">heavily correcting the errors</span> along the way.</p>
-                        <p class="footnote">¹Meyerson et al., "Solving a Million-Step LLM Task with Zero Errors", arXiv:2511.09030 (2025)
-                            </p>
+                        <p class="footnote">Meyerson et al., "Solving a Million-Step LLM Task with Zero Errors", arXiv:2511.09030 (2025)</p>
                     </div>
                 </section>
 
