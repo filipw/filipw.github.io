@@ -428,50 +428,6 @@
                     <p class="overlay-style">Wrapping → a decorator. Fan-out, barrier, chain → a workflow.<br /><small>Reach for the graph only when you actually have one.</small></p>
                 </section>
 
-                <!-- Pattern to construct: the demo roadmap -->
-                <section data-background="images/atlas-ibl.jpg">
-                    <div class="overlay-style">
-                        <h3>Pattern → Agent Framework construct</h3>
-                        <table class="medium left-aligned">
-                            <thead>
-                                <tr>
-                                    <th>Pattern</th>
-                                    <th>In Agent Framework</th>
-                                    <th>Demo</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>🟢 SLM-Default, LLM-Fallback</td>
-                                    <td>DelegatingAIAgent - run the inner agent, escalate on low confidence</td>
-                                    <td>01-SlmDefaultLlmFallback</td>
-                                </tr>
-                                <tr>
-                                    <td>🔀 RouteLLM</td>
-                                    <td>AgentWorkflowBuilder handoff - the local router calls a handoff_to_* tool</td>
-                                    <td>02-RouterAgent</td>
-                                </tr>
-                                <tr>
-                                    <td>🔗 Chain of Agents</td>
-                                    <td>chained BindAsExecutor stages, one per chunk</td>
-                                    <td>05-ChainOfAgents</td>
-                                </tr>
-                                <tr>
-                                    <td>🧑‍🤝‍🧑 Minions</td>
-                                    <td>AddFanOutEdge + AddFanInBarrierEdge</td>
-                                    <td>04-Minions</td>
-                                </tr>
-                                <tr>
-                                    <td>🛠️ MAKER</td>
-                                    <td>DelegatingAIAgent that samples and votes; plan via RunAsync&lt;T&gt;</td>
-                                    <td>03-Maker</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <p class="footnote">AgentWorkflowBuilder also ships sequential, concurrent, group chat and Magentic orchestrations. The handoff in demo 02 routes by tool call - Foundry Local only returns structured tool calls when you force them (foundry-local#874).</p>
-                    </div>
-                </section>
-
             </section>
             <!-- END SECTION C2 -->
 
@@ -535,6 +491,15 @@
                                 </ul>
                             </div>
                         </div>
+                    </div>
+                </section>
+
+                <!-- Pattern → construct -->
+                <section data-background="images/atlas-ibl.jpg">
+                    <div class="overlay-style">
+                        <h3>In Agent Framework</h3>
+                        <hr />
+                        <p><span class="highlight">DelegatingAIAgent</span> - run the inner agent, escalate on low confidence</p>
                     </div>
                 </section>
 
@@ -638,7 +603,16 @@
                     </div>
                 </section>
 
-                                <section data-background="images/cms2.jpg">
+                <!-- Pattern → construct -->
+                <section data-background="images/atlas-ibl.jpg">
+                    <div class="overlay-style">
+                        <h3>In Agent Framework</h3>
+                        <hr />
+                        <p><span class="highlight">AgentWorkflowBuilder</span> handoff - the local router agent calls another agent as a tool</p>
+                    </div>
+                </section>
+
+                <section data-background="images/cms2.jpg">
                     <h1>Demo</h1>
                 </section>
 
@@ -738,6 +712,15 @@
                     </div>
                 </section>
 
+                <!-- Pattern → construct -->
+                <section data-background="images/atlas-ibl.jpg">
+                    <div class="overlay-style">
+                        <h3>In Agent Framework</h3>
+                        <hr />
+                        <p>Chained <span class="highlight">BindAsExecutor</span> stages - one per chunk</p>
+                    </div>
+                </section>
+
                 <!-- SLIDE 33: Demo -->
                 <section data-background="images/cms2.jpg">
                     <h1>Demo</h1>
@@ -791,6 +774,15 @@
                             </div>
                         </div>
                         <p class="footnote">Narayan et al., "Minions: Cost-efficient Collaboration Between On-device and Cloud Language Models", arXiv:2502.15964 (2025)</p>
+                    </div>
+                </section>
+
+                <!-- Pattern → construct -->
+                <section data-background="images/atlas-ibl.jpg">
+                    <div class="overlay-style">
+                        <h3>In Agent Framework</h3>
+                        <hr />
+                        <p>A workflow with <span class="highlight">AddFanOutEdge</span> and <span class="highlight">AddFanInBarrierEdge</span> dispatches to the minions, waits for all of them, then synthesizes using a cloud agent</p>
                     </div>
                 </section>
 
@@ -872,6 +864,15 @@
                         </p>
                         <h3 class="r-fit-text">consensus across many small agents</h3>
                         <p>not from individual model's intelligence.</p>
+                    </div>
+                </section>
+
+                <!-- Pattern → construct -->
+                <section data-background="images/atlas-ibl.jpg">
+                    <div class="overlay-style">
+                        <h3>In Agent Framework</h3>
+                        <hr />
+                        <p><span class="highlight">DelegatingAIAgent</span> that samples and keeps track of votes</p>
                     </div>
                 </section>
 
