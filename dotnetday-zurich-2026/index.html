@@ -412,12 +412,12 @@
                         </div>
                         <div class="col-50" style="margin-left: 1em;">
                             <p class="small overlay-style" style="margin: 0;">A graph, when the shape really is a graph</p>
-                            <pre class="small"><code class="cs rounded">var workflow = new WorkflowBuilder(dispatch)
-    .AddFanOutEdge(dispatch, minions)
-    .AddFanInBarrierEdge(minions, collect)
-    .AddEdge(collect, synthesize)
-    .WithOutputFrom(synthesize)
-    .Build();</code></pre>
+                            <pre class="small"><code class="cs rounded">// one agent per extraction job
+var minions = jobs.Select((job, i) =&gt;
+    new MinionAgent(local, $"Minion_{i}", job, chunks));
+
+var workflow = AgentWorkflowBuilder
+    .BuildConcurrent(minions);</code></pre>
                         </div>
                     </div>
                     <p class="overlay-style">Wrapping → a decorator. Fan-out, barrier, chain → a workflow.<br /><small>Reach for the graph only when you actually have one.</small></p>
@@ -712,7 +712,7 @@
                     <div class="overlay-style">
                         <h3>In Agent Framework</h3>
                         <hr />
-                        <p>Chained <span class="highlight">BindAsExecutor</span> stages - one per chunk</p>
+                        <p>One worker agent per chunk, chained with <span class="highlight">BuildSequential</span> - <span class="highlight">chainOnlyAgentResponses</span> passes just the previous agent's output, which is exactly what a CU is.</p>
                     </div>
                 </section>
 
@@ -777,7 +777,7 @@
                     <div class="overlay-style">
                         <h3>In Agent Framework</h3>
                         <hr />
-                        <p>A workflow with <span class="highlight">AddFanOutEdge</span> and <span class="highlight">AddFanInBarrierEdge</span> dispatches to the minions, waits for all of them, then synthesizes using a cloud agent</p>
+                        <p>Every job is one local agent. <span class="highlight">BuildConcurrent</span> fans them all out and waits for the join - then a cloud agent synthesizes what survived.</p>
                     </div>
                 </section>
 
