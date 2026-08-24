@@ -373,13 +373,13 @@
                         <div class="column-container">
                             <div class="col-50">
                                 <ul>
-                                    <li class="fragment">🔌 <strong>IChatClient</strong><br /><small> → the transport. Foundry Local and Azure OpenAI are the same type</small></li>
+                                    <li class="fragment">🔌 <strong>IChatClient</strong><br /><small> → the transport. Local and remote models are the same type</small></li>
                                     <li class="fragment">🤖 <strong>AIAgent</strong><br /><small> → a model plus instructions, tools and a name - <em>chatClient.AsAIAgent(...)</em></small></li>
                                 </ul>
                             </div>
                             <div class="col-50" style="margin-left: 1em;">
                                 <ul>
-                                    <li class="fragment">🎁 <strong>DelegatingAIAgent / AIAgentBuilder</strong><br /><small> → an agent that wraps an agent</small></li>
+                                    <li class="fragment">🎁 <strong>DelegatingAIAgent</strong><br /><small> → delegation. an agent that wraps an agent</small></li>
                                     <li class="fragment">🕸️ <strong>Workflow</strong><br /><small> → a typed graph of executors and agents</small></li>
                                 </ul>
                             </div>
@@ -662,7 +662,7 @@ var workflow = AgentWorkflowBuilder
 
                     </div>
                 </section>
-
+<!-- 
                 <section data-background="images/atlas-ibl.jpg">
                     <div class="overlay-style">
                         <h3>Chain of Agents vs. other approaches</h3>
@@ -696,7 +696,7 @@ var workflow = AgentWorkflowBuilder
                         <p class="footnote">Zhang et al., "Chain of Agents: Large Language Models Collaborating on Long-Context Tasks", arXiv:2406.02818 (2024)</p>
 
                     </div>
-                </section>
+                </section> -->
 
                                 <section data-background="images/cms2.jpg">
                                         <div class="overlay-style">
@@ -860,7 +860,7 @@ var workflow = AgentWorkflowBuilder
 
                 <!-- SLIDE 39: Section Header -->
                 <section data-background="images/atlas-barrel.jpg">
-                    <h1>Putting It Together</h1>
+                    <h1>Recap</h1>
                 </section>
 
                 <!-- SLIDE 40: Pattern Comparison Matrix -->
