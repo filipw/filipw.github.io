@@ -343,7 +343,7 @@
                         <div class="column-container">
                             <div class="col-50">
                                 <p>One of the most widely used public-private cryptosystems is RSA (Rivest–Shamir–Adleman)</p> <p>Its
-                                    security relies on the <span class="highlight">factoring problem</span> of large prime numbers.
+                                    security relies on the <span class="highlight">factoring problem</span> - recovering two large primes from their product.
                                 </p>
                             </div>
                             <div class="col-50">
@@ -469,10 +469,10 @@
 
 <section data-background="images/gidney2.png">
                                         <div class="overlay-style black-overlay-style fragment">
-                        <p>Until recently, the best current estimation for Shor's algorithm resource requirements for breaking RSA-2048 are¹:</p>
+                        <p>Until early 2026, the best published estimate of what Shor's algorithm needs to break RSA-2048 was¹:</p>
                         <ul>
-                            <li>🧮 1,399 logical qubits<br/><small>&nbsp;→ ideal qubits - not physically attainable, suitable for mathematical calculation only.</small></li>
-                            <li>🧮 897,864 physical qubits<br/><small>&nbsp;→ assuming a 2D surface code architecture with a 0.1% physical gate error rate.</small></li>
+                            <li>🧮 ~1,400 logical qubits<br/><small>&nbsp;→ ideal, error-free qubits - a mathematical abstraction, not something you can buy.</small></li>
+                            <li>🧮 897,864 physical qubits<br/><small>&nbsp;→ 2D surface code with nearest-neighbour connectivity, 0.1% physical gate error rate, less than a week of runtime.</small></li>
                         </ul>
                                                     <p class="footnote" style="text-align: center;"><br/>¹ C. Gidney, "How to factor 2048 bit RSA integers with less than a million noisy qubits," arXiv:2505.15917 (2025).
                             </p>
@@ -481,13 +481,53 @@
 
 <section data-background="images/pinnacle.png" data-state="bg-top-left">
                                         <div class="overlay-style black-overlay-style fragment">
-                        <p>However, the new (February 2026) Pinnacle Architecture drastically reduces the physical hardware overhead²:</p>
+                        <p>In February 2026, Iceberg Quantum's Pinnacle Architecture cut the physical overhead by an order of magnitude²:</p>
                         <ul>
-                            <li>🧮 1,399 logical qubits<br/><small>&nbsp;→ building on the same algorithmic foundations and logical requirements.</small></li>
-                            <li>🧮 ~97,000 physical qubits<br/><small>&nbsp;→ assuming a highly-connected QLDPC (Quantum Low-Density Parity Check) architecture with a 0.1% physical gate error rate.</small></li>
+                            <li>🧮 ~1,400 logical qubits<br/><small>&nbsp;→ same algorithm and logical requirements as above - the savings come from better error correction.</small></li>
+                            <li>🧮 &lt; 100,000 physical qubits (~94,000)<br/><small>&nbsp;→ QLDPC (Quantum Low-Density Parity Check) codes that need non-local connectivity, 0.1% physical gate error rate, about a month of runtime (a week with ~139,000 qubits).</small></li>
                         </ul>
-                                                    <p class="footnote" style="text-align: center;"><br/>² Webster et al., "The Pinnacle Architecture...", arXiv:2602.11457 (2026).
+                                                    <p class="footnote" style="text-align: center;"><br/>² P. Webster et al. (Iceberg Quantum), "The Pinnacle Architecture: Reducing the cost of breaking RSA-2048 to 100 000 physical qubits using quantum LDPC codes," arXiv:2602.11457 (2026).
                             </p>
+                    </div>
+                </section>
+
+                <section data-background="images/google-ecc-2026.png" data-state="bg-top-left">
+                    <div class="overlay-style black-overlay-style fragment">
+                        <p>March 2026: Google Quantum AI (with the Ethereum Foundation and Stanford) re-estimated the cost of breaking 256-bit elliptic curves³ - secp256k1, the same size as the P-256 behind most ECDSA/ECDH:</p>
+                        <ul>
+                            <li>🧮 1,200-1,450 logical qubits<br/><small>&nbsp;→ 70-90 million Toffoli gates (RSA-2048 above: ~1,400 logical qubits, 6.5 billion Toffolis).</small></li>
+                            <li>🧮 &lt; 500,000 physical qubits<br/><small>&nbsp;→ superconducting, 0.1% error rate, nearest-neighbour grid; one key in 9-23 minutes - ~20x fewer qubits than the previous best estimate.</small></li>
+                            <li>🤐 attack circuits withheld<br/><small>&nbsp;→ a zero-knowledge proof of the resource counts was published instead.</small></li>
+                        </ul>
+                        <p class="footnote" style="text-align: center;"><br/>³ Google Quantum AI, Ethereum Foundation, Stanford, "Securing Elliptic Curve Cryptocurrencies against Quantum Vulnerabilities," arXiv:2603.28846 (March 2026).</p>
+                    </div>
+                </section>
+
+                <section data-background="images/bip360-2026.png" data-state="bg-top-left">
+                    <div class="overlay-style black-overlay-style fragment">
+                        <p>Why cryptocurrencies are the canary in the coal mine:</p>
+                        <ul>
+                            <li>₿ ~6 million BTC already have their public key on-chain<br/><small>&nbsp;→ ~30% of supply (Glassnode, 2026): 1.9M BTC in early P2PK outputs (incl. ~1.1M attributed to Satoshi) + 4.1M through address reuse; Taproot exposes keys by design. Harvest now, steal later.</small></li>
+                            <li>⏱️ everyone else is exposed while spending<br/><small>&nbsp;→ the public key sits in the mempool until the transaction confirms - a 9-23 minute attack fits inside Bitcoin's ~10-minute block interval.</small></li>
+                            <li>🔧 fixing it takes a soft fork plus years of block space<br/><small>&nbsp;→ BIP-360 (Pay-to-Merkle-Root) merged Feb 2026, not activated; BIP-361 would sunset ECDSA/Schnorr ~5 years later, leaving unmigrated coins unspendable - and moving every UTXO needs 76-568 days of blocks.</small></li>
+                            <li>🏆 state of the art: a 15-bit key<br/><small>&nbsp;→ Project Eleven's 1 BTC Q-Day Prize (April 2026): a 15-bit curve broken on IBM hardware. Bitcoin needs 256.</small></li>
+                        </ul>
+                        <p class="footnote" style="text-align: center;"><br/>Sources: Glassnode, "Measuring Bitcoin's Quantum-Exposed Supply" (2026); bip360.org; bips.dev/361; Chaincode Labs, "Bitcoin and Quantum Computing" (2025); Project Eleven (2026).</p>
+                    </div>
+                    <aside class="notes">
+                        Google's own recommendations in the whitepaper blog post: move blockchains to PQC, stop exposing or reusing addresses, and think about policy for abandoned coins; Google itself has a 2029 migration deadline. Ethereum Foundation formed a Post-Quantum team in January 2026 with a 2029 target and a 1M USD research prize - Justin Drake (EF) co-authored the Google paper. BlackRock tripled the quantum risk section of the IBIT prospectus in May 2025. Glassnode: exchanges hold 1.66M of the exposed coins. Bitcoin Core developers pointed out that at 15 bits, random guessing also "succeeds" often - it is a demo of the attack class, not of capability.
+                    </aside>
+                </section>
+
+                <section data-background="images/cain-atoms-2026.png" data-state="bg-top-left">
+                    <div class="overlay-style black-overlay-style fragment">
+                        <p>Also in March 2026, Cain et al. (Harvard, Caltech and collaborators) showed that neutral-atom hardware could run Shor's algorithm at cryptographic scale with⁴:</p>
+                        <ul>
+                            <li>🧮 as few as 10,000 reconfigurable atomic qubits<br/><small>&nbsp;→ high-rate error-correcting codes on reconfigurable atom arrays instead of a fixed 2D grid; runtime is traded for qubit count.</small></li>
+                            <li>🧮 26,000 physical qubits → P-256 in "a few days"<br/><small>&nbsp;→ factoring RSA-2048 takes one to two orders of magnitude longer.</small></li>
+                            <li>🔬 grounded in 2025 experiments<br/><small>&nbsp;→ below-threshold logical operations on hundreds of atoms and arrays of more than 6,000 atoms.</small></li>
+                        </ul>
+                        <p class="footnote" style="text-align: center;"><br/>⁴ M. Cain et al., "Shor's algorithm is possible with as few as 10,000 reconfigurable atomic qubits," arXiv:2603.28627 (2026).</p>
                     </div>
                 </section>
 
@@ -496,8 +536,9 @@
 
                         <div class="col-50">Today's quantum hardware:
                            <ul>
-                            <li>🧮 up to 96 logical qubits<br/><small>&nbsp;→ QuEra, with error rates that improved as the system scaled (below-threshold performance)</small></li>
-                            <li>🧮 up to 6,100 physical qubits<br/><small>&nbsp;→ neutral-atom qubits trapped in a laser-driven grid by CalTech</small></li>
+                            <li>🧮 up to 96 logical qubits<br/><small>&nbsp;→ Harvard/MIT/QuEra (Nov 2025): 448 neutral atoms, with error rates that improved as the system scaled (below threshold)</small></li>
+                            <li>🧮 up to 6,100 physical qubits<br/><small>&nbsp;→ Caltech (Sept 2025): neutral atoms trapped in a laser-driven grid - a qubit array, not yet a full computer</small></li>
+                            <li>🧮 ~100 qubits in error-corrected, gate-based machines<br/><small>&nbsp;→ Google Willow (105), Quantinuum Helios (98 physical → 48 logical), IBM Nighthawk (120)</small></li>
                         </ul>
                         </div>
 
@@ -506,6 +547,9 @@
                         </div>
 
                     </div>
+                    <aside class="notes">
+                        Global Risk Institute, Quantum Threat Timeline Report 2025 (published March 2026, 26 experts): a cryptographically relevant quantum computer is "quite possible" (28-49%) within 10 years and "likely" (51-70%) within 15 years - the highest 10-year estimate in the report's history. The IonQ roadmap on the next slide promises 2 million physical / 80,000 logical qubits by 2030; roadmaps are marketing, but Gidney's point stands: assume progress.
+                    </aside>
                 </section>
                 
                                 <!-- <section data-background="images/alice-door.jpeg">
@@ -534,7 +578,7 @@
                                 plan
                             </blockquote>
                             <p>
-                            <footer>- <em>Dario Gil, IBM senior VP</em></footer>
+                            <footer>- <em>Darío Gil, IBM SVP &amp; Director of Research (now US Under Secretary of Energy for Science)</em></footer>
                             </p>
                         </div>
 
@@ -617,15 +661,15 @@
                             </tr>
                             <tr class="">
                                 <td>384</td>
-                                <td style="background: green;">256</td>
+                                <td style="background: green;">192</td>
                                 <td style="background: red;">0</td>
                             </tr>
                         </table>
                         <div style="clear:both;">
                             <p class="footnote" style="text-align: center;">
-                                Vasileios Mavroeidis, Kamer Vishi, Mateusz D. Zych, Audun Jøsang. "The Impact of Quantum
+                                Adapted from Vasileios Mavroeidis, Kamer Vishi, Mateusz D. Zych, Audun Jøsang. "The Impact of Quantum
                                 Computing on Present Cryptography" (IJACSA) International Journal of Advanced Computer
-                                Science and Applications, Vol. 9, No. 3, 2018.
+                                Science and Applications, Vol. 9, No. 3, 2018; classical strengths per NIST SP 800-57 (ECC P-384 → 192 bits).
                             </p>
                         </div>
                     </div>
@@ -660,7 +704,7 @@
 
                 <section data-background="images/quantum-computer.jpg">
                     <div class="overlay-style">
-                        <p>In 2022 the four winners have been announced.</p>
+                        <p>In July 2022 the first four algorithms to be standardized were announced.</p>
                         <div class="column-container">
                             <div class="col">
                                 <ul>
@@ -726,7 +770,7 @@
 
                 <section data-background="images/quantum-computer.jpg">
 <div class="overlay-style">
-                        <p>The first PQC standards have already been formalized.</p>
+                        <p>The first PQC standards were finalized in August 2024 - more are in the pipeline.</p>
                         <div class="column-container">
                             <div class="col-50">
                                 <ul>
@@ -739,6 +783,17 @@
                                             → standardized in 2024</small>
                                     </li>
 
+                                    <li class="fragment">🔐
+                                        HQC
+                                        <br />
+                                        <small>→ Code-Based KEM - a non-lattice backup for ML-KEM<br/>
+                                            → FIPS-207 (expected)<br/>
+                                            → selected in March 2025; draft still pending, final expected 2027</small>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-50" style="padding-left: 1em;">
+                                <ul>
                                     <li class="fragment">✍️
                                         ML-DSA (Dilithium)
                                         <br />
@@ -755,19 +810,14 @@
                                             → standardized in 2024</small>
                                     </li>
 
-                                    <li class="fragment">🔐
-                                        HQC
+                                    <li class="fragment">✍️
+                                        FN-DSA (Falcon)
                                         <br />
-                                        <small>→ Code-Based Key-Encapsulation Mechanism<br/>
-                                            → selected for Standardization in 2026</small>
+                                        <small>→ FFT over NTRU-Lattice-Based Digital Signature Standard<br/>
+                                            → FIPS-206<br/>
+                                            → submitted for approval in August 2025; public draft still pending</small>
                                     </li>
                                 </ul>
-                            </div>
-                            <div class="col-50">
-                                <img class="standard" src="images/Crypto-rev1.png" />
-                                <div>
-                                <p class="footnote">Credit: N. Hanacek/NIST</small></p>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -775,26 +825,32 @@
                         Kyber & Dilithium were selected to be primary general-purpose protocols for key encapsulation
                         and digital signatures.
                         FALCON was recommended for applications requiring smaller digital signatures.
-                        SPHINCS+ was chosen as a backup option to the lattice-based approaches.
+                        SPHINCS+ was chosen as a backup option to the lattice-based approaches. Also final: SP 800-227 (September 2025) with recommendations for KEMs, including hybrid combiners. In May 2026 NIST advanced nine additional signature candidates to Round 3: FAEST, HAWK, MAYO, MQOM, QR-UOV, SDitH, SNOVA, SQIsign and UOV (CROSS was dropped).
                     </aside>
                 </section>
 
                                 <section data-background="images/quantum-computer.jpg">
                     <div class="overlay-style">
-                        <p>In late 2024 NIST published the official deprecation timeline</p>
+                        <p>NIST's transition timeline (IR 8547, Nov 2024 - still a draft)</p>
                         <div class="column-container">
                             <div class="col-50">
                                 <ul>
                                     <li class="fragment">⚠️
-                                        2030: Deprecation of 112-bit security algorithms
+                                        2030: 112-bit security deprecated
                                         <br />
-                                        <small>RSA-2048, ECC P-224 and lower</small>
+                                        <small>→ e.g. RSA-2048, ECDSA/ECDH with P-224</small>
                                     </li>
 
                                     <li class="fragment">⛔
-                                        2035: Disallowing all non-quantum-resistant algorithms
+                                        2035: all RSA and ECC disallowed
                                         <br />
-                                        <small>→ All ECC and RSA is disallowed!</small>
+                                        <small>→ every non-quantum-resistant public-key algorithm is out</small>
+                                    </li>
+
+                                    <li class="fragment">⚡
+                                        2026: the US made 2030 binding
+                                        <br />
+                                        <small>→ EO 14412 (June 2026): PQ key exchange on federal high-value systems by end of 2030, PQ signatures by end of 2031</small>
                                     </li>
                                 </ul>
                             </div>
@@ -802,6 +858,49 @@
                                 <img class="standard" src="images/nist-ir-8547.png" />
                                 <div>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-background="images/quantum-computer.jpg">
+                    <div class="overlay-style">
+                        <p>It is no longer only NIST - governments are setting their own deadlines</p>
+                        <div class="column-container">
+                            <div class="col-50">
+                                <ul class="scaled-text">
+                                    <li class="fragment">🇪🇺
+                                        EU Coordinated Implementation Roadmap (June 2025)
+                                        <br />
+                                        <small>→ end of 2026: national PQC strategies and first steps<br/>
+                                            → end of 2030: high-risk use cases and critical infrastructure migrated<br/>
+                                            → end of 2035: everything else, as far as feasible</small>
+                                    </li>
+                                    <li class="fragment">🇬🇧
+                                        UK NCSC migration timeline (March 2025)
+                                        <br />
+                                        <small>→ 2028: discovery and migration plan<br/>
+                                            → 2031: highest-priority migrations complete<br/>
+                                            → 2035: migration complete</small>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-50" style="padding-left: 1em;">
+                                <ul class="scaled-text">
+                                    <li class="fragment">🇺🇸
+                                        US Executive Order 14412 + OMB M-26-15 (June 2026)
+                                        <br />
+                                        <small>→ end of 2030: PQ key establishment on federal high-value systems<br/>
+                                            → end of 2031: PQ authentication (signatures)<br/>
+                                            → 2035: full migration; national security systems follow NSA CNSA 2.0 (2030-2033)</small>
+                                    </li>
+                                    <li class="fragment">🇦🇺
+                                        Australia ASD Information Security Manual
+                                        <br />
+                                        <small>→ end of 2030: stop using RSA, DH, ECDH and ECDSA altogether<br/>
+                                            → the most aggressive public timeline so far</small>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -828,9 +927,9 @@ Too Slow for Confidentiality
                             </div>
                             <div class="col-50">
                                 <ul>
-                                    <li class="fragment">🔗 No Guidance on Hybrid
+                                    <li class="fragment">🔗 Thin Guidance on Hybrid
     <br />
-    <small>→ pairing classical algorithms with PQC?</small>
+    <small>→ SP 800-227 (2025) blesses KEM combiners; nothing yet for hybrid signatures</small>
 </li>
 
 <li class="fragment">⚙️
@@ -846,37 +945,83 @@ Too Slow for Confidentiality
 
                 <section data-background="images/atlas-ibl.jpg">
                     <div class="overlay-style">
-                        <p>There are a number of ongoing IETF standardization efforts for PQC:</p>
+                        <p>IETF standardization is moving from drafts to RFCs:</p>
 
                         <div class="column-container">
                             <div class="col-66">
-                                <ul>
+                                <ul class="scaled-text">
                                     <li class="fragment">🤝
-                                        draft-ietf-tls-ecdhe-mlkem
+                                        RFC 10024 (August 2026)
                                         <br />
-                                        <small>→ Hybrid key exchange for TLS 1.3, combining classical and PQC algorithms (X25519MLKEM768). <br/>→ This is supported approach in all major browsers today.</small>
+                                        <small>→ Hybrid key exchange for TLS 1.3: X25519MLKEM768, SecP256r1MLKEM768, SecP384r1MLKEM1024 (formerly draft-ietf-tls-ecdhe-mlkem).<br/>→ Standards Track - the default in all major browsers, OpenSSL 3.5+, Apple platforms 26 and (opt-in) Windows Schannel.</small>
                                     </li>
 
                                     <li class="fragment">🚀
                                         draft-ietf-tls-mlkem
                                         <br />
-                                        <small>→ Pure post-quantum key exchange for TLS 1.3.<br/>→ This is the long-term goal, not yet widely supported.</small>
+                                        <small>→ Pure post-quantum key exchange for TLS 1.3.<br/>→ IESG-approved in 2026 (Informational), RFC number pending; not yet widely supported.</small>
                                     </li>
 
                                     <li class="fragment">🛠️
-                                         draft-ietf-tls-mldsa
+                                        draft-ietf-tls-mldsa
                                         <br />
-                                        <small>→ Use of ML-DSA for authentication <br/>→ Combined with ML-KEM, provides pure PQC (KEM + authentication).</small>
+                                        <small>→ ML-DSA for authentication (certificates) - together with ML-KEM this gives pure PQC TLS.<br/>→ In IESG review since mid-2026.</small>
+                                    </li>
+
+                                    <li class="fragment">🌳
+                                        draft-ietf-plants-merkle-tree-certs
+                                        <br />
+                                        <small>→ Merkle Tree Certificates: shrink post-quantum authentication for the WebPKI.<br/>→ Chrome + Cloudflare live experiment since early 2026; Let's Encrypt targets production in 2027.</small>
                                     </li>
                                 </ul>
                             </div>
                             <div class="col-33" style="padding-left: 1em;">
                                 <div class="img-backdrop">
-                                    <img src="images/X25519MLKEM768.png" class="standard" style="min-height: auto;" />
+                                    <img src="images/rfc10024.png" class="standard" style="min-height: auto;" />
                                 </div>
 
                             </div>
                         </div>
+                    </div>
+                </section>
+
+                <section data-background="images/atlas-ibl.jpg">
+                    <div class="overlay-style">
+                        <p>Post-quantum key exchange is already mainstream (2026):</p>
+                        <div class="column-container">
+                            <div class="col-50">
+                                <ul class="scaled-text">
+                                    <li class="fragment">🌐
+                                        Web / TLS
+                                        <br />
+                                        <small>→ Chrome, Edge, Firefox and Safari (iOS/macOS 26) default to X25519MLKEM768<br/>
+                                            → about two-thirds of human HTTPS traffic to Cloudflare is PQ-protected, but only ~9% of origin servers support it</small>
+                                    </li>
+                                    <li class="fragment">🔑
+                                        SSH
+                                        <br />
+                                        <small>→ OpenSSH 10.0+ (April 2025) defaults to mlkem768x25519-sha256</small>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-50" style="padding-left: 1em;">
+                                <ul class="scaled-text">
+                                    <li class="fragment">💬
+                                        Messaging
+                                        <br />
+                                        <small>→ Signal: PQXDH (2023) + SPQR "triple ratchet" (October 2025)<br/>
+                                            → Apple iMessage PQ3 (2024)</small>
+                                    </li>
+                                    <li class="fragment">🧰
+                                        Platforms and runtimes
+                                        <br />
+                                        <small>→ OpenSSL 3.5 (2025), Windows CNG (Nov 2025) + Schannel (July 2026), Apple CryptoKit (2025)<br/>
+                                            → Java 24, Go 1.24 and .NET 10 (2025)</small>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <p class="footnote" style="text-align: center;"><br/>Signatures are the laggard: the public WebPKI is still fully classical, and ML-DSA certificates live in private PKIs and experiments.</p>
                     </div>
                 </section>
 
@@ -988,7 +1133,7 @@ Too Slow for Confidentiality
     <div class="overlay-style black-overlay-style">
         <div class="column-container">
             <div class="col-50">
-                <p>In April 2025 OpenSSL 3.5 was released, with official support for <span class="highlight">ML-KEM, ML-DSA and SLH-DSA</span>. It's an LTS release and it paves the way for wide adoption of PQC in all Linux-based systems.
+                <p>In April 2025 OpenSSL 3.5 was released, with official support for <span class="highlight">ML-KEM, ML-DSA and SLH-DSA</span>. It's an LTS release (supported until April 2030) and it paves the way for wide adoption of PQC in all Linux-based systems. OpenSSL 4.0 (April 2026) builds on it, but 3.5 remains the LTS baseline.
                         </p>
             </div>
             <div class="col-50">
@@ -1000,7 +1145,7 @@ Too Slow for Confidentiality
                         <small>→ Alpine 3.22 and higher</small>
                     </li>
                     <li>
-                        <small>→ Ubuntu 25.10 (NOT LTS!)</small>
+                        <small>→ Ubuntu 25.10 and 26.04 LTS</small>
                     </li>
                                         <li>
                         <small>→ RHEL / Alma 10.1 and higher</small>
@@ -1023,6 +1168,7 @@ Too Slow for Confidentiality
                     <div class="overlay-style fragment black-overlay-style">
                         <p>In November 2025 Microsoft released GA support for ML-KEM and ML-DSA for <span class="highlight">Windows 11</span> and <span class="highlight">Windows Server 2025</span>.
                         </p>
+                        <p>In July 2026 hybrid ML-KEM key exchange for TLS 1.3 reached GA in <span class="highlight">Schannel</span> (x25519_mlkem768, secp256r1_mlkem768, secp384r1_mlkem1024) - disabled by default, enabled via Group Policy, MDM or the TLS cmdlets.</p>
 
                     </div>
                 </section>
@@ -1033,11 +1179,13 @@ Too Slow for Confidentiality
 
                         <div class="column-container">
                             <div class="col-50">
-                                <p>.NET 10 introduced official .NET API for ML-KEM and ML-DSA into <span class="highlight">System.Security.Cryptography</span>. It is supported with:</p>
+                                <p>.NET 10 added ML-KEM, ML-DSA, SLH-DSA and Composite ML-DSA to <span class="highlight">System.Security.Cryptography</span>, backed by:</p>
                                 <ul>
-                                    <li>→ Windows 11 (CNG): Build 26100.7171</li>
-                                    <li>→ Linux (OpenSSL): 3.5+</li>
-                         </ul>
+                                    <li>→ Windows 11 / Server 2025 (CNG): build 26100.7171+</li>
+                                    <li>→ Linux: OpenSSL 3.5+</li>
+                                    <li>→ macOS: not yet</li>
+                                </ul>
+                                <p><small>ML-KEM and ML-DSA are stable; SLH-DSA and Composite ML-DSA are <code>[Experimental]</code> (SYSLIB5006).</small></p>
                             </div>
                             <div class="col-50" style="padding-left: 1em;">
                                 <div class="img-backdrop">
@@ -1097,10 +1245,8 @@ Too Slow for Confidentiality
 
                 <section data-background="images/open-quantum-safe.png">
                     <div class="overlay-style fragment black-overlay-style">
-                        <p><span class="highlight">Open Quantum Safe</span> has been providing verified quantum-resistant crypto algorithms
-                            implementations in C.
-                        </p>
-                        <p><span class="highlight">Maybe LibOQS.NET</span> is a thin .NET wrapper around the Open Quantum Safe library, providing easy access to post-quantum cryptography features for .NET developers.</p>
+                        <p><span class="highlight">Open Quantum Safe</span> maintains liboqs - an open-source C library of quantum-resistant algorithm implementations, meant for prototyping and research rather than production.</p>
+                        <p><span class="highlight">Maybe LibOQS.NET</span> is a thin .NET wrapper around liboqs, providing easy access to post-quantum cryptography features for .NET developers. Version 0.4 (August 2026) tracks liboqs 0.16 and ships native binaries for Windows, Linux (glibc and musl) and macOS.</p>
                     </div>
                 </section>
 
@@ -1117,28 +1263,28 @@ Too Slow for Confidentiality
             </li>
             <li>
                 🔐 BIKE
-                <br/><small>→  key encapsulation, code-based (NIST Round 4)<br/>
+                <br/><small>→  key encapsulation, code-based (NIST Round 4, not selected)<br/>
                 → Variants: BIKE-L1, BIKE-L3, BIKE-L5</small>
             </li>
 
             <li>🔐
                 CRYSTALS-Kyber
                 <br />
-                <small>→ key encapsulation, lattice-based (NIST Round 3)<br/>
+                <small>→ key encapsulation, lattice-based (NIST Round 3, now ML-KEM)<br/>
                 → Variants: Kyber512, Kyber768, Kyber1024</small>
             </li>
 
             <li>🔐
                 HQC
                 <br />
-                <small>→ key encapsulation, code-based (NIST selected)<br/>
+                <small>→ key encapsulation, code-based (selected by NIST in 2025)<br/>
                 → Variants: HQC-128, HQC-192, HQC-256</small>
             </li>
 
             <li>🔐
                 Classic McEliece
                 <br />
-                <small>→ key encapsulation, code-based (NIST Round 4)<br/>
+                <small>→ key encapsulation, code-based (NIST Round 4, not selected)<br/>
                 → Variants: Classic-McEliece-348864, Classic-McEliece-348864f, Classic-McEliece-460896, Classic-McEliece-460896f, Classic-McEliece-6688128, Classic-McEliece-6688128f, Classic-McEliece-6960119, Classic-McEliece-6960119f, Classic-McEliece-8192128, Classic-McEliece-8192128f</small>
             </li>
         </ul>
@@ -1176,7 +1322,7 @@ Too Slow for Confidentiality
     </div>
 
 </div>
-    <p class="footnote" style="text-align: center;"><br/>9 algorithm families, 41 variants</p>
+    <p class="footnote" style="text-align: center;"><br/>9 algorithm families, 41 variants (liboqs 0.16 / LibOQS.NET 0.4)</p>
                     </div>
                 </section>
 
@@ -1196,7 +1342,7 @@ Too Slow for Confidentiality
             <li>✍️
                 Falcon
                 <br />
-                <small>→ signature, lattice-based (NTRU)<br/>
+                <small>→ signature, lattice-based (NTRU) - becomes FN-DSA (FIPS 206)<br/>
                 → Variants: Falcon-512, Falcon-1024, Falcon-padded-512, Falcon-padded-1024</small>
             </li>
 
@@ -1210,7 +1356,7 @@ Too Slow for Confidentiality
             <li>✍️
                 MAYO
                 <br />
-                <small>→ signature, multivariate oil-and-vinegar (NIST Round 1 additional)<br/>
+                <small>→ signature, multivariate oil-and-vinegar (NIST additional signatures, Round 3)<br/>
                 → Variants: MAYO-1, MAYO-2, MAYO-3, MAYO-5</small>
             </li>
         </ul>
@@ -1220,27 +1366,34 @@ Too Slow for Confidentiality
             <li>✍️
                 CROSS
                 <br />
-                <small>→ signature, code-based (NIST Round 1 additional)<br/>
+                <small>→ signature, code-based (NIST additional signatures, dropped after Round 2)<br/>
                 → Variants: cross-rsdp-*, cross-rsdpg-* (18 variants)</small>
             </li>
 
             <li>✍️
                 UOV (Unbalanced Oil and Vinegar)
                 <br />
-                <small>→ signature, multivariate (NIST Round 1 additional)<br/>
+                <small>→ signature, multivariate (NIST additional signatures, Round 3)<br/>
                 → Variants: OV-Is, OV-Ip, OV-III, OV-V (plus pkc/skc variants)</small>
             </li>
 
             <li>✍️
                 SNOVA
                 <br />
-                <small>→ signature, multivariate (non-commutative, NIST Round 1 additional)<br/>
+                <small>→ signature, multivariate (non-commutative, NIST additional signatures, Round 3)<br/>
                 → Variants: SNOVA_24_5_4, SNOVA_37_17_2 and others (12 variants)</small>
+            </li>
+
+            <li>✍️
+                MQOM
+                <br />
+                <small>→ signature, multivariate MPC-in-the-head (NIST additional signatures, Round 3; new in liboqs 0.16)<br/>
+                → Variants: mqom2_cat1/3/5 × gf16 fast/short × r3/r5 (12 variants)</small>
             </li>
         </ul>
     </div>
 </div>
-    <p class="footnote" style="text-align: center;"><br/>7 algorithm families, 209 variants</p>
+    <p class="footnote" style="text-align: center;"><br/>8 algorithm families, 221 variants (liboqs 0.16 / LibOQS.NET 0.4)</p>
 
                     </div>
 
@@ -1301,11 +1454,11 @@ Too Slow for Confidentiality
                               <td><strong>Platform</strong></td>
                               <td>.NET 10+<br/>(partly experimental)</td>
                               <td>.NET Standard 2.0</td>
-                              <td>.NET Standard 2.0</td>
+                              <td>.NET 9 / 10</td>
                           </tr>
                           <tr>
                             <td><strong>Algorithms</strong></td>
-                            <td>2/3</td>
+                            <td>4 (2 experimental)</td>
                             <td>11</td>
                             <td>16</td>
                           </tr>

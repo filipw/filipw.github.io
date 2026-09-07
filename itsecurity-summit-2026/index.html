@@ -60,11 +60,14 @@
                             <a href="https://strathweb.com" class="roll">
                                 <span>strathweb.com</span>
                             </a> •
-                            <a href="https://mathstodon.xyz/filipw" class="roll">
-                                <span data-title="@filip_woj">@filipw@mathstodon.xyz</span>
+                            <a href="https://bsky.app/profile/filipw.strathweb.com" class="roll">
+                                <span data-title="@filipw.strathweb.com">@filipw.strathweb.com</span>
+                            </a> •
+                            <a href="https://mathstodon.xyz/@filipw" class="roll">
+                                <span data-title="@filipw@mathstodon.xyz">@filipw@mathstodon.xyz</span>
                             </a> •
                             <a href="https://github.com/filipw" class="roll">
-                                <span data-title="github.com/filipw">Filip W</span>
+                                <span data-title="github.com/filipw">github.com/filipw</span>
                             </a>
                         </small>
                     </p>
@@ -77,21 +80,8 @@
                 style="max-height: 666px; border: 3px solid black !important;box-shadow: 5px 2px 2px black;" />
                 <img src="images/fe-quantum-cover.jpg" 
                 style="max-height: 666px; border: 3px solid black !important;box-shadow: 5px 2px 2px black;" />
-                <!-- <div class="column-container">
-
-                    <div class="col">
-                    </div>
-
-                    <div class="col overlay-style fragment">
-                        <blockquote>Every day that you don’t convert to a quantum-safe protocol, there’s no recovery plan
-                        </blockquote>
-                        <p>
-                            <footer>- <em>Dario Gil, IBM senior VP</em></footer>
-                            </p>
-                    </div>
-
-                </div> -->
                 <aside class="notes">
+                    These covers are from 2023 - and the hype has only grown since: 2025 was the UN International Year of Quantum Science and Technology, the 2025 Nobel Prize in Physics went to the superconducting-circuit experiments behind today's qubits, and in 2026 "Q-Day" became a mainstream headline after Google's estimate that 256-bit elliptic curves could fall to a few hundred thousand qubits.
                     However, as it is usually the case with popular media, certain things get easily misrepresented or taken out of the context - and the goal of this session is to provide you the technical background and enable you to judge the future impact of quantum technologies yourselves. 
                 </aside>
             </section>
@@ -103,10 +93,6 @@
 
             <!-- QM-->
             <section>
-                <!-- <section data-background="images/atlas1.jpg">
-                    <h1>Quantum Hype</h1>
-                </section> -->
-
                 <section data-background="images/atlas3.jpg">
                     <div class="overlay-style">
                         <p>Is it possible to have an</p>
@@ -172,9 +158,9 @@
                             </div>
                         </div>
                     </div>
-                    <!-- <aside class="notes">
-                        If the key is random then the attacker, Eve, intercepts the ciphertext on its way from Alice to Bob, she would gain no information about the original message at all as there is no pattern to spot.
-                    </aside> -->
+                    <aside class="notes">
+                        Shannon proved in 1949 that the one-time pad is perfectly secret: if the key is truly random, the same length as the message and never reused, the ciphertext carries no information about the message at all. Keep this in mind - we will meet the one-time pad again at the very end, when a satellite hands out the keys.
+                    </aside>
                 </section>
 
                 <section data-background="images/atlas3.jpg">
@@ -201,8 +187,7 @@
                     <p>The most popular symmetric algorithm is the <span class="highlight">Advanced Encryption Standard (AES)</span>.</p><p>AES with 256 bit key length is approved by NSA for top secret information.</p>
                     </div>
                     <aside class="notes">
-                        Another commonly used one, the Triple Data Encryption Standard (3DES) is now deprecated and should no longer be used
-                        
+                        Another commonly used one, the Triple Data Encryption Standard (3DES), was deprecated by NIST and is disallowed for encryption since the end of 2023. AES-256 is also the symmetric cipher mandated by the NSA's quantum-resistant suite CNSA 2.0.
                     </aside>
                 </section>
 
@@ -223,7 +208,7 @@
                         <div class="column-container">
                             <div class="col">
                                 <br/>
-                    <h3>Hybrid model</h2>
+                    <h3>Hybrid model</h3>
                                 <p>
                                 Many protocols, for example <span class="highlight">TLS</span>, start with an asymmetric handshake, and then switch to symmetric encryption.
                             </p>
@@ -233,8 +218,9 @@
                             </div>
 
                         </div>
+                        </div>
                         <aside class="notes">
-                            Many protocols - for example TLS/SSL - use a hybrid model - start with an asymmetric handshake, and then switch to symmetric.
+                            Many protocols - for example TLS/SSL - use a hybrid model - start with an asymmetric handshake, and then switch to symmetric. Remember this split: the handshake (key exchange and authentication) is what quantum computers threaten, the symmetric part is largely fine.
                         </aside>
                 </section>
 
@@ -242,10 +228,13 @@
                     <div class="overlay-style">
                     <p>Asymmetric cryptography is based on difficult mathematical problems:</p>
                     <ul>
-                        <li>🧮 factorizing large prime numbers - <span class="highlight">RSA</span></li> 
-                        <li>🧮 discrete logarithm problem - <span class="highlight">Elliptic Curve Cryptography</span></li>
+                        <li>🧮 factoring large composite numbers into primes - <span class="highlight">RSA</span></li> 
+                        <li>🧮 elliptic curve discrete logarithm problem - <span class="highlight">Elliptic Curve Cryptography</span></li>
                     </ul>
                     </div>
+                    <aside class="notes">
+                        Finite-field Diffie-Hellman and DSA rely on the classical discrete logarithm problem - same family, same fate.
+                    </aside>
                 </section>
 
                 <section data-background="images/quantum-computer.jpg">
@@ -257,7 +246,7 @@
                                     <li class="fragment">🚨
                                         threats
                                         <br />
-                                        <small>Quantum computers will be able to break some established crypto schemes</small>
+                                        <small>Quantum computers will be able to break the established public-key crypto schemes</small>
                                     </li>
                                 </ul>
                             </div>
@@ -266,7 +255,7 @@
                                     <li class="fragment">🔒
                                         opportunities
                                         <br />
-                                        <small>Quantum technology can be used to distribute keys with unconditional security</small>
+                                        <small>Quantum technology can be used to distribute keys with security rooted in physics instead of computational hardness</small>
                                     </li>
                                 </ul>
                             </div>
@@ -276,310 +265,24 @@
 
                 <section data-background="images/quantum-law.png">
                     <div class="overlay-style fragment">
-                        <p>In December 2022, Joe Biden signed into law the <span class="highlight">Quantum Computing Cybersecurity Preparedness Act</span>, which requires federal agencies to develop plans to:</p>
-                        <ul style="text-align: center;">
-                            <li>🔐 migrate systems to post-quantum cryptography</li>
-                            <li>⚠️ adopt technology that will protect against quantum computing attacks</li>
+                        <p>In December 2022, the US <span class="highlight">Quantum Computing Cybersecurity Preparedness Act</span> required federal agencies to plan their migration to post-quantum cryptography. It was only the beginning:</p>
+                        <ul class="scaled-text">
+                            <li>📜 August 2024 - NIST publishes the first post-quantum standards (FIPS 203, 204, 205)</li>
+                            <li>🇪🇺 June 2025 - EU coordinated roadmap: critical infrastructure quantum-safe by end of 2030</li>
+                            <li>⚡ June 2026 - US Executive Order 14412 makes the deadlines binding: post-quantum key exchange on federal high-value systems by end of 2030, signatures by end of 2031</li>
                         </ul>
                     </div>
-                    <aside class="notes">Plans should be drafted in 2023.</aside>
+                    <aside class="notes">The 2022 act asked for plans; by 2026 the plans have deadlines. Germany's BSI, France's ANSSI and 16 other European agencies co-signed a November 2024 statement urging industry to start migrating now. We will look at the concrete timelines in the post-quantum section.</aside>
                 </section>
 
             </section>
             <!-- end QM-->
-
-            <!-- Theory -->
-            <!-- <section>
-                <section data-background="images/cern-theory.jpg">
-                    <h1>Quantum Theory</h1>
-                </section>
-
-                <section data-background="images/irpc-demonstrator.jpg">
-                    <div class="overlay-style">
-                        <p>In classical computing a bit can have only two discrete values</p>
-                        <h2 class="r-fit-text">0 or 1</h2>
-                    </div>
-                </section>
-
-                <section data-background="images/irpc-demonstrator.jpg">
-                    <div class="column-container centered overlay-style">
-
-                        <div class="col">
-                            <p>In quantum information theory an information unit is called a <span
-                                    class="highlight">qubit</span>.
-                            </p>
-                            <p>The qubit is described by a two dimensional <span class="highlight">state vector</span>,
-                                where $\alpha$ and $\beta$ are
-                                complex numbers.</p>
-                        </div>
-
-                        <div class="col">
-                            <h2 class="r-fit-text">$\begin{bmatrix} \alpha \cr \beta \end{bmatrix}$</h2>
-                            <p>$$|\alpha|^2 + |\beta|^2 = 1$$</p>
-                        </div>
-                    </div>
-                </section>
-
-                <section data-background="images/irpc-demonstrator.jpg">
-                    <div class="overlay-style">
-                        <p>A qubit is a</p>
-                        <h2 class="r-fit-text">two-level quantum system</h2>
-                    </div>
-                    <aside class="notes">
-                        Despite the fact that a system might be in mathematically infinitely many states, we can only observe and distinguish two of them.
-                    </aside>
-                </section>
-
-                <section data-background="images/irpc-demonstrator.jpg">
-                    <div class="overlay-style">
-                        <h2>$\mathbf{Z}$ basis</h2>
-                        <p>
-                            $$
-                            \begin{bmatrix} 1 \cr 0 \end{bmatrix} = \ket{0} = 0 \;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;
-                            \begin{bmatrix} 0 \cr 1 \end{bmatrix} = \ket{1} = 1
-                            $$
-                        </p>
-                    </div>
-                </section>
-
-                <section data-background="images/irpc-demonstrator.jpg">
-                    <div class="column-container centered overlay-style">
-                        <div class="col">
-                            <p>Qubit state can be visualized using a <span class="highlight">Bloch sphere</span>, where $\ket{0}$ and $\ket{1}$ are vectors starting at the center and pointing to "north pole" and "south pole".</p>
-                        </div>
-                        <div class="col inset">
-                            <img src="images/bloch-z-axis.jpeg" />
-                        </div>
-                        <aside class="notes">
-                            What about the other states then?
-                        </aside>
-                </section>
-
-                <section data-background="images/irpc-demonstrator.jpg">
-                    <div class="column-container centered overlay-style">
-                        <div class="col">
-                            <p>All other states are a linear combination of $\ket{0}$ and $\ket{1}$.
-                                This is a <span class="highlight">superposition</span>.</p>
-                            <h2 class="r-fit-text">$$\ket{\psi} = \alpha\ket{0} + \beta\ket{1}$$</h2>
-
-                        </div>
-                        <div class="col inset-right">
-                            <img src="images/bloch-superposition.jpeg" />
-                        </div>
-                    </div>
-                    <aside class="notes">
-                        A superposition is a troubling concept because there exists no macroscopic counterpart concept.
-                        It effectively means that a system is in ALL of its possible states simultaneously.
-                    </aside>
-                </section>
-
-                <section data-background="images/irpc-demonstrator.jpg">
-                    <div class="overlay-style">
-                        <p>A superposition state is</p>
-                        <h2 class="r-fit-text">not directly observable</h2>
-                        <p>Only the basis states can be observed in the measurement process</p>
-                    </div>
-                    <aside class="notes">
-                        So what happens when we observe a system in superposition?
-                    </aside>
-                </section>
-
-                <section data-background="images/irpc-demonstrator.jpg">
-                    <div class="overlay-style">
-                        <p>Upon observation, superposition state <span class="highlight">collapses</span> to one
-                            of the
-                            observable states (e.g. $\ket{0}$ or $\ket{1}$).</p>
-                        <h2 class="r-fit-text">outcome is probabilistic</h2>
-                    </div>
-                    <aside class="notes">
-                        It is a fundamental quantum doctrine that a measurement does not reveal a pre-existing value of
-                        the measured property. On the contrary, the outcome of a measurement is brought into being by
-                        the act of measurement itself. - David Mermin
-                    </aside>
-                </section>
-
-                <section data-background="images/schroedinger-cat2.png">
-                    <aside class="notes">
-                        Schrödinger's cat was both dead and alive at the same time. It's NOT that he was dead or live and Schrödinger simply did not know.
-                        Only once Schrödinger opened the box, because of "observation", would the cat's fate be decided.
-                    </aside>
-                </section>
-
-                <section data-background="images/irpc-demonstrator.jpg">
-                    <div class="overlay-style">
-                        <p>We cannot ask a quantum system</p>
-                        <h2 class="r-fit-text">what state are you in?</h2>
-                    </div>
-                    <aside class="notes">
-                        You can think of a superposition as a form of a quantum coin toss.
-                    </aside>
-                </section>
-
-                <section data-background="images/irpc-demonstrator.jpg">
-                    <div class="overlay-style">
-                        <p>For $\mathbf{Z}$ basis we can only ask</p>
-                        <h2 class="r-fit-text">Are you $\ket{0}$ or are you $\ket{1}$?</h2>
-                    </div>
-                </section>
-
-                <section data-background="images/irpc-demonstrator.jpg">
-                    <div class="overlay-style">
-                        <p>The strength of quantum computers is that they are able to take algorithmic advantage of
-                            <span class="highlight">superposition</span>. This is called
-                        </p>
-                        <h2 class="r-fit-text">quantum parallelism</h2>
-                    </div>
-                    <aside class="notes">
-                        <ol>
-                            <li>Create a superposition of all possible results</li>
-                            <li>Use interference to amplify correct result, and cancel out bad results</li>
-                        </ol>
-                    </aside>
-                </section>
-
-                <section data-background="images/quantum-computer.jpg">
-                    <div class="column-container">
-                        <div class="col overlay-style">
-                            <blockquote>...quantum parallelism allows
-                                quantum computers to evaluate a function $f(x)$ for many different values of x
-                                simultaneously.
-                            </blockquote>
-                            <p>
-                            <footer>- <em>Nielsen and Chuang</em></footer>
-                            </p>
-                        </div>
-                        <div class="col">
-                        </div>
-                    </div>
-                    <aside class="notes">
-                        For example, instead of evaluating a function many times with all possible inputs, we can
-                        evaluate once with superposition of inputs.
-                    </aside>
-                </section>
-
-                <section data-background="images/irpc-demonstrator.jpg">
-
-                    <div class="overlay-style">
-                    <div class="column-container centered">
-
-                        <div class="col">
-                            <p>To describe the state of a multi-qubit system, we use a <span class="highlight">tensor
-                                    product</span> of the individual states.</p>
-                        </div>
-
-                        <div class="col">
-                            <p>$$\ket{\psi_1} = \alpha_1\ket{0} + \beta_1\ket{1}$$</p>
-                            <p>$$\ket{\psi_2} = \alpha_2\ket{0} + \beta_2\ket{1}$$</p>
-                        </div>
-                    </div>
-                    <div style="clear: both;">$$\ket{\psi_{12}} = \alpha_1\alpha_2\ket{00} + \alpha_1\beta_2\ket{01}
-                        +
-                        \beta_1\alpha_2\ket{10} + \beta_1\beta_2\ket{11}$$</div>
-                    </div>
-                </section>
-
-                <section data-background="images/irpc-demonstrator.jpg">
-                    <div class="overlay-style">
-                        <p>However, an <span class="highlight">entangled</span> state can take the following form:</p>
-                        <h2 class="r-fit-text limited-size">
-
-                            $$\ket{\psi} = \frac{1}{\sqrt{2}}\ket{00} + \frac{1}{\sqrt{2}}\ket{11}$$</h2>
-                    </div>
-                    <aside class="notes">
-                        Superposition is "contagious", it spills into the overall system state until it collapses via
-                        the act of measurement.
-                        The results are truly random.
-                    </aside>
-                </section>
-
-                <section data-background="images/irpc-demonstrator.jpg">
-                    <div class="overlay-style">
-                        <p>We <span class="highlight">cannot find</span> $\alpha_1$, $\alpha_2$, $\beta_1$ and
-                            $\beta_2$
-                            to satisfy</p>
-                        <p>$\alpha_1\alpha_2\ket{00} + \alpha_1\beta_2\ket{01} + \beta_1\alpha_2\ket{10} +
-                            \beta_1\beta_2\ket{11} = \frac{1}{\sqrt{2}}(\ket{00} + \ket{11})$</p>
-
-                    </div>
-                </section>
-
-                <section data-background="images/irpc-demonstrator.jpg">
-                    <div class="overlay-style">
-                        <p>Entangled states
-                        <h2 class="r-fit-text">cannot be decomposed</h2>
-                        <p>into a tensor
-                            product of the individual quantum states.</p>
-                    </div>
-                    <aside class="notes">
-                        This tells us, at the quantum level, the smallest possible unit of reality is the composite
-                        system consisting of those two entangled objects. They cannot be treated as independent
-                        anymore.
-                        The problem is they can physically be separate from each other.
-                    </aside>
-                </section>
-
-                <section data-background="images/uv.jpg">
-                    <div class="overlay-style">
-                        <p>A <span class="highlight">single</span> quantum state can span <span
-                                class="highlight">multiple</span> quantum objects which are</p>
-                        <h2 class="r-fit-text">spatially separated</h2>
-
-                    </div>
-                </section>
-
-                <section data-background="images/albert-einstein-invent.jpg">
-                    <div class="column-container">
-                        <div class="col overlay-style">
-                            <blockquote>...spukhafte Fernwirkung...
-                            </blockquote>
-                            <p>
-                            <footer>- <em>Albert Einstein</em></footer>
-                            </p>
-                        </div>
-
-                        <div class="col">
-                        </div>
-                    </div>
-                    <aside class="notes">
-
-                    </aside>
-                </section>
-
-                <section data-background="images/uv.jpg">
-                    <div class="overlay-style">
-                        <p> We call this</p>
-                        <h2 class="r-fit-text">non-locality</h2>
-                        <p>It is based on the Bell's theorem from 1964.</p>
-                </section>
-
-                <section data-background="images/nobel-2022.png" data-state="bg-top-left">
-                </section>
-
-                <section data-background="images/irpc-demonstrator.jpg">
-                    <div class="overlay-style">
-                        <p>Exploring entanglement in algorithms is a critical factor contributing to <span
-                                class="highlight">computational advantage</span> of quantum computing.</p>
-                    </div>
-                    <aside class="notes">
-                    </aside>
-                </section>
-            </section> -->
-            <!-- end basic theory -->
-
 
             <!-- Quantum threats -->
             <section>
                 <section data-background="images/compass.jpg">
                     <h1>Quantum threats</h1>
                 </section>
-
-
-                <!-- <section data-background="images/irpc-demonstrator.jpg">
-                    <div class="overlay-style">
-                        <p>In classical information theory a bit can have only two discrete values</p>
-                        <h2 class="r-fit-text">0 or 1</h2>
-                    </div>
-                </section> -->
 
                 <section data-background="images/irpc-demonstrator.jpg">
                     <div class="overlay-style">
@@ -624,6 +327,7 @@
                         <div class="col inset">
                             <img src="images/bloch-z-axis.jpeg" />
                         </div>
+                    </div>
                     <aside class="notes">
                         Qubit state can be visualized on a Bloch sphere 
                     </aside>
@@ -689,150 +393,35 @@
                     </aside>
                 </section>
 
-                <section data-background="images/atlas-nsw.jpg">
-                    <div class="column-container">
-                        <div class="col overlay-style">
-                            <blockquote>...quantum parallelism allows
-                                quantum computers to evaluate a function $f(x)$ for many different values of x
-                                simultaneously.
-                            </blockquote>
-                            <p>
-                            <footer>- <em>Nielsen and Chuang</em></footer>
-                            </p>
-                        </div>
-                        <div class="col">
-                        </div>
+                <section data-background="images/irpc-demonstrator.jpg">
+                    <div class="img-backdrop">
+                        <img src="images/quantum-parallelism.png" class="standard" style="max-height: 300px;" />
+                        <p class="footnote" style="text-align: center; padding-bottom: 0.5em; font-size: 0.3em;">source: Stefano Markidis, KTH Royal Institute of Technology, https://arxiv.org/abs/2405.07222
+                        </p>
+                    </div>
+                    <div class="bottom-panel"><blockquote>Heuristically, and at the risk of over-simplifying, quantum parallelism allows quantum computers to evaluate a function $f(x)$ for many different values of $x$ simultaneously.
+                    </blockquote>
+                    <p>
+                    <footer>- <em>Nielsen and Chuang</em></footer>
+                    </p>
                     </div>
                     <aside class="notes">
-                        For example, instead of evaluating a function many times with all possible inputs, we can
-                        evaluate once with superposition of inputs.
+                        By using Hadamard gates to create an equal superposition of all possible inputs, a single quantum circuit can compute a function f(x) for every possible value at the same time. However, quantum parallelism alone is not enough to outperform classical computers; because measuring the state forces it to collapse into just one random input-output pair, quantum algorithms must use interference to extract useful, global information from the superposition before making a measurement. This is also why the popular picture of a quantum computer "trying all keys at once" is wrong - brute force does not work like that, which is why symmetric crypto survives.
                     </aside>
                 </section>
-<!--                 
-                <section data-background="images/alice-door.jpeg">
-                    <div class="overlay-style">
-                        <p>
-                            <span class="highlight">Deutsch's problem</span> - given an unknown function
-                        </p>
-                        <h2 class="r-fit-text">$f : \{0,1\} \rightarrow \{0,1\}$</h2>
-                        <p>
-                            determine if the function is <span
-                            class="highlight">constant</span> or <span class="highlight">balanced</span>
-                        </p>
-                </section>
 
                 <section data-background="images/alice-door.jpeg">
                     <div class="overlay-style">
-                        <div class="column-container centered">
-                            <div class="col">
-                                <ul>
-                                    <li>$f_0$ is constant</li>
-                                    <li>$f_1$ is constant</li>
-                                    <li>$f_2$ is balanced</li>
-                                    <li>$f_3$ is balanced</li>
-                                </ul>
+                        <div class="column-container">
+                            <div class="col-50">
+                                <p>One of the most widely used public-private cryptosystems is RSA (Rivest–Shamir–Adleman)</p> <p>Its
+                                    security relies on the <span class="highlight">factoring problem</span> - recovering two large primes from their product.
+                                </p>
                             </div>
-                            <div class="col">
-                                <ul>
-                                    <li>$f_0(0) = f_0(1) = 0$</li>
-                                    <li>$f_1(0) = f_1(1) = 1$</li>
-                                    <li>$f_2(0) = 0 \;\;\; f_2(1) = 1$</li>
-                                    <li>$f_3(0) = 1 \;\;\; f_3(1) = 0$</li>
-                                </ul>
+                            <div class="col-50">
+                                <img class="standard" src="images/rsa.png" />
                             </div>
-                </section>
-
-                <section data-background="images/alice-door.jpeg">
-                    <div class="column-container centered overlay-style">
-                        <div class="col">
-                            <p>Classically, <span class="highlight">two</span> function evaluations are needed.</p><p> After
-                                the first execution, we still cannot say if the function is balanced or constant.</p>
-                        </div>
-                        <div class="col inset">
-                            <img src="images/deutsch-classical.png" />
-                        </div>
                     </div>
-                </section>
-
-                <section data-background="images/alice-door.jpeg">
-                    <div class="column-container centered overlay-style">
-                        <div class="col">
-                            <p>On a quantum computer, thanks to <span class="highlight">interference</span>, the answer can be obtained in just <span
-                                    class="highlight">one</span> call.</p>
-                        </div>
-                        <div class="col inset">
-                            <img src="images/deutsch-tex.png" />
-                        </div>
-                    </div>
-                </section>
-
-                <section data-background="images/irpc-demonstrator.jpg">
-                    <div class="overlay-style">
-                        <h3>Siblings analogy</h3>
-                        <table class="fragment" data-fragment-index="1">
-                            <tr>
-                                <td></td>
-                                <td>👧🏻</td>
-                                <td style="border-right: 1px solid">👧🏻</td>
-                                <td>👧🏽</td>
-                                <td>👦🏽</td>
-                            </tr>
-                            <tr class="fragment" data-fragment-index="2">
-                                <td rowspan="3">How are you doing?</td>
-                            </tr>
-                            <tr class="fragment" data-fragment-index="3">
-                                <td class="fragment" data-fragment-index="3">good</td>
-                                <td class="fragment" data-fragment-index="3" style="border-right: 1px solid">good</td>
-                                <td class="fragment" data-fragment-index="6">good</td>
-                                <td class="fragment" data-fragment-index="6">bad</td>
-                            </tr>
-                            <tr class="fragment" data-fragment-index="3">
-                                <td class="fragment" data-fragment-index="5">bad</td>
-                                <td class="fragment" data-fragment-index="5" style="border-right: 1px solid">bad</td>
-                                <td class="fragment" data-fragment-index="7">bad</td>
-                                <td class="fragment" data-fragment-index="7">good</td>
-                            </tr>
-                            <tr class="fragment">
-                            </tr>
-                        </table>
-                    </div>
-                </section>
-
-                <section data-background-color="#000">
-                    <div class="overlay-style">
-                    <h3><span class="fragment">How are you doing?</span>&nbsp;&nbsp;&nbsp;<span class="fragment">🔊 good</span></h3>
-                    <h3><span class="fragment">How are you doing?</span>&nbsp;&nbsp;&nbsp;<span class="fragment">🔊 good</span></h3>
-                    <h1 class="fragment">👧🏻&nbsp;&nbsp;&nbsp;👧🏻</h1>
-                    </div>
-                </section>
-
-                <section data-background-color="#000">
-                    <div class="overlay-style">
-                    <h3><span class="fragment">How are you doing?</span>&nbsp;&nbsp;&nbsp;<span class="fragment">🔊 bad</span></h3>
-                    <h3><span class="fragment">How are you doing?</span>&nbsp;&nbsp;&nbsp;<span class="fragment">🔊 good</span></h3>
-                    <h1 class="fragment">👦🏽&nbsp;&nbsp;&nbsp;👧🏽</h3>
-                    </div>
-                </section>
-
-                <section data-background-color="#000">
-                    <div class="overlay-style">
-                    <h3><span class="fragment">How are you doing?</span>&nbsp;&nbsp;&nbsp;<span class="fragment">🔊 GOOD</span></h3>
-                    <h1 class="fragment">👧🏻&nbsp;&nbsp;&nbsp;👧🏻</h3>
-                    </div>
-                </section>
-
-                <section data-background-color="#000">
-                    <div class="overlay-style">
-                    <h3><span class="fragment">How are you doing?</span>&nbsp;&nbsp;&nbsp;<span class="fragment">🔊 gbdgbd</span></h3>
-                    <h1 class="fragment">👦🏽&nbsp;&nbsp;&nbsp;👧🏽</h3>
-                    </div>
-                </section> -->
-
-                <section data-background="images/alice-door.jpeg">
-                    <div class="overlay-style">
-                        <p>One of most widely used public-private cryptosystems is RSA (Rivest–Shamir–Adleman), whose
-                            security relies on <span class="highlight">factoring problem</span> of large prime numbers.
-                        </p>
                     </div>
                     <aside class="notes">
                         RSA is considered to be partly legacy, but still it makes a good example to illustrate certain concepts - because they are applicable to the alternative algorithms as well.
@@ -844,13 +433,12 @@
                         <h2>RSA</h2>
                         <ul>
                             <li class="fragment highlight-current-red">1. Pick two huge prime numbers $p$ and $q$</li>
-                            <li class="fragment highlight-current-red">2. Pick exponent $e$</li>
-                            <li class="fragment highlight-current-red">3. Publish $N = p \times q$ and $e$</li>
-                            <li class="fragment highlight-current-red">4. Encrypt: <br />$C = M^e (mod\;N)$
-                                &nbsp;&nbsp;&nbsp; (public key based on $N$)</li>
+                            <li class="fragment highlight-current-red">2. Pick public exponent $e$ (usually 65537)</li>
+                            <li class="fragment highlight-current-red">3. Publish public key $N = p \times q$ and $e$</li>
+                            <li class="fragment highlight-current-red">4. Encrypt: <br />$C = M^e (mod\;N)$</li>
                             <li class="fragment highlight-current-red">5. Decrypt: <br />
-                                $M = C^{e^{-1} (mod\;(p-1) \times (q-1))} (mod\;\;N)$&nbsp;&nbsp;&nbsp; (private key
-                                based on $p$, $q$)</li>
+                                Calculate private key $d = e^{-1} \pmod{(p-1) \times (q-1)}$<br />
+        $M = C^d \pmod{N}$</li>
                         </ul>
                     </div>
                     <aside class="notes">
@@ -865,30 +453,30 @@
                         <h3 class="r-fit-text">finding $p$ and $q$ is impossible</h3>
                         <p>if you only know $N$.</p>
                     </div>
+                    <aside class="notes">
+                        These are Google's live OAuth signing keys - RSA-2048, still, in 2026. Every "Sign in with Google" token is verified against one of these moduli.
+                    </aside>
                 </section>
 
                 <section data-background="images/shor.png">
                     <div class="overlay-style fragment black-overlay-style">
-                        <p>In 1994, Peter Shor developed an integer factorization algorithm for quantum computers that
-                            achieves <span class="highlight">exponential speed up</span> over the fastest known
-                            classical alternative.
-                        </p>
+                        <p>In 1994, Peter Shor developed an integer factorization algorithm for quantum computers that 
+    runs in polynomial time, achieving an <span class="highlight">exponential speed up</span> 
+    over the fastest known classical alternative.
+</p>
                     </div>
                 </section>
-
 
                 <section data-background="images/alice-door.jpeg">
                     <div class="overlay-style">
                         <h2>Factoring a number $N$</h2>
                         <ul>
-                            <li class="fragment highlight-current-red">1. Pick $a$ such that $a <
-                                    N$ and that it is relatively prime to $N$</li>
-                            <li class="fragment highlight-current-red">2. Find the period $r$ of a function $f(x) = a^x
-                                (mod\;\;N)$</li>
-                            <li class="fragment highlight-current-red">3. Calculate: <br />
-                                $p = gcd(a^{\frac{r}{2}} + 1, N)$ and
-                                $q = gcd(a^{\frac{r}{2}} - 1, N)$
-                            </li>
+<li class="fragment highlight-current-red">1. Pick random $a < N$ that is relatively prime to $N$</li>
+<li class="fragment highlight-current-red">2. Find the period $r$ of the function $f(x) = a^x \pmod N$</li>
+<li class="fragment highlight-current-red">3. If $r$ is even, calculate candidates for $p$ and $q$: <br />
+    $\gcd(a^{\frac{r}{2}} + 1, N)$ and 
+    $\gcd(a^{\frac{r}{2}} - 1, N)$
+</li>
                         </ul>
                     </div>
                 </section>
@@ -912,6 +500,7 @@
 
                         </div>
                         <p>5 and 3 are factors of 15.</p>
+                    </div>
                 </section>
 
                 <section data-background="images/alice-door.jpeg">
@@ -928,6 +517,7 @@
                             </div>
 
                         </div>
+                    </div>
                         <aside class="notes">
                             Shor's algorithm is a hybrid classical-quantum method - gcd is still done classically.
                         </aside>
@@ -935,10 +525,10 @@
 
                 <section data-background="images/alice-door.jpeg">
                     <div class="overlay-style">
-                        <p>Shor's algorithm can also be used to compute discrete logarithms on elliptic curves over prime fields, thus is <span class="highlight">equally capable of attacking it</span>.
+                        <p>Shor's algorithm can also be used to compute discrete logarithms - including on elliptic curves - thus it is <span class="highlight">equally capable of attacking</span> Diffie-Hellman, ECDH, DSA and ECDSA.
                         </p>
                     </div>
-                    <aside class="notes">In TLS 1.3, RSA is no longer used for key exchange, in favor of methods like Ephemeral Elliptic-Curve Diffie-Hellman (ECDHE). Even without TLS 1.3, ECDSA should be used over RSA.</aside>
+                    <aside class="notes">In TLS 1.3, RSA is no longer used for key exchange, in favor of Ephemeral Elliptic-Curve Diffie-Hellman (ECDHE). That does not help against a quantum computer - ECDH falls to the same algorithm, and it falls first.</aside>
                 </section>
 
                 <section data-background="images/ellipticcurve.png">
@@ -948,24 +538,252 @@
                         </div>
 
                         <div class="col overlay-style black-overlay-style">
-                            <blockquote>(...) attacking elliptic curve cryptography is indeed easier than attacking RSA (...)
+                            <blockquote>(...) the number of qubits required to tackle elliptic curves is less than for attacking RSA, suggesting that indeed ECC is an easier target than RSA.
                             </blockquote>
+                            <p>
+                            <footer>- <em>Roetteler, Naehrig, Svore, Lauter (Microsoft Research), 2017</em></footer>
+                            </p>
                         </div>
 
                     </div>
                     <aside class="notes">
-                        Forward secrecy means using new (ephemeral) keys all the time, so intercepting and breaking one message would not reveal the whole session. ECDH is also used in tools like Signal or Skype.
+                        Forward secrecy means using new (ephemeral) keys all the time, so intercepting and breaking one message would not reveal the whole session. ECDH is also used in tools like Signal or WhatsApp. Against a quantum adversary, forward secrecy is only as good as the key exchange - and a 256-bit curve is a smaller target than a 2048-bit RSA modulus.
                     </aside>
                 </section>
 
-                <section data-background-color="white">
-                    <div>
-                        <img src="images/globalrisk.png" style="max-height: 600px;" />
-                        </div>
-                        <div style="clear:both; margin-top: 20px;">
-                            <p class="footnote" style="text-align: center;">source: Global Risk Institute, "2022 Quantum Threat Timeline Report"
+                <section data-background="images/alice-door.jpeg">
+                    <div class="overlay-style">
+                        <p>Q-Day so far: what has actually been broken?</p>
+                        <ul class="scaled-text">
+                            <li class="fragment">🧮 Shor on real hardware: <span class="highlight">15</span> (IBM, 2001) and <span class="highlight">21</span> (2012)<br/><small>&nbsp;→ both with "compiled" circuits that quietly used the answer - nothing bigger since</small></li>
+                            <li class="fragment">🔑 Elliptic curves: a <span class="highlight">15-bit</span> toy key (Project Eleven's 1 BTC Q-Day Prize, April 2026)<br/><small>&nbsp;→ feeding the same pipeline random bytes "recovers" the same keys</small></li>
+                            <li class="fragment">📰 "RSA broken" headlines (2022: RSA-2048 with 372 qubits, 2024: 22-bit RSA on D-Wave)<br/><small>&nbsp;→ not Shor, not scalable, debunked within days</small></li>
+                            <li class="fragment">🎯 The targets - RSA-2048 (617 digits) and 256-bit curves - are untouched, but the estimates of what it takes keep shrinking</li>
+                        </ul>
+                    </div>
+                    <aside class="notes">
+                        Smolin, Smith and Vargo ("Oversimplifying quantum factoring", Nature 2013) showed that the record demonstrations only work because the circuits were compiled with knowledge of the factors. Steve Tippeconnic's 6-bit ECC key (September 2025) was the first public curve break on hardware; Giancarlo Lelli's 15-bit key (April 2026) extended it 512-fold - and Yuval Adam replaced the IBM calls with /dev/urandom and got byte-identical keys. Point: don't watch the demos, watch the resource estimates.
+                    </aside>
+                </section>
+
+                <section data-background="images/gidney.png">
+                    <div class="overlay-style black-overlay-style fragment">
+                        <p>In 2019, Craig Gidney (Google) and Martin Ekerå (KTH) estimated that factoring RSA-2048 would take <span class="highlight">8 hours on 20 million noisy qubits</span>.</p>
+                        <p>For years this was <em>the</em> reference number - down from roughly a billion qubits in the 2012 surface-code estimate.</p>
+                        <p class="footnote" style="text-align: center;"><br/>C. Gidney, M. Ekerå, "How to factor 2048 bit RSA integers in 8 hours using 20 million noisy qubits," Quantum 5, 433 (2021), arXiv:1905.09749 (2019).</p>
+                    </div>
+                    <aside class="notes">
+                        Assumptions: planar grid, nearest-neighbour connectivity, 0.1% physical gate error, 1 µs surface-code cycle. Each generation of estimates keeps the hardware assumptions and squeezes the algorithm and the error correction.
+                    </aside>
+                </section>
+
+<section data-background="images/gidney2.png">
+                                        <div class="overlay-style black-overlay-style fragment">
+                        <p>In May 2025 Gidney cut it 20-fold - and until early 2026 this was the best published estimate for breaking RSA-2048¹:</p>
+                        <ul>
+                            <li>🧮 ~1,400 logical qubits<br/><small>&nbsp;→ ideal, error-free qubits - a mathematical abstraction, not something you can buy.</small></li>
+                            <li>🧮 &lt; 1,000,000 physical qubits (897,864)<br/><small>&nbsp;→ 2D surface code with nearest-neighbour connectivity, 0.1% physical gate error rate, less than a week of runtime.</small></li>
+                        </ul>
+                                                    <p class="footnote" style="text-align: center;"><br/>¹ C. Gidney, "How to factor 2048 bit RSA integers with less than a million noisy qubits," arXiv:2505.15917 (2025).
                             </p>
+                    </div>
+                </section>
+
+<section data-background="images/pinnacle.png" data-state="bg-top-left">
+                                        <div class="overlay-style black-overlay-style fragment">
+                        <p>In February 2026, Iceberg Quantum's Pinnacle Architecture cut the physical overhead by another order of magnitude²:</p>
+                        <ul>
+                            <li>🧮 ~1,400 logical qubits<br/><small>&nbsp;→ same algorithm and logical requirements as above - the savings come from better error correction.</small></li>
+                            <li>🧮 &lt; 100,000 physical qubits (~94,000)<br/><small>&nbsp;→ QLDPC (Quantum Low-Density Parity Check) codes that need non-local connectivity, 0.1% physical gate error rate, about a month of runtime (a week with ~139,000 qubits).</small></li>
+                        </ul>
+                                                    <p class="footnote" style="text-align: center;"><br/>² P. Webster et al. (Iceberg Quantum), "The Pinnacle Architecture: Reducing the cost of breaking RSA-2048 to 100 000 physical qubits using quantum LDPC codes," arXiv:2602.11457 (2026).
+                            </p>
+                    </div>
+                    <aside class="notes">
+                        Caveats matter: QLDPC codes need long-range connections between qubits (natural for ions, atoms and photonics, hard for a superconducting chip), real-time decoding, and a month of stable fault-tolerant operation. It is a paper design, not a machine.
+                    </aside>
+                </section>
+
+                <section data-background="images/google-ecc-2026.png" data-state="bg-top-left">
+                    <div class="overlay-style black-overlay-style fragment">
+                        <p>March 2026: Google Quantum AI (with the Ethereum Foundation and Stanford) re-estimated the cost of breaking 256-bit elliptic curves³ - secp256k1, the same size as the P-256 behind most ECDSA/ECDH:</p>
+                        <ul>
+                            <li>🧮 1,200-1,450 logical qubits<br/><small>&nbsp;→ 70-90 million Toffoli gates (RSA-2048 above: ~1,400 logical qubits, 6.5 billion Toffolis).</small></li>
+                            <li>🧮 &lt; 500,000 physical qubits<br/><small>&nbsp;→ superconducting, 0.1% error rate, nearest-neighbour grid; one key in 9-23 minutes - ~20x fewer qubits than the previous best estimate.</small></li>
+                            <li>🤐 attack circuits withheld<br/><small>&nbsp;→ a zero-knowledge proof of the resource counts was published instead.</small></li>
+                        </ul>
+                        <p class="footnote" style="text-align: center;"><br/>³ Google Quantum AI, Ethereum Foundation, Stanford, "Securing Elliptic Curve Cryptocurrencies against Quantum Vulnerabilities," arXiv:2603.28846 (March 2026).</p>
+                    </div>
+                    <aside class="notes">
+                        Minutes per key changes the threat model: an attack no longer has to be planned around a week-long computation - it fits inside a TLS session lifetime or a Bitcoin block interval. Google withheld the circuits and shipped a zero-knowledge proof of the counts - a "responsible disclosure" model for cryptanalysis.
+                    </aside>
+                </section>
+
+                <section data-background="images/cain-atoms-2026.png" data-state="bg-top-left">
+                    <div class="overlay-style black-overlay-style fragment">
+                        <p>Also in March 2026, Cain et al. (Harvard, Caltech and collaborators) showed that neutral-atom hardware could run Shor's algorithm at cryptographic scale with⁴:</p>
+                        <ul>
+                            <li>🧮 as few as 10,000 reconfigurable atomic qubits<br/><small>&nbsp;→ high-rate error-correcting codes on reconfigurable atom arrays instead of a fixed 2D grid; runtime is traded for qubit count.</small></li>
+                            <li>🧮 26,000 physical qubits → P-256 in "a few days"<br/><small>&nbsp;→ factoring RSA-2048 takes one to two orders of magnitude longer.</small></li>
+                            <li>🔬 grounded in 2025 experiments<br/><small>&nbsp;→ below-threshold logical operations on hundreds of atoms and arrays of more than 6,000 atoms.</small></li>
+                        </ul>
+                        <p class="footnote" style="text-align: center;"><br/>⁴ M. Cain et al., "Shor's algorithm is possible with as few as 10,000 reconfigurable atomic qubits," arXiv:2603.28627 (2026).</p>
+                    </div>
+                </section>
+
+                <section data-background="images/atlas-ibl.jpg">
+                    <div class="overlay-style">
+                        <h3>Physical qubits needed to break RSA-2048</h3>
+                        <table class="medium">
+                            <colgroup>
+                                <col style="width: 10%;">
+                                <col style="width: 26%;">
+                                <col style="width: 22%;">
+                                <col style="width: 18%;">
+                                <col style="width: 24%;">
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th>year</th>
+                                    <th>estimate</th>
+                                    <th>physical qubits</th>
+                                    <th>runtime</th>
+                                    <th>error correction</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="fragment">
+                                    <td>2012</td>
+                                    <td>Fowler et al.</td>
+                                    <td>~1,000,000,000</td>
+                                    <td>~1 day</td>
+                                    <td>surface code</td>
+                                </tr>
+                                <tr class="fragment">
+                                    <td>2019</td>
+                                    <td>Gidney &amp; Ekerå</td>
+                                    <td>20,000,000</td>
+                                    <td>8 hours</td>
+                                    <td>surface code</td>
+                                </tr>
+                                <tr class="fragment">
+                                    <td>2025</td>
+                                    <td>Gidney</td>
+                                    <td>&lt; 1,000,000</td>
+                                    <td>&lt; 1 week</td>
+                                    <td>surface code</td>
+                                </tr>
+                                <tr class="fragment">
+                                    <td>2026</td>
+                                    <td>Iceberg Quantum (Pinnacle)</td>
+                                    <td>&lt; 100,000</td>
+                                    <td>~1 month</td>
+                                    <td>QLDPC codes, non-local links</td>
+                                </tr>
+                                <tr class="fragment">
+                                    <td>2026</td>
+                                    <td>Cain et al. (neutral atoms)</td>
+                                    <td>10,000 - 26,000</td>
+                                    <td>weeks-months (days for P-256)</td>
+                                    <td>high-rate codes, reconfigurable atoms</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p class="footnote" style="text-align: center;"><br/>All assume ~0.1% physical error rates; connectivity, cycle times and hardware platforms differ, so the rows are not strictly comparable - the direction is what matters.</p>
+                    </div>
+                    <aside class="notes">
+                        Five orders of magnitude in fourteen years - with the hardware assumptions held roughly constant. Meanwhile the hardware itself went from a handful of qubits to a few hundred error-corrected ones. The two curves are converging.
+                    </aside>
+                </section>
+
+                <section data-background="images/alice-door.jpeg">
+                    <div class="overlay-style">
+                        <h3>Quantum attack vectors</h3>
+                        <div class="column-container">
+                            <div class="col-50">
+                                <ul class="scaled-text">
+                                    <li class="fragment">🕵️ Harvest now, decrypt later<br/><small>&nbsp;→ record TLS, VPN, SSH or messaging traffic today; break the RSA/(EC)DH key exchange later and every session key falls out. Anything that must stay secret for years is exposed <em>today</em>.</small></li>
+                                    <li class="fragment">🎭 Forge signatures<br/><small>&nbsp;→ fake certificates, code-signing and firmware updates, SSO tokens, blockchain transactions. Needs the machine at attack time - but root and firmware keys baked into devices for 10-20 years are exposed from day one.</small></li>
+                                </ul>
+                            </div>
+                            <div class="col-50" style="padding-left: 1em;">
+                                <ul class="scaled-text">
+                                    <li class="fragment">🔑 Public keys you already published<br/><small>&nbsp;→ certificates, SSH and PGP keys, on-chain keys: the private key can be derived directly, nothing has to be recorded first.</small></li>
+                                    <li class="fragment">🧱 Symmetric ciphers and hashes<br/><small>&nbsp;→ Grover only halves the effective key length: AES-128 → 64 "bits", AES-256 → 128; SHA-256 stays fine. There is no exponential speedup here.</small></li>
+                                    <li class="fragment">❌ "Tries all keys at once"<br/><small>&nbsp;→ a myth. Shor exploits the <em>periodic structure</em> of the public-key math - brute force gets at most a square-root boost.</small></li>
+                                </ul>
+                            </div>
                         </div>
+                    </div>
+                    <aside class="notes">
+                        The distinction between confidentiality (retroactive, urgent) and authentication (needs the CRQC to exist, but long-lived keys need years of lead time) is the single most useful thing to take from this talk when prioritising a migration.
+                    </aside>
+                </section>
+
+                <section data-background="images/bip360-2026.png" data-state="bg-top-left">
+                    <div class="overlay-style black-overlay-style fragment">
+                        <p>Why cryptocurrencies are the canary in the coal mine:</p>
+                        <ul>
+                            <li>₿ ~6 million BTC already have their public key on-chain<br/><small>&nbsp;→ ~30% of supply (Glassnode, 2026): 1.9M BTC in early P2PK outputs (incl. ~1.1M attributed to Satoshi) + 4.1M through address reuse; Taproot exposes keys by design. Harvest now, steal later.</small></li>
+                            <li>⏱️ everyone else is exposed while spending<br/><small>&nbsp;→ the public key sits in the mempool until the transaction confirms - a 9-23 minute attack fits inside Bitcoin's ~10-minute block interval.</small></li>
+                            <li>🔧 fixing it takes a soft fork plus years of block space<br/><small>&nbsp;→ BIP-360 (Pay-to-Merkle-Root) merged Feb 2026, not activated; BIP-361 would sunset ECDSA/Schnorr ~5 years later, leaving unmigrated coins unspendable - and moving every UTXO needs 76-568 days of blocks.</small></li>
+                        </ul>
+                        <p class="footnote" style="text-align: center;"><br/>Sources: Glassnode, "Measuring Bitcoin's Quantum-Exposed Supply" (2026); bip360.org; bips.dev/361; Chaincode Labs, "Bitcoin and Quantum Computing" (2025).</p>
+                    </div>
+                    <aside class="notes">
+                        Google's own recommendations in the whitepaper blog post: move blockchains to PQC, stop exposing or reusing addresses, and think about policy for abandoned coins. Ethereum Foundation formed a Post-Quantum team in January 2026 with a 2029 target - Justin Drake (EF) co-authored the Google paper. BlackRock tripled the quantum risk section of the IBIT prospectus in May 2025. Glassnode: exchanges hold 1.66M of the exposed coins. The same "public key in the open" problem applies to every X.509 certificate and SSH host key you operate - crypto just makes the balance sheet visible.
+                    </aside>
+                </section>
+
+                <section data-background="images/alice-door.jpeg">
+                    <div class="column-container overlay-style">
+
+                        <div class="col-50">Today's quantum hardware:
+                           <ul>
+                            <li>🧮 up to 96 logical qubits<br/><small>&nbsp;→ Harvard/MIT/QuEra (Nov 2025): 448 neutral atoms, with error rates that improved as the system scaled (below threshold)</small></li>
+                            <li>🧮 up to 6,100 physical qubits<br/><small>&nbsp;→ Caltech (Sept 2025): neutral atoms trapped in a laser-driven grid - a qubit array, not yet a full computer</small></li>
+                            <li>🧮 ~100 qubits in error-corrected, gate-based machines<br/><small>&nbsp;→ Google Willow (105), Quantinuum Helios (98 physical → 48 logical), IBM Nighthawk (120)</small></li>
+                        </ul>
+                        </div>
+
+                        <div class="col-50" style="padding-left: 1em;">
+                            <img class="standard" src="images/gidney-bsky.png" style="max-width: 100%; max-height: 400px;" />
+                        </div>
+
+                    </div>
+                    <aside class="notes">
+                        The gap between ~100 error-corrected qubits and 100,000 is real - but note that the required numbers fell 100x in one year while the hardware grew. Gidney's point stands: if you are in charge of something vulnerable, assume progress. Microsoft's Majorana 1 (Feb 2025) topological-qubit claims remain contested.
+                    </aside>
+                </section>
+
+                <section data-background="images/nobel-2025.png" data-state="bg-top-left">
+                    <div class="overlay-style black-overlay-style fragment">
+                        <p>October 2025: Nobel Prize in Physics to John Clarke, Michel Devoret and John Martinis <span class="highlight">"for the discovery of macroscopic quantum mechanical tunnelling and energy quantisation in an electric circuit"</span> (1984-85) - the ancestor of every superconducting qubit at Google and IBM.</p>
+                    </div>
+                    <aside class="notes">
+                        Martinis built Google's original quantum hardware team (Sycamore); Devoret is Google Quantum AI's chief scientist for hardware. Quantum information science now has two recent Nobels: 2022 for entanglement experiments (we will meet them in the quantum security part) and 2025 for the superconducting circuits behind today's processors. Hype or not, the physics is settled and rewarded.
+                    </aside>
+                </section>
+
+                <section data-background="images/ionq_roadmap.png" data-state="bg-top-left">
+                    <aside class="notes">
+                        Vendor roadmaps (2025 editions): IonQ promises 2 million physical / 80,000 logical qubits by 2030; IBM's Starling (2029) targets 200 logical qubits running 100 million gates, Blue Jay (2033) 2,000 logical qubits; Quantinuum's Apollo (2029) a universal fault-tolerant machine. Roadmaps are marketing - but put them next to the 100,000-qubit Pinnacle estimate and the overlap is uncomfortable.
+                    </aside>
+                </section>
+
+                <section data-background="images/gri-2025.png" data-state="bg-top-left">
+                    <div class="overlay-style black-overlay-style fragment">
+                        <p>When? The Global Risk Institute's <span class="highlight">Quantum Threat Timeline Report 2025</span> (published March 2026) asked 26 leading experts how likely a quantum computer able to break RSA-2048 within 24 hours is:</p>
+                        <ul>
+                            <li>⏳ within 10 years: <span class="highlight">28-49%</span> - "quite possible" <small>(2024 edition: 19-34%, 2022 edition: 10-27%)</small></li>
+                            <li>⏳ within 15 years: <span class="highlight">51-70%</span> - "likely"</li>
+                            <li>📈 the highest 10-year estimate in the report's seven-year history</li>
+                        </ul>
+                        <p class="footnote" style="text-align: center;"><br/>M. Mosca, M. Piani, "Quantum Threat Timeline Report 2025", Global Risk Institute / evolutionQ (March 2026).</p>
+                    </div>
+                    <aside class="notes">
+                        The ranges span pessimistic-to-optimistic readings of the experts' answers. The survey closed before the Pinnacle, Google and Cain papers - the 2026 edition will most likely move again.
+                    </aside>
                 </section>
 
                 <section data-background="images/alice-door.jpeg">
@@ -974,13 +792,48 @@
                         </p>
                         <h3 class="fragment r-fit-text">No, it is already too late</h3>
                     </div>
-                    <aside class="notes">In TLS 1.3, RSA is no longer used for key exchange, in favor of methods like Ephemeral Elliptic-Curve Diffie-Hellman (ECDHE). Even without TLS 1.3, ECDSA should be used over RSA.</aside>
+                    <aside class="notes">Too late for the data that is being recorded today and needs to stay confidential into the 2030s.</aside>
+                </section>
+
+                <section data-background="images/alice-door.jpeg">
+                    <div class="column-container overlay-style">
+
+                        <div class="col-50">
+                            With a <span class="highlight">harvest-now-decrypt-later</span> approach, a threat actor can
+                            store encrypted data now and decrypt it later when quantum computers are available.
+                        </div>
+
+                        <div class="col-50" style="padding-left: 1em;">
+                            <blockquote>Every day that you don't convert to a quantum-safe protocol, there's no recovery
+                                plan
+                            </blockquote>
+                            <p>
+                            <footer>- <em>Darío Gil, IBM SVP &amp; Director of Research (now US Under Secretary of Energy for Science)</em></footer>
+                            </p>
+                        </div>
+
+                    </div>
+                </section>
+
+                <section data-background="images/alice-door.jpeg">
+                    <div class="overlay-style">
+                        <h3>Mosca's inequality</h3>
+                        <h2 class="r-fit-text">$x + y > z \;\Rightarrow\; 😱$</h2>
+                        <ul>
+                            <li class="fragment">🔒 $x$ - how long your data must stay confidential</li>
+                            <li class="fragment">🔧 $y$ - how long your migration to quantum-safe crypto takes</li>
+                            <li class="fragment">⚛️ $z$ - how long until a cryptographically relevant quantum computer exists</li>
+                        </ul>
+                        <p class="fragment">Ten years of confidentiality plus a five-year migration means $z$ has to be more than 15 years away - and the experts now put the 15-year probability above 50%.</p>
+                    </div>
+                    <aside class="notes">
+                        Michele Mosca's theorem from 2015. Notice that only y is under your control. Nobody knows z - which is exactly why the inequality is the right way to reason about it.
+                    </aside>
                 </section>
 
                 <section data-background="images/grover.png" data-state="bg-top-left">
                     <div class="overlay-style fragment black-overlay-style">
                         <p>In 1996, Lov Grover developed a quantum search algorithm through an unsorted data set - finding $x$ for $f(x) = y$, when $y$ is known.</p><p>It provides <span class="highlight">quadratic speedup </span> over the classical counterparts.</p>
-                        </p>
                     </div>
                 </section>
 
@@ -988,7 +841,7 @@
                     <div class="overlay-style">
                         <div class="column-container">
                             <div class="col">
-                                <p>Probability of finding a result in a 4-bit data set with executions of steps on a quantum computer.</p><p>Classically we need 8 steps, on quantum computer ~2.8 steps.
+                                <p>Probability of finding the result in a 16-element (4-bit) data set as a function of Grover iterations.</p><p>Classically we need 8 evaluations on average; Grover's algorithm peaks after ~3 iterations ($\frac{\pi}{4}\sqrt{16} \approx 3.1$).
                                 </p>
                             </div>
                             <div class="col inset">
@@ -996,24 +849,33 @@
                             </div>
 
                         </div>
+                    </div>
+                        <aside class="notes">
+                            Note the periodicity - overshooting the optimal number of iterations makes the answer worse again. Grover's speedup is provably optimal for unstructured search, so no quantum algorithm can do better than a square root against a well-designed cipher.
+                        </aside>
                 </section>
 
                 <section data-background="images/alice-door.jpeg">
                     <div class="overlay-style">
-                        <p>Because of that it can be used to <span class="highlight">attack symmetric encryption</span> schemes such as AES, however that can be easily countered by increasing the key size.
-                        </p>
+                        <div class="column-container">
+                            <div class="col-50" style="padding-right: 1em;">
+                                <p>Because of that it can be used to <span class="highlight">attack symmetric encryption</span>
+                                    schemes such as AES, however that can be easily countered by increasing the key size.
+                                </p>
+                            </div>
+                            <div class="col-50">
+                                <p>Brute force AES 256:</p>
+                                <ul>
+                                <li>⚛️ quantum → $2^{128}$ steps </li>
+                                <li>💻 classical → $2^{256}$ steps</li>
+                                </ul>
+                            </div>
                     </div>
+                    </div>
+                    <aside class="notes">
+                        In practice even AES-128 is not considered at risk: Grover's iterations cannot be parallelised, so 2^64 sequential quantum steps would take far longer than the age of the universe on any realistic machine. NIST still keeps AES-128 as its "category 1" security level. The move to AES-256 (CNSA 2.0) is about margin, not panic.
+                    </aside>
                 </section>
-
-            </section>
-            <!-- end quantum threats -->
-
-            <!-- what's next -->
-            <section>
-                <section data-background="images/compass.jpg">
-                    <h1>What's next?</h1>
-                </section>
-
 
                 <section data-background="images/atlas-ibl.jpg">
                     <div class="overlay-style">
@@ -1057,13 +919,13 @@
                                     </tr>
                                     <tr class="">
                                         <td>384</td>
-                                        <td style="background: green;">256</td>
+                                        <td style="background: green;">192</td>
                                         <td style="background: red;">0</td>
                                     </tr>
                                 </table>
                                 <div style="clear:both;">
                                     <p class="footnote" style="text-align: center;">
-                                        Vasileios Mavroeidis, Kamer Vishi, Mateusz D. Zych, Audun Jøsang. "The Impact of Quantum Computing on Present Cryptography" (IJACSA) International Journal of Advanced Computer Science and Applications, Vol. 9, No. 3, 2018.
+                                        Adapted from Vasileios Mavroeidis, Kamer Vishi, Mateusz D. Zych, Audun Jøsang. "The Impact of Quantum Computing on Present Cryptography" (IJACSA) International Journal of Advanced Computer Science and Applications, Vol. 9, No. 3, 2018; classical strengths per NIST SP 800-57 (ECC P-384 → 192 bits).
                                     </p>
                                 </div>
                     </div>
@@ -1072,22 +934,34 @@
                     </aside>
                 </section>
 
+            </section>
+            <!-- end quantum threats -->
+
+            <!-- post-quantum cryptography -->
+            <section>
+                <section data-background="images/compass.jpg">
+                    <h1>Post-quantum cryptography</h1>
+                </section>
+
                 <section data-background="images/atlas-ibl.jpg">
                     <div class="overlay-style">
-                        <p>In 2016 NIST (National Institute of Standards and Technology) announced a post-quantum cryptography competition, with the aim to provide a standardized crypto scheme <span class="highlight">resistent to quantum threats</span>.</p>
+                        <p>In 2016 NIST (National Institute of Standards and Technology) announced a post-quantum cryptography competition, with the aim to provide a set of standardized crypto schemes <span class="highlight">resistant to quantum threats</span>.</p>
                     </div>
+                    <aside class="notes">
+                        Post-quantum cryptography means classical algorithms, running on classical computers, built on mathematical problems for which no efficient quantum algorithm is known - lattices, codes, hash functions, multivariate equations, isogenies. 82 submissions in 2017, three rounds, one high-profile casualty (SIKE, broken on a laptop in 2022).
+                    </aside>
                 </section>
 
                 <section data-background="images/quantum-computer.jpg">
                     <div class="overlay-style">
-                        <p>In 2022 the four winners have been announced.</p>
+                        <p>In July 2022 the first four algorithms to be standardized were announced.</p>
                         <div class="column-container">
                             <div class="col">
                                 <ul>
                                     <li class="">🔐
                                         CRYSTALS-Kyber
                                         <br />
-                                        <small>asymmetric encryption, lattice-based</small>
+                                        <small>key encapsulation, lattice-based</small>
                                     </li>
 
                                     <li class="">✍️
@@ -1122,147 +996,344 @@
 
                 <section data-background="images/quantum-computer.jpg">
                     <div class="overlay-style">
-                <h2 class="r-fit-text">
-                    $t = \braket{\mathbf{a}, \mathbf{s}} /q + \varepsilon$
-                </h2>
-                    <ul>
-                        <li> · $\braket{\mathbf{a}, \mathbf{s}}$ is the dot (inner) product</li>
-                        <li> · $q$ is the modulus for the arithmetic</li>
-                        <li> · $\varepsilon$ is the error term, chosen from a specific distribution</li>
-                        <li> · $t$, $q$ and $\mathbf{a}$ are published, but $\mathbf{s}$ and $\varepsilon$ are kept secret</li>
-                    </ul>
-                    <div style="clear:both; margin-top: 20px;">
-                        <p class="footnote" style="text-align: center;">note: this is a simplified picture of LWE, for illustrative purposes only
-                        </p>
-                    </div>
-                    </div>
-                    <aside class="notes">
-                        The security in LWE comes from the fact that, while it's easy to compute t given a, s, q and ϵ but it's hard to go in the reverse direction: computing s given a, t and q because of the error ϵ that's been added. 
-                    </aside>
-                </section>
-
-                <!-- <section data-background="images/atlas-ibl.jpg">
-                    <div class="overlay-style">
-                        <p>Amazon now offers <span class="highlight">TLS with CRYSTALS-Kyber</span> for connecting to AWS Key Management Service (AWS KMS), AWS Secrets Manager, and AWS Certificate Manager (ACM).</p>
-                    </div>
-                </section>
-
-                <section data-background="images/atlas-ibl.jpg">
-                    <div class="overlay-style">
-
-                        <div class="column-container centered">
-                            <div class="col auto">
-                        <img src="images/aws1.png" />
-                            </div>
-                            <div class="col auto">
-                                <img src="images/aws2.png" />
-
-                            </div>
-                        </div>
-                        <div style="clear:both;">
-                            <p class="footnote" style="text-align: center;">
-                                <a href="https://aws.amazon.com/de/blogs/security/how-to-tune-tls-for-hybrid-post-quantum-cryptography-with-kyber/">https://aws.amazon.com/de/blogs/security/how-to-tune-tls-for-hybrid-post-quantum-cryptography-with-kyber/</a>
+                        <h2 class="r-fit-text">
+                            $t = (\braket{\mathbf{a}, \mathbf{s}} + \varepsilon) \mod q$
+                        </h2>
+                        <ul>
+                            <li> · $\braket{\mathbf{a}, \mathbf{s}}$ is the dot (inner) product of two vectors</li>
+                            <li> · $\varepsilon$ is the error term, chosen from a specific distribution</li>
+                            <li> · $q$ is the modulus, confining the value to a predictable range</li>
+                            <li> · $t$, $q$, and $\mathbf{a}$ are published, but $\mathbf{s}$ and $\varepsilon$ are kept
+                                secret</li>
+                        </ul>
+                        <div style="clear:both; margin-top: 20px;">
+                            <p class="footnote" style="text-align: center;">note: this is a simplified picture of LWE (Learning With Errors),
+                                for illustrative purposes only
                             </p>
                         </div>
                     </div>
                     <aside class="notes">
-                        The scheme has a small overhead (~25%) in terms of TLS handshake time and bandwidth overhead - though in absolute terms it's still less than 1ms and about 2kB of extra data.
+                        The security in LWE comes from the fact that, while it is straightforward to compute $t$ given $\mathbf{a}$, $\mathbf{s}$, $q$, and $\varepsilon$, it is computationally hard to reverse this process. The difficulty arises from the addition of the error term $\varepsilon$, which obscures the relationship between $t$ and $\mathbf{s}$, making it infeasible to recover $\mathbf{s}$ given $t$, $\mathbf{a}$, and $q$. Crucially, no periodic structure for a quantum Fourier transform to latch onto.
                     </aside>
-                </section> -->
-
-                <section data-background="images/irpc-demonstrator.jpg">
-                    <div class="overlay-style">
-                        <h2>Ongoing Standardization</h2>
-                        <ul>
-                            <li>🔐 X25519Kyber768Draft00 hybrid post-quantum key agreement <br /><small>a hybrid Kyber-classical key exchange for TLS 1.3 (March 2023)<br/><a href="https://datatracker.ietf.org/doc/html/draft-tls-westerbaan-xyber768d00-00">https://datatracker.ietf.org/doc/html/draft-tls-westerbaan-xyber768d00-00</a></small></li>
-                            <li>✍️ JOSE and COSE Encoding for Dilithium <small>JSON and CBOR serializations for Dilithium for usage in JWT, JWK etc (March 2023) <br/> <a href="https://datatracker.ietf.org/doc/html/draft-ietf-cose-dilithium-00">https://datatracker.ietf.org/doc/html/draft-ietf-cose-dilithium-00</a></small></li>
-                        </ul>
-                        
-                    </div>
                 </section>
 
-                <section data-background="images/atlas-ibl.jpg">
-                    <div class="overlay-style">
+                <section data-background="images/quantum-computer.jpg">
+<div class="overlay-style">
+                        <p>The first PQC standards were finalized in August 2024 - more are in the pipeline.</p>
                         <div class="column-container">
-                            <div class="col">
-                                <p><span class="highlight">Google Chrome</span> supports Kyber768 key agreement based on an IETF standard as preview. This can be enabled via Chrome Flags and will ship publicly soon.
-                                </p>
-                            </div>
-                            <div class="col inset">
-                                <img src="images/chrome-flags.png" style="min-height: auto;" />
-                            </div>
+                            <div class="col-50">
+                                <ul>
+                                    <li class="fragment">🔐
+                                        ML-KEM (Kyber)
+                                        <br />
+                                        <small>
+                                            → Module-Lattice-Based Key-Encapsulation Mechanism<br/>
+                                            → FIPS-203<br/>
+                                            → standardized in 2024</small>
+                                    </li>
 
+                                    <li class="fragment">🔐
+                                        HQC
+                                        <br />
+                                        <small>→ Code-Based KEM - a non-lattice backup for ML-KEM<br/>
+                                            → FIPS-207 (expected)<br/>
+                                            → selected in March 2025; draft still pending, final expected 2027</small>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-50" style="padding-left: 1em;">
+                                <ul>
+                                    <li class="fragment">✍️
+                                        ML-DSA (Dilithium)
+                                        <br />
+                                        <small>→ Module-Lattice-Based Digital Signature Standard <br/>
+                                            → FIPS-204<br/>
+                                            → standardized in 2024</small>
+                                    </li>
+
+                                    <li class="fragment">✍️
+                                        SLH-DSA (SPHINCS+)
+                                        <br />
+                                        <small>→ Stateless Hash-Based Digital Signature Standard<br/>
+                                            → FIPS-205<br/>
+                                            → standardized in 2024</small>
+                                    </li>
+
+                                    <li class="fragment">✍️
+                                        FN-DSA (Falcon)
+                                        <br />
+                                        <small>→ FFT over NTRU-Lattice-Based Digital Signature Standard<br/>
+                                            → FIPS-206<br/>
+                                            → submitted for approval in August 2025; public draft still pending</small>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
+                    </div>
+                    <aside class="notes">
+                        Kyber & Dilithium were selected to be primary general-purpose protocols for key encapsulation
+                        and digital signatures.
+                        FALCON was recommended for applications requiring smaller digital signatures.
+                        SPHINCS+ was chosen as a backup option to the lattice-based approaches. Also final: SP 800-227 (September 2025) with recommendations for KEMs, including hybrid combiners. In May 2026 NIST advanced nine additional signature candidates to Round 3: FAEST, HAWK, MAYO, MQOM, QR-UOV, SDitH, SNOVA, SQIsign and UOV (CROSS was dropped).
+                    </aside>
                 </section>
 
-                <section data-background="images/cloudflare.png" data-state="bg-top-left">
-                    <div class="overlay-style fragment black-overlay-style">
-                        <p>Since 2022, <span class="highlight">Cloudflare</span> offers post-quantum cryptography for TLS 1.3 connections on all of its endpoints.
-                        </p>
+                <section data-background="images/quantum-computer.jpg">
+                    <div class="overlay-style">
+                        <p>NIST's transition timeline (IR 8547, Nov 2024 - still a draft)</p>
+                        <div class="column-container">
+                            <div class="col-50">
+                                <ul>
+                                    <li class="fragment">⚠️
+                                        2030: 112-bit security deprecated
+                                        <br />
+                                        <small>→ e.g. RSA-2048, ECDSA/ECDH with P-224</small>
+                                    </li>
+
+                                    <li class="fragment">⛔
+                                        2035: all RSA and ECC disallowed
+                                        <br />
+                                        <small>→ every non-quantum-resistant public-key algorithm is out</small>
+                                    </li>
+
+                                    <li class="fragment">⚡
+                                        2026: the US made 2030 binding
+                                        <br />
+                                        <small>→ EO 14412 (June 2026): PQ key exchange on federal high-value systems by end of 2030, PQ signatures by end of 2031</small>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-50">
+                                <img class="standard" src="images/nist-ir-8547.png" />
+                                <div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </section>
 
-                <section data-background="images/signal.png" data-state="bg-top-left">
-                    <div class="overlay-style fragment black-overlay-style">
-                        <p>In September 2023 <span class="highlight">Signal</span> announced moving to post quantum cryptography based on Kyber.
-                        </p>
+                <section data-background="images/quantum-computer.jpg">
+                    <div class="overlay-style">
+                        <p>It is no longer only NIST - governments are setting their own deadlines</p>
+                        <div class="column-container">
+                            <div class="col-50">
+                                <ul class="scaled-text">
+                                    <li class="fragment">🇪🇺
+                                        EU Coordinated Implementation Roadmap (June 2025)
+                                        <br />
+                                        <small>→ end of 2026: national PQC strategies and first steps<br/>
+                                            → end of 2030: high-risk use cases and critical infrastructure migrated<br/>
+                                            → end of 2035: everything else, as far as feasible</small>
+                                    </li>
+                                    <li class="fragment">🇬🇧
+                                        UK NCSC migration timeline (March 2025)
+                                        <br />
+                                        <small>→ 2028: discovery and migration plan<br/>
+                                            → 2031: highest-priority migrations complete<br/>
+                                            → 2035: migration complete</small>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-50" style="padding-left: 1em;">
+                                <ul class="scaled-text">
+                                    <li class="fragment">🇺🇸
+                                        US Executive Order 14412 + OMB M-26-15 (June 2026)
+                                        <br />
+                                        <small>→ end of 2030: PQ key establishment on federal high-value systems<br/>
+                                            → end of 2031: PQ authentication (signatures)<br/>
+                                            → 2035: full migration; national security systems follow NSA CNSA 2.0 (2030-2033)</small>
+                                    </li>
+                                    <li class="fragment">🇦🇺
+                                        Australia ASD Information Security Manual
+                                        <br />
+                                        <small>→ end of 2030: stop using RSA, DH, ECDH and ECDSA altogether<br/>
+                                            → the most aggressive public timeline so far</small>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <aside class="notes">
+                        Germany's BSI co-authored the EU roadmap and recommends hybrid (classical + PQC) schemes in its TR-02102 technical guideline; in November 2024, 18 European agencies including BSI and ANSSI jointly urged industry and critical infrastructure to start migrating. Whatever jurisdiction you are in, 2030 is the date that keeps coming up.
+                    </aside>
+                </section>
+
+                <section data-background="images/google-2029.png" data-state="bg-top-left">
+                    <div class="overlay-style black-overlay-style fragment">
+                        <p>March 2026: <span class="highlight">Google</span> set itself a hard <span class="highlight">2029</span> deadline to complete its post-quantum migration - six years ahead of NIST's 2035 - citing progress in hardware, error correction and the resource estimates we just saw.</p>
+                        <p><small>Confidentiality first (store-now-decrypt-later is a threat today), signatures before a CRQC exists; Android 17 ships ML-DSA-based signature protection.</small></p>
+                    </div>
+                    <aside class="notes">
+                        Heather Adkins (VP Security Engineering) and Sophie Schmieg (cryptography lead) - "Quantum frontiers may be closer than they appear". Six days later Google published the 256-bit ECC estimate. The Ethereum Foundation picked the same 2029 target.
+                    </aside>
+                </section>
+
+                <section data-background="images/quantum-computer.jpg">
+                    <div class="overlay-style">
+                        <p>There are plenty of issues with the current timeline</p>
+
+                        <div class="column-container">
+                            <div class="col-50">
+                                <ul>
+<li class="fragment">🚨
+Too Slow for Confidentiality
+<br />
+<small>→ sensitive data vulnerable to "Harvest Now, Decrypt Later" attacks</small>
+</li>
+
+                                   <li class="fragment">⚖️
+    Signatures ≠ KEMs
+    <br />
+    <small>→ encryption needs urgent migration; digital signatures can safely transition later</small>
+</li>
+                                </ul>
+                            </div>
+                            <div class="col-50">
+                                <ul>
+                                    <li class="fragment">🔗 Thin Guidance on Hybrid
+    <br />
+    <small>→ SP 800-227 (2025) blesses KEM combiners; nothing yet for hybrid signatures</small>
+</li>
+
+<li class="fragment">⚙️
+    Embedded HW Lifecycle
+    <br />
+    <small>→ automotive and IoT sectors struggle with 2035 due to long hardware lifetime</small>
+</li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </section>
 
                 <section data-background="images/atlas-ibl.jpg">
                     <div class="overlay-style">
-                        <p>Post quantum cryptography has implementations in all major programming languages now - including in the popular BouncyCastle library, through which it is available for <span class="highlight">.NET</span>.</p>
+                        <p>IETF standardization is moving from drafts to RFCs:</p>
+
+                        <div class="column-container">
+                            <div class="col-66">
+                                <ul class="scaled-text">
+                                    <li class="fragment">🤝
+                                        RFC 10024 (August 2026)
+                                        <br />
+                                        <small>→ Hybrid TLS 1.3 key exchange (X25519MLKEM768, SecP256r1MLKEM768, SecP384r1MLKEM1024) - Standards Track, the default in all major browsers, OpenSSL 3.5+ and Apple platforms 26.</small>
+                                    </li>
+
+                                    <li class="fragment">✍️
+                                        RFC 9964 (May 2026)
+                                        <br />
+                                        <small>→ ML-DSA for JOSE and COSE - post-quantum JWTs and CBOR signatures (in 2023 this slide listed it as draft-ietf-cose-dilithium-00).</small>
+                                    </li>
+
+                                    <li class="fragment">🛠️
+                                        draft-ietf-tls-mldsa
+                                        <br />
+                                        <small>→ ML-DSA certificates for TLS authentication - with ML-KEM this gives pure post-quantum TLS; in IESG review since mid-2026.</small>
+                                    </li>
+
+                                    <li class="fragment">🌳
+                                        draft-ietf-plants-merkle-tree-certs
+                                        <br />
+                                        <small>→ Merkle Tree Certificates shrink post-quantum WebPKI authentication - Chrome + Cloudflare experiment since early 2026, Let's Encrypt targets 2027.</small>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-33" style="padding-left: 1em;">
+                                <div class="img-backdrop">
+                                    <img src="images/rfc10024.png" class="standard" style="min-height: auto;" />
+                                </div>
+
+                            </div>
+                        </div>
                     </div>
+                </section>
+
+                <section data-background="images/atlas-ibl.jpg">
+                    <div class="overlay-style">
+                        <p>Post-quantum key exchange is already mainstream (2026):</p>
+                        <div class="column-container">
+                            <div class="col-50">
+                                <ul class="scaled-text">
+                                    <li class="fragment">🌐
+                                        Web / TLS
+                                        <br />
+                                        <small>→ Chrome (since v131, Nov 2024), Edge, Firefox (v132) and Apple platforms 26 default to X25519MLKEM768<br/>
+                                            → over 60% of human HTTPS traffic to Cloudflare is PQ-protected - but only ~9% of origin servers support it</small>
+                                    </li>
+                                    <li class="fragment">🔑
+                                        SSH
+                                        <br />
+                                        <small>→ OpenSSH 10.0+ (April 2025) defaults to mlkem768x25519-sha256</small>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-50" style="padding-left: 1em;">
+                                <ul class="scaled-text">
+                                    <li class="fragment">💬
+                                        Messaging
+                                        <br />
+                                        <small>→ Signal: PQXDH (2023) + SPQR "triple ratchet" (October 2025)<br/>
+                                            → Apple iMessage PQ3 (2024)</small>
+                                    </li>
+                                    <li class="fragment">🧰
+                                        Platforms and runtimes
+                                        <br />
+                                        <small>→ OpenSSL 3.5 (2025), Windows CNG (Nov 2025) + Schannel (July 2026), Apple CryptoKit (2025)<br/>
+                                            → Java 24, Go 1.24 and .NET 10 (2025)</small>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <p class="footnote" style="text-align: center;"><br/>Signatures are the laggard: the public WebPKI is still fully classical, and ML-DSA certificates live in private PKIs and experiments.</p>
+                    </div>
+                    <aside class="notes">
+                        Cloudflare turned on hybrid post-quantum key agreement for all customers in October 2022 (it was X25519Kyber768Draft00 back then); the client side arrived with Chrome 124 in April 2024 and switched to the final ML-KEM in Chrome 131. Your browser almost certainly negotiated ML-KEM this morning. The 9% origin figure is the actionable one for this audience: enable it on your own servers and load balancers.
+                    </aside>
                 </section>
 
                 <section data-background="images/open-quantum-safe.png">
                     <div class="overlay-style fragment black-overlay-style">
-                        <p>Open Quantum Safe project provides quantum-resistant crypto algorithms implementations in C, as well as integration into various protocols and applications, such as <span class="highlight">OpenSSL</span>.
-                        </p>
+                        <p><span class="highlight">Open Quantum Safe</span> maintains liboqs - an open-source C library with implementations of the standardized and candidate quantum-resistant algorithms, plus integrations for OpenSSL and OpenSSH - meant for prototyping and research rather than production.</p>
+                        <p><small>For .NET, <span class="highlight">Maybe LibOQS.NET</span> (my thin wrapper around liboqs) exposes 16 algorithm families; production code should prefer the platform crypto stacks (OpenSSL 3.5+, Windows CNG, Apple CryptoKit, Java, Go, .NET 10).</small></p>
                     </div>
                     <aside class="notes">
-                        OQS provides post-quantum enabled forks of both BoringSSL and OpenSSL 1.1.1, as well as a provider for OpenSSL 3.
+                        OQS provides post-quantum enabled forks of OpenSSH, plus a provider for OpenSSL 3 - handy for testing your own infrastructure against every candidate, including the ones NIST is still evaluating.
+                    </aside>
+                </section>
+
+                <section data-background="images/atlas-ibl.jpg">
+                    <div class="overlay-style">
+                        <h3>What to do now</h3>
+                        <div class="column-container">
+                            <div class="col-50">
+                                <ul class="scaled-text">
+                                    <li class="fragment">🗺️ Inventory your cryptography<br/><small>&nbsp;→ where are RSA/ECC used: TLS, VPN, SSH, PKI, code signing, tokens, HSMs, vendors? A cryptographic bill of materials (CBOM) is step one in every roadmap.</small></li>
+                                    <li class="fragment">⏳ Prioritise by shelf life<br/><small>&nbsp;→ apply Mosca's inequality: long-lived confidential data and long-lived signing keys (roots, firmware, devices) first.</small></li>
+                                    <li class="fragment">🤝 Hybrid key exchange today<br/><small>&nbsp;→ X25519MLKEM768 is free in browsers, OpenSSL, OpenSSH and cloud load balancers - turn it on.</small></li>
+                                </ul>
+                            </div>
+                            <div class="col-50" style="padding-left: 1em;">
+                                <ul class="scaled-text">
+                                    <li class="fragment">🔁 Build crypto-agility<br/><small>&nbsp;→ algorithms will change again (HQC, FN-DSA, Merkle Tree Certificates); make the swap a configuration change, not a project.</small></li>
+                                    <li class="fragment">✍️ Plan signatures and PKI<br/><small>&nbsp;→ ML-DSA keys and signatures are kilobytes, not bytes - test them in private PKIs, watch the WebPKI experiments, ask vendors for dates.</small></li>
+                                    <li class="fragment">📅 Mind the deadlines<br/><small>&nbsp;→ 2030 (EU critical infrastructure, US federal, Australia) is four years away - and hardware refresh cycles are longer than that.</small></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <aside class="notes">
+                        This is the same advice from BSI, NCSC, CISA and the EU roadmap, condensed. None of it requires a quantum computer to exist - and all of it takes years.
                     </aside>
                 </section>
 
             </section>
+            <!-- end post-quantum cryptography -->
 
             <!-- Quantum security -->
             <section>
                 <section data-background="images/atlas-barrel.jpg">
                     <h1>Quantum security</h1>
                 </section>
-
-                <!-- <section data-background="images/irpc-demonstrator.jpg">
-                    <div class="overlay-style">
-                        <p>We cannot ask a quantum system</p>
-                        <h2 class="r-fit-text">what state are you in?</h2>
-                    </div>
-                    <aside class="notes">
-                        You can think of a superposition as a form of a quantum coin toss.
-                    </aside>
-                </section>
-
-                <section data-background="images/irpc-demonstrator.jpg">
-                    <div class="overlay-style">
-                        <p>For $\mathbf{Z}$ basis we can only ask</p>
-                        <h2 class="r-fit-text">Are you $\ket{0}$ or are you $\ket{1}$?</h2>
-                    </div>
-                </section> -->
-
-                <!-- <section data-background="images/irpc-demonstrator.jpg">
-                    <div class="overlay-style">
-                        <p>Upon observation, superposition state <span class="highlight">collapses</span> to one
-                            of the
-                            observable states (e.g. $\ket{0}$ or $\ket{1}$).</p>
-                        <h2 class="r-fit-text">outcome is probabilistic</h2>
-                    </div>
-                    <aside class="notes">
-                        It is a fundamental quantum doctrine that a measurement does not reveal a pre-existing value of
-                        the measured property. On the contrary, the outcome of a measurement is brought into being by
-                        the act of measurement itself. - David Mermin
-                    </aside>
-                </section> -->
 
                 <section data-background="images/alice_9104.jpg">
                     <div class="column-container centered overlay-style">
@@ -1282,6 +1353,7 @@
                         <div class="col inset">
                             <img src="images/bloch-x-axis.jpeg" />
                         </div>
+                    </div>
                     <aside class="notes">
                         We can map bit 0 and bit 1 to any to antipodal points on the Bloch sphere, thus we have infinitely many vectors to choose from.
                     </aside>
@@ -1295,66 +1367,6 @@
                     </div>
                 </section>
 
-<!-- 
-                <section data-background="images/alice_9104.jpg">
-                    <div class="column-container centered overlay-style">
-                        <div class="col">
-                            <h2>$\mathbf{X}$ basis</h2>
-                            <p class="r-fit-text">
-                                $$
-                                0 = \frac{1}{\sqrt{2}}\begin{bmatrix} 1 \\ 1 \end{bmatrix} = \ket{+}$$
-                                $$
-                                1 = \frac{1}{\sqrt{2}}\begin{bmatrix} 1 \\ -1 \end{bmatrix} = \ket{-}
-                                $$
-                            </p>
-                        </div>
-                        <div class="col inset">
-                            <img src="images/bloch-x-axis.jpeg" />
-                        </div>
-                </section> -->
-
-                <!-- <section data-background="images/heisenberg-uncertainty.png" data-state="bg-top-left">
-                    <div class="column-container">
-                        <div class="col">
-                        </div>
-                        <div class="col black-overlay-style overlay-style fragment">
-                            <blockquote>It is impossible to determine accurately both the position and the direction and
-                                speed of a particle at the same instant.
-                            </blockquote>
-                            <p>
-                            <footer>- <em>Werner Heisenberg</em></footer>
-                            </p>
-                        </div>
-                    </div>
-                </section> -->
-
-                <!-- <section data-background="images/alice_9104.jpg">
-                    <div class="overlay-style">
-                        <p>In quantum mechanics we cannot simultaneously know values of</p>
-                        <h2 class="r-fit-text">conjugate variables</h2>
-                        <p>with arbitrary precision.</p>
-                    </div>
-                </section> -->
-<!-- 
-                <section data-background="images/alice_9104.jpg">
-                    <div class="overlay-style">
-                        <p>The choice of basis is a way to</p>
-                        <h2 class="r-fit-text">encode and decode</h2>
-                        <p>information into and out of qubits</p>
-                    </div>
-                </section> -->
-
-                <!-- <section data-background="images/alice_9104.jpg">
-                    <div class="overlay-style">
-                        <p>In quantum physics, the measurements in the $\mathbf{Z}$ and $\mathbf{X}$ bases <span
-                                class="highlight">do not commute</span>.
-                    </div>
-                    <aside class="notes">
-                        $X \cdot Z - Z \cdot X \neq 0$ which means the order of measurements matters!
-                    </aside>
-                </section> -->
-
-
                 <section data-background="images/alice_9104.jpg">
                     <div class="column-container centered overlay-style">
                         <div class="col inset">
@@ -1367,17 +1379,6 @@
                         </div>
                     </div>
                 </section>
-
-                <!-- <section data-background="images/cms-beam.jpg">
-                    <div class="overlay-style">
-                        <h3>For X and Z bases:</h3>
-                        <p>$X \cdot Z =\begin{bmatrix} 0 & 1 \\ 1 & 0 \end{bmatrix}\begin{bmatrix} 1 & 0 \\ 0 & -1
-                            \end{bmatrix} = \begin{bmatrix} 0 & -1 \\ 1 & 0 \end{bmatrix}$</p>
-                        <p>$Z \cdot X =\begin{bmatrix} 1 & 0 \\ 0 & -1 \end{bmatrix}\begin{bmatrix} 0 & 1 \\ 1 & 0
-                            \end{bmatrix} = \begin{bmatrix} 0 & 1 \\ -1 & 0 \end{bmatrix}$</p>
-                        <p>$X \cdot Z - Z \cdot X \neq 0$</p>
-                    </div>
-                </section> -->
 
                 <section data-background="images/alice_9104.jpg">
                     <div class="overlay-style">
@@ -1395,106 +1396,15 @@
                     </aside>
                 </section>
 
-                <!-- <section data-background="images/alice_9104.jpg">
-                    <div class="overlay-style">
-                        <p>Superposition is</p>
-                        <h2 class="r-fit-text">basis dependent</h2>
-                    </div>
-                    <aside class="notes">
-                        Because of this, the choice of basis allows us to encode information in a qubit in a
-                        specific
-                        way. The information can only be accurately read, if you know the basis you should use upon
-                        measurement, otherwise the result will be random.
-                        <br /><br />
-                        This concept underpins quantum cryptography.
-                    </aside>
-                </section> -->
-
-
                 <section data-background="images/alice_9104.jpg">
                     <div class="overlay-style">
                         <p>Unknown quantum state</p>
                         <h2 class="r-fit-text">cannot be cloned</h2>
                     </div>
+                    <aside class="notes">
+                        The no-cloning theorem (Wootters and Zurek, Dieks, 1982) follows directly from the linearity of quantum mechanics. An eavesdropper cannot copy a qubit in flight and forward the original - she has to measure it, and measuring in the wrong basis destroys the information.
+                    </aside>
                 </section>
-<!-- 
-                <section data-background="images/alice_9104.jpg">
-                    <div class="overlay-style">
-                        <p>In 1969, Stephen Weisner proposed the concept of "quantum money" - utilizing the uncertainty
-                            principle and quantum no-cloning theorem to create <span
-                                class="highlight">unforgeable</span> physical objects.
-                        </p>
-                </section>
-
-                <section data-background="images/alice_9104.jpg">
-                    <div class="overlay-style">
-                        <h2>Quantum money</h2>
-                        <table>
-                            <tr class="fragment">
-                                <td colspan="12">🏦</td>
-                            </tr>
-                            <tr class="fragment">
-                                <td>0</td>
-                                <td>0</td>
-                                <td>1</td>
-                                <td>0</td>
-                                <td>1</td>
-                                <td>0</td>
-                                <td>1</td>
-                                <td>0</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>0</td>
-                                <td>0</td>
-                            </tr>
-                            <tr class="fragment">
-                                <td>X</td>
-                                <td>Z</td>
-                                <td>Z</td>
-                                <td>Z</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>Z</td>
-                                <td>Z</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>Z</td>
-                                <td>Z</td>
-                            </tr>
-                            <tr class="fragment">
-                                <td>$\ket{+}$</td>
-                                <td>$\ket{0}$</td>
-                                <td>$\ket{1}$</td>
-                                <td>$\ket{0}$</td>
-                                <td>$\ket{-}$</td>
-                                <td>$\ket{+}$</td>
-                                <td>$\ket{1}$</td>
-                                <td>$\ket{0}$</td>
-                                <td>$\ket{-}$</td>
-                                <td>$\ket{-}$</td>
-                                <td>$\ket{0}$</td>
-                                <td>$\ket{0}$</td>
-                            </tr>
-                        </table>
-                        <p class="fragment">Embedded into the 💵 note - unknown ❓ quantum states.</p>
-                    </div>
-                </section>
-
-                <section data-background="images/alice_9104.jpg">
-                    <div class="overlay-style">
-                        <p>Because arbitrary quantum states <span class="highlight">cannot be cloned</span>, an
-                            attacker 🦹‍♀️ cannot copy the note.</p>
-                        <p>She <span class="highlight">must guess</span> between $\mathbf{Z}$ and $\mathbf{X}$
-                            bases.
-                        </p>
-                </section>
-
-                <section data-background="images/alice_9104.jpg">
-                    <div class="overlay-style">
-                        <p>Only the bank knows the combination of bases, with which it can verify the <span
-                                class="highlight">authenticity</span> of the note.
-                        </p>
-                </section> -->
 
                 <section data-background="images/bb84.png">
                     <div class="overlay-style fragment">
@@ -1502,6 +1412,10 @@
                                 class="highlight">quantum key distribution</span> protocol, which became known as BB84.
                         </p>
                         <p>This is considered to be the birth of the field of <span class="highlight">quantum cryptography</span>.</p>
+                    </div>
+                    <aside class="notes">
+                        Built on Stephen Wiesner's "conjugate coding" idea from around 1970 (quantum money), which no journal would publish until 1983.
+                    </aside>
                 </section>
 
                 <section data-background="images/alice_9104.jpg">
@@ -1510,6 +1424,9 @@
                         <h2 class="r-fit-text">insecure communication channel</h2>
                         <p>to securely exchange a secret.</p>
                     </div>
+                    <aside class="notes">
+                        Two channels, strictly speaking: a quantum channel (photons over fibre or free space) that may be eavesdropped, and a classical channel that must be authenticated - but need not be secret. The keys then typically feed AES or, for the truly paranoid, a one-time pad.
+                    </aside>
                 </section>
 
                 <section data-background="images/alice_9104.jpg">
@@ -1607,47 +1524,147 @@
                         <p>She must guess between $\mathbf{Z}$ and $\mathbf{X}$
                             bases, which <span class="highlight">destroys</span> some of the original information.
                         </p>
+                    </div>
                 </section>
 
                 <section data-background="images/alice_9104.jpg">
                     <div class="overlay-style">
-                        <p>👧🏻 👦🏼 Alice and Bob need to compare half of their resulting bits. If there are <span
-                                class="highlight">mismatches</span>, they <span class="highlight">detected</span> an
-                            attacker.</p>
-                        <aside class="notes">Otherwise the remaining half of the bits make up the shared key.
+                        <p>👧🏻 👦🏼 Alice and Bob publicly compare a <span class="highlight">random sample</span> of their remaining bits. Too many <span
+                                class="highlight">mismatches</span> mean they <span class="highlight">detected</span> an
+                            eavesdropper - and throw the key away.</p>
+                    </div>
+                        <aside class="notes">Eve's wrong-basis guesses introduce errors in about 25% of the bits she touched. Below an error threshold of roughly 11% the rest of the bits are distilled into the shared key (error correction plus privacy amplification); above it, the exchange is aborted. Eavesdropping is not prevented - it is detected, before the key is ever used.
                         </aside>
                 </section>
 
                 <section data-background="images/idq.png">
                     <div class="overlay-style fragment">
-                        <p>ID Quantique has been providing <span class="highlight">BB84-based</span> quantum key
-                            distribution solution to government and defense agencies.</p>
+                        <p>Quantum key distribution is a product, not a paper:</p>
+                        <ul class="scaled-text">
+                            <li>🇨🇭 <span class="highlight">ID Quantique</span> (Geneva) has shipped QKD systems since 2007 - Geneva's election network, banks, SK Telecom's networks in Korea. In May 2025 IonQ acquired a controlling stake.</li>
+                            <li>🇨🇳 China Telecom Quantum operates a carrier-grade network: 12,000+ km of fibre, 145 backbone nodes in 80 cities (2026).</li>
+                            <li>🇬🇧 BT and Toshiba have run a commercial quantum-secured metro network in London since 2022.</li>
+                            <li>🇪🇺 EuroQCI: an EU-wide quantum communication infrastructure, with the Eagle-1 satellite due to launch in late 2026 / early 2027.</li>
+                        </ul>
                         <div style="clear:both;">
-                            <p class="footnote" style="text-align: center;">source: ID Quantique, idquantique.com
+                            <p class="footnote" style="text-align: center;">image: ID Quantique, idquantique.com
                             </p>
                         </div>
                     </div>
-                    <aside class="notes">In 2022, they deployed the world's largest QKD network outside of China for government agencies in South Korea.</aside>
+                    <aside class="notes">In 2022 IDQ deployed the largest QKD network outside of China for government agencies in South Korea. Switzerland has hosted QKD since the 2007 Geneva cantonal elections and the SwissQuantum test-bed (2009-2011).</aside>
                 </section>
 
-                <section data-background="images/entanglement-qkd.png">
+                <section data-background="images/tfqkd-2023.png" data-state="bg-top-left">
+                    <div class="overlay-style black-overlay-style fragment">
+                        <p>The catch: <span class="highlight">photons get lost</span>, and quantum signals cannot be amplified (no cloning!).</p>
+                        <ul class="scaled-text">
+                            <li>🏙️ commercial fibre links: roughly 100 km between nodes</li>
+                            <li>🏆 record without trusted relays: <span class="highlight">1,002 km</span> of fibre (twin-field QKD, USTC 2023) - at well under one bit per second</li>
+                            <li>🔗 longer terrestrial networks chain <em>trusted nodes</em> - every relay holds the key in the clear</li>
+                            <li>🛰️ or you go through space, where photons barely get lost at all</li>
+                        </ul>
+                    </div>
+                    <aside class="notes">
+                        Y. Liu et al., "Experimental Twin-Field Quantum Key Distribution over 1000 km Fiber Distance", PRL 130, 210801 (2023). Quantum repeaters would remove the trusted-node problem; in February 2026 USTC demonstrated memory-memory entanglement over 10 km that lives longer than it takes to create it - the key ingredient, but still a lab result.
+                    </aside>
+                </section>
+
+                <section data-background="images/bb4-satellite.png">
                     <div class="overlay-style fragment">
                         <p>In 2017, a Chinese research team executed a <span
-                                class="highlight">BB84-based</span> quantum key distribution between a low-orbit
-                            quantum satellite and a ground station.</p>
+                                class="highlight">BB84-based</span> quantum key distribution between the low-orbit
+                            quantum satellite Micius and a ground station, 1,200 km apart.</p>
                         <div style="clear:both;">
                             <p class="footnote" style="text-align: center;">Liao, SK., Cai, WQ., Liu, WY. et al. Satellite-to-ground quantum key distribution. Nature 549, 43–47 (2017). https://doi.org/10.1038/nature23655. (image from the paper)
                             </p>
                         </div>
                     </div>
-                </section> -->
-<!-- 
+                    <aside class="notes">Micius (launched August 2016, designed for two years) also delivered the first intercontinental quantum-encrypted video call between Beijing and Vienna in 2017. After almost ten years in orbit it re-entered the atmosphere in January 2026.</aside>
+                </section>
+
+                <section data-background="images/jinan1-2025.png" data-state="bg-top-left">
+                    <div class="overlay-style black-overlay-style fragment">
+                        <p>March 2025: the 23 kg <span class="highlight">Jinan-1 microsatellite</span> performed real-time QKD with portable 100 kg ground stations - and distributed keys between Beijing and Stellenbosch, South Africa, <span class="highlight">12,900 km</span> apart.</p>
+                        <p><small>Up to 1 Mbit of key per pass; the keys were used to send <span class="highlight">one-time-pad</span> encrypted images between China and South Africa. Remember the very first slides? That is the unbreakable encryption, delivered from orbit.</small></p>
+                        <p class="footnote" style="text-align: center;"><br/>Y. Li et al., "Microsatellite-based real-time quantum key distribution", Nature 640, 47–54 (2025).</p>
+                    </div>
+                    <aside class="notes">
+                        The satellite is a trusted relay: it shares one key with each ground station and publishes the XOR. The payload is more than an order of magnitude lighter than Micius, the ground stations two orders of magnitude lighter - this is what makes a constellation plausible. China has announced further LEO satellites, a medium-orbit satellite around 2027 and a geostationary one for continuous daytime coverage.
+                    </aside>
+                </section>
+
                 <section data-background="images/e91.png">
                     <div class="overlay-style fragment">
                         <p>In 1991, Artur Ekert developed the first <span class="highlight">quantum key
                                 distribution</span> protocol based on <span class="highlight">entanglement</span>. It
-                            became known as E91 protocol.
+                            became known as E91 protocol - and it uses <span class="highlight">Bell's theorem</span> as the eavesdropper alarm.
                         </p>
+                    </div>
+                    <aside class="notes">
+                        Ekert was a PhD student in Oxford at the time. To appreciate why this is the "wow" version of QKD, we need a short detour into entanglement.
+                    </aside>
+                </section>
+
+                <section data-background="images/uv.jpg">
+                    <div class="overlay-style">
+                        <p>Two qubits can share a single <span class="highlight">entangled</span> state:</p>
+                        <h2 class="r-fit-text">$$\ket{\psi} = \frac{1}{\sqrt{2}}\ket{00} + \frac{1}{\sqrt{2}}\ket{11}$$</h2>
+                        <p>Measure one and you get a random bit - but the other one is now guaranteed to give the <span class="highlight">same</span> result, however far away it is.</p>
+                    </div>
+                    <aside class="notes">
+                        This state cannot be written as a product of two single-qubit states - the pair is one object, even if the two photons are on different continents. The results are truly random, but perfectly correlated.
+                    </aside>
+                </section>
+
+                <section data-background="images/albert-einstein-invent.jpg">
+                    <div class="column-container">
+                        <div class="col overlay-style">
+                            <blockquote>...spukhafte Fernwirkung...
+                            </blockquote>
+                            <p>
+                            <footer>- <em>Albert Einstein</em></footer>
+                            </p>
+                        </div>
+
+                        <div class="col">
+                        </div>
+                    </div>
+                    <aside class="notes">
+                        "Spooky action at a distance" - from a 1947 letter to Max Born. In the 1935 EPR paper, Einstein, Podolsky and Rosen argued that if you can predict a measurement result with certainty without disturbing the system, there must be an "element of physical reality" corresponding to it - so the perfectly correlated results must have been fixed in advance, and quantum mechanics must be incomplete. Keep the phrase "element of reality" in mind.
+                    </aside>
+                </section>
+
+                <section data-background="images/uv.jpg">
+                    <div class="overlay-style">
+                        <p>In 1964 John Bell proved that no theory with <span class="highlight">pre-existing local values</span> can reproduce the correlations quantum mechanics predicts for entangled pairs.</p>
+                        <h2 class="r-fit-text">Bell's theorem</h2>
+                        <p>Every experiment since has sided with quantum mechanics: the measurement results <span class="highlight">do not exist</span> before the measurement.</p>
+                    </div>
+                    <aside class="notes">
+                        Bell turned a philosophical dispute into a testable inequality. Clauser (1972), Aspect (1982) and Zeilinger (1998, 2017 with Micius-distributed pairs) closed the loopholes one by one; the 2015 loophole-free tests in Delft, Vienna and Boulder settled it.
+                    </aside>
+                </section>
+
+                <section data-background="images/nobel-2022.png" data-state="bg-top-left">
+                    <aside class="notes">
+                        Nobel Prize in Physics 2022: Alain Aspect, John Clauser and Anton Zeilinger, "for experiments with entangled photons, establishing the violation of Bell inequalities and pioneering quantum information science".
+                    </aside>
+                </section>
+
+                <section data-background="images/henrystapp.jpg">
+                    <div class="column-container">
+
+                        <div class="col">
+                        </div>
+
+                        <div class="col overlay-style">
+                            <blockquote>Bell's theorem is the most profound discovery of science
+                            </blockquote>
+                            <p>
+                            <footer>- <em>Henry Stapp</em></footer>
+                            </p>
+                        </div>
+                    </div>
                 </section>
 
                 <section data-background="images/alice_9104.jpg">
@@ -1733,21 +1750,62 @@
                         <p class="fragment" data-fragment-index="5">Shared key: <span class="highlight">1 0 1 1 0 1 0 1
                                 0 0 0 1 0 1 1</span></p>
                     </div>
+                    <aside class="notes">
+                        A source (it can even be operated by Eve) emits entangled pairs; Alice gets one photon of each pair, Bob the other. Nobody transmits any bits - both simply measure. When they happen to use the same basis, their random results agree and become the key. The measurements in different bases are published and fed into a Bell test: if the correlations are weaker than quantum mechanics allows, someone has interacted with the photons - the pairs are no longer purely entangled - and the key is discarded.
+                    </aside>
                 </section>
 
                 <section data-background="images/alice_9104.jpg">
                     <div class="overlay-style">
-                        <p>Entangled based key distribution does not have</p>
+                        <p>Entanglement-based key distribution does not have</p>
                         <h2 class="r-fit-text">an element of reality</h2>
-                        <p>associated with it.</p>
+                        <p>associated with it - the key bits <span class="highlight">do not exist</span> until Alice and Bob measure. There is nothing in transit to intercept.</p>
                     </div>
+                    <aside class="notes">
+                        This is the EPR "element of reality" turned into a security feature. In BB84 the key exists as Alice's random choices before it is sent; in E91 the key is created at the moment of measurement, at both ends simultaneously, and Bell's theorem guarantees nobody could have known it in advance - not even the person who built the photon source.
+                    </aside>
+                </section>
+
+                <section data-background="images/mermin.jpg">
+                    <div class="column-container">
+                        <div class="col">
+                        </div>
+                        <div class="col overlay-style">
+                            <blockquote>It is a fundamental quantum doctrine that a measurement does not reveal a pre-existing value of the measured property. On the contrary, the outcome of a measurement is brought into being by the act of measurement itself.
+                            </blockquote>
+                            <p>
+                            <footer>- <em>N. David Mermin</em></footer>
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-background="images/diqkd-2022.png" data-state="bg-top-left">
+                    <div class="overlay-style black-overlay-style fragment">
+                        <p>2022: three groups (Oxford with trapped ions, Munich with single atoms, USTC with photons) demonstrated <span class="highlight">device-independent</span> QKD.</p>
+                        <p>Security is certified by the Bell test alone - you do not even have to trust the internals of your own devices.</p>
+                        <p class="footnote" style="text-align: center;"><br/>D. P. Nadlinger et al., Nature 607, 682 (2022); W. Zhang et al., Nature 607, 687 (2022); W.-Z. Liu et al., PRL 129, 050502 (2022).</p>
+                    </div>
+                    <aside class="notes">
+                        Practical QKD systems have been hacked through their hardware - detector blinding with bright light broke commercial systems in 2010. Device independence closes that entire class: if the Bell inequality is violated, the key is secure regardless of what is inside the boxes.
+                    </aside>
+                </section>
+
+                <section data-background="images/diqkd-2026.png" data-state="bg-top-left">
+                    <div class="overlay-style black-overlay-style fragment">
+                        <p>February 2026: USTC ran device-independent QKD between two single-atom quantum memories linked by <span class="highlight">100 km</span> of fibre - 1.2 million heralded Bell pairs over 624 hours at 11 km.</p>
+                        <p class="footnote" style="text-align: center;"><br/>B.-W. Lu et al., "Device-independent quantum key distribution over 100 km with single atoms", Science 391, 592–597 (2026).</p>
+                    </div>
+                    <aside class="notes">
+                        Still heroic physics rather than a product: 624 hours for a finite-size key. But the same building blocks - entangled atomic memories connected by telecom fibre - are the nodes of a future quantum internet.
+                    </aside>
                 </section>
 
                 <section data-background="images/entanglement-qkd.png">
                     <div class="overlay-style fragment">
                         <p>In 2020, a Chinese research team executed an <span
-                                class="highlight">entanglement-based</span> quantum key distribution via a low-orbit
-                            quantum satellite, between ground stations 1120km apart.</p>
+                                class="highlight">entanglement-based</span> quantum key distribution via the Micius
+                            satellite, between ground stations 1,120 km apart - without trusting the satellite.</p>
                         <div style="clear:both;">
                             <p class="footnote" style="text-align: center;">Yin, J., Li, YH., Liao, SK. et al.
                                 Entanglement-based secure quantum cryptography over 1,120 kilometres. Nature 582,
@@ -1755,7 +1813,40 @@
                             </p>
                         </div>
                     </div>
-                </section> -->
+                    <aside class="notes">
+                        Unlike the 2017 and 2025 experiments, here the satellite is only the source of entangled pairs - it never knows the key. The rate was a modest 0.12 bits per second, but the security does not depend on the satellite at all.
+                    </aside>
+                </section>
+
+                <section data-background="images/bsi-qkd-2024.png" data-state="bg-top-left">
+                    <div class="overlay-style black-overlay-style fragment">
+                        <p>The fine print - what the security agencies say:</p>
+                        <ul class="scaled-text">
+                            <li>🇩🇪 🇫🇷 🇳🇱 🇸🇪 BSI, ANSSI, NLNCSA and Sweden's NCSA (joint position paper, January 2024): QKD is limited to niche use cases and <span class="highlight">"currently not sufficiently mature from a security perspective"</span> - PQC comes first</li>
+                            <li>🇺🇸 NSA does not support QKD for national security systems; 🇬🇧 NCSC does not endorse it for government or military use</li>
+                            <li>⚠️ Why: dedicated hardware and fibre, ~100 km or trusted relays, a classical channel that still needs (post-quantum) authentication, implementation attacks (detector blinding, 2010), trivial denial of service</li>
+                            <li>🤝 Where it fits: a physics-based complement to PQC for fixed high-value links - not a replacement</li>
+                        </ul>
+                    </div>
+                    <aside class="notes">
+                        Czechia's NÚKIB endorsed the paper as well. Note the asymmetry with China, which is building QKD into national infrastructure, and with the EU, which funds EuroQCI while its own agencies say "PQC first". Both can be true: QKD protects a link, PQC protects a protocol.
+                    </aside>
+                </section>
+
+                <section data-background="images/quantum-computer.jpg">
+                    <div class="overlay-style">
+                        <h3>The future of cryptography</h3>
+                        <ul class="scaled-text">
+                            <li class="fragment">🧮 <span class="highlight">Post-quantum cryptography</span><br/><small>&nbsp;→ mathematics, software-only, deployable today - the migration everyone must complete by the 2030 deadlines</small></li>
+                            <li class="fragment">🛰️ <span class="highlight">Quantum key distribution</span><br/><small>&nbsp;→ physics, hardware-bound, niche today - satellites, repeaters and device independence are pushing the boundaries</small></li>
+                            <li class="fragment">🎲 <span class="highlight">Quantum random number generators</span><br/><small>&nbsp;→ physics-grade randomness for keys, already inside HSMs and even phones (ID Quantique chips in Samsung Galaxy Quantum since 2020) - remember prerequisite #2 of the one-time pad</small></li>
+                            <li class="fragment">🔁 <span class="highlight">Crypto-agility</span><br/><small>&nbsp;→ whatever wins, be able to swap algorithms without a rewrite</small></li>
+                        </ul>
+                    </div>
+                    <aside class="notes">
+                        Quantum computers threaten the mathematics we chose in the 1970s; the answer is partly new mathematics and partly using quantum physics itself. Both are already shipping - the only thing that is not yet available is time.
+                    </aside>
+                </section>
             </section>
             <!-- end quantum security -->
 
@@ -1856,5 +1947,4 @@
 
     </script>
 </body>
-
 </html>
